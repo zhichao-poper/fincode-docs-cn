@@ -1,23 +1,7 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 526,
+  "remainingJapaneseUnits": 457,
   "items": [
-    {
-      "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/email/description",
-      "preview": "顧客のメールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/created_from/description",
-      "preview": "作成日の範囲指定 開始日\\ この日付以降に作成された顧客情報を検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/created_to/description",
-      "preview": "作成日の範囲指定 終了日\\ この日付以前に作成された顧客情報を検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `id`: 顧客ID - `name`: 顧客名 - `email`: 顧客メールアドレス - `created`: 作成日時 - `updated`: 更新日時 "
-    },
     {
       "pointer": "/components/schemas/Customer/properties/card_registration/description",
       "preview": "決済手段（カード）登録状況  - `0`: 未登録 - `1`: 1件以上のカードが登録済み "
@@ -63,54 +47,6 @@
       "preview": "カード更新実施日時 最後にカード情報の更新を実施した日時\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
     },
     {
-      "pointer": "/components/schemas/card/description",
-      "preview": "<span class=\"smallText\">この決済手段がカードを表す（`pay_type = Card`）とき、カード情報の詳細がこの`card`オブジェクトに格納されます。</span> "
-    },
-    {
-      "pointer": "/components/schemas/card/properties/card_no/description",
-      "preview": "マスク済みカード番号。\\ <span class=\"smallText\"> 下4桁以外をマスクしたカード番号です。\\ カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。\\ </span> 形式：`************1234` "
-    },
-    {
-      "pointer": "/components/schemas/card/properties/expire/description",
-      "preview": "カード有効期限。\\ 形式：`YYMM` "
-    },
-    {
-      "pointer": "/components/schemas/card/properties/holder_name/description",
-      "preview": "カード名義人名。 "
-    },
-    {
-      "pointer": "/components/schemas/card/properties/card_no_hash/description",
-      "preview": "カード番号をもとに生成されたハッシュ値。\\ <span class=\"smallText\"> おなじカード番号に対しては常に同じ値が返されます。\\ カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。 </span> "
-    },
-    {
-      "pointer": "/components/schemas/card/properties/tds2_status/description",
-      "preview": "3Dセキュア2.0認証処理のステータス。\\ \\ <span class=\"smallText\">【3Dセキュア認証結果の返却について】</span>\\ 3Dセキュア認証結果（本項目を含む3Dセキュア関連項目）は、APIによって処理結果または保持している認証結果を返却します。    - 決済手段 登録API・更新APIで"
-    },
-    {
-      "pointer": "/components/schemas/directdebit/description",
-      "preview": "<span class=\"smallText\">この決済手段が振替用口座を表す（`pay_type = Directdebit`）とき、口座情報の詳細がこの`directdebit`オブジェクトに格納されます。</span> "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/expected_billable_date/description",
-      "preview": "請求可能予定日。\\ 口座登録後、実際に請求依頼が可能となると予定される日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/last_withdrawal_date/description",
-      "preview": "最終引落日。\\ 金融機関によってこの口座から実際に引き落とされた実績日のうち、最も新しい日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/bank_type/description",
-      "preview": "金融機関種別。  - `0`: ゆうちょ銀行以外の金融機関 - `1`: ゆうちょ銀行 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/paper_application/description",
-      "preview": "依頼書登録のパラメータ<br /> <span class=\"smallText\"> ※ 依頼書登録により登録された口座の場合、この`paper_application`オブジェクトに依頼書からfincodeに転記した内容が含められます。 </span> "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/paper_application/properties/preregistered_date/description",
-      "preview": "依頼書 仮登録日時。\\ 依頼書を仮登録した日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
       "pointer": "/components/schemas/virtualaccount/description",
       "preview": "<span class=\"smallText\">この決済手段が銀行振込（バーチャル口座）を表す（`pay_type = Virtualaccount`）とき、バーチャル口座情報の詳細がこの`virtualaccount`オブジェクトに格納されます。</span> "
     },
@@ -121,26 +57,6 @@
     {
       "pointer": "/components/schemas/paper_application/properties/request_form_id/description",
       "preview": "依頼書ID。\\ 依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。\\ ※プラットフォームショップの場合、プラットフォーム全体で一意である必要があります。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/settlement_route/description",
-      "preview": "振替サービス\\ 口座を登録する振替サービスを指定します。\\ 指定しなかった場合はデフォルトの振替サービスに口座が登録されます。\\ ※デフォルトは審査完了日時が最新の振替サービスとなります。  - `1`: 口座振替（5・6・23・27日） - `2`: 口座振替（1・5・20・26日） "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/branch_code/description",
-      "preview": "支店コード\\ ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/account_type/description",
-      "preview": "預金区分\\ ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須  - `1`: 普通 - `2`: 当座 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/account_number/description",
-      "preview": "口座番号\\ ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須\\ 形式： 左0埋め "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/account_name_kana/description",
-      "preview": "口座名義（カナ）\\ 形式： 半角英数カナ記号、全角英数カナ記号、一部の記号、半角全角スペース\\ \\ 使用可能な記号は以下の通りです。  - 半角：`.` `(` `)` `–` - 全角：`．` `（` `）` `ー` "
     },
     {
       "pointer": "/components/schemas/redirect_url/description",
@@ -172,38 +88,6 @@
     },
     {
       "pointer": "/components/schemas/Payment.ListRetrieving.ApplePay.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Googlepay.QueryParams/properties/status/description",
-      "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `AUTHORIZED`: 仮売上 - `CAPTURED`: 売上確定 - `CANCELED`: キャンセル - `AUTHENTICATED`: 未処"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Googlepay.QueryParams/properties/update_date_from/description",
-      "preview": "更新日時（始値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Googlepay.QueryParams/properties/update_date_to/description",
-      "preview": "更新日時（終値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Googlepay.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/status/description",
-      "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち - `AUTHORIZED`: 仮売上 - `CAPTURED`: 売上確定 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/payment_date_from/description",
-      "preview": "支払い日時（始値）\\ 支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以降に支払いが行われた決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/payment_date_to/description",
-      "preview": "支払い日時（終値）\\ 支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以前に支払いが行われた決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
     },
     {
@@ -377,22 +261,6 @@
     {
       "pointer": "/components/schemas/Payment.GooglePay_x-req-properties-token/description",
       "preview": "Google Pay カードトークン\\ Google Payを利用するデバイスから取得したトークン（`paymentMethodData.tokenizationData.token`）をBase64エンコードした値を設定します。    トークン生成時、`tokenizationSpecification`には以下の値"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Executing.Request/properties/method/description",
-      "preview": "支払方法   - `1`: 一括払い - `2`: 分割払い - `5`: リボ払い "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Executing.Request/properties/tds2_ret_url/description",
-      "preview": "3Dセキュア認証における戻りURL   3Dセキュア認証処理に使用するURLを指定してください。   このURLに後続処理のためのデータがPOSTメソッドで送信されます。     ※ 指定した場合、3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する必要があります。 お客様のブラウザとfi"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Executing.Request/properties/return_url/description",
-      "preview": "加盟店戻りURL（成功時）   購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、 3Dセキュア認証処理後、決済に成功した際にリダイレクトされるURLです。   POSTメソッドでリダイレクトされます。  指定しない場合はデフォルトの成功ページのURLが設定されます。   また、`tds2_ret"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Executing.Request/properties/return_url_on_failure/description",
-      "preview": "加盟店戻りURL（失敗時）   購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、 3Dセキュア認証に失敗、または決済に失敗した際にリダイレクトされるURLです。   POSTメソッドでリダイレクトされます。  指定しない場合はデフォルトの失敗ページのURLが設定されます。   また、`tds2_"
     },
     {
       "pointer": "/components/schemas/payment_term_day/description",
@@ -715,22 +583,6 @@
       "preview": "初回税送料\\ \\ この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`tax`の金額で課金します。 "
     },
     {
-      "pointer": "/components/schemas/Subscription.Creating.Request/properties/card_id/description",
-      "preview": "カードID \\ （`pay_type = Card`の場合のみ利用可能）\\ このサブスクリプションで請求先となるカードのIDです。\\ 省略した場合、顧客のデフォルトカードが使用されます。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.Creating.Request/properties/payment_method_id/description",
-      "preview": "決済手段ID \\ （`pay_type = Directdebit`の場合のみ利用可能）\\ このサブスクリプションで請求先となる決済手段のIDです。\\ 省略した場合、顧客のデフォルト決済手段が使用されます。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.Creating.Request/properties/start_date/description",
-      "preview": "課金開始日\\ サブスクリプションの開始日です。    ※`pay_type = Directdebit`の場合、 サブスクリプションの登録が請求受付終了日の13:00を超えると課金開始日は翌月の同日となります。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.Creating.Request/properties/stop_date/description",
-      "preview": "課金停止日\\ サブスクリプションの停止日です。\\ 省略した場合、無期限となります。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
       "pointer": "/components/schemas/SubscriptionResult.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=process_date␣asc,created␣asc`\\ \\ ソート可能な項目  - `process_date`: 処理日時 - `created`: 作成日時 "
     },
@@ -863,22 +715,6 @@
       "preview": "削除された一括決済のID"
     },
     {
-      "pointer": "/components/schemas/Invoice.ListItem/description",
-      "preview": "インボイス情報 一覧項目"
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListItem/properties/transaction_date/description",
-      "preview": "支払完了日 形式：`yyyy/MM/dd HH:mm:ss.SSS`"
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListItem/properties/created/description",
-      "preview": "作成日時 形式： `yyyy/MM/dd HH:mm:ss.SSS`"
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListItem/properties/updated/description",
-      "preview": "更新日時 形式： `yyyy/MM/dd HH:mm:ss.SSS`"
-    },
-    {
       "pointer": "/components/schemas/Invoice.CompanyStamp/properties/company_stamp_data/description",
       "preview": "社印データをBase64エンコードした文字列"
     },
@@ -901,22 +737,6 @@
     {
       "pointer": "/components/schemas/DepositStatusCode/description",
       "preview": "入金ステータス  - `3001`: 金額確定前<br /><span class=\"smallText\">この集計期間中の売上入金に関してまだ集計中であり金額が確定していない状態。入金はされていません。</span> - `3002`: 金額確定済み<br /><span class=\"smallText\">この集計"
-    },
-    {
-      "pointer": "/components/schemas/Account.ListRetrieving.QueryParams/properties/processed/description",
-      "preview": "確定日（入金サイクルの締め日）を月単位で絞り込みます。\\ 形式： `yyyy/MM` "
-    },
-    {
-      "pointer": "/components/schemas/Account.ListRetrieving.QueryParams/properties/status/description",
-      "preview": "入金ステータス\\ カンマ区切りにすることで複数指定（OR検索）できます。  - `3001`: 金額確定前 - `3002`: 金額確定済み - `3003`: 入金済み - `3004`: 入金停止中 - `3005`: 入金エラー - `3006`: 請求中 - `3007`: 請求エラー - `3008`: 請求"
-    },
-    {
-      "pointer": "/components/schemas/Account.ListRetrieving.QueryParams/properties/scheduled_from/description",
-      "preview": "入金予定日の範囲指定（開始日）を指定します。\\ この日付以降に入金が行われた売上入金情報を検索できます。\\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Account.ListRetrieving.QueryParams/properties/scheduled_to/description",
-      "preview": "入金予定日の範囲指定（終了日）を指定します。\\ この日付以前に入金が行われた売上入金情報を検索できます。\\ 形式： `yyyy/MM/dd` "
     },
     {
       "pointer": "/components/schemas/scheduled_deposit_date/description",
@@ -973,22 +793,6 @@
     {
       "pointer": "/components/schemas/AccountPaymentMethod/description",
       "preview": "この売上入金明細に対応する決済で利用された決済手段  - `VM`: カード決済（VISA / Mastercard） - `JA`: カード決済（JCB / American Express / Diners Club / Discover） - `KONBINI`: コンビニ決済 - `Paypay`: PayPa"
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccount.ListRetrieving.QueryParams/properties/processed/description",
-      "preview": "確定日（入金サイクルの締め日）を月単位で絞り込みます。\\ 形式： `yyyy/MM` "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccount.ListRetrieving.QueryParams/properties/status/description",
-      "preview": "入金ステータス\\ カンマ区切りにすることで複数指定（OR検索）できます。  - `3001`: 金額確定前 - `3002`: 金額確定済み - `3003`: 入金済み - `3004`: 入金停止中 - `3005`: 入金エラー - `3006`: 請求中 - `3007`: 請求エラー - `3008`: 請求"
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccount.ListRetrieving.QueryParams/properties/scheduled_from/description",
-      "preview": "入金予定日の範囲指定（開始日）を指定します。\\ この日付以降に入金が行われた売上入金情報を検索できます。\\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccount.ListRetrieving.QueryParams/properties/scheduled_to/description",
-      "preview": "入金予定日の範囲指定（終了日）を指定します。\\ この日付以前に入金が行われた売上入金情報を検索できます。\\ 形式： `yyyy/MM/dd` "
     },
     {
       "pointer": "/components/schemas/properties-deposit_amount/description",
@@ -1071,26 +875,6 @@
       "preview": "このプラットフォーム利用料入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税 "
     },
     {
-      "pointer": "/components/schemas/PlatformAccountSummary/properties/summary_id/description",
-      "preview": "プラットフォーム利用料収入サマリーID "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccountSummary/properties/shop_id/description",
-      "preview": "ショップID（プラットフォーム） "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccountSummary/properties/tenant_shop_id/description",
-      "preview": "ショップID（テナント）\\ \\ この利用料収入サマリーはこのIDを持つテナントショップに関して作成されたものであることを示します。 "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccountSummary/properties/tenant_shop_name/description",
-      "preview": "ショップ名（テナント） "
-    },
-    {
-      "pointer": "/components/schemas/PlatformAccountSummary/properties/tenant_account_process_id_list/description",
-      "preview": "テナントショップにおける、このサマリーの集計対象となった売上入金IDのリスト "
-    },
-    {
       "pointer": "/components/schemas/PlatformAccountSummary.list/properties/list/description",
       "preview": "プラットフォーム利用料収入のサマリー情報のリスト "
     },
@@ -1100,26 +884,6 @@
     },
     {
       "pointer": "/components/schemas/data/description",
-      "preview": "審査ファイルデータ\\ \\ 画像ファイルをマルチパートアップロードするときはこの`data`フィールドに画像データを設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationFileUpload/properties/examination_files/items/properties/shop_id/description",
-      "preview": "ショップID（テナント）\\ \\ このIDのテナントショップに関して画像ファイルを受け付けたことを示します。 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationFileUpload/properties/examination_files/items/properties/type/description",
-      "preview": "審査ファイルタイプ "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationFileUpload/properties/examination_files/items/properties/filename/description",
-      "preview": "審査ファイル名\\ \\ 拡張子を含むアップロードされたファイルの名称 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationFileUpload/properties/examination_files/items/properties/filesize/description",
-      "preview": "審査ファイルサイズ\\ \\ アップロードされたファイルのサイズ（バイト） "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationFileUpload/x-req-properties/data/description",
       "preview": "審査ファイルデータ\\ \\ 画像ファイルをマルチパートアップロードするときはこの`data`フィールドに画像データを設定します。 "
     },
     {
@@ -1699,26 +1463,6 @@
       "preview": "仕向け先種別 "
     },
     {
-      "pointer": "/components/schemas/CardPaymentSetting/properties/vm_tds_available/description",
-      "preview": "（VISA／Mastercard）3Dセキュア認証が有効かどうか  - `true`: 3Dセキュア認証が有効 - `false`: 3Dセキュア認証が無効 "
-    },
-    {
-      "pointer": "/components/schemas/CardPaymentSetting/properties/vm_tds_required/description",
-      "preview": "（VISA／Mastercard）3Dセキュア認証の利用が必須かどうか  - `true`: 3Dセキュア認証の使用が必須 - `false`: 3Dセキュア認証の使用が任意 "
-    },
-    {
-      "pointer": "/components/schemas/CardPaymentSetting/properties/ja_tds_available/description",
-      "preview": "（JCB／AMEX）3Dセキュア認証が有効かどうか  - `true`: 3Dセキュア認証が有効 - `false`: 3Dセキュア認証が無効 "
-    },
-    {
-      "pointer": "/components/schemas/CardPaymentSetting/properties/ja_tds_required/description",
-      "preview": "（JCB／AMEX）3Dセキュア認証の利用が必須かどうか  - `true`: 3Dセキュア認証の使用が必須 - `false`: 3Dセキュア認証の使用が任意 "
-    },
-    {
-      "pointer": "/components/schemas/CardPaymentSetting/properties/install_payment_available/description",
-      "preview": "分割払い／リボ払いが利用可能かどうか  - `true`: 利用可能 - `false`: 利用不可 "
-    },
-    {
       "pointer": "/components/schemas/corporate/description",
       "preview": "事業形態  - `true`: 法人 - `false`: 個人事業主 "
     },
@@ -1981,26 +1725,6 @@
     {
       "pointer": "/components/schemas/next_charge_date/description",
       "preview": "次回課金日\\ サブスクリプションの次回課金日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.Card/properties/succeeded/description",
-      "preview": "成功件数\\ \\ 今回のサブスクリプション課金において成功した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.Card/properties/failed/description",
-      "preview": "失敗件数\\ \\ 今回のサブスクリプション課金において失敗した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.Card/properties/retry_scheduled/description",
-      "preview": "次回リトライ予定件数\\ \\ 今回のサブスクリプション課金において失敗した決済のうち、次回のサブスクリプション課金でリトライ対象となる決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.Card/properties/total/description",
-      "preview": "合計件数\\ \\ 今回のサブスクリプション課金において発生した決済の合計件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.Card/properties/charge_date/description",
-      "preview": "課金日\\ 今回のサブスクリプションの課金日です。\\ \\ 形式：`yyyy/MM/dd` "
     },
     {
       "pointer": "/components/schemas/WebhookEvent.RecurringBatch.DirectDebit/properties/succeeded/description",

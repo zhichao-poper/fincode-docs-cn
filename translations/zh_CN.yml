@@ -2994,8 +2994,240 @@ schema_property_descriptions:
     update_date: |-
       更新时间。
       格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  card:
+    card: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
+    card_no: |-
+      已脱敏的银行卡号，仅保留末 4 位，格式：`************1234`。
+      根据银行卡信息非持有原则，可保存本字段代替未脱敏的银行卡号。
+    expire: |-
+      银行卡有效期。
+      格式：`YYMM`
+    holder_name: 银行卡持卡人姓名。
+    card_no_hash: |-
+      根据银行卡号生成的哈希值；相同银行卡号始终返回相同值。根据银行卡信息非持有原则，可保存本字段代替未脱敏的银行卡号。
+    tds2_status: |-
+      3D Secure 2.0 认证状态。
+
+      银行卡登记和更新 API 返回当前请求的认证结果；银行卡获取和列表 API 返回已保存的认证结果，因此内容可能与登记或更新响应不同。
+  directdebit:
+    directdebit: 当支付方式为银行账户自动扣款（`pay_type = Directdebit`）时，账户详细信息保存在此 `directdebit` 对象中。
+    expected_billable_date: |-
+      账户登记后预计可以提交扣款请求的时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    last_withdrawal_date: |-
+      金融机构最近一次实际从该账户扣款的日期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    bank_type: |-
+      金融机构类型。
+
+      - `0`：日本邮政储蓄银行以外的金融机构
+      - `1`：日本邮政储蓄银行
+    paper_application: 通过纸质申请书登记账户时，此对象保存从申请书录入 fincode 的内容。
+    preregistered_date: |-
+      纸质申请书预登记时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  CustomerPaymentMethod.Creating.Request:
+    settlement_route: |-
+      登记账户所使用的自动扣款服务。未指定时使用默认服务，即审核完成时间最新的服务。
+
+      - `1`：每月 5、6、23、27 日自动扣款
+      - `2`：每月 1、5、20、26 日自动扣款
+    branch_code: 分行代码；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
+    account_type: |-
+      存款账户类型；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
+
+      - `1`：普通存款账户
+      - `2`：往来存款账户
+    account_number: |-
+      银行账号；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
+      格式：左侧补 `0`。
+    account_name_kana: |-
+      账户名义人（片假名）。可使用半角或全角英数字、片假名、空格及部分符号。
+      可用符号：`.`、`(`、`)`、`–`、`．`、`（`、`）`、`ー`
+  PlatformAccountSummary:
+    summary_id: 平台使用费收入汇总 ID。
+    shop_id: 平台商户 ID。
+    tenant_shop_id: 当前使用费收入汇总对应的租户商户 ID。
+    tenant_shop_name: 租户商户名称。
+    tenant_account_process_id_list: 当前汇总所涵盖的租户商户销售结算 ID 列表。
+  ExaminationFileUpload:
+    shop_id: 接收当前审核图片文件的租户商户 ID。
+    type: 审核文件类型。
+    filename: 上传的审核文件名，包括扩展名。
+    filesize: 上传的审核文件大小，单位为字节。
+    data: multipart 上传图片时，在此字段设置图片数据。
+  CardPaymentSetting:
+    vm_tds_available: |-
+      VISA/Mastercard 是否启用 3D Secure。
+
+      - `true`：启用
+      - `false`：停用
+    vm_tds_required: |-
+      VISA/Mastercard 是否必须使用 3D Secure。
+
+      - `true`：必须使用
+      - `false`：可选使用
+    ja_tds_available: |-
+      JCB/AMEX 是否启用 3D Secure。
+
+      - `true`：启用
+      - `false`：停用
+    ja_tds_required: |-
+      JCB/AMEX 是否必须使用 3D Secure。
+
+      - `true`：必须使用
+      - `false`：可选使用
+    install_payment_available: |-
+      是否可以使用分期付款或循环信贷付款。
+
+      - `true`：可以使用
+      - `false`：不可使用
+  WebhookEvent.RecurringBatch.Card:
+    succeeded: 本次订阅扣款中支付成功的数量。
+    failed: 本次订阅扣款中支付失败的数量。
+    retry_scheduled: 本次失败支付中，计划在下次订阅扣款时重试的数量。
+    total: 本次订阅扣款产生的支付总数。
+    charge_date: |-
+      本次订阅的扣款日期。
+      格式：`yyyy/MM/dd`
+  Customer.ListRetrieving.QueryParams:
+    email: 客户电子邮箱地址。
+    created_from: |-
+      创建日期范围的起始日期；仅返回不早于该日期创建的客户。
+      格式：`yyyy/MM/dd`
+    created_to: |-
+      创建日期范围的结束日期；仅返回不晚于该日期创建的客户。
+      格式：`yyyy/MM/dd`
+    sort: |-
+      指定排序字段和顺序。
+      示例：`?sort=updated␣desc,created␣asc`
+
+      可排序字段：`id`、`name`、`email`、`created`、`updated`。
+  Payment.ListRetrieving.Googlepay.QueryParams:
+    status: |-
+      Google Pay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `UNPROCESSED`：未处理
+      - `AUTHORIZED`：已授权
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+      - `AUTHENTICATED`：未处理，等待 3D Secure 认证
+    update_date_from: |-
+      更新时间范围的起始时间。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+    update_date_to: |-
+      更新时间范围的结束时间。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+    sort: |-
+      指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
+      可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。
+  Payment.ListRetrieving.PayPay.QueryParams:
+    status: |-
+      PayPay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `UNPROCESSED`：未处理
+      - `AWAITING_CUSTOMER_PAYMENT`：等待购买者支付
+      - `AUTHORIZED`：已授权
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+      - `EXPIRED`：已过期
+    payment_date_from: |-
+      支付日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    payment_date_to: |-
+      支付日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    sort: |-
+      指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
+      可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`payment_date`、`created`、`updated`。
+  Payment.GooglePay.Executing.Request:
+    method: |-
+      付款方式。
+
+      - `1`：一次性付款
+      - `2`：分期付款
+      - `5`：循环信贷付款
+    tds2_ret_url: |-
+      3D Secure 认证回调 URL。后续处理数据通过 POST 方法发送到此 URL。指定后，商户必须自行实现全部认证 API 调用和回调；如需浏览器与 fincode 自动完成认证，请不要指定。
+      详情参见[使用 3D Secure 2.0 认证](/payment/fraud_protection/3d_secure_2)。
+    return_url: 认证及支付成功后通过 POST 方法重定向的商户 URL。未指定时使用默认成功页面；指定 `tds2_ret_url` 时会被忽略。
+    return_url_on_failure: 认证或支付失败后通过 POST 方法重定向的商户 URL。未指定时使用默认失败页面；指定 `tds2_ret_url` 时会被忽略。
+  Subscription.Creating.Request:
+    card_id: 订阅付款所用银行卡 ID，仅适用于 `pay_type = Card`；省略时使用客户的默认银行卡。
+    payment_method_id: 订阅付款所用支付方式 ID，仅适用于 `pay_type = Directdebit`；省略时使用客户的默认支付方式。
+    start_date: |-
+      订阅扣款开始日期。`pay_type = Directdebit` 时，如果在扣款申请截止日 13:00 后登记订阅，开始日期顺延至下月同日。
+      格式：`yyyy/MM/dd`
+    stop_date: |-
+      订阅扣款停止日期；省略时长期有效。
+      格式：`yyyy/MM/dd`
+  Invoice.ListItem:
+    transaction_date: |-
+      支付完成时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    created: |-
+      创建时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    updated: |-
+      更新时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  Account.ListRetrieving.QueryParams:
+    processed: |-
+      按确定日期（入账周期截止日期）的月份筛选。
+      格式：`yyyy/MM`
+    status: |-
+      入账状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `3001`：金额确定前
+      - `3002`：金额已确定
+      - `3003`：已入账
+      - `3004`：入账暂停中
+      - `3005`：入账错误
+      - `3006`：请款中
+      - `3007`：请款错误
+      - `3008`：请款暂停中
+      - `3009`：已支付
+      - `3010`：身份验证资料未确认
+      - `3011`：已结算
+      - `3012`：开始入账前
+      - `3013`：合同未成立
+    scheduled_from: |-
+      预计入账日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    scheduled_to: |-
+      预计入账日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+  PlatformAccount.ListRetrieving.QueryParams:
+    processed: |-
+      按确定日期（入账周期截止日期）的月份筛选。
+      格式：`yyyy/MM`
+    status: |-
+      入账状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `3001`：金额确定前
+      - `3002`：金额已确定
+      - `3003`：已入账
+      - `3004`：入账暂停中
+      - `3005`：入账错误
+      - `3006`：请款中
+      - `3007`：请款错误
+      - `3008`：请款暂停中
+      - `3009`：已支付
+      - `3010`：身份验证资料未确认
+      - `3011`：已结算
+      - `3012`：开始入账前
+      - `3013`：合同未成立
+    scheduled_from: |-
+      预计入账日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    scheduled_to: |-
+      预计入账日期范围的结束日期。
+      格式：`yyyy/MM/dd`
 
 strings:
+  /components/schemas/card/description: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
+  /components/schemas/directdebit/description: 当支付方式为银行账户自动扣款（`pay_type = Directdebit`）时，账户详细信息保存在此 `directdebit` 对象中。
+  /components/schemas/Invoice.ListItem/description: 账单列表项。
   /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description: |-
     支付类型。
 
