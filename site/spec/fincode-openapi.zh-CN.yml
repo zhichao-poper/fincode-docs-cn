@@ -11774,28 +11774,12 @@ components:
       type: string
       example: s_***********-ab123
       maxLength: 25
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        加盟店名。\
-
-        3Dセキュア認証の際に表示されるショップ名や加盟店名を指定できます。\
-
-        使用可能な文字は以下の通りです。
-
-        - 半角英数
-
-        - 半角記号： !"#$%&''()*+,-./:;<=>?@[\]`^_{|}~
-
-        - 半角スペース
+        商户名称。可指定在 3D Secure 认证页面上显示的商户或店铺名称。
 
 
-        未指定の場合、 カード決済の契約時にfincodeが下記の形式に従って設定した値が自動的に使用されます。\
-
-        \
-
-        形式：`{{ショップID}}-{{英数字からなる固定値}}`
-
-        '
+        可使用半角英文字母、数字、符号和半角空格。未指定时，使用签约 fincode 时登记的值，格式为 `{{商户 ID}}-{{固定英数字值}}`。'
     access_id:
       type: string
       nullable: false
@@ -12368,12 +12352,12 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者用户账户最近更新日期。
+        购买者用户账户的最后更新日期。
 
         格式：`YYYYMMDD`
 
 
-        设置商户应用中最后更新该用户账户信息的日期。'
+        请填写商户应用中该用户账户信息最后一次更新的日期。'
     tds2_ch_acc_date:
       type: string
       example: '20220101'
@@ -12382,12 +12366,9 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者用户账户开设日期。
+        购买者用户账户的创建日期。
 
-        格式：`YYYYMMDD`
-
-
-        设置商户应用中开设该用户账户的日期。'
+        格式：`YYYYMMDD`'
     tds2_ch_acc_pw_change:
       type: string
       example: '20230101'
@@ -12396,12 +12377,9 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者用户账户密码最近更新日期。
+        购买者用户账户的密码最后更新日期。
 
-        格式：`YYYYMMDD`
-
-
-        设置商户应用中最后更新该用户账户密码的日期。'
+        格式：`YYYYMMDD`'
     tds2_nb_purchase_account:
       type: string
       example: '9999'
@@ -12410,7 +12388,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者过去 6 个月的购买次数。'
+        购买者过去 6 个月内的购买次数。'
     tds2_payment_acc_age:
       type: string
       example: '20231231'
@@ -12419,7 +12397,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户用户账户的卡片登记日期。
+        客户用户账户中的银行卡登记日期。
 
         格式：`YYYYMMDD`'
     tds2_provision_attempts_day:
@@ -12430,7 +12408,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户用户账户过去 24 小时尝试添加卡片的次数。'
+        客户用户账户在过去 24 小时内尝试添加银行卡的次数。'
     tds2_ship_address_usage:
       type: string
       example: '20230930'
@@ -12439,7 +12417,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        收货地址首次使用日期。
+        该收货地址首次使用的日期。
 
         格式：`YYYYMMDD`'
     tds2_ship_name_ind:
@@ -12452,7 +12430,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者姓名是否与收货人姓名一致。
+        购买者姓名与收货人姓名是否一致。
 
 
         - `01`：客户姓名与收货人姓名一致
@@ -12468,12 +12446,12 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户用户账户是否存在可疑行为。设置商户是否发现过可疑行为，包括历史欺诈行为。
+        账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
 
 
-        - `01`：无可疑行为
+        - `01`：未发现可疑行为
 
-        - `02`：有可疑行为'
+        - `02`：发现可疑行为'
     tds2_txn_activity_day:
       type: string
       example: '999'
@@ -12482,7 +12460,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        购买者过去 24 小时的交易次数。'
+        购买者过去 24 小时内的交易次数。'
     tds2_txn_activity_year:
       type: string
       example: '999'
@@ -12491,7 +12469,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        过去一年的交易次数。'
+        购买者过去一年内的交易次数。'
     tds2_three_ds_req_auth_data:
       type: string
       minLength: 1
@@ -12500,10 +12478,20 @@ components:
       example: null
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户用户账户登录记录。
+        用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
 
 
-        商户应用中的登录记录。设置此项时，还必须设置登录方式和登录时间。'
+        - `01`：无认证（以访客身份登录）
+
+        - `02`：使用商户自身的认证信息
+
+        - `03`：SSO（单点登录）
+
+        - `04`：使用发卡机构的认证信息
+
+        - `05`：第三方认证
+
+        - `06`：FIDO 认证'
     tds2_three_ds_req_auth_method:
       type: string
       enum:
@@ -12540,12 +12528,12 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户用户账户登录时间。
+        客户用户账户的登录时间。
+
+        格式：`YYYYMMDDHHmm`
 
 
-        设置登录记录时，还必须设置登录方式和登录时间。
-
-        格式：`YYYYMMDDHHmm`'
+        填写用户登录认证记录时，还必须同时填写登录方式和登录时间。'
     tds2_email:
       type: string
       minLength: 1
@@ -12553,25 +12541,22 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户邮箱地址。
+        客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
 
 
-        未指定时自动使用客户的 `email`。
+        自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
 
 
-        自 2024 年 8 月 12 日起，以下字段至少需要提供一个：
-
-
-        - 客户住宅电话号码（`tds2_home_phone_no`）
+        - 客户家庭电话号码（`tds2_home_phone_no`）
 
         - 客户手机号码（`tds2_mobile_phone_no`）
 
         - 客户工作单位电话号码（`tds2_work_phone_no`）
 
-        - 客户邮箱地址（`tds2_email`）
+        - 客户电子邮箱地址（`tds2_email`）
 
 
-        目前即使没有提供也会执行认证，但未来可能不再支持。'
+        目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
     tds2_addr_match:
       type: string
       enum:
@@ -12583,47 +12568,67 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        账单地址是否与收货地址一致。
+        持卡客户的账单地址与收货地址是否一致。
 
 
-        - `Y`：地址一致
+        - `Y`：一致
 
-        - `N`：地址不一致'
+        - `N`：不一致'
     tds2_bill_addr_country:
       type: string
       example: '392'
       minLength: 1
       maxLength: 3
       nullable: true
-      description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 国コード\\\n形式：ISO 3166-1 numeric\n\
-        \\\n未指定の場合、顧客の`addr_country`が自動で設定されます。  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+        客户账单地址的国家/地区代码。
+
+        格式：ISO 3166-1 numeric
+
+
+        未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
     tds2_bill_addr_state:
       type: string
       example: '13'
       minLength: 1
       maxLength: 3
       nullable: true
-      description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 州または都道府県コード。\\\n参照： [国土交通省\
-        \ 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)\\\n\\\n未指定の場合、顧客の`addr_state`が自動で設定されます。  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-        \  \n※住所情報を保持していない場合、指定は不要です。\n"
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+        客户账单地址的州或都道府县代码。
+
+        参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+
+        未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
     tds2_bill_addr_city:
       type: string
       example: 渋谷区
       minLength: 1
       maxLength: 50
       nullable: true
-      description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 都市名\\\n\\\n未指定の場合、顧客の`addr_city`が自動で設定されます。\
-        \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+        客户账单地址的城市名称。
+
+
+        未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
     tds2_bill_addr_line_1:
       type: string
       example: 道玄坂1-14-6
       minLength: 1
       maxLength: 50
       nullable: true
-      description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 区域部1行目\\\n\\\n顧客の住所の番地・区画を指定してください。未指定の場合。顧客の`addr_line_1`が自動で設定されます。\n\
-        \n- 都道府県や市区を含めることができます。\n- 保持している住所をパラメータの形式に分割できない場合は、桁数が収まるように`tds2_bill_addr_line_1` ~ `tds2_bill_addr_line_3`に住所を設定してください。\n\
-        - `tds2_bill_addr_line_2`と`tds2_bill_addr_line_3`を空にして、`tds2_bill_addr_line_1`に全ての住所を設定できます。\n\n未指定の場合、顧客に登録された`addr_line_1`を設定します。\
-        \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+        客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+
+        如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+
+        未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
     tds2_bill_addr_line_2:
       type: string
       example: ヒューマックス渋谷ビル
@@ -12632,10 +12637,10 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户账单地址第 2 行。
+        客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
 
 
-        指定楼宇名称和房间号。未指定时使用客户已登记的 `addr_line_2`。'
+        未填写时，自动使用客户的 `addr_line_2`。'
     tds2_bill_addr_line_3:
       type: string
       example: 7F
@@ -12643,18 +12648,22 @@ components:
       maxLength: 50
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户账单地址第 3 行。
+        客户账单地址的第 3 行，请填写其他地址信息。
 
 
-        指定地址的其他信息。未指定时使用客户已登记的 `addr_line_3`。'
+        未填写时，自动使用客户的 `addr_line_3`。'
     tds2_bill_addr_post_code:
       type: string
       example: 150-0043
       minLength: 1
       maxLength: 16
       nullable: true
-      description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 郵便番号\\\n\\\n未指定の場合、顧客に登録された`addr_post_code`を設定します。\
-        \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+        客户账单地址的邮政编码。
+
+
+        未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
     tds2_ship_addr_country:
       type: string
       example: '392'
@@ -12663,7 +12672,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户收货地址的国家代码。
+        客户收货地址的国家/地区代码。
 
         格式：ISO 3166-1 numeric'
     tds2_ship_addr_state:
@@ -12674,9 +12683,9 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户收货地址的州代码或都道府县代码。
+        客户收货地址的州或都道府县代码。
 
-        参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
+        参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
     tds2_ship_addr_city:
       type: string
       example: 渋谷区
@@ -12694,7 +12703,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户收货地址第 1 行。'
+        客户收货地址的第 1 行。'
     tds2_ship_addr_line_2:
       type: string
       example: ヒューマックス渋谷ビル
@@ -12703,7 +12712,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户收货地址第 2 行。'
+        客户收货地址的第 2 行。'
     tds2_ship_addr_line_3:
       type: string
       example: 7F
@@ -12712,7 +12721,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户收货地址第 3 行。'
+        客户收货地址的第 3 行。'
     tds2_ship_addr_post_code:
       type: string
       example: 150-0043
@@ -12741,13 +12750,13 @@ components:
         交易商品的配送方式。
 
 
-        - `01`：配送至客户账单地址
+        - `01`：配送至持卡客户的账单地址
 
         - `02`：配送至商户保存的其他已验证地址
 
-        - `03`：配送至与客户账单地址不同的地址
+        - `03`：配送至与持卡客户账单地址不同的地址
 
-        - `04`：配送至门店（门店地址通过收货地址指定）
+        - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
 
         - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
 
@@ -12760,11 +12769,9 @@ components:
       minLength: 1
       maxLength: 254
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客 メールアドレス
-
-        '
+        商品交付联系邮箱。'
     tds2_home_phone_cc:
       type: string
       example: '81'
@@ -12773,42 +12780,23 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户住宅电话号码的国家或地区代码（不包含 `+`）。
+        客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
 
-        设置此值时还必须设置 `tds2_home_phone_no`。未指定时自动使用客户的 `phone_cc`。'
+
+        未填写时，自动使用客户的 `phone_cc`。'
     tds2_home_phone_no:
       type: string
       example: '312345678'
       minLength: 1
       maxLength: 15
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の自宅電話番号（ハイフンなし半角数字のみ）\
-
-        ※ この値を設定する場合、`tds2_home_phone_cc`の設定が必要です。\
-
-        \
-
-        未指定の場合、顧客の`phone_no`が自動で設定されます。\
-
-        \
-
-        2024年8月12日以降、下記の内少なくとも1つが必須となります。
+        客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
 
 
-        - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-        - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-        - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-        - 顧客のメールアドレス（`tds2_email`）
-
-
-        ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-        '
+        未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email`
+        必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
     tds2_mobile_phone_cc:
       type: string
       example: '81'
@@ -12817,38 +12805,19 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户手机号码的国家或地区代码（不包含 `+`）。
-
-        设置此值时还必须设置 `tds2_mobile_phone_no`。'
+        客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。'
     tds2_mobile_phone_no:
       type: string
       example: '9012345678'
       minLength: 1
       maxLength: 15
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の携帯電話番号（ハイフンなし半角数字のみ）\
-
-        ※ この値を設定する場合、`tds2_mobile_phone_cc`の設定が必要です。\
-
-        \
-
-        2024年8月12日以降、下記の内少なくとも1つが必須となります。
+        客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
 
 
-        - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-        - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-        - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-        - 顧客のメールアドレス（`tds2_email`）
-
-
-        ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-        '
+        自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
     tds2_work_phone_cc:
       type: string
       example: '81'
@@ -12857,38 +12826,19 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        客户工作单位电话号码的国家或地区代码（不包含 `+`）。
-
-        设置此值时还必须设置 `tds2_work_phone_no`。'
+        客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。'
     tds2_work_phone_no:
       type: string
       example: '312345678'
       minLength: 1
       maxLength: 15
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の勤務先電話番号（ハイフンなし半角数字のみ）\
-
-        ※ この値を設定する場合、`tds2_work_phone_cc`の設定が必要です。\
-
-        \
-
-        2024年8月12日以降、下記の内少なくとも1つが必須となります。
+        客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
 
 
-        - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-        - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-        - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-        - 顧客のメールアドレス（`tds2_email`）
-
-
-        ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-        '
+        自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
     tds2_delivery_timeframe:
       type: string
       enum:
@@ -12911,7 +12861,7 @@ components:
 
         - `03`：次日发货
 
-        - `04`：第 2 天以后发货'
+        - `04`：第 2 天及以后发货'
     tds2_pre_order_date:
       type: string
       example: '20231231'
@@ -12934,10 +12884,10 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品销售时期。
+        商品销售状态。
 
 
-        - `01`：已经发售的商品
+        - `01`：已发售商品
 
         - `02`：预售商品'
     tds2_reorder_items_ind:
@@ -12951,12 +12901,12 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品订单是首次下单还是再次下单。
+        表示本次商品订单是首次购买还是重复购买。
 
 
-        - `01`：首次下单
+        - `01`：首次购买
 
-        - `02`：再次下单'
+        - `02`：重复购买'
     tds2_recurring_expiry:
       type: string
       example: '20231231'
@@ -12965,9 +12915,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        仅适用于订阅等持续收费业务模式。
-
-        持续收费结束日期。
+        仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
 
         格式：`YYYYMMDD`'
     tds2_recurring_frequency:
@@ -12978,9 +12926,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        仅适用于订阅等持续收费业务模式。
-
-        持续收费的最小收费间隔天数。'
+        仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
     tds2_gift_card_amount:
       type: string
       example: '999999'
@@ -12989,9 +12935,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        仅限购买预付卡或礼品卡时使用。
-
-        预付卡或礼品卡的购买总金额。'
+        仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。'
     tds2_gift_card_count:
       type: string
       example: '99'
@@ -13000,9 +12944,7 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        仅限购买预付卡或礼品卡时使用。
-
-        已购买预付卡或礼品卡的总数量。'
+        仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。'
     tds2_gift_card_curr:
       type: string
       example: '392'
@@ -13011,16 +12953,12 @@ components:
       nullable: true
       description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        仅限购买预付卡或礼品卡时使用。
-
-        预付卡或礼品卡的货币代码。
+        仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
 
         格式：ISO 4217 numeric
 
 
-        不可使用以下货币代码（债券市场单位等）：
-
-        `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`'
+        不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。'
     bank_code:
       type: string
       example: '0310'
@@ -20156,12 +20094,12 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者用户账户最近更新日期。
+            购买者用户账户的最后更新日期。
 
             格式：`YYYYMMDD`
 
 
-            设置商户应用中最后更新该用户账户信息的日期。'
+            请填写商户应用中该用户账户信息最后一次更新的日期。'
         tds2_ch_acc_date:
           type: string
           example: '20220101'
@@ -20170,12 +20108,9 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者用户账户开设日期。
+            购买者用户账户的创建日期。
 
-            格式：`YYYYMMDD`
-
-
-            设置商户应用中开设该用户账户的日期。'
+            格式：`YYYYMMDD`'
         tds2_ch_acc_pw_change:
           type: string
           example: '20230101'
@@ -20184,12 +20119,9 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者用户账户密码最近更新日期。
+            购买者用户账户的密码最后更新日期。
 
-            格式：`YYYYMMDD`
-
-
-            设置商户应用中最后更新该用户账户密码的日期。'
+            格式：`YYYYMMDD`'
         tds2_nb_purchase_account:
           type: string
           example: '9999'
@@ -20198,7 +20130,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者过去 6 个月的购买次数。'
+            购买者过去 6 个月内的购买次数。'
         tds2_payment_acc_age:
           type: string
           example: '20231231'
@@ -20207,7 +20139,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户用户账户的卡片登记日期。
+            客户用户账户中的银行卡登记日期。
 
             格式：`YYYYMMDD`'
         tds2_provision_attempts_day:
@@ -20218,7 +20150,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户用户账户过去 24 小时尝试添加卡片的次数。'
+            客户用户账户在过去 24 小时内尝试添加银行卡的次数。'
         tds2_ship_address_usage:
           type: string
           example: '20230930'
@@ -20227,7 +20159,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            收货地址首次使用日期。
+            该收货地址首次使用的日期。
 
             格式：`YYYYMMDD`'
         tds2_ship_name_ind:
@@ -20240,7 +20172,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者姓名是否与收货人姓名一致。
+            购买者姓名与收货人姓名是否一致。
 
 
             - `01`：客户姓名与收货人姓名一致
@@ -20256,12 +20188,12 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户用户账户是否存在可疑行为。设置商户是否发现过可疑行为，包括历史欺诈行为。
+            账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
 
 
-            - `01`：无可疑行为
+            - `01`：未发现可疑行为
 
-            - `02`：有可疑行为'
+            - `02`：发现可疑行为'
         tds2_txn_activity_day:
           type: string
           example: '999'
@@ -20270,7 +20202,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            购买者过去 24 小时的交易次数。'
+            购买者过去 24 小时内的交易次数。'
         tds2_txn_activity_year:
           type: string
           example: '999'
@@ -20279,7 +20211,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            过去一年的交易次数。'
+            购买者过去一年内的交易次数。'
         tds2_three_ds_req_auth_data:
           type: string
           minLength: 1
@@ -20288,10 +20220,20 @@ components:
           example: null
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户用户账户登录记录。
+            用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
 
 
-            商户应用中的登录记录。设置此项时，还必须设置登录方式和登录时间。'
+            - `01`：无认证（以访客身份登录）
+
+            - `02`：使用商户自身的认证信息
+
+            - `03`：SSO（单点登录）
+
+            - `04`：使用发卡机构的认证信息
+
+            - `05`：第三方认证
+
+            - `06`：FIDO 认证'
         tds2_three_ds_req_auth_method:
           type: string
           enum:
@@ -20328,12 +20270,12 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户用户账户登录时间。
+            客户用户账户的登录时间。
+
+            格式：`YYYYMMDDHHmm`
 
 
-            设置登录记录时，还必须设置登录方式和登录时间。
-
-            格式：`YYYYMMDDHHmm`'
+            填写用户登录认证记录时，还必须同时填写登录方式和登录时间。'
         tds2_email:
           type: string
           minLength: 1
@@ -20341,25 +20283,22 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户邮箱地址。
+            客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
 
 
-            未指定时自动使用客户的 `email`。
+            自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
 
 
-            自 2024 年 8 月 12 日起，以下字段至少需要提供一个：
-
-
-            - 客户住宅电话号码（`tds2_home_phone_no`）
+            - 客户家庭电话号码（`tds2_home_phone_no`）
 
             - 客户手机号码（`tds2_mobile_phone_no`）
 
             - 客户工作单位电话号码（`tds2_work_phone_no`）
 
-            - 客户邮箱地址（`tds2_email`）
+            - 客户电子邮箱地址（`tds2_email`）
 
 
-            目前即使没有提供也会执行认证，但未来可能不再支持。'
+            目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
         tds2_addr_match:
           type: string
           enum:
@@ -20371,47 +20310,67 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            账单地址是否与收货地址一致。
+            持卡客户的账单地址与收货地址是否一致。
 
 
-            - `Y`：地址一致
+            - `Y`：一致
 
-            - `N`：地址不一致'
+            - `N`：不一致'
         tds2_bill_addr_country:
           type: string
           example: '392'
           minLength: 1
           maxLength: 3
           nullable: true
-          description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 国コード\\\n形式：ISO 3166-1\
-            \ numeric\n\\\n未指定の場合、顧客の`addr_country`が自動で設定されます。  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+            客户账单地址的国家/地区代码。
+
+            格式：ISO 3166-1 numeric
+
+
+            未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
         tds2_bill_addr_state:
           type: string
           example: '13'
           minLength: 1
           maxLength: 3
           nullable: true
-          description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 州または都道府県コード。\\\n参照： [国土交通省\
-            \ 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)\\\n\\\n未指定の場合、顧客の`addr_state`が自動で設定されます。  \n\
-            ショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+            客户账单地址的州或都道府县代码。
+
+            参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+
+            未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
         tds2_bill_addr_city:
           type: string
           example: 渋谷区
           minLength: 1
           maxLength: 50
           nullable: true
-          description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 都市名\\\n\\\n未指定の場合、顧客の`addr_city`が自動で設定されます。\
-            \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+            客户账单地址的城市名称。
+
+
+            未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
         tds2_bill_addr_line_1:
           type: string
           example: 道玄坂1-14-6
           minLength: 1
           maxLength: 50
           nullable: true
-          description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 区域部1行目\\\n\\\n顧客の住所の番地・区画を指定してください。未指定の場合。顧客の`addr_line_1`が自動で設定されます。\n\
-            \n- 都道府県や市区を含めることができます。\n- 保持している住所をパラメータの形式に分割できない場合は、桁数が収まるように`tds2_bill_addr_line_1` ~ `tds2_bill_addr_line_3`に住所を設定してください。\n\
-            - `tds2_bill_addr_line_2`と`tds2_bill_addr_line_3`を空にして、`tds2_bill_addr_line_1`に全ての住所を設定できます。\n\n未指定の場合、顧客に登録された`addr_line_1`を設定します。\
-            \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+            客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+
+            如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+
+            未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
         tds2_bill_addr_line_2:
           type: string
           example: ヒューマックス渋谷ビル
@@ -20420,10 +20379,10 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户账单地址第 2 行。
+            客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
 
 
-            指定楼宇名称和房间号。未指定时使用客户已登记的 `addr_line_2`。'
+            未填写时，自动使用客户的 `addr_line_2`。'
         tds2_bill_addr_line_3:
           type: string
           example: 7F
@@ -20431,18 +20390,22 @@ components:
           maxLength: 50
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户账单地址第 3 行。
+            客户账单地址的第 3 行，请填写其他地址信息。
 
 
-            指定地址的其他信息。未指定时使用客户已登记的 `addr_line_3`。'
+            未填写时，自动使用客户的 `addr_line_3`。'
         tds2_bill_addr_post_code:
           type: string
           example: 150-0043
           minLength: 1
           maxLength: 16
           nullable: true
-          description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\\n顧客の請求先住所 郵便番号\\\n\\\n未指定の場合、顧客に登録された`addr_post_code`を設定します。\
-            \  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+            客户账单地址的邮政编码。
+
+
+            未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
         tds2_ship_addr_country:
           type: string
           example: '392'
@@ -20451,7 +20414,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户收货地址的国家代码。
+            客户收货地址的国家/地区代码。
 
             格式：ISO 3166-1 numeric'
         tds2_ship_addr_state:
@@ -20462,9 +20425,9 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户收货地址的州代码或都道府县代码。
+            客户收货地址的州或都道府县代码。
 
-            参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
+            参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
         tds2_ship_addr_city:
           type: string
           example: 渋谷区
@@ -20482,7 +20445,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户收货地址第 1 行。'
+            客户收货地址的第 1 行。'
         tds2_ship_addr_line_2:
           type: string
           example: ヒューマックス渋谷ビル
@@ -20491,7 +20454,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户收货地址第 2 行。'
+            客户收货地址的第 2 行。'
         tds2_ship_addr_line_3:
           type: string
           example: 7F
@@ -20500,7 +20463,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户收货地址第 3 行。'
+            客户收货地址的第 3 行。'
         tds2_ship_addr_post_code:
           type: string
           example: 150-0043
@@ -20529,13 +20492,13 @@ components:
             交易商品的配送方式。
 
 
-            - `01`：配送至客户账单地址
+            - `01`：配送至持卡客户的账单地址
 
             - `02`：配送至商户保存的其他已验证地址
 
-            - `03`：配送至与客户账单地址不同的地址
+            - `03`：配送至与持卡客户账单地址不同的地址
 
-            - `04`：配送至门店（门店地址通过收货地址指定）
+            - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
 
             - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
 
@@ -20548,11 +20511,9 @@ components:
           minLength: 1
           maxLength: 254
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客 メールアドレス
-
-            '
+            商品交付联系邮箱。'
         tds2_home_phone_cc:
           type: string
           example: '81'
@@ -20561,42 +20522,23 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户住宅电话号码的国家或地区代码（不包含 `+`）。
+            客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
 
-            设置此值时还必须设置 `tds2_home_phone_no`。未指定时自动使用客户的 `phone_cc`。'
+
+            未填写时，自动使用客户的 `phone_cc`。'
         tds2_home_phone_no:
           type: string
           example: '312345678'
           minLength: 1
           maxLength: 15
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の自宅電話番号（ハイフンなし半角数字のみ）\
-
-            ※ この値を設定する場合、`tds2_home_phone_cc`の設定が必要です。\
-
-            \
-
-            未指定の場合、顧客の`phone_no`が自動で設定されます。\
-
-            \
-
-            2024年8月12日以降、下記の内少なくとも1つが必須となります。
+            客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
 
 
-            - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-            - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-            - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-            - 顧客のメールアドレス（`tds2_email`）
-
-
-            ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-            '
+            未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email`
+            必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
         tds2_mobile_phone_cc:
           type: string
           example: '81'
@@ -20605,38 +20547,19 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户手机号码的国家或地区代码（不包含 `+`）。
-
-            设置此值时还必须设置 `tds2_mobile_phone_no`。'
+            客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。'
         tds2_mobile_phone_no:
           type: string
           example: '9012345678'
           minLength: 1
           maxLength: 15
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の携帯電話番号（ハイフンなし半角数字のみ）\
-
-            ※ この値を設定する場合、`tds2_mobile_phone_cc`の設定が必要です。\
-
-            \
-
-            2024年8月12日以降、下記の内少なくとも1つが必須となります。
+            客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
 
 
-            - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-            - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-            - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-            - 顧客のメールアドレス（`tds2_email`）
-
-
-            ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-            '
+            自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
         tds2_work_phone_cc:
           type: string
           example: '81'
@@ -20645,38 +20568,19 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            客户工作单位电话号码的国家或地区代码（不包含 `+`）。
-
-            设置此值时还必须设置 `tds2_work_phone_no`。'
+            客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。'
         tds2_work_phone_no:
           type: string
           example: '312345678'
           minLength: 1
           maxLength: 15
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の勤務先電話番号（ハイフンなし半角数字のみ）\
-
-            ※ この値を設定する場合、`tds2_work_phone_cc`の設定が必要です。\
-
-            \
-
-            2024年8月12日以降、下記の内少なくとも1つが必須となります。
+            客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
 
 
-            - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-            - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-            - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-            - 顧客のメールアドレス（`tds2_email`）
-
-
-            ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
-
-            '
+            自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
         tds2_delivery_timeframe:
           type: string
           enum:
@@ -20699,7 +20603,7 @@ components:
 
             - `03`：次日发货
 
-            - `04`：第 2 天以后发货'
+            - `04`：第 2 天及以后发货'
         tds2_pre_order_date:
           type: string
           example: '20231231'
@@ -20722,10 +20626,10 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品销售时期。
+            商品销售状态。
 
 
-            - `01`：已经发售的商品
+            - `01`：已发售商品
 
             - `02`：预售商品'
         tds2_reorder_items_ind:
@@ -20739,12 +20643,12 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品订单是首次下单还是再次下单。
+            表示本次商品订单是首次购买还是重复购买。
 
 
-            - `01`：首次下单
+            - `01`：首次购买
 
-            - `02`：再次下单'
+            - `02`：重复购买'
         tds2_recurring_expiry:
           type: string
           example: '20231231'
@@ -20753,9 +20657,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            仅适用于订阅等持续收费业务模式。
-
-            持续收费结束日期。
+            仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
 
             格式：`YYYYMMDD`'
         tds2_recurring_frequency:
@@ -20766,9 +20668,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            仅适用于订阅等持续收费业务模式。
-
-            持续收费的最小收费间隔天数。'
+            仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
         tds2_gift_card_amount:
           type: string
           example: '999999'
@@ -20777,9 +20677,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            仅限购买预付卡或礼品卡时使用。
-
-            预付卡或礼品卡的购买总金额。'
+            仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。'
         tds2_gift_card_count:
           type: string
           example: '99'
@@ -20788,9 +20686,7 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            仅限购买预付卡或礼品卡时使用。
-
-            已购买预付卡或礼品卡的总数量。'
+            仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。'
         tds2_gift_card_curr:
           type: string
           example: '392'
@@ -20799,16 +20695,12 @@ components:
           nullable: true
           description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            仅限购买预付卡或礼品卡时使用。
-
-            预付卡或礼品卡的货币代码。
+            仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
 
             格式：ISO 4217 numeric
 
 
-            不可使用以下货币代码（债券市场单位等）：
-
-            `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`'
+            不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。'
     PaymentSession.Konbini:
       type: object
       properties:
@@ -24641,266 +24533,480 @@ components:
               type: string
               minLength: 1
               maxLength: 25
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3Dセキュア表示店舗名  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                3D Secure 认证页面上显示的商户名称。'
             tds2_ch_acc_change:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウント最終更新日  \nyyyyMMdd形式\
-                \  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的最后更新日期。
+
+                格式：`YYYYMMDD`
+
+
+                请填写商户应用中该用户账户信息最后一次更新的日期。'
             tds2_ch_acc_date:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウント開設日  \nyyyyMMdd形式\
-                \  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的创建日期。
+
+                格式：`YYYYMMDD`'
             tds2_ch_acc_pw_change:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウントパスワード変更日  \n\
-                yyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的密码最后更新日期。
+
+                格式：`YYYYMMDD`'
             tds2_nb_purchase_account:
               type: string
               minLength: 1
               maxLength: 4
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去6ヶ月間の購入回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 6 个月内的购买次数。'
             tds2_payment_acc_age:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード登録日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户中的银行卡登记日期。
+
+                格式：`YYYYMMDD`'
             tds2_provision_attempts_day:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去24時間のカード追加の試行回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户在过去 24 小时内尝试添加银行卡的次数。'
             tds2_ship_address_usage:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の最初の使用日  \nyyyyMMdd形式\
-                \  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                该收货地址首次使用的日期。
+
+                格式：`YYYYMMDD`'
             tds2_ship_name_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客名と出荷先名の一致/不一致情報  \n \
-                \ \n- `01`: カード顧客名と配送先名が一致  \n- `02`: カード顧客名と配送先名が不一致  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者姓名与收货人姓名是否一致。
+
+
+                - `01`：客户姓名与收货人姓名一致
+
+                - `02`：客户姓名与收货人姓名不一致'
             tds2_suspicious_acc_activity:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nアカウントの不審行為情報  \nカード顧客で、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定\
-                \  \n  \n- `01`: 不審な行動は見られなかった  \n- `02`: 不審な行動が見られた  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
+
+
+                - `01`：未发现可疑行为
+
+                - `02`：发现可疑行为'
             tds2_txn_activity_day:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去24時間の取引回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 24 小时内的交易次数。'
             tds2_txn_activity_year:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n前年の取引回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去一年内的交易次数。'
             tds2_three_ds_req_auth_data:
               type: string
               minLength: 1
               maxLength: 2048
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nログイン証跡  \nログイン証跡を設定した場合  \n\
-                ログイン方法/ログイン日時の設定が必要 \n01 = 認証なし（ゲストとしてログイン）  \n02 = 加盟店様自身の認証情報  \n03 = SSO(シングルサインオン)  \n04 = イシュアーの認証情報\
-                \  \n05 = サードパーティ認証  \n06 = FIDO認証  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
+
+
+                - `01`：无认证（以访客身份登录）
+
+                - `02`：使用商户自身的认证信息
+
+                - `03`：SSO（单点登录）
+
+                - `04`：使用发卡机构的认证信息
+
+                - `05`：第三方认证
+
+                - `06`：FIDO 认证'
             tds2_three_ds_req_auth_timestamp:
               type: string
               minLength: 12
               maxLength: 12
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nログイン日時  \nログイン日時を設定した場合  \n\
-                ログイン証跡/ログイン方法の設定が必要  \nYYYYMMDDHHMM形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户的登录时间。
+
+                格式：`YYYYMMDDHHmm`
+
+
+                填写用户登录认证记录时，还必须同时填写登录方式和登录时间。'
             tds2_addr_match:
               type: string
               minLength: 1
               maxLength: 1
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n請求先住所と配送先住所の一致/不一致情報  \nカード顧客の配送先住所とカード顧客の請求先住所の一致/不一致の設定が必要\
-                \  \nY=一致  \nN=不一致  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                持卡客户的账单地址与收货地址是否一致。
+
+
+                - `Y`：一致
+
+                - `N`：不一致'
             tds2_bill_addr_city:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の都市  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的城市名称。
+
+
+                未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_country:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の国コード  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric
+
+
+                未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_line_1:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の１行目  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+
+                如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+
+                未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_line_2:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の２行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
+
+
+                未填写时，自动使用客户的 `addr_line_2`。'
             tds2_bill_addr_line_3:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の３行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 3 行，请填写其他地址信息。
+
+
+                未填写时，自动使用客户的 `addr_line_3`。'
             tds2_bill_addr_post_code:
               type: string
               minLength: 1
               maxLength: 16
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の郵便番号  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的邮政编码。
+
+
+                未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_state:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の州または都道府県コード  \n\
-                ショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+
+                未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_email:
               type: string
               minLength: 1
               maxLength: 254
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客のメールアドレス  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
+
+
+                自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
+
+
+                - 客户家庭电话号码（`tds2_home_phone_no`）
+
+                - 客户手机号码（`tds2_mobile_phone_no`）
+
+                - 客户工作单位电话号码（`tds2_work_phone_no`）
+
+                - 客户电子邮箱地址（`tds2_email`）
+
+
+                目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_home_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n自宅電話の国コード  \n自宅電話の国コードを設定した場合\
-                \  \n自宅電話番号の設定が必要  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
+
+
+                未填写时，自动使用客户的 `phone_cc`。'
             tds2_home_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n自宅電話番号  \n自宅電話番号を設定した場合  \n\
-                自宅電話の国コードの設定が必要  \nハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
+
+
+                未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email`
+                必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_mobile_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n携帯電話の国コード  \n携帯電話の国コードを設定した場合\
-                \  \n携帯電話番号の設定が必要  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。'
             tds2_mobile_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n携帯電話番号  \n携帯電話番号の国コードを設定した場合\
-                \  \nハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_work_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n職場電話の国コード  \n職場電話の国コードを設定した場合\
-                \  \n職場電話番号の設定が必要  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。'
             tds2_work_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n職場電話番号  \n職場電話番号を設定した場合  \n\
-                ハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_ship_addr_city:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の都市  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的城市名称。'
             tds2_ship_addr_country:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric'
             tds2_ship_addr_line_1:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の１行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 1 行。'
             tds2_ship_addr_line_2:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の２行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 2 行。'
             tds2_ship_addr_line_3:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の３行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 3 行。'
             tds2_ship_addr_post_code:
               type: string
               minLength: 1
               maxLength: 16
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の郵便番号  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的邮政编码。'
             tds2_ship_addr_state:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の州または都道府県コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
             tds2_delivery_email_address:
               type: string
               minLength: 1
               maxLength: 254
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n納品先電子メールアドレス  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付联系邮箱。'
             tds2_delivery_timeframe:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品納品時間枠  \n01 = 電子デリバリー  \n\
-                02 = 当日出荷  \n03 = 翌日出荷  \n04 = 2日目以降の出荷  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付时间范围。
+
+
+                - `01`：电子交付
+
+                - `02`：当日发货
+
+                - `03`：次日发货
+
+                - `04`：第 2 天及以后发货'
             tds2_gift_card_amount:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nプリペイドカードまたはギフトカードの総購入金額  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。'
             tds2_gift_card_count:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n購入されたプリペイドカードまたはギフトカード / コードの総数\
-                \  \n0埋め2桁の数字  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。'
             tds2_gift_card_curr:
               type: string
               minLength: 3
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n通貨コード  \n※以下のコードは対象外  \n955,\
-                \ 956, 957, 958, 959, 960, 961, 962,  \n963, 964, 999  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
+
+                格式：ISO 4217 numeric
+
+
+                不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。'
             tds2_pre_order_date:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の発売予定日  \nYYYYMMDD形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品预计发售日期。
+
+                格式：`YYYYMMDD`'
             tds2_pre_order_purchase_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の販売時期情報  \n01 = 発売済み\n02\
-                \ = 先行予約商品  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品销售状态。
+
+
+                - `01`：已发售商品
+
+                - `02`：预售商品'
             tds2_reorder_items_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の注文情報  \n01 = 初回注文  \n02\
-                \ = 再注文  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                表示本次商品订单是首次购买还是重复购买。
+
+
+                - `01`：首次购买
+
+                - `02`：重复购买'
             tds2_ship_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n取引の出荷方法  \n01 = カード顧客の請求先住所に配送する\
-                \  \n02 = 加盟店様が保持している別の、確認済み住所に配送する  \n03 = カード顧客の請求先住所と異なる住所に配送する  \n04 = 店舗へ配送 / 近所の店舗での受け取り（店舗の住所は配送先住所で指定する）\
-                \  \n05 = デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む）  \n06 = 配送なし（旅行およびイベントのチケット）  \n07 = その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）\
-                \  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                交易商品的配送方式。
+
+
+                - `01`：配送至持卡客户的账单地址
+
+                - `02`：配送至商户保存的其他已验证地址
+
+                - `03`：配送至与持卡客户账单地址不同的地址
+
+                - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
+
+                - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
+
+                - `06`：无需配送（旅行及活动门票）
+
+                - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）'
             tds2_recurring_expiry:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n継続課金の期限  \nYYYYMMDD形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
+
+                格式：`YYYYMMDD`'
             tds2_recurring_frequency:
               type: string
               minLength: 1
               maxLength: 4
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n継続課金の課金最小間隔日数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
         virtual_account:
           type: object
           description: 銀行振込（バーチャル口座）情報
@@ -25333,62 +25439,122 @@ components:
               maxLength: 25
             tds2_ch_acc_change:
               type: string
-              description: "3DSリクエスター アカウント最終更新日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的最后更新日期。
+
+                格式：`YYYYMMDD`
+
+
+                请填写商户应用中该用户账户信息最后一次更新的日期。'
               minLength: 8
               maxLength: 8
             tds2_ch_acc_date:
               type: string
-              description: "3DSリクエスター アカウント開設日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的创建日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_ch_acc_pw_change:
               type: string
-              description: "3DSリクエスター アカウントパスワード変更日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的密码最后更新日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_nb_purchase_account:
               type: string
-              description: "過去6ヶ月間の購入回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 6 个月内的购买次数。'
               minLength: 1
               maxLength: 4
             tds2_payment_acc_age:
               type: string
-              description: "カード登録日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户中的银行卡登记日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_provision_attempts_day:
               type: string
-              description: "過去24時間のカード追加の試行回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户在过去 24 小时内尝试添加银行卡的次数。'
               minLength: 1
               maxLength: 3
             tds2_ship_address_usage:
               type: string
-              description: "出荷先住所の最初の使用日  \nyyyyMMdd形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                该收货地址首次使用的日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_ship_name_ind:
               type: string
-              description: "カード顧客名と出荷先名の一致/不一致情報  \n01 = カード顧客名と配送先名が一致  \n02 = カード顧客名と配送先名が不一致  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者姓名与收货人姓名是否一致。
+
+
+                - `01`：客户姓名与收货人姓名一致
+
+                - `02`：客户姓名与收货人姓名不一致'
               minLength: 2
               maxLength: 2
             tds2_suspicious_acc_activity:
               type: string
-              description: "アカウントの不審行為情報  \n01 = 不審な行動は見られなかった  \n02 = 不審な行動が見られた  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
+
+
+                - `01`：未发现可疑行为
+
+                - `02`：发现可疑行为'
               minLength: 2
               maxLength: 2
             tds2_txn_activity_day:
               type: string
-              description: "過去24時間の取引回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 24 小时内的交易次数。'
               minLength: 1
               maxLength: 3
             tds2_txn_activity_year:
               type: string
-              description: "前年の取引回数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去一年内的交易次数。'
               minLength: 1
               maxLength: 3
             tds2_three_ds_req_auth_data:
               type: string
-              description: "ログイン証跡  \nログイン方法/ログイン日時の設定が必要  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
+
+
+                - `01`：无认证（以访客身份登录）
+
+                - `02`：使用商户自身的认证信息
+
+                - `03`：SSO（单点登录）
+
+                - `04`：使用发卡机构的认证信息
+
+                - `05`：第三方认证
+
+                - `06`：FIDO 认证'
               minLength: 1
               maxLength: 2048
             tds2_three_ds_req_auth_method:
@@ -25399,174 +25565,353 @@ components:
               maxLength: 2
             tds2_three_ds_req_auth_timestamp:
               type: string
-              description: "ログイン日時  \nYYYYMMDDHHMM形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户的登录时间。
+
+                格式：`YYYYMMDDHHmm`
+
+
+                填写用户登录认证记录时，还必须同时填写登录方式和登录时间。'
               minLength: 12
               maxLength: 12
             tds2_addr_match:
               type: string
-              description: "請求先住所と配送先住所の一致/不一致情報  \n  \n- `Y`: 一致  \n- `N`: 不一致  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                持卡客户的账单地址与收货地址是否一致。
+
+
+                - `Y`：一致
+
+                - `N`：不一致'
               minLength: 1
               maxLength: 1
             tds2_bill_addr_city:
               type: string
-              description: "カード顧客の請求先住所の都市  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的城市名称。
+
+
+                未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
               minLength: 1
               maxLength: 50
             tds2_bill_addr_country:
               type: string
-              description: "カード顧客の請求先住所の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric
+
+
+                未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
               minLength: 1
               maxLength: 3
             tds2_bill_addr_line_1:
               type: string
-              description: "カード顧客の請求先住所の区域部分の１行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+
+                如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+
+                未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
               minLength: 1
               maxLength: 50
             tds2_bill_addr_line_2:
               type: string
-              description: "カード顧客の請求先住所の区域部分の２行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
+
+
+                未填写时，自动使用客户的 `addr_line_2`。'
               minLength: 1
               maxLength: 50
             tds2_bill_addr_line_3:
               type: string
-              description: "カード顧客の請求先住所の区域部分の３行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 3 行，请填写其他地址信息。
+
+
+                未填写时，自动使用客户的 `addr_line_3`。'
               minLength: 1
               maxLength: 50
             tds2_bill_addr_post_code:
               type: string
-              description: "カード顧客の請求先住所の郵便番号  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的邮政编码。
+
+
+                未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
               minLength: 1
               maxLength: 16
             tds2_bill_addr_state:
               type: string
-              description: "カード顧客の請求先住所の州または都道府県コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+
+                未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
               minLength: 1
               maxLength: 3
             tds2_email:
               type: string
-              description: "カード顧客のメールアドレス  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
+
+
+                自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
+
+
+                - 客户家庭电话号码（`tds2_home_phone_no`）
+
+                - 客户手机号码（`tds2_mobile_phone_no`）
+
+                - 客户工作单位电话号码（`tds2_work_phone_no`）
+
+                - 客户电子邮箱地址（`tds2_email`）
+
+
+                目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
               minLength: 1
               maxLength: 254
             tds2_home_phone_cc:
               type: string
-              description: "自宅電話の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
+
+
+                未填写时，自动使用客户的 `phone_cc`。'
               minLength: 1
               maxLength: 3
             tds2_home_phone_no:
               type: string
-              description: "自宅電話番号  \nハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
+
+
+                未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email`
+                必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
               minLength: 1
               maxLength: 15
             tds2_mobile_phone_cc:
               type: string
-              description: "携帯電話の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。'
               minLength: 1
               maxLength: 3
             tds2_mobile_phone_no:
               type: string
-              description: "携帯電話番号  \nハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
               minLength: 1
               maxLength: 15
             tds2_work_phone_cc:
               type: string
-              description: "職場電話の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。'
               minLength: 1
               maxLength: 3
             tds2_work_phone_no:
               type: string
-              description: "職場電話番号  \nハイフン（-）なし、数字のみ  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
               minLength: 1
               maxLength: 15
             tds2_ship_addr_city:
               type: string
-              description: "出荷先住所の都市  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的城市名称。'
               minLength: 1
               maxLength: 50
             tds2_ship_addr_country:
               type: string
-              description: "出荷先住所の国コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric'
               minLength: 1
               maxLength: 3
             tds2_ship_addr_line_1:
               type: string
-              description: "出荷先住所の区域部分の１行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 1 行。'
               minLength: 1
               maxLength: 50
             tds2_ship_addr_line_2:
               type: string
-              description: "出荷先住所の区域部分の２行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 2 行。'
               minLength: 1
               maxLength: 50
             tds2_ship_addr_line_3:
               type: string
-              description: "出荷先住所の区域部分の３行目  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 3 行。'
               minLength: 1
               maxLength: 50
             tds2_ship_addr_post_code:
               type: string
-              description: "出荷先住所の郵便番号  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的邮政编码。'
               minLength: 1
               maxLength: 16
             tds2_ship_addr_state:
               type: string
-              description: "出荷先住所の州または都道府県コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
               minLength: 1
               maxLength: 3
             tds2_delivery_email_address:
               type: string
-              description: "出荷先住所のメールアドレス  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付联系邮箱。'
               minLength: 1
               maxLength: 254
             tds2_delivery_timeframe:
               type: string
-              description: "商品納品時間枠  \n  \n- `01`: 電子デリバリー\n- `02`: 当日出荷\n- `03`: 翌日出荷\n- `04`: 2日目以降の出荷\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付时间范围。
+
+
+                - `01`：电子交付
+
+                - `02`：当日发货
+
+                - `03`：次日发货
+
+                - `04`：第 2 天及以后发货'
               minLength: 2
               maxLength: 2
             tds2_gift_card_amount:
               type: string
-              description: "プリペイドカードまたはギフトカードの総購入金額  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。'
               minLength: 1
               maxLength: 15
             tds2_gift_card_count:
               type: string
-              description: "購入されたプリペイドカードまたはギフトカード / コードの総数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。'
               minLength: 2
               maxLength: 2
             tds2_gift_card_curr:
               type: string
-              description: "通貨コード  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
+
+                格式：ISO 4217 numeric
+
+
+                不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。'
               minLength: 3
               maxLength: 3
             tds2_pre_order_date:
               type: string
-              description: "商品の発売予定日  \nYYYYMMDD形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品预计发售日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_pre_order_purchase_ind:
               type: string
-              description: "商品の販売時期情報  \n  \n- `01`: 発売済み商品\n- `02`: 先行予約商品\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品销售状态。
+
+
+                - `01`：已发售商品
+
+                - `02`：预售商品'
               minLength: 2
               maxLength: 2
             tds2_reorder_items_ind:
               type: string
-              description: "商品の注文情報  \n  \n- `01`: 初回注文  \n- `02`: 再注文\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                表示本次商品订单是首次购买还是重复购买。
+
+
+                - `01`：首次购买
+
+                - `02`：重复购买'
               minLength: 2
               maxLength: 2
             tds2_ship_ind:
               type: string
-              description: "取引の出荷方法  \n  \n- `01`: カード顧客の請求先住所に配送する  \n- `02`: 加盟店様が保持している別の、確認済み住所に配送する  \n- `03`: カード顧客の請求先住所と異なる住所に配送する\
-                \  \n- `04`: 店舗へ配送 / 近所の店舗での受け取り（店舗の住所は配送先住所で指定する）  \n- `05`: デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む）  \n- `06`:\
-                \ 配送なし（旅行およびイベントのチケット）  \n- `07`: その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                交易商品的配送方式。
+
+
+                - `01`：配送至持卡客户的账单地址
+
+                - `02`：配送至商户保存的其他已验证地址
+
+                - `03`：配送至与持卡客户账单地址不同的地址
+
+                - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
+
+                - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
+
+                - `06`：无需配送（旅行及活动门票）
+
+                - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）'
               minLength: 2
               maxLength: 2
             tds2_recurring_expiry:
               type: string
-              description: "継続課金の期限  \nYYYYMMDD形式  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
+
+                格式：`YYYYMMDD`'
               minLength: 8
               maxLength: 8
             tds2_recurring_frequency:
               type: string
-              description: "継続課金の課金最小間隔日数  \n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
               minLength: 1
               maxLength: 4
         virtual_account:
@@ -25956,262 +26301,480 @@ components:
               type: string
               minLength: 1
               maxLength: 25
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3Dセキュア表示店舗名\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                3D Secure 认证页面上显示的商户名称。'
             tds2_ch_acc_change:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウント最終更新日  \nyyyyMMdd形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的最后更新日期。
+
+                格式：`YYYYMMDD`
+
+
+                请填写商户应用中该用户账户信息最后一次更新的日期。'
             tds2_ch_acc_date:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウント開設日  \nyyyyMMdd形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的创建日期。
+
+                格式：`YYYYMMDD`'
             tds2_ch_acc_pw_change:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n3DSリクエスター アカウントパスワード変更日  \n\
-                yyyyMMdd形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者用户账户的密码最后更新日期。
+
+                格式：`YYYYMMDD`'
             tds2_nb_purchase_account:
               type: string
               minLength: 1
               maxLength: 4
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去6ヶ月間の購入回数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 6 个月内的购买次数。'
             tds2_payment_acc_age:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード登録日  \nyyyyMMdd形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户中的银行卡登记日期。
+
+                格式：`YYYYMMDD`'
             tds2_provision_attempts_day:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去24時間のカード追加の試行回数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户在过去 24 小时内尝试添加银行卡的次数。'
             tds2_ship_address_usage:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の最初の使用日  \nyyyyMMdd形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                该收货地址首次使用的日期。
+
+                格式：`YYYYMMDD`'
             tds2_ship_name_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客名と出荷先名の一致/不一致情報  \n \
-                \ \n- `01`: カード顧客名と配送先名が一致  \n- `02`: カード顧客名と配送先名が不一致\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者姓名与收货人姓名是否一致。
+
+
+                - `01`：客户姓名与收货人姓名一致
+
+                - `02`：客户姓名与收货人姓名不一致'
             tds2_suspicious_acc_activity:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nアカウントの不審行為情報  \nカード顧客で、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定\
-                \  \n  \n- `01`: 不審な行動は見られなかった  \n- `02`: 不審な行動が見られた\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
+
+
+                - `01`：未发现可疑行为
+
+                - `02`：发现可疑行为'
             tds2_txn_activity_day:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n過去24時間の取引回数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去 24 小时内的交易次数。'
             tds2_txn_activity_year:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n前年の取引回数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                购买者过去一年内的交易次数。'
             tds2_three_ds_req_auth_data:
               type: string
               minLength: 1
               maxLength: 2048
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nログイン証跡  \nログイン証跡を設定した場合  \n\
-                ログイン方法/ログイン日時の設定が必要 \n01 = 認証なし（ゲストとしてログイン）  \n02 = 加盟店様自身の認証情報  \n03 = SSO(シングルサインオン)  \n04 = イシュアーの認証情報\
-                \  \n05 = サードパーティ認証  \n06 = FIDO認証\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
+
+
+                - `01`：无认证（以访客身份登录）
+
+                - `02`：使用商户自身的认证信息
+
+                - `03`：SSO（单点登录）
+
+                - `04`：使用发卡机构的认证信息
+
+                - `05`：第三方认证
+
+                - `06`：FIDO 认证'
             tds2_three_ds_req_auth_timestamp:
               type: string
               minLength: 12
               maxLength: 12
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nログイン日時  \nログイン日時を設定した場合  \n\
-                ログイン証跡/ログイン方法の設定が必要  \nYYYYMMDDHHMM形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户用户账户的登录时间。
+
+                格式：`YYYYMMDDHHmm`
+
+
+                填写用户登录认证记录时，还必须同时填写登录方式和登录时间。'
             tds2_addr_match:
               type: string
               minLength: 1
               maxLength: 1
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n請求先住所と配送先住所の一致/不一致情報  \nカード顧客の配送先住所とカード顧客の請求先住所の一致/不一致の設定が必要\
-                \  \nY=一致  \nN=不一致\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                持卡客户的账单地址与收货地址是否一致。
+
+
+                - `Y`：一致
+
+                - `N`：不一致'
             tds2_bill_addr_city:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の都市  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的城市名称。
+
+
+                未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_country:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の国コード  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric
+
+
+                未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_line_1:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の１行目  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+
+                如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+
+                未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_line_2:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の２行目\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
+
+
+                未填写时，自动使用客户的 `addr_line_2`。'
             tds2_bill_addr_line_3:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の区域部分の３行目\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的第 3 行，请填写其他地址信息。
+
+
+                未填写时，自动使用客户的 `addr_line_3`。'
             tds2_bill_addr_post_code:
               type: string
               minLength: 1
               maxLength: 16
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の郵便番号  \nショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
-                \  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的邮政编码。
+
+
+                未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_bill_addr_state:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客の請求先住所の州または都道府県コード  \n\
-                ショップ側で顧客の住所情報を保持している場合、指定が必須となります。  \n※住所情報を保持していない場合、指定は不要です。\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户账单地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+
+                未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。'
             tds2_email:
               type: string
               minLength: 1
               maxLength: 254
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nカード顧客のメールアドレス\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
+
+
+                自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
+
+
+                - 客户家庭电话号码（`tds2_home_phone_no`）
+
+                - 客户手机号码（`tds2_mobile_phone_no`）
+
+                - 客户工作单位电话号码（`tds2_work_phone_no`）
+
+                - 客户电子邮箱地址（`tds2_email`）
+
+
+                目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_home_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n自宅電話の国コード  \n自宅電話の国コードを設定した場合\
-                \  \n自宅電話番号の設定が必要\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
+
+
+                未填写时，自动使用客户的 `phone_cc`。'
             tds2_home_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n自宅電話番号  \n自宅電話番号を設定した場合  \n\
-                自宅電話の国コードの設定が必要  \nハイフン（-）なし、数字のみ\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
+
+
+                未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email`
+                必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_mobile_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n携帯電話の国コード  \n携帯電話の国コードを設定した場合\
-                \  \n携帯電話番号の設定が必要\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。'
             tds2_mobile_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n携帯電話番号  \n携帯電話番号の国コードを設定した場合\
-                \  \nハイフン（-）なし、数字のみ\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_work_phone_cc:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n職場電話の国コード  \n職場電話の国コードを設定した場合\
-                \  \n職場電話番号の設定が必要\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。'
             tds2_work_phone_no:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n職場電話番号  \n職場電話番号を設定した場合  \n\
-                ハイフン（-）なし、数字のみ\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
+
+
+                自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。'
             tds2_ship_addr_city:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の都市\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的城市名称。'
             tds2_ship_addr_country:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の国コード\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的国家/地区代码。
+
+                格式：ISO 3166-1 numeric'
             tds2_ship_addr_line_1:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の１行目\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 1 行。'
             tds2_ship_addr_line_2:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の２行目\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 2 行。'
             tds2_ship_addr_line_3:
               type: string
               minLength: 1
               maxLength: 50
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の区域部分の３行目\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的第 3 行。'
             tds2_ship_addr_post_code:
               type: string
               minLength: 1
               maxLength: 16
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の郵便番号\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的邮政编码。'
             tds2_ship_addr_state:
               type: string
               minLength: 1
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n出荷先住所の州または都道府県コード\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                客户收货地址的州或都道府县代码。
+
+                参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
             tds2_delivery_email_address:
               type: string
               minLength: 1
               maxLength: 254
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n納品先電子メールアドレス\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付联系邮箱。'
             tds2_delivery_timeframe:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品納品時間枠  \n01 = 電子デリバリー  \n\
-                02 = 当日出荷  \n03 = 翌日出荷  \n04 = 2日目以降の出荷\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品交付时间范围。
+
+
+                - `01`：电子交付
+
+                - `02`：当日发货
+
+                - `03`：次日发货
+
+                - `04`：第 2 天及以后发货'
             tds2_gift_card_amount:
               type: string
               minLength: 1
               maxLength: 15
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \nプリペイドカードまたはギフトカードの総購入金額\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。'
             tds2_gift_card_count:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n購入されたプリペイドカードまたはギフトカード / コードの総数\
-                \  \n0埋め2桁の数字\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。'
             tds2_gift_card_curr:
               type: string
               minLength: 3
               maxLength: 3
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n通貨コード  \n※以下のコードは対象外  \n955,\
-                \ 956, 957, 958, 959, 960, 961, 962,  \n963, 964, 999\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
+
+                格式：ISO 4217 numeric
+
+
+                不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。'
             tds2_pre_order_date:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の発売予定日  \nYYYYMMDD形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品预计发售日期。
+
+                格式：`YYYYMMDD`'
             tds2_pre_order_purchase_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の販売時期情報  \n01 = 発売済み\n02\
-                \ = 先行予約商品\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                商品销售状态。
+
+
+                - `01`：已发售商品
+
+                - `02`：预售商品'
             tds2_reorder_items_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n商品の注文情報  \n01 = 初回注文  \n02\
-                \ = 再注文\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                表示本次商品订单是首次购买还是重复购买。
+
+
+                - `01`：首次购买
+
+                - `02`：重复购买'
             tds2_ship_ind:
               type: string
               minLength: 2
               maxLength: 2
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n取引の出荷方法  \n01 = カード顧客の請求先住所に配送する\
-                \  \n02 = 加盟店様が保持している別の、確認済み住所に配送する  \n03 = カード顧客の請求先住所と異なる住所に配送する  \n04 = 店舗へ配送 / 近所の店舗での受け取り（店舗の住所は配送先住所で指定する）\
-                \  \n05 = デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む）  \n06 = 配送なし（旅行およびイベントのチケット）  \n07 = その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                交易商品的配送方式。
+
+
+                - `01`：配送至持卡客户的账单地址
+
+                - `02`：配送至商户保存的其他已验证地址
+
+                - `03`：配送至与持卡客户账单地址不同的地址
+
+                - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
+
+                - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
+
+                - `06`：无需配送（旅行及活动门票）
+
+                - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）'
             tds2_recurring_expiry:
               type: string
               minLength: 8
               maxLength: 8
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n継続課金の期限  \nYYYYMMDD形式\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
+
+                格式：`YYYYMMDD`'
             tds2_recurring_frequency:
               type: string
               minLength: 1
               maxLength: 4
-              description: "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>  \n継続課金の課金最小間隔日数\n"
+              description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+
+                仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
         virtual_account:
           type: object
           description: 銀行振込（バーチャル口座）情報

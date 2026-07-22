@@ -951,7 +951,242 @@ exact_strings:
     - `06`：无需配送（旅行及活动门票）
     - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）
 
+property_descriptions:
+  tds2_tenant_name: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    3D Secure 认证页面上显示的商户名称。
+  tds2_ch_acc_change: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户的最后更新日期。
+    格式：`YYYYMMDD`
+
+    请填写商户应用中该用户账户信息最后一次更新的日期。
+  tds2_ch_acc_date: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户的创建日期。
+    格式：`YYYYMMDD`
+  tds2_ch_acc_pw_change: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户的密码最后更新日期。
+    格式：`YYYYMMDD`
+  tds2_nb_purchase_account: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者过去 6 个月内的购买次数。
+  tds2_payment_acc_age: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户中的银行卡登记日期。
+    格式：`YYYYMMDD`
+  tds2_provision_attempts_day: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户在过去 24 小时内尝试添加银行卡的次数。
+  tds2_ship_address_usage: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    该收货地址首次使用的日期。
+    格式：`YYYYMMDD`
+  tds2_ship_name_ind: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者姓名与收货人姓名是否一致。
+
+    - `01`：客户姓名与收货人姓名一致
+    - `02`：客户姓名与收货人姓名不一致
+  tds2_suspicious_acc_activity: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    账户可疑活动信息。用于表示商户是否发现该持卡客户存在可疑行为，包括历史欺诈行为。
+
+    - `01`：未发现可疑行为
+    - `02`：发现可疑行为
+  tds2_txn_activity_day: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者过去 24 小时内的交易次数。
+  tds2_txn_activity_year: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者过去一年内的交易次数。
+  tds2_three_ds_req_auth_data: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    用户登录认证记录。填写时，还必须同时填写登录方式和登录时间。
+
+    - `01`：无认证（以访客身份登录）
+    - `02`：使用商户自身的认证信息
+    - `03`：SSO（单点登录）
+    - `04`：使用发卡机构的认证信息
+    - `05`：第三方认证
+    - `06`：FIDO 认证
+  tds2_three_ds_req_auth_timestamp: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户的登录时间。
+    格式：`YYYYMMDDHHmm`
+
+    填写用户登录认证记录时，还必须同时填写登录方式和登录时间。
+  tds2_addr_match: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    持卡客户的账单地址与收货地址是否一致。
+
+    - `Y`：一致
+    - `N`：不一致
+  tds2_bill_addr_country: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的国家/地区代码。
+    格式：ISO 3166-1 numeric
+
+    未填写时，自动使用客户的 `addr_country`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。
+  tds2_bill_addr_state: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的州或都道府县代码。
+    参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+    未填写时，自动使用客户的 `addr_state`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。
+  tds2_bill_addr_city: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的城市名称。
+
+    未填写时，自动使用客户的 `addr_city`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。
+  tds2_bill_addr_line_1: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的第 1 行，请填写街道、门牌号或区块信息，也可以包含都道府县及市区信息。
+
+    如果现有地址无法按字段拆分，请在长度限制内分配到 `tds2_bill_addr_line_1`～`tds2_bill_addr_line_3`；也可以将完整地址全部填写在本字段，并将第 2、3 行留空。
+
+    未填写时，自动使用客户的 `addr_line_1`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。
+  tds2_bill_addr_line_2: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的第 2 行，请填写建筑物名称、房间号等信息。
+
+    未填写时，自动使用客户的 `addr_line_2`。
+  tds2_bill_addr_line_3: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的第 3 行，请填写其他地址信息。
+
+    未填写时，自动使用客户的 `addr_line_3`。
+  tds2_bill_addr_post_code: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的邮政编码。
+
+    未填写时，自动使用客户的 `addr_post_code`。如果商户侧保存了客户地址信息，则必须填写；未保存时可不填写。
+  tds2_email: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户的电子邮箱地址。未填写时，自动使用客户的 `email`。
+
+    自 2024 年 8 月 12 日起，以下字段必须至少填写一项：
+
+    - 客户家庭电话号码（`tds2_home_phone_no`）
+    - 客户手机号码（`tds2_mobile_phone_no`）
+    - 客户工作单位电话号码（`tds2_work_phone_no`）
+    - 客户电子邮箱地址（`tds2_email`）
+
+    目前即使未传递这些信息仍会执行认证，但未来可能不再支持。
+  tds2_home_phone_cc: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户家庭电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_home_phone_no`。
+
+    未填写时，自动使用客户的 `phone_cc`。
+  tds2_home_phone_no: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户家庭电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_home_phone_cc`。
+
+    未填写时，自动使用客户的 `phone_no`。自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。
+  tds2_mobile_phone_cc: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户手机号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_mobile_phone_no`。
+  tds2_mobile_phone_no: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户手机号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_mobile_phone_cc`。
+
+    自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。
+  tds2_work_phone_cc: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户工作单位电话号码的国家/地区代码，不包含 `+`。填写本字段时，必须同时填写 `tds2_work_phone_no`。
+  tds2_work_phone_no: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户工作单位电话号码，仅限不含连字符的半角数字。填写本字段时，必须同时填写 `tds2_work_phone_cc`。
+
+    自 2024 年 8 月 12 日起，`tds2_home_phone_no`、`tds2_mobile_phone_no`、`tds2_work_phone_no`、`tds2_email` 必须至少填写一项。目前即使未传递这些信息仍会执行认证，但未来可能不再支持。
+  tds2_ship_addr_city: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的城市名称。
+  tds2_ship_addr_country: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的国家/地区代码。
+    格式：ISO 3166-1 numeric
+  tds2_ship_addr_line_1: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的第 1 行。
+  tds2_ship_addr_line_2: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的第 2 行。
+  tds2_ship_addr_line_3: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的第 3 行。
+  tds2_ship_addr_post_code: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的邮政编码。
+  tds2_ship_addr_state: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的州或都道府县代码。
+    参考：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+  tds2_delivery_email_address: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    商品交付联系邮箱。
+  tds2_delivery_timeframe: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    商品交付时间范围。
+
+    - `01`：电子交付
+    - `02`：当日发货
+    - `03`：次日发货
+    - `04`：第 2 天及以后发货
+  tds2_gift_card_amount: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的购买总金额。
+  tds2_gift_card_count: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    仅限购买预付卡或礼品卡时使用。填写已购买的预付卡或礼品卡总数量。
+  tds2_gift_card_curr: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    仅限购买预付卡或礼品卡时使用。填写预付卡或礼品卡的货币代码。
+    格式：ISO 4217 numeric
+
+    不可使用以下货币代码（债券市场单位等）：`955`、`956`、`957`、`958`、`959`、`960`、`961`、`962`、`963`、`964`、`999`。
+  tds2_pre_order_date: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    商品预计发售日期。
+    格式：`YYYYMMDD`
+  tds2_pre_order_purchase_ind: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    商品销售状态。
+
+    - `01`：已发售商品
+    - `02`：预售商品
+  tds2_reorder_items_ind: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    表示本次商品订单是首次购买还是重复购买。
+
+    - `01`：首次购买
+    - `02`：重复购买
+  tds2_ship_ind: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    交易商品的配送方式。
+
+    - `01`：配送至持卡客户的账单地址
+    - `02`：配送至商户保存的其他已验证地址
+    - `03`：配送至与持卡客户账单地址不同的地址
+    - `04`：配送至门店或到附近门店自提（门店地址通过收货地址指定）
+    - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
+    - `06`：无需配送（旅行及活动门票）
+    - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）
+  tds2_recurring_expiry: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    仅限订阅等持续扣款业务使用。填写持续扣款的结束日期。
+    格式：`YYYYMMDD`
+  tds2_recurring_frequency: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。
+
 strings:
+  /components/schemas/td_tenant_name/description: |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    商户名称。可指定在 3D Secure 认证页面上显示的商户或店铺名称。
+
+    可使用半角英文字母、数字、符号和半角空格。未指定时，使用签约 fincode 时登记的值，格式为 `{{商户 ID}}-{{固定英数字值}}`。
   /info/title: fincode API 中文参考
   /info/description: |-
     这是 fincode 的 API 参考文档。

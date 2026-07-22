@@ -70,6 +70,40 @@ def replace_exact_strings(
     return value
 
 
+def translate_property_descriptions(value: Any, descriptions: dict[str, str]) -> None:
+    """按稳定字段名复用人工译文，覆盖普通属性和 ReDoc 扩展请求属性。"""
+    if isinstance(value, dict):
+        for container_key in ("properties", "x-req-properties"):
+            properties = value.get(container_key)
+            if not isinstance(properties, dict):
+                continue
+            for name, schema in properties.items():
+                if (
+                    name in descriptions
+                    and isinstance(schema, dict)
+                    and isinstance(schema.get("description"), str)
+                ):
+                    schema["description"] = descriptions[name]
+        for child in value.values():
+            translate_property_descriptions(child, descriptions)
+    elif isinstance(value, list):
+        for child in value:
+            translate_property_descriptions(child, descriptions)
+
+
+def translate_named_schema_descriptions(
+    document: dict[str, Any], descriptions: dict[str, str]
+) -> None:
+    """同名独立 Schema 与请求属性共享同一份人工字段释义。"""
+    schemas = document.get("components", {}).get("schemas", {})
+    if not isinstance(schemas, dict):
+        return
+    for name, description in descriptions.items():
+        schema = schemas.get(name)
+        if isinstance(schema, dict) and isinstance(schema.get("description"), str):
+            schema["description"] = description
+
+
 def translate_tags(
     document: dict[str, Any], names: dict[str, str], group_names: dict[str, str]
 ) -> None:
@@ -120,6 +154,14 @@ def main() -> None:
         normalize_translation_key(key): value for key, value in exact_strings.items()
     }
     result = replace_exact_strings(result, exact_strings, normalized_exact_strings)
+    translate_property_descriptions(
+        result,
+        translations.get("property_descriptions", {}),
+    )
+    translate_named_schema_descriptions(
+        result,
+        translations.get("property_descriptions", {}),
+    )
     translate_tags(
         result,
         translations.get("tag_names", {}),
