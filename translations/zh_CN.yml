@@ -3223,6 +3223,219 @@ schema_property_descriptions:
     scheduled_to: |-
       预计入账日期范围的结束日期。
       格式：`yyyy/MM/dd`
+  TenantInvoiceRegistration.Response:
+    registration_number: 日本合规发票开具企业登记编号（T 编号），格式为 `T` 后接 13 位数字；未登记时为 `null`。
+    is_displayed: 登记编号的全局显示设置。为 `false` 时，即使已登记也不会在页面或报表显示；未登记时为 `null`。
+    is_displayed_for_invoice: 账单中的登记编号显示设置，仅当 `is_displayed` 为 `true` 时有效；未登记时为 `null`。
+    is_displayed_for_tenant_account_detail: 租户销售明细中的登记编号显示设置，仅当 `is_displayed` 为 `true` 时有效；未登记时为 `null`。
+  ExaminationInfo.V2.Updating.Request:
+    contract_info: 与 fincode 签约的经营者信息。
+    shop_info: fincode 中的商户信息。
+    deposit_cycle_info: fincode 销售款的入账周期信息。
+    merchant_category_code: 行业类别代码；仅在 fincode 要求指定时填写。
+  ContractBankAccountInfo:
+    bank_name: 银行名称。
+    bank_name_kana: 银行名称（片假名）。
+    branch_name_kana: 分行名称（片假名）。
+    account_name: 账户名义人（片假名）。
+  WebhookEvent.RecurringBatch.DirectDebit:
+    succeeded: 本次订阅扣款中成功的支付数量。
+    failed: 本次订阅扣款中失败的支付数量。
+    total: 本次订阅扣款产生的支付总数。
+    charge_date: |-
+      本次订阅扣款日期。
+      格式：`yyyy/MM/dd`
+  WebhookEvent.PaymentBulk.Regist.Card:
+    regist_total_count: 当前批量支付登记的支付总数。
+    error_total_count: 当前批量支付中发生错误的支付数量。
+    bulk_search_url: 当前批量支付对应的“获取批量支付明细列表”API URL。
+    error_code: 当前批量支付最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
+  WebhookEvent.Contract:
+    body: 支付方式合同状态列表；数组元素包含支付方式类型及其合同状态。
+    examination_task: |-
+      审核对象（日文值）。以下代码字符串为 Webhook 实际返回值，应原样处理：
+
+      - `決済事業者審査: VISA/MASTER-UC`
+      - `決済事業者審査: VISA/MASTER-TFC`
+      - `決済事業者審査: VISA/MASTER-ORICO`
+      - `決済事業者審査: JCB/AMEX`
+      - `決済事業者審査: DINERS`
+      - `決済事業者審査: ApplePay-UC`
+      - `決済事業者審査: ApplePay-JCB/AMEX`
+      - `決済事業者審査: GooglePay-UC`
+      - `決済事業者審査: GooglePay-TFC`
+      - `決済事業者審査: GooglePay-ORICO`
+      - `決済事業者審査: GooglePay-JCB/AMEX`
+      - `決済事業者審査: GooglePay-DINERS`
+      - `決済事業者審査: コンビニ決済`
+      - `決済事業者審査: PayPay決済`
+      - `決済事業者審査: 口座振替（5・6・23・27日）`
+      - `決済事業者審査: 口座振替（1・5・20・26日）`
+      - `決済事業者審査: 銀行振込（バーチャル口座）`
+      - `決済事業者審査: 一括決済（バーチャル口座）`
+    status: |-
+      支付服务商合同状态（日文值）。实际返回值为：`申込なし`、`審査受付`、`審査待ち`、`審査中`、`審査保留中`、`審査OK`、`利用可能`、`審査NG`、`申込中止`。
+    is_updated: 是否发生更新；发生更新时为 `true`。
+  WebhookEvent.ChargeBack:
+    shop_id: 发生拒付事件的记录所属商户 ID。
+    charge_back_id: 拒付 ID。可使用该 ID 调用“获取拒付”API 查询最新信息。
+    status: |-
+      通知时的拒付状态，与“获取拒付”响应的 `status_code` 相同。
+
+      - `4005`：需要处理
+      - `4006`、`4007`、`4011`：已答复
+      - `4009`：已结算
+    event: |-
+      触发 Webhook 的事件。
+
+      - `charge_backs.regist`：首次向商户公开拒付
+      - `charge_backs.update`：已公开拒付的状态发生变化
+  Payment.Card:
+    job_code: |-
+      交易类型。
+
+      - `CHECK`：仅执行有效性检查
+      - `AUTH`：仅授权
+      - `CAPTURE`：立即确认请款
+      - `CANCEL`：取消
+    card_id: 当前支付使用的银行卡 ID。
+    subscription_id: 当前支付由订阅生成时，对应的订阅 ID。
+  Payment.ApplePay:
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未请款
+      - `AUTHORIZED`：已授权，可通过确认请款完成扣款
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+    card_no: |-
+      已脱敏的设备账户号码，仅保留末 4 位，格式：`************1234`。Apple Pay 使用设备账户号码而非真实银行卡号。
+    token: |-
+      从支持 Apple Pay 的设备取得并进行 Base64 编码的银行卡令牌。
+
+      - Swift：对 `PKPayment.token.paymentData` 进行 Base64 编码
+      - JavaScript：对 `ApplePayPaymentAuthorizedEvent.payment.token` 进行 Base64 编码
+
+      参见 [Apple Pay 支付执行](https://docs.fincode.jp/payment/applepay/execution)及 [Apple 官方文档](https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/offering_apple_pay_in_your_app)。
+  Payment.GooglePay:
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未请款
+      - `AUTHORIZED`：已授权，可通过确认请款完成扣款
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+      - `AUTHENTICATED`：未处理，等待 3D Secure 认证；完成认证后执行支付前不会请款或授权
+    card_no: 已脱敏的银行卡号，仅保留末 4 位，格式：`************1234`。
+    token: |-
+      对 Google Pay 设备取得的 `paymentMethodData.tokenizationData.token` 进行 Base64 编码后填写。
+
+      生成令牌时，`tokenizationSpecification` 请指定 `gateway: fincode` 和 `gatewayMerchantId: {{商户 ID}}`（例如 `s_01234567890`）。
+      参见 [Google Pay 支付执行](/payment/googlepay/execution)及 [Google Pay Web 开发者文档](https://developers.google.com/pay/api/web?hl=ja)。
+  Payment.Card.ChangingAmount.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在银行卡支付允许的金额范围内。参见[银行卡支付限制](/payment/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在银行卡支付允许的金额范围内。参见[银行卡支付限制](/payment/restriction)。
+    job_code: |-
+      交易类型。
+
+      - `AUTH`：仅授权
+      - `CAPTURE`：立即确认请款
+  Payment.GooglePay.ChangingAmount.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
+    job_code: |-
+      交易类型。
+
+      - `AUTH`：仅授权
+      - `CAPTURE`：立即确认请款
+  InvoiceDetail.Opening.Request:
+    bill_mail_send_flag: |-
+      账单邮件发送标志。本设置优先于登记或更新时的设置。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+    receipt_mail_send_flag: |-
+      收据邮件发送标志。本设置优先于登记或更新时的设置。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+    underpayment_mail_send_flag: |-
+      差额付款通知邮件发送标志。本设置优先于登记或更新时的设置。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+  PlatformShop.ListRetrieving.QueryParams:
+    created_from: |-
+      创建日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    created_to: |-
+      创建日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    sort: |-
+      指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
+      可排序字段：`id`、`shop_name`、`created`、`updated`。
+  TenantShop.ListRetrieving.QueryParams:
+    created_from: |-
+      创建日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    created_to: |-
+      创建日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    sort: |-
+      指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
+      可排序字段：`id`、`shop_name`、`created`、`updated`。
+  POST.JoinTenants:
+    email: 平台商户用户的电子邮箱地址。
+    password: 平台商户用户的密码。
+    tenant_url_id: 请填写[管理后台 > 平台运营与管理 > 配置](https://dashboard.test.fincode.jp/platform/setting)中“租户登记用 URL”的 `tenant_url_id`。
+  ExaminationInfo.V2:
+    contract_info: 与 fincode 签约的经营者信息。
+    shop_info: fincode 中的商户信息。
+    deposit_cycle_info: fincode 销售款的入账周期信息。
+  POST.ContractsExaminations:
+    shop_id: 提交审核申请的租户商户 ID。
+    status_code: |-
+      申请状态。
+
+      - `1`：申请完成并进入审核；`enable_immediate_use = true` 时允许立即受理 VISA/Mastercard 支付
+      - `2`：不允许使用 fincode
+      - `3`：未获准立即使用，但申请已完成并会继续审核
+    enable_immediate_use: |-
+      是否申请立即使用 VISA/Mastercard。
+
+      - `true`：申请立即使用
+      - `false`：不申请立即使用
+
+      网站在审核时尚不可访问（`本番環境申請情報.contract_info.site_published` 不为 `true`），或声明经营需长时间审核的商品（`本番環境申請情報.shop_info.deals_long_apply_content` 为 `true`）时不可申请。
+  POST.ProviderReserve:
+    reservation_id: 追加申请 ID。
+    reservation_list: 正在申请追加的支付方式列表。
+    provider: |-
+      要追加申请的支付方式列表。
+
+      - `PAYSLE`：便利店支付
+      - `PAYPAY`：PayPay
+      - `APPLE_PAY_UC`：Apple Pay（VISA/Mastercard，UC Card）
+      - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB/American Express）
+      - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
+      - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
+      - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
+      - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
+      - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
+      - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
+      - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
+      - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
+      - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+  CardDestination:
+    contract_card_info_master_id: 银行卡收单配置主数据 ID。
+    examination_master_id: |-
+      审核类型主数据 ID。
+
+      - `1`：VISA/Mastercard（UC Card）
+      - `2`：JCB/American Express/Diners Club/Discover
+      - `3`：VISA/Mastercard（Toyota Finance）
+      - `4`：VISA/Mastercard（Orient Corporation）
+    destination_type: 收单路由类型。
 
 strings:
   /components/schemas/card/description: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
