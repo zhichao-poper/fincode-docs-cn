@@ -57,6 +57,7 @@ exact_strings:
   システムエラー: 系统错误
   必須: 必填
   任意: 可选
+  オーダーID（決済情報のID）: 订单 ID（支付信息 ID）
 
 strings:
   /info/title: fincode API 中文参考
@@ -935,3 +936,70 @@ strings:
     税费及运费。
     与 `amount` 的合计值必须处于该支付方式规定的支付金额范围内。
     参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)
+  /paths/~1v1~1payments/get/summary: 支付列表查询
+  /paths/~1v1~1payments/get/description: 获取支付信息列表。
+  /paths/~1v1~1payments/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取与该租户商户关联的支付信息列表。
+  /paths/~1v1~1payments/get/parameters/1/description: 查询支付列表时使用的查询条件参数。
+  /paths/~1v1~1payments/post/summary: 登记支付
+  /paths/~1v1~1payments/post/description: 向 fincode 登记支付信息。登记成功时尚未向客户收款。
+  /paths/~1v1~1payments/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    以指定租户商户为销售主体登记支付。该租户必须已经通过 `pay_type` 所指定支付方式的签约审核。
+  /paths/~1v1~1payments~1{id}/put/summary: 执行支付
+  /paths/~1v1~1payments~1{id}/put/description: 对已登记到 fincode 的指定支付信息执行收款。
+  /paths/~1v1~1payments~1{id}/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，对 `id` 指定的支付执行支付处理。
+  /paths/~1v1~1payments~1{id}/get/summary: 获取支付
+  /paths/~1v1~1payments~1{id}/get/description: 获取指定的支付信息。
+  /paths/~1v1~1payments~1{id}/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，获取 `id` 指定的支付信息。
+  /paths/~1v1~1payments~1{id}/get/parameters/2/description: 获取支付信息时使用的查询条件参数。
+  /paths/~1v1~1payments~1{id}~1capture/put/summary: 确认销售额
+  /paths/~1v1~1payments~1{id}~1capture/put/description: |-
+    对 `status` 为预授权（`AUTHORIZED`）或已取消（`CANCELED`）的支付确认销售额。
+    成功后，状态将变为 `CAPTURED`，并计入以该时点为统计基准的销售款入账。
+  /paths/~1v1~1payments~1{id}~1capture/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，对 `id` 指定的支付确认销售额。
+  /paths/~1v1~1payments~1{id}~1cancel/put/summary: 取消支付
+  /paths/~1v1~1payments~1{id}~1cancel/put/description: |-
+    取消支付。取消成功后，`status` 将变为已取消（`CANCELED`）。
+
+    向用户退款的处理方式等会因支付方式而异。
+    详情请参阅 [Docs > 支付](/payment)。
+  /paths/~1v1~1payments~1{id}~1cancel/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，取消 `id` 指定的支付。
+  /paths/~1v1~1payments~1{id}~1auth/put/summary: 重新授权支付
+  /paths/~1v1~1payments~1{id}~1auth/put/description: |-
+    重新执行支付授权。
+
+    此操作可用于 `pay_type` 为 `Card` 且 `status` 为 `CANCELED` 的支付（已取消的卡片支付），并沿用首次支付的信息重新申请授权。
+  /paths/~1v1~1payments~1{id}~1auth/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，对 `id` 指定的支付重新执行授权。
+  /paths/~1v1~1payments~1{id}~1change/put/summary: 变更支付金额
+  /paths/~1v1~1payments~1{id}~1change/put/description: |-
+    变更支付的使用金额。
+    对已确认销售额的支付会变更实际收款金额；对仍处于预授权状态的支付会变更占用的信用额度。
+  /paths/~1v1~1payments~1{id}~1change/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，变更 `id` 指定支付的使用金额。
+  /paths/~1v1~1payments~1{id}~1barcode/put/summary: 生成条形码
+  /paths/~1v1~1payments~1{id}~1barcode/put/description: 根据请求设备的信息，重新生成便利店支付条形码。
+  /paths/~1v1~1payments~1{id}~1barcode/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的便利店支付中，为 `id` 指定的支付重新生成条形码。
