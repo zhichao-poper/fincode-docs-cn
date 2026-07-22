@@ -1464,6 +1464,446 @@ property_descriptions:
     <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
     仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。
 
+schema_property_descriptions:
+  ContractInfo.V2:
+    representative_last_name: |-
+      法定代表人姓氏。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+    representative_last_name_kana: |-
+      法定代表人姓氏（片假名）。
+      格式：全角片假名。
+    representative_first_name: |-
+      法定代表人名字。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+    representative_first_name_kana: |-
+      法定代表人名字（片假名）。
+      格式：全角片假名。
+    representative_postal_code: |-
+      法定代表人地址的邮政编码。
+      格式：`xxx-xxxx`
+    representative_prefecture: |-
+      法定代表人地址的都道府县。
+      格式：汉字。
+    representative_prefecture_kana: |-
+      法定代表人地址的都道府县（片假名）。
+      格式：全角片假名。
+    representative_address_municipality: |-
+      法定代表人地址的市区町村。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    representative_address_municipality_kana: |-
+      法定代表人地址的市区町村（片假名）。
+      格式：全角片假名。
+    representative_address_section: |-
+      法定代表人地址的町域。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    representative_address_section_kana: |-
+      法定代表人地址的町域（片假名）。
+      格式：全角片假名。
+    representative_address_chrome: |-
+      法定代表人地址的门牌号。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    representative_address_chrome_kana: 法定代表人地址的门牌号（片假名）。
+    representative_address_building_name: |-
+      法定代表人地址的建筑物名称。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    representative_address_building_name_kana: |-
+      法定代表人地址的建筑物名称（片假名）。
+      格式：全角片假名。
+    representative_tel: |-
+      法定代表人电话号码。
+      格式：不含连字符的半角数字；不可使用 PHS 号码。
+    representative_birthday: |-
+      法定代表人出生日期。
+      格式：`yyyy/MM/dd`
+    representative_gender: |-
+      法定代表人性别。
+
+      - `0`：男性
+      - `1`：女性
+    staff1_last_name: |-
+      第一联系人姓氏。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+
+      fincode 会向第一、第二联系人发送审核结果通知及审核暂缓事项的处理通知。
+    staff1_last_name_kana: |-
+      第一联系人姓氏（片假名）。
+      格式：全角片假名。
+    staff1_first_name: |-
+      第一联系人名字。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+    staff1_first_name_kana: |-
+      第一联系人名字（片假名）。
+      格式：全角片假名。
+    staff1_company_name: |-
+      第一联系人公司名称。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    staff1_belongs: |-
+      第一联系人所属部门。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    staff1_tel: |-
+      第一联系人电话号码。
+      格式：不含连字符的半角数字；不可使用 PHS 号码。
+    staff1_mail: |-
+      第一联系人电子邮箱地址。
+      格式：RFC 5322。
+    staff2_last_name: |-
+      第二联系人姓氏。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+    staff2_last_name_kana: |-
+      第二联系人姓氏（片假名）。
+      格式：全角片假名。
+    staff2_first_name: |-
+      第二联系人名字。
+      可用字符：汉字、平假名、片假名、半角英文字母。
+    staff2_first_name_kana: |-
+      第二联系人名字（片假名）。
+      格式：全角片假名。
+    staff2_company_name: |-
+      第二联系人公司名称。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    staff2_belongs: |-
+      第二联系人所属部门。
+      可用字符：汉字、平假名、片假名、半角英数字。
+    staff2_tel: |-
+      第二联系人电话号码。
+      格式：不含连字符的半角数字；不可使用 PHS 号码。
+    staff2_mail: |-
+      第二联系人电子邮箱地址。
+      格式：RFC 5322。
+    corporate: |-
+      经营主体类型。
+
+      - `true`：法人企业
+      - `false`：个体经营者
+    corporate_info: |-
+      法人企业信息。
+      当 `corporate` 为 `true` 时必填。
+  Account:
+    deposit_amount: |-
+      销售结算的入账金额，即商户实际或预计收到的销售款。
+      该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。
+    deposit_date: |-
+      销售结算实际入账日期。
+      格式：`yyyy/MM/dd HH:MM`
+    scheduled_deposit_date: |-
+      销售结算预计入账日期。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_start: |-
+      销售结算统计期间的开始时间。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_end: |-
+      销售结算统计期间的结束时间。
+      格式：`yyyy/MM/dd HH:MM`
+    payment_deadline: |-
+      产生应付款时的支付截止日期。
+      格式：`yyyy/MM/dd HH:MM`
+    payment_completion_date: |-
+      产生应付款时的请款日期。
+      格式：`yyyy/MM/dd HH:MM`
+    count: 当前销售结算中包含的结算明细数量。
+    settlement_amount: 当前销售结算所涵盖交易的结算总额。
+    total_amount: 当前销售结算所涵盖交易的总金额。
+    fee_amount: 当前销售结算所涵盖交易应向 fincode 支付的手续费。
+    taxable_fee_amount: 应税手续费金额。
+    nontaxable_fee_amount: 非应税手续费金额。
+    web_registration_fee_amount: |-
+      结算期间产生的自动扣款账户 Web 登记手续费。
+      仅适用于银行账户自动扣款。
+    paper_registration_fee_amount: |-
+      结算期间产生的自动扣款账户纸质申请书登记手续费。
+      仅适用于银行账户自动扣款。
+    tax_amount: fincode 支付手续费对应的消费税。
+    platform_fee_amount: |-
+      当前销售结算所涵盖交易的平台使用费。
+      仅适用于租户商户。
+    platform_fee_tax_amount: |-
+      当前销售结算所涵盖交易的平台使用费消费税。
+      仅适用于租户商户。
+    platform_web_registration_fee_amount: |-
+      结算期间产生的、由平台设定的自动扣款账户 Web 登记手续费。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_paper_registration_fee_amount: |-
+      结算期间产生的、由平台设定的自动扣款账户纸质申请书登记手续费。
+      仅适用于银行账户自动扣款的租户商户。
+    deposit_destination: 销售结算的收款银行账户信息。
+  PlatformAccount:
+    deposit_amount: |-
+      平台使用费收入的实际或预计入账金额。
+      该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。
+    deposit_date: |-
+      平台使用费收入的实际入账日期。
+      格式：`yyyy/MM/dd HH:MM`
+    scheduled_deposit_date: |-
+      平台使用费收入的预计入账日期。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_start: |-
+      平台使用费收入统计期间的开始时间。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_end: |-
+      平台使用费收入统计期间的结束时间。
+      格式：`yyyy/MM/dd HH:MM`
+    payment_deadline: |-
+      产生应付款时的支付截止日期。
+      格式：`yyyy/MM/dd HH:MM`
+    payment_completion_date: |-
+      产生应付款时的请款日期。
+      格式：`yyyy/MM/dd HH:MM`
+    count: 当前平台使用费收入中包含的支付交易数量。
+    settlement_amount: 平台使用费收入的结算金额。
+    total_amount: 当前平台使用费结算所涵盖交易的总金额。
+    fee_amount: 当前平台使用费结算所涵盖交易应向 fincode 支付的手续费。
+    taxable_fee_amount: 支付手续费中的应税金额。
+    nontaxable_fee_amount: 支付手续费中的非应税金额。
+    tax_amount: 支付手续费的消费税金额。
+    web_registration_fee_amount: |-
+      结算期间产生的自动扣款账户 Web 登记手续费。
+      仅适用于银行账户自动扣款。
+    platform_fee_amount: 当前结算所涵盖交易的平台使用费。
+    platform_fee_tax_amount: 当前结算所涵盖交易的平台使用费消费税。
+    platform_web_registration_fee_amount: 结算期间产生的、由平台设定的自动扣款账户 Web 登记手续费。
+    deposit_destination: 平台使用费收入的收款银行账户信息。
+    verified: 验证确认标志。
+  AccountDetail:
+    detail_id: 销售结算明细 ID。
+    scheduled_deposit_date: |-
+      预计入账日期。
+      格式：`yyyy/MM/dd HH:MM`
+    amount_correction_type: 金额调整类型。
+    order_id: 订单（支付）ID。
+    deposit_amount: |-
+      当前交易的参考入账金额。实际入账金额会在汇总全部销售结算明细后，根据最终消费税金额重新计算，因此本字段仅供参考。
+    fee_total: fincode 支付手续费（不含税）。
+    fee_total_taxin: fincode 支付手续费（含税）。
+    fee_profit_tax: fincode 支付手续费中应税部分对应的消费税。
+    fee_profit: fincode 支付手续费中的应税金额。
+    fee_cost: fincode 支付手续费中的非应税金额。
+    fee_rate_total: fincode 支付手续费率。
+    fixed_fee: fincode 支付的最低手续费。
+    apply_type: |-
+      fincode 手续费率的适用类型。
+
+      - `0`：按费率计算，表示当前销售适用了 fincode 支付手续费率
+      - `1`：按最低手续费计算，表示当前销售适用了 fincode 最低支付手续费
+    web_registration_fee: |-
+      fincode 自动扣款账户 Web 登记手续费（不含税）。
+      仅适用于银行账户自动扣款。
+    web_registration_fee_taxin: |-
+      fincode 自动扣款账户 Web 登记手续费（含税）。
+      仅适用于银行账户自动扣款。
+    web_registration_fee_tax: |-
+      fincode 自动扣款账户 Web 登记手续费的消费税。
+      仅适用于银行账户自动扣款。
+    paper_registration_fee: |-
+      fincode 自动扣款账户纸质申请书登记手续费（不含税）。
+      仅适用于银行账户自动扣款。
+    paper_registration_fee_taxin: |-
+      fincode 自动扣款账户纸质申请书登记手续费（含税）。
+      仅适用于银行账户自动扣款。
+    paper_registration_fee_tax: |-
+      fincode 自动扣款账户纸质申请书登记手续费的消费税。
+      仅适用于银行账户自动扣款。
+    platform_fee: |-
+      平台使用费（不含税）。
+      仅适用于租户商户。
+    platform_fee_taxin: |-
+      平台使用费（含税）。
+      仅适用于租户商户。
+    platform_fee_rate: |-
+      平台使用费率。
+      仅适用于租户商户。
+    fixed_fee_for_platform_fee: |-
+      平台最低使用费。
+      仅适用于租户商户。
+    apply_type_for_platform_fee: |-
+      平台使用费率的适用类型。
+
+      - `0`：按费率计算，表示当前销售适用了平台使用费率
+      - `1`：按最低使用费计算，表示当前销售适用了平台设定的最低使用费
+
+      仅适用于租户商户。
+    platform_web_registration_fee: |-
+      平台 Web 登记使用费（不含税）。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_web_registration_fee_taxin: |-
+      平台 Web 登记使用费（含税）。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_web_registration_fee_tax: |-
+      平台 Web 登记使用费的消费税。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_paper_registration_fee: |-
+      平台纸质申请书登记使用费（不含税）。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_paper_registration_fee_taxin: |-
+      平台纸质申请书登记使用费（含税）。
+      仅适用于银行账户自动扣款的租户商户。
+    platform_paper_registration_fee_tax: |-
+      平台纸质申请书登记使用费的消费税。
+      仅适用于银行账户自动扣款的租户商户。
+    processed_date: |-
+      交易完成确定处理的时间。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_start: |-
+      统计期间的开始时间。
+      格式：`yyyy/MM/dd HH:MM`
+    aggregate_term_end: |-
+      统计期间的结束时间。
+      格式：`yyyy/MM/dd HH:MM`
+  ShopInfo.V2:
+    shop_name: fincode 中登记的商户名称。
+    shop_name_kana: fincode 中登记的商户名称（片假名）。
+    shop_name_en: fincode 中登记的商户英文名称。
+    support_mail: |-
+      面向购买者的客服电子邮箱地址。
+      格式：RFC 5322。
+    support_tel: |-
+      面向购买者的客服电话号码。
+      格式：不含连字符的电话号码。
+    unit_price: |-
+      单笔支付的商品或服务单价。
+
+      示例：`1000`（1000 日元）
+    deals_long_apply_content: |-
+      是否经营需要较长 fincode 审核时间的商品或服务。
+
+      - `true`：经营此类商品或服务
+      - `false`：不经营此类商品或服务
+
+      经营以下内容时必须指定为 `true`：和服、咨询服务、美容护理/美容院/医疗美容、体育设施/健身俱乐部、文化学校/函授课程、数据销售、以信息本身为商品的信息内容、占卜、营养补充剂/健康食品、美容用品/化妆品、假发、属于旅行业的服务、烟草/CBD、捐款。
+    deals_insecure_content: |-
+      是否确认不经营 fincode 禁止处理的商品或服务。
+
+      - `true`：没有经营禁止品类的计划
+      - `false`：计划经营禁止品类
+
+      fincode 禁止经营的品类如下：
+
+      - 金融行为，例如信用卡购物额度套现
+      - 虚拟货币交易、票券（包括印花税票和邮票）、商品券、预付卡、有价证券
+      - 赌博及博彩
+      - RMT（真实货币交易）
+      - 宠物等所有活体，包括标本和剥制品
+      - 布施
+      - 危险药物及设计师药物
+      - 无处方购买处方药，例如 Lumigan、Latisse、Glash Vista、Careprost 等
+      - 可能侵犯第三方著作权、肖像权或知识产权的商品或内容
+      - 违反公序良俗的商品或服务，包括成人内容和交友网站
+      - 违反法律法规的商品或服务，包括违反枪刀法、麻药取缔法、华盛顿公约或药事法的内容
+    lost_trial: |-
+      是否存在依据日本修订分期付款销售法提起诉讼并败诉的历史。
+
+      - `true`：不存在败诉记录
+      - `false`：存在败诉记录
+    used_on_web: |-
+      是否在网站或 Web 应用中使用 fincode。
+
+      - `true`：在网站或 Web 应用中使用 fincode
+    used_on_app: |-
+      是否在原生应用中使用 fincode。
+
+      - `true`：在原生应用中使用 fincode
+    site_published: |-
+      网站公开状态，表示 fincode 审核时能否访问提供支付功能的网站。
+      当 `usage_of_fincode.used_on_web` 为 `true` 时必填。
+
+      - `true`：fincode 审核团队可以访问网站
+      - `false`：fincode 审核团队无法访问网站
+    url: fincode 审核团队用于访问网站的 URL。
+    credential: fincode 审核团队访问网站所需的登录信息。
+    site_info: 使用 fincode 支付的网站信息，供 fincode 审核团队核查。
+    prepaid_point: 是否在商户中使用预付积分。
+    how_to_use: 预付积分的使用方式。
+    about_expiration: 预付积分的有效期说明。
+    provides: 经营商品或服务的信息。
+    product: 是否销售实物商品。
+    service: 是否提供服务类商品。
+    digital_contents: 是否销售数字内容。
+    content_description: 商户所提供商品或服务的说明。
+    product_content_info: |-
+      实物商品信息。网站尚未公开时，需要提供经营商品的详细信息。
+      当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.product` 为 `true` 时必填。
+    service_content_info: |-
+      服务类商品信息。网站尚未公开时，需要提供经营服务的详细信息。
+      当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.service` 为 `true` 时必填。
+    digital_content_info: |-
+      数字内容商品信息。网站尚未公开时，需要提供经营内容的详细信息。
+      当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.digital_contents` 为 `true` 时必填。
+    additional_info: |-
+      补充提交信息。开始审核时，如果商户网站尚未公开，即 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，需要补充提供本信息。
+      请根据日本《特定商业交易法》要求展示的信息填写。
+    shop_sales_manager_name: 商户销售负责人的姓名。
+    shop_service_name: 商号或服务名称。
+    shop_how_to_pay: 商户可使用的支付方式。
+    shop_charge_description: 商品价格之外的费用说明，例如运费、手续费和消费税。
+    shop_product_delivery_time: 商品交付时间说明。
+    shop_return_goods_handing_conditions: 退货及换货条件说明。
+  Contract:
+    shop_id: 商户 ID（租户商户）。
+    examination: |-
+      审核信息，数组中保存各支付服务商的审核状态。
+
+      如果某种支付方式尚未开始审核，数组中不会出现持有该支付方式对应 `examination_master_id` 的对象。
+    available_status_code: |-
+      可使用的环境模式。
+
+      - `201`：仅可使用测试环境
+      - `202`：可使用生产环境
+    create_date: |-
+      创建商户的用户注册日期。
+      格式：`yyyy/MM/dd`
+    contracted_at: |-
+      生产环境申请日期。
+      格式：`yyyy/MM/dd`
+    start_charging_at: |-
+      首次登记完成日期。
+      格式：`yyyy/MM/dd`
+    expired_at: |-
+      解约日期。
+      格式：`yyyy/MM/dd`
+    sales_deposit_status_code: |-
+      身份验证手续状态，表示开始收款入账所需手续的办理状态。
+
+      - `501`：收款所需手续尚未完成
+      - `502`：可以收款入账
+    sales_deposit_status_updated_date: |-
+      销售款入账可否状态的更新日期。
+      格式：`yyyy/MM/dd`
+    denied_at: |-
+      合同未成立日期。
+      格式：`yyyy/MM/dd`
+    suspended_billing: 请款停止标志。
+    suspended_billing_date: |-
+      请款停止标志的更新日期。
+      格式：`yyyy/MM/dd`
+    suspended_payment: 入账停止标志。
+    suspended_payment_date: |-
+      入账停止标志的更新日期。
+      格式：`yyyy/MM/dd`
+    suspended_service: 服务停止标志。
+    suspended_service_date: |-
+      服务停止标志的更新日期。
+      格式：`yyyy/MM/dd`
+    suspeded_immediate_use: 立即停止使用标志。
+    suspended_immediate_use_date: |-
+      立即停止使用标志的更新日期。
+      格式：`yyyy/MM/dd`
+    stop_cancelaltion_memo: 停止或解约备注。
+    obligations_notice: 债权债务特别事项。
+    user_shop_name: 面向用户显示的商户名称。
+    register_mail: 登记电子邮箱地址。
+    platform_reprentative_shop: |-
+      是否为平台的代表商户。
+
+      - `true`：代表商户
+      - `false`：非代表商户
+    contract_detail: 合同详细信息。
+    contract_bank_account: 销售款收款银行账户。
+    contract_virtual_bank: |-
+      虚拟账户信息。当该商户应向 fincode 支付的金额超过销售结算入账金额时，必须在规定期限内向此账户汇款。
+    contract_card_destination: 银行卡支付收单路由列表。
+    credit_card_setting: |-
+      银行卡支付设置，包括是否启用 3D Secure、审核后是否被要求必须使用 3D Secure，以及是否可使用分期付款或循环信贷付款等信息。
+    official_registered_corporate_info: 工商登记中的法人企业信息。
+
 strings:
   /components/schemas/td_tenant_name/description: |-
     <span class="smallText color--blue-400">[3D Secure 认证参数]</span>

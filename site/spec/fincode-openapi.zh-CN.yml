@@ -27354,85 +27354,64 @@ components:
           format: int64
           nullable: false
           example: 568
-          description: '売上入金 入金額
+          description: '销售结算的入账金额，即商户实际或预计收到的销售款。
 
-
-            ショップに入金される（入金が予定されている）売上金額です。\
-
-            精算金額（`settlement_amount`）から振込手数料（`bank_transfer_fee`）を引いた金額に一致します。
-
-            '
+            该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。'
         deposit_date:
           type: string
           nullable: true
           example: 2022/05/16 23:59
-          description: '売上入金 入金実績日\
+          description: '销售结算实际入账日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         scheduled_deposit_date:
           type: string
           nullable: false
           example: 2022/05/16 23:59
-          description: '売上入金 入金予定日\
+          description: '销售结算预计入账日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_start:
           type: string
           nullable: false
           example: 2022/05/16 23:59
-          description: '売上入金 集計期間の開始日\
+          description: '销售结算统计期间的开始时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_end:
           type: string
           nullable: false
           example: 2022/05/16 23:59
-          description: '売上入金 集計期間の終了日\
+          description: '销售结算统计期间的结束时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         payment_deadline:
           type: string
           nullable: true
           example: null
-          description: '（請求が発生した場合）支払期限日\
+          description: '产生应付款时的支付截止日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         payment_completion_date:
           type: string
           nullable: true
           example: null
-          description: '（請求が発生した場合）請求日\
+          description: '产生应付款时的请款日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         status_code:
           $ref: '#/components/schemas/DepositStatusCode'
         count:
           type: integer
           nullable: false
           example: 3
-          description: 'この売上入金に含まれる売上入金詳細の件数
-
-            '
+          description: 当前销售结算中包含的结算明细数量。
         settlement_amount:
           type: integer
           format: int64
           nullable: false
           example: 538
-          description: 'この売上入金において精算の対象となった取引の総額。
-
-            '
+          description: 当前销售结算所涵盖交易的结算总额。
         bank_transfer_fee:
           type: integer
           format: int64
@@ -27444,99 +27423,79 @@ components:
           format: int64
           nullable: false
           example: 1000
-          description: 'この売上入金において精算の対象となった取引の総額。
-
-            '
+          description: 当前销售结算所涵盖交易的总金额。
         fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 30
-          description: 'この売上入金において精算の対象となった取引にかかるfincodeへの手数料
-
-            '
+          description: 当前销售结算所涵盖交易应向 fincode 支付的手续费。
         taxable_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 400
-          description: "課税対象手数料\t\n"
+          description: 应税手续费金额。
         nontaxable_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 400
-          description: '非課税手数料
-
-            '
+          description: 非应税手续费金额。
         web_registration_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 400
-          description: 'この売上入金の精算期間中に発生した振替口座のWeb登録手数料\
+          description: '结算期间产生的自动扣款账户 Web 登记手续费。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         paper_registration_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 400
-          description: 'この売上入金の精算期間中に発生した振替口座の依頼書登録手数料\
+          description: '结算期间产生的自动扣款账户纸质申请书登记手续费。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         tax_amount:
           type: integer
           format: int64
           nullable: false
           example: 2
-          description: 'この売上入金において精算の対象となった取引にかかるfincodeへの手数料にかかる消費税
-
-            '
+          description: fincode 支付手续费对应的消费税。
         platform_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 0
-          description: 'この売上入金において精算の対象となった取引にかかるプラットフォーム利用料\
+          description: '当前销售结算所涵盖交易的平台使用费。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         platform_fee_tax_amount:
           type: integer
           format: int64
           nullable: false
           example: 0
-          description: 'この売上入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税\
+          description: '当前销售结算所涵盖交易的平台使用费消费税。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         platform_web_registration_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 0
-          description: '売上入金 精算期間中に発生した、プラットフォームが設定した振替口座のWeb登録手数料\
+          description: '结算期间产生的、由平台设定的自动扣款账户 Web 登记手续费。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_paper_registration_fee_amount:
           type: integer
           format: int64
           nullable: false
           example: 0
-          description: '売上入金 精算期間中に発生した、プラットフォームが設定した振替口座の依頼書登録手数料\
+          description: '结算期间产生的、由平台设定的自动扣款账户纸质申请书登记手续费。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -27546,9 +27505,7 @@ components:
         deposit_destination:
           allOf:
           - $ref: '#/components/schemas/DepositTargetBankAccountInfo'
-          description: '売上入金 入金先口座情報
-
-            '
+          description: 销售结算的收款银行账户信息。
     Account.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Account'
@@ -27639,9 +27596,7 @@ components:
         detail_id:
           type: integer
           example: 12345
-          description: '売上入金詳細 ID
-
-            '
+          description: 销售结算明细 ID。
         shop_id:
           type: string
           example: s_***********
@@ -27649,7 +27604,9 @@ components:
         scheduled_deposit_date:
           type: string
           example: 2017/12/01 00:00
-          description: "入金予定日  \n形式： `yyyy/MM/dd HH:MM`\n"
+          description: '预计入账日期。
+
+            格式：`yyyy/MM/dd HH:MM`'
         trade_type:
           $ref: '#/components/schemas/AccountDetailTradeType'
         payment_method:
@@ -27658,9 +27615,7 @@ components:
           type: string
           nullable: true
           example: 課金訂正内容
-          description: '課金訂正内容
-
-            '
+          description: 金额调整类型。
         account_id:
           type: integer
           example: 1234567
@@ -27669,9 +27624,7 @@ components:
           type: string
           nullable: true
           example: o_**********************
-          description: 'オーダー（決済）ID
-
-            '
+          description: 订单（支付）ID。
         access_id:
           type: string
           nullable: true
@@ -27681,11 +27634,7 @@ components:
           type: integer
           example: 963
           nullable: false
-          description: 'この取引による入金額（参考値）\
-
-            ※実際の入金額は全ての売上入金詳細の入金額の合算した後に計算される消費税金額によるため、この値は参考値となります。
-
-            '
+          description: 当前交易的参考入账金额。实际入账金额会在汇总全部销售结算明细后，根据最终消费税金额重新计算，因此本字段仅供参考。
         amount:
           type: integer
           example: 1000
@@ -27700,51 +27649,37 @@ components:
           type: integer
           example: 36
           nullable: false
-          description: 'fincode決済手数料（税抜）
-
-            '
+          description: fincode 支付手续费（不含税）。
         fee_total_taxin:
           type: integer
           example: 37
           nullable: false
-          description: 'fincode決済手数料（税込）
-
-            '
+          description: fincode 支付手续费（含税）。
         fee_profit_tax:
           type: integer
           example: 1
           nullable: false
-          description: 'fincode決済手数料にかかる消費税
-
-            '
+          description: fincode 支付手续费中应税部分对应的消费税。
         fee_profit:
           type: integer
           example: 11
           nullable: false
-          description: 'fincode決済手数料のうち、課税対象金額
-
-            '
+          description: fincode 支付手续费中的应税金额。
         fee_cost:
           type: integer
           example: 25
           nullable: false
-          description: 'fincode決済手数料のうち、非課税対象金額
-
-            '
+          description: fincode 支付手续费中的非应税金额。
         fee_rate_total:
           type: number
           example: 3.6
           nullable: false
-          description: 'fincode決済手数料率
-
-            '
+          description: fincode 支付手续费率。
         fixed_fee:
           type: integer
           example: null
           nullable: true
-          description: 'fincode決済手数料 最低手数料
-
-            '
+          description: fincode 支付的最低手续费。
         apply_type:
           type: integer
           enum:
@@ -27752,98 +27687,82 @@ components:
           - 1
           example: 0
           nullable: false
-          description: "fincode手数料率 適用区分\n\n - `0`: 料率。<br /><span class=\"smallText\">この決済による売上に対し、fincode決済手数料率が適用されたことを示します。</span>\n\
-            \ - `1`: 最低手数料。<br /><span class=\"smallText\">この決済による売上に対し、fincode決済最低手数料が適用されたことを示します。</span>\n"
+          description: 'fincode 手续费率的适用类型。
+
+
+            - `0`：按费率计算，表示当前销售适用了 fincode 支付手续费率
+
+            - `1`：按最低手续费计算，表示当前销售适用了 fincode 最低支付手续费'
         web_registration_fee:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode振替口座 Web登録手数料（税抜）\
+          description: 'fincode 自动扣款账户 Web 登记手续费（不含税）。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         web_registration_fee_taxin:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode振替口座 Web登録手数料（税込）\
+          description: 'fincode 自动扣款账户 Web 登记手续费（含税）。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         web_registration_fee_tax:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode手数料 Web登録手数料消費税\
+          description: 'fincode 自动扣款账户 Web 登记手续费的消费税。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         paper_registration_fee:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode振替口座 依頼書登録手数料（税抜）\
+          description: 'fincode 自动扣款账户纸质申请书登记手续费（不含税）。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         paper_registration_fee_taxin:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode振替口座 依頼書登録手数料（税込）\
+          description: 'fincode 自动扣款账户纸质申请书登记手续费（含税）。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         paper_registration_fee_tax:
           type: integer
           example: 0
           nullable: false
-          description: 'fincode手数料 依頼書登録手数料消費税\
+          description: 'fincode 自动扣款账户纸质申请书登记手续费的消费税。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         platform_fee:
           type: integer
           example: 0
           nullable: true
-          description: 'プラットフォーム利用料（税抜）\
+          description: '平台使用费（不含税）。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         platform_fee_taxin:
           type: integer
           example: 0
           nullable: true
-          description: 'プラットフォーム利用料（税込）\
+          description: '平台使用费（含税）。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         platform_fee_rate:
           type: number
           example: 0
           nullable: true
-          description: 'プラットフォーム利用料率\
+          description: '平台使用费率。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         fixed_fee_for_platform_fee:
           type: integer
           example: 0
           nullable: true
-          description: 'プラットフォーム利用料率 最低手数料\
+          description: '平台最低使用费。
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         apply_type_for_platform_fee:
           type: integer
           enum:
@@ -27851,98 +27770,78 @@ components:
           - 1
           example: 0
           nullable: true
-          description: 'プラットフォーム利用料率 適用区分
+          description: '平台使用费率的适用类型。
 
 
-            - `0`: 料率。<br /><span class="smallText">この決済による売上に対し、プラットフォーム利用料率が適用されたことを示します。</span>
+            - `0`：按费率计算，表示当前销售适用了平台使用费率
 
-            - `1`: 最低手数料。<br /><span class="smallText">この決済による売上に対し、プラットフォームが設定した最低利用料が適用されたことを示します。</span>
+            - `1`：按最低使用费计算，表示当前销售适用了平台设定的最低使用费
 
 
-            ※ テナントのみ
-
-            '
+            仅适用于租户商户。'
         platform_web_registration_fee:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォームWeb登録利用料（税抜）\
+          description: '平台 Web 登记使用费（不含税）。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_web_registration_fee_taxin:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォームWeb登録利用料（税込）\
+          description: '平台 Web 登记使用费（含税）。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_web_registration_fee_tax:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォームWeb登録利用料消費税\
+          description: '平台 Web 登记使用费的消费税。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_paper_registration_fee:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォーム依頼書登録利用料（税抜）\
+          description: '平台纸质申请书登记使用费（不含税）。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_paper_registration_fee_taxin:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォーム依頼書登録利用料（税込）\
+          description: '平台纸质申请书登记使用费（含税）。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         platform_paper_registration_fee_tax:
           type: integer
           example: 0
           nullable: false
-          description: 'プラットフォーム依頼書登録利用料消費税\
+          description: '平台纸质申请书登记使用费的消费税。
 
-            ※ 口座振替 かつ テナントのみ
-
-            '
+            仅适用于银行账户自动扣款的租户商户。'
         processed_date:
           type: string
           example: 2022/05/16 23:59
           nullable: false
-          description: '取引の確定処理を行った日時 \
+          description: '交易完成确定处理的时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_start:
           type: string
           example: 2022/05/16 23:59
           nullable: false
-          description: '集計期間の開始日\
+          description: '统计期间的开始时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_end:
           type: string
           example: 2022/05/16 23:59
           nullable: false
-          description: '集計期間の終了日\
+          description: '统计期间的结束时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         client_field_1:
           type: string
           nullable: true
@@ -28271,85 +28170,63 @@ components:
           type: integer
           nullable: true
           example: 568
-          description: 'プラットフォーム利用料収入 入金額\
+          description: '平台使用费收入的实际或预计入账金额。
 
-            \
-
-            プラットフォームショップに入金される（入金が予定されている）プラットフォーム利用料による売上金の額です。\
-
-            精算金額（`settlement_amount`）から振込手数料（`bank_transfer_fee`）を引いた金額に一致します。
-
-            '
+            该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。'
         deposit_date:
           type: string
           nullable: true
           example: 2022/05/16 23:59
-          description: 'プラットフォーム利用料収入 入金実績日\
+          description: '平台使用费收入的实际入账日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         scheduled_deposit_date:
           type: string
           nullable: true
           example: 2022/05/16 23:59
-          description: 'プラットフォーム利用料収入 入金予定日\
+          description: '平台使用费收入的预计入账日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_start:
           type: string
           nullable: true
           example: 2022/05/16 23:59
-          description: 'プラットフォーム利用料収入 集計期間 開始日\
+          description: '平台使用费收入统计期间的开始时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         aggregate_term_end:
           type: string
           nullable: true
           example: 2022/05/16 23:59
-          description: 'プラットフォーム利用料収入 集計期間 終了日\
+          description: '平台使用费收入统计期间的结束时间。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         payment_deadline:
           type: string
           nullable: true
           example: null
-          description: '（請求が発生した場合）支払期限日\
+          description: '产生应付款时的支付截止日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         payment_completion_date:
           type: string
           nullable: true
           example: null
-          description: '（請求が発生した場合）請求日\
+          description: '产生应付款时的请款日期。
 
-            形式： `yyyy/MM/dd HH:MM`
-
-            '
+            格式：`yyyy/MM/dd HH:MM`'
         status_code:
           $ref: '#/components/schemas/DepositStatusCode'
         count:
           type: integer
           nullable: true
           example: 3
-          description: 'このプラットフォーム利用料収入に含まれる決済の件数
-
-            '
+          description: 当前平台使用费收入中包含的支付交易数量。
         settlement_amount:
           type: integer
           nullable: true
           example: 568
-          description: '精算金額
-
-            '
+          description: 平台使用费收入的结算金额。
         bank_transfer_fee:
           type: integer
           nullable: true
@@ -28359,67 +28236,49 @@ components:
           type: integer
           nullable: true
           example: 1000
-          description: 'このプラットフォーム利用料入金において精算の対象となった取引の総額。
-
-            '
+          description: 当前平台使用费结算所涵盖交易的总金额。
         fee_amount:
           type: integer
           nullable: true
           example: 30
-          description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるfincodeへの手数料
-
-            '
+          description: 当前平台使用费结算所涵盖交易应向 fincode 支付的手续费。
         taxable_fee_amount:
           type: integer
           nullable: true
           example: 0
-          description: '決済手数料 課税対象額
-
-            '
+          description: 支付手续费中的应税金额。
         nontaxable_fee_amount:
           type: integer
           nullable: true
           example: 0
-          description: '決済手数料 非課税対象額
-
-            '
+          description: 支付手续费中的非应税金额。
         tax_amount:
           type: integer
           nullable: true
           example: 2
-          description: '決済手数料 消費税額
-
-            '
+          description: 支付手续费的消费税金额。
         web_registration_fee_amount:
           type: integer
           nullable: true
           example: 400
-          description: 'このプラットフォーム利用料入金の精算期間中に発生した振替口座のWeb登録手数料\
+          description: '结算期间产生的自动扣款账户 Web 登记手续费。
 
-            ※ 口座振替のみ
-
-            '
+            仅适用于银行账户自动扣款。'
         platform_fee_amount:
           type: integer
           nullable: true
           example: 0
-          description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるプラットフォーム利用料
-
-            '
+          description: 当前结算所涵盖交易的平台使用费。
         platform_fee_tax_amount:
           type: integer
           nullable: true
           example: 0
-          description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税
-
-            '
+          description: 当前结算所涵盖交易的平台使用费消费税。
         platform_web_registration_fee_amount:
           type: integer
           nullable: true
           example: 0
-          description: 'このプラットフォーム利用料入金の精算期間中に発生した、プラットフォームが設定した振替口座のWeb登録手数料
-
-            '
+          description: 结算期间产生的、由平台设定的自动扣款账户 Web 登记手续费。
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -28429,16 +28288,12 @@ components:
         deposit_destination:
           allOf:
           - $ref: '#/components/schemas/DepositTargetBankAccountInfo'
-          description: 'プラットフォーム利用料収入 入金先口座情報
-
-            '
+          description: 平台使用费收入的收款银行账户信息。
         verified:
           type: boolean
           example: true
           deprecated: true
-          description: '検証確認フラグ
-
-            '
+          description: 验证确认标志。
     PlatformAccount.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/PlatformAccount'
@@ -30536,44 +30391,36 @@ components:
           maxLength: 20
           nullable: true
           example: 山田
-          description: '代表者 姓
+          description: '法定代表人姓氏。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字
-
-            '
+            可用字符：汉字、平假名、片假名、半角英文字母。'
         representative_last_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: ヤマダ
-          description: '代表者 姓（カナ）\
+          description: '法定代表人姓氏（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_first_name:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: 太郎
-          description: '代表者 名\
+          description: '法定代表人名字。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字
-
-            '
+            可用字符：汉字、平假名、片假名、半角英文字母。'
         representative_first_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: タロウ
-          description: '代表者 名（カナ）\
+          description: '法定代表人名字（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_postal_code:
           type: string
           pattern: ^\d{3}-\d{4}$
@@ -30581,119 +30428,97 @@ components:
           minLength: 8
           maxLength: 8
           example: 150-0043
-          description: '代表者 住所 郵便番号\
+          description: '法定代表人地址的邮政编码。
 
-            形式：`xxx-xxxx`
-
-            '
+            格式：`xxx-xxxx`'
         representative_prefecture:
           type: string
           minLength: 1
           maxLength: 4
           nullable: true
           example: 東京都
-          description: '代表者 住所 都道府県\
+          description: '法定代表人地址的都道府县。
 
-            形式： 漢字
-
-            '
+            格式：汉字。'
         representative_prefecture_kana:
           type: string
           minLength: 1
           maxLength: 6
           nullable: true
           example: トウキョウト
-          description: '代表者 住所 都道府県（カナ）\
+          description: '法定代表人地址的都道府县（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_address_municipality:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 渋谷区
-          description: '代表者 住所 市区町村\
+          description: '法定代表人地址的市区町村。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         representative_address_municipality_kana:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
           example: シブヤク
-          description: '代表者 住所 市区町村（カナ）\
+          description: '法定代表人地址的市区町村（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_address_section:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 道玄坂
-          description: '代表者 住所 町域\
+          description: '法定代表人地址的町域。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         representative_address_section_kana:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
           example: ドウゲンザカ
-          description: '代表者 住所 町域（カナ）\
+          description: '法定代表人地址的町域（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_address_chrome:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 1-14-6
-          description: '代表者 住所 番地\
+          description: '法定代表人地址的门牌号。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         representative_address_chrome_kana:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
           example: 1-14-6
-          description: '代表者 住所 番地（カナ）
-
-            '
+          description: 法定代表人地址的门牌号（片假名）。
         representative_address_building_name:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
           example: ヒューマックス渋谷ビル 7F
-          description: '代表者 住所 建物名\
+          description: '法定代表人地址的建筑物名称。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         representative_address_building_name_kana:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
           example: ヒューマックスシブヤビル ナナカイ
-          description: '代表者 住所 建物名（カナ）\
+          description: '法定代表人地址的建筑物名称（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         representative_tel:
           type: string
           minLength: 1
@@ -30701,23 +30526,17 @@ components:
           pattern: ^\d{1,15}$
           nullable: true
           example: '0364330000'
-          description: '代表者 電話番号\
+          description: '法定代表人电话号码。
 
-            形式： 半角数字（ハイフンなし、PHS番号不可）
-
-            '
+            格式：不含连字符的半角数字；不可使用 PHS 号码。'
         representative_birthday:
           type: string
           pattern: ^\d{4}/\d{2}/\d{2}$
           nullable: true
           example: 1980/01/01
-          description: '代表者 生年月日\
+          description: '法定代表人出生日期。
 
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         representative_gender:
           type: integer
           enum:
@@ -30725,84 +30544,69 @@ components:
           - 1
           nullable: true
           example: 0
-          description: '代表者 性別
+          description: '法定代表人性别。
 
 
-            - `0`: 男性
+            - `0`：男性
 
-            - `1`: 女性
-
-            '
+            - `1`：女性'
         staff1_last_name:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: 鈴木
-          description: '担当者1 姓\
+          description: '第一联系人姓氏。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字\
+            可用字符：汉字、平假名、片假名、半角英文字母。
 
-            \
 
-            fincodeは担当者1,2宛てに審査結果の通知や審査保留対応の連絡などを行います。
-
-            '
+            fincode 会向第一、第二联系人发送审核结果通知及审核暂缓事项的处理通知。'
         staff1_last_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: スズキ
-          description: '担当者1 姓（カナ）\
+          description: '第一联系人姓氏（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         staff1_first_name:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: 次郎
-          description: '担当者1 名\
+          description: '第一联系人名字。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字
-
-            '
+            可用字符：汉字、平假名、片假名、半角英文字母。'
         staff1_first_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: ジロウ
-          description: '担当者1 名（カナ）\
+          description: '第一联系人名字（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         staff1_company_name:
           type: string
           minLength: 1
           maxLength: 150
           nullable: true
           example: サンプル株式会社
-          description: '担当者1 会社名\
+          description: '第一联系人公司名称。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         staff1_belongs:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: EC事業部
-          description: '担当者1 部署名\
+          description: '第一联系人所属部门。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         staff1_tel:
           type: string
           minLength: 1
@@ -30810,11 +30614,9 @@ components:
           pattern: ^\d{1,15}$
           nullable: true
           example: 09000000000
-          description: '担当者1 電話番号\
+          description: '第一联系人电话号码。
 
-            形式： 半角数字（ハイフンなし、PHS番号不可）
-
-            '
+            格式：不含连字符的半角数字；不可使用 PHS 号码。'
         staff1_mail:
           type: string
           minLength: 1
@@ -30822,77 +30624,63 @@ components:
           format: email
           nullable: true
           example: staff-1@example.com
-          description: '担当者1 メールアドレス\
+          description: '第一联系人电子邮箱地址。
 
-            形式： RFC 5322
-
-            '
+            格式：RFC 5322。'
         staff2_last_name:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: 佐藤
-          description: '担当者2 姓\
+          description: '第二联系人姓氏。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字
-
-            '
+            可用字符：汉字、平假名、片假名、半角英文字母。'
         staff2_last_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: サトウ
-          description: '担当者2 姓（カナ）\
+          description: '第二联系人姓氏（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         staff2_first_name:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: 三郎
-          description: '担当者2 名\
+          description: '第二联系人名字。
 
-            形式： 漢字/ひらがな/カタカナ/半角英字
-
-            '
+            可用字符：汉字、平假名、片假名、半角英文字母。'
         staff2_first_name_kana:
           type: string
           minLength: 1
           maxLength: 20
           nullable: true
           example: サブロウ
-          description: '担当者2 名（カナ）\
+          description: '第二联系人名字（片假名）。
 
-            形式： 全角カナ
-
-            '
+            格式：全角片假名。'
         staff2_company_name:
           type: string
           minLength: 1
           maxLength: 150
           nullable: true
           example: サンプル株式会社
-          description: '担当者2 会社名\
+          description: '第二联系人公司名称。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         staff2_belongs:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 営業統括部
-          description: '担当者2 部署名\
+          description: '第二联系人所属部门。
 
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+            可用字符：汉字、平假名、片假名、半角英数字。'
         staff2_tel:
           type: string
           minLength: 1
@@ -30900,11 +30688,9 @@ components:
           pattern: ^\d{1,15}$
           nullable: true
           example: 09000000000
-          description: '担当者2 電話番号\
+          description: '第二联系人电话号码。
 
-            形式： 半角数字（ハイフンなし、PHS番号不可）
-
-            '
+            格式：不含连字符的半角数字；不可使用 PHS 号码。'
         staff2_mail:
           type: string
           minLength: 1
@@ -30912,35 +30698,26 @@ components:
           format: email
           nullable: true
           example: staff-2@example.com
-          description: '担当者2 メールアドレス\
+          description: '第二联系人电子邮箱地址。
 
-            形式： RFC 5322
-
-            '
+            格式：RFC 5322。'
         corporate:
           type: boolean
           nullable: true
           example: true
-          description: '事業形態\
+          description: '经营主体类型。
 
-            \
 
-            - `true`: 法人\
+            - `true`：法人企业
 
-            - `false`: 個人事業主
-
-            '
+            - `false`：个体经营者'
         corporate_info:
           allOf:
           - $ref: '#/components/schemas/CorporateInfo.V2'
           nullable: true
-          description: '法人情報
+          description: '法人企业信息。
 
-            \
-
-            `corporate`が`true`のとき必須
-
-            '
+            当 `corporate` 为 `true` 时必填。'
       required:
       - representative_last_name
       - representative_last_name_kana
@@ -31053,154 +30830,106 @@ components:
           minLength: 1
           maxLength: 100
           example: サンプルショップ東京
-          description: 'fincodeにおけるショップ名
-
-            '
+          description: fincode 中登记的商户名称。
         shop_name_kana:
           type: string
           minLength: 1
           maxLength: 100
           example: サンプルショップトウキョウ
-          description: 'fincodeにおけるショップ名（カナ）
-
-            '
+          description: fincode 中登记的商户名称（片假名）。
         shop_name_en:
           type: string
           minLength: 1
           maxLength: 25
           example: Sample Shop Tokyo
-          description: 'fincodeにおけるショップ名（英語）
-
-            '
+          description: fincode 中登记的商户英文名称。
         support_mail:
           type: string
           nullable: true
           minLength: 1
           maxLength: 254
           example: support@example.com
-          description: '購入者向けサポート窓口 メールアドレス\
+          description: '面向购买者的客服电子邮箱地址。
 
-            形式： RFC 5322
-
-            '
+            格式：RFC 5322。'
         support_tel:
           type: string
           nullable: true
           minLength: 1
           maxLength: 15
           example: 312345678
-          description: '購入者向けサポート窓口 電話番号\
+          description: '面向购买者的客服电话号码。
 
-            形式： 電話番号（ハイフンなし）
-
-            '
+            格式：不含连字符的电话号码。'
         unit_price:
           type: number
           nullable: true
           minLength: 1
           maxLength: 23
           example: 1000
-          description: '1回の決済における金額（単価）\
+          description: '单笔支付的商品或服务单价。
 
-            \
 
-            例： `1000`（1000円）
-
-            '
+            示例：`1000`（1000 日元）'
         deals_long_apply_content:
           type: boolean
           nullable: true
           example: true
-          description: 'fincode審査に時間がかかるコンテンツを取り扱うかどうかの表明
+          description: '是否经营需要较长 fincode 审核时间的商品或服务。
 
 
-            - `true`: fincode審査に時間がかかるコンテンツを取り扱う
+            - `true`：经营此类商品或服务
 
-            - `false`: fincode審査に時間がかかるコンテンツを取り扱わない
-
-
-            以下の商材を取り扱う場合は`true`を指定する必要があります。
+            - `false`：不经营此类商品或服务
 
 
-            - 呉服
-
-            - コンサルディングサービス
-
-            - エステ、美容サロン、美容医療
-
-            - スポーツ施設・フィットネスクラブ
-
-            - カルチャースクール・通信講座
-
-            - データ販売
-
-            - 情報詳細（情報の内容自体が商品となるもの）
-
-            - 占い
-
-            - サプリメント・健康食品
-
-            - 美容品・化粧品
-
-            - カツラ
-
-            - 旅行業に該当するサービス
-
-            - タバコ・CBD
-
-            - 寄付金
-
-            '
+            经营以下内容时必须指定为 `true`：和服、咨询服务、美容护理/美容院/医疗美容、体育设施/健身俱乐部、文化学校/函授课程、数据销售、以信息本身为商品的信息内容、占卜、营养补充剂/健康食品、美容用品/化妆品、假发、属于旅行业的服务、烟草/CBD、捐款。'
         deals_insecure_content:
           type: boolean
           nullable: true
           example: true
-          description: 'fincodeで取扱不可の商材を取り扱わないことの表明
+          description: '是否确认不经营 fincode 禁止处理的商品或服务。
 
 
-            - `true`: 取扱不可の商材を取り扱う予定はない
+            - `true`：没有经营禁止品类的计划
 
-            - `false`: 取扱不可の商材を取り扱う予定がある
-
-
-            fincodeの禁止商材は以下の通りです。
+            - `false`：计划经营禁止品类
 
 
-            - 金融行為（クレジットカードショッピング枠の現金化等）
+            fincode 禁止经营的品类如下：
 
-            - 仮想通貨取引、金券（印紙、切手等含む）、商品券、プリペイドカード、有価証券
 
-            - 賭博、ギャンブル
+            - 金融行为，例如信用卡购物额度套现
 
-            - RMT（リアルマネートレーディング）
+            - 虚拟货币交易、票券（包括印花税票和邮票）、商品券、预付卡、有价证券
 
-            - ペット等の生き物全般（※標本・剥製も含む）
+            - 赌博及博彩
 
-            - お布施
+            - RMT（真实货币交易）
 
-            - 危険ドラッグ、デザイナーズドラッグ
+            - 宠物等所有活体，包括标本和剥制品
 
-            - 処方箋なしで購入できる処方薬（ルミガン・ラディース・クラッシュビスタ・ケアプロスト等）
+            - 布施
 
-            - 第三者の著作権・肖像権・知的所有権等を侵害する恐れがあるもの
+            - 危险药物及设计师药物
 
-            - 公序良俗に反するもの（アダルト、出会い系サイトを含む）
+            - 无处方购买处方药，例如 Lumigan、Latisse、Glash Vista、Careprost 等
 
-            - 法律・法令の定めに違反するもの（銃刀法・麻薬取締法・ワシントン条約・薬事法）
+            - 可能侵犯第三方著作权、肖像权或知识产权的商品或内容
 
-            '
+            - 违反公序良俗的商品或服务，包括成人内容和交友网站
+
+            - 违反法律法规的商品或服务，包括违反枪刀法、麻药取缔法、华盛顿公约或药事法的内容'
         lost_trial:
           type: boolean
           nullable: true
           example: true
-          description: '改正割賦販売法に基づく訴訟敗訴歴があるかどうかの表明
+          description: '是否存在依据日本修订分期付款销售法提起诉讼并败诉的历史。
 
 
-            - `true`: 改正割賦販売法に基づく訴訟敗訴歴がない
+            - `true`：不存在败诉记录
 
-            - `false`: 改正割賦販売法に基づく訴訟敗訴歴がある
-
-            '
+            - `false`：存在败诉记录'
         use_of_fincode:
           type: object
           properties:
@@ -31208,48 +30937,30 @@ components:
               type: boolean
               nullable: true
               example: true
-              description: 'Webサイト利用有無\
-
-                \
-
-                Webサイト/Webアプリでfincodeを使用するかどうか
+              description: '是否在网站或 Web 应用中使用 fincode。
 
 
-                - `true`: Webサイト/Webアプリでfincodeを使用する
-
-                '
+                - `true`：在网站或 Web 应用中使用 fincode'
             used_on_app:
               type: boolean
               nullable: true
               example: true
-              description: 'ネイティブアプリ利用有無\
-
-                \
-
-                ネイティブアプリでfincodeを使用するかどうか
+              description: '是否在原生应用中使用 fincode。
 
 
-                - `true`: ネイティブアプリでfincodeを使用する
-
-                '
+                - `true`：在原生应用中使用 fincode'
         site_published:
           type: boolean
           nullable: true
           example: true
-          description: 'Webサイトの公開状況\
+          description: '网站公开状态，表示 fincode 审核时能否访问提供支付功能的网站。
 
-            \
-
-            fincode審査時点で決済機能を提供するWebサイトが閲覧可能かどうかを示します。\
-
-            `usage_of_fincode.used_on_web`が`true`の場合、指定必須です。
+            当 `usage_of_fincode.used_on_web` 为 `true` 时必填。
 
 
-            - `true`: fincode審査チームがサイトを閲覧可能
+            - `true`：fincode 审核团队可以访问网站
 
-            - `false`: fincode審査チームがサイトを閲覧不可能
-
-            '
+            - `false`：fincode 审核团队无法访问网站'
         site_info:
           type: object
           properties:
@@ -31259,46 +30970,22 @@ components:
               minLength: 1
               maxLength: 300
               example: https://example.com
-              description: 'WebサイトURL\
-
-                \
-
-                fincode審査チームがサイトを閲覧するためのURL
-
-                '
+              description: fincode 审核团队用于访问网站的 URL。
             credential:
               type: string
               nullable: true
               minLength: 1
               maxLength: 100
               example: 'ID: example_user,Password: password'
-              description: 'ログイン情報\
-
-                \
-
-                fincode審査チームがサイトを閲覧するためのログイン情報
-
-                '
+              description: fincode 审核团队访问网站所需的登录信息。
           required:
           - url
-          description: 'Webサイト情報\
-
-            \
-
-            fincode審査チームが審査上確認をする、fincodeによる決済を行うWebサイトの情報
-
-            '
+          description: 使用 fincode 支付的网站信息，供 fincode 审核团队核查。
         prepaid_point:
           type: boolean
           nullable: true
           example: true
-          description: 'プリペイドポイントの有無\
-
-            \
-
-            ショップがプリペイドポイントを導入しているかどうか
-
-            '
+          description: 是否在商户中使用预付积分。
         prepaid_point_info:
           type: object
           properties:
@@ -31308,65 +30995,33 @@ components:
               minLength: 1
               maxLength: 300
               example: ポイントは購入時に利用可能で、合計金額からポイントを差し引いて決済を行う。
-              description: 'ポイント利用方法\
-
-                \
-
-                プリペイドポイントの利用方法
-
-                '
+              description: 预付积分的使用方式。
             about_expiration:
               type: string
               nullable: true
               minLength: 1
               maxLength: 300
               example: ポイントは1年間有効。
-              description: 'ポイント有効期限について\
-
-                \
-
-                プリペイドポイントの有効期限について
-
-                '
+              description: 预付积分的有效期说明。
         provides:
           type: object
-          description: '商材情報
-
-            '
+          description: 经营商品或服务的信息。
           properties:
             product:
               type: boolean
               nullable: true
               example: false
-              description: '物販商材 提供有無\
-
-                \
-
-                ショップが物品販売を行うかどうか
-
-                '
+              description: 是否销售实物商品。
             service:
               type: boolean
               nullable: true
               example: false
-              description: 'サービス商材 提供有無\
-
-                \
-
-                ショップがサービス提供を行うかどうか
-
-                '
+              description: 是否提供服务类商品。
             digital_contents:
               type: boolean
               nullable: true
               example: true
-              description: 'デジタルコンテンツ 提供有無\
-
-                \
-
-                ショップがデジタルコンテンツ販売を行うかどうか
-
-                '
+              description: 是否销售数字内容。
         content_description:
           type: string
           nullable: true
@@ -31375,43 +31030,31 @@ components:
           example: '本サービスは、ユーザーが自由にWeb記事を投稿・販売できるコンテンツを提供しています。
 
             '
-          description: '取扱商材の説明\
-
-            \
-
-            ショップの提供する商材についての説明
-
-            '
+          description: 商户所提供商品或服务的说明。
         product_content_info:
           allOf:
           - $ref: '#/components/schemas/ContentInfo.V2'
-          description: '物販商材情報<br>webサイトが公開されていない場合、取扱商材の詳細情報が必要になります。<br><a style="color: rgb(212, 31, 28);">※ use_of_fincode.used_on_web
-            または site_publishedが</a> `false` <a style="color: rgb(212, 31, 28);"><br>かつ provides.productが</a> `true` <a style="color:
-            rgb(212, 31, 28);">のとき必須</a>'
+          description: '实物商品信息。网站尚未公开时，需要提供经营商品的详细信息。
+
+            当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.product` 为 `true` 时必填。'
         service_content_info:
           allOf:
           - $ref: '#/components/schemas/ContentInfo.V2'
-          description: 'サービス商材情報<br>webサイトが公開されていない場合、取扱商材の詳細情報が必要になります。<br><a style="color: rgb(212, 31, 28);">※ use_of_fincode.used_on_web
-            または site_publishedが</a> `false` <a style="color: rgb(212, 31, 28);"><br>かつ provides.serviceが</a> `true` <a style="color:
-            rgb(212, 31, 28);">のとき必須</a>'
+          description: '服务类商品信息。网站尚未公开时，需要提供经营服务的详细信息。
+
+            当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.service` 为 `true` 时必填。'
         digital_content_info:
           allOf:
           - $ref: '#/components/schemas/ContentInfo.V2'
-          description: 'デジタルコンテンツ商材情報<br>webサイトが公開されていない場合、取扱商材の詳細情報が必要になります。<br><a style="color: rgb(212, 31, 28);">※ use_of_fincode.used_on_web
-            または site_publishedが</a> `false` <a style="color: rgb(212, 31, 28);"><br>かつ provides.digital_contentsが</a> `true`
-            <a style="color: rgb(212, 31, 28);">のとき必須</a>'
+          description: '数字内容商品信息。网站尚未公开时，需要提供经营内容的详细信息。
+
+            当 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，且 `provides.digital_contents` 为 `true` 时必填。'
         additional_info:
           type: object
           nullable: true
-          description: '追加提出情報\
+          description: '补充提交信息。开始审核时，如果商户网站尚未公开，即 `use_of_fincode.used_on_web` 或 `site_published` 为 `false`，需要补充提供本信息。
 
-            \
-
-            審査開始時点でショップのWebサイトが公開されていない場合（`use_of_fincode.used_on_web`が`false`または`site_published`が`false`の場合）、追加で提供する情報です。\
-
-            特定商取引法に基づく表示情報を基に値を設定してください。
-
-            '
+            请根据日本《特定商业交易法》要求展示的信息填写。'
           properties:
             shop_sales_manager_name:
               type: string
@@ -31419,39 +31062,21 @@ components:
               minLength: 1
               maxLength: 300
               example: イプシロン太郎
-              description: '販売責任者氏名\
-
-                \
-
-                ショップの販売責任者の氏名
-
-                '
+              description: 商户销售负责人的姓名。
             shop_service_name:
               type: string
               nullable: true
               minLength: 1
               maxLength: 300
               example: サンプルショップ
-              description: '屋号・サービス名\
-
-                \
-
-                ショップのサービスの名称
-
-                '
+              description: 商号或服务名称。
             shop_how_to_pay:
               type: string
               nullable: true
               minLength: 1
               maxLength: 1000
               example: クレジットカード、コンビニ決済
-              description: '支払い方法\
-
-                \
-
-                ショップで利用可能な支払い方法
-
-                '
+              description: 商户可使用的支付方式。
             shop_charge_description:
               type: string
               nullable: true
@@ -31460,13 +31085,7 @@ components:
               example: 'インターネット接続費用およびその他インターネット利用に必要な費用。モバイルデバイスをご利用の場合にはデータ通信料が発生する場合があります。
 
                 '
-              description: '商品代金以外の料金の説明\
-
-                \
-
-                送料、手数料、消費税などの商品代金以外の料金についての説明
-
-                '
+              description: 商品价格之外的费用说明，例如运费、手续费和消费税。
             shop_product_delivery_time:
               type: string
               nullable: true
@@ -31475,13 +31094,7 @@ components:
               example: 'サンプルショップのサービス提供開始日はユーザーアカウントで初めて認証手続を行った日となります。
 
                 '
-              description: '商品の引き渡し時期\
-
-                \
-
-                商品の引き渡し時期についての説明
-
-                '
+              description: 商品交付时间说明。
             shop_return_goods_handing_conditions:
               type: string
               nullable: true
@@ -31492,13 +31105,7 @@ components:
                 2. デジタルコンテンツサービスの特性上、購入後の返品・キャンセルはお受付いたしかねます。
 
                 '
-              description: '返品・交換に関する条件\
-
-                \
-
-                返品・交換に関する条件についての説明
-
-                '
+              description: 退货及换货条件说明。
           required:
           - shop_sales_manager_name
           - shop_servoce_name
@@ -33904,9 +33511,7 @@ components:
         shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'ショップID（テナント）
-
-            '
+          description: 商户 ID（租户商户）。
         platform_id:
           allOf:
           - $ref: '#/components/schemas/platform_id'
@@ -33922,220 +33527,161 @@ components:
           items:
             allOf:
             - $ref: '#/components/schemas/Examination'
-          description: '審査情報\
+          description: '审核信息，数组中保存各支付服务商的审核状态。
 
-            \
 
-            決済事業者ごとの審査状況を配列に格納しています。\
-
-            ある決済手段について審査が開始されていない場合、その決済手段に対応する`examination_master_id`をもつオブジェクトは配列中に存在しません。
-
-            '
+            如果某种支付方式尚未开始审核，数组中不会出现持有该支付方式对应 `examination_master_id` 的对象。'
         available_status_code:
           type: integer
           enum:
           - 201
           - 202
           example: 201
-          description: '利用可能モード
+          description: '可使用的环境模式。
 
 
-            - 201: テスト環境のみ利用可能
+            - `201`：仅可使用测试环境
 
-            - 202: 本番環境利用可能
-
-            '
+            - `202`：可使用生产环境'
         create_date:
           type: string
           example: 2021/01/01
-          description: 'ショップを作成したユーザーの登録日
+          description: '创建商户的用户注册日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         contracted_at:
           type: string
           nullable: true
           example: 2021/01/01
-          description: '本番環境申請日
+          description: '生产环境申请日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         start_charging_at:
           type: string
           nullable: true
           example: 2021/01/01
-          description: '初回登録完了日
+          description: '首次登记完成日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         expired_at:
           type: string
           nullable: true
           example: 2021/12/01
-          description: '解約日
+          description: '解约日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         sales_deposit_status_code:
           type: integer
           enum:
           - 501
           - 502
           nullable: true
-          description: '本人確認手続き ステータス
+          description: '身份验证手续状态，表示开始收款入账所需手续的办理状态。
 
 
-            入金開始に必要な本人確認手続きのステータスを表します。
+            - `501`：收款所需手续尚未完成
 
-            - `501`: 入金に必要な手続きが未完了
-
-            - `502`: 入金可能
-
-            '
+            - `502`：可以收款入账'
         sales_deposit_status_updated_date:
           type: string
           nullable: true
           example: 2021/01/21
-          description: '売上入金 可否ステータス 更新日
+          description: '销售款入账可否状态的更新日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         denied_at:
           type: string
           nullable: true
           example: null
-          description: '契約不成立日
+          description: '合同未成立日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         suspended_billing:
           type: boolean
           nullable: true
           example: false
-          description: '請求停止フラグ
-
-            '
+          description: 请款停止标志。
         suspended_billing_date:
           type: string
           nullable: true
           example: null
-          description: '請求停止フラグ 更新日
+          description: '请款停止标志的更新日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         suspended_payment:
           type: boolean
           nullable: true
           example: false
-          description: '入金停止フラグ
-
-            '
+          description: 入账停止标志。
         suspended_payment_date:
           type: string
           nullable: true
           example: null
-          description: '入金停止フラグ 更新日
+          description: '入账停止标志的更新日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         suspended_service:
           type: boolean
           nullable: true
           example: false
-          description: 'サービス停止フラグ
-
-            '
+          description: 服务停止标志。
         suspended_service_date:
           type: string
           nullable: true
           example: null
-          description: 'サービス停止フラグ 更新日
+          description: '服务停止标志的更新日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         suspeded_immediate_use:
           type: boolean
           nullable: true
           example: false
-          description: '即時利用停止フラグ
-
-            '
+          description: 立即停止使用标志。
         suspended_immediate_use_date:
           type: string
           nullable: true
           example: null
-          description: '即時利用停止フラグ 更新日
+          description: '立即停止使用标志的更新日期。
 
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         stop_cancelaltion_memo:
           type: string
           nullable: true
           minLength: 1
           maxLength: 5000
           example: null
-          description: '停止・解約 備考
-
-            '
+          description: 停止或解约备注。
         obligations_notice:
           type: string
           nullable: true
           minLength: 1
           maxLength: 5000
           example: null
-          description: '特記事項（債権債務）
-
-            '
+          description: 债权债务特别事项。
         user_shop_name:
           type: string
           nullable: true
           minLength: 1
           maxLength: 50
           example: null
-          description: 'ショップ名（ユーザー用）
-
-            '
+          description: 面向用户显示的商户名称。
         register_mail:
           type: string
           nullable: true
           minLength: 1
           maxLength: 384
           example: null
-          description: '登録メールアドレス
-
-            '
+          description: 登记电子邮箱地址。
         platform_reprentative_shop:
           type: boolean
           nullable: true
           example: false
-          description: 'プラットフォームの代表ショップか
+          description: '是否为平台的代表商户。
 
 
-            - true: 代表ショップ
+            - `true`：代表商户
 
-            - false: 代表ショップではない
-
-            '
+            - `false`：非代表商户'
         shared_customer_flag:
           allOf:
           - $ref: '#/components/schemas/shared_customer_flag'
@@ -34147,49 +33693,29 @@ components:
               pay_by:
                 allOf:
                 - $ref: '#/components/schemas/ShopPaymentMethod'
-          description: '契約情報
-
-            '
+          description: 合同详细信息。
         contract_bank_account:
           allOf:
           - $ref: '#/components/schemas/ContractBankAccountInfo'
-          description: '入金先口座
-
-            '
+          description: 销售款收款银行账户。
         contract_virtual_bank:
           allOf:
           - $ref: '#/components/schemas/ContractBankAccountInfo'
-          description: 'バーチャル口座情報\
-
-            \
-
-            このショップに関してfincodeへの支払いが売上入金額を上回った場合、この口座に所定の期日までに入金を行う必要があります。
-
-            '
+          description: 虚拟账户信息。当该商户应向 fincode 支付的金额超过销售结算入账金额时，必须在规定期限内向此账户汇款。
         contract_card_destination:
           type: array
           items:
             allOf:
             - $ref: '#/components/schemas/CardDestination'
-          description: 'カード決済 仕向け先のリスト
-
-            '
+          description: 银行卡支付收单路由列表。
         credit_card_setting:
           allOf:
           - $ref: '#/components/schemas/CardPaymentSetting'
-          description: 'カード決済 設定\
-
-            \
-
-            3Dセキュアが有効かどうか・審査の結果、3Dセキュアの利用が必須となったかどうか・分割払い／リボ払い利用ができるかどうかなどの情報が含まれます。
-
-            '
+          description: 银行卡支付设置，包括是否启用 3D Secure、审核后是否被要求必须使用 3D Secure，以及是否可使用分期付款或循环信贷付款等信息。
         official_registered_corporate_info:
           allOf:
           - $ref: '#/components/schemas/RegistryCorporateInfo'
-          description: '登記簿上の法人情報
-
-            '
+          description: 工商登记中的法人企业信息。
     Contracts.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Contract'

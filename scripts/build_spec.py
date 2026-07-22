@@ -104,6 +104,19 @@ def translate_named_schema_descriptions(
             schema["description"] = description
 
 
+def translate_schema_property_descriptions(
+    document: dict[str, Any], schema_descriptions: dict[str, dict[str, str]]
+) -> None:
+    """仅在指定 Schema 内按字段名应用人工译文，避免跨业务语境误覆盖。"""
+    schemas = document.get("components", {}).get("schemas", {})
+    if not isinstance(schemas, dict):
+        return
+    for schema_name, descriptions in schema_descriptions.items():
+        schema = schemas.get(schema_name)
+        if isinstance(schema, dict) and isinstance(descriptions, dict):
+            translate_property_descriptions(schema, descriptions)
+
+
 def translate_tags(
     document: dict[str, Any], names: dict[str, str], group_names: dict[str, str]
 ) -> None:
@@ -163,6 +176,10 @@ def main() -> None:
     translate_named_schema_descriptions(
         result,
         translations.get("property_descriptions", {}),
+    )
+    translate_schema_property_descriptions(
+        result,
+        translations.get("schema_property_descriptions", {}),
     )
     translate_tags(
         result,
