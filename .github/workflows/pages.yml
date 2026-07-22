@@ -2,8 +2,6 @@ name: 构建并发布中文文档
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   contents: read
@@ -39,4 +37,3 @@ jobs:
       - name: 发布 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
