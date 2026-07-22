@@ -4248,7 +4248,7 @@ paths:
       operationId: createPaymentSession
       tags:
       - 重定向式支付
-      summary: 決済URL 作成
+      summary: 创建支付页面 URL
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -4256,16 +4256,12 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップで決済を行います。
-
-          '
-      description: 'fincodeが提供するリダイレクト型決済ページを発行し、その決済ページへのURLをレスポンスします。
-
-        '
+          在指定的租户商户上执行支付。'
+      description: 创建由 fincode 提供的重定向式支付页面，并返回该支付页面的 URL。
       requestBody:
         content:
           application/json:
@@ -4386,7 +4382,7 @@ paths:
       operationId: createCardRegistrationSession
       tags:
       - 重定向式卡片登记
-      summary: カード登録URL 作成
+      summary: 创建卡片登记页面 URL
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -4394,16 +4390,12 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅不共享客户信息的平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。
-
-          '
-      description: 'fincodeが提供するリダイレクト型カード登録ページを発行し、そのカード登録ページへのURLをレスポンスします。
-
-        '
+          创建卡片登记页面 URL，用于为指定租户商户名下的客户登记卡片。'
+      description: 创建由 fincode 提供的重定向式卡片登记页面，并返回该登记页面的 URL。
       requestBody:
         content:
           application/json:
@@ -4486,10 +4478,8 @@ paths:
       operationId: createPlan
       tags:
       - 套餐
-      summary: プラン 登録
-      description: 'プラン情報を登録します。
-
-        '
+      summary: 登记套餐
+      description: 登记套餐信息。
       requestBody:
         content:
           application/json:
@@ -4571,16 +4561,12 @@ paths:
       operationId: retrievePlanList
       tags:
       - 套餐
-      summary: プラン 一覧取得
-      description: 'プラン情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 套餐列表查询
+      description: 获取套餐信息列表。可通过查询参数缩小获取范围。
       parameters:
       - in: query
         name: クエリ
-        description: 'プラン情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询套餐信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -4651,14 +4637,12 @@ paths:
       operationId: retrievePlan
       tags:
       - 套餐
-      summary: プラン 取得
-      description: 'IDで指定したプラン情報を取得します。
-
-        '
+      summary: 获取套餐
+      description: 获取由 ID 指定的套餐信息。
       parameters:
       - name: id
         in: path
-        description: プランID
+        description: 套餐 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/PlanId_schema'
@@ -4724,16 +4708,14 @@ paths:
       operationId: updatePlan
       tags:
       - 套餐
-      summary: プラン 更新
-      description: 'IDで指定したプラン情報を更新します。\
+      summary: 更新套餐
+      description: '更新由 ID 指定的套餐信息。
 
-        プランが1つ以上のサブスクリプションで使用されているとき（`used_flag = 1`のとき）、プランは更新できません。
-
-        '
+        套餐已被一个或多个订阅使用时（`used_flag = 1`），不可更新该套餐。'
       parameters:
       - name: id
         in: path
-        description: プランID
+        description: 套餐 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/PlanId_schema'
@@ -4820,13 +4802,16 @@ paths:
       operationId: deletePlan
       tags:
       - 套餐
-      summary: プラン 削除
-      description: "IDで指定したプラン情報を削除します。\\\nプランが1つ以上のサブスクリプションで使用されている場合（`used_flag = 1`のとき）でも削除可能です。  \nプランを削除しても既に登録済みのサブスクリプションには影響しません。\
-        \  \n"
+      summary: 删除套餐
+      description: '删除由 ID 指定的套餐信息。
+
+        即使套餐已被一个或多个订阅使用（`used_flag = 1`），也可以删除。
+
+        删除套餐不会影响已经登记的订阅。'
       parameters:
       - name: id
         in: path
-        description: プランID
+        description: 套餐 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/PlanId_schema'
@@ -4893,10 +4878,8 @@ paths:
       operationId: createSubscription
       tags:
       - 订阅
-      summary: サブスクリプション 登録
-      description: '`customer_id`で指定した顧客に対して`plan_id`で指定したプランを適用したサブスクリプション情報を登録します。
-
-        '
+      summary: 登记订阅
+      description: 为 `customer_id` 指定的客户登记订阅，并应用 `plan_id` 指定的套餐。
       requestBody:
         content:
           application/json:
@@ -4988,16 +4971,12 @@ paths:
       operationId: retrieveSubscriptionList
       tags:
       - 订阅
-      summary: サブスクリプション 一覧取得
-      description: 'サブスクリプション情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 订阅列表查询
+      description: 获取订阅信息列表。可通过查询参数缩小获取范围。
       parameters:
       - in: query
         name: クエリ
-        description: 'サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询订阅信息列表时使用的查询条件参数。
         required: true
         schema:
           allOf:
@@ -5069,14 +5048,12 @@ paths:
       operationId: retrieveSubscription
       tags:
       - 订阅
-      summary: サブスクリプション 取得
-      description: 'IDで指定したサブスクリプション情報を取得します。
-
-        '
+      summary: 获取订阅
+      description: 获取由 ID 指定的订阅信息。
       parameters:
       - name: id
         in: path
-        description: サブスクリプションID
+        description: 订阅 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/SubscriptionId_schema'
@@ -5147,18 +5124,16 @@ paths:
       operationId: updateSubscription
       tags:
       - 订阅
-      summary: サブスクリプション 更新
-      description: 'IDで指定したサブスクリプション情報を更新します。\
+      summary: 更新订阅
+      description: '更新由 ID 指定的订阅信息。
 
-        指定されたパラメータのみ更新します。\
+        仅更新请求中指定的参数。
 
-        サブスクリプションの初回課金がすでに行われているとき（`start_date ≤ {{現在時刻}}`のとき）、サブスクリプションは更新できません。
-
-        '
+        订阅已完成首次收费时（`start_date ≤ {{当前时间}}`），不可更新该订阅。'
       parameters:
       - name: id
         in: path
-        description: サブスクリプションID
+        description: 订阅 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/SubscriptionId_schema'
@@ -5243,14 +5218,12 @@ paths:
       operationId: unsubscripbeSubscription
       tags:
       - 订阅
-      summary: サブスクリプション 解約
-      description: 'IDで指定したサブスクリプションを解約し、請求を停止します。
-
-        '
+      summary: 取消订阅
+      description: 取消由 ID 指定的订阅，并停止后续收费。
       parameters:
       - name: id
         in: path
-        description: サブスクリプションID
+        description: 订阅 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/SubscriptionId_schema'
@@ -5321,16 +5294,12 @@ paths:
       operationId: retrieveSubscriptionResultList
       tags:
       - 订阅
-      summary: サブスクリプション結果 一覧取得
-      description: 'サブスクリプションにより発生した課金の結果を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 订阅结果列表查询
+      description: 获取订阅产生的收费结果列表。可通过查询参数缩小获取范围。
       parameters:
       - in: query
         name: クエリ
-        description: 'サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询订阅结果列表时使用的查询条件参数。
         required: true
         schema:
           allOf:
@@ -5338,7 +5307,7 @@ paths:
           - $ref: '#/components/schemas/SubscriptionResult.ListRetrieving.QueryParams'
       - name: id
         in: path
-        description: サブスクリプションID
+        description: 订阅 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/SubscriptionId_schema'
