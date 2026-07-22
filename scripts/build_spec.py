@@ -144,6 +144,19 @@ def translate_tags(
         group["tags"] = [names.get(tag, tag) for tag in group.get("tags", [])]
 
 
+def filter_unused_group_tags(document: dict[str, Any]) -> None:
+    """移除没有任何接口引用的导航标签，避免 ReDoc 输出不存在标签警告。"""
+    operation_tags = {
+        tag
+        for path_item in document.get("paths", {}).values()
+        for method, operation in path_item.items()
+        if method in HTTP_METHODS and isinstance(operation, dict)
+        for tag in operation.get("tags", [])
+    }
+    for group in document.get("x-tagGroups", []):
+        group["tags"] = [tag for tag in group.get("tags", []) if tag in operation_tags]
+
+
 def requires_translation(text: str) -> bool:
     """英文产品名、API 术语等无需改写；含日文假名或汉字的上游文本需要人工确认。"""
     return any(
@@ -265,6 +278,8 @@ def main() -> None:
     translation_memory: dict[str, set[str]] = {}
     collect_translation_memory(source, result, translation_memory)
     result = apply_translation_memory(source, result, translation_memory)
+    total, translated = count_units(source, result)
+    filter_unused_group_tags(result)
 
     result["info"]["x-translation"] = {
         "language": "zh-CN",
@@ -281,7 +296,6 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    total, translated = count_units(source, result)
     operations = sum(
         1
         for path_item in result.get("paths", {}).values()

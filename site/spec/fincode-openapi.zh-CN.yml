@@ -33924,13 +33924,7 @@ components:
       value: cs_**********************
 x-tagGroups:
 - name: 开始使用
-  tags:
-  - 字符编码
-  - 请求头
-  - 分页
-  - 幂等处理
-  - 错误对象
-  - 错误
+  tags: []
 - name: 客户与支付方式
   tags:
   - 客户
@@ -33968,7 +33962,6 @@ x-tagGroups:
 - name: 商户管理
   tags:
   - 公司印章
-  - ショップ決済手段
 - name: 租户申请管理（受限）
   tags:
   - 租户申请管理

@@ -51,6 +51,8 @@ def find_remaining(
                 find_remaining(child, translated_value[child_key], f"{pointer}/{escaped}", str(child_key))
             )
     elif isinstance(source, list):
+        if key == "tags":
+            return found
         for index, child in enumerate(source):
             found.extend(find_remaining(child, translated_value[index], f"{pointer}/{index}", key))
     elif (
@@ -112,6 +114,8 @@ def main() -> None:
     }
     missing_group_tags = operation_tags - grouped_tags
     assert not missing_group_tags, f"导航分组遗漏接口标签：{sorted(missing_group_tags)}"
+    dangling_group_tags = grouped_tags - operation_tags
+    assert not dangling_group_tags, f"导航分组包含无对应接口的标签：{sorted(dangling_group_tags)}"
 
     remaining = find_remaining(source, translated)
     report = {
