@@ -444,3 +444,148 @@ strings:
 
     指定通过 fincode JS 的 `tokens` 方法取得的令牌。
     JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。
+
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/post/summary: 登记支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/post/description: 为 `customer_id` 指定的客户登记支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/post/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/post/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    为与该租户商户关联的客户中，由 ID 指定的客户登记支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/get/summary: 获取支付方式列表
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/get/description: 获取与 `customer_id` 指定的客户关联的支付方式列表。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/1/description: 获取支付方式列表时使用的查询条件参数。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    获取与该租户商户关联的指定客户所拥有的支付方式列表。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/summary: 获取支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/description: 从与 `customer_id` 指定的客户关联的支付方式中，获取由 `id` 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/1/description: |-
+    支付方式 ID。
+    <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户所拥有的支付方式中，获取由 ID 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/3/description: 获取支付方式时使用的查询条件参数。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/summary: 删除支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/description: 从与 `customer_id` 指定的客户关联的支付方式中，删除由 `id` 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/1/description: |-
+    支付方式 ID。
+    <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户所拥有的支付方式中，删除由 ID 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/3/description: |-
+    支付类型：
+
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/summary: 更新支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/description: 从与 `customer_id` 指定的客户关联的支付方式中，更新由 `id` 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/1/description: |-
+    支付方式 ID。
+    <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户所拥有的支付方式中，更新由 ID 指定的支付方式。
+    <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“更新”翻译。</span>
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/summary: 重新启用支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/description: 从与 `customer_id` 指定的客户关联的虚拟账户支付方式中，重新启用由 `id` 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/1/description: 支付方式 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户所拥有的支付方式中，重新启用由 ID 指定的虚拟账户支付方式。
+    <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“重新启用”翻译。</span>
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/summary: 停用支付方式
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/description: 从与 `customer_id` 指定的客户关联的虚拟账户支付方式中，停用由 `id` 指定的支付方式。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/1/description: 支付方式 ID。
+  /paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户所拥有的支付方式中，停用由 ID 指定的虚拟账户支付方式。
+    <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“停用”翻译。</span>
+
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_1/description: 商户自定义字段 1。
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_2/description: 商户自定义字段 2。
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_3/description: 商户自定义字段 3。
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/description: <span class="smallText">当 `pay_type = "Card"`（登记卡片信息）时必填。</span>
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/properties/card_updater_mode/description: 卡片自动更新服务（Account Updater）使用设置。
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/properties/tds_type/description: |-
+    是否使用 3D Secure 认证。
+    <span class="smallText">登记卡片信息时指定，可省略。</span>
+
+    - `0`：不使用 3D Secure 认证（默认）
+    - `2`：使用 3D Secure 2.0 认证
+  /components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/description: <span class="smallText">当 `pay_type = "Directdebit"`（登记银行账户自动扣款使用的账户信息）时必填。</span>
+  /components/schemas/CustomerPaymentMethod.Creating.Response/properties/pay_type/description: |-
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /components/schemas/CustomerPaymentMethod.Deleting.Response/properties/id/description: 已删除支付方式的 ID。
+  /components/schemas/CustomerPaymentMethod.Deleting.Response/properties/pay_type/description: |-
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /components/schemas/CustomerPaymentMethod.Inactivating.Response/properties/id/description: 已更新支付方式的 ID。
+  /components/schemas/CustomerPaymentMethod.Inactivating.Response/properties/pay_type/description: "- `Virtualaccount`：银行转账（虚拟账户）"
+  /components/schemas/CustomerPaymentMethod.ListRetrieving.QueryParams/properties/pay_type/description: 支付类型。
+  /components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/id/description: 支付方式 ID。
+  /components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/pay_type/description: |-
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/redirect_url/description: |-
+    重定向 URL。
+    请将购买者重定向至此 URL，引导其执行后续步骤，以启用状态为 `AWAITING_CUSTOMER_ACTION` 的支付方式。
+    银行账户自动扣款的账户登记：访问此 URL 批准登记扣款账户。此 URL 只能访问一次。
+  /components/schemas/CustomerPaymentMethod.Retrieving.QueryParams/properties/pay_type/description: 支付类型。
+  /components/schemas/CustomerPaymentMethod.Retrieving.Response/properties/id/description: 支付方式 ID。
+  /components/schemas/CustomerPaymentMethod.Retrieving.Response/properties/pay_type/description: |-
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /components/schemas/CustomerPaymentMethod.Updating.Response/properties/id/description: 已更新支付方式的 ID。
+  /components/schemas/CustomerPaymentMethod.Updating.Response/properties/pay_type/description: |-
+    - `Card`：卡片
+    - `Virtualaccount`：银行转账（虚拟账户）
+
+    目前只可指定 `Card`（卡片）或 `Virtualaccount`（银行转账／虚拟账户）。
+  /components/schemas/PaymentMethodPayType/description: |-
+    支付类型（支付方式 API 支持的类型）。
+
+    - `Card`：卡片
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  /components/schemas/PaymentMethodStatus/description: |-
+    支付方式状态。
+
+    - `INACTIVATED`：尚未启用。<br /><span class="smallText">该支付方式目前不可用于支付。</span>
+    - `AWAITING_CUSTOMER_ACTION`：等待客户操作。<br /><span class="smallText">购买者尚未批准登记该支付方式，目前不可用于支付。</span>
+    - `ACTIVATED`：已启用。<br /><span class="smallText">该支付方式可以用于支付。</span>
+    - `FAILED`：失败。<br /><span class="smallText">该支付方式不可用于支付。</span>
+  /components/schemas/PaymentMethod_properties-id/description: |-
+    支付方式 ID。
+    <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>
+  /components/schemas/properties-customer_id/description: 与该支付方式关联的客户 ID。
+  /components/schemas/properties-default_flag/description: |-
+    默认支付方式标志。
+    表示在执行支付、登记订阅等未指定支付方式 ID 的情况下，是否自动使用该支付方式。
+    每个客户的每种支付类型必须存在一个默认支付方式（尚未登记任何支付方式时除外）。
+
+    - `0`：不是默认支付方式
+    - `1`：默认支付方式
+  /components/schemas/status/description: |-
+    支付方式状态。
+    <span class="smallText">`pay_type` 不同，返回的状态也不同。详情请参阅[支付方式说明](https://docs.fincode.jp/payment/payment_method)。</span>

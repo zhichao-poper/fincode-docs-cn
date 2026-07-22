@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2596,
+  "remainingJapaneseUnits": 2533,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -87,110 +87,6 @@
       "preview": "fincodeJSの仕様はこちらの JSリファレンス から確認できます。"
     },
     {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/post/summary",
-      "preview": "決済手段 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/post/description",
-      "preview": "`customer_id`で指定した顧客に対し、決済手段を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/post/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/post/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/get/summary",
-      "preview": "決済手段 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/get/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づく決済手段を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/1/description",
-      "preview": "決済手段の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/get/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/summary",
-      "preview": "決済手段 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/1/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/get/parameters/3/description",
-      "preview": "決済手段の取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/summary",
-      "preview": "決済手段 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/1/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/delete/parameters/3/description",
-      "preview": "決済種別 - `Card` - カード - `Directdebit` - 口座振替 - `Virtualaccount` - 銀行振込（バーチャル口座） "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/summary",
-      "preview": "決済手段 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/1/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
       "preview": "決済種別  * `Card` - カード * `Virtualaccount` - 銀行振込（バーチャル口座）  <span class=\"smallText\">   ※ 現時点では<code>Card</code>（カード）、<code>Virtualaccount</code>（銀行振込（バーチャル口座））のみ指定"
     },
@@ -247,48 +143,8 @@
       "preview": "3Dセキュア認証を利用するか。\\ <span class=\"smallText\">※ カード情報（`token`・`holder_name`・`expire`等）を更新する場合は必須</span>  - `0`: 3Dセキュア認証を利用しない - `2`: 3Dセキュア2.0認証を利用する "
     },
     {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/summary",
-      "preview": "決済手段 再有効化"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくバーチャル口座決済手段のうち、`id`で指定したものを再有効化します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/1/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/requestBody/content/application~1json/schema/properties/pay_type/description",
       "preview": "決済種別  * `Virtualaccount` - 銀行振込（バーチャル口座） "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/summary",
-      "preview": "決済手段 停止"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくバーチャル口座決済手段のうち、`id`で指定したものを停止します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/0/description",
-      "preview": "顧客ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/1/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。 "
     },
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -2167,30 +2023,6 @@
       "preview": "削除された顧客のID"
     },
     {
-      "pointer": "/components/schemas/PaymentMethodPayType/description",
-      "preview": "決済種別（決済手段APIに対応しているもの）  - `Card`: カード - `Directdebit`: 口座振替 - `Virtualaccount`: 銀行振込（バーチャル口座） "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.ListRetrieving.QueryParams/properties/pay_type/description",
-      "preview": "決済種別 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentMethod_properties-id/description",
-      "preview": "決済手段ID\\ <span class=\"smallText\">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span> "
-    },
-    {
-      "pointer": "/components/schemas/properties-customer_id/description",
-      "preview": "この決済手段が紐づく顧客のID "
-    },
-    {
-      "pointer": "/components/schemas/PaymentMethodStatus/description",
-      "preview": "決済手段のステータス  - `INACTIVATED`: 有効化前<br /><span class=\"smallText\">まだこの決済手段は決済に使用できません。</span> - `AWAITING_CUSTOMER_ACTION`: 顧客のアクション待ち<br /><span class=\"smallText\""
-    },
-    {
-      "pointer": "/components/schemas/status/description",
-      "preview": "決済手段のステータス。\\ <span class=\"smallText\">※ `pay_type`によって返却されるステータスが異なります。詳細は[こちら](https://docs.fincode.jp/payment/payment_method)をご確認ください。</span> "
-    },
-    {
       "pointer": "/components/schemas/redirect_url_accessed_flag/description",
       "preview": "リダイレクトURLアクセス済みフラグ \\ （`pay_type = Directdebit`の場合のみ利用可能）\\ 購入者が`redirect_url`にアクセスしたことがあるかどうかを示すフラグです。  - `0`: 未アクセス - `1`: 1回以上アクセス済み "
     },
@@ -2201,10 +2033,6 @@
     {
       "pointer": "/components/schemas/return_url_on_failure/description",
       "preview": "加盟店戻りURL（失敗時）\\ （`pay_type = Card`の場合のみ利用可能）\\ 購入者がアクションを完了し、決済手段の登録に失敗した際にリダイレクトされるURLです。\\ POSTメソッドでリダイレクトがされます。 "
-    },
-    {
-      "pointer": "/components/schemas/properties-default_flag/description",
-      "preview": "デフォルトフラグ。\\ この決済手段が決済実行やサブスクリプション登録などで決済手段IDを指定しない場合に自動的に使用する決済手段かどうかを示すフラグです。\\ 顧客に対して、決済種別ごとに必ず1つのデフォルト決済手段が存在します。（決済手段が1つも登録されていない場合を除く）  - `0`: デフォルト決済手段ではない "
     },
     {
       "pointer": "/components/schemas/client_field_n/description",
@@ -2397,18 +2225,6 @@
     {
       "pointer": "/components/schemas/virtualaccount/properties/latest_transaction_date/description",
       "preview": "最新取引日時\\ このバーチャル口座で発生した取引のうち、最も新しい日時です。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/id/description",
-      "preview": "決済手段ID "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/pay_type/description",
-      "preview": "- `Card` - `Directdebit` - `Virtualaccount` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.ListRetrieving.Response/properties/list/items/properties/redirect_url/description",
-      "preview": "リダイレクトURL \\ 購入者をこのURLへリダイレクトさせ、ステータスがAWAITING_CUSTOMER_ACTION の決済手段を有効化するための後続の処理へ誘導してください。 - 振替口座登録の場合： このURLにアクセスして振替口座登録の承認を行います。このURLには1度だけアクセスできます。 "
     },
     {
       "pointer": "/components/schemas/tds2_ch_acc_change/description",
@@ -2639,34 +2455,6 @@
       "preview": "依頼書ID。\\ 依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。\\ ※プラットフォームショップの場合、プラットフォーム全体で一意である必要があります。 "
     },
     {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_1/description",
-      "preview": "加盟店自由項目 1 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_2/description",
-      "preview": "加盟店自由項目 2 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/client_field_3/description",
-      "preview": "加盟店自由項目 3 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/description",
-      "preview": "<span class=\"smallText\">※ `pay_type = \"Card\"`（この決済手段登録がカード情報登録である）のとき必須</span> "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/properties/card_updater_mode/description",
-      "preview": "カード更新機能（洗替）利用設定 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/card/properties/tds_type/description",
-      "preview": "3Dセキュア認証を利用するか。\\ <span class=\"smallText\">カード情報を登録する場合に指定します（省略可能）。</span>  - `0`: 3Dセキュア認証を利用しない（デフォルト） - `2`: 3Dセキュア2.0認証を利用する "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/description",
-      "preview": "<span class=\"smallText\">※ `pay_type = \"Directdebit\"`（この決済手段登録が口座振替用の口座情報登録である）のとき必須</span>"
-    },
-    {
       "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Request/properties/directdebit/properties/settlement_route/description",
       "preview": "振替サービス\\ 口座を登録する振替サービスを指定します。\\ 指定しなかった場合はデフォルトの振替サービスに口座が登録されます。\\ ※デフォルトは審査完了日時が最新の振替サービスとなります。  - `1`: 口座振替（5・6・23・27日） - `2`: 口座振替（1・5・20・26日） "
     },
@@ -2701,46 +2489,6 @@
     {
       "pointer": "/components/schemas/x-res-properties-card/properties/error_code/description",
       "preview": "このカードの登録・更新において発生したエラーのうち、一番最新のエラーのエラーコードです。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Creating.Response/properties/pay_type/description",
-      "preview": "- `Card` - `Directdebit` - `Virtualaccount` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Retrieving.QueryParams/properties/pay_type/description",
-      "preview": "決済種別 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Retrieving.Response/properties/id/description",
-      "preview": "決済手段ID "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Retrieving.Response/properties/pay_type/description",
-      "preview": "- `Card` - `Directdebit` - `Virtualaccount` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Updating.Response/properties/id/description",
-      "preview": "更新された決済手段のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Updating.Response/properties/pay_type/description",
-      "preview": "- `Card` - `Virtualaccount`\\ ※ 現時点では`Card`（クレジットカード）、`Virtualaccount`（銀行振込（バーチャル口座））のみ指定可能です。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Deleting.Response/properties/id/description",
-      "preview": "削除された決済手段のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Deleting.Response/properties/pay_type/description",
-      "preview": "- `Card` - `Directdebit` - `Virtualaccount` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Inactivating.Response/properties/id/description",
-      "preview": "更新された決済手段のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerPaymentMethod.Inactivating.Response/properties/pay_type/description",
-      "preview": "- `Virtualaccount` "
     },
     {
       "pointer": "/components/schemas/PayType/description",
