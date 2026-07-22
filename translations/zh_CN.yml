@@ -58,6 +58,8 @@ exact_strings:
   必須: 必填
   任意: 可选
   オーダーID（決済情報のID）: 订单 ID（支付信息 ID）
+  プランID: 套餐 ID
+  サブスクリプションID: 订阅 ID
 
 strings:
   /info/title: fincode API 中文参考
@@ -1003,3 +1005,48 @@ strings:
     <span class="smallText color--red-400">仅平台主商户可指定</span>
     租户商户 ID。
     在以该租户商户为销售主体的便利店支付中，为 `id` 指定的支付重新生成条形码。
+  /paths/~1v1~1sessions/post/summary: 创建支付页面 URL
+  /paths/~1v1~1sessions/post/description: 创建由 fincode 提供的重定向式支付页面，并返回该支付页面的 URL。
+  /paths/~1v1~1sessions/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在指定的租户商户上执行支付。
+  /paths/~1v1~1card_sessions/post/summary: 创建卡片登记页面 URL
+  /paths/~1v1~1card_sessions/post/description: 创建由 fincode 提供的重定向式卡片登记页面，并返回该登记页面的 URL。
+  /paths/~1v1~1card_sessions/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅不共享客户信息的平台主商户可指定</span>
+    租户商户 ID。
+    创建卡片登记页面 URL，用于为指定租户商户名下的客户登记卡片。
+  /paths/~1v1~1plans/post/summary: 登记套餐
+  /paths/~1v1~1plans/post/description: 登记套餐信息。
+  /paths/~1v1~1plans/get/summary: 套餐列表查询
+  /paths/~1v1~1plans/get/description: 获取套餐信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1plans/get/parameters/0/description: 查询套餐信息列表时使用的查询条件参数。
+  /paths/~1v1~1plans~1{id}/get/summary: 获取套餐
+  /paths/~1v1~1plans~1{id}/get/description: 获取由 ID 指定的套餐信息。
+  /paths/~1v1~1plans~1{id}/put/summary: 更新套餐
+  /paths/~1v1~1plans~1{id}/put/description: |-
+    更新由 ID 指定的套餐信息。
+    套餐已被一个或多个订阅使用时（`used_flag = 1`），不可更新该套餐。
+  /paths/~1v1~1plans~1{id}/delete/summary: 删除套餐
+  /paths/~1v1~1plans~1{id}/delete/description: |-
+    删除由 ID 指定的套餐信息。
+    即使套餐已被一个或多个订阅使用（`used_flag = 1`），也可以删除。
+    删除套餐不会影响已经登记的订阅。
+  /paths/~1v1~1subscriptions/post/summary: 登记订阅
+  /paths/~1v1~1subscriptions/post/description: 为 `customer_id` 指定的客户登记订阅，并应用 `plan_id` 指定的套餐。
+  /paths/~1v1~1subscriptions/get/summary: 订阅列表查询
+  /paths/~1v1~1subscriptions/get/description: 获取订阅信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1subscriptions/get/parameters/0/description: 查询订阅信息列表时使用的查询条件参数。
+  /paths/~1v1~1subscriptions~1{id}/get/summary: 获取订阅
+  /paths/~1v1~1subscriptions~1{id}/get/description: 获取由 ID 指定的订阅信息。
+  /paths/~1v1~1subscriptions~1{id}/put/summary: 更新订阅
+  /paths/~1v1~1subscriptions~1{id}/put/description: |-
+    更新由 ID 指定的订阅信息。
+    仅更新请求中指定的参数。
+    订阅已完成首次收费时（`start_date ≤ {{当前时间}}`），不可更新该订阅。
+  /paths/~1v1~1subscriptions~1{id}/delete/summary: 取消订阅
+  /paths/~1v1~1subscriptions~1{id}/delete/description: 取消由 ID 指定的订阅，并停止后续收费。
+  /paths/~1v1~1subscriptions~1{id}~1result/get/summary: 订阅结果列表查询
+  /paths/~1v1~1subscriptions~1{id}~1result/get/description: 获取订阅产生的收费结果列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1subscriptions~1{id}~1result/get/parameters/0/description: 查询订阅结果列表时使用的查询条件参数。
