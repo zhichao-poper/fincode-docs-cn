@@ -149,7 +149,9 @@ def main() -> None:
     translations = load_yaml(TRANSLATIONS)
     result = copy.deepcopy(source)
 
-    exact_strings = translations.get("exact_strings", {})
+    exact_strings = dict(translations.get("exact_strings", {}))
+    for group in translations.get("exact_string_groups", {}).values():
+        exact_strings.update(group)
     normalized_exact_strings = {
         normalize_translation_key(key): value for key, value in exact_strings.items()
     }
