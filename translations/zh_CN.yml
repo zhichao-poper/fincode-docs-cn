@@ -1469,6 +1469,403 @@ property_descriptions:
     <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
     仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。
 
+schema_descriptions:
+  redirect_url_accessed_flag: |-
+    是否已访问重定向 URL，仅适用于 `pay_type = Directdebit`。
+
+    - `0`：尚未访问
+    - `1`：已访问至少一次
+  return_url: |-
+    商户成功回跳 URL，仅适用于 `pay_type = Card` 或 `Directdebit`。购买者完成操作并成功登记支付方式后，通过 POST 方法重定向至此 URL。
+  return_url_on_failure: |-
+    商户失败回跳 URL，仅适用于 `pay_type = Card`。购买者完成操作但支付方式登记失败后，通过 POST 方法重定向至此 URL。
+  client_field_n: 商户自由字段。
+  tds2_ret_url: |-
+    3D Secure 认证回调 URL，仅在商户自行实现全部认证 API 调用和回调处理时使用。fincode 会在认证过程中使用 POST 方法及 `Content-Type: application/x-www-form-urlencoded` 向此 URL 返回数据。
+
+    - `MD`：通过查询参数返回，值与 `access_id` 相同
+    - `event`：通过表单数据返回，用于判断并分支后续处理
+    - `param`：通过表单数据返回，供 [3D Secure 认证 API](https://docs.fincode.jp/api#tag/ThreeDSecureecure/executeThreeDSecureecureAuth) 使用
+    - `requestorTransId`：通过表单数据返回，后续处理不使用
+
+    详情参见 [3D Secure 2.0 文档](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)。
+  virtualaccount: 当支付方式为银行转账（`pay_type = Virtualaccount`）时，虚拟账户详细信息保存在此 `virtualaccount` 对象中。
+  paper_application: 纸质申请书登记参数。
+  redirect_url: |-
+    重定向 URL。请将购买者引导至此 URL，继续处理并激活状态为 `AWAITING_CUSTOMER_ACTION` 的支付方式。
+
+    - 登记扣款账户时：访问此 URL 批准账户登记；URL 只能访问一次
+    - 登记银行卡时：访问此 URL 执行 3D Secure 认证
+
+    当 `pay_type = Card` 时，本字段仅在支付方式登记或更新响应中返回，获取、列表和删除响应不返回。
+  PayType: |-
+    当前支付使用的支付方式。
+
+    - `Card`：银行卡
+    - `Konbini`：便利店支付
+    - `Paypay`：PayPay
+    - `Applepay`：Apple Pay
+    - `Googlepay`：Google Pay
+    - `Directdebit`：银行账户自动扣款
+    - `Virtualaccount`：银行转账（虚拟账户）
+  PaymentStatus: |-
+    支付状态。
+
+    - `UNPROCESSED`：未处理
+    - `CHECKED`：有效性检查完成
+    - `AUTHORIZED`：已授权
+    - `AWAITING_CUSTOMER_PAYMENT`：等待购买者支付
+    - `AWAITING_PAYMENT_APPROVAL`：等待支付批准
+    - `CAPTURED`：已确认请款
+    - `CANCELED`：已取消
+    - `EXPIRED`：已过期
+    - `AUTHENTICATED`：未处理，等待 3D Secure 认证
+    - `FAILED`：支付失败
+  CardPayTimesResponse: 分期付款次数。
+  x-req-properties-return_url: |-
+    商户成功回跳 URL。浏览器与 fincode 自动执行 3D Secure 时，认证及支付成功后通过 POST 方法重定向至此 URL。
+
+    请求未指定时使用默认成功页面；仅未指定 `tds2_ret_url` 时返回。
+  x-req-properties-return_url_on_failure: |-
+    商户失败回跳 URL。浏览器与 fincode 自动执行 3D Secure 时，认证或支付失败后通过 POST 方法重定向至此 URL。
+
+    请求未指定时使用默认失败页面；仅未指定 `tds2_ret_url` 时返回。
+  GooglePayCardBrand: |-
+    银行卡品牌。
+
+    - `VISA`：Visa
+    - `MASTER`：Mastercard
+    - `JCB`：JCB
+    - `AMEX`：American Express
+    - `DINERS`：Diners Club
+    - `""`：无法判断
+  KonbiniCode: |-
+    购买者完成付款的便利店运营商代码。
+
+    - `00010`：7-Eleven
+    - `00020`：Lawson
+    - `00030`：FamilyMart
+    - `00080`：MINISTOP
+    - `00760`：Seicomart
+  device_name: |-
+    显示条形码的设备名称。
+
+    - Android：填写通过 [User-Agent Client Hints API](https://developer.mozilla.org/ja/docs/Web/API/User-Agent_Client_Hints_API) 或 `Navigator.userAgent`（已弃用）取得的信息中解析出的设备名称
+    - iPhone：填写固定字符串 `iPhone`
+  win_width: |-
+    显示条形码的设备屏幕宽度。
+
+    - Android：`window.screen.width` 乘以 `pixel_ratio`
+    - iPhone：`window.screen.width`
+  win_height: |-
+    显示条形码的设备屏幕高度。
+
+    - Android：`window.screen.height` 乘以 `pixel_ratio`
+    - iPhone：`window.screen.height`
+  KonbiniPaymentProcessResult: |-
+    便利店运营商处理结果代码。
+
+    - `000`：正常完成
+    - `001`：认证失败
+    - `002`：订单登记成功，但无法确认设备信息，未签发条形码图片
+    - `003`：必填字段不完整
+    - `004`：条形码数据标识符无效
+    - `005`：条形码数据制造商代码无效
+    - `006`：条形码数据企业识别代码无效
+    - `007`：超过支付期限或日期格式无效
+    - `008`：支付金额超出上下限
+    - `009`：整体校验位无效
+    - `010`：其他原因导致条形码图片签发失败
+    - `011`：印花税标志（内部数据）无效
+    - `012`：设备信息长度无效
+    - `013`：相同条形码已经登记
+    - `900`：意外错误
+  CardPaymentJobCode: |-
+    银行卡支付执行时的交易类型。
+
+    - `CHECK`：仅执行有效性检查
+    - `AUTH`：仅授权
+    - `CAPTURE`：立即确认请款
+  ApplePayPaymentJobCode: |-
+    Apple Pay 支付执行时的交易类型。
+
+    - `AUTH`：仅授权
+    - `CAPTURE`：立即确认请款
+  GooglePayPaymentJobCode: |-
+    Google Pay 支付执行时的交易类型。
+
+    - `AUTH`：仅授权
+    - `CAPTURE`：立即确认请款
+  PayPayPaymentJobCode: |-
+    PayPay 支付执行时的交易类型。
+
+    - `AUTH`：仅授权
+    - `CAPTURE`：立即确认请款
+  CardPayTimes: |-
+    分期付款次数。
+    可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
+  pixel_ratio: 设备像素比。填写 `window.devicePixelRatio` 的值，最多保留两位小数。
+  win_size_type: |-
+    显示条形码设备的像素类型。
+
+    - `1`：物理像素，Android 使用此值
+    - `2`：CSS 像素，iPhone 使用此值
+  param: 浏览器信息。购买者访问 `acs_url` 后，fincode 向 `tds2_ret_url` 发送的数据中 `param` 的值。
+  PaymentSessionPayType: |-
+    重定向式支付链接可使用的支付方式。
+
+    - `Card`：银行卡支付
+    - `Konbini`：便利店支付
+    - `Paypay`：PayPay
+    - `Virtualaccount`：银行转账（虚拟账户）
+  CardPaymentSessionJobCode: |-
+    支付链接中银行卡支付的交易类型。
+
+    - `AUTH`：仅授权（默认）
+    - `CAPTURE`：立即确认请款
+  PaymentSessionStatus: |-
+    重定向式支付链接状态。
+
+    - `CREATE`：支付链接已创建
+  CardRegistrationSessionStatus: |-
+    重定向式银行卡登记链接状态。
+
+    - `CREATE`：银行卡登记链接已创建
+  SubscriptionPayType: |-
+    订阅支持的支付方式。
+
+    - `Card`：银行卡
+    - `Directdebit`：银行账户自动扣款
+  SubscriptionStatus: |-
+    订阅状态。
+
+    - `ACTIVE`：有效，将在设定日期向客户扣款
+    - `RUNNING`：扣款处理中
+    - `CANCELED`：已解约，不再向客户扣款
+    - `INCOMPLETE`：登记失败，不会向客户扣款
+  SubscriptionResultStatus: |-
+    订阅扣款结果状态。
+
+    - `CHECKED`：有效性检查成功
+    - `SUCCEEDED`：扣款成功
+    - `FAILED`：扣款失败
+  PaymentBulkStatus: |-
+    批量支付状态。
+
+    - `CHECKING`：正在检查上传数据格式
+    - `CHECKED`：检查完成，等待执行支付
+    - `RUNNING`：支付处理中
+    - `COMPLETED`：处理完成
+    - `ERROR`：检查时发生至少一项错误
+  PaymentBulkPayType: |-
+    批量支付支持的支付方式。
+
+    - `Card`：银行卡
+    - `Virtualaccount`：银行转账（虚拟账户）
+  PaymentBulkDetailStatus: |-
+    批量支付明细状态。
+
+    - `CHECKED`：检查完成，等待执行支付
+    - `SUCCEEDED`：支付成功
+    - `FAILED`：支付失败
+  DepositStatusCode: |-
+    入账状态。
+
+    - `3001`：金额确定前，仍在汇总且尚未入账
+    - `3002`：金额已确定但尚未入账
+    - `3003`：已入账
+    - `3004`：入账暂停中，问题解决后 fincode 将尽快重试
+    - `3005`：入账错误，问题解决后 fincode 将尽快重试
+    - `3006`：请款中，取消金额超过销售金额，需要商户付款
+    - `3007`：请款错误
+    - `3008`：请款暂停中
+    - `3009`：已确认商户支付请款金额
+    - `3010`：因身份验证资料未确认而暂停入账
+    - `3011`：销售额为 0 日元并已完成结算
+    - `3012`：首次入账尚未执行
+    - `3013`：与 fincode 的合同未成立
+  Account_properties-total_amount: 当前销售结算所涵盖交易的总金额。
+  AccountDetailTradeType: |-
+    交易类型。不同值决定汇总销售结算明细时对使用金额进行加算或减算。
+
+    - `1`：支付（加算），由一笔支付产生
+    - `2`：退款（减算），由一笔支付取消产生
+    - `3`：拒付（减算），由一笔拒付产生
+    - `4`：调整（加算），用于调整销售结算；减算时也可能返回负数
+    - `5`：取消拒付（加算），由一笔拒付被取消产生
+    - `6`：自动扣款失败手续费（减算）
+    - `7`：自动扣款账户 Web 登记手续费（减算）
+    - `8`：自动扣款账户纸质申请书登记手续费（减算）
+    - `10`：虚拟账户可入账金额设置手续费（减算）
+    - `11`：客户固定虚拟账户登记手续费（减算）
+    - `12`：虚拟账户批量支付未使用手续费（减算）
+  AccountPaymentMethod: |-
+    当前销售结算明细对应支付所使用的支付方式。
+
+    - `VM`：银行卡（VISA/Mastercard）
+    - `JA`：银行卡（JCB/American Express/Diners Club/Discover）
+    - `KONBINI`：便利店支付
+    - `Paypay`：PayPay
+    - `ApplepayVM`：Apple Pay（VISA/Mastercard）
+    - `ApplepayJA`：Apple Pay（JCB/American Express/Discover）
+    - `GooglepayVM`：Google Pay（VISA/Mastercard）
+    - `GooglepayJA`：Google Pay（JCB/American Express/Diners Club）
+    - `Directdebit`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `DirectdebitMizuho`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `Virtualaccount`：银行转账（虚拟账户）
+  ExaminationFileType: |-
+    提交给 fincode 审核团队的图片或文件类型。
+
+    - `DRIVER_LICENSE_FRONT`：驾驶证正面；同时必须提交背面
+    - `DRIVER_LICENSE_BACK`：驾驶证背面；同时必须提交正面
+    - `SEAL_REGISTRATION_FRONT`：印鉴登记证明正面
+    - `RESIDENT_CARD_FRONT`：在留卡正面；同时必须提交背面
+    - `RESIDENT_CARD_BACK`：在留卡背面；同时必须提交正面
+    - `SPECIAL_PERMANENT_RESIDENT_FRONT`：特别永住者证明正面；同时必须提交背面
+    - `SPECIAL_PERMANENT_RESIDENT_BACK`：特别永住者证明背面；同时必须提交正面
+    - `CERTIFICATE_OF_RESIDENCE_FRONT`：住民票正面
+    - `MY_NUMBER_CARD_FRONT`：个人编号卡正面
+    - `PRODUCT_IMAGE_1`：实物商品 1 图片，对应 `product_content_info.content1_*`
+    - `PRODUCT_IMAGE_2`：实物商品 2 图片，对应 `product_content_info.content2_*`
+    - `PRODUCT_IMAGE_3`：实物商品 3 图片，对应 `product_content_info.content3_*`
+    - `APP_IMAGE_TOP`：原生应用首页截图；审核时没有网站的原生应用需要提交
+    - `APP_IMAGE_ICON`：原生应用图标；审核时没有网站的原生应用需要提交
+    - `SALES_LICENSE_1`：销售许可证等第 1 个文件。酒类、古物、隐形眼镜、象牙等商品可能需要提交对应许可证，许可证名义必须与签约名义一致；支付服务商要求时也可能需要提交
+    - `SALES_LICENSE_2`：许可证等包含多个文件时的第 2 个文件
+    - `SALES_LICENSE_3`：许可证等包含多个文件时的第 3 个文件
+  ShopType: |-
+    商户类型。
+
+    - `null`：标准商户
+    - `platform`：平台商户
+    - `tenant`：租户商户
+  ExaminationMasterId: |-
+    审核类型主数据 ID，表示平台费率对应的支付方式。
+
+    - `vm`：银行卡（VISA/Mastercard）
+    - `jad`：银行卡（JCB/American Express/Diners Club/Discover）
+    - `applepay_vm`：Apple Pay（VISA/Mastercard）
+    - `applepay_jad`：Apple Pay（JCB/American Express/Diners Club/Discover）
+    - `googlepay_vm`：Google Pay（VISA/Mastercard）
+    - `googlepay_jad`：Google Pay（JCB/American Express/Diners Club/Discover）
+    - `konbini`：便利店支付
+    - `paypay`：PayPay
+    - `directdebit`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `directdebit_mizuho`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `virtualaccount`：银行转账（虚拟账户）
+  tenant_url_id: |-
+    租户登记链接 ID。请填写[管理后台 > 平台运营与管理 > 配置](https://dashboard.test.fincode.jp/platform/setting)中“租户登记用 URL”的 `tenant_url_id`。
+  Role_properties-id: 用户在管理后台中的角色权限 ID。
+  ContractStatus: |-
+    fincode 与商户运营方的合同状态。
+
+    - `101`：未签约，尚未提交生产环境申请
+    - `102`：使用审核中，已提交生产环境申请
+    - `103`：使用审核中，但可立即受理 VISA/Mastercard 支付
+    - `105`：已解约
+    - `106`：合同未成立，审核后不允许使用 fincode
+    - `107`：运行中，可受理生产环境银行卡支付
+  DepositCycleMasterId: |-
+    入账周期主数据 ID。详情参见[销售结算入账周期](https://docs.fincode.jp/business_management/deposit)。
+
+    - `1`：标准，每月 1 次；月末截止，次月月末入账
+    - `2`：标准，每月 2 次；15 日及月末截止，15 天后入账
+  PaymentProvider: |-
+    可追加申请的支付服务。
+
+    - `PAYSLE`：便利店支付
+    - `PAYPAY`：PayPay
+    - `APPLE_PAY_UC`：Apple Pay（VISA/Mastercard，UC Card）
+    - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB/American Express）
+    - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
+    - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
+    - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
+    - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
+    - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
+    - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
+    - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+  ContractExaminationMasterId: |-
+    表示审核信息对应支付方式的审核类型主数据 ID。
+
+    - `1`：VISA/Mastercard（UC Card）
+    - `2`：JCB/American Express/Diners Club/Discover
+    - `3`：VISA/Mastercard（Toyota Finance）
+    - `4`：VISA/Mastercard（Orient Corporation）
+    - `51`：Apple Pay（VISA/Mastercard，UC Card）
+    - `52`：Apple Pay（JCB/American Express）
+    - `56`：Google Pay（VISA/Mastercard，UC Card）
+    - `57`：Google Pay（JCB/American Express/Diners Club）
+    - `58`：Google Pay（VISA/Mastercard，Toyota Finance）
+    - `59`：Google Pay（VISA/Mastercard，Orient Corporation）
+    - `101`：便利店支付
+    - `201`：PayPay
+    - `301`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `302`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `401`：银行转账（虚拟账户）
+    - `403`：批量支付（虚拟账户）
+  ExaminationStatus: |-
+    审核状态。
+
+    - `1`：审核中，尚不可使用该支付方式
+    - `2`：审核通过，可以使用该支付方式
+    - `3`：审核未通过，不可使用该支付方式
+  ShopPaymentMethod: |-
+    因取消金额超出销售金额等原因需要向 fincode 付款时的支付方式。
+
+    - `0`：银行卡
+    - `1`：银行账户
+  ContractInputStatus: |-
+    生产环境申请信息填写状态。
+
+    - `301`：所有字段均未填写
+    - `302`：部分字段已填写
+    - `303`：所有字段已填写
+    - `304`：已提交生产环境申请
+  FincodeEvent: Webhook 通知触发事件。
+  CurrencyCode: |-
+    当前支付使用的货币代码。
+
+    - `JPY`：日元
+  WebhookResponse-plain: |-
+    Webhook 接收结果。
+
+    - `0`：接收成功，fincode 结束通知
+    - `1`：接收失败，fincode 将重试通知
+  Acquirer: |-
+    审核对象。以下代码值对应支付服务商或支付方式：
+
+    - `UC`：VISA/Mastercard（UC Card）
+    - `TFC`：VISA/Mastercard（Toyota Finance）
+    - `ORICO`：VISA/Mastercard（Orient Corporation）
+    - `JCB/AMEX`：JCB/AMEX（JCB）
+    - `DINERS`：Diners（JCB）
+    - `APPLE PAY UC`：Apple Pay（UC Card）
+    - `APPLE PAY JCB/AMEX`：Apple Pay（JCB）
+    - `GOOGLE PAY UC`：Google Pay（UC Card）
+    - `GOOGLE PAY TFC`：Google Pay（Toyota Finance）
+    - `GOOGLE PAY ORICO`：Google Pay（Orient Corporation）
+    - `GOOGLE PAY JCB`：Google Pay（JCB）
+    - `PAYSLE`：便利店支付（Densan System）
+    - `PAYPAY`：PayPay
+    - `DIRECT DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `DIRECT DEBIT MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `VIRTUAL ACCOUNT`：银行转账（虚拟账户）
+    - `VIRTUAL ACCOUNT BULK`：批量支付（虚拟账户）
+  AcquirerContractStatus: |-
+    支付服务商合同状态。
+
+    - `701`：尚未申请
+    - `702`：fincode 已受理审核，暂不可使用
+    - `703`：等待 fincode 开始审核，暂不可使用
+    - `704`：审核中，暂不可使用
+    - `705`：审核暂缓，暂不可使用
+    - `706`：fincode 审核通过，但暂不可使用
+    - `707`：可以使用
+    - `708`：审核未通过，不可使用
+    - `709`：已中止申请
+
 schema_property_descriptions:
   ContractInfo.V2:
     representative_last_name: |-
@@ -3572,6 +3969,158 @@ schema_property_descriptions:
 
       - `0`：不发送
       - `1`：发送
+
+  Customer.Creating.Request:
+    id: |-
+      客户 ID。可以指定任意值；未指定时由 fincode 自动生成。客户 ID 一旦登记，即使删除后也不能再次使用。
+  Customer.Deleting.Response:
+    id: 被删除客户的 ID。
+  Payment.VirtualAccount.Creating.Request:
+    use_exact_deposit_amount: |-
+      是否为当前支付的虚拟账户设置可入账金额。启用后，购买者只能汇入请款金额。
+
+      - `true`：设置可入账金额
+      - `false`：不设置（默认）
+  Payment.VirtualAccount.Executing.Request:
+    payment_method_id: 当前支付使用的银行转账（虚拟账户）支付方式 ID；未指定时使用默认支付方式。
+  PaymentSession.Card:
+    item_code: 商品代码，通常为 `null`。
+  CardRegistrationSession.Creating.Request:
+    expire: |-
+      重定向式银行卡登记链接有效期。
+      格式：`yyyy/MM/dd HH:mm:ss`
+  SubscriptionResult.ListRetrieving.QueryParams:
+    sort: |-
+      指定排序字段和顺序。
+      示例：`?sort=process_date␣asc,created␣asc`
+
+      可排序字段：`process_date`、`created`。
+  PaymentBulkDetail.ListRetrieving.QueryParams:
+    pay_type: |-
+      支付方式。
+
+      - `Card`：银行卡
+      - `Virtualaccount`：银行转账（虚拟账户）
+    status: |-
+      支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `CHECKED`：检查完成，等待执行支付
+      - `SUCCEEDED`：支付成功
+      - `FAILED`：支付失败
+  PaymentBulkDetail:
+    status: |-
+      支付状态。
+
+      - `CHECKED`：检查完成，等待执行支付
+      - `SUCCEEDED`：支付成功
+      - `FAILED`：支付失败
+    job_code: |-
+      交易类型。
+
+      - `CAPTURE`：确认请款
+  PaymentBulkDetail.list:
+    list: 批量支付明细列表；每笔支付对应一个对象，对象内保存该笔支付信息。
+  PaymentBulkErrorDetail:
+    number: 行号。
+  PaymentBulkErrorDetail.list:
+    error_detail: 批量支付错误明细列表；每项错误对应一个对象，包含发生错误的支付 ID 及该支付的错误列表。
+  PaymentBulkDetail.VirtualAccount:
+    status: |-
+      支付状态。
+
+      - `CHECKED`：检查完成，等待执行支付
+      - `SUCCEEDED`：支付成功
+      - `FAILED`：支付失败
+  PaymentBulkDetail.VirtualAccount.list:
+    list: 批量支付明细列表；每笔支付对应一个对象，对象内保存该笔支付信息。
+  PaymentBulkDetail.ListRetrieving.Response:
+    error_code: 当前批量支付处理最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
+  PaymentBulk.Deleting.Response:
+    id: 被删除批量支付的 ID。
+  Invoice.CompanyStamp:
+    company_stamp_data: 公司印章数据的 Base64 编码字符串。
+  InvoiceDetail.Deleting.Response:
+    delete_flag: |-
+      删除标志。
+
+      - `1`：成功
+  PlatformAccountListItem.list:
+    list: 平台使用费销售结算信息列表。
+  PlatformAccountSummary.list:
+    list: 平台使用费收入汇总信息列表。
+  BankAccountInfo.V2.Response:
+    bank_name_kana: 金融机构名称（片假名）。
+    branch_name_kana: 分行名称（片假名）。
+  POST.ContractsExaminations.Request:
+    force_credit_check_skip: |-
+      是否强制跳过信用信息检查。
+
+      - `true`：仅限在审核管理后台强制批准时使用
+      - `false`：提交生产环境申请时使用
+    use_gmo_sign: 是否使用 GMO Sign。
+  ChangeRequest.Registering.Response:
+    id: 变更申请 ID。
+    status_code: 申请状态。
+  ChangeRequest.Retrieving.Response:
+    id: 变更申请 ID。
+    status_code: 申请状态。
+  ContentInfo:
+    id: 商品或服务信息 ID。
+    type: |-
+      经营商品或服务的项目类型。
+
+      - `0`：实物商品
+      - `1`：服务
+      - `2`：数字内容
+  ExaminationInfo.Updating.Request:
+    contract_detail: 在 fincode 中登记的商户运营方合同详细信息。
+    shop_item_detail: 在 fincode 中登记的商户经营商品或服务信息。
+  WebhookSetting.Deleting.Response:
+    id: 被删除的 Webhook 设置 ID。
+  WebhookResponse:
+    receive: |-
+      向 fincode 返回 Webhook 是否正常接收。
+
+      - `0`：接收成功，fincode 结束通知
+      - `1`：接收失败，fincode 将重试通知
+  WebhookEvent.Payment.GooglePay:
+    error_code: 当前支付最近一次错误的错误代码。定义参见[错误代码](/develop_support/error)。
+  WebhookEvent.CustomerPaymentMethodCard:
+    process_type: |-
+      处理类型。
+
+      - `I`：登记
+      - `U`：更新
+    status: |-
+      3D Secure 2.0 认证处理状态。
+
+      - `AUTHENTICATED`：认证中；认证未通过时也使用此值通知
+      - `CHECK`：认证完成
+
+      不使用 3D Secure 时为 `null`。
+  WebhookEvent.CustomerPaymentMethodDirectDebit:
+    directdebit: 银行账户自动扣款支付方式登记信息。
+  WebhookEvent.CustomerPaymentMethodVirtualAccount:
+    virtual_account: 银行转账（虚拟账户）支付方式登记信息。
+  WebhookEvent.Card:
+    process_date: 处理时间。
+    process_type: |-
+      处理类型。
+
+      - `I`：登记
+      - `U`：更新
+  WebhookEvent.Invoice:
+    invoice_id: 发生事件的账单 ID。可使用该 ID 调用“获取账单”API 查询最新信息。
+    event: |-
+      触发 Webhook 的事件。
+
+      - `invoice.create`：创建账单
+      - `invoice.update`：更新账单
+      - `invoice.open`：开具账单并执行请款
+      - `invoice.cancel`：取消账单
+      - `invoice.delete`：删除账单
+      - `invoice.expired`：超过支付期限
+      - `invoice.paid`：支付完成
 
 strings:
   /components/schemas/card/description: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
