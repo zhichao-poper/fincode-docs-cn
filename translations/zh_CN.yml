@@ -2027,6 +2027,163 @@ schema_property_descriptions:
 
       - `true`：使用客户固定虚拟账户
       - `false`：不使用客户固定虚拟账户
+  PaymentSession:
+    id: 重定向式支付链接 ID。
+    link_url: 重定向式支付链接 URL。
+    success_url: 在 `link_url` 中支付成功后，fincode 通过 POST 方法重定向到的 URL。
+    cancel_url: 在 `link_url` 中取消支付后，fincode 通过 POST 方法重定向到的 URL。
+    expire: |-
+      重定向式支付链接的有效期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    shop_service_name: |-
+      支付页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
+    guide_mail_send_flag: |-
+      是否通过 fincode 的邮件发送功能发送了支付链接。
+
+      - `0`：未发送（默认）
+      - `1`：已发送
+    receiver_mail: 通过 fincode 邮件功能发送支付链接时的收件人邮箱地址。
+    mail_customer_name: |-
+      使用 fincode 邮件功能发送支付链接时，邮件中显示的购买者姓名。fincode 默认邮件模板已包含称谓。
+    thanks_mail_send_flag: |-
+      支付完成后是否向购买者发送完成通知邮件。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+    shop_mail_template_id: |-
+      邮件模板 ID。设置后，将更改发送给支付链接收件人的邮件模板；使用 fincode 默认模板时请设置为 `null`。
+    transaction: 与支付方式无关的通用支付信息。
+    pay_type: |-
+      当前支付链接允许使用的支付方式，可指定多个。
+
+      - `Card`：银行卡支付
+      - `Konbini`：便利店支付
+      - `Paypay`：PayPay
+      - `Virtualaccount`：银行转账（虚拟账户）
+    order_id: 通过当前重定向式支付链接完成支付后生成的支付记录 ID。
+    card: 银行卡支付相关信息。
+    konbini: 便利店支付相关信息。
+    paypay: PayPay 支付相关信息。
+    virtualaccount: 银行转账（虚拟账户）相关信息。
+  Invoice.ListRetrieving.QueryParams:
+    status: |-
+      账单状态，可使用半角逗号分隔指定多个值。
+
+      - `DRAFT`：草稿
+      - `AWAITING_CUSTOMER_PAYMENT`：等待支付
+      - `PAID`：已支付
+      - `CANCELED`：已取消
+    keyword: 指定后，仅返回 `client_field_1`、`client_field_2` 或 `client_field_3` 中部分匹配该关键词的账单。
+    due_date_from: |-
+      支付截止日期范围的起始日期。仅返回截止日期不早于该日期的账单。
+      格式：`yyyy/MM/dd`
+    due_date_to: |-
+      支付截止日期范围的结束日期。仅返回截止日期不晚于该日期的账单。
+      格式：`yyyy/MM/dd`
+    issue_date_from: |-
+      开具日期范围的起始日期。仅返回开具日期不早于该日期的账单。
+      格式：`yyyy/MM/dd`
+    issue_date_to: |-
+      开具日期范围的结束日期。仅返回开具日期不晚于该日期的账单。
+      格式：`yyyy/MM/dd`
+    total_amount_max: 账单合计金额上限；仅返回合计金额不超过该值的账单。
+    total_amount_min: 账单合计金额下限；仅返回合计金额不低于该值的账单。
+    created_from: |-
+      创建日期范围的起始日期。仅返回创建日期不早于该日期的账单。
+      格式：`yyyy/MM/dd`
+    created_to: |-
+      创建日期范围的结束日期。仅返回创建日期不晚于该日期的账单。
+      格式：`yyyy/MM/dd`
+    customer_id: 客户 ID；仅返回客户 ID 完全一致的账单。
+    customer_name: 客户名称（账单接收方）；仅返回客户名称部分匹配的账单。
+    invoice_number: 账单编号；仅返回账单编号完全一致的账单。
+    lines_date_from: |-
+      交易日期范围的起始日期。仅返回“交易日期”不早于该日期的账单。
+      格式：`yyyy/MM/dd`
+    lines_date_to: |-
+      交易日期范围的结束日期。仅返回“交易日期”不晚于该日期的账单。
+      格式：`yyyy/MM/dd`
+    transaction_date_from: |-
+      支付完成日期范围的起始日期。仅返回支付完成日期不早于该日期的账单。
+      格式：`yyyy/MM/dd`
+    transaction_date_to: |-
+      支付完成日期范围的结束日期。仅返回支付完成日期不晚于该日期的账单。
+      格式：`yyyy/MM/dd`
+    is_uncollectible: |-
+      难以收回款项标记筛选条件。
+
+      - `true`：仅返回已标记的账单
+      - `false`：仅返回未标记的账单
+      - `null`：两者均返回
+  CorporateInfo.V2:
+    corporate_number: 日本法人编号。
+    hp: 企业网站 URL。
+    capital: 注册资本。
+    established_at: 成立日期。
+    yearly_sales: 年销售额。
+    business_details: 经营业务内容。
+    company_postal_code: 公司地址的邮政编码；使用包含连字符的半角数字。
+    company_prefecture: 公司地址的都道府县；使用汉字。
+    company_prefecture_kana: 公司地址的都道府县（片假名）；使用全角片假名。
+    company_address_municipality: 公司地址的市区町村；可使用汉字、平假名、片假名和半角英数字。
+    company_address_municipality_kana: 公司地址的市区町村（片假名）；使用全角片假名。
+    company_address_section: 公司地址的町域；可使用汉字、平假名、片假名和半角英数字。
+    company_address_section_kana: 公司地址的町域（片假名）；使用全角片假名。
+    company_address_chrome: 公司地址的门牌号；可使用汉字、平假名、片假名和半角英数字。
+    company_address_chrome_kana: 公司地址的门牌号（片假名）；使用全角片假名。
+    company_address_building_name: 公司地址的建筑物名称；可使用汉字、平假名、片假名和半角英数字。
+    company_address_building_name_kana: 公司地址的建筑物名称（片假名）；使用全角片假名。
+    company_tel: 公司电话号码；使用不含连字符的半角数字。
+  Subscription:
+    customer_id: 当前订阅的付款客户 ID。
+    card_id: 当前订阅支付所使用的银行卡 ID。
+    payment_method_id: 当前订阅支付所使用的支付方式 ID。
+    initial_amount: 设置后，首次扣款使用此金额，第二次及以后使用套餐信息中的 `amount`。
+    initial_tax: 设置后，首次扣款使用此税费及运费金额，第二次及以后使用套餐信息中的 `tax`。
+    initial_total_amount: 首次扣款合计金额，即 `initial_amount` 与 `initial_tax` 之和。
+    start_date: |-
+      订阅扣款开始日期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    next_charge_date: |-
+      下次扣款日期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    stop_date: |-
+      订阅停止日期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    end_month_flag: |-
+      月末扣款标志。
+
+      - `0`：不在月末扣款
+      - `1`：在月末扣款
+    subscription_retry_mode: |-
+      当前订阅所用套餐的重试设置。
+
+      - `enabled`：启用重试
+      - `disabled`：不启用重试
+    is_retry_scheduled: 扣款失败后已安排重试时返回 `true`。
+    error_code: 当前订阅最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
+    settlement_route: |-
+      自动扣款服务，仅适用于 `pay_type = Directdebit`。
+
+      - `1`：每月 5、6、23、27 日自动扣款
+      - `2`：每月 1、5、20、26 日自动扣款
+  ChangeRequest.Registering.Request:
+    need_change_examination: 是否提交需要审核的变更申请。
+    provides_digital_contents: 是否经营数字内容。
+    bank_name: 银行名称。
+    bank_name_kana: 银行名称（片假名）。
+    bank_code: 银行代码。
+    branch_name_kana: 分行名称（片假名）。
+    business_operator_bank_name: 经营者银行名称。
+    business_operator_bank_name_kana: 经营者银行名称（片假名）。
+    business_operator_bank_code: 经营者银行代码。
+    business_operator_branch_name: 经营者银行分行名称。
+    business_operator_branch_name_kana: 经营者银行分行名称（片假名）。
+    business_operator_branch_code: 经营者银行分行代码。
+    business_operator_account_kind: 经营者银行账户类型。
+    business_operator_account_number: 经营者银行账号。
+    business_operator_account_name: 经营者银行账户名义人。
+    memo: 备注。
 
 strings:
   /components/schemas/td_tenant_name/description: |-
