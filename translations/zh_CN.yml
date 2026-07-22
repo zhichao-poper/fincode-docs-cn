@@ -2415,6 +2415,168 @@ schema_property_descriptions:
       示例：`?sort=updated␣desc,created␣asc`
 
       可排序字段：`plan_id`、`total_amount`、`start_date`、`stop_date`、`next_charge_date`、`created`、`updated`。
+  DepositTargetBankAccountInfo:
+    corporate: |-
+      是否为法人账户。
+
+      - `true`：法人账户
+      - `false`：个人账户
+    recipient_corporate_name: 收款法人名称。
+    recipient_represntative_last_name: 收款方代表人姓氏。
+    recipient_represntative_first_name: 收款方代表人名字。
+    bank_code: 收款金融机构代码。
+    bank_name: 收款金融机构名称。
+    bank_name_kana: 收款金融机构名称（片假名）。
+    branch_code: 收款银行分行代码。
+    branch_name: 收款银行分行名称。
+    branch_name_kana: 收款银行分行名称（片假名）。
+    account_kind: |-
+      收款账户类型。
+
+      - `0`：普通存款账户
+      - `1`：往来存款账户
+    account_number: 收款银行账号。
+    account_name: 收款银行账户名义人。
+  CardRegistrationSession:
+    id: 重定向式银行卡登记链接 ID。
+    link_url: 用户访问该链接并填写银行卡信息后，即可完成银行卡登记。
+    success_url: 在 `link_url` 中登记成功后，fincode 通过 POST 方法重定向到的 URL。
+    cancel_url: 在 `link_url` 中取消登记后，fincode 通过 POST 方法重定向到的 URL。
+    expire: |-
+      重定向式银行卡登记链接的有效期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    shop_service_name: |-
+      银行卡登记页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
+    guide_mail_send_flag: |-
+      是否通过 fincode 邮件功能发送了银行卡登记链接。
+
+      - `0`：未发送（默认）
+      - `1`：已发送
+    receiver_mail: 通过 fincode 邮件功能发送银行卡登记链接时的收件人邮箱地址。
+    mail_customer_name: |-
+      邮件中显示的银行卡登记用户姓名。fincode 默认邮件模板已包含称谓。
+    completion_mail_send_flag: |-
+      银行卡登记完成后是否向用户发送完成通知邮件。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+    shop_mail_template_id: |-
+      邮件模板 ID。设置后将更改发送给用户的邮件模板；使用 fincode 默认模板时请设置为 `null`。
+    customer_id: 通过当前链接登记银行卡的客户 ID。
+  Plan:
+    plan_name: 套餐名称。
+    description: 套餐说明。
+    total_amount: 合计金额，即使用金额与税费及运费之和。
+    interval_pattern: |-
+      扣款周期单位。指定 `interval_count` 时必填；省略时默认为 `month`。
+
+      - `month`：月
+      - `year`：年
+    interval_count: |-
+      扣款周期间隔数。指定 `interval_pattern` 时必填；省略时默认为 `1`。
+
+      - `1`：每月或每年扣款
+      - `2`：每 2 个月扣款一次
+      - `3`：每 3 个月扣款一次
+      - `6`：每 6 个月扣款一次
+    used_flag: |-
+      是否已有订阅使用过当前套餐，包括已解约的订阅。
+
+      - `0`：尚无订阅使用当前套餐
+      - `1`：已有订阅使用当前套餐
+    subscription_retry_mode: |-
+      扣款失败时是否自动重试；省略时默认为 `disabled`。
+
+      - `enabled`：启用重试
+      - `disabled`：不启用重试
+    amount: 使用金额。与 `tax` 的合计值必须在该支付方式允许的金额范围内。
+    tax: 税费及运费。与 `amount` 的合计值必须在该支付方式允许的金额范围内。
+  PaymentSession.Creating.Request:
+    transaction: 与支付方式无关的通用支付参数。
+    amount: 支付金额；可指定范围须遵循各支付方式的限制。
+    order_id: 可预先指定通过当前支付链接完成支付后生成的支付记录 ID。
+    tax: 税费及运费；可指定范围须遵循各支付方式的限制。
+    card: 当 `pay_type` 包含 `Card` 时使用的银行卡支付参数。
+    konbini: 当 `pay_type` 包含 `Konbini` 时使用的便利店支付参数。
+    paypay: 当 `pay_type` 包含 `Paypay` 时使用的 PayPay 支付参数。
+    job_code: |-
+      使用 PayPay 支付时的处理类型。
+
+      - `AUTH`：仅授权
+      - `CAPTURE`：立即确认请款
+    virtualaccount: 当 `pay_type` 包含 `Virtualaccount` 时使用的银行转账（虚拟账户）参数。
+    expire: |-
+      重定向式支付链接的有效期。
+      格式：`yyyy/MM/dd HH:mm:ss`
+
+      - 默认：签发链接后的 24 小时
+      - 最长：30 天
+      - 最短：5 分钟
+    guide_mail_send_flag: |-
+      是否由 fincode 发送附有支付链接的邮件。
+
+      - `0`：不发送（默认）
+      - `1`：发送
+  ExaminationInfo:
+    shop_id: 商户 ID（租户商户）。
+    contract_detail: fincode 中登记的商户运营方合同详细信息。
+    shop_item_detail: fincode 中登记的商户经营商品或服务信息。
+    contract_info_input: 是否已完成合同信息填写。
+    shop_info_input: 是否已完成商户信息填写。
+    account_info_input: 是否已完成银行账户信息填写。
+    card_info_input: 是否已完成 fincode 请款所用银行卡信息填写。
+    update_contract_detail: |-
+      是否更新合同信息。
+
+      - `true`：执行更新
+    update_shop: |-
+      是否更新商户信息。
+
+      - `true`：执行更新
+    update_bank_account: |-
+      是否更新 fincode 销售款收款银行账户信息。
+
+      - `true`：执行更新
+    update_deposit_cycle: |-
+      是否更新 fincode 销售款入账周期信息。
+
+      - `true`：执行更新
+  Payment.ListRetrieving.Card.QueryParams:
+    status: |-
+      银行卡支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `UNPROCESSED`：未处理
+      - `CHECKED`：已完成有效性检查
+      - `AUTHORIZED`：已授权
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+      - `AUTHENTICATED`：未处理，等待 3D Secure 认证
+    subscription_id: 仅返回由指定订阅 ID 创建的支付。
+    pay_pattern: |-
+      扣款类型，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `onetime`：非订阅的单次支付
+      - `subscription`：订阅扣款
+    last_four_digits: 仅返回银行卡号末 4 位与指定值一致的支付。
+    search_scope: |-
+      搜索范围，仅主平台商户可以指定；可使用半角逗号分隔指定多个值。
+
+      - `self`：当前商户（默认）
+      - `sub`：平台下的全部子商户
+      - `tenant`：平台下的全部租户商户
+    shop_id_list: 搜索目标商户 ID 列表，仅主平台商户可以指定；多个值使用半角逗号分隔。
+    order_id: 仅返回与指定订单 ID 关联的支付；仅主平台商户可以指定。
+    update_date_from: |-
+      更新时间范围的起始时间；仅返回不早于该时间更新的支付。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+    update_date_to: |-
+      更新时间范围的结束时间；仅返回不晚于该时间更新的支付。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+    sort: |-
+      指定排序字段和顺序。
+      示例：`?sort=updated␣desc,created␣asc`
+
+      可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。
 
 strings:
   /components/schemas/td_tenant_name/description: |-
