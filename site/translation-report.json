@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 1536,
+  "remainingJapaneseUnits": 1510,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -231,72 +231,20 @@
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 郵便番号\\ \\ 未指定の場合、顧客に登録された`addr_post_code`を設定します。   ショップ側で顧客の住所情報を保持している場合、指定が必須となります。   ※"
     },
     {
-      "pointer": "/components/schemas/tds2_ship_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 取引商品の配送方法  - `01`: 顧客の請求先住所に配送 - `02`: 加盟店が保持している確認済み住所（請求先住所でない）に配送 - `03`: 顧客の請求先住所と異なる住所に配送 -"
-    },
-    {
       "pointer": "/components/schemas/tds2_delivery_email_address/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客 メールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/tds2_home_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の自宅電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_home_phone_no`の設定が必要です。\\ \\ 未指定の場合、顧客の`phone_cc`が自動で設定"
     },
     {
       "pointer": "/components/schemas/tds2_home_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の自宅電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_home_phone_cc`の設定が必要です。\\ \\ 未指定の場合、顧客の`phone_no`が自動で設"
     },
     {
-      "pointer": "/components/schemas/tds2_mobile_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の携帯電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_mobile_phone_no`の設定が必要です。 "
-    },
-    {
       "pointer": "/components/schemas/tds2_mobile_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の携帯電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_mobile_phone_cc`の設定が必要です。\\ \\ 2024年8月12日以降、下記の内少なくとも1"
     },
     {
-      "pointer": "/components/schemas/tds2_work_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の勤務先電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_work_phone_no`の設定が必要です。 "
-    },
-    {
       "pointer": "/components/schemas/tds2_work_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の勤務先電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_work_phone_cc`の設定が必要です。\\ \\ 2024年8月12日以降、下記の内少なくとも1つ"
-    },
-    {
-      "pointer": "/components/schemas/tds2_delivery_timeframe/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品納品時間枠  - `01`: 電子デリバリー - `02`: 当日出荷 - `03`: 翌日出荷 - `04`: 2日目以降の出荷 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_pre_order_date/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の発売予定日\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_pre_order_purchase_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の販売時期情報  - `01`: 発売済み商品 - `02`: 先行予約商品 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_reorder_items_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の注文が初回か再注文か  - `01`: 初回注文 - `02`: 再注文 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_recurring_expiry/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ サブスクリプションなど継続課金型のビジネスモデルのみ\\ 継続課金の終了日\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_recurring_frequency/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ サブスクリプションなど継続課金型のビジネスモデルのみ\\ 継続課金の課金間隔の日数（最小） "
-    },
-    {
-      "pointer": "/components/schemas/tds2_gift_card_amount/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ プリペイドカードまたはギフトカードの総購入金額 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_gift_card_count/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ 購入したプリペイドカードまたはギフトカードの総数 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_gift_card_curr/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ プリペイドカードまたはギフトカードの通貨コード。\\ 形式：ISO 4217 numeric\\ \\ 以下の通貨コードは利用できません。"
     },
     {
       "pointer": "/components/schemas/paper_application/description",
@@ -1267,72 +1215,20 @@
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 郵便番号\\ \\ 未指定の場合、顧客に登録された`addr_post_code`を設定します。   ショップ側で顧客の住所情報を保持している場合、指定が必須となります。   ※"
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 取引商品の配送方法  - `01`: 顧客の請求先住所に配送 - `02`: 加盟店が保持している確認済み住所（請求先住所でない）に配送 - `03`: 顧客の請求先住所と異なる住所に配送 -"
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_delivery_email_address/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客 メールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_home_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の自宅電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_home_phone_no`の設定が必要です。\\ \\ 未指定の場合、顧客の`phone_cc`が自動で設定"
     },
     {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_home_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の自宅電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_home_phone_cc`の設定が必要です。\\ \\ 未指定の場合、顧客の`phone_no`が自動で設"
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_mobile_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の携帯電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_mobile_phone_no`の設定が必要です。 "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_mobile_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の携帯電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_mobile_phone_cc`の設定が必要です。\\ \\ 2024年8月12日以降、下記の内少なくとも1"
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_work_phone_cc/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の勤務先電話番号の国コード（+を含まない）\\ ※ この値を設定する場合、`tds2_work_phone_no`の設定が必要です。 "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_work_phone_no/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の勤務先電話番号（ハイフンなし半角数字のみ）\\ ※ この値を設定する場合、`tds2_work_phone_cc`の設定が必要です。\\ \\ 2024年8月12日以降、下記の内少なくとも1つ"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_delivery_timeframe/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品納品時間枠  - `01`: 電子デリバリー - `02`: 当日出荷 - `03`: 翌日出荷 - `04`: 2日目以降の出荷 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_pre_order_date/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の発売予定日\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_pre_order_purchase_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の販売時期情報  - `01`: 発売済み商品 - `02`: 先行予約商品 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_reorder_items_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 商品の注文が初回か再注文か  - `01`: 初回注文 - `02`: 再注文 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_recurring_expiry/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ サブスクリプションなど継続課金型のビジネスモデルのみ\\ 継続課金の終了日\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_recurring_frequency/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ サブスクリプションなど継続課金型のビジネスモデルのみ\\ 継続課金の課金間隔の日数（最小） "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_gift_card_amount/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ プリペイドカードまたはギフトカードの総購入金額 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_gift_card_count/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ 購入したプリペイドカードまたはギフトカードの総数 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_gift_card_curr/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ プリペイドカードまたはギフトカードの通貨コード。\\ 形式：ISO 4217 numeric\\ \\ 以下の通貨コードは利用できません。"
     },
     {
       "pointer": "/components/schemas/PaymentSession.Konbini/properties/konbini_reception_url/description",
