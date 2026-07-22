@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="由团队人工翻译并持续校验的 fincode API 中文参考。" />
+    <title>fincode API 中文参考</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./">fincode API <span>中文参考</span></a>
+      <a class="source-link" href="https://docs.fincode.jp/api" target="_blank" rel="noreferrer">官方日文文档</a>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">团队内部 · 人工翻译 · 契约校验</p>
+        <h1>读懂支付语境，<br />不只替换日文字面。</h1>
+        <p class="intro">在保留 API 路径、字段名、枚举值与示例的前提下，逐条翻译业务说明，并自动检测上游新增或遗漏内容。</p>
+        <div class="actions">
+          <a class="primary" href="./reference.html">进入 API 参考</a>
+          <a class="secondary" href="./translation-report.json">查看待翻译清单</a>
+        </div>
+      </section>
+      <section class="status" aria-labelledby="status-title">
+        <div>
+          <p class="section-label">当前快照</p>
+          <h2 id="status-title">翻译进度</h2>
+        </div>
+        <div class="metrics" id="metrics" aria-live="polite">
+          <p>正在读取进度…</p>
+        </div>
+      </section>
+      <section class="principles">
+        <article><span>01</span><h2>契约不动</h2><p>路径、方法、字段、枚举和 operationId 均与官方规格保持一致。</p></article>
+        <article><span>02</span><h2>译文可追溯</h2><p>每条人工译文对应明确的 OpenAPI 位置，上游变更可被检测。</p></article>
+        <article><span>03</span><h2>官方优先</h2><p>中文用于降低理解成本；出现差异时，以 fincode 官方日文文档为准。</p></article>
+      </section>
+    </main>
+    <footer>非 fincode 官方项目 · 仅供团队开发参考</footer>
+    <script>
+      fetch('./progress.json')
+        .then((response) => response.json())
+        .then((data) => {
+          document.querySelector('#metrics').innerHTML = `
+            <div><strong>${data.sourceVersion}</strong><span>上游版本</span></div>
+            <div><strong>${data.operations}</strong><span>接口操作</span></div>
+            <div><strong>${data.translatedUnits}/${data.translationUnits}</strong><span>已译单元</span></div>
+            <div><strong>${data.percentage}%</strong><span>总体进度</span></div>`;
+        })
+        .catch(() => {
+          document.querySelector('#metrics').textContent = '进度读取失败，请查看翻译报告。';
+        });
+    </script>
+  </body>
+</html>
+

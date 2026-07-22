@@ -1,0 +1,200 @@
+meta:
+  language: zh-CN
+  translation_method: manual
+  source_url: https://docs.fincode.jp/assets/api/fincode-openapi.yml
+  source_version: 1.4.0
+  note: 所有译文均由维护者结合 API 上下文人工翻译，不调用机器翻译服务。
+
+tag_names:
+  文字コード: 字符编码
+  リクエストヘッダー: 请求头
+  ページネーション: 分页
+  冪等処理: 幂等处理
+  エラーオブジェクト: 错误对象
+  エラー: 错误
+  顧客: 客户
+  カード: 信用卡
+  決済手段: 支付方式
+  決済: 支付
+  3Dセキュア認証: 3D Secure 认证
+  リダイレクト型決済: 重定向式支付
+  リダイレクト型カード登録: 重定向式信用卡登记
+  プラン: 套餐
+  サブスクリプション: 订阅
+  一括決済: 批量支付
+  インボイス機能: 发票功能
+  売上入金: 销售款入账
+  プラットフォーム利用料収入: 平台使用费收入
+  チャージバック: 拒付
+  プラットフォームショップ: 平台商户
+  テナントショップ: 租户商户
+  テナント申請管理: 租户申请管理
+  社印: 公司印章
+  Webhook設定: Webhook 设置
+  Webhook_通知仕様: Webhook 通知规范
+
+exact_strings:
+  本番環境: 生产环境
+  テスト環境: 测试环境
+  リクエストに成功: 请求成功
+  不正なリクエスト: 请求无效
+  認証エラー: 认证错误
+  システムエラー: 系统错误
+  必須: 必填
+  任意: 可选
+
+strings:
+  /info/title: fincode API 中文参考
+  /info/description: |-
+    这是 fincode 的 API 参考文档。
+    fincode 除支付信息外还能够管理多种资源，因此其 API 采用面向资源的 REST 接口设计。
+    调用 API 时必须使用 API Key 进行认证。发送请求时，请在 `Authorization` 请求头中设置有效的 API Key。
+  /tags/0/description: |-
+    fincode 的请求与响应统一使用 UTF-8 字符编码。
+
+    | 字符编码 | 备注 |
+    | --- | --- |
+    | UTF-8 | fincode 的请求与响应统一使用 UTF-8 字符编码。 |
+  /tags/1/description: |-
+    调用 fincode API 时可指定以下请求头。
+
+    | 请求头 | 指定方式 | 说明 |
+    | --- | --- | --- |
+    | `Api-Version` | YYYYMMDD | 可指定 API 的次要版本（当前为 `20211001`）。未指定时自动使用最新版本。 |
+    | `Authorization` | Bearer {{API Key}} <br />或 Basic {{Base64 编码后的 API Key}} | 指定 API Key。支持 Bearer 认证或 Basic 认证。 |
+    | `Content-Type` | application/json;charset=UTF-8 | 指定请求体的 Content-Type。 |
+    | `idempotent_key` | UUID v4 | 用于保证请求幂等性的键。详情参见“幂等处理”。 |
+    | `Tenant-Shop-Id` | 租户商户的商户 ID | 仅限平台功能。平台商户以租户商户身份执行 API（例如处理该租户商户的支付）时，指定对应租户的商户 ID。 |
+  /tags/2/description: |-
+    为避免一次返回大量数据，列表查询类 API 实现了分页功能。
+    当目标数据达到 10 条或以上时，默认最多返回 10 条。
+    如需获取后续数据或一次获取 10 条以上的数据，可通过查询参数指定 `page` 和 `limit`。
+    还可以使用查询条件缩小数据范围；可用的查询字段因 API 而异。
+
+    | No | 项目 | 参数 | 含义 | 默认值 | 范围 | 处理规则 |
+    |----|------|------|------|--------|------|----------|
+    | 1 | 获取条数 | limit | 每页最大条数 | 10 | 10-100 | 未指定时使用默认值。超出范围时返回错误。 |
+    | 2 | 页码 | page | 页码 | 1 | 1-9999 | 未指定时使用默认值。指定的数字大于响应中的 `last_page`（最后一页）时返回错误。 |
+    | 3 | 仅总数标志 | count_only | 仅获取总条数 | false | - | 指定为 true 时，响应只返回符合条件的记录总数。 |
+    | 4 | 排序 | sort | 定义排序顺序 | 各 API 的默认值 | - | 格式为 `sort=字段1 [asc \| desc], 字段2 [asc \| desc], …`。例如：`sort=customer_id asc, customer_name asc, customer_email desc`。未指定时使用各 API 的默认排序。字段不存在或格式错误时返回错误。`count_only` 为 true 时忽略此参数。 |
+
+    ### 示例 1
+
+    使用[客户列表查询 API](https://docs.fincode.jp/api#tag/%E9%A1%A7%E5%AE%A2/operation/retrieveCustomerList)，按客户 ID 升序获取第 2 页数据：
+
+    ```txt
+    https://api.test.fincode.jp/v1/customers?page=2&sort=id asc
+    ```
+
+    ### 示例 2
+
+    使用[客户列表查询 API](https://docs.fincode.jp/api#tag/%E9%A1%A7%E5%AE%A2/operation/retrieveCustomerList)，通过查询条件将创建日期限定为 2023/06/28，并获取第 2 页数据：
+
+    ```txt
+    https://api.test.fincode.jp/v1/customers?page=2&created_from=2023/06/28&created_to=2023/06/28
+    ```
+
+    ### 示例 3
+
+    使用[客户列表查询 API](https://docs.fincode.jp/api#tag/%E9%A1%A7%E5%AE%A2/operation/retrieveCustomerList)，仅获取客户总数：
+
+    ```txt
+    https://api.test.fincode.jp/v1/customers?count_only=true
+    ```
+  /tags/3/description: |-
+    商户可以在 API 请求头 `idempotent_key` 中设置任意的幂等键，以唯一标识一次请求；此后使用相同幂等键发送请求时，将返回与首次请求相同的结果。
+    使用此功能可以避免因重复请求而误创建相同资源。
+
+    请使用 UUID v4 格式，并确保每次新请求使用唯一值。
+    幂等键的有效期为 30 分钟。
+
+    ### 示例
+
+    ```txt
+    idempotent_key: 1003d6af-9e68-4f4e-a916-663e29db5377
+    ```
+  /tags/4/description: |-
+    发生 HTTP `4xx` 或 `5xx` 错误时，API 会返回统一格式的错误对象。
+    `error_message` 表示错误原因，请根据其内容修正请求。
+    注意：`error_message` 可能在不事先通知的情况下变更，仅用于协助开发阶段排查问题。
+
+    详细信息也可参阅 [Docs 错误码一览](https://docs.fincode.jp/develop_support/error)。
+
+    ### 示例
+
+    错误对象以数组形式放在响应的 `errors` 字段中。
+
+    ```json
+    {
+        "errors": [
+            {
+                "error_code": "E123456789",
+                "error_message": "错误内容 1"
+            },
+            {
+                "error_code": "E012345678",
+                "error_message": "错误内容 2"
+            }
+        ]
+    }
+    ```
+
+    | 参数 | | 说明 |
+    | --- | --- | --- |
+    | errors | | 错误对象数组。 |
+    | | error_code | 错误码。程序需要判断错误类型时，建议使用此字段。详情参阅 [Docs > 错误码一览](https://docs.fincode.jp/develop_support/error)。 |
+    | | error_message | 错误消息，用于说明错误内容。此值可能在不事先通知的情况下变更。 |
+  /tags/5/description: |-
+    API 请求完成后，会随响应返回以下 HTTP 状态码。
+
+    | 状态码 | 含义 | 说明 |
+    | --- | --- | --- |
+    | 200 | OK | 请求成功。 |
+    | 400 | Bad Request | 请求无效。请检查请求参数与 JSON 格式。 |
+    | 401 | Unauthorized | 尚未通过认证。请检查 API Key。 |
+    | 403 | Forbidden | 没有使用该 API 的权限。请检查访问地址；也可能是超过流量限制，请降低请求速率。 |
+    | 404 | Not Found | 指定的 API 不存在。请检查访问地址。 |
+    | 405 | Method Not Allowed | 使用了无效的 HTTP 方法。请检查 HTTP 方法。 |
+    | 406 | Not Acceptable | 请求的资源只能生成客户端无法接受的内容。请检查 `Accept` 请求头。 |
+    | 409 | Conflict | 发生资源冲突，无法处理请求。 |
+    | 413 | Payload Too Large | 超过了允许发送的文件大小上限。 |
+    | 415 | Unsupported Media Type | 指定了服务器或资源不支持的媒体类型。请检查请求头中的媒体类型。 |
+    | 500 | Internal Server Error | 服务器发生错误，无法完成请求。 |
+    | 502 | Bad Gateway | 发生网关错误，例如使用代理服务器时，一台服务器从另一台服务器收到了无效响应。 |
+    | 503 | Service Unavailable | 系统维护期间正在限制流入请求。 |
+    | 504 | Gateway Timeout | 发生网关超时。 |
+
+  /paths/~1v1~1customers/post/summary: 客户登记
+  /paths/~1v1~1customers/post/description: 登记客户信息。
+  /paths/~1v1~1customers/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    将客户信息登记到指定的租户商户名下。
+  /paths/~1v1~1customers/get/summary: 客户列表查询
+  /paths/~1v1~1customers/get/description: 获取客户信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1customers/get/parameters/0/description: 获取客户信息列表时使用的查询条件参数。
+  /paths/~1v1~1customers/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    获取与该租户商户关联的客户列表。
+  /paths/~1v1~1customers~1{id}/get/summary: 获取客户
+  /paths/~1v1~1customers~1{id}/get/description: 获取由 ID 指定的客户信息。
+  /paths/~1v1~1customers~1{id}/get/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的客户中，获取指定 ID 的客户信息。
+  /paths/~1v1~1customers~1{id}/put/summary: 更新客户
+  /paths/~1v1~1customers~1{id}/put/description: 更新由 ID 指定的客户信息。
+  /paths/~1v1~1customers~1{id}/put/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{id}/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的客户中，更新指定 ID 的客户信息。
+  /paths/~1v1~1customers~1{id}/delete/summary: 删除客户
+  /paths/~1v1~1customers~1{id}/delete/description: 删除由 ID 指定的客户信息。
+  /paths/~1v1~1customers~1{id}/delete/parameters/0/description: 客户 ID。
+  /paths/~1v1~1customers~1{id}/delete/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的客户中，删除指定 ID 的客户信息。
