@@ -3436,6 +3436,142 @@ schema_property_descriptions:
       - `3`：VISA/Mastercard（Toyota Finance）
       - `4`：VISA/Mastercard（Orient Corporation）
     destination_type: 收单路由类型。
+  WebhookSetting:
+    id: Webhook 设置 ID。
+    url: Webhook 通知目标 URL。fincode Webhook 仅支持通过 HTTPS 的 443 端口接收。
+    signature: 用于确认 Webhook 由 fincode 发送的签名；通知请求的 `Fincode-Signature` 请求头中包含此值。
+  WebhookEvent.Payment.DirectDebit:
+    pay_type: |-
+      当前支付使用的支付方式。
+
+      - `Directdebit`：银行账户自动扣款
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未执行扣款
+      - `AWAITING_PAYMENT_APPROVAL`：等待 fincode 及金融机构处理扣款
+      - `CAPTURED`：扣款完成，已确认销售
+      - `CANCELED`：扣款已取消
+      - `FAILED`：扣款失败
+    target_date: 指定扣款日期。
+  WebhookEvent.CardUpdaterComplete:
+    card_updater_process_month: |-
+      银行卡自动更新执行年月。
+      格式：`yyyyMM`
+    success_count: 银行卡自动更新成功数量。
+    processed_count: 银行卡自动更新处理数量。
+  WebhookEvent.PaymentBulk.Batch.Card:
+    succeeded_count: 本次批量支付中成功的支付数量。
+    failed_count: 本次批量支付中失败的支付数量。
+    total_count: 本次批量支付产生的支付总数。
+  WebhookEvent.ChangeRequest:
+    shop_id: 发生变更申请事件的记录所属商户 ID。
+    change_request_id: 变更申请 ID。可使用此 ID 和商户 ID 调用“获取变更申请”API 查询最新信息。
+    event: |-
+      触发 Webhook 的事件。
+
+      - `change_requests.regist`：产生新的变更申请
+      - `change_requests.update`：变更申请状态已更新
+  Customer:
+    card_registration: |-
+      银行卡支付方式登记状态。
+
+      - `0`：未登记
+      - `1`：已登记至少一张银行卡
+    directdebit_registration: |-
+      自动扣款账户登记状态。
+
+      - `0`：未登记
+      - `1`：已登记至少一个扣款账户
+  paper_application:
+    paper_application: 纸质申请书登记参数。
+    request_form_id: |-
+      在管理后台登记纸质申请书时，由登记者指定的申请书唯一 ID。平台商户必须保证此 ID 在整个平台内唯一。
+  x-res-properties-card:
+    acs: 是否需要调用 ACS。
+    error_code: 当前银行卡最近一次登记或更新错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
+  Payment.ListRetrieving.ApplePay.QueryParams:
+    status: |-
+      Apple Pay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `UNPROCESSED`：未处理
+      - `AUTHORIZED`：已授权
+      - `CAPTURED`：已确认请款
+      - `CANCELED`：已取消
+    sort: |-
+      指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
+      可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。
+  Payment.Card.Creating.Request:
+    amount: |-
+      使用金额；`job_code` 不为 `CHECK` 时必填。与 `tax` 的合计值必须在银行卡支付允许的金额范围内。
+      参见[银行卡支付限制](/payment/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在银行卡支付允许的金额范围内。参见[银行卡支付限制](/payment/restriction)。
+  Payment.ApplePay.Creating.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在 Apple Pay 允许的金额范围内。参见[Apple Pay 限制](https://docs.fincode.jp/payment/applepay/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在 Apple Pay 允许的金额范围内。参见[Apple Pay 限制](https://docs.fincode.jp/payment/applepay/restriction)。
+  Payment.GooglePay.Creating.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
+  Payment.Konbini.Creating.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在便利店支付允许的金额范围内。参见[便利店支付限制](https://docs.fincode.jp/payment/konbini/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在便利店支付允许的金额范围内。参见[便利店支付限制](https://docs.fincode.jp/payment/konbini/restriction)。
+  Payment.PayPay.Creating.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
+  Payment.Card.Executing:
+    acs_url: |-
+      支付执行后让购买者访问的 3D Secure 认证初始化 URL，适用于商户自行实现认证 API 和回调的场景。访问后开始认证，并通过 POST 将后续数据发送到 `tds2_ret_url`。仅指定 `tds2_ret_url` 时返回。
+    redirect_url: |-
+      支付执行后让购买者访问的 3D Secure 认证 URL，适用于浏览器与 fincode 自动完成认证的场景。认证后根据结果自动跳转至 `return_url` 或 `return_url_on_failure`。仅未指定 `tds2_ret_url` 时返回。
+  Payment.Card.Capturing.Request:
+    method: |-
+      付款方式，可对 `CANCELED` 状态的支付指定。
+
+      - `1`：一次性付款
+      - `2`：分期付款
+      - `5`：循环信贷付款
+    pay_times: 分期付款次数，可对 `CANCELED` 状态的支付指定。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
+  Payment.GooglePay.Capturing.Request:
+    method: |-
+      付款方式，可对 `CANCELED` 状态的支付指定。
+
+      - `1`：一次性付款
+      - `2`：分期付款
+      - `5`：循环信贷付款
+    pay_times: 分期付款次数，可对 `CANCELED` 状态的支付指定。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
+  Payment.Card.Reauthorizing.Request:
+    method: |-
+      付款方式。
+
+      - `1`：一次性付款
+      - `2`：分期付款
+      - `5`：循环信贷付款
+    pay_times: 分期付款次数。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
+  Payment.GooglePay.Reauthorizing.Request:
+    method: |-
+      付款方式。
+
+      - `1`：一次性付款
+      - `2`：分期付款
+      - `5`：循环信贷付款
+    pay_times: 分期付款次数。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
+  Payment.PayPay.ChangingAmount.Request:
+    amount: 使用金额。与 `tax` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
+  PaymentSession.Konbini:
+    konbini_reception_url: 便利店支付页面 URL。
+    konbini_reception_mail_send_flag: |-
+      是否发送便利店支付页面引导邮件。
+
+      - `0`：不发送
+      - `1`：发送
+  PaymentSession.VirtualAccount:
+    virtualaccount_reception_url: 银行转账（虚拟账户）支付页面 URL。
+    virtualaccount_reception_mail_send_flag: |-
+      是否发送银行转账（虚拟账户）支付页面引导邮件。
+
+      - `0`：不发送
+      - `1`：发送
 
 strings:
   /components/schemas/card/description: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
