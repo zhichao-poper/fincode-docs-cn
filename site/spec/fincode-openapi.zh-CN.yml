@@ -15937,63 +15937,48 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるコンビニ店頭レジでの払い込みを待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在便利店柜台付款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">請求が完了し、売上が確定しています。</span>
+            - `CAPTURED`：已支付，销售确认完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         payment_term_day:
           type: integer
           format: int64
           default: 2
           nullable: true
           example: 2
-          description: '支払い期限日数
+          description: '支付期限天数，可指定 `0`～`14` 天。
 
-            '
+
+            - 指定 `0` 时，仅可在创建支付的当天完成付款
+
+            - 默认值：`2`'
         payment_term:
           type: string
           nullable: true
-          description: '支払い期限日時\
+          description: '便利店支付的截止时间。
 
-            コンビニ決済の支払い期限日時です。\
-
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         payment_date:
           type: string
           nullable: true
-          description: '支払日時\
+          description: '购买者在便利店柜台完成付款的时间。
 
-            コンビニ店頭で購入者が支払いを行った日時です。\
-
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         barcode:
           type: string
           nullable: true
-          description: 'バーコード画像 Base64エンコード済み画像データ\
+          description: '便利店柜台付款所用条形码图片的 Base64 编码数据。请解码后显示，并遵循条形码展示规范。
 
-            コンビニ店頭での支払いに使用するバーコード画像のBase64エンコード済みデータです。このデータをデコードして表示します。\
-
-            バーコード画像はレギュレーションに従って表示する必要があります。詳細は[Docs > レギュレーションと注意事項](https://docs.fincode.jp/payment/konbini/note)から参照できます。
-
-            '
+            详情参见 [Docs > 规范与注意事项](https://docs.fincode.jp/payment/konbini/note)。'
         barcode_format:
           type: string
           nullable: true
@@ -16001,61 +15986,41 @@ components:
           - jpg
           - png
           - bmp
-          description: 'バーコード画像 フォーマット\
-
-            発行されたバーコード画像（`barcode`）のフォーマットです。
-
-            '
+          description: 已签发条形码图片（`barcode`）的文件格式。
         barcode_width:
           type: string
           nullable: true
           minLength: 1
           maxLength: 9
-          description: 'バーコード画像 横幅（px）\
-
-            発行されたバーコード画像（`barcode`）の横幅です。
-
-            '
+          description: 已签发条形码图片（`barcode`）的宽度（px）。
         barcode_height:
           type: string
           nullable: true
           minLength: 1
           maxLength: 9
-          description: 'バーコード画像 縦幅（px）\
-
-            発行されたバーコード画像（`barcode`）の縦幅です。
-
-            '
+          description: 已签发条形码图片（`barcode`）的高度（px）。
         overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: '多重支払フラグ\
-
-            この決済に対して複数回支払いが行われた場合`1`になります。
+          description: '重复付款标志。同一笔支付发生多次付款时为 `1`。
 
 
-            - `0`: 0回、または1回の支払いが行われた
+            - `0`：付款 0 次或 1 次
 
-            - `1`: 2回以上、同一のバーコードを用いて支払いが行われた
-
-            '
+            - `1`：使用同一条形码付款 2 次或以上'
         cancel_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: 'キャンセル後支払フラグ\
-
-            この決済をキャンセルした後に購入者がバーコードを用いて支払いを行った場合`1`になります。
+          description: '取消后付款标志。取消支付后，购买者仍使用条形码付款时为 `1`。
 
 
-            - `0`: キャンセル後支払は行われていない
+            - `0`：取消后未付款
 
-            - `1`: キャンセル後、購入者による支払いが行われた
-
-            '
+            - `1`：取消后已付款'
         konbini_code:
           nullable: true
           allOf:
@@ -16064,11 +16029,7 @@ components:
           nullable: true
           minLength: 1
           maxLength: 8
-          description: 'コンビニ店舗コード\
-
-            コンビニ事業者ごとに独自体系の店舗コードです。
-
-            '
+          description: 便利店门店代码；编码体系由各便利店运营商自行定义。
         device_name:
           nullable: true
           allOf:
@@ -16077,9 +16038,7 @@ components:
           nullable: true
           minLength: 1
           maxLength: 10
-          description: 'OSバージョン
-
-            '
+          description: 操作系统版本。
         win_width:
           nullable: true
           allOf:
@@ -16092,16 +16051,12 @@ components:
           nullable: true
           minLength: 1
           maxLength: 6
-          description: '画面横幅のDPI
-
-            '
+          description: 屏幕水平方向的 DPI。
         ydpi:
           nullable: true
           minLength: 1
           maxLength: 6
-          description: '画面縦幅のDPI
-
-            '
+          description: 屏幕垂直方向的 DPI。
         result:
           allOf:
           - $ref: '#/components/schemas/KonbiniPaymentProcessResult'
@@ -16110,9 +16065,7 @@ components:
           nullable: true
           minLength: 1
           maxLength: 18
-          description: '注文管理ID
-
-            '
+          description: 订单管理 ID。
         invoice_id:
           type: string
           nullable: true
@@ -16126,16 +16079,12 @@ components:
           minLength: 1
           maxLength: 2
           example: '2'
-          description: '支払い期限日数\
-
-            この決済の支払い期限日数です。`0`日から`14`日まで指定できます。
+          description: '支付期限天数，可指定 `0`～`14` 天。
 
 
-            - `0`を指定すると決済を作成した当日に限り支払いが可能な決済が作成されます。
+            - 指定 `0` 时，仅可在创建支付的当天完成付款
 
-            - デフォルト：`2`
-
-            '
+            - 默认值：`2`'
     Payment.Konbini.list:
       type: object
       properties:
@@ -16179,33 +16128,27 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるPayPay上での取引承認を待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在 PayPay 中确认交易
 
-            - `AUTHORIZED`: 仮売上<br /><span class="smallText">仮売上としてPayPay残高の確保が完了しており、売上確定により請求を完了できます。</span>
+            - `AUTHORIZED`：已授权，已冻结 PayPay 余额，可通过确认请款完成扣款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">請求が完了し、売上が確定しています。</span>
+            - `CAPTURED`：已确认请款，扣款和销售确认均已完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         code_url:
           type: string
           nullable: true
           minLength: 1
           maxLength: 256
           example: https://www.paypay.example.com/app/cashier?code=https%3A%2F%2Fqr.paypay.example.com%2F0123456789abcdefghijklm
-          description: 'PayPay支払いURL\
-
-            購入者をこのURLにリダイレクトすることでPayPay上での取引を開始します。
-
-            '
+          description: PayPay 支付 URL。将购买者重定向至该 URL，即可开始 PayPay 交易。
         code_expiry_date:
           type: string
           nullable: true
@@ -16219,11 +16162,7 @@ components:
           minLength: 1
           maxLength: 256
           example: https://your-service.example.com/on-payment-complete
-          description: 'リダイレクトURL\
-
-            決済が完了した際のPayPayからのリダイレクト先URL。
-
-            '
+          description: 支付完成后，PayPay 将购买者重定向到的 URL。
         redirect_type:
           type: string
           nullable: true
@@ -16231,161 +16170,113 @@ components:
           - '1'
           - '2'
           example: '1'
-          description: 'リダイレクト先種別\
-
-            `redirect_url`の種別
+          description: '`redirect_url` 的目标类型。
 
 
-            - `1`： Webページ／Webアプリケーション
+            - `1`：网站或 Web 应用
 
-            - `2`： ネイティブアプリ
-
-            '
+            - `2`：原生应用'
         auth_max_date:
           type: string
           nullable: true
           example: 2022/05/16
-          description: '仮売上期限\
+          description: '授权有效期。
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         order_description:
           type: string
           nullable: true
           maxLength: 100
           example: ○○の購入
-          description: '注文内容の説明\
-
-            購入者のPayPayアプリ上で表示される注文内容の説明。
-
-            '
+          description: 在购买者 PayPay 应用中显示的订单说明。
         capture_description:
           type: string
           nullable: true
           maxLength: 100
           example: ○○の発送完了
-          description: '売上確定の説明\
-
-            購入者のPayPayアプリ上で表示される売上確定の説明。
-
-            '
+          description: 在购买者 PayPay 应用中显示的确认请款说明。
         update_description:
           type: string
           nullable: true
           maxLength: 100
           example: ○○の変更の適用
-          description: '金額変更の説明\
-
-            購入者のPayPayアプリ上で表示される金額変更の説明。
-
-            '
+          description: 在购买者 PayPay 应用中显示的金额变更说明。
         cancel_description:
           type: string
           nullable: true
           maxLength: 100
           example: ○○の購入キャンセル
-          description: 'キャンセルの説明\
-
-            購入者のPayPayアプリ上で表示されるキャンセルの説明。
-
-            '
+          description: 在购买者 PayPay 应用中显示的取消说明。
         store_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 18
           example: '123456'
-          description: '店舗ID\
-
-            PayPayによって発行された店舗ID。
-
-            '
+          description: PayPay 签发的门店 ID。
         code_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
           example: '123456'
-          description: 'PayPayの支払いコードID
-
-            '
+          description: PayPay 支付码 ID。
         payment_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay 決済ID
-
-            '
+          description: PayPay 支付 ID。
         paypay_result_code:
           type: string
           nullable: true
           minLength: 1
           maxLength: 256
-          description: 'PayPay処理結果コード
-
-            '
+          description: PayPay 处理结果代码。
         merchant_payment_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay トランザクションID
-
-            '
+          description: PayPay 交易 ID。
         merchant_capture_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay 売上確定ID
-
-            '
+          description: PayPay 确认请款 ID。
         merchant_update_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay 金額変更ID
-
-            '
+          description: PayPay 金额变更 ID。
         merchant_revert_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay キャンセルID
-
-            '
+          description: PayPay 取消 ID。
         merchant_refund_id:
           type: string
           nullable: true
           minLength: 1
           maxLength: 64
-          description: 'PayPay 返金ID
-
-            '
+          description: PayPay 退款 ID。
         payment_date:
           type: string
           nullable: true
           example: 2022/05/16 12:34:56.999
-          description: '支払日時\
+          description: '支付时间。
 
-            形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
       x-req-properties:
         user_agent:
           type: string
           minLength: 1
           maxLength: 256
           example: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3
-          description: 'ユーザーエージェント\
-
-            リクエストを送信したユーザーエージェントの情報。`redirect_type`が`1`（Webページ／Webアプリケーション）の場合指定できます。
-
-            '
+          description: 发送请求的 User-Agent 信息。当 `redirect_type` 为 `1`（网站或 Web 应用）时可以指定。
     Payment.PayPay.list:
       type: object
       properties:
@@ -16569,29 +16460,27 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるバーチャル口座への振込を待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者向虚拟账户转账
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">振込が完了し、売上が確定しています。</span>
+            - `CAPTURED`：转账完成，销售确认完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         billing_amount:
           type: integer
           format: int64
           minLength: 1
           maxLength: 10
           example: 1000
-          description: '振込依頼金額
+          description: '要求转账的商品或服务金额。与 `billing_tax` 的合计值必须处于该支付方式允许的金额范围内。
 
-            '
+            参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
         billing_tax:
           type: integer
           format: int64
@@ -16599,20 +16488,16 @@ components:
           minLength: 1
           maxLength: 10
           example: 100
-          description: '振込依頼金額（税送料）
+          description: '要求转账的税费及运费金额。与 `billing_amount` 的合计值必须处于该支付方式允许的金额范围内。
 
-            '
+            参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
         billing_total_amount:
           type: integer
           format: int64
           minLength: 1
           maxLength: 10
           example: 1100
-          description: '振込依頼金額 合計\
-
-            振込依頼金額と振込依頼金額（税送料）の合計金額です。
-
-            '
+          description: 要求转账的总金额，即 `billing_amount` 与 `billing_tax` 之和。
         payment_term_day:
           type: integer
           format: int64
@@ -16689,107 +16574,67 @@ components:
           type: string
           nullable: false
           example: 2022/05/16
-          description: '取引日\
+          description: '交易日期。
 
-            \
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         value_date:
           type: string
           nullable: true
           example: 2022/05/16
-          description: '起算日\
+          description: '起息日，即银行处理入账的营业日。
 
-            \
-
-            銀行で入金が処理された営業日\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         remitter_account_name:
           type: string
           nullable: true
           maxLength: 48
           example: ヤマダ　タロウ
-          description: '振込依頼人 氏名\
-
-            \
-
-            振込依頼人（購入者）の氏名です。
-
-            '
+          description: 汇款人（购买者）姓名。
         remitter_bank_name:
           type: string
           nullable: true
           maxLength: 30
           example: イロハギンコウ
-          description: '振込依頼人 銀行名\
-
-            \
-
-            振込依頼人（購入者）の銀行名です。
-
-            '
+          description: 汇款人（购买者）的银行名称。
         remitter_branch_name:
           type: string
           nullable: true
           maxLength: 15
           example: ホンテン
-          description: '振込依頼人 支店名\
-
-            \
-
-            振込依頼人（購入者）の支店名です。
-
-            '
+          description: 汇款人（购买者）的银行分行名称。
         overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: '多重支払フラグ\
-
-            この決済に対して複数回支払いが行われた場合`1`になります。
+          description: '重复付款标志。同一笔支付发生多次付款时为 `1`。
 
 
-            - `0`: 0回、または1回の支払いが行われた
+            - `0`：付款 0 次或 1 次
 
-            - `1`: 2回以上、同一のバーチャル口座に対して支払いが行われた
-
-            '
+            - `1`：向同一虚拟账户付款 2 次或以上'
         cancel_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: 'キャンセル後支払フラグ\
-
-            この決済をキャンセルした後に購入者がバーチャル口座に対して支払いを行った場合`1`になります。
+          description: '取消后付款标志。取消支付后，购买者仍向虚拟账户付款时为 `1`。
 
 
-            - `0`: キャンセル後支払は行われていない
+            - `0`：取消后未付款
 
-            - `1`: キャンセル後支払が行われた
-
-            '
+            - `1`：取消后已付款'
         expire_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: '期限切れ後支払フラグ\
-
-            この決済の支払期限が過ぎた後に購入者がバーチャル口座に対して支払いを行った場合`1`になります。
+          description: '过期后付款标志。超过支付期限后，购买者仍向虚拟账户付款时为 `1`。
 
 
-            - `0`: 期限切れ後支払は行われていない
+            - `0`：过期后未付款
 
-            - `1`: 期限切れ後支払が行われた
-
-            '
+            - `1`：过期后已付款'
         use_exact_deposit_amount:
           type: boolean
           enum:
@@ -16808,16 +16653,12 @@ components:
           enum:
           - true
           - false
-          description: '顧客固定バーチャル口座利用フラグ\
-
-            この決済において顧客固定バーチャル口座が利用されているかどうかを示すフラグです。
+          description: '是否使用客户固定虚拟账户。
 
 
-            - `true`: 顧客固定バーチャル口座を利用している
+            - `true`：使用客户固定虚拟账户
 
-            - `false`: 顧客固定バーチャル口座を利用していない
-
-            '
+            - `false`：不使用客户固定虚拟账户'
         bulk_payment_id:
           nullable: true
           allOf:
@@ -16830,25 +16671,17 @@ components:
           type: string
           minLength: 1
           maxLength: 10
-          description: '振込依頼金額\
+          description: '要求转账的商品或服务金额。与 `billing_tax` 的合计值必须处于该支付方式允许的金额范围内。
 
-            `billing_tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restriction)
-
-            '
+            参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
         billing_tax:
           type: string
           nullable: true
           minLength: 1
           maxLength: 10
-          description: '振込依頼金額（税送料）\
+          description: '要求转账的税费及运费金额。与 `billing_amount` 的合计值必须处于该支付方式允许的金额范围内。
 
-            `billing_amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restriction)
-
-            '
+            参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
         payment_term_day:
           type: string
           nullable: true
