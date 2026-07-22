@@ -170,387 +170,330 @@ tags:
 
     | 504 | Gateway Timeout | 发生网关超时。 |'
 - name: 客户
-  description: '顧客を管理するAPIです。fincodeにおける顧客は多くのアプリケーションにおいて購入者となるユーザーアカウントに1:1で紐づけられます。\
+  description: '用于管理客户的 API。在 fincode 中，客户通常与应用中作为购买者的用户账户一一对应。
 
-    顧客には名前やメールアドレス、請求先住所を登録し管理でき、決済やカード情報・決済手段などのリソースが関連付けられます。
-
-    '
+    可为客户登记并管理姓名、邮箱地址和账单地址，还可关联支付、卡片和支付方式等资源。'
 - name: 卡片
-  description: '顧客が持つカードを管理するAPIです。\
+  description: '用于管理客户持有卡片的 API。
 
-    カードにはクレジットカード/デビッドカード/プリペイドカードの有効期限や名義などの情報が含まれており、決済の実行時にカードのIDを指定することでそのカードに対して請求（決済）を行います。\
+    卡片中包含信用卡、借记卡或预付卡的有效期与持卡人姓名等信息。执行支付时指定卡片 ID，即可使用该卡片收款。
 
-    \
 
-    1つの顧客に対してカード情報は最大5件まで登録可能です。5件登録している状態で新しいカードを登録する場合は、既存のカードを削除してから再度登録してください。\
+    每个客户最多可登记 5 张卡片。已登记 5 张时，如需登记新卡片，请先删除一张现有卡片。
 
-    \
 
-    ※ カード登録時に3Dセキュア認証を行う場合は、[決済手段 登録API](#tag/PaymentMethod/operation/createCustomerPaymentMethod)を使用します。
-
-    '
+    如需在登记卡片时执行 3D Secure 认证，请使用[登记支付方式 API](#tag/PaymentMethod/operation/createCustomerPaymentMethod)。'
 - name: 支付方式
-  description: '顧客が持つ決済手段（*Payment Method*）を管理するAPIです。\
+  description: '用于管理客户持有的支付方式（*Payment Method*）的 API。
 
-    決済実行の際に決済手段のIDを指定することで、その決済手段に対し請求（決済）をします。\
-
-    \
-
-    決済手段オブジェクトは`pay_type`パラメータの値によって下記の情報を表現します。
+    执行支付时指定支付方式 ID，即可通过该支付方式收款。
 
 
-    - `Card`: この決済手段はカードを表します。`card`パラメータ内にカードに関する詳細な情報が含まれます。
-
-    - `Directdebit`: この決済手段は口座振替における振替用口座を表します。`directdebit`パラメータ内に口座に関する詳細な情報が含まれます。
-
-    - `Virtualaccount`: この決済手段は銀行振込（バーチャル口座）を表します。`virtualaccount`パラメータ内に口座に関する詳細な情報が含まれます。
+    支付方式对象会根据 `pay_type` 参数表示以下信息：
 
 
-    1つの顧客に対して同一`pay_type`の決済手段は最大5件まで登録可能です。5件登録している状態で新しい決済手段を登録する場合は、既存の決済手段を削除してから再度登録してください。\
+    - `Card`：卡片。`card` 参数中包含卡片的详细信息。
 
-    \
+    - `Directdebit`：银行账户自动扣款所使用的账户。`directdebit` 参数中包含账户的详细信息。
 
-    ※カード情報の操作はカードAPIでも可能ですが、今後は非推奨となる予定です。新規実装および機能追加を行う場合は、決済手段APIの利用を推奨します。\
+    - `Virtualaccount`：银行转账（虚拟账户）。`virtualaccount` 参数中包含账户的详细信息。
 
-    \
 
-    [更に詳しく解説したドキュメントをこちらから参照できます。](https://docs.fincode.jp/payment/payment_method)
+    每个客户最多可为同一种 `pay_type` 登记 5 个支付方式。已登记 5 个时，如需登记新的支付方式，请先删除一个现有支付方式。
 
-    '
+
+    卡片 API 目前也能操作卡片信息，但未来计划弃用。新功能或新系统请优先使用支付方式 API。
+
+
+    [查看支付方式的详细说明。](https://docs.fincode.jp/payment/payment_method)'
 - name: 支付
-  description: '決済を行うAPIです。\
+  description: '用于执行支付的 API。
 
-    決済 登録APIで決済情報をfincodeに登録し、決済 実行APIで実際に購入者（顧客）に対して請求を行います。\
+    先通过“登记支付”API 将支付信息登记到 fincode，再通过“执行支付”API 实际向购买者（客户）收款。
 
-    \
 
-    決済手段によっては決済実行後、3Dセキュア認証や購入者による現金払い込みなどが必要になります。
-
-    '
+    根据支付方式，执行支付后可能还需要完成 3D Secure 认证或由购买者进行现金缴款等操作。'
 - name: 3D Secure 认证
-  description: '3Dセキュア認証を行うAPIです。\
+  description: '用于执行 3D Secure 认证的 API。
 
-    3Dセキュア認証はカード決済において不正利用を防止するために使用される本人認証の仕組みです。\
+    3D Secure 是卡片支付中用于防止盗刷的持卡人身份认证机制。
 
-    \
 
-    決済実行後、購入者が`acs_url`にアクセスすると、ブラウザ情報がfincodeへ送信され認証プロセスが開始します。認証のプロセスと実装のフローに関しては[Docs > 3Dセキュア2.0認証を使用する](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)から参照できます。
-
-    '
+    执行支付后，购买者访问 `acs_url` 时，浏览器信息会发送至 fincode 并开始认证流程。认证过程与实现流程请参阅 [Docs > 使用 3D Secure 2.0 认证](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)。'
 - name: 重定向式支付
-  description: 'fincodeが提供するリダイレクト型決済URLを作成するAPIです。\
+  description: '用于创建 fincode 托管的重定向式支付页面 URL。
 
-    リクエスト時に`guide_mail_send_flag`（決済メール送信フラグ）に`1`（送信する）を指定することでリダイレクト型決済URLを添付したメールをfincodeから送信させられます。
-
-    '
+    请求时将 `guide_mail_send_flag`（支付邮件发送标志）设为 `1`（发送），可由 fincode 向客户发送包含该支付页面 URL 的邮件。'
 - name: 重定向式卡片登记
-  description: 'リダイレクト型カード登録URLを作成するAPIです。
+  description: '用于创建重定向式卡片登记页面 URL。
 
 
-    - 顧客ID（`customer_id`）を指定して作成した場合、その顧客に対してカードを登録するためのカード登録URLを発行します。
+    - 指定客户 ID（`customer_id`）时，生成用于为该客户登记卡片的页面 URL。
 
-    - 顧客IDを指定しなかった場合、顧客を新たに作成しその顧客に対してカードを登録するためのカード登録URLを発行します。
+    - 不指定客户 ID 时，先创建新客户，再生成用于为该客户登记卡片的页面 URL。
 
 
-    リクエスト時に`guide_mail_send_flag`（登録メール送信フラグ）に`1`（送信する）を指定することでリダイレクト型カード登録URLを添付したメールをfincodeから送信させられます。
-
-    '
+    请求时将 `guide_mail_send_flag`（登记邮件发送标志）设为 `1`（发送），可由 fincode 向客户发送包含该卡片登记页面 URL 的邮件。'
 - name: 套餐
-  description: 'サブスクリプションのプランを管理するAPIです。\
+  description: '用于管理订阅套餐的 API。
 
-    サブスクリプション請求の金額・間隔・頻度などのプラン情報を登録・取得・更新・削除できます。
-
-    '
+    可登记、获取、更新和删除订阅的收费金额、间隔和频率等套餐信息。'
 - name: 订阅
-  description: 'サブスクリプションを管理するAPIです。\
+  description: '用于管理订阅的 API。
 
-    指定した顧客に対して指定したプランで定期・定額で請求を行うサブスクリプションを登録・更新・削除できるほか、結果照会APIを用いてあるサブスクリプションによって発生した毎回の課金の結果を一覧で取得することもできます。\
+    可为指定客户登记、更新或取消采用指定套餐的定期定额订阅，也可通过结果查询 API 获取该订阅每次收费的结果列表。
 
-    \
 
-    サブスクリプション課金の処理は非同期で行われ、Webhookイベント`recurring.card.batch`（サブスクリプション課金（カード決済） 実行）や`recurring.directdebit.batch`（サブスクリプション課金（口座振替）
-    実行）で課金結果を受け取ることができます。
-
-    '
+    订阅收费采用异步处理。可通过 Webhook 事件 `recurring.card.batch`（执行卡片支付订阅收费）或 `recurring.directdebit.batch`（执行银行账户自动扣款订阅收费）接收收费结果。'
 - name: 批量支付
-  description: '一括決済を行うAPIです。\
+  description: '用于执行批量支付的 API。
 
-    数千・数万件単位の決済を1回のリクエストで登録・予約することができ、従量課金のビジネスモデルの構築などに利用できます。\
+    一次请求可登记并预约数千乃至数万笔支付，可用于构建按量收费等业务模式。
 
-    \
 
-    一括決済の処理は非同期で行われ、Webhookイベント`payments.bulk.*.batch`（一括決済課金 実行）で課金結果を受け取ることができます。
-
-    '
+    批量支付采用异步处理。可通过 Webhook 事件 `payments.bulk.*.batch`（执行批量支付收费）接收收费结果。'
 - name: 账单功能
-  description: 'インボイス機能に関するAPI群です。\
+  description: '账单功能相关 API。
 
-    機能の詳細は[こちら](/payment/invoice)をご確認ください。\
+    功能详情请参阅[账单说明](/payment/invoice)。
 
-    インボイス情報をもとに決済機能付きの請求書と領収書が発行されます。
-
-    '
+    系统会根据账单信息生成带支付功能的账单和收据。'
 - name: 销售款入账
-  description: 'ショップの売上入金を取得できます。\
+  description: '用于获取商户的销售款入账信息。
 
-    また、ある売上入金の詳細情報を取得し、取引1件ごとの入金額への影響を確認することもできます。
-
-    '
+    还可获取某笔销售款入账的明细，确认每笔交易对入账金额的影响。'
 - name: 平台使用费收入
-  description: 'プラットフォーム利用料による売上入金を取得できます。\
+  description: '用于获取平台使用费产生的销售款入账信息。
 
-    また、ある売上入金のIDを指定して、テナントショップごとの入金のサマリー情報を一覧取得することもできます。
-
-    '
+    还可指定销售款入账 ID，获取各租户商户入账汇总信息的列表。'
 - name: 拒付
-  description: 'チャージバックに関する情報を取得できるAPIです。\
+  description: '用于获取拒付相关信息的 API。
 
-    チャージバックに関する詳細は[Docs](https://docs.fincode.jp/business_management/chargeback)をご確認ください。
-
-
-    ショップ管理画面のチャージバックステータスは、APIの`status_code`と`canceled`パラメータで取得できます。\
-
-    ステータスごとの対応は以下の通りです。
+    拒付详情请参阅 [Docs](https://docs.fincode.jp/business_management/chargeback)。
 
 
-    **要対応**
-
-    - `status_code`: 4005
-
-    - `canceled`: 使用なし
+    商户管理后台中的拒付状态可通过 API 的 `status_code` 和 `canceled` 参数判断，对应关系如下：
 
 
-    **回答済み**
+    **需要处理**
 
-    - `status_code`: 4006、4007、4011
+    - `status_code`：4005
 
-    - `canceled`: 使用なし
-
-
-    **売上返還確定**
-
-    - `status_code`: 4009
-
-    - `canceled`: false
+    - `canceled`：不使用
 
 
-    **その他（確定後取消）**
+    **已答复**
 
-    - `status_code`: 4009
+    - `status_code`：4006、4007、4011
 
-    - `canceled`: true
+    - `canceled`：不使用
 
-    '
+
+    **销售款退回已确定**
+
+    - `status_code`：4009
+
+    - `canceled`：false
+
+
+    **其他（确定后撤销）**
+
+    - `status_code`：4009
+
+    - `canceled`：true'
 - name: 平台商户
-  description: 'プラットフォームショップ（メインショップ・サブショップ）の設定を管理するAPIです。\
+  description: '用于管理平台商户（主商户与子商户）设置的 API。
 
-    テナントに対し適用するプラットフォーム利用料金の設定や、プラットフォームショップの一覧取得などができます。
-
-    '
+    可设置适用于租户的平台使用费，也可获取平台商户列表。'
 - name: 租户商户
-  description: 'テナントショップの設定を管理するAPIです。\
+  description: '用于管理租户商户设置的 API。
 
-    テナントに対し適用するプラットフォーム利用料金の設定や、テナントショップの一覧取得などができます。
-
-    '
+    可设置适用于租户的平台使用费，也可获取租户商户列表。'
 - name: 租户申请管理
-  description: 'テナントショップの新規作成や審査情報の提出、販売免許等のアップロードなどを行えるAPIです。\
+  description: '用于新建租户商户、提交审核信息及上传销售许可证等文件的 API。
 
-    \
 
-    <span class="attension">このAPIの利用について</span>\
+    <span class="attension">使用条件</span>
 
-    このAPIを本番環境で利用するためにはfincodeへの申請が必要です。利用を希望する場合は[問い合わせフォーム](https://form.fincode.jp/contact) からテナント申請管理APIを利用するサービスの概要をお知らせの上、機能開放をリクエストしてください。（テスト環境では常時利用できます。）
-
-    '
+    在生产环境使用此 API 前必须向 fincode 提交申请。如需使用，请通过[联系表单](https://form.fincode.jp/contact)说明使用租户申请管理 API 的服务概要，并申请开通功能。测试环境始终可用。'
 - name: 公司印章
-  description: 'ショップに紐づく社印を管理するAPIです。\
+  description: '用于管理商户公司印章的 API。
 
-    登録された社印は、インボイス機能などで発行される請求書・領収書・インボイスWEBページに自動で押印されます。\
+    已登记的印章会自动加盖到通过账单功能等生成的账单、收据和账单 Web 页面中。
 
-    画像はマルチパート形式でアップロードします。サポートする拡張子は `png` / `jpg` / `jpeg` です。
-
-    '
+    图片使用 multipart 格式上传，支持 `png`、`jpg` 和 `jpeg` 扩展名。'
 - name: Webhook 设置
-  description: 'Webhook設定を管理するAPIです。\
+  description: '用于管理 Webhook 设置的 API。
 
-    fincode上で指定したイベントが発生した場合、指定したエンドポイントでリアルタイムで通知を受け取れます。\
+    fincode 发生已指定的事件时，可在配置的端点实时接收通知。
 
-    [Webhook通知仕様はこちら](https://docs.fincode.jp/api#tag/Webhook_)\
+    [查看 Webhook 通知规范](https://docs.fincode.jp/api#tag/Webhook_)
 
-    \
 
-    ※1 テナントのイベントを受けとるためにはテナントごとにWebhook設定を登録する必要があります。
+    要接收租户事件，必须为每个租户分别登记 Webhook 设置。
 
 
-    | 機能                         | イベント名                  | イベントパラメータ                         |
+    | 功能 | 事件 | 事件参数 |
 
-    |----------------------------|--------------------------|-----------------------------------------|
+    | --- | --- | --- |
 
-    | カード決済                     | 決済登録                     | payments.card.regist                   |
+    | 卡片支付 | 登记支付 | payments.card.regist |
 
-    | カード決済                     | 決済実行                     | payments.card.exec                     |
+    | 卡片支付 | 执行支付 | payments.card.exec |
 
-    | カード決済                     | 売上確定                     | payments.card.capture                  |
+    | 卡片支付 | 确认销售额 | payments.card.capture |
 
-    | カード決済                     | キャンセル                     | payments.card.cancel                   |
+    | 卡片支付 | 取消 | payments.card.cancel |
 
-    | カード決済                     | 再オーソリ                     | payments.card.auth                     |
+    | 卡片支付 | 重新授权 | payments.card.auth |
 
-    | カード決済                     | 金額変更                     | payments.card.change                   |
+    | 卡片支付 | 变更金额 | payments.card.change |
 
-    | 3Dセキュア（カード決済）                     | 認証実行                     | payments.card.secure2.authenticate     |
+    | 3D Secure（卡片支付） | 执行认证 | payments.card.secure2.authenticate |
 
-    | 3Dセキュア（カード決済）                     | チャレンジ結果確定               | payments.card.secure2.result           |
+    | 3D Secure（卡片支付） | 确认挑战结果 | payments.card.secure2.result |
 
-    | 3Dセキュア（カード決済）                     | 認証後決済実行                 | payments.card.secure                   |
+    | 3D Secure（卡片支付） | 执行认证后支付 | payments.card.secure |
 
-    | Apple Pay                   | 決済登録                     | payments.applepay.regist               |
+    | Apple Pay | 登记支付 | payments.applepay.regist |
 
-    | Apple Pay                   | 決済実行                     | payments.applepay.exec                 |
+    | Apple Pay | 执行支付 | payments.applepay.exec |
 
-    | Apple Pay                   | 売上確定                     | payments.applepay.capture              |
+    | Apple Pay | 确认销售额 | payments.applepay.capture |
 
-    | Apple Pay                   | キャンセル                     | payments.applepay.cancel               |
+    | Apple Pay | 取消 | payments.applepay.cancel |
 
-    | Google Pay                     | 決済登録                     | payments.googlepay.regist                   |
+    | Google Pay | 登记支付 | payments.googlepay.regist |
 
-    | Google Pay                     | 決済実行                     | payments.googlepay.exec                     |
+    | Google Pay | 执行支付 | payments.googlepay.exec |
 
-    | Google Pay                     | 売上確定                     | payments.googlepay.capture                  |
+    | Google Pay | 确认销售额 | payments.googlepay.capture |
 
-    | Google Pay                     | キャンセル                     | payments.googlepay.cancel                   |
+    | Google Pay | 取消 | payments.googlepay.cancel |
 
-    | Google Pay                     | 再オーソリ                     | payments.googlepay.auth                     |
+    | Google Pay | 重新授权 | payments.googlepay.auth |
 
-    | Google Pay                     | 金額変更                     | payments.googlepay.change                   |
+    | Google Pay | 变更金额 | payments.googlepay.change |
 
-    | 3Dセキュア（Google Pay）                     | 認証実行                     | payments.googlepay.secure2.authenticate     |
+    | 3D Secure（Google Pay） | 执行认证 | payments.googlepay.secure2.authenticate |
 
-    | 3Dセキュア（Google Pay）                     | チャレンジ結果確定               | payments.googlepay.secure2.result           |
+    | 3D Secure（Google Pay） | 确认挑战结果 | payments.googlepay.secure2.result |
 
-    | 3Dセキュア（Google Pay）                     | 認証後決済実行                 | payments.googlepay.secure                   |
+    | 3D Secure（Google Pay） | 执行认证后支付 | payments.googlepay.secure |
 
-    | コンビニ決済                   | 決済登録                     | payments.konbini.regist                |
+    | 便利店支付 | 登记支付 | payments.konbini.regist |
 
-    | コンビニ決済                   | 決済実行                     | payments.konbini.exec                  |
+    | 便利店支付 | 执行支付 | payments.konbini.exec |
 
-    | コンビニ決済                   | キャンセル                     | payments.konbini.cancel                |
+    | 便利店支付 | 取消 | payments.konbini.cancel |
 
-    | コンビニ決済                   | 支払通知                     | payments.konbini.complete              |
+    | 便利店支付 | 付款通知 | payments.konbini.complete |
 
-    | コンビニ決済                   | 支払通知（シミュレート）         | payments.konbini.complete.stub         |
+    | 便利店支付 | 付款通知（模拟） | payments.konbini.complete.stub |
 
-    | コンビニ決済                   | 支払い期限切れ                 | konbini.expired.update.batch           |
+    | 便利店支付 | 超过付款期限 | konbini.expired.update.batch |
 
-    | PayPay                      | 決済登録                     | payments.paypay.regist                 |
+    | PayPay | 登记支付 | payments.paypay.regist |
 
-    | PayPay                      | 決済実行                     | payments.paypay.exec                   |
+    | PayPay | 执行支付 | payments.paypay.exec |
 
-    | PayPay                      | 売上確定                     | payments.paypay.capture                |
+    | PayPay | 确认销售额 | payments.paypay.capture |
 
-    | PayPay                      | キャンセル                     | payments.paypay.cancel                 |
+    | PayPay | 取消 | payments.paypay.cancel |
 
-    | PayPay                      | 金額変更                     | payments.paypay.change                 |
+    | PayPay | 变更金额 | payments.paypay.change |
 
-    | PayPay                      | 支払通知                     | payments.paypay.complete               |
+    | PayPay | 付款通知 | payments.paypay.complete |
 
-    | 口座振替                     | 決済登録                     | payments.directdebit.regist            |
+    | 银行账户自动扣款 | 登记支付 | payments.directdebit.regist |
 
-    | 口座振替                     | 決済実行                     | payments.directdebit.exec              |
+    | 银行账户自动扣款 | 执行支付 | payments.directdebit.exec |
 
-    | 口座振替                     | キャンセル                     | payments.directdebit.cancel            |
+    | 银行账户自动扣款 | 取消 | payments.directdebit.cancel |
 
-    | 口座振替                     | 金額変更                     | payments.directdebit.change            |
+    | 银行账户自动扣款 | 变更金额 | payments.directdebit.change |
 
-    | 口座振替                     | 引き落とし通知                 | payments.directdebit.complete          |
+    | 银行账户自动扣款 | 扣款通知 | payments.directdebit.complete |
 
-    | 口座振替                     | 引き落とし通知（シミュレート）     | payments.directdebit.complete.stub     |
+    | 银行账户自动扣款 | 扣款通知（模拟） | payments.directdebit.complete.stub |
 
-    | 銀行振込（バーチャル口座）      | 決済登録                     | payments.virtualaccount.regist         |
+    | 银行转账（虚拟账户） | 登记支付 | payments.virtualaccount.regist |
 
-    | 銀行振込（バーチャル口座）      | 決済実行                     | payments.virtualaccount.exec           |
+    | 银行转账（虚拟账户） | 执行支付 | payments.virtualaccount.exec |
 
-    | 銀行振込（バーチャル口座）      | キャンセル                     | payments.virtualaccount.cancel         |
+    | 银行转账（虚拟账户） | 取消 | payments.virtualaccount.cancel |
 
-    | 銀行振込（バーチャル口座）      | 支払通知                 | payments.virtualaccount.complete       |
+    | 银行转账（虚拟账户） | 付款通知 | payments.virtualaccount.complete |
 
-    | 銀行振込（バーチャル口座）      | 支払通知（シミュレート）     | payments.virtualaccount.complete.stub  |
+    | 银行转账（虚拟账户） | 付款通知（模拟） | payments.virtualaccount.complete.stub |
 
-    | 決済手段（※3）                     | 登録                        | customers.payment_methods.created      |
+    | 支付方式（注 2） | 登记 | customers.payment_methods.created |
 
-    | 決済手段（※2）                     | 更新                        | customers.payment_methods.updated      |
+    | 支付方式（注 1） | 更新 | customers.payment_methods.updated |
 
-    | 決済手段（※3）                     | 停止                        | customers.payment_methods.inactivated  |
+    | 支付方式（注 2） | 停用 | customers.payment_methods.inactivated |
 
-    | 決済手段（※3）                     | 再有効化                        | customers.payment_methods.activated    |
+    | 支付方式（注 2） | 重新启用 | customers.payment_methods.activated |
 
-    | 決済手段（※3）                     | 削除                        | customers.payment_methods.deleted      |
+    | 支付方式（注 2） | 删除 | customers.payment_methods.deleted |
 
-    | カード（※2）                       | 登録                        | card.regist                            |
+    | 卡片（注 1） | 登记 | card.regist |
 
-    | カード                       | 更新                        | card.update                            |
+    | 卡片 | 更新 | card.update |
 
-    | カード                       | カード更新機能（洗替）                 | card.updater.complete                  |
+    | 卡片 | 卡片信息自动更新 | card.updater.complete |
 
-    | サブスクリプション（カード決済）  | 登録                        | subscription.card.regist               |
+    | 订阅（卡片支付） | 登记 | subscription.card.regist |
 
-    | サブスクリプション（カード決済）  | 解約                        | subscription.card.delete               |
+    | 订阅（卡片支付） | 取消 | subscription.card.delete |
 
-    | サブスクリプション（カード決済）  | 更新                        | subscription.card.update               |
+    | 订阅（卡片支付） | 更新 | subscription.card.update |
 
-    | サブスクリプション課金（カード決済）| 実行                        | recurring.card.batch                   |
+    | 订阅收费（卡片支付） | 执行 | recurring.card.batch |
 
-    | サブスクリプション（口座振替）      | 登録                        | subscription.directdebit.regist        |
+    | 订阅（银行账户自动扣款） | 登记 | subscription.directdebit.regist |
 
-    | サブスクリプション（口座振替）      | 解約                        | subscription.directdebit.delete        |
+    | 订阅（银行账户自动扣款） | 取消 | subscription.directdebit.delete |
 
-    | サブスクリプション（口座振替）      | 更新                        | subscription.directdebit.update        |
+    | 订阅（银行账户自动扣款） | 更新 | subscription.directdebit.update |
 
-    | サブスクリプション課金（口座振替）  | 実行                        | recurring.directdebit.batch            |
+    | 订阅收费（银行账户自动扣款） | 执行 | recurring.directdebit.batch |
 
-    | 一括決済（カード決済）           | 登録                        | payments.bulk.card.regist              |
+    | 批量支付（卡片支付） | 登记 | payments.bulk.card.regist |
 
-    | 一括決済課金（カード決済）         | 実行                        | payments.bulk.card.batch               |
+    | 批量支付收费（卡片支付） | 执行 | payments.bulk.card.batch |
 
-    | 一括決済（バーチャル口座）           | 登録                        | payments.bulk.virtualaccount.regist              |
+    | 批量支付（虚拟账户） | 登记 | payments.bulk.virtualaccount.regist |
 
-    | 一括決済課金（バーチャル口座）         | 実行                        | payments.bulk.virtualaccount.batch               |
+    | 批量支付收费（虚拟账户） | 执行 | payments.bulk.virtualaccount.batch |
 
-    | 決済手段 契約状況              | 更新                        | contracts.status_code.updated          |
+    | 支付方式签约状态 | 更新 | contracts.status_code.updated |
 
-    | チャージバック                 | 登録                        | charge_backs.regist                    |
+    | 拒付 | 登记 | charge_backs.regist |
 
-    | チャージバック                 | 更新                        | charge_backs.update                    |
+    | 拒付 | 更新 | charge_backs.update |
 
-    | 変更申請                       | 登録                        | change_requests.regist                 |
+    | 变更申请 | 登记 | change_requests.regist |
 
-    | 変更申請                       | 更新                        | change_requests.update                 |
+    | 变更申请 | 更新 | change_requests.update |
 
 
-    ※2 リダイレクト型カード登録APIの結果通知を受け取るには決済手段 更新（customers.payment_methods.updated）のWebhook設定を登録する必要があります。\
+    注 1：要接收重定向式卡片登记 API 的结果通知，必须登记支付方式更新事件（`customers.payment_methods.updated`）的 Webhook 设置。
 
-    ※3 このイベントにおいて通知される決済手段はバーチャル口座のみです。カード、口座振替は通知されません。
-
-    '
+    注 2：这些事件仅通知虚拟账户支付方式，不会通知卡片或银行账户自动扣款支付方式。'
 - name: Webhook 通知规范
-  description: 'イベントが発生したときに、fincodeから加盟店様が設定したエンドポイントURLへWebhookのリクエストを送信するときの仕様です。\
+  description: '事件发生时，fincode 向商户所配置的端点 URL 发送 Webhook 请求，本节说明该请求的规范。
 
-    [イベント一覧はこちら](https://docs.fincode.jp/api#tag/Webhook)\
+    [查看事件列表](https://docs.fincode.jp/api#tag/Webhook)
 
-    ※通知対象のパラメータは、機能追加等に伴い追加される可能性があります。\
+    随着功能增加，通知参数可能会新增；参数名称不会在没有预告的情况下变更或删除。
 
-    ※予告なくパラメータ名の変更、削除が行われることはありません。\
 
-    \
+    使用 Webhook 时，端点必须对 Webhook 请求返回接收成功或失败的响应。
 
-    Webhookを利用する場合は、正常受信または受信失敗のレスポンスをWebhookのリクエストに対して返却する必要があります。\
-
-    Webhookのリクエストがエラーで失敗した場合は、リトライ仕様に従って再送します。
-
-    '
+    Webhook 请求因错误而失败时，fincode 会按照重试规则再次发送。'
 externalDocs:
-  description: fincodeJSの仕様はこちらの JSリファレンス から確認できます。
+  description: fincodeJS 的规格请参阅 JS 参考文档。
   url: /js
 paths:
   /v1/customers:
