@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 697,
+  "remainingJapaneseUnits": 615,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -235,42 +235,6 @@
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Card`: カード - `Konbini`: コンビニ決済 - `Paypay`: PayPay - `Applepay`: Apple Pay - `Googlepay`: Google Pay - `Directdebit`: 口座振替 - `Virtuala"
     },
     {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/pay_type/description",
-      "preview": "決済種別\\ 一覧で取得する対象の決済種別を指定します。  - `Card`: カード - `Konbini`: コンビニ決済 - `Paypay`: PayPay - `Applepay`: Apple Pay - `Googlepay`: Google Pay - `Directdebit`: 口座振替 - `Vir"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/client_field_1/description",
-      "preview": "加盟店自由項目 1   指定した場合、完全一致で検索を行います。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/client_field_2/description",
-      "preview": "加盟店自由項目 2   指定した場合、完全一致で検索を行います。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/client_field_3/description",
-      "preview": "加盟店自由項目 3   指定した場合、完全一致で検索を行います。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/total_amount_min/description",
-      "preview": "合計金額（始値）\\ 利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以上の合計金額を持つ決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/total_amount_max/description",
-      "preview": "合計金額（終値）\\ 利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以下の合計金額を持つ決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/customer_id/description",
-      "preview": "顧客ID\\ 指定した顧客IDに紐づく決済情報から一覧で取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/process_date_from/description",
-      "preview": "処理日時（始値）\\ 処理日時（`process_date`）を対象に範囲検索を行います。この日付以降に処理された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.QueryParams/properties/process_date_to/description",
-      "preview": "処理日時（終値）\\ 処理日時（`process_date`）を対象に範囲検索を行います。この日付以前に処理された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
       "pointer": "/components/schemas/PaymentStatus/description",
       "preview": "決済ステータス  - `UNPROCESSED`: 未処理 - `CHECKED`: 有効性チェック済み - `AUTHORIZED`: 仮売上 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち - `AWAITING_PAYMENT_APPROVAL`: 決済承認待ち - `CAPTU"
     },
@@ -345,42 +309,6 @@
     {
       "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
-    },
-    {
-      "pointer": "/components/schemas/Payment/properties/id/description",
-      "preview": "オーダーID\\ 決済情報のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/properties/total_amount/description",
-      "preview": "合計金額\\ `amount`と`tax`の合計値です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/properties/process_date/description",
-      "preview": "決済 処理日時\\ 決済の各種処理（決済実行、キャンセルなど）が行われた日時です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/properties/customer_id/description",
-      "preview": "顧客ID\\ この決済の請求先となる顧客情報のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/properties/customer_group_id/description",
-      "preview": "顧客情報共有グループID\\ プラットフォームショップにおいて顧客情報が共有されている場合、顧客が所属する共有グループのIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/x-req-properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照例： [カード決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment/x-req-properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照例： [カード決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment/x-req-properties/paypay/order_description/description",
-      "preview": "注文内容の説明文\\ 購入者のPayPayアプリ上で注文内容として決済時に表示される説明文です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment/x-req-properties/directdebit/remarks/description",
-      "preview": "利用明細表示内容\\ 半角英数カナ記号、全角英数カナ記号、一部の記号、半角全角スペースが指定可能。\\ 使用可能な記号：`.`, `(`, `)`, `–`, `．`,`（`, `）`, `ー`\\ デフォルト：ショップ名カナの先頭9文字\\ "
     },
     {
       "pointer": "/components/schemas/CardPayMethod/description",
@@ -523,20 +451,12 @@
       "preview": "取引種別\\ この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するか指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
     },
     {
-      "pointer": "/components/schemas/order_description/description",
-      "preview": "注文内容の説明\\ 購入者のPayPayアプリ上で表示される注文内容の説明。 "
-    },
-    {
       "pointer": "/components/schemas/Payment.PayPay.Creating.Request/properties/amount/description",
       "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
     },
     {
       "pointer": "/components/schemas/Payment.PayPay.Creating.Request/properties/tax/description",
       "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/remarks/description",
-      "preview": "ご利用明細表示内容  - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース - デフォルト： `ショップ名カナの先頭9文字`  ※ 利用可能な記号  - 半角：`.`、`(`、`)`、`–` - 全角：`．`、`（`、`）`、`ー` "
     },
     {
       "pointer": "/components/schemas/billing_amount/description",
@@ -807,10 +727,6 @@
       "preview": "この決済URL上でPayPayによる決済を行った際、仮売上にするか即座に売上確定するか指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
     },
     {
-      "pointer": "/components/schemas/PaymentSession.PayPay/properties/order_description/description",
-      "preview": "注文内容の説明\\ PayPayアプリ上で注文内容として表示されます。 "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.VirtualAccount/properties/virtualaccount_reception_url/description",
       "preview": "銀行振込（バーチャル口座） 支払い画面URL "
     },
@@ -979,14 +895,6 @@
       "preview": "課金停止日\\ サブスクリプションの停止日です。\\ 省略した場合、無期限となります。\\ \\ 形式：`yyyy/MM/dd` "
     },
     {
-      "pointer": "/components/schemas/Subscription.Creating.Request/properties/remarks/description",
-      "preview": "（`pay_type = Directdebit`の場合のみ利用可能）ご利用明細表示内容  - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース - デフォルト： `ショップ名カナの先頭9文字`  ※ 利用可能な記号  - 半角：`.`、`(`、`)`、`–` - 全角：`．`、`（`、`）`、`"
-    },
-    {
-      "pointer": "/components/schemas/Subscription.Updating.Request/properties/remarks/description",
-      "preview": "（`pay_type = Directdebit`の場合のみ利用可能）ご利用明細表示内容  - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース - デフォルト： `ショップ名カナの先頭9文字`  ※ 利用可能な記号  - 半角：`.`、`(`、`)`、`–` - 全角：`．`、`（`、`）`、`"
-    },
-    {
       "pointer": "/components/schemas/SubscriptionResult.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=process_date␣asc,created␣asc`\\ \\ ソート可能な項目  - `process_date`: 処理日時 - `created`: 作成日時 "
     },
@@ -1009,10 +917,6 @@
     {
       "pointer": "/components/schemas/SubscriptionResult/properties/card_id/description",
       "preview": "カードID\\ サブスクリプションで使用されたカードのIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/SubscriptionResult/properties/remarks/description",
-      "preview": "ご利用明細表示内容\\ デフォルト：ショップ名カナの先頭9文字 "
     },
     {
       "pointer": "/components/schemas/SubscriptionResult/properties/settlement_route/description",
@@ -1069,46 +973,6 @@
     {
       "pointer": "/components/schemas/PaymentBulk.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=created␣asc,process_plan_date␣desc`\\ \\ ソート可能な項目  - `process_plan_date`: 一括決済 処理予定日 - `status`: ステータス - `pay_type`: 決済種別 - `file_nam"
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/id/description",
-      "preview": "一括決済ID "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/process_plan_date/description",
-      "preview": "一括決済 処理予定日\\ この一括決済の処理予定日です。\\ pay_type=`Card`の場合は指定必須です。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/file_name/description",
-      "preview": "一括決済データファイル名 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/process_start_date/description",
-      "preview": "一括決済 処理開始日時\\ この一括決済の処理開始日時です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/process_end_date/description",
-      "preview": "一括決済 処理終了日時\\ この一括決済の処理終了日時です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/total_count/description",
-      "preview": "一括決済 総件数\\ この一括決済に含まれる決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/process_success_count/description",
-      "preview": "一括決済 成功件数\\ この一括決済の処理に成功した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/process_failure_count/description",
-      "preview": "一括決済 失敗件数\\ この一括決済の処理に失敗した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/properties/error_code/description",
-      "preview": "この一括決済において発生したエラーのうち、一番最新のエラーのエラーコードです。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentBulk/x-req-properties/file/description",
-      "preview": "一括決済情報を記載したJSONファイル。\\ \\ 以下のようなファイルをアップロードします。\\ pay_type=`Card`の場合 ```json {     \"data\": [         {             \"id\": \"order_001\",             \"amount\": \"1000\","
     },
     {
       "pointer": "/components/schemas/process_plan_date/description",
@@ -1451,46 +1315,6 @@
       "preview": "プラットフォーム利用料収入のサマリー情報のリスト "
     },
     {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/order_id/description",
-      "preview": "オーダーID   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/amount/description",
-      "preview": "金額   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/trade_registration_date/description",
-      "preview": "取引登録日時   yyyy/MM/dd HH:mm形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/category/description",
-      "preview": "カテゴリ    - `0`: 不正利用懸念 - `1`: 調査依頼 - `2`: 不正利用確定 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/status_code/description",
-      "preview": "ステータス    - `4005`: 要対応 - `4006`: 回答済み\t - `4007`: 回答済み\t - `4009`: 精算済み\t - `4011`: 回答済み\t "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/request/description",
-      "preview": "申出内容    - `1`: 配送保留\t - `2`: 配送停止\t - `11`: 利用覚えなし\t - `12`: サービス未提供\t - `13`: サービス不履行\t - `14`: 商品未着\t - `15`: 商品相違\t - `16`: 金額相違\t - `17`: 商品瑕疵\t - `18`: キャンセル漏れ\t - `"
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/process_date/description",
-      "preview": "注文日   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/opened_to_shop_date/description",
-      "preview": "連絡日   yyyy/MM/dd HH:mm形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/canceled/description",
-      "preview": "キャンセルフラグ    - `true`: チャージバックのキャンセル - `false`: 通常のチャージバック "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/canceled_date/description",
-      "preview": "キャンセル日   yyyy/MM/dd HH:mm形式   "
-    },
-    {
       "pointer": "/components/schemas/ExaminationFileType/description",
       "preview": "審査ファイルタイプ\\ \\ fincode審査チームに提出する画像ファイル等の種別を指定します。  - `DRIVER_LICENSE_FRONT`: 本人確認書類; 運転免許証（表）<br /><span class=\"smallText\">本人確認書類として運転免許証を提出する場合に指定します。裏面も提出する必要があ"
     },
@@ -1571,42 +1395,6 @@
       "preview": "PayPay審査により決定されるPayPay商材カテゴリー。  - `1`: 物販／サービスショップ - `2`: デジタルコンテンツショップ  ※ PayPayのみ "
     },
     {
-      "pointer": "/components/schemas/Shop/properties/shop_name_kana/description",
-      "preview": "ショップ名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/platform_id/description",
-      "preview": "プラットフォームID "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/shared_customer_flag/description",
-      "preview": "顧客情報共有フラグ  - `0`: 顧客情報を共有しない<br /><span class=\"smallText\">顧客情報は各テナントごとに管理され、各テナントは自ショップに登録された顧客に対してのみ決済を行えます。</span> - `1`: 顧客情報を共有する<br /><span class=\"smallTex"
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/customer_group_id/description",
-      "preview": "顧客情報共有グループID\\ fincodeは同じ顧客情報共有グループIDを持つショップ間で顧客情報を共有します。 "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/platform_rate_list/description",
-      "preview": "決済手段ごとに存在するプラットフォーム手数料設定のリスト "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/send_mail_address/description",
-      "preview": "通知先メールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/log_keep_days/description",
-      "preview": "ログ保存日数 "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/api_version/description",
-      "preview": "APIバージョン "
-    },
-    {
-      "pointer": "/components/schemas/Shop/properties/api_key_display_flag/description",
-      "preview": "管理画面におけるAPIキー表示フラグ。  - `0`: 表示しない - `1`: 表示する "
-    },
-    {
       "pointer": "/components/schemas/platform_rate/description",
       "preview": "（標準）プラットフォーム利用料率。\\ 個別のプラットフォーム利用料率が設定されていないテナントが`id`で指定した決済手段で決済を行うと、このプラットフォーム利用料率が適用されます。\\ \\ 特定のテナントに個別のプラットフォーム利用料を適用するには テナントショップ 更新API を使用します。 "
     },
@@ -1655,42 +1443,6 @@
       "preview": "管理画面におけるAPIキー表示フラグ。  - `0`: 表示しない - `1`: 表示する "
     },
     {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/platform_rate/description",
-      "preview": "（個別）プラットフォーム利用料率。\\ このテナントが`id`で指定した決済手段で決済を行うと、このプラットフォーム利用料率が適用されます。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/fixed_fee/description",
-      "preview": "（個別）プラットフォーム利用料 最低料金。\\ このテナントが`examination_master_id`で指定した決済手段で決済を行った際、`platform_rate`による利用料がこの最低料金を下回ると、この最低料金が適用されます。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/web_registration_fee/description",
-      "preview": "（個別）プラットフォーム利用料 Web登録手数料。\\ このテナントに紐づく顧客が口座振替における振替用口座登録（Web登録）に成功した際に適用されるWeb登録手数料です。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/paypay_content_category_type/description",
-      "preview": "PayPay審査により決定されるPayPay商材カテゴリー。\\ PayPayのプラットフォーム利用料（`platform_rate`）はこの`paypay_content_category_type`ごとに設定します。  - `1`: 物販／サービスショップ - `2`: デジタルコンテンツショップ  ※ PayPay"
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/api_key_display_flag/description",
-      "preview": "APIキー表示フラグ\\ `1`を指定するとテナントショップの管理画面上にAPIキーが表示されるようになります。  - `0`: 表示しない - `1`: 表示する "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/registration_number/description",
-      "preview": "適格請求書発行事業者登録番号（T番号）。\\ `T`に続けて数字13桁を指定してください。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/is_displayed/description",
-      "preview": "適格請求書発行事業者登録番号の表示設定（マスタ）。\\ 登録番号を各画面・帳票に表示するかどうかを切り替えます。`false`を指定すると登録番号が登録されていても表示されません。\\ boolean 以外の値を指定した場合は未指定として扱われます（既存値を維持）。  - `false`: 表示しない - `true`: "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/is_displayed_for_invoice/description",
-      "preview": "インボイス（請求書）における適格請求書発行事業者登録番号の表示設定。\\ `is_displayed` を `true` にした場合のみ `true` を指定できます。\\ boolean 以外の値を指定した場合は未指定として扱われます（既存値を維持）。  - `false`: 表示しない - `true`: 表示する "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.Updating.Request/properties/is_displayed_for_tenant_account_detail/description",
-      "preview": "テナント売上明細における適格請求書発行事業者登録番号の表示設定。\\ `is_displayed` を `true` にした場合のみ `true` を指定できます。\\ boolean 以外の値を指定した場合は未指定として扱われます（既存値を維持）。  - `false`: 表示しない - `true`: 表示する "
-    },
-    {
       "pointer": "/components/schemas/x-req-properties-email/description",
       "preview": "メールアドレス\\ \\ fincodeに新規作成するユーザーのメールアドレス。\\ すでに登録されているメールアドレスを指定するとエラーとなります。（エラーコード：`E0087012014`）\\ \\ 形式： RFC 5322 "
     },
@@ -1709,46 +1461,6 @@
     {
       "pointer": "/components/schemas/Role_properties-id/description",
       "preview": "ロールID\\ \\ ユーザーの管理画面における権限を示すIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/user_data/description",
-      "preview": "新規作成されたユーザー情報（このAPIによって新規作成されたテナントのショップIDを含む） "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/access_token/description",
-      "preview": "アクセストークン "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/authorities/items/properties/auth_id/description",
-      "preview": "権限ID"
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/authorities/items/properties/endpoint/description",
-      "preview": "エンドポイント"
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/authorities/items/properties/method/description",
-      "preview": "HTTPメソッド"
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/properties/authorities/description",
-      "preview": "ユーザーの権限情報\\ \\ このユーザーが実行可能なエンドポイントとHTTPメソッドの情報 "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/x-req-properties/email/description",
-      "preview": "メールアドレス\\ \\ fincodeに新規作成するユーザーのメールアドレス。\\ すでに登録されているメールアドレスを指定するとエラーとなります。（エラーコード：`E0087012014`）\\ \\ 形式： RFC 5322 "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/x-req-properties/password/description",
-      "preview": "パスワード\\ \\ fincodeに新規作成するユーザーのパスワード。\\ パスワードは以下の条件を満たす必要があります。  - 半角英数のみ - 12文字以上 - 英数ともに使用 - 大文字小文字ともに使用 "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/x-req-properties/name/description",
-      "preview": "ユーザー名\\ \\ fincodeに新規作成するユーザーの名前 "
-    },
-    {
-      "pointer": "/components/schemas/POST.TenantEntries/x-req-properties/tenant_url_id/description",
-      "preview": "テナント登録URL ID\\ \\ テナント登録URLのID。\\ [管理画面 > プラットフォームの運用と管理 > 構成](https://dashboard.test.fincode.jp/platform/setting)の『テナント登録用のURL』の`tenant_url_id`の値をこのパラメータに指定します。 "
     },
     {
       "pointer": "/components/schemas/POST.JoinTenants_x-req-properties-email/description",
@@ -2329,46 +2041,6 @@
     {
       "pointer": "/components/schemas/CardPaymentSetting/properties/install_payment_available/description",
       "preview": "分割払い／リボ払いが利用可能かどうか  - `true`: 利用可能 - `false`: 利用不可 "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_kind/description",
-      "preview": "法人種別（国税庁既定のコード定義に準拠） "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_postal_code/description",
-      "preview": "会社情報 郵便番号 "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_prefecture_code/description",
-      "preview": "会社情報 都道府県コード "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_city_code/description",
-      "preview": "会社情報 市区町村コード "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_prefecture/description",
-      "preview": "会社情報 都道府県 "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_prefecture_kana/description",
-      "preview": "会社情報 都道府県（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_city/description",
-      "preview": "会社情報 市区町村 "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_city_kana/description",
-      "preview": "会社情報 市区町村（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_street/description",
-      "preview": "会社情報 町域・丁目・番地 "
-    },
-    {
-      "pointer": "/components/schemas/RegistryCorporateInfo/properties/company_street_kana/description",
-      "preview": "会社情報 町域・丁目・番地（カナ） "
     },
     {
       "pointer": "/components/schemas/corporate/description",
