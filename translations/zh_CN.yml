@@ -1214,6 +1214,11 @@ exact_string_groups:
     "このインボイス情報に対する口座振替の口座情報 この口座から引き落とし完了することでインボイスによる請求に対して支払いできます。": 当前账单的自动扣款账户信息。从该账户成功扣款后，即视为当前账单已支付。
 
 property_descriptions:
+  order_description: 支付时在购买者 PayPay 应用中显示的订单说明。
+  remarks: |-
+    账单明细显示内容。可使用半角或全角英数字、片假名、空格及部分符号。
+    可用符号：`.`、`(`、`)`、`–`、`．`、`（`、`）`、`ー`
+    默认值：商户名称片假名的前 9 个字符。
   td_tenant_name: 3D Secure 认证页面上显示的商户名称。
   tds_type: |-
     是否使用 3D Secure 进行支付。
@@ -2577,8 +2582,257 @@ schema_property_descriptions:
       示例：`?sort=updated␣desc,created␣asc`
 
       可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。
+  PaymentBulk:
+    id: 批量支付 ID。
+    process_plan_date: |-
+      批量支付的计划处理日期。`pay_type = Card` 时必填。
+      格式：`yyyy/MM/dd`
+    file_name: 批量支付数据文件名。
+    process_start_date: |-
+      批量支付开始处理的时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    process_end_date: |-
+      批量支付处理结束时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    total_count: 批量支付中包含的支付总数。
+    process_success_count: 批量支付处理成功的支付数量。
+    process_failure_count: 批量支付处理失败的支付数量。
+    error_code: 批量支付最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
+    file: |-
+      记录批量支付信息的 JSON 文件。各参数格式遵循支付登记和支付执行 API，`*` 表示必填。
+
+      `pay_type = Card` 时上传以下结构：
+
+      ```json
+      {
+        "data": [
+          {
+            "id": "order_001",
+            "amount": "1000",
+            "tax": "100",
+            "customer_id": "c_**********************",
+            "card_id": "cs_**********************",
+            "client_field_1": "自由字段1",
+            "client_field_2": "自由字段2",
+            "client_field_3": "自由字段3"
+          }
+        ]
+      }
+      ```
+
+      - `data`：支付信息数组
+      - `data[].id`：订单 ID
+      - `data[].amount`：使用金额*
+      - `data[].tax`：税费及运费
+      - `data[].customer_id`：客户 ID*
+      - `data[].card_id`：银行卡 ID
+      - `data[].client_field_1`～`data[].client_field_3`：商户自由字段
+
+      `pay_type = Virtualaccount` 时上传以下结构：
+
+      ```json
+      {
+        "data": [
+          {
+            "id": "order_001",
+            "billing_amount": "1000",
+            "billing_tax": "100",
+            "customer_id": "c_**********************",
+            "payment_method_id": "pm_**********************",
+            "client_field_1": "自由字段1",
+            "client_field_2": "自由字段2",
+            "client_field_3": "自由字段3"
+          },
+          {
+            "id": "order_002",
+            "billing_amount": "1000",
+            "payment_term_day": "2",
+            "reference_order_id": "order_101",
+            "use_exact_deposit_amount": true
+          }
+        ]
+      }
+      ```
+
+      - `data`：支付信息数组
+      - `data[].id`：订单 ID
+      - `data[].billing_amount`：请款金额*
+      - `data[].billing_tax`：请款税费及运费
+      - `data[].customer_id`：客户 ID
+      - `data[].payment_method_id`：支付方式 ID
+      - `data[].client_field_1`～`data[].client_field_3`：商户自由字段
+      - `data[].payment_term_day`：支付期限天数
+      - `data[].reference_order_id`：用于复用虚拟账户的订单 ID
+      - `data[].use_exact_deposit_amount`：可入账金额设置
+  ShopChargeBackListItem:
+    order_id: 订单 ID。
+    amount: 金额。
+    trade_registration_date: |-
+      交易登记时间。
+      格式：`yyyy/MM/dd HH:mm`
+    category: |-
+      拒付类别。
+
+      - `0`：疑似欺诈使用
+      - `1`：调查请求
+      - `2`：确认欺诈使用
+    status_code: |-
+      拒付状态。
+
+      - `4005`：需要处理
+      - `4006`、`4007`、`4011`：已答复
+      - `4009`：已结算
+    request: |-
+      申诉内容。
+
+      - `1`：暂缓配送
+      - `2`：停止配送
+      - `11`：不记得使用过
+      - `12`：未提供服务
+      - `13`：未履行服务
+      - `14`：未收到商品
+      - `15`：商品不符
+      - `16`：金额不符
+      - `17`：商品存在瑕疵
+      - `18`：遗漏取消
+      - `19`：确认解约方法
+      - `20`：希望代为解约
+      - `21`：确认咨询窗口
+      - `22`：确认交易内容
+    process_date: 下单日期。
+    opened_to_shop_date: |-
+      通知商户的日期。
+      格式：`yyyy/MM/dd HH:mm`
+    canceled: |-
+      拒付取消标志。
+
+      - `true`：已取消拒付
+      - `false`：普通拒付
+    canceled_date: |-
+      拒付取消日期。
+      格式：`yyyy/MM/dd HH:mm`
+  POST.TenantEntries:
+    user_data: 新创建的用户信息，其中包括通过当前 API 创建的租户商户 ID。
+    access_token: 访问令牌。
+    auth_id: 权限 ID。
+    endpoint: API 端点。
+    method: HTTP 方法。
+    authorities: 当前用户可执行的 API 端点和 HTTP 方法权限信息。
+    email: |-
+      在 fincode 中创建的新用户邮箱地址。指定已登记的邮箱会返回错误 `E0087012014`。
+      格式：RFC 5322。
+    password: |-
+      在 fincode 中创建的新用户密码，必须满足以下条件：
+
+      - 仅使用半角英数字
+      - 至少 12 个字符
+      - 同时包含字母和数字
+      - 同时包含大写和小写字母
+    name: 在 fincode 中创建的新用户名称。
+    tenant_url_id: |-
+      租户登记链接 ID。请填写[管理后台 > 平台运营与管理 > 配置](https://dashboard.test.fincode.jp/platform/setting)中“租户登记用 URL”的 `tenant_url_id`。
+  RegistryCorporateInfo:
+    company_kind: 法人类型，遵循日本国税厅规定的代码定义。
+    company_postal_code: 公司地址的邮政编码。
+    company_prefecture_code: 公司地址的都道府县代码。
+    company_city_code: 公司地址的市区町村代码。
+    company_prefecture: 公司地址的都道府县。
+    company_prefecture_kana: 公司地址的都道府县（片假名）。
+    company_city: 公司地址的市区町村。
+    company_city_kana: 公司地址的市区町村（片假名）。
+    company_street: 公司地址的町域、丁目及门牌号。
+    company_street_kana: 公司地址的町域、丁目及门牌号（片假名）。
+  Payment.ListRetrieving.QueryParams:
+    pay_type: |-
+      要返回的支付类型。
+
+      - `Card`：银行卡
+      - `Konbini`：便利店支付
+      - `Paypay`：PayPay
+      - `Applepay`：Apple Pay
+      - `Googlepay`：Google Pay
+      - `Directdebit`：银行账户自动扣款
+      - `Virtualaccount`：银行转账（虚拟账户）
+    client_field_1: 商户自由字段 1；指定后进行完全匹配查询。
+    client_field_2: 商户自由字段 2；指定后进行完全匹配查询。
+    client_field_3: 商户自由字段 3；指定后进行完全匹配查询。
+    total_amount_min: 合计金额（`total_amount`）下限。
+    total_amount_max: 合计金额（`total_amount`）上限。
+    customer_id: 仅返回与指定客户 ID 关联的支付。
+    process_date_from: |-
+      处理时间范围的起始时间。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+    process_date_to: |-
+      处理时间范围的结束时间。
+      格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`
+  Payment:
+    id: 订单 ID，即支付信息 ID。
+    total_amount: 合计金额，即 `amount` 与 `tax` 之和。
+    process_date: 执行支付、取消等支付处理的时间。
+    customer_id: 当前支付的付款客户 ID。
+    customer_group_id: 平台共享客户信息时，该客户所属的客户信息共享组 ID。
+    amount: 使用金额。与 `tax` 的合计值必须在支付方式允许的金额范围内。参见[银行卡支付限制](https://docs.fincode.jp/payment/restriction)。
+    tax: 税费及运费。与 `amount` 的合计值必须在支付方式允许的金额范围内。参见[银行卡支付限制](https://docs.fincode.jp/payment/restriction)。
+    order_description: 支付时在购买者 PayPay 应用中显示的订单说明。
+    remarks: |-
+      账单明细显示内容。可使用半角或全角英数字、片假名、空格及部分符号。
+      可用符号：`.`、`(`、`)`、`–`、`．`、`（`、`）`、`ー`
+      默认值：商户名称片假名的前 9 个字符。
+  Shop:
+    shop_name_kana: 商户名称（片假名）。
+    platform_id: 平台 ID。
+    shared_customer_flag: |-
+      客户信息共享标志。
+
+      - `0`：不共享；客户信息由各租户分别管理，各租户只能向本商户登记的客户收款
+      - `1`：共享；客户信息在整个平台共享，所有租户均可向任意客户收款
+    customer_group_id: 客户信息共享组 ID。fincode 会在具有相同组 ID 的商户之间共享客户信息。
+    platform_rate_list: 按支付方式设置的平台手续费配置列表。
+    send_mail_address: 通知接收邮箱地址。
+    log_keep_days: 日志保留天数。
+    api_version: API 版本。
+    api_key_display_flag: |-
+      管理后台是否显示 API Key。
+
+      - `0`：不显示
+      - `1`：显示
+  TenantShop.Updating.Request:
+    platform_rate: 当前租户使用 `id` 指定的支付方式时适用的单独平台使用费率。
+    fixed_fee: 当前租户使用 `examination_master_id` 指定的支付方式时，如果按 `platform_rate` 计算的费用低于此值，则适用此单独最低平台使用费。
+    web_registration_fee: 当前租户的客户成功通过 Web 登记自动扣款账户时适用的单独 Web 登记手续费。
+    paypay_content_category_type: |-
+      PayPay 审核确定的商品类别；PayPay 平台使用费率（`platform_rate`）按此类别设置。仅适用于 PayPay。
+
+      - `1`：实物商品或服务商户
+      - `2`：数字内容商户
+    api_key_display_flag: |-
+      是否在租户商户管理后台显示 API Key。
+
+      - `0`：不显示
+      - `1`：显示
+    registration_number: 日本合规发票开具企业登记编号（T 编号）。请填写 `T` 后接 13 位数字。
+    is_displayed: |-
+      是否在各页面和报表中显示登记编号。设为 `false` 时，即使已登记编号也不会显示；非布尔值按未指定处理并保留现有值。
+
+      - `false`：不显示
+      - `true`：显示
+    is_displayed_for_invoice: |-
+      是否在账单中显示登记编号。仅当 `is_displayed` 为 `true` 时可设为 `true`；非布尔值按未指定处理并保留现有值。
+
+      - `false`：不显示
+      - `true`：显示
+    is_displayed_for_tenant_account_detail: |-
+      是否在租户销售明细中显示登记编号。仅当 `is_displayed` 为 `true` 时可设为 `true`；非布尔值按未指定处理并保留现有值。
+
+      - `false`：不显示
+      - `true`：显示
 
 strings:
+  /components/schemas/Payment/x-req-properties/paypay/order_description/description: 支付时在购买者 PayPay 应用中显示的订单说明。
+  /components/schemas/Payment/x-req-properties/directdebit/remarks/description: |-
+    账单明细显示内容。可使用半角或全角英数字、片假名、空格及部分符号。
+    可用符号：`.`、`(`、`)`、`–`、`．`、`（`、`）`、`ー`
+    默认值：商户名称片假名的前 9 个字符。
   /components/schemas/td_tenant_name/description: |-
     <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
     商户名称。可指定在 3D Secure 认证页面上显示的商户或店铺名称。
