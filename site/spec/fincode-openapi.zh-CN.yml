@@ -10597,55 +10597,31 @@ components:
           minLength: 1
           maxLength: 254
           example: jane@example.com
-          description: '顧客のメールアドレス
-
-            '
+          description: 客户电子邮箱地址。
         created_from:
           type: string
           nullable: true
           example: 2022/05/16
-          description: '作成日の範囲指定 開始日\
+          description: '创建日期范围的起始日期；仅返回不早于该日期创建的客户。
 
-            この日付以降に作成された顧客情報を検索できます。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         created_to:
           type: string
           nullable: true
           example: 2022/05/16
-          description: '作成日の範囲指定 終了日\
+          description: '创建日期范围的结束日期；仅返回不晚于该日期创建的客户。
 
-            この日付以前に作成された顧客情報を検索できます。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `id`: 顧客ID
-
-            - `name`: 顧客名
-
-            - `email`: 顧客メールアドレス
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`id`、`name`、`email`、`created`、`updated`。'
     schema:
       type: string
       example: s_***********
@@ -11812,47 +11788,31 @@ components:
     card:
       type: object
       nullable: true
-      description: '<span class="smallText">この決済手段がカードを表す（`pay_type = Card`）とき、カード情報の詳細がこの`card`オブジェクトに格納されます。</span>
-
-        '
+      description: 当支付方式为银行卡（`pay_type = Card`）时，银行卡详细信息保存在此 `card` 对象中。
       properties:
         card_no:
           type: string
           example: '************1234'
           maxLength: 16
-          description: 'マスク済みカード番号。\
+          description: '已脱敏的银行卡号，仅保留末 4 位，格式：`************1234`。
 
-            <span class="smallText">
-
-            下4桁以外をマスクしたカード番号です。\
-
-            カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。\
-
-            </span>
-
-            形式：`************1234`
-
-            '
+            根据银行卡信息非持有原则，可保存本字段代替未脱敏的银行卡号。'
         expire:
           type: string
           minLength: 4
           maxLength: 4
           example: '4012'
           nullable: true
-          description: 'カード有効期限。\
+          description: '银行卡有效期。
 
-            形式：`YYMM`
-
-            '
+            格式：`YYMM`'
         holder_name:
           type: string
           example: TARO EPSILON
           minLength: 1
           maxLength: 50
           nullable: true
-          description: 'カード名義人名。
-
-            '
+          description: 银行卡持卡人姓名。
         type:
           allOf:
           - $ref: '#/components/schemas/CardType'
@@ -11866,17 +11826,7 @@ components:
           example: abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01
           minLength: 1
           maxLength: 64
-          description: 'カード番号をもとに生成されたハッシュ値。\
-
-            <span class="smallText">
-
-            おなじカード番号に対しては常に同じ値が返されます。\
-
-            カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。
-
-            </span>
-
-            '
+          description: 根据银行卡号生成的哈希值；相同银行卡号始终返回相同值。根据银行卡信息非持有原则，可保存本字段代替未脱敏的银行卡号。
         tds_type:
           allOf:
           - $ref: '#/components/schemas/tds_type'
@@ -11904,8 +11854,10 @@ components:
         tds2_status:
           allOf:
           - $ref: '#/components/schemas/ThreeDSecure2Status'
-          description: "3Dセキュア2.0認証処理のステータス。\\\n\\\n<span class=\"smallText\">【3Dセキュア認証結果の返却について】</span>\\\n3Dセキュア認証結果（本項目を含む3Dセキュア関連項目）は、APIによって処理結果または保持している認証結果を返却します。\
-            \  \n\n- 決済手段 登録API・更新APIでは、当該リクエストの処理結果を返却します。\n- 一方で、決済手段 取得API・一覧取得APIでは、保持している3Dセキュア認証結果を返却します。そのため、登録API・更新APIのレスポンスとは返却内容が異なる場合があります。\n"
+          description: '3D Secure 2.0 认证状态。
+
+
+            银行卡登记和更新 API 返回当前请求的认证结果；银行卡获取和列表 API 返回已保存的认证结果，因此内容可能与登记或更新响应不同。'
         merchant_name:
           allOf:
           - $ref: '#/components/schemas/td_tenant_name'
@@ -12000,9 +11952,7 @@ components:
     directdebit:
       type: object
       nullable: true
-      description: '<span class="smallText">この決済手段が振替用口座を表す（`pay_type = Directdebit`）とき、口座情報の詳細がこの`directdebit`オブジェクトに格納されます。</span>
-
-        '
+      description: 当支付方式为银行账户自动扣款（`pay_type = Directdebit`）时，账户详细信息保存在此 `directdebit` 对象中。
       properties:
         application_type:
           $ref: '#/components/schemas/DirectDebitApplicationType'
@@ -12012,24 +11962,16 @@ components:
           type: string
           example: 2022/05/16 23:59:59.999
           nullable: true
-          description: '請求可能予定日。\
+          description: '账户登记后预计可以提交扣款请求的时间。
 
-            口座登録後、実際に請求依頼が可能となると予定される日時です。\
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         last_withdrawal_date:
           type: string
           example: 2022/05/16 23:59:59.999
           nullable: true
-          description: '最終引落日。\
+          description: '金融机构最近一次实际从该账户扣款的日期。
 
-            金融機関によってこの口座から実際に引き落とされた実績日のうち、最も新しい日時です。\
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         last_result_code:
           $ref: '#/components/schemas/DirectDebitLastResultCode'
         bank_type:
@@ -12041,14 +11983,12 @@ components:
           maxLength: 1
           nullable: true
           example: '0'
-          description: '金融機関種別。
+          description: '金融机构类型。
 
 
-            - `0`: ゆうちょ銀行以外の金融機関
+            - `0`：日本邮政储蓄银行以外的金融机构
 
-            - `1`: ゆうちょ銀行
-
-            '
+            - `1`：日本邮政储蓄银行'
         bank_code:
           type: string
           example: '0310'
@@ -12133,27 +12073,15 @@ components:
         paper_application:
           type: object
           nullable: true
-          description: '依頼書登録のパラメータ<br />
-
-            <span class="smallText">
-
-            ※ 依頼書登録により登録された口座の場合、この`paper_application`オブジェクトに依頼書からfincodeに転記した内容が含められます。
-
-            </span>
-
-            '
+          description: 通过纸质申请书登记账户时，此对象保存从申请书录入 fincode 的内容。
           properties:
             preregistered_date:
               type: string
               example: 2022/05/16 23:59:59.999
               nullable: true
-              description: '依頼書 仮登録日時。\
+              description: '纸质申请书预登记时间。
 
-                依頼書を仮登録した日時です。\
-
-                形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-                '
+                格式：`yyyy/MM/dd HH:mm:ss.SSS`'
             request_form_id:
               type: string
               example: '12345678901234567890'
@@ -13315,20 +13243,12 @@ components:
               example: '1'
               minLength: 1
               maxLength: 1
-              description: '振替サービス\
-
-                口座を登録する振替サービスを指定します。\
-
-                指定しなかった場合はデフォルトの振替サービスに口座が登録されます。\
-
-                ※デフォルトは審査完了日時が最新の振替サービスとなります。
+              description: '登记账户所使用的自动扣款服务。未指定时使用默认服务，即审核完成时间最新的服务。
 
 
-                - `1`: 口座振替（5・6・23・27日）
+                - `1`：每月 5、6、23、27 日自动扣款
 
-                - `2`: 口座振替（1・5・20・26日）
-
-                '
+                - `2`：每月 1、5、20、26 日自动扣款'
             bank_code:
               nullable: false
               allOf:
@@ -13337,36 +13257,24 @@ components:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/branch_code'
-              description: '支店コード\
-
-                ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須
-
-                '
+              description: 分行代码；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
             account_type:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/account_type'
-              description: '預金区分\
-
-                ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須
+              description: '存款账户类型；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
 
 
-                - `1`: 普通
+                - `1`：普通存款账户
 
-                - `2`: 当座
-
-                '
+                - `2`：往来存款账户'
             account_number:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/account_number'
-              description: '口座番号\
+              description: '银行账号；非日本邮政储蓄银行（`bank_code` 不为 `9900`）时必填。
 
-                ゆうちょ銀行以外（`bank_code`が`9900`でない）のとき必須\
-
-                形式： 左0埋め
-
-                '
+                格式：左侧补 `0`。'
             account_name:
               nullable: true
               allOf:
@@ -13375,20 +13283,9 @@ components:
               nullable: false
               allOf:
               - $ref: '#/components/schemas/account_name_kana'
-              description: '口座名義（カナ）\
+              description: '账户名义人（片假名）。可使用半角或全角英数字、片假名、空格及部分符号。
 
-                形式： 半角英数カナ記号、全角英数カナ記号、一部の記号、半角全角スペース\
-
-                \
-
-                使用可能な記号は以下の通りです。
-
-
-                - 半角：`.` `(` `)` `–`
-
-                - 全角：`．` `（` `）` `ー`
-
-                '
+                可用符号：`.`、`(`、`)`、`–`、`．`、`（`、`）`、`ー`'
             paper_application:
               allOf:
               - $ref: '#/components/schemas/paper_application'
@@ -14263,22 +14160,18 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: 'Google Pay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `AUTHORIZED`: 仮売上
+            - `AUTHORIZED`：已授权
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认请款
 
-            - `CANCELED`: キャンセル
+            - `CANCELED`：已取消
 
-            - `AUTHENTICATED`: 未処理（3Dセキュア認証待ち）
-
-            '
+            - `AUTHENTICATED`：未处理，等待 3D Secure 认证'
         auth_max_date_from:
           type: string
           description: '预授权有效期（起始值）。
@@ -14297,52 +14190,21 @@ components:
             格式：`yyyy/MM/dd`'
         update_date_from:
           type: string
-          description: '更新日時（始値）\
+          description: '更新时间范围的起始时间。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`'
         update_date_to:
           type: string
-          description: '更新日時（終値）\
+          description: '更新时间范围的结束时间。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
-
-
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `auth_max_date`: 仮売上有効期限
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。'
     Payment.ListRetrieving.Konbini.QueryParams:
       type: object
       properties:
@@ -14425,24 +14287,20 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: 'PayPay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者支付
 
-            - `AUTHORIZED`: 仮売上
+            - `AUTHORIZED`：已授权
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认请款
 
-            - `CANCELED`: キャンセル
+            - `CANCELED`：已取消
 
-            - `EXPIRED`: 決済の期限切れ
-
-            '
+            - `EXPIRED`：已过期'
         auth_max_date_from:
           type: string
           description: '预授权有效期（起始值）。
@@ -14461,26 +14319,14 @@ components:
             格式：`yyyy/MM/dd`'
         payment_date_from:
           type: string
-          description: '支払い日時（始値）\
+          description: '支付日期范围的起始日期。
 
-            支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以降に支払いが行われた決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         payment_date_to:
           type: string
-          description: '支払い日時（終値）\
+          description: '支付日期范围的结束日期。
 
-            支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以前に支払いが行われた決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         updated_from:
           type: string
           description: '更新日期（起始值）。
@@ -14501,30 +14347,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
-
-
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `auth_max_date`: 仮売上有効期限
-
-            - `payment_date`: 支払い日時
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`payment_date`、`created`、`updated`。'
     DirectDebitResultCode:
       type: string
       enum:
@@ -17523,7 +17348,14 @@ components:
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: "支払方法  \n- `1`: 一括払い\n- `2`: 分割払い\n- `5`: リボ払い\n"
+          description: '付款方式。
+
+
+            - `1`：一次性付款
+
+            - `2`：分期付款
+
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
@@ -17532,20 +17364,19 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tds2_ret_url'
-          description: "3Dセキュア認証における戻りURL  \n3Dセキュア認証処理に使用するURLを指定してください。  \nこのURLに後続処理のためのデータがPOSTメソッドで送信されます。   \n\n※ 指定した場合、3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する必要があります。\n\
-            お客様のブラウザとfincode間で3Dセキュア認証を自動で行う場合はこのパラメータを未指定としてください。\n\n詳細はDocs [3Dセキュア2.0認証を使用する](/payment/fraud_protection/3d_secure_2)を確認してください。\n"
+          description: '3D Secure 认证回调 URL。后续处理数据通过 POST 方法发送到此 URL。指定后，商户必须自行实现全部认证 API 调用和回调；如需浏览器与 fincode 自动完成认证，请不要指定。
+
+            详情参见[使用 3D Secure 2.0 认证](/payment/fraud_protection/3d_secure_2)。'
         return_url:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/x-req-properties-return_url'
-          description: "加盟店戻りURL（成功時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証処理後、決済に成功した際にリダイレクトされるURLです。  \nPOSTメソッドでリダイレクトされます。\n\
-            \n指定しない場合はデフォルトの成功ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定した場合は無視されます。\n"
+          description: 认证及支付成功后通过 POST 方法重定向的商户 URL。未指定时使用默认成功页面；指定 `tds2_ret_url` 时会被忽略。
         return_url_on_failure:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/x-req-properties-return_url_on_failure'
-          description: "加盟店戻りURL（失敗時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証に失敗、または決済に失敗した際にリダイレクトされるURLです。  \n\
-            POSTメソッドでリダイレクトされます。\n\n指定しない場合はデフォルトの失敗ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定した場合は無視されます。\n"
+          description: 认证或支付失败后通过 POST 方法重定向的商户 URL。未指定时使用默认失败页面；指定 `tds2_ret_url` 时会被忽略。
         tds2_ch_acc_change:
           nullable: true
           allOf:
@@ -21845,46 +21676,23 @@ components:
         card_id:
           allOf:
           - $ref: '#/components/schemas/properties-id'
-          description: 'カードID \
-
-            （`pay_type = Card`の場合のみ利用可能）\
-
-            このサブスクリプションで請求先となるカードのIDです。\
-
-            省略した場合、顧客のデフォルトカードが使用されます。
-
-            '
+          description: 订阅付款所用银行卡 ID，仅适用于 `pay_type = Card`；省略时使用客户的默认银行卡。
         payment_method_id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID \
-
-            （`pay_type = Directdebit`の場合のみ利用可能）\
-
-            このサブスクリプションで請求先となる決済手段のIDです。\
-
-            省略した場合、顧客のデフォルト決済手段が使用されます。
-
-            '
+          description: 订阅付款所用支付方式 ID，仅适用于 `pay_type = Directdebit`；省略时使用客户的默认支付方式。
         start_date:
           allOf:
           - $ref: '#/components/schemas/start_date'
-          description: "課金開始日\\\nサブスクリプションの開始日です。  \n\n※`pay_type = Directdebit`の場合、\nサブスクリプションの登録が請求受付終了日の13:00を超えると課金開始日は翌月の同日となります。\\\
-            \n\\\n形式：`yyyy/MM/dd`\n"
+          description: '订阅扣款开始日期。`pay_type = Directdebit` 时，如果在扣款申请截止日 13:00 后登记订阅，开始日期顺延至下月同日。
+
+            格式：`yyyy/MM/dd`'
         stop_date:
           allOf:
           - $ref: '#/components/schemas/stop_date'
-          description: '課金停止日\
+          description: '订阅扣款停止日期；省略时长期有效。
 
-            サブスクリプションの停止日です。\
-
-            省略した場合、無期限となります。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         end_month_flag:
           allOf:
           - $ref: '#/components/schemas/end_month_flag'
@@ -23155,7 +22963,7 @@ components:
             - `null`：两者均返回'
     Invoice.ListItem:
       type: object
-      description: インボイス情報 一覧項目
+      description: 账单列表项。
       properties:
         id:
           type: string
@@ -23270,13 +23078,19 @@ components:
           description: fincode 外部支付标志
         transaction_date:
           type: string
-          description: 支払完了日 形式：`yyyy/MM/dd HH:mm:ss.SSS`
+          description: '支付完成时间。
+
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         created:
           type: string
-          description: 作成日時 形式： `yyyy/MM/dd HH:mm:ss.SSS`
+          description: '创建时间。
+
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         updated:
           type: string
-          description: 更新日時 形式： `yyyy/MM/dd HH:mm:ss.SSS`
+          description: '更新时间。
+
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     Invoice.list:
       type: object
       properties:
@@ -25998,70 +25812,56 @@ components:
           type: string
           nullable: true
           example: 2022/05
-          description: '確定日（入金サイクルの締め日）を月単位で絞り込みます。\
+          description: '按确定日期（入账周期截止日期）的月份筛选。
 
-            形式： `yyyy/MM`
-
-            '
+            格式：`yyyy/MM`'
         status:
           $ref: '#/components/schemas/DepositStatusCode'
           nullable: true
-          description: '入金ステータス\
-
-            カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '入账状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `3001`: 金額確定前
+            - `3001`：金额确定前
 
-            - `3002`: 金額確定済み
+            - `3002`：金额已确定
 
-            - `3003`: 入金済み
+            - `3003`：已入账
 
-            - `3004`: 入金停止中
+            - `3004`：入账暂停中
 
-            - `3005`: 入金エラー
+            - `3005`：入账错误
 
-            - `3006`: 請求中
+            - `3006`：请款中
 
-            - `3007`: 請求エラー
+            - `3007`：请款错误
 
-            - `3008`: 請求停止中
+            - `3008`：请款暂停中
 
-            - `3009`: 支払済み
+            - `3009`：已支付
 
-            - `3010`: 本人確認書類未確認
+            - `3010`：身份验证资料未确认
 
-            - `3011`: 精算済み
+            - `3011`：已结算
 
-            - `3012`: 入金開始前
+            - `3012`：开始入账前
 
-            - `3013`: 契約不成立
-
-            '
+            - `3013`：合同未成立'
         scheduled_from:
           type: string
           format: date
           nullable: true
           example: 2022/05/01
-          description: '入金予定日の範囲指定（開始日）を指定します。\
+          description: '预计入账日期范围的起始日期。
 
-            この日付以降に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         scheduled_to:
           type: string
           format: date
           nullable: true
           example: 2022/05/31
-          description: '入金予定日の範囲指定（終了日）を指定します。\
+          description: '预计入账日期范围的结束日期。
 
-            この日付以前に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
     Account_properties-id:
       type: string
       minLength: 32
@@ -26901,70 +26701,56 @@ components:
           type: string
           nullable: true
           example: 2022/05
-          description: '確定日（入金サイクルの締め日）を月単位で絞り込みます。\
+          description: '按确定日期（入账周期截止日期）的月份筛选。
 
-            形式： `yyyy/MM`
-
-            '
+            格式：`yyyy/MM`'
         status:
           $ref: '#/components/schemas/DepositStatusCode'
           nullable: true
-          description: '入金ステータス\
-
-            カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '入账状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `3001`: 金額確定前
+            - `3001`：金额确定前
 
-            - `3002`: 金額確定済み
+            - `3002`：金额已确定
 
-            - `3003`: 入金済み
+            - `3003`：已入账
 
-            - `3004`: 入金停止中
+            - `3004`：入账暂停中
 
-            - `3005`: 入金エラー
+            - `3005`：入账错误
 
-            - `3006`: 請求中
+            - `3006`：请款中
 
-            - `3007`: 請求エラー
+            - `3007`：请款错误
 
-            - `3008`: 請求停止中
+            - `3008`：请款暂停中
 
-            - `3009`: 支払済み
+            - `3009`：已支付
 
-            - `3010`: 本人確認書類未確認
+            - `3010`：身份验证资料未确认
 
-            - `3011`: 精算済み
+            - `3011`：已结算
 
-            - `3012`: 入金開始前
+            - `3012`：开始入账前
 
-            - `3013`: 契約不成立
-
-            '
+            - `3013`：合同未成立'
         scheduled_from:
           type: string
           format: date
           nullable: true
           example: 2022/05/01
-          description: '入金予定日の範囲指定（開始日）を指定します。\
+          description: '预计入账日期范围的起始日期。
 
-            この日付以降に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         scheduled_to:
           type: string
           format: date
           nullable: true
           example: 2022/05/31
-          description: '入金予定日の範囲指定（終了日）を指定します。\
+          description: '预计入账日期范围的结束日期。
 
-            この日付以前に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
     PlatformAccount_properties-id:
       type: string
       minLength: 1
@@ -27396,34 +27182,22 @@ components:
           minLength: 8
           maxLength: 8
           example: 12345678
-          description: 'プラットフォーム利用料収入サマリーID
-
-            '
+          description: 平台使用费收入汇总 ID。
         account_id:
           allOf:
           - $ref: '#/components/schemas/properties-account_id'
         shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'ショップID（プラットフォーム）
-
-            '
+          description: 平台商户 ID。
         tenant_shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'ショップID（テナント）\
-
-            \
-
-            この利用料収入サマリーはこのIDを持つテナントショップに関して作成されたものであることを示します。
-
-            '
+          description: 当前使用费收入汇总对应的租户商户 ID。
         tenant_shop_name:
           allOf:
           - $ref: '#/components/schemas/shop_name'
-          description: 'ショップ名（テナント）
-
-            '
+          description: 租户商户名称。
         deposit_amount:
           allOf:
           - $ref: '#/components/schemas/properties-deposit_amount'
@@ -27474,9 +27248,7 @@ components:
           items:
             allOf:
             - $ref: '#/components/schemas/Account_properties-id'
-          description: 'テナントショップにおける、このサマリーの集計対象となった売上入金IDのリスト
-
-            '
+          description: 当前汇总所涵盖的租户商户销售结算 ID 列表。
     PlatformAccountSummary.list:
       type: object
       properties:
@@ -27873,46 +27645,20 @@ components:
               shop_id:
                 allOf:
                 - $ref: '#/components/schemas/Shop_properties-id'
-                description: 'ショップID（テナント）\
-
-                  \
-
-                  このIDのテナントショップに関して画像ファイルを受け付けたことを示します。
-
-                  '
+                description: 接收当前审核图片文件的租户商户 ID。
               type:
                 allOf:
                 - $ref: '#/components/schemas/ExaminationFileType'
-                description: '審査ファイルタイプ
-
-                  '
+                description: 审核文件类型。
               filename:
                 type: string
-                description: '審査ファイル名\
-
-                  \
-
-                  拡張子を含むアップロードされたファイルの名称
-
-                  '
+                description: 上传的审核文件名，包括扩展名。
               filesize:
                 type: number
-                description: '審査ファイルサイズ\
-
-                  \
-
-                  アップロードされたファイルのサイズ（バイト）
-
-                  '
+                description: 上传的审核文件大小，单位为字节。
       x-req-properties:
         data:
-          description: '審査ファイルデータ\
-
-            \
-
-            画像ファイルをマルチパートアップロードするときはこの`data`フィールドに画像データを設定します。
-
-            '
+          description: multipart 上传图片时，在此字段设置图片数据。
     ExaminationFile.Uploading.Response:
       allOf:
       - $ref: '#/components/schemas/ExaminationFileUpload'
@@ -32153,62 +31899,52 @@ components:
           type: boolean
           nullable: true
           example: true
-          description: '（VISA／Mastercard）3Dセキュア認証が有効かどうか
+          description: 'VISA/Mastercard 是否启用 3D Secure。
 
 
-            - `true`: 3Dセキュア認証が有効
+            - `true`：启用
 
-            - `false`: 3Dセキュア認証が無効
-
-            '
+            - `false`：停用'
         vm_tds_required:
           type: boolean
           nullable: true
           example: true
-          description: '（VISA／Mastercard）3Dセキュア認証の利用が必須かどうか
+          description: 'VISA/Mastercard 是否必须使用 3D Secure。
 
 
-            - `true`: 3Dセキュア認証の使用が必須
+            - `true`：必须使用
 
-            - `false`: 3Dセキュア認証の使用が任意
-
-            '
+            - `false`：可选使用'
         ja_tds_available:
           type: boolean
           nullable: true
           example: true
-          description: '（JCB／AMEX）3Dセキュア認証が有効かどうか
+          description: 'JCB/AMEX 是否启用 3D Secure。
 
 
-            - `true`: 3Dセキュア認証が有効
+            - `true`：启用
 
-            - `false`: 3Dセキュア認証が無効
-
-            '
+            - `false`：停用'
         ja_tds_required:
           type: boolean
           nullable: true
           example: true
-          description: '（JCB／AMEX）3Dセキュア認証の利用が必須かどうか
+          description: 'JCB/AMEX 是否必须使用 3D Secure。
 
 
-            - `true`: 3Dセキュア認証の使用が必須
+            - `true`：必须使用
 
-            - `false`: 3Dセキュア認証の使用が任意
-
-            '
+            - `false`：可选使用'
         install_payment_available:
           type: boolean
           nullable: true
           example: true
-          description: '分割払い／リボ払いが利用可能かどうか
+          description: '是否可以使用分期付款或循环信贷付款。
 
 
-            - `true`: 利用可能
+            - `true`：可以使用
 
-            - `false`: 利用不可
-
-            '
+            - `false`：不可使用'
     RegistryCorporateInfo:
       type: object
       properties:
@@ -35281,43 +35017,19 @@ components:
         succeeded:
           type: string
           maxLength: 10
-          description: '成功件数\
-
-            \
-
-            今回のサブスクリプション課金において成功した決済の件数です。
-
-            '
+          description: 本次订阅扣款中支付成功的数量。
         failed:
           type: string
           maxLength: 10
-          description: '失敗件数\
-
-            \
-
-            今回のサブスクリプション課金において失敗した決済の件数です。
-
-            '
+          description: 本次订阅扣款中支付失败的数量。
         retry_scheduled:
           type: string
           maxLength: 10
-          description: '次回リトライ予定件数\
-
-            \
-
-            今回のサブスクリプション課金において失敗した決済のうち、次回のサブスクリプション課金でリトライ対象となる決済の件数です。
-
-            '
+          description: 本次失败支付中，计划在下次订阅扣款时重试的数量。
         total:
           type: string
           maxLength: 10
-          description: '合計件数\
-
-            \
-
-            今回のサブスクリプション課金において発生した決済の合計件数です。
-
-            '
+          description: 本次订阅扣款产生的支付总数。
         process_date:
           nullable: false
           allOf:
@@ -35325,15 +35037,9 @@ components:
         charge_date:
           type: string
           example: 2022/06/16
-          description: '課金日\
+          description: '本次订阅的扣款日期。
 
-            今回のサブスクリプションの課金日です。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         pay_type:
           allOf:
           - $ref: '#/components/schemas/SubscriptionPayType'
