@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "source" / "fincode-openapi.ja.yml"
 TRANSLATIONS = ROOT / "translations" / "zh_CN.yml"
 OUTPUT = ROOT / "site" / "spec" / "fincode-openapi.zh-CN.yml"
+JSON_OUTPUT = ROOT / "site" / "spec" / "fincode-openapi.zh-CN.json"
 PROGRESS = ROOT / "site" / "progress.json"
 HTTP_METHODS = {"get", "post", "put", "patch", "delete", "options", "head", "trace"}
 TRANSLATABLE_KEYS = {"title", "summary", "description"}
@@ -55,13 +56,18 @@ def replace_exact_strings(value: Any, replacements: dict[str, str]) -> Any:
     return value
 
 
-def translate_tags(document: dict[str, Any], names: dict[str, str]) -> None:
+def translate_tags(
+    document: dict[str, Any], names: dict[str, str], group_names: dict[str, str]
+) -> None:
     for tag in document.get("tags", []):
         tag["name"] = names.get(tag.get("name"), tag.get("name"))
     for path_item in document.get("paths", {}).values():
         for method, operation in path_item.items():
             if method in HTTP_METHODS and isinstance(operation, dict):
                 operation["tags"] = [names.get(tag, tag) for tag in operation.get("tags", [])]
+    for group in document.get("x-tagGroups", []):
+        group["name"] = group_names.get(group.get("name"), group.get("name"))
+        group["tags"] = [names.get(tag, tag) for tag in group.get("tags", [])]
 
 
 def has_japanese_kana(text: str) -> bool:
@@ -92,7 +98,11 @@ def main() -> None:
     result = copy.deepcopy(source)
 
     result = replace_exact_strings(result, translations.get("exact_strings", {}))
-    translate_tags(result, translations.get("tag_names", {}))
+    translate_tags(
+        result,
+        translations.get("tag_names", {}),
+        translations.get("tag_group_names", {}),
+    )
     for pointer, text in translations.get("strings", {}).items():
         set_pointer(result, pointer, text)
 
@@ -106,6 +116,10 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT.open("w", encoding="utf-8") as handle:
         yaml.safe_dump(result, handle, allow_unicode=True, sort_keys=False, width=120)
+    JSON_OUTPUT.write_text(
+        json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
 
     total, translated = count_units(source, result)
     operations = sum(

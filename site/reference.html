@@ -3,17 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode API 中文接口参考。" />
     <title>API 参考 · fincode API 中文参考</title>
     <style>
-      body { margin: 0; }
-      .notice { position: relative; z-index: 2; padding: 10px 20px; color: #4a3b08; background: #fff3c4; font: 14px/1.5 system-ui, sans-serif; }
-      .notice a { color: inherit; font-weight: 700; }
+      :root { color-scheme: light; --ink: #14213d; --muted: #5c667a; --blue: #2046d8; --line: #dce3f2; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: #fff; font-family: Inter, "Noto Sans SC", "PingFang SC", system-ui, sans-serif; }
+      .reference-bar { position: relative; z-index: 10; display: flex; align-items: center; gap: 20px; min-height: 56px; padding: 10px 20px; border-bottom: 1px solid var(--line); background: #fff; }
+      .reference-bar a { color: inherit; text-decoration: none; }
+      .reference-brand { font-weight: 800; letter-spacing: -.03em; }
+      .reference-brand span { color: var(--blue); font-weight: 600; }
+      .reference-note { flex: 1; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .official-link { color: var(--blue) !important; font-size: 13px; font-weight: 700; white-space: nowrap; }
+      .loading { display: grid; min-height: calc(100vh - 57px); place-items: center; padding: 40px 24px; color: var(--muted); text-align: center; }
+      .loading strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 18px; }
+      .loading[data-state="error"] strong { color: #b42318; }
+      #redoc-container:empty { display: none; }
+      @media (max-width: 760px) {
+        .reference-bar { align-items: flex-start; flex-wrap: wrap; }
+        .reference-note { order: 3; flex-basis: 100%; }
+      }
     </style>
   </head>
   <body>
-    <div class="notice">中文翻译正在分批完成，尚未翻译的段落会保留日文。若有歧义，请以 <a href="https://docs.fincode.jp/api">官方文档</a> 为准。</div>
-    <redoc spec-url="./spec/fincode-openapi.zh-CN.yml" path-in-middle-panel hide-download-button></redoc>
+    <header class="reference-bar">
+      <a class="reference-brand" href="./">fincode API <span>中文参考</span></a>
+      <p class="reference-note">中文翻译正在持续完善；未完成的段落暂时保留日文。</p>
+      <a class="official-link" href="https://docs.fincode.jp/api" target="_blank" rel="noreferrer">官方日文文档</a>
+    </header>
+    <main>
+      <div class="loading" id="loading" role="status" aria-live="polite">
+        <p><strong>正在加载 API 文档</strong>首次打开需要解析完整接口规格，请稍候。</p>
+      </div>
+      <div id="redoc-container"></div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/redoc@2/bundles/redoc.standalone.js"></script>
+    <script>
+      const loading = document.querySelector('#loading');
+      const specUrl = './spec/fincode-openapi.zh-CN.json';
+
+      fetch(specUrl)
+        .then((response) => {
+          if (!response.ok) throw new Error(`OpenAPI 规格加载失败（${response.status}）`);
+          return response.json();
+        })
+        .then((spec) => {
+          if (!spec.paths || Object.keys(spec.paths).length === 0) {
+            throw new Error('OpenAPI 规格中没有可显示的接口');
+          }
+          if (!window.Redoc) throw new Error('文档渲染组件加载失败');
+
+          Redoc.init(spec, {
+            hideDownloadButton: false,
+            nativeScrollbars: true,
+            theme: {
+              colors: { primary: { main: '#2046d8' } },
+              typography: { fontFamily: 'Inter, "Noto Sans SC", "PingFang SC", system-ui, sans-serif' },
+              sidebar: { backgroundColor: '#f7f9ff' },
+            },
+          }, document.querySelector('#redoc-container'), () => loading.remove());
+        })
+        .catch((error) => {
+          loading.dataset.state = 'error';
+          loading.innerHTML = `<p><strong>API 文档加载失败</strong>${error.message}。请刷新页面重试，或先查看官方日文文档。</p>`;
+        });
+    </script>
   </body>
 </html>
-

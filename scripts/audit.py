@@ -69,6 +69,19 @@ def main() -> None:
         translated.get("components", {}).get("schemas", {})
     ), "数据模型集合不一致"
 
+    operation_tags = {
+        tag
+        for path_item in translated.get("paths", {}).values()
+        for method, operation in path_item.items()
+        if method in HTTP_METHODS and isinstance(operation, dict)
+        for tag in operation.get("tags", [])
+    }
+    grouped_tags = {
+        tag for group in translated.get("x-tagGroups", []) for tag in group.get("tags", [])
+    }
+    missing_group_tags = operation_tags - grouped_tags
+    assert not missing_group_tags, f"导航分组遗漏接口标签：{sorted(missing_group_tags)}"
+
     remaining = find_remaining(source, translated)
     report = {
         "contractIntegrity": "passed",
