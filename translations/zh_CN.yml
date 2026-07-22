@@ -1251,3 +1251,85 @@ strings:
     <span class="smallText color--red-400">仅平台主商户可指定</span>
     租户商户 ID。
     删除指定租户商户的公司印章。
+  /paths/~1v1~1tenant_entries/post/summary: 创建租户商户（登记新用户）
+  /paths/~1v1~1tenant_entries/post/description: |-
+    创建新用户，并以该用户为所有者创建新的租户商户。
+    通过此 API 成功创建租户后，系统会向登记的邮箱地址发送验证邮件。
+  /paths/~1v1~1join_tenants/post/summary: 创建租户商户（现有用户加入）
+  /paths/~1v1~1join_tenants/post/description: |-
+    以指定平台商户的现有用户为所有者，创建新的租户商户。
+
+    对于 `password` 参数，建议在实现和运维时假定用户密码会在 fincode 管理后台应用中更新。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/get/summary: 获取租户商户生产环境申请信息
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/get/description: 获取由 `id` 指定的租户商户生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/get/parameters/0/description: 获取指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取指定租户商户的生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/put/summary: 更新租户商户生产环境申请信息
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/put/description: 登记由 `id` 指定的租户商户生产环境申请信息。不可指定已经提交生产环境申请的商户 ID。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/put/parameters/0/description: 更新指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations_v2~1tenants~1{id}/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    更新指定租户商户的生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1files/post/summary: 上传租户商户审核文件
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1files/post/description: 上传审核 `id` 指定租户商户所需的文件。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1files/post/parameters/0/description: 将文件上传至指定租户商户名下。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1files/post/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    将文件上传至指定租户商户名下。
+  /paths/~1v1~1contracts~1examinations/post/summary: 申请租户商户生产环境
+  /paths/~1v1~1contracts~1examinations/post/description: 为 `id` 指定的租户商户申请使用生产环境。调用此 API 前，必须先通过“更新租户生产环境申请信息”API 准备好申请信息。
+  /paths/~1v1~1contracts~1examinations/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    为指定租户商户提交生产环境使用申请。
+    <span class="smallText">译注：官方日文原文此处写作“上传文件”，结合本接口用途按“提交生产环境申请”翻译。</span>
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1providers~1reserve/post/summary: 申请为租户商户添加支付方式
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1providers~1reserve/post/description: |-
+    为 `id` 指定的租户商户申请添加支付方式。
+    申请状态最多可能需要约 24 小时才会反映到管理后台。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1providers~1reserve/post/parameters/0/description: 为指定租户商户申请添加支付方式。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}~1providers~1reserve/post/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    为指定租户商户申请添加支付方式。
+  /paths/~1v1~1contracts~1{id}/get/summary: 获取租户商户合同信息
+  /paths/~1v1~1contracts~1{id}/get/description: 获取由 `id` 指定的租户商户合同信息。
+  /paths/~1v1~1contracts~1{id}/get/parameters/0/description: 获取指定租户商户的合同信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取指定租户商户的合同信息。
+  /paths/~1v1~1change_requests/post/summary: 登记租户商户变更申请
+  /paths/~1v1~1change_requests/post/description: 登记变更申请。
+  /paths/~1v1~1change_requests/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    代为执行操作的目标租户商户 ID。
+  /paths/~1v1~1change_requests~1{shopId}/get/summary: 获取租户商户变更申请
+  /paths/~1v1~1change_requests~1{shopId}/get/description: 获取变更申请。
+  /paths/~1v1~1change_requests~1{shopId}/get/parameters/0/description: 目标租户商户的商户 ID。
+  /paths/~1v1~1change_requests~1{shopId}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    代为执行操作的目标租户商户 ID。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/get/summary: （旧版）获取租户商户生产环境申请信息
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/get/description: |-
+    此 API 目前已不推荐使用。请改用新版“获取租户商户生产环境申请信息”API。
+    获取由 `id` 指定的租户商户生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/get/parameters/0/description: 获取指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取指定租户商户的生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/put/summary: （旧版）更新租户商户生产环境申请信息
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/put/description: |-
+    此 API 目前已不推荐使用。请改用新版“更新租户商户生产环境申请信息”API。
+    更新由 `id` 指定的租户商户生产环境申请信息。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/put/parameters/0/description: 更新指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
+  /paths/~1v1~1contracts~1examinations~1tenants~1{id}/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    更新指定租户商户的生产环境申请信息。

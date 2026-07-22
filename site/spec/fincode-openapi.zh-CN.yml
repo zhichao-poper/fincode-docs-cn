@@ -7916,12 +7916,10 @@ paths:
       operationId: createTenantWithNewUser
       tags:
       - 租户申请管理
-      summary: テナントショップ 作成（新規ユーザー登録）
-      description: '新規ユーザーを作成し、作成されたユーザーをオーナーとして新規テナントショップを作成するAPIです。\
+      summary: 创建租户商户（登记新用户）
+      description: '创建新用户，并以该用户为所有者创建新的租户商户。
 
-        このAPIでのテナント作成に成功すると、登録されたメールアドレス宛にメールアドレス認証メールが送信されます。
-
-        '
+        通过此 API 成功创建租户后，系统会向登记的邮箱地址发送验证邮件。'
       requestBody:
         content:
           application/json:
@@ -8006,14 +8004,11 @@ paths:
       operationId: createTenantWithExistingUser
       tags:
       - 租户申请管理
-      summary: テナントショップ 作成（既存ユーザー参加）
-      description: '指定したプラットフォームショップのユーザーを新規テナントショップのオーナーとして新規テナントショップを作成するAPIです。\
+      summary: 创建租户商户（现有用户加入）
+      description: '以指定平台商户的现有用户为所有者，创建新的租户商户。
 
-        \
 
-        `password`パラメータに関して、ユーザーのパスワードがfincode管理画面アプリケーション上で更新されることを想定して実装・運用することが推奨されます。
-
-        '
+        对于 `password` 参数，建议在实现和运维时假定用户密码会在 fincode 管理后台应用中更新。'
       requestBody:
         content:
           application/json:
@@ -8094,16 +8089,12 @@ paths:
       operationId: retrieveTenantExaminationInfoV2
       tags:
       - 租户申请管理
-      summary: テナントショップ本番環境申請情報 取得
-      description: '`id`で指定したテナントショップの本番環境申請情報を取得します。
-
-        '
+      summary: 获取租户商户生产环境申请信息
+      description: 获取由 `id` 指定的租户商户生产环境申请信息。
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップの本番環境申請情報を取得します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 获取指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8114,13 +8105,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの本番環境申請情報を取得します。
-
-          '
+          获取指定租户商户的生产环境申请信息。'
       responses:
         '200':
           description: 请求成功
@@ -8188,16 +8177,12 @@ paths:
       operationId: updateTenantExaminationInfoV2
       tags:
       - 租户申请管理
-      summary: テナントショップ本番環境申請情報 更新
-      description: '`id`で指定したテナントショップの本番環境申請情報を登録します。既に本番環境申請済みのショップのidはご指定いただけません。
-
-        '
+      summary: 更新租户商户生产环境申请信息
+      description: 登记由 `id` 指定的租户商户生产环境申请信息。不可指定已经提交生产环境申请的商户 ID。
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップの本番環境申請情報を更新します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 更新指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8208,13 +8193,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの本番環境申請情報を更新します。
-
-          '
+          更新指定租户商户的生产环境申请信息。'
       requestBody:
         content:
           application/json:
@@ -8453,16 +8436,12 @@ paths:
       operationId: uploadExaminationFile
       tags:
       - 租户申请管理
-      summary: テナントショップ 審査ファイルアップロード
-      description: '`id`で指定したテナントショップの審査に必要なファイルのアップロードを行います。
-
-        '
+      summary: 上传租户商户审核文件
+      description: 上传审核 `id` 指定租户商户所需的文件。
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップのものとしてファイルをアップロードします。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 将文件上传至指定租户商户名下。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8473,13 +8452,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップのものとしてファイルをアップロードします。
-
-          '
+          将文件上传至指定租户商户名下。'
       requestBody:
         content:
           multipart/form-data:
@@ -8583,10 +8560,8 @@ paths:
       operationId: requestProductionEnvironment
       tags:
       - 租户申请管理
-      summary: テナントショップ 本番環境申請
-      description: '`id`で指定したテナントショップの本番環境の利用申請を行います。このAPIを呼び出すまでにテナント本番環境申請情報 更新APIで申請情報を用意しておく必要があります。
-
-        '
+      summary: 申请租户商户生产环境
+      description: 为 `id` 指定的租户商户申请使用生产环境。调用此 API 前，必须先通过“更新租户生产环境申请信息”API 准备好申请信息。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -8594,13 +8569,13 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップのものとしてファイルをアップロードします。
+          为指定租户商户提交生产环境使用申请。
 
-          '
+          <span class="smallText">译注：官方日文原文此处写作“上传文件”，结合本接口用途按“提交生产环境申请”翻译。</span>'
       requestBody:
         content:
           multipart/form-data:
@@ -8681,14 +8656,14 @@ paths:
       operationId: reserveProvider
       tags:
       - 租户申请管理
-      summary: テナントショップ 決済手段追加申請
-      description: "`id`で指定したテナントショップの決済手段の追加申請を行います。  \n※ 申請状況の管理画面への反映には最大24時間程度のタイムラグがあります\n"
+      summary: 申请为租户商户添加支付方式
+      description: '为 `id` 指定的租户商户申请添加支付方式。
+
+        申请状态最多可能需要约 24 小时才会反映到管理后台。'
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップに対して決済手段を追加申請します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 为指定租户商户申请添加支付方式。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8699,13 +8674,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップに対して決済手段を追加申請します。
-
-          '
+          为指定租户商户申请添加支付方式。'
       requestBody:
         content:
           multipart/form-data:
@@ -8791,16 +8764,12 @@ paths:
       operationId: retrieveTenantContract
       tags:
       - 租户申请管理
-      summary: テナントショップ契約情報 取得
-      description: '`id`で指定したテナントショップの契約情報を取得します。
-
-        '
+      summary: 获取租户商户合同信息
+      description: 获取由 `id` 指定的租户商户合同信息。
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップの契約情報を取得します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 获取指定租户商户的合同信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8811,13 +8780,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの契約情報を取得します。
-
-          '
+          获取指定租户商户的合同信息。'
       responses:
         '200':
           description: 请求成功
@@ -8883,10 +8850,8 @@ paths:
       operationId: registerChangeRequest
       tags:
       - 租户申请管理
-      summary: テナントショップ 変更申請 登録
-      description: '変更申請を登録します。
-
-        '
+      summary: 登记租户商户变更申请
+      description: 登记变更申请。
       parameters:
       - name: Tenant-Shop-Id
         in: header
@@ -8894,11 +8859,9 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          代理実行対象のテナントショップID。
-
-          '
+          代为执行操作的目标租户商户 ID。'
       requestBody:
         content:
           application/json:
@@ -8925,30 +8888,24 @@ paths:
       operationId: retrieveChangeRequest
       tags:
       - 租户申请管理
-      summary: テナントショップ 変更申請 取得
-      description: '変更申請を取得します。
-
-        '
+      summary: 获取租户商户变更申请
+      description: 获取变更申请。
       parameters:
       - name: shopId
         in: path
         required: true
         schema:
           type: string
-        description: '対象テナントショップのショップID
-
-          '
+        description: 目标租户商户的商户 ID。
       - name: Tenant-Shop-Id
         in: header
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          代理実行対象のテナントショップID。
-
-          '
+          代为执行操作的目标租户商户 ID。'
       responses:
         '200':
           description: 请求成功
@@ -8971,18 +8928,14 @@ paths:
       operationId: retrieveTenantExaminationInfo
       tags:
       - 租户申请管理
-      summary: （旧）テナントショップ本番環境申請情報 取得
-      description: '※ このAPIの使用は現在非推奨です。新しいテナントショップ本番環境申請情報 取得APIをご利用ください。\
+      summary: （旧版）获取租户商户生产环境申请信息
+      description: '此 API 目前已不推荐使用。请改用新版“获取租户商户生产环境申请信息”API。
 
-        `id`で指定したテナントショップの本番環境申請情報を取得します。
-
-        '
+        获取由 `id` 指定的租户商户生产环境申请信息。'
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップの本番環境申請情報を取得します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 获取指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -8993,13 +8946,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの本番環境申請情報を取得します。
-
-          '
+          获取指定租户商户的生产环境申请信息。'
       responses:
         '200':
           description: 请求成功
@@ -9069,18 +9020,14 @@ paths:
       operationId: updateTenantExaminationInfo
       tags:
       - 租户申请管理
-      summary: （旧）テナントショップ本番環境申請情報 更新
-      description: '※ このAPIの使用は現在非推奨です。新しいテナントショップ本番環境申請情報 更新APIをご利用ください。\
+      summary: （旧版）更新租户商户生产环境申请信息
+      description: '此 API 目前已不推荐使用。请改用新版“更新租户商户生产环境申请信息”API。
 
-        `id`で指定したテナントショップの本番環境申請情報を更新します。
-
-        '
+        更新由 `id` 指定的租户商户生产环境申请信息。'
       parameters:
       - name: id
         in: path
-        description: '指定したテナントショップの本番環境申請情報を更新します。`Tenant-Shop-Id`ヘッダーも併せて指定してください。
-
-          '
+        description: 更新指定租户商户的生产环境申请信息。还必须同时指定 `Tenant-Shop-Id` 请求头。
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -9091,13 +9038,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの本番環境申請情報を更新します。
-
-          '
+          更新指定租户商户的生产环境申请信息。'
       requestBody:
         content:
           application/json:
