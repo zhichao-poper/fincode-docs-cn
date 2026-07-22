@@ -52,7 +52,12 @@ def replace_exact_strings(value: Any, replacements: dict[str, str]) -> Any:
     if isinstance(value, list):
         return [replace_exact_strings(item, replacements) for item in value]
     if isinstance(value, str):
-        return replacements.get(value, value)
+        if value in replacements:
+            return replacements[value]
+        stripped = value.strip()
+        if stripped in replacements:
+            return replacements[stripped]
+        return value
     return value
 
 
