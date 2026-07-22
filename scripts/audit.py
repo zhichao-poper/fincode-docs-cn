@@ -32,10 +32,6 @@ def operations(document: dict[str, Any]) -> dict[tuple[str, str], str | None]:
     }
 
 
-def has_japanese_kana(text: str) -> bool:
-    return any("\u3040" <= char <= "\u30ff" for char in text)
-
-
 def find_remaining(
     source: Any, translated_value: Any, pointer: str = "", key: str | None = None
 ) -> list[dict[str, str]]:
@@ -52,7 +48,7 @@ def find_remaining(
     elif (
         isinstance(source, str)
         and key in TRANSLATABLE_KEYS
-        and (source == translated_value or has_japanese_kana(translated_value))
+        and source == translated_value
     ):
         found.append({"pointer": pointer, "preview": source.replace("\n", " ")[:160]})
     return found

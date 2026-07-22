@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2533,
+  "remainingJapaneseUnits": 2471,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -611,22 +611,6 @@
       "preview": "口座振替"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1secure/put/summary",
-      "preview": "認証後決済 実行"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1secure/put/description",
-      "preview": "3Dセキュア認証後の決済を実行します。\\ \\ 3Dセキュア認証APIもしくは認証結果確定APIのレスポンスの3Dセキュア認証結果（`tds2_trans_result`）が`Y`または`A`のとき、このAPIを実行して3Dセキュア認証後の決済を実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1secure/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の3Dセキュア認証後決済を実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1secure/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/summary",
       "preview": "バーコード発行"
     },
@@ -641,42 +625,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/parameters/1/description",
       "preview": "オーダーID（決済情報のID）"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/put/summary",
-      "preview": "3Dセキュア 認証実行"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/put/description",
-      "preview": "`access_id`で指定したカード決済取引の3Dセキュア2.0認証を開始します。\\ \\ 用意した`tds2_ret_url`に対し`event`パラメータで`ThreeDSecureMethodFinished`もしくは`ThreeDSecureMethodSkipped`イベントが通知されたとき、このAPIを呼び"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/put/parameters/0/description",
-      "preview": "取引ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/put/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した`access_id`のカード決済の3Dセキュア認証を開始します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/get/summary",
-      "preview": "3Dセキュア 認証結果確定"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/get/description",
-      "preview": "`access_id`で指定したカード決済取引の3Dセキュア認証の結果を確定します。\\ \\ `challenge_url`上で購入者がチャレンジ認証実施後、`tds2_ret_url`に対し`event`パラメータで`AuthResultReady`イベントが通知されたとき、このAPIを呼び出します。  - レスポンス"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/get/parameters/0/description",
-      "preview": "取引ID"
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/get/parameters/1/description",
-      "preview": "この決済で利用する決済手段です。未指定の場合、`Card`となります。  - `Card`: カード（デフォルト） - `Googlepay`: Google Pay "
-    },
-    {
-      "pointer": "/paths/~1v1~1secure2~1{access_id}/get/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した`access_id`のカード決済の3Dセキュア認証の結果を確定します。 "
     },
     {
       "pointer": "/paths/~1v1~1sessions/post/summary",
@@ -2051,10 +1999,6 @@
       "preview": "3Dセキュア認証における戻りURL   3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する場合のみ使用します。   fincodeは3Dセキュア認証処理の過程において、このURLにPOSTメソッド、`Content-Type:application/x-www-form-urlencod"
     },
     {
-      "pointer": "/components/schemas/ThreeDSecure2Status/description",
-      "preview": "3Dセキュア2.0認証処理 ステータス  - `AUTHENTICATING`: 3Dセキュア認証処理中 - `CHALLENGE`: チャレンジ認証の実施が必要 - `AUTHENTICATED`: 3Dセキュア認証処理が完了 "
-    },
-    {
       "pointer": "/components/schemas/td_tenant_name/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 加盟店名。\\ 3Dセキュア認証の際に表示されるショップ名や加盟店名を指定できます。\\ 使用可能な文字は以下の通りです。 - 半角英数 - 半角記号： !\"#$%&'()*+,-./:;<=>?"
     },
@@ -2105,18 +2049,6 @@
     {
       "pointer": "/components/schemas/card/properties/access_id/description",
       "preview": "取引ID "
-    },
-    {
-      "pointer": "/components/schemas/DirectDebitApplicationType/description",
-      "preview": "この振替用口座を登録した際の申込方法  - `PAPER`: 依頼書登録 - `ONLINE`: Web登録 "
-    },
-    {
-      "pointer": "/components/schemas/DirectDebitSettlementRoute/description",
-      "preview": "振替サービス  - `1`: 口座振替（5・6・23・27日） - `2`: 口座振替（1・5・20・26日） "
-    },
-    {
-      "pointer": "/components/schemas/DirectDebitLastResultCode/description",
-      "preview": "最新の振替結果コード。\\ この決済手段で最後に行われた振替の結果コードです。  - `0`: 振替成功 - `1`: 残高不足による失敗 - `2`: 預金取引なしによる失敗<br /><span class=\"smallText\">存在しない口座に対して請求した場合などに発生します。</span> - `3`: 購入"
     },
     {
       "pointer": "/components/schemas/directdebit/description",
@@ -2715,50 +2647,6 @@
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
     },
     {
-      "pointer": "/components/schemas/DirectDebitResultCode/description",
-      "preview": "振替結果コード  - `0`: 振替成功 - `1`: 残高不足による失敗 - `2`: 預金取引なしによる失敗<br /><span class=\"smallText\">存在しない口座に対して請求した場合などに発生します。</span> - `3`: 購入者事由による失敗 - `4`: 依頼書未着・不備による失敗<b"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/target_date_from/description",
-      "preview": "振替指定日（始値）\\ 振替指定日（`target_date`）を対象に範囲検索を行います。この日付以降に振替指定日が設定されている決済情報を取得します。\\ \\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/target_date_to/description",
-      "preview": "振替指定日（終値）\\ 振替指定日（`target_date`）を対象に範囲検索を行います。この日付以前に振替指定日が設定されている決済情報を取得します。\\ \\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/withdrawal_date_from/description",
-      "preview": "引き落とし日（始値）\\ 引き落とし日（`withdrawal_date`）を対象に範囲検索を行います。この日付以降に引き落としが行われた決済情報を取得します。\\ \\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/withdrawal_date_to/description",
-      "preview": "引き落とし日（終値）\\ 引き落とし日（`withdrawal_date`）を対象に範囲検索を行います。この日付以前に引き落としが行われた決済情報を取得します。\\ \\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/result_code/description",
-      "preview": "振替結果コード\\ 指定した振替結果の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `0`: 振替成功 - `1`: 残高不足（失敗） - `2`: 預金取引無し（失敗） - `3`: 購入者事由（失敗） - `4`: 依頼書未着・不備（失敗） - `7`: データエラー（失敗）<b"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/pay_pattern/description",
-      "preview": "課金種別\\ 指定した課金種別の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `onetime`: サブスクリプションでない都度払い - `subscription`: サブスクリプション "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/subscription_id/description",
-      "preview": "サブスクリプションID\\ サブスクリプションIDを指定して、指定したサブスクリプションによって作成された決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/updated_from/description",
-      "preview": "更新日（始値）\\ \\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/updated_to/description",
-      "preview": "更新日（終値）\\ \\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `target_date`: 振替指定日 - `wi"
-    },
-    {
       "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/status/description",
       "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の振込待ち - `CAPTURED`: 売上確定 - `CANCELED`: キャンセル -"
     },
@@ -3251,58 +3139,6 @@
       "preview": "ユーザーエージェント\\ リクエストを送信したユーザーエージェントの情報。`redirect_type`が`1`（Webページ／Webアプリケーション）の場合指定できます。 "
     },
     {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/status/description",
-      "preview": "決済ステータス  - `UNPROCESSED`: 未処理<br /><span class=\"smallText\">振替はまだ実行されていません。</span> - `AWAITING_PAYMENT_APPROVAL`: 決済処理待ち<br /><span class=\"smallText\">fincodeおよび金"
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/target_date/description",
-      "preview": "振替指定日\\ 振替を行う日を指定します。\\ 実際の振替は営業日に行われるため、必ずしも指定した日付に引き落としが行われるとは限りません。\\ 指定可能な日付及び引き落とし日は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule"
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/withdrawal_date/description",
-      "preview": "引き落とし日\\ 実際に購入者の口座から引き落としが行われた実績日です。\\ \\ 形式： `yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/request_accept_end_date/description",
-      "preview": "請求依頼受付期間 終了日\\ 振替依頼を受け付ける最終日。この日付の23:59までに振替依頼（決済実行）を受け付けます。\\ \\ 形式： `yyyy/MM/dd`\\ 詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の"
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/transfer_return_date/description",
-      "preview": "請求結果反映 予定日\\ \\ 形式： `yyyy/MM/dd`\\ 詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替結果返却日」の列で確認できます。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/payment_method_id/description",
-      "preview": "決済手段ID\\ この決済に使用された決済手段のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/bank_code/description",
-      "preview": "金融機関コード\\ fincodeの口座振替に対応している金融機関のコードのリストは[Docs > 利用可能な金融機関（口座振替）](https://docs.fincode.jp/payment/directdebit/restriction)で参照できます。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/bank_name/description",
-      "preview": "金融機関名 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/branch_code/description",
-      "preview": "支店コード "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/branch_name/description",
-      "preview": "支店名 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/remarks/description",
-      "preview": "ご利用明細表示内容  - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース - デフォルト： `ショップ名カナの先頭9文字`  ※ 利用可能な記号  - 半角：`.`、`(`、`)`、`–` - 全角：`．`、`（`、`）`、`ー` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit/properties/subscription_id/description",
-      "preview": "サブスクリプションID\\ この決済情報がブスクリプションにより生成されたものである場合、このフィールドにサブスクリプションIDが設定されます。 "
-    },
-    {
       "pointer": "/components/schemas/Payment.VirtualAccount/properties/pay_type/description",
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Virtualaccount`: 銀行振込（バーチャル口座） "
     },
@@ -3579,30 +3415,6 @@
       "preview": "ご利用明細表示内容  - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース - デフォルト： `ショップ名カナの先頭9文字`  ※ 利用可能な記号  - 半角：`.`、`(`、`)`、`–` - 全角：`．`、`（`、`）`、`ー` "
     },
     {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_1/description",
-      "preview": "加盟店自由項目 1\\ 任意の値を挿入し、決済情報に保存できます。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_2/description",
-      "preview": "加盟店自由項目 2 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_3/description",
-      "preview": "加盟店自由項目 3 "
-    },
-    {
       "pointer": "/components/schemas/billing_amount/description",
       "preview": "振込依頼金額\\ `billing_tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restriction) "
     },
@@ -3759,18 +3571,6 @@
       "preview": "振替指定日\\ 振替を行う日を指定します。\\ 実際の振替は営業日に行われるため、必ずしも指定した日付に引き落としが行われるとは限りません。\\ 指定可能な日付及び引き落とし日は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule"
     },
     {
-      "pointer": "/components/schemas/Payment.DirectDebit.Executing.Request/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Executing.Request/properties/customer_id/description",
-      "preview": "顧客ID\\ 購入者となる顧客のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.Executing.Request/properties/payment_method_id/description",
-      "preview": "決済手段ID\\ この決済に使用する決済手段（口座振替用口座）のIDです。指定しない場合、デフォルト決済手段が使用されます。 "
-    },
-    {
       "pointer": "/components/schemas/x-req-properties-payment_term_day/description",
       "preview": "支払期限日数\\ \\ `0`～`99`日の範囲でバーチャル口座で振り込み可能な期限日数を指定します。\\ 実行日から見て、支払期限日数後の翌日AMに期限切れになります。\\ 例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ "
     },
@@ -3859,10 +3659,6 @@
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Paypay`: PayPay "
     },
     {
-      "pointer": "/components/schemas/Payment.DirectDebit.Canceling.Request/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
       "pointer": "/components/schemas/Payment.VirtualAccount.Canceling.Request/properties/pay_type/description",
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Virtualaccount`: 銀行振込（バーチャル口座） "
     },
@@ -3939,56 +3735,12 @@
       "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
     },
     {
-      "pointer": "/components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.ExecutingAfterThreeDSecure.Request/properties/pay_type/description",
-      "preview": "決済種別   この決済で利用する決済手段です。  - `Googlepay`: Google Pay "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.ExecutingAfterThreeDSecure.Request/properties/pa_res/description",
-      "preview": "※ 閉塞機能\\ 3Dセキュアサービス結果電文\\ \\ 3Dセキュア1.0利用時のみ必須。 "
-    },
-    {
       "pointer": "/components/schemas/Payment.Konbini.GeneratingBarcode.Request/properties/pay_type/description",
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Konbini`: コンビニ決済 "
     },
     {
-      "pointer": "/components/schemas/ThreeDSecure2TransactionResult/description",
-      "preview": "3Dセキュア2.0認証処理 結果  - `Y`: 認証に成功 - `A`: 認証の試行が認められた<br><span class=\"smallText\">認証 / 確認は行われなかったが、認証 / 確認を試行したことの証拠は提供されている</span> - `C`: 追加のチャレンジ認証が必要<br><span cla"
-    },
-    {
-      "pointer": "/components/schemas/ThreeDSecure2TransactionResultReason/description",
-      "preview": "3Dセキュア認証結果の理由コード\\ \\ 3Dセキュア認証2.0の結果（`tds2_trans_result`）の理由を示すコードです。  - `01`: カード認証に失敗 - `02`: 不明なデバイス - `03`: サポートされていないデバイス - `04`: 認証頻度の上限を超えた - `05`: 有効期限切れの"
-    },
-    {
-      "pointer": "/components/schemas/ThreeDSecure.Confirming.Response/allOf/0/properties/pay_type/description",
-      "preview": "決済種別   この決済で利用する決済手段です。未指定の場合、`Card`となります。  - `Card`: カード（デフォルト） - `Googlepay`: Google Pay "
-    },
-    {
       "pointer": "/components/schemas/param/description",
       "preview": "ブラウザ情報\\ \\ 購入者が`acs_url`にアクセスしたことをトリガーにfincodeが`tds2_ret_url`宛てに送信するデータのうち、`param`の値を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/ThreeDSecure.Authorizing.Request/properties/pay_type/description",
-      "preview": "決済種別   この決済で利用する決済手段です。未指定の場合、`Card`となります。  - `Card`: カード（デフォルト） - `Googlepay`: Google Pay "
-    },
-    {
-      "pointer": "/components/schemas/ThreeDSecure.Authorizing.Response/allOf/0/properties/pay_type/description",
-      "preview": "決済種別   この決済で利用する決済手段です。未指定の場合、`Card`となります。  - `Card`: カード（デフォルト） - `Googlepay`: Google Pay "
-    },
-    {
-      "pointer": "/components/schemas/ThreeDSecure.Authorizing.Response/allOf/0/properties/challenge_url/description",
-      "preview": "3Dセキュア2.0認証チャレンジURL\\ \\ 購入者による`acs_url`へのアクセス後、カード発行会社によって追加のチャレンジ認証が必要と判定された場合、このパラメータにURLが設定されて返却されます。 "
     },
     {
       "pointer": "/components/schemas/PaymentSessionPayType/description",

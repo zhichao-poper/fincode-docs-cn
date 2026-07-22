@@ -3857,14 +3857,11 @@ paths:
       operationId: executePaymentAfterThreeDSecureecure
       tags:
       - 支付
-      summary: 認証後決済 実行
-      description: '3Dセキュア認証後の決済を実行します。\
+      summary: 执行认证后支付
+      description: '执行 3D Secure 认证后的支付。
 
-        \
 
-        3Dセキュア認証APIもしくは認証結果確定APIのレスポンスの3Dセキュア認証結果（`tds2_trans_result`）が`Y`または`A`のとき、このAPIを実行して3Dセキュア認証後の決済を実行します。
-
-        '
+        当“执行 3D Secure 认证”API 或“确认认证结果”API 返回的 3D Secure 认证结果（`tds2_trans_result`）为 `Y` 或 `A` 时，调用此 API 完成认证后的支付。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3872,16 +3869,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の3Dセキュア認証後決済を実行します。
-
-          '
+          在以该租户商户为销售主体的支付中，对 `id` 指定的支付执行 3D Secure 认证后支付。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）。
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -4084,25 +4079,22 @@ paths:
       - Secret-Basic-Auth: []
       tags:
       - 3D Secure 认证
-      summary: 3Dセキュア 認証実行
-      description: '`access_id`で指定したカード決済取引の3Dセキュア2.0認証を開始します。\
-
-        \
-
-        用意した`tds2_ret_url`に対し`event`パラメータで`ThreeDSecureMethodFinished`もしくは`ThreeDSecureMethodSkipped`イベントが通知されたとき、このAPIを呼び出します。
+      summary: 执行 3D Secure 认证
+      description: '开始对 `access_id` 指定的卡片支付交易执行 3D Secure 2.0 认证。
 
 
-        - レスポンスの`tds2_trans_result`が`Y`または`A`のとき、認証後決済 実行APIを呼び出し3Dセキュア認証された決済を完了させます。
+        当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `ThreeDSecureMethodFinished` 或 `ThreeDSecureMethodSkipped` 事件通知时，调用此 API。
 
-        - レスポンスの`tds2_trans_result`が`C`のとき、`challenge_url`にリダイレクトし購入者にチャレンジ認証を実施させ、結果を3Dセキュア認証 結果確定APIで確定します。
 
-        - レスポンスの`tds2_trans_result`が上記以外の場合、3Dセキュア認証で決済が拒否されたことを示します。
+        - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
 
-        '
+        - 当响应中的 `tds2_trans_result` 为 `C` 时，将购买者重定向至 `challenge_url` 完成挑战认证，然后调用“确认 3D Secure 认证结果”API 确认结果。
+
+        - 当响应中的 `tds2_trans_result` 为上述值以外的值时，表示该支付被 3D Secure 认证拒绝。'
       parameters:
       - name: access_id
         in: path
-        description: 取引ID
+        description: 交易 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/AccessId_schema'
@@ -4112,13 +4104,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの決済情報のうち、指定した`access_id`のカード決済の3Dセキュア認証を開始します。
-
-          '
+          对该租户商户的支付信息中由 `access_id` 指定的卡片支付开始执行 3D Secure 认证。'
         required: false
       requestBody:
         content:
@@ -4198,37 +4188,32 @@ paths:
       - Secret-Basic-Auth: []
       tags:
       - 3D Secure 认证
-      summary: 3Dセキュア 認証結果確定
-      description: '`access_id`で指定したカード決済取引の3Dセキュア認証の結果を確定します。\
-
-        \
-
-        `challenge_url`上で購入者がチャレンジ認証実施後、`tds2_ret_url`に対し`event`パラメータで`AuthResultReady`イベントが通知されたとき、このAPIを呼び出します。
+      summary: 确认 3D Secure 认证结果
+      description: '确认 `access_id` 指定的卡片支付交易的 3D Secure 认证结果。
 
 
-        - レスポンスの`tds2_trans_result`が`Y`または`A`のとき、認証後決済 実行APIを呼び出し3Dセキュア認証された決済を完了させます。
+        购买者在 `challenge_url` 页面完成挑战认证后，当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `AuthResultReady` 事件通知时，调用此 API。
 
-        - レスポンスの`tds2_trans_result`が上記以外の場合、3Dセキュア認証で決済が拒否されたことを示します。
 
-        '
+        - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
+
+        - 当响应中的 `tds2_trans_result` 为上述值以外的值时，表示该支付被 3D Secure 认证拒绝。'
       parameters:
       - name: access_id
         in: path
-        description: 取引ID
+        description: 交易 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/AccessId_schema'
         required: true
       - name: pay_type
         in: query
-        description: 'この決済で利用する決済手段です。未指定の場合、`Card`となります。
+        description: '本次支付使用的支付类型。未指定时为 `Card`。
 
 
-          - `Card`: カード（デフォルト）
+          - `Card`：卡片（默认）
 
-          - `Googlepay`: Google Pay
-
-          '
+          - `Googlepay`：Google Pay'
         schema:
           type: string
           example: Card
@@ -4237,13 +4222,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの決済情報のうち、指定した`access_id`のカード決済の3Dセキュア認証の結果を確定します。
-
-          '
+          对该租户商户的支付信息中由 `access_id` 指定的卡片支付确认 3D Secure 认证结果。'
         required: false
       responses:
         '200':
@@ -12308,16 +12291,14 @@ components:
       - CHALLENGE
       - AUTHENTICATED
       example: AUTHENTICATING
-      description: '3Dセキュア2.0認証処理 ステータス
+      description: '3D Secure 2.0 认证处理状态。
 
 
-        - `AUTHENTICATING`: 3Dセキュア認証処理中
+        - `AUTHENTICATING`：正在进行 3D Secure 认证
 
-        - `CHALLENGE`: チャレンジ認証の実施が必要
+        - `CHALLENGE`：需要执行挑战认证
 
-        - `AUTHENTICATED`: 3Dセキュア認証処理が完了
-
-        '
+        - `AUTHENTICATED`：3D Secure 认证处理已完成'
     td_tenant_name:
       type: string
       example: s_***********-ab123
@@ -12500,14 +12481,12 @@ components:
       example: PAPER
       maxLength: 6
       nullable: true
-      description: 'この振替用口座を登録した際の申込方法
+      description: '登记此自动扣款账户时使用的申请方式。
 
 
-        - `PAPER`: 依頼書登録
+        - `PAPER`：通过扣款申请书登记
 
-        - `ONLINE`: Web登録
-
-        '
+        - `ONLINE`：通过 Web 在线登记'
     DirectDebitSettlementRoute:
       type: string
       enum:
@@ -12516,14 +12495,12 @@ components:
       example: '1'
       minLength: 1
       maxLength: 1
-      description: '振替サービス
+      description: '自动扣款服务。
 
 
-        - `1`: 口座振替（5・6・23・27日）
+        - `1`：自动扣款（每月 5、6、23、27 日）
 
-        - `2`: 口座振替（1・5・20・26日）
-
-        '
+        - `2`：自动扣款（每月 1、5、20、26 日）'
     DirectDebitLastResultCode:
       type: string
       enum:
@@ -12541,38 +12518,36 @@ components:
       minLength: 1
       maxLength: 1
       nullable: true
-      description: '最新の振替結果コード。\
+      description: '最近一次扣款结果码。
 
-        この決済手段で最後に行われた振替の結果コードです。
-
-
-        - `0`: 振替成功
-
-        - `1`: 残高不足による失敗
-
-        - `2`: 預金取引なしによる失敗<br /><span class="smallText">存在しない口座に対して請求した場合などに発生します。</span>
-
-        - `3`: 購入者事由による失敗
-
-        - `4`: 依頼書未着・不備による失敗<br /><span class="smallText">口座振替依頼書が金融機関側で登録されていない場合に発生します。</span>
-
-        - `7`: データエラーに起因する失敗<br /><span class="smallText">口座振替（1・5・20・26日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
-
-        - `8`: ショップ事由による失敗<br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 </span>
-
-        - `9`: その他の失敗<br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 </span>
-
-        - `E`: データエラーに起因する失敗<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
-
-        - `N`: 振替結果未着<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
+        表示使用此支付方式执行的最近一次自动扣款结果。
 
 
-        [お問い合わせはこちらへ](https://form.fincode.jp/contact)
+        - `0`：扣款成功
 
-        '
+        - `1`：因余额不足而失败
+
+        - `2`：因无存款账户交易而失败<br /><span class="smallText">例如向不存在的账户发起扣款时会出现此结果。</span>
+
+        - `3`：因购买者原因而失败
+
+        - `4`：因扣款申请书未送达或内容有误而失败<br /><span class="smallText">金融机构尚未登记银行账户自动扣款申请书时会出现此结果。</span>
+
+        - `7`：因数据错误而失败<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
+
+        - `8`：因商户原因而失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+
+        - `9`：其他失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+
+        - `E`：因数据错误而失败<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
+
+        - `N`：未收到扣款结果<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
+
+
+        [联系 fincode](https://form.fincode.jp/contact)'
     directdebit:
       type: object
       nullable: true
@@ -15542,188 +15517,159 @@ components:
       example: '0'
       minLength: 1
       maxLength: 1
-      description: '振替結果コード
+      description: '扣款结果码。
 
 
-        - `0`: 振替成功
+        - `0`：扣款成功
 
-        - `1`: 残高不足による失敗
+        - `1`：因余额不足而失败
 
-        - `2`: 預金取引なしによる失敗<br /><span class="smallText">存在しない口座に対して請求した場合などに発生します。</span>
+        - `2`：因无存款账户交易而失败<br /><span class="smallText">例如向不存在的账户发起扣款时会出现此结果。</span>
 
-        - `3`: 購入者事由による失敗
+        - `3`：因购买者原因而失败
 
-        - `4`: 依頼書未着・不備による失敗<br /><span class="smallText">口座振替依頼書が金融機関側で登録されていない場合に発生します。</span>
+        - `4`：因扣款申请书未送达或内容有误而失败<br /><span class="smallText">金融机构尚未登记银行账户自动扣款申请书时会出现此结果。</span>
 
-        - `7`: データエラーに起因する失敗<br /><span class="smallText">口座振替（1・5・20・26日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
+        - `7`：因数据错误而失败<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
 
-        - `8`: ショップ事由による失敗<br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 </span>
+        - `8`：因商户原因而失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
 
-        - `9`: その他の失敗<br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 </span>
+        - `9`：其他失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
 
-        - `E`: データエラーに起因する失敗<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
+        - `E`：因数据错误而失败<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
 
-        - `N`: 振替結果未着<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span><br /><span class="smallText">通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。
-        </span>
+        - `N`：未收到扣款结果<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系
+        fincode。</span>
 
 
-        [お問い合わせはこちらへ](https://form.fincode.jp/contact)
-
-        '
+        [联系 fincode](https://form.fincode.jp/contact)'
     Payment.ListRetrieving.DirectDebit.QueryParams:
       type: object
       properties:
         target_date_from:
           type: string
           nullable: true
-          description: '振替指定日（始値）\
+          description: '扣款指定日期（起始值）。
 
-            振替指定日（`target_date`）を対象に範囲検索を行います。この日付以降に振替指定日が設定されている決済情報を取得します。\
+            按扣款指定日期（`target_date`）进行范围查询，获取扣款指定日期不早于此日期的支付信息。
 
-            \
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         target_date_to:
           type: string
           nullable: true
-          description: '振替指定日（終値）\
+          description: '扣款指定日期（结束值）。
 
-            振替指定日（`target_date`）を対象に範囲検索を行います。この日付以前に振替指定日が設定されている決済情報を取得します。\
+            按扣款指定日期（`target_date`）进行范围查询，获取扣款指定日期不晚于此日期的支付信息。
 
-            \
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         withdrawal_date_from:
           type: string
           nullable: true
-          description: '引き落とし日（始値）\
+          description: '实际扣款日期（起始值）。
 
-            引き落とし日（`withdrawal_date`）を対象に範囲検索を行います。この日付以降に引き落としが行われた決済情報を取得します。\
+            按实际扣款日期（`withdrawal_date`）进行范围查询，获取不早于此日期完成扣款的支付信息。
 
-            \
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         withdrawal_date_to:
           type: string
           nullable: true
-          description: '引き落とし日（終値）\
+          description: '实际扣款日期（结束值）。
 
-            引き落とし日（`withdrawal_date`）を対象に範囲検索を行います。この日付以前に引き落としが行われた決済情報を取得します。\
+            按实际扣款日期（`withdrawal_date`）进行范围查询，获取不晚于此日期完成扣款的支付信息。
 
-            \
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         result_code:
           allOf:
           - $ref: '#/components/schemas/DirectDebitResultCode'
-          description: '振替結果コード\
+          description: '扣款结果码。
 
-            指定した振替結果の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+            获取符合指定扣款结果的支付信息。使用逗号分隔可指定多个值（OR 查询）。
 
 
-            - `0`: 振替成功
+            - `0`：扣款成功
 
-            - `1`: 残高不足（失敗）
+            - `1`：余额不足（失败）
 
-            - `2`: 預金取引無し（失敗）
+            - `2`：无存款账户交易（失败）
 
-            - `3`: 購入者事由（失敗）
+            - `3`：购买者原因（失败）
 
-            - `4`: 依頼書未着・不備（失敗）
+            - `4`：扣款申请书未送达或内容有误（失败）
 
-            - `7`: データエラー（失敗）<br /><span class="smallText">口座振替（1・5・20・26日）のみ。</span>
+            - `7`：数据错误（失败）<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span>
 
-            - `8`: ショップ事由（失敗）
+            - `8`：商户原因（失败）
 
-            - `9`: その他（失敗）
+            - `9`：其他原因（失败）
 
-            - `E`: データエラー（失敗）<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span>
+            - `E`：数据错误（失败）<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span>
 
-            - `N`: 振替結果未着（失敗）<br /><span class="smallText">口座振替（5・6・23・27日）のみ。</span>
-
-            '
+            - `N`：未收到扣款结果（失败）<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span>'
         pay_pattern:
           type: string
           enum:
           - onetime
           - subscription
-          description: '課金種別\
+          description: '收费类型。
 
-            指定した課金種別の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+            获取符合指定收费类型的支付信息。使用逗号分隔可指定多个值（OR 查询）。
 
 
-            - `onetime`: サブスクリプションでない都度払い
+            - `onetime`：非订阅的一次性支付
 
-            - `subscription`: サブスクリプション
-
-            '
+            - `subscription`：订阅支付'
         subscription_id:
           type: string
-          description: 'サブスクリプションID\
+          description: '订阅 ID。
 
-            サブスクリプションIDを指定して、指定したサブスクリプションによって作成された決済情報を取得します。
-
-            '
+            指定订阅 ID 后，获取由该订阅创建的支付信息。'
         updated_from:
           type: string
-          description: '更新日（始値）\
+          description: '更新日期（起始值）。
 
-            \
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\
+            按更新时间（`updated`）进行范围查询，获取不早于此日期更新的支付信息。
 
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`'
         updated_to:
           type: string
-          description: '更新日（終値）\
+          description: '更新日期（结束值）。
 
-            \
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\
+            按更新时间（`updated`）进行范围查询，获取不晚于此日期更新的支付信息。
 
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段与顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `status`: ステータス
+            可排序字段：
 
-            - `process_date`: 処理日時
 
-            - `total_amount`: 合計金額
+            - `status`：状态
 
-            - `target_date`: 振替指定日
+            - `process_date`：处理时间
 
-            - `withdrawal_date`: 引き落とし日
+            - `total_amount`：合计金额
 
-            - `created`: 作成日時
+            - `target_date`：扣款指定日期
 
-            - `updated`: 更新日時
+            - `withdrawal_date`：实际扣款日期
 
-            '
+            - `created`：创建时间
+
+            - `updated`：更新时间'
     Payment.ListRetrieving.VirtualAccount.QueryParams:
       type: object
       properties:
@@ -17394,31 +17340,27 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
+          description: '支付类型。
 
-            この決済で利用する決済手段です。
+            本次支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">振替はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理<br /><span class="smallText">尚未执行自动扣款。</span>
 
-            - `AWAITING_PAYMENT_APPROVAL`: 決済処理待ち<br /><span class="smallText">fincodeおよび金融機関による振替処理を待っています。</span>
+            - `AWAITING_PAYMENT_APPROVAL`：等待支付处理<br /><span class="smallText">正在等待 fincode 和金融机构处理扣款。</span>
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">振替が完了し、売上が確定しています。</span>
+            - `CAPTURED`：销售额已确认<br /><span class="smallText">扣款已完成，销售额已经确认。</span>
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この振替はキャンセルされました。</span>
+            - `CANCELED`：已取消<br /><span class="smallText">本次扣款已取消。</span>
 
-            - `FAILED`: 請求失敗<br /><span class="smallText">何らかの理由により振替に失敗しました。</span>
-
-            '
+            - `FAILED`：扣款失败<br /><span class="smallText">因某种原因未能完成扣款。</span>'
         result_code:
           nullable: true
           allOf:
@@ -17427,134 +17369,109 @@ components:
           type: string
           nullable: true
           example: 2022/05/06
-          description: '振替指定日\
+          description: '扣款指定日期。
 
-            振替を行う日を指定します。\
+            指定计划执行扣款的日期。
 
-            実際の振替は営業日に行われるため、必ずしも指定した日付に引き落としが行われるとは限りません。\
+            实际扣款会在金融机构营业日执行，因此不一定会在指定日期完成。
 
-            指定可能な日付及び引き落とし日は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替指定日」及び「振替日」の列で確認できます。
-
-            '
+            可指定日期与实际扣款日期请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款指定日期”和“扣款日期”栏。'
         withdrawal_date:
           type: string
           nullable: true
           example: 2022/05/06
-          description: '引き落とし日\
+          description: '实际扣款日期。
 
-            実際に購入者の口座から引き落としが行われた実績日です。\
+            实际从购买者账户完成扣款的日期。
 
-            \
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         request_accept_end_date:
           type: string
           nullable: true
           example: 2022/04/25
-          description: '請求依頼受付期間 終了日\
+          description: '扣款请求受理截止日期。
 
-            振替依頼を受け付ける最終日。この日付の23:59までに振替依頼（決済実行）を受け付けます。\
+            接受扣款请求的最后日期；可在该日 23:59 前提交扣款请求（执行支付）。
 
-            \
 
-            形式： `yyyy/MM/dd`\
+            格式：`yyyy/MM/dd`
 
-            詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「請求依頼受付期間終了日」の列で確認できます。
-
-            '
+            详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款请求受理截止日期”栏。'
         transfer_return_date:
           type: string
           nullable: true
           example: 2022/05/11
-          description: '請求結果反映 予定日\
+          description: '预计扣款结果反映日期。
 
-            \
 
-            形式： `yyyy/MM/dd`\
+            格式：`yyyy/MM/dd`
 
-            詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替結果返却日」の列で確認できます。
-
-            '
+            详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款结果返回日期”栏。'
         payment_method_id:
           type: string
           nullable: true
           minLength: 25
           maxLength: 25
-          description: '決済手段ID\
+          description: '支付方式 ID。
 
-            この決済に使用された決済手段のIDです。
-
-            '
+            本次支付使用的支付方式 ID。'
         bank_code:
           type: string
           nullable: true
           minLength: 4
           maxLength: 4
           example: '0310'
-          description: '金融機関コード\
+          description: '金融机构代码。
 
-            fincodeの口座振替に対応している金融機関のコードのリストは[Docs > 利用可能な金融機関（口座振替）](https://docs.fincode.jp/payment/directdebit/restriction)で参照できます。
-
-            '
+            fincode 银行账户自动扣款支持的金融机构代码列表，请参阅 [Docs > 可用金融机构（银行账户自动扣款）](https://docs.fincode.jp/payment/directdebit/restriction)。'
         bank_name:
           type: string
           nullable: true
           minLength: 1
           maxLength: 45
           example: ''
-          description: '金融機関名
-
-            '
+          description: 金融机构名称。
         branch_code:
           type: string
           nullable: true
           minLength: 3
           maxLength: 3
           example: '101'
-          description: '支店コード
-
-            '
+          description: 分行代码。
         branch_name:
           type: string
           nullable: true
           minLength: 1
           maxLength: 45
-          description: '支店名
-
-            '
+          description: 分行名称。
         remarks:
           type: string
           nullable: true
           minLength: 1
           maxLength: 9
           example: フィンコードショッ
-          description: 'ご利用明細表示内容
+          description: '账单明细显示内容。
 
 
-            - フォーマット：半角英数カナ／全角英数カナ／一部の記号／半角全角スペース
+            - 格式：半角英数字及片假名／全角英数字及片假名／部分符号／半角或全角空格
 
-            - デフォルト： `ショップ名カナの先頭9文字`
+            - 默认值：`商户名称片假名的前 9 个字符`
 
 
-            ※ 利用可能な記号
+            可用符号：
 
 
             - 半角：`.`、`(`、`)`、`–`
 
-            - 全角：`．`、`（`、`）`、`ー`
-
-            '
+            - 全角：`．`、`（`、`）`、`ー`'
         subscription_id:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/Subscription_properties-id'
-          description: 'サブスクリプションID\
+          description: '订阅 ID。
 
-            この決済情報がブスクリプションにより生成されたものである場合、このフィールドにサブスクリプションIDが設定されます。
-
-            '
+            此支付信息由订阅生成时，本字段中会设置对应的订阅 ID。'
         settlement_route:
           nullable: false
           allOf:
@@ -18479,37 +18396,31 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
+          description: '支付类型。
 
-            この決済で利用する決済手段です。
+            本次支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         amount:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 10
-          description: '利用金額\
+          description: '使用金额。
 
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
+            与 `tax` 的合计值必须处于该支付方式规定的支付金额范围内。
 
-            参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction)
-
-            '
+            参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)'
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 10
-          description: '税送料\
+          description: '税费及运费。
 
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
+            与 `amount` 的合计值必须处于该支付方式规定的支付金额范围内。
 
-            参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction)
-
-            '
+            参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)'
         remarks:
           nullable: true
           allOf:
@@ -18518,25 +18429,19 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_n'
-          description: '加盟店自由項目 1\
+          description: '商户自定义字段 1。
 
-            任意の値を挿入し、決済情報に保存できます。
-
-            '
+            可写入任意值并保存到支付信息中。'
         client_field_2:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_n'
-          description: '加盟店自由項目 2
-
-            '
+          description: 商户自定义字段 2。
         client_field_3:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_n'
-          description: '加盟店自由項目 3
-
-            '
+          description: 商户自定义字段 3。
       required:
       - pay_type
       - amount
@@ -19502,33 +19407,27 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
+          description: '支付类型。
 
-            この決済で利用する決済手段です。
+            本次支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/id'
-          description: '顧客ID\
+          description: '客户 ID。
 
-            購入者となる顧客のIDです。
-
-            '
+            作为购买者的客户 ID。'
         payment_method_id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID\
+          description: '支付方式 ID。
 
-            この決済に使用する決済手段（口座振替用口座）のIDです。指定しない場合、デフォルト決済手段が使用されます。
-
-            '
+            本次支付使用的支付方式（自动扣款账户）ID。未指定时使用默认支付方式。'
         target_date:
           allOf:
           - $ref: '#/components/schemas/target_date'
@@ -19937,14 +19836,12 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
+          description: '支付类型。
 
-            この決済で利用する決済手段です。
+            本次支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
@@ -20278,14 +20175,12 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
+          description: '支付类型。
 
-            この決済で利用する決済手段です。
+            本次支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
@@ -20293,25 +20188,21 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 10
-          description: '利用金額\
+          description: '使用金额。
 
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
+            与 `tax` 的合计值必须处于该支付方式规定的支付金额范围内。
 
-            参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction)
-
-            '
+            参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)'
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 10
-          description: '税送料\
+          description: '税费及运费。
 
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
+            与 `amount` 的合计值必须处于该支付方式规定的支付金额范围内。
 
-            参照： [口座振替 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/directdebit/restriction)
-
-            '
+            参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)'
       required:
       - pay_type
       - access_id
@@ -20338,22 +20229,24 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: "決済種別  \nこの決済で利用する決済手段です。\n\n- `Googlepay`: Google Pay\n"
+          description: '支付类型。
+
+            本次支付使用的支付方式。
+
+
+            - `Googlepay`：Google Pay'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
         pa_res:
           type: string
           deprecated: true
-          description: '※ 閉塞機能\
+          description: '已停用功能。
 
-            3Dセキュアサービス結果電文\
+            3D Secure 服务结果报文。
 
-            \
 
-            3Dセキュア1.0利用時のみ必須。
-
-            '
+            仅使用 3D Secure 1.0 时必填。'
       required:
       - pay_type
       - access_id
@@ -20419,22 +20312,20 @@ components:
       - R
       minLength: 1
       maxLength: 1
-      description: '3Dセキュア2.0認証処理 結果
+      description: '3D Secure 2.0 认证处理结果。
 
 
-        - `Y`: 認証に成功
+        - `Y`：认证成功
 
-        - `A`: 認証の試行が認められた<br><span class="smallText">認証 / 確認は行われなかったが、認証 / 確認を試行したことの証拠は提供されている</span>
+        - `A`：认证尝试获准<br><span class="smallText">虽未实际执行认证或确认，但已提供尝试认证或确认的证明。</span>
 
-        - `C`: 追加のチャレンジ認証が必要<br><span class="smallText">購入者による`challenge_url`上での追加認証が必要</span>
+        - `C`：需要追加挑战认证<br><span class="smallText">购买者需要在 `challenge_url` 页面完成追加认证。</span>
 
-        - `N`: 取引拒否もしくは未認証・口座未確認
+        - `N`：交易被拒绝，或未认证／未确认账户
 
-        - `R`: 認証・口座確認拒否<br><span class="smallText">カード発行会社が認証を拒否し、承認を試行しないよう要求している</span>
+        - `R`：认证或账户确认被拒绝<br><span class="smallText">发卡机构拒绝认证，并要求不要尝试授权。</span>
 
-        - `U`: 認証・口座確認の実行失敗または技術的な問題
-
-        '
+        - `U`：认证或账户确认执行失败，或发生技术问题'
     ThreeDSecure2TransactionResultReason:
       type: string
       enum:
@@ -20467,66 +20358,63 @@ components:
       example: '01'
       minLength: 1
       maxLength: 2
-      description: '3Dセキュア認証結果の理由コード\
-
-        \
-
-        3Dセキュア認証2.0の結果（`tds2_trans_result`）の理由を示すコードです。
+      description: '3D Secure 认证结果原因码。
 
 
-        - `01`: カード認証に失敗
+        表示 3D Secure 2.0 认证结果（`tds2_trans_result`）原因的代码。
 
-        - `02`: 不明なデバイス
 
-        - `03`: サポートされていないデバイス
+        - `01`：卡片认证失败
 
-        - `04`: 認証頻度の上限を超えた
+        - `02`：未知设备
 
-        - `05`: 有効期限切れのカード
+        - `03`：不支持的设备
 
-        - `06`: 無効なカード番号
+        - `04`：超过认证频率上限
 
-        - `07`: 無効な取引
+        - `05`：卡片已过期
 
-        - `08`: カードのレコードが存在しない
+        - `06`：卡号无效
 
-        - `09`: セキュリティ障害
+        - `07`：交易无效
 
-        - `10`: 盗難カード
+        - `08`：不存在卡片记录
 
-        - `11`: 不正の疑い
+        - `09`：安全故障
 
-        - `12`: カード会員に取引が許可されていない
+        - `10`：被盗卡片
 
-        - `13`: カード会員がサービスに登録されていない
+        - `11`：疑似欺诈
 
-        - `14`: 取引が3Dセキュア処理サービスでタイムアウトした
+        - `12`：持卡人无权执行该交易
 
-        - `15`: 信頼度が低い
+        - `13`：持卡人未注册该服务
 
-        - `16`: 信頼度が中程度
+        - `14`：交易在 3D Secure 处理服务中超时
 
-        - `17`: 信頼度が高い
+        - `15`：可信度低
 
-        - `18`: 信頼度が非常に高い
+        - `16`：可信度中等
 
-        - `19`: 3Dセキュア処理サービスの最大チャレンジを超える
+        - `17`：可信度高
 
-        - `20`: 非決済取引はサポートされていません
+        - `18`：可信度非常高
 
-        - `21`: 3RIトランザクションはサポートされていません
+        - `19`：超过 3D Secure 处理服务允许的最大挑战次数
 
-        - `22`: 3Dセキュア処理サービスの技術的な問題
+        - `20`：不支持非支付交易
 
-        - `23`: 3Dセキュア処理サービスによってDecoupled認証が必要と判断されたが、ThreeDSecureリクエスターからは要求されていない
+        - `21`：不支持 3RI 交易
 
-        - `24`: ThreeDSecure Requestor Decoupled Max Timeを超過
+        - `22`：3D Secure 处理服务发生技术问题
 
-        - `25`: Decoupled認証のためのカード会員を認証するのに十分な時間が与えられなかった
+        - `23`：3D Secure 处理服务判定需要解耦认证，但 3D Secure 请求方未提出该要求
 
-        - `26`: 認証は試行されたが、カード会員によって実行されなかった
+        - `24`：超过 3D Secure Requestor Decoupled Max Time
 
-        '
+        - `25`：未提供足够时间完成解耦认证中的持卡人认证
+
+        - `26`：已尝试认证，但持卡人未执行认证'
     ThreeDSecureTransResult:
       type: object
       properties:
@@ -20546,7 +20434,14 @@ components:
             - Card
             - Googlepay
             default: Card
-            description: "決済種別  \nこの決済で利用する決済手段です。未指定の場合、`Card`となります。\n\n- `Card`: カード（デフォルト）\n- `Googlepay`: Google Pay\n"
+            description: '支付类型。
+
+              本次支付使用的支付方式。未指定时为 `Card`。
+
+
+              - `Card`：卡片（默认）
+
+              - `Googlepay`：Google Pay'
       - $ref: '#/components/schemas/ThreeDSecureTransResult'
     param:
       type: string
@@ -20569,7 +20464,14 @@ components:
           - Card
           - Googlepay
           default: Card
-          description: "決済種別  \nこの決済で利用する決済手段です。未指定の場合、`Card`となります。\n\n- `Card`: カード（デフォルト）\n- `Googlepay`: Google Pay\n"
+          description: '支付类型。
+
+            本次支付使用的支付方式。未指定时为 `Card`。
+
+
+            - `Card`：卡片（默认）
+
+            - `Googlepay`：Google Pay'
         param:
           allOf:
           - $ref: '#/components/schemas/param'
@@ -20585,19 +20487,23 @@ components:
             - Card
             - Googlepay
             default: Card
-            description: "決済種別  \nこの決済で利用する決済手段です。未指定の場合、`Card`となります。\n\n- `Card`: カード（デフォルト）\n- `Googlepay`: Google Pay\n"
+            description: '支付类型。
+
+              本次支付使用的支付方式。未指定时为 `Card`。
+
+
+              - `Card`：卡片（默认）
+
+              - `Googlepay`：Google Pay'
           challenge_url:
             type: string
             nullable: true
             minLength: 1
             maxLength: 256
-            description: '3Dセキュア2.0認証チャレンジURL\
+            description: '3D Secure 2.0 认证挑战 URL。
 
-              \
 
-              購入者による`acs_url`へのアクセス後、カード発行会社によって追加のチャレンジ認証が必要と判定された場合、このパラメータにURLが設定されて返却されます。
-
-              '
+              购买者访问 `acs_url` 后，如发卡机构判定需要追加挑战认证，则在此参数中返回对应 URL。'
       - $ref: '#/components/schemas/ThreeDSecureTransResult'
     PaymentSessionPayType:
       type: string

@@ -70,10 +70,6 @@ def translate_tags(
         group["tags"] = [names.get(tag, tag) for tag in group.get("tags", [])]
 
 
-def has_japanese_kana(text: str) -> bool:
-    return any("\u3040" <= char <= "\u30ff" for char in text)
-
-
 def count_units(source: Any, translated_value: Any, key: str | None = None) -> tuple[int, int]:
     total = translated = 0
     if isinstance(source, dict):
@@ -88,7 +84,7 @@ def count_units(source: Any, translated_value: Any, key: str | None = None) -> t
             translated += child_translated
     elif isinstance(source, str) and key in TRANSLATABLE_KEYS:
         total = 1
-        translated = int(source != translated_value and not has_japanese_kana(translated_value))
+        translated = int(source != translated_value)
     return total, translated
 
 
