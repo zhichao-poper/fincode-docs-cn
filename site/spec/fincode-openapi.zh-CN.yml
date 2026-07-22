@@ -6713,10 +6713,8 @@ paths:
       operationId: retrieveAccountList
       tags:
       - 销售款入账
-      summary: 売上入金 一覧取得
-      description: '売上入金情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 销售款入账列表查询
+      description: 获取销售款入账信息列表。可通过查询参数缩小获取范围。
       parameters:
       - name: Tenant-Shop-Id
         in: header
@@ -6724,18 +6722,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの売上入金情報から一覧で取得します。
-
-          '
+          获取该租户商户的销售款入账信息列表。'
       - name: クエリ
         in: query
-        description: '売上入金情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询销售款入账信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -6806,20 +6800,17 @@ paths:
       - Secret-Basic-Auth: []
       tags:
       - 销售款入账
-      summary: 売上入金 取得
-      description: 'IDで指定した売上入金を取得します。\
+      summary: 获取销售款入账
+      description: '获取由 ID 指定的销售款入账信息。
 
-        `aggregate_term_start`から`aggregate_term_end`までの期間における売上の集計結果が含まれます。\
+        其中包含从 `aggregate_term_start` 至 `aggregate_term_end` 期间的销售额汇总结果。
 
-        \
 
-        集計された個々のレコードについては 売上入金明細 一覧取得API を利用することで取得できます。
-
-        '
+        如需获取汇总中的每一条记录，请使用“销售款入账明细列表查询”API。'
       parameters:
       - name: id
         in: path
-        description: 売上入金ID
+        description: 销售款入账 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/AccountId_schema'
@@ -6829,13 +6820,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの売上入金情報のうち、指定したIDの売上入金情報を取得します。
-
-          '
+          获取该租户商户的销售款入账信息中由 ID 指定的记录。'
         required: false
       responses:
         '200':
@@ -6899,16 +6888,14 @@ paths:
       - Secret-Basic-Auth: []
       tags:
       - 销售款入账
-      summary: 売上入金詳細 一覧取得
-      description: 'IDで指定した売上入金に紐づく売上入金詳細を一覧で取得します。\
+      summary: 销售款入账明细列表查询
+      description: '获取与 ID 指定的销售款入账关联的明细列表。
 
-        1つの売上入金明細は、1件の決済／キャンセル／チャージバック／チャージバック取消調整のいずれかに対応します。
-
-        '
+        每条销售款入账明细对应一笔支付、取消、拒付或拒付撤销调整。'
       parameters:
       - name: id
         in: path
-        description: 売上入金ID
+        description: 销售款入账 ID
         schema:
           $ref: '#/components/schemas/AccountId_schema'
         required: true
@@ -6917,19 +6904,15 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。
-
-          '
+          获取该租户商户由 ID 指定的销售款入账记录的明细。'
         required: false
       - in: query
         name: クエリ
-        description: '売上入金詳細の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询销售款入账明细列表时使用的查询条件参数。
         schema:
           allOf:
           - $ref: '#/components/schemas/Pagination.QueryParams'
@@ -6999,16 +6982,12 @@ paths:
       operationId: retrievePlatformAccountList
       tags:
       - 平台使用费收入
-      summary: プラットフォーム利用料収入 一覧取得
-      description: 'プラットフォーム利用料による売上入金情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 平台使用费收入列表查询
+      description: 获取平台使用费产生的销售款入账信息列表。可通过查询参数缩小获取范围。
       parameters:
       - name: クエリ
         in: query
-        description: 'プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询平台使用费产生的销售款入账信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -7079,20 +7058,17 @@ paths:
       operationId: retrievePlatformAccount
       tags:
       - 平台使用费收入
-      summary: プラットフォーム利用料収入 取得
-      description: 'IDで指定したプラットフォーム利用料による売上入金情報を取得します。\
+      summary: 获取平台使用费收入
+      description: '获取由 ID 指定的平台使用费销售款入账信息。
 
-        `aggregate_term_start`から`aggregate_term_end`までの期間におけるプラットフォーム利用料による売上の集計結果が含まれます。\
+        其中包含从 `aggregate_term_start` 至 `aggregate_term_end` 期间由平台使用费产生的销售额汇总结果。
 
-        \
 
-        テナントショップごとの利用料収入については プラットフォーム利用料収入サマリー 一覧取得API を利用することで取得できます。
-
-        '
+        如需查看各租户商户的使用费收入，请使用“平台使用费收入汇总列表查询”API。'
       parameters:
       - name: id
         in: path
-        description: プラットフォーム利用料収入ID
+        description: 平台使用费收入 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/PlatformAccountId_schema'
@@ -7163,25 +7139,21 @@ paths:
       operationId: retrievePlatformAccountSummaryList
       tags:
       - 平台使用费收入
-      summary: プラットフォーム利用料収入サマリー 一覧取得
-      description: 'IDで指定したプラットフォーム利用料収入のサマリーを一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。\
+      summary: 平台使用费收入汇总列表查询
+      description: '获取由 ID 指定的平台使用费收入汇总列表。可通过查询参数缩小获取范围。
 
-        サマリー情報の中にはテナントショップごとの利用料収入についての情報が含まれます。
-
-        '
+        汇总信息中包含各租户商户的使用费收入。'
       parameters:
       - name: id
         in: path
-        description: プラットフォーム利用料収入ID
+        description: 平台使用费收入 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/PlatformAccountId_schema'
         required: true
       - name: クエリ
         in: query
-        description: 'プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询平台使用费产生的销售款入账信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -7254,10 +7226,8 @@ paths:
       operationId: retrieveChargebackList
       tags:
       - 拒付
-      summary: チャージバック 一覧取得
-      description: 'チャージバック情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+      summary: 拒付列表查询
+      description: 获取拒付信息列表。可通过查询参数缩小获取范围。
       parameters:
       - name: Tenant-Shop-Id
         in: header
@@ -7265,18 +7235,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップの売上入金情報から一覧で取得します。
-
-          '
+          获取该租户商户的拒付信息列表。'
       - name: クエリ
         in: query
-        description: 'チャージバック情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询拒付信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -7347,10 +7313,8 @@ paths:
       operationId: retrieveChargeback
       tags:
       - 拒付
-      summary: チャージバック 取得
-      description: 'チャージバック情報を取得します。
-
-        '
+      summary: 获取拒付
+      description: 获取拒付信息。
       parameters:
       - name: id
         in: path
@@ -7366,11 +7330,9 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          代理実行対象のテナントショップID。
-
-          '
+          代为执行操作的目标租户商户 ID。'
       responses:
         '200':
           description: 请求成功
@@ -7392,10 +7354,8 @@ paths:
       operationId: replyChargeback
       tags:
       - 拒付
-      summary: チャージバック 回答登録
-      description: 'チャージバックに対する回答を登録します。
-
-        '
+      summary: 登记拒付答复
+      description: 登记对拒付的答复。
       parameters:
       - name: id
         in: path
@@ -7411,11 +7371,9 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          代理実行対象のテナントショップID。
-
-          '
+          代为执行操作的目标租户商户 ID。'
       requestBody:
         content:
           application/json:
@@ -7442,10 +7400,8 @@ paths:
       operationId: uploadChargebackFile
       tags:
       - 拒付
-      summary: チャージバック 反証資料アップロード
-      description: 'チャージバックの反証資料ファイルをアップロードします。
-
-        '
+      summary: 上传拒付抗辩材料
+      description: 上传用于拒付抗辩的材料文件。
       parameters:
       - name: Tenant-Shop-Id
         in: header
@@ -7453,11 +7409,9 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          代理実行対象のテナントショップID。
-
-          '
+          代为执行操作的目标租户商户 ID。'
       requestBody:
         content:
           multipart/form-data:
