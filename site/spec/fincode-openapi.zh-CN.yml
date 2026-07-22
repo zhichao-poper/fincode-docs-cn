@@ -7435,18 +7435,14 @@ paths:
       tags:
       - 平台商户
       operationId: retrievePlatformShopList
-      summary: プラットフォームショップ 一覧取得
-      description: 'プラットフォームショップ（メインショップ・サブショップ）を一覧で取得します。\
+      summary: 平台商户列表查询
+      description: '获取平台商户（主商户与子商户）列表。
 
-        クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+        可通过查询参数缩小获取范围。'
       parameters:
       - name: クエリ
         in: query
-        description: 'プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询平台信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -7517,14 +7513,12 @@ paths:
       operationId: retrievePlatformShop
       tags:
       - 平台商户
-      summary: プラットフォームショップ 取得
-      description: '`id`で指定したプラットフォームショップ（メインショップ・サブショップ）を取得します。
-
-        '
+      summary: 获取平台商户
+      description: 获取由 `id` 指定的平台商户（主商户或子商户）。
       parameters:
       - name: id
         in: path
-        description: ショップID
+        description: 商户 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -7591,14 +7585,12 @@ paths:
       operationId: updatePlatformShop
       tags:
       - 平台商户
-      summary: プラットフォームショップ 更新
-      description: '`examination_master_id`で指定した決済手段に関してプラットフォーム利用料を更新します。
-
-        '
+      summary: 更新平台商户
+      description: 更新 `examination_master_id` 指定支付方式的平台使用费。
       parameters:
       - name: id
         in: path
-        description: ショップID
+        description: 商户 ID
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
@@ -7681,18 +7673,14 @@ paths:
       tags:
       - 租户商户
       operationId: retrieveTenantShopList
-      summary: テナントショップ 一覧取得
-      description: 'テナントショップを一覧で取得します。\
+      summary: 租户商户列表查询
+      description: '获取租户商户列表。
 
-        クエリパラメータを指定して取得する条件を絞り込めます。
-
-        '
+        可通过查询参数缩小获取范围。'
       parameters:
       - name: クエリ
         in: query
-        description: 'テナント情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询租户信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -7760,10 +7748,8 @@ paths:
       tags:
       - 租户商户
       operationId: retrieveTenantShop
-      summary: テナントショップ 取得
-      description: '`id`で指定したテナント情報を取得します。
-
-        '
+      summary: 获取租户商户
+      description: 获取由 `id` 指定的租户信息。
       parameters:
       - name: id
         in: path
@@ -7835,10 +7821,8 @@ paths:
       operationId: updateTenantShop
       tags:
       - 租户商户
-      summary: テナントショップ 更新
-      description: '`examination_master_id`で指定した決済手段におけるプラットフォーム利用料などの設定の変更を`id`で指定したテナントに対して実行します。
-
-        '
+      summary: 更新租户商户
+      description: 对 `id` 指定的租户，更改 `examination_master_id` 指定支付方式的平台使用费等设置。
       parameters:
       - name: id
         in: path
@@ -9349,10 +9333,8 @@ paths:
       operationId: createCompanyStamp
       tags:
       - 公司印章
-      summary: 社印 登録
-      description: '社印を登録します。
-
-        '
+      summary: 登记公司印章
+      description: 登记公司印章。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -9360,13 +9342,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップに社印を登録します。
-
-          '
+          为指定的租户商户登记公司印章。'
       requestBody:
         content:
           multipart/form-data:
@@ -9445,10 +9425,8 @@ paths:
       operationId: retrieveCompanyStamp
       tags:
       - 公司印章
-      summary: 社印 取得
-      description: '登録されている社印の情報を取得します。
-
-        '
+      summary: 获取公司印章
+      description: 获取已登记的公司印章信息。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -9456,13 +9434,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの社印情報を取得します。
-
-          '
+          获取指定租户商户的公司印章信息。'
       responses:
         '200':
           description: 请求成功
@@ -9526,10 +9502,8 @@ paths:
       operationId: deleteCompanyStamp
       tags:
       - 公司印章
-      summary: 社印 削除
-      description: '登録されている社印を削除します。
-
-        '
+      summary: 删除公司印章
+      description: 删除已登记的公司印章。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -9537,13 +9511,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップの社印を削除します。
-
-          '
+          删除指定租户商户的公司印章。'
       responses:
         '200':
           description: 请求成功
@@ -35744,7 +35716,7 @@ components:
           type: string
           minLength: 13
           maxLength: 13
-          description: ショップID
+          description: 商户 ID
         filename:
           type: string
           maxLength: 100

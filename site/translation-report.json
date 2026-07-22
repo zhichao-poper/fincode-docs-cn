@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2317,
+  "remainingJapaneseUnits": 2291,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -519,72 +519,8 @@
       "preview": "チャージバックID "
     },
     {
-      "pointer": "/paths/~1v1~1platforms/get/summary",
-      "preview": "プラットフォームショップ 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms/get/description",
-      "preview": "プラットフォームショップ（メインショップ・サブショップ）を一覧で取得します。\\ クエリパラメータを指定して取得する条件を絞り込めます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms/get/parameters/0/description",
-      "preview": "プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/get/summary",
-      "preview": "プラットフォームショップ 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/get/description",
-      "preview": "`id`で指定したプラットフォームショップ（メインショップ・サブショップ）を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/get/parameters/0/description",
-      "preview": "ショップID"
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/put/summary",
-      "preview": "プラットフォームショップ 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/put/description",
-      "preview": "`examination_master_id`で指定した決済手段に関してプラットフォーム利用料を更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1platforms~1{id}/put/parameters/0/description",
-      "preview": "ショップID"
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants/get/summary",
-      "preview": "テナントショップ 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants/get/description",
-      "preview": "テナントショップを一覧で取得します。\\ クエリパラメータを指定して取得する条件を絞り込めます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants/get/parameters/0/description",
-      "preview": "テナント情報の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants~1{id}/get/summary",
-      "preview": "テナントショップ 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants~1{id}/get/description",
-      "preview": "`id`で指定したテナント情報を取得します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1tenants~1{id}/get/parameters/0/description",
       "preview": "ショップID "
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants~1{id}/put/summary",
-      "preview": "テナントショップ 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1tenants~1{id}/put/description",
-      "preview": "`examination_master_id`で指定した決済手段におけるプラットフォーム利用料などの設定の変更を`id`で指定したテナントに対して実行します。 "
     },
     {
       "pointer": "/paths/~1v1~1tenants~1{id}/put/parameters/0/description",
@@ -757,42 +693,6 @@
     {
       "pointer": "/paths/~1v1~1contracts~1examinations~1tenants~1{id}/put/parameters/1/description",
       "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/post/summary",
-      "preview": "社印 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/post/description",
-      "preview": "社印を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/post/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップに社印を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/get/summary",
-      "preview": "社印 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/get/description",
-      "preview": "登録されている社印の情報を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップの社印情報を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/delete/summary",
-      "preview": "社印 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/delete/description",
-      "preview": "登録されている社印を削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1company_stamps/delete/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップの社印を削除します。 "
     },
     {
       "pointer": "/paths/~1v1~1webhook_settings/post/summary",
@@ -8569,10 +8469,6 @@
     {
       "pointer": "/components/schemas/ExaminationInfo.Updating.Request/properties/contract_bank_account/description",
       "preview": "銀行口座情報\\ \\ fincode上での売上入金を受け取るための銀行口座情報 "
-    },
-    {
-      "pointer": "/components/schemas/CompanyStamp/properties/shop_id/description",
-      "preview": "ショップID"
     },
     {
       "pointer": "/components/schemas/CompanyStamp/properties/filename/description",

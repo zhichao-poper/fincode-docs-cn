@@ -64,6 +64,7 @@ exact_strings:
   売上入金ID: 销售款入账 ID
   プラットフォーム利用料収入ID: 平台使用费收入 ID
   チャージバックID: 拒付 ID
+  ショップID: 商户 ID
 
 strings:
   /info/title: fincode API 中文参考
@@ -1214,3 +1215,39 @@ strings:
   /paths/~1v1~1charge_backs~1file_upload/post/parameters/0/description: |-
     <span class="smallText color--red-400">仅平台主商户可指定</span>
     代为执行操作的目标租户商户 ID。
+  /paths/~1v1~1platforms/get/summary: 平台商户列表查询
+  /paths/~1v1~1platforms/get/description: |-
+    获取平台商户（主商户与子商户）列表。
+    可通过查询参数缩小获取范围。
+  /paths/~1v1~1platforms/get/parameters/0/description: 查询平台信息列表时使用的查询条件参数。
+  /paths/~1v1~1platforms~1{id}/get/summary: 获取平台商户
+  /paths/~1v1~1platforms~1{id}/get/description: 获取由 `id` 指定的平台商户（主商户或子商户）。
+  /paths/~1v1~1platforms~1{id}/put/summary: 更新平台商户
+  /paths/~1v1~1platforms~1{id}/put/description: 更新 `examination_master_id` 指定支付方式的平台使用费。
+  /paths/~1v1~1tenants/get/summary: 租户商户列表查询
+  /paths/~1v1~1tenants/get/description: |-
+    获取租户商户列表。
+    可通过查询参数缩小获取范围。
+  /paths/~1v1~1tenants/get/parameters/0/description: 查询租户信息列表时使用的查询条件参数。
+  /paths/~1v1~1tenants~1{id}/get/summary: 获取租户商户
+  /paths/~1v1~1tenants~1{id}/get/description: 获取由 `id` 指定的租户信息。
+  /paths/~1v1~1tenants~1{id}/put/summary: 更新租户商户
+  /paths/~1v1~1tenants~1{id}/put/description: 对 `id` 指定的租户，更改 `examination_master_id` 指定支付方式的平台使用费等设置。
+  /paths/~1v1~1company_stamps/post/summary: 登记公司印章
+  /paths/~1v1~1company_stamps/post/description: 登记公司印章。
+  /paths/~1v1~1company_stamps/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    为指定的租户商户登记公司印章。
+  /paths/~1v1~1company_stamps/get/summary: 获取公司印章
+  /paths/~1v1~1company_stamps/get/description: 获取已登记的公司印章信息。
+  /paths/~1v1~1company_stamps/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取指定租户商户的公司印章信息。
+  /paths/~1v1~1company_stamps/delete/summary: 删除公司印章
+  /paths/~1v1~1company_stamps/delete/description: 删除已登记的公司印章。
+  /paths/~1v1~1company_stamps/delete/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    删除指定租户商户的公司印章。
