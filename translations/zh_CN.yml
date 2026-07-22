@@ -1333,3 +1333,84 @@ strings:
     <span class="smallText color--red-400">仅平台主商户可指定</span>
     租户商户 ID。
     更新指定租户商户的生产环境申请信息。
+  /paths/~1v1~1webhook_settings/post/summary: 登记 Webhook 设置
+  /paths/~1v1~1webhook_settings/post/description: 登记 Webhook 设置。
+  /paths/~1v1~1webhook_settings/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    登记用于订阅指定租户商户所发生事件的 Webhook 设置。
+  /paths/~1v1~1webhook_settings/get/summary: Webhook 设置列表查询
+  /paths/~1v1~1webhook_settings/get/description: 获取 Webhook 设置列表。
+  /paths/~1v1~1webhook_settings/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取与该租户商户关联的 Webhook 设置列表。
+  /paths/~1v1~1webhook_settings~1{id}/get/summary: 获取 Webhook 设置
+  /paths/~1v1~1webhook_settings~1{id}/get/description: 获取由 ID 指定的 Webhook 设置。
+  /paths/~1v1~1webhook_settings~1{id}/get/parameters/0/description: Webhook 设置 ID。
+  /paths/~1v1~1webhook_settings~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在与该租户商户关联的 Webhook 设置中，获取由 ID 指定的设置。
+  /paths/~1v1~1webhook_settings~1{id}/put/summary: 更新 Webhook 设置
+  /paths/~1v1~1webhook_settings~1{id}/put/description: 更新由 ID 指定的 Webhook 设置。
+  /paths/~1v1~1webhook_settings~1{id}/put/parameters/0/description: Webhook 设置 ID。
+  /paths/~1v1~1webhook_settings~1{id}/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在与该租户商户关联的 Webhook 设置中，更新由 ID 指定的设置。
+  /paths/~1v1~1webhook_settings~1{id}/delete/summary: 删除 Webhook 设置
+  /paths/~1v1~1webhook_settings~1{id}/delete/description: 删除由 ID 指定的 Webhook 设置。
+  /paths/~1v1~1webhook_settings~1{id}/delete/parameters/0/description: Webhook 设置 ID。
+  /paths/~1v1~1webhook_settings~1{id}/delete/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在与该租户商户关联的 Webhook 设置中，删除由 ID 指定的设置。
+  /paths/~1your-endpoint-on-card-payment/post/summary: 卡片支付
+  /paths/~1your-endpoint-on-card-payment/post/description: 卡片支付相关事件（`payments.card.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-applepay-payment/post/summary: Apple Pay
+  /paths/~1your-endpoint-on-applepay-payment/post/description: Apple Pay 支付相关事件（`payments.applepay.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-googlepay-payment/post/summary: Google Pay
+  /paths/~1your-endpoint-on-googlepay-payment/post/description: Google Pay 相关事件（`payments.googlepay.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-konbini-payment/post/summary: 便利店支付
+  /paths/~1your-endpoint-on-konbini-payment/post/description: 便利店支付相关事件（`payments.konbini.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-paypay-payment/post/summary: PayPay
+  /paths/~1your-endpoint-on-paypay-payment/post/description: PayPay 支付相关事件（`payments.paypay.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-directdebit-payment/post/summary: 银行账户自动扣款
+  /paths/~1your-endpoint-on-directdebit-payment/post/description: 银行账户自动扣款相关事件（`payments.directdebit.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-virtualaccount-payment/post/summary: 银行转账（虚拟账户）
+  /paths/~1your-endpoint-on-virtualaccount-payment/post/description: 银行转账（虚拟账户）支付相关事件（`payments.virtualaccount.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-customer-payment_method/post/summary: 支付方式
+  /paths/~1your-endpoint-on-customer-payment_method/post/description: 客户支付方式相关事件（`customers.payment_methods.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-card/post/summary: 卡片
+  /paths/~1your-endpoint-on-card/post/description: |-
+    卡片相关事件（`card.*`）发送的 Webhook 请求体规范。
+    卡片信息自动更新事件（`card.updater.complete`）不使用本规范，请参阅该事件对应的[卡片：卡片信息自动更新](%7Byour-endpoint-on-card-updater-complete%7D.yml)。
+  /paths/~1your-endpoint-on-card-updater-complete/post/summary: 卡片：卡片信息自动更新
+  /paths/~1your-endpoint-on-card-updater-complete/post/description: 卡片信息自动更新事件（`card.updater.complete`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-card-subscription/post/summary: 订阅（卡片支付）
+  /paths/~1your-endpoint-on-card-subscription/post/description: 卡片支付订阅相关事件（`subscription.card.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-directdebit-subscription/post/summary: 订阅（银行账户自动扣款）
+  /paths/~1your-endpoint-on-directdebit-subscription/post/description: 银行账户自动扣款订阅相关事件（`subscription.directdebit.*`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-card-recurring-batch/post/summary: 订阅收费（卡片支付）
+  /paths/~1your-endpoint-on-card-recurring-batch/post/description: 卡片支付订阅收费事件（`recurring.card.batch`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-directdebit-recurring-batch/post/summary: 订阅收费（银行账户自动扣款）
+  /paths/~1your-endpoint-on-directdebit-recurring-batch/post/description: 银行账户自动扣款订阅收费事件（`recurring.directdebit.batch`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-card-payment-bulk-regist/post/summary: 批量支付登记
+  /paths/~1your-endpoint-on-card-payment-bulk-regist/post/description: 批量支付登记事件（`payments.bulk.*.regist`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-card-payment-bulk-batch/post/summary: 批量支付收费
+  /paths/~1your-endpoint-on-card-payment-bulk-batch/post/description: 批量支付收费事件（`payments.bulk.*.batch`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-contract/post/summary: 支付方式签约状态
+  /paths/~1your-endpoint-on-contract/post/description: 支付方式签约状态更新事件（`contracts.status_code.updated`）发送的 Webhook 请求体规范。
+  /paths/~1your-endpoint-on-invoice/post/summary: 账单
+  /paths/~1your-endpoint-on-invoice/post/description: |-
+    账单相关事件（`invoice.*`）发送的 Webhook 请求体规范。
+    通知请求体仅包含账单 ID。如需账单详细信息，请指定该账单 ID 调用“获取账单”API。
+  /paths/~1your-endpoint-on-chargeback/post/summary: 拒付
+  /paths/~1your-endpoint-on-chargeback/post/description: |-
+    拒付相关事件（`charge_backs.*`）发送的 Webhook 请求体规范。
+    通知请求体仅包含拒付 ID、商户 ID 和状态。如需拒付详细信息，请指定拒付 ID 调用“获取拒付”API。
+  /paths/~1your-endpoint-on-change-request/post/summary: 变更申请
+  /paths/~1your-endpoint-on-change-request/post/description: |-
+    变更申请相关事件（`change_requests.*`）发送的 Webhook 请求体规范。
+    通知请求体仅包含变更申请 ID 和商户 ID。如需变更申请详细信息，请指定变更申请 ID 与商户 ID 调用“获取变更申请”API。

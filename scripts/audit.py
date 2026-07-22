@@ -32,6 +32,14 @@ def operations(document: dict[str, Any]) -> dict[tuple[str, str], str | None]:
     }
 
 
+def requires_translation(text: str) -> bool:
+    """判断上游文本是否包含需要人工翻译或确认的日文、汉字内容。"""
+    return any(
+        "\u3040" <= char <= "\u30ff" or "\u3400" <= char <= "\u9fff"
+        for char in text
+    )
+
+
 def find_remaining(
     source: Any, translated_value: Any, pointer: str = "", key: str | None = None
 ) -> list[dict[str, str]]:
@@ -49,6 +57,7 @@ def find_remaining(
         isinstance(source, str)
         and key in TRANSLATABLE_KEYS
         and source == translated_value
+        and requires_translation(source)
     ):
         found.append({"pointer": pointer, "preview": source.replace("\n", " ")[:160]})
     return found

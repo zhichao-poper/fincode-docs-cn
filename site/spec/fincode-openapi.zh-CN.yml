@@ -9525,7 +9525,7 @@ paths:
       operationId: createWebhookSetting
       tags:
       - Webhook 设置
-      summary: Webhook設定 登録
+      summary: 登记 Webhook 设置
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -9533,16 +9533,12 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。
-
-          '
-      description: 'Webhook設定を登録します。
-
-        '
+          登记用于订阅指定租户商户所发生事件的 Webhook 设置。'
+      description: 登记 Webhook 设置。
       requestBody:
         content:
           application/json:
@@ -9623,10 +9619,8 @@ paths:
       operationId: retrieveWebhookSettingList
       tags:
       - Webhook 设置
-      summary: Webhook設定 一覧取得
-      description: 'Webhook設定を一覧で取得します。
-
-        '
+      summary: Webhook 设置列表查询
+      description: 获取 Webhook 设置列表。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -9634,13 +9628,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づくWebhook設定から一覧で取得します。
-
-          '
+          获取与该租户商户关联的 Webhook 设置列表。'
       responses:
         '200':
           description: 请求成功
@@ -9703,14 +9695,12 @@ paths:
       operationId: retrieveWebhookSetting
       tags:
       - Webhook 设置
-      summary: Webhook設定 取得
-      description: 'IDで指定したWebhook設定を取得します。
-
-        '
+      summary: 获取 Webhook 设置
+      description: 获取由 ID 指定的 Webhook 设置。
       parameters:
       - name: id
         in: path
-        description: Webhook設定のID
+        description: Webhook 设置 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/WebhookSettingId_schema'
@@ -9720,13 +9710,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を取得します。
-
-          '
+          在与该租户商户关联的 Webhook 设置中，获取由 ID 指定的设置。'
         required: false
       responses:
         '200':
@@ -9790,14 +9778,12 @@ paths:
       operationId: updateWebhookSetting
       tags:
       - Webhook 设置
-      summary: Webhook設定 更新
-      description: 'IDで指定したWebhook設定を更新します。
-
-        '
+      summary: 更新 Webhook 设置
+      description: 更新由 ID 指定的 Webhook 设置。
       parameters:
       - name: id
         in: path
-        description: Webhook設定のID
+        description: Webhook 设置 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/WebhookSettingId_schema'
@@ -9808,13 +9794,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。
-
-          '
+          在与该租户商户关联的 Webhook 设置中，更新由 ID 指定的设置。'
       requestBody:
         content:
           application/json:
@@ -9892,14 +9876,12 @@ paths:
       operationId: deleteWebhookSetting
       tags:
       - Webhook 设置
-      summary: Webhook設定 削除
-      description: 'IDで指定したWebhook設定を削除します。
-
-        '
+      summary: 删除 Webhook 设置
+      description: 删除由 ID 指定的 Webhook 设置。
       parameters:
       - name: id
         in: path
-        description: Webhook設定のID
+        description: Webhook 设置 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/WebhookSettingId_schema'
@@ -9910,13 +9892,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を削除します。
-
-          '
+          在与该租户商户关联的 Webhook 设置中，删除由 ID 指定的设置。'
       responses:
         '200':
           description: 请求成功
@@ -9982,10 +9962,8 @@ paths:
       operationId: receiveWebhookOfCardPayment
       tags:
       - Webhook 通知规范
-      summary: カード決済
-      description: 'カード決済に関するイベント（`payments.card.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 卡片支付
+      description: 卡片支付相关事件（`payments.card.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10020,9 +9998,7 @@ paths:
       tags:
       - Webhook 通知规范
       summary: Apple Pay
-      description: 'Apple Payによる決済に関するイベント（`payments.applepay.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      description: Apple Pay 支付相关事件（`payments.applepay.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10056,10 +10032,8 @@ paths:
       operationId: receiveWebhookOfGooglePayPayment
       tags:
       - Webhook 通知规范
-      summary: GooglePay
-      description: 'GooglePayに関するイベント（`payments.googlepay.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: Google Pay
+      description: Google Pay 相关事件（`payments.googlepay.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10093,10 +10067,8 @@ paths:
       operationId: receiveWebhookOfKonbiniPayment
       tags:
       - Webhook 通知规范
-      summary: コンビニ決済
-      description: 'コンビニ決済に関するイベント（`payments.konbini.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 便利店支付
+      description: 便利店支付相关事件（`payments.konbini.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10131,9 +10103,7 @@ paths:
       tags:
       - Webhook 通知规范
       summary: PayPay
-      description: 'PayPayによる決済に関するイベント（`payments.paypay.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      description: PayPay 支付相关事件（`payments.paypay.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10167,10 +10137,8 @@ paths:
       operationId: receiveWebhookOfDirectDebitPayment
       tags:
       - Webhook 通知规范
-      summary: 口座振替
-      description: '口座振替に関するイベント（`payments.directdebit.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 银行账户自动扣款
+      description: 银行账户自动扣款相关事件（`payments.directdebit.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10204,10 +10172,8 @@ paths:
       operationId: receiveWebhookOfVirtualAccountPayment
       tags:
       - Webhook 通知规范
-      summary: 銀行振込（バーチャル口座）
-      description: '銀行振込（バーチャル口座）による決済に関するイベント（`payments.virtualaccount.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 银行转账（虚拟账户）
+      description: 银行转账（虚拟账户）支付相关事件（`payments.virtualaccount.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10241,10 +10207,8 @@ paths:
       operationId: receiveWebhookOfCustomerPaymentMethod
       tags:
       - Webhook 通知规范
-      summary: 決済手段
-      description: '顧客の決済手段に関するイベント（`customers.payment_methods.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 支付方式
+      description: 客户支付方式相关事件（`customers.payment_methods.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10287,8 +10251,10 @@ paths:
       operationId: receiveWebhookOfCard
       tags:
       - Webhook 通知规范
-      summary: カード
-      description: "カードに関するイベント（`card.*`）で通知されるリクエストのボディの仕様です。  \nカード更新機能（洗替）のイベント（`card.updater.complete`）はこちらではなく、`card.updater.complete`イベントの仕様である[カード：カード更新機能（洗替）](%7Byour-endpoint-on-card-updater-complete%7D.yml)をご参照ください。\n"
+      summary: 卡片
+      description: '卡片相关事件（`card.*`）发送的 Webhook 请求体规范。
+
+        卡片信息自动更新事件（`card.updater.complete`）不使用本规范，请参阅该事件对应的[卡片：卡片信息自动更新](%7Byour-endpoint-on-card-updater-complete%7D.yml)。'
       requestBody:
         content:
           application/json:
@@ -10322,10 +10288,8 @@ paths:
       operationId: receiveWebhookOfCardUpdaterComplete
       tags:
       - Webhook 通知规范
-      summary: 'カード：カード更新機能（洗替）  '
-      description: 'カード更新機能（洗替）のイベント（`card.updater.complete`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 卡片：卡片信息自动更新
+      description: 卡片信息自动更新事件（`card.updater.complete`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10359,10 +10323,8 @@ paths:
       operationId: receiveWebhookOfCardSubscription
       tags:
       - Webhook 通知规范
-      summary: サブスクリプション（カード決済）
-      description: 'カード決済によるサブスクリプションに関するイベント（`subscription.card.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 订阅（卡片支付）
+      description: 卡片支付订阅相关事件（`subscription.card.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10396,10 +10358,8 @@ paths:
       operationId: receiveWebhookOfDirectDebitSubscription
       tags:
       - Webhook 通知规范
-      summary: サブスクリプション（口座振替）
-      description: '口座振替によるサブスクリプションに関するイベント（`subscription.directdebit.*`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 订阅（银行账户自动扣款）
+      description: 银行账户自动扣款订阅相关事件（`subscription.directdebit.*`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10433,10 +10393,8 @@ paths:
       operationId: receiveWebhookOfCardRecurringBatch
       tags:
       - Webhook 通知规范
-      summary: サブスクリプション課金（カード決済）
-      description: 'カード決済によるサブスクリプション課金のイベント（`recurring.card.batch`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 订阅收费（卡片支付）
+      description: 卡片支付订阅收费事件（`recurring.card.batch`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10470,10 +10428,8 @@ paths:
       operationId: receiveWebhookOfDirectDebitRecurringBatch
       tags:
       - Webhook 通知规范
-      summary: サブスクリプション課金（口座振替）
-      description: '口座振替によるサブスクリプション課金に関するイベント（`recurring.directdebit.batch`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 订阅收费（银行账户自动扣款）
+      description: 银行账户自动扣款订阅收费事件（`recurring.directdebit.batch`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10507,10 +10463,8 @@ paths:
       operationId: receiveWebhookOfRegisteringPaymentBulk
       tags:
       - Webhook 通知规范
-      summary: 一括決済
-      description: '一括決済 登録イベント（`payments.bulk.*.regist`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 批量支付登记
+      description: 批量支付登记事件（`payments.bulk.*.regist`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10544,10 +10498,8 @@ paths:
       operationId: receiveWebhookOfPaymentBulkBatch
       tags:
       - Webhook 通知规范
-      summary: 一括決済課金
-      description: '一括決済 課金イベント（`payments.bulk.*.batch`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 批量支付收费
+      description: 批量支付收费事件（`payments.bulk.*.batch`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10581,10 +10533,8 @@ paths:
       operationId: receiveWebhookOfContract
       tags:
       - Webhook 通知规范
-      summary: 決済手段 契約状況
-      description: '決済手段 契約状況 更新イベント（`contracts.status_code.updated`）で通知されるリクエストのボディの仕様です。
-
-        '
+      summary: 支付方式签约状态
+      description: 支付方式签约状态更新事件（`contracts.status_code.updated`）发送的 Webhook 请求体规范。
       requestBody:
         content:
           application/json:
@@ -10618,12 +10568,10 @@ paths:
       operationId: receiveWebhookOfInvoice
       tags:
       - Webhook 通知规范
-      summary: インボイス
-      description: 'インボイスに関するイベント（`invoice.*`）で通知されるリクエストのボディの仕様です。\
+      summary: 账单
+      description: '账单相关事件（`invoice.*`）发送的 Webhook 请求体规范。
 
-        通知されるボディにはインボイスIDのみが含まれます。インボイスの詳細情報が必要な場合は、インボイスIDを指定してインボイス 取得APIを呼び出してください。
-
-        '
+        通知请求体仅包含账单 ID。如需账单详细信息，请指定该账单 ID 调用“获取账单”API。'
       requestBody:
         content:
           application/json:
@@ -10657,12 +10605,10 @@ paths:
       operationId: receiveWebhookOfChargeBack
       tags:
       - Webhook 通知规范
-      summary: チャージバック
-      description: 'チャージバックに関するイベント（`charge_backs.*`）で通知されるリクエストのボディの仕様です。\
+      summary: 拒付
+      description: '拒付相关事件（`charge_backs.*`）发送的 Webhook 请求体规范。
 
-        通知されるボディにはチャージバックID・ショップID・ステータスのみが含まれます。チャージバックの詳細情報が必要な場合は、チャージバックIDを指定してチャージバック 取得APIを呼び出してください。
-
-        '
+        通知请求体仅包含拒付 ID、商户 ID 和状态。如需拒付详细信息，请指定拒付 ID 调用“获取拒付”API。'
       requestBody:
         content:
           application/json:
@@ -10696,12 +10642,10 @@ paths:
       operationId: receiveWebhookOfChangeRequest
       tags:
       - Webhook 通知规范
-      summary: 変更申請
-      description: '変更申請に関するイベント（`change_requests.*`）で通知されるリクエストのボディの仕様です。\
+      summary: 变更申请
+      description: '变更申请相关事件（`change_requests.*`）发送的 Webhook 请求体规范。
 
-        通知されるボディには変更申請ID・ショップIDのみが含まれます。変更申請の詳細情報が必要な場合は、変更申請IDとショップIDを指定して変更申請 取得APIを呼び出してください。
-
-        '
+        通知请求体仅包含变更申请 ID 和商户 ID。如需变更申请详细信息，请指定变更申请 ID 与商户 ID 调用“获取变更申请”API。'
       requestBody:
         content:
           application/json:

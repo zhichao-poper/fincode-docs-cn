@@ -70,6 +70,14 @@ def translate_tags(
         group["tags"] = [names.get(tag, tag) for tag in group.get("tags", [])]
 
 
+def requires_translation(text: str) -> bool:
+    """英文产品名、API 术语等无需改写；含日文假名或汉字的上游文本需要人工确认。"""
+    return any(
+        "\u3040" <= char <= "\u30ff" or "\u3400" <= char <= "\u9fff"
+        for char in text
+    )
+
+
 def count_units(source: Any, translated_value: Any, key: str | None = None) -> tuple[int, int]:
     total = translated = 0
     if isinstance(source, dict):
@@ -84,7 +92,7 @@ def count_units(source: Any, translated_value: Any, key: str | None = None) -> t
             translated += child_translated
     elif isinstance(source, str) and key in TRANSLATABLE_KEYS:
         total = 1
-        translated = int(source != translated_value)
+        translated = int(source != translated_value or not requires_translation(source))
     return total, translated
 
 
