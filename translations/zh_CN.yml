@@ -1414,3 +1414,197 @@ strings:
   /paths/~1your-endpoint-on-change-request/post/description: |-
     变更申请相关事件（`change_requests.*`）发送的 Webhook 请求体规范。
     通知请求体仅包含变更申请 ID 和商户 ID。如需变更申请详细信息，请指定变更申请 ID 与商户 ID 调用“获取变更申请”API。
+  /tags/6/description: |-
+    用于管理客户的 API。在 fincode 中，客户通常与应用中作为购买者的用户账户一一对应。
+    可为客户登记并管理姓名、邮箱地址和账单地址，还可关联支付、卡片和支付方式等资源。
+  /tags/7/description: |-
+    用于管理客户持有卡片的 API。
+    卡片中包含信用卡、借记卡或预付卡的有效期与持卡人姓名等信息。执行支付时指定卡片 ID，即可使用该卡片收款。
+
+    每个客户最多可登记 5 张卡片。已登记 5 张时，如需登记新卡片，请先删除一张现有卡片。
+
+    如需在登记卡片时执行 3D Secure 认证，请使用[登记支付方式 API](#tag/PaymentMethod/operation/createCustomerPaymentMethod)。
+  /tags/8/description: |-
+    用于管理客户持有的支付方式（*Payment Method*）的 API。
+    执行支付时指定支付方式 ID，即可通过该支付方式收款。
+
+    支付方式对象会根据 `pay_type` 参数表示以下信息：
+
+    - `Card`：卡片。`card` 参数中包含卡片的详细信息。
+    - `Directdebit`：银行账户自动扣款所使用的账户。`directdebit` 参数中包含账户的详细信息。
+    - `Virtualaccount`：银行转账（虚拟账户）。`virtualaccount` 参数中包含账户的详细信息。
+
+    每个客户最多可为同一种 `pay_type` 登记 5 个支付方式。已登记 5 个时，如需登记新的支付方式，请先删除一个现有支付方式。
+
+    卡片 API 目前也能操作卡片信息，但未来计划弃用。新功能或新系统请优先使用支付方式 API。
+
+    [查看支付方式的详细说明。](https://docs.fincode.jp/payment/payment_method)
+  /tags/9/description: |-
+    用于执行支付的 API。
+    先通过“登记支付”API 将支付信息登记到 fincode，再通过“执行支付”API 实际向购买者（客户）收款。
+
+    根据支付方式，执行支付后可能还需要完成 3D Secure 认证或由购买者进行现金缴款等操作。
+  /tags/10/description: |-
+    用于执行 3D Secure 认证的 API。
+    3D Secure 是卡片支付中用于防止盗刷的持卡人身份认证机制。
+
+    执行支付后，购买者访问 `acs_url` 时，浏览器信息会发送至 fincode 并开始认证流程。认证过程与实现流程请参阅 [Docs > 使用 3D Secure 2.0 认证](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)。
+  /tags/11/description: |-
+    用于创建 fincode 托管的重定向式支付页面 URL。
+    请求时将 `guide_mail_send_flag`（支付邮件发送标志）设为 `1`（发送），可由 fincode 向客户发送包含该支付页面 URL 的邮件。
+  /tags/12/description: |-
+    用于创建重定向式卡片登记页面 URL。
+
+    - 指定客户 ID（`customer_id`）时，生成用于为该客户登记卡片的页面 URL。
+    - 不指定客户 ID 时，先创建新客户，再生成用于为该客户登记卡片的页面 URL。
+
+    请求时将 `guide_mail_send_flag`（登记邮件发送标志）设为 `1`（发送），可由 fincode 向客户发送包含该卡片登记页面 URL 的邮件。
+  /tags/13/description: |-
+    用于管理订阅套餐的 API。
+    可登记、获取、更新和删除订阅的收费金额、间隔和频率等套餐信息。
+  /tags/14/description: |-
+    用于管理订阅的 API。
+    可为指定客户登记、更新或取消采用指定套餐的定期定额订阅，也可通过结果查询 API 获取该订阅每次收费的结果列表。
+
+    订阅收费采用异步处理。可通过 Webhook 事件 `recurring.card.batch`（执行卡片支付订阅收费）或 `recurring.directdebit.batch`（执行银行账户自动扣款订阅收费）接收收费结果。
+  /tags/15/description: |-
+    用于执行批量支付的 API。
+    一次请求可登记并预约数千乃至数万笔支付，可用于构建按量收费等业务模式。
+
+    批量支付采用异步处理。可通过 Webhook 事件 `payments.bulk.*.batch`（执行批量支付收费）接收收费结果。
+  /tags/16/description: |-
+    账单功能相关 API。
+    功能详情请参阅[账单说明](/payment/invoice)。
+    系统会根据账单信息生成带支付功能的账单和收据。
+  /tags/17/description: |-
+    用于获取商户的销售款入账信息。
+    还可获取某笔销售款入账的明细，确认每笔交易对入账金额的影响。
+  /tags/18/description: |-
+    用于获取平台使用费产生的销售款入账信息。
+    还可指定销售款入账 ID，获取各租户商户入账汇总信息的列表。
+  /tags/19/description: |-
+    用于获取拒付相关信息的 API。
+    拒付详情请参阅 [Docs](https://docs.fincode.jp/business_management/chargeback)。
+
+    商户管理后台中的拒付状态可通过 API 的 `status_code` 和 `canceled` 参数判断，对应关系如下：
+
+    **需要处理**
+    - `status_code`：4005
+    - `canceled`：不使用
+
+    **已答复**
+    - `status_code`：4006、4007、4011
+    - `canceled`：不使用
+
+    **销售款退回已确定**
+    - `status_code`：4009
+    - `canceled`：false
+
+    **其他（确定后撤销）**
+    - `status_code`：4009
+    - `canceled`：true
+  /tags/20/description: |-
+    用于管理平台商户（主商户与子商户）设置的 API。
+    可设置适用于租户的平台使用费，也可获取平台商户列表。
+  /tags/21/description: |-
+    用于管理租户商户设置的 API。
+    可设置适用于租户的平台使用费，也可获取租户商户列表。
+  /tags/22/description: |-
+    用于新建租户商户、提交审核信息及上传销售许可证等文件的 API。
+
+    <span class="attension">使用条件</span>
+    在生产环境使用此 API 前必须向 fincode 提交申请。如需使用，请通过[联系表单](https://form.fincode.jp/contact)说明使用租户申请管理 API 的服务概要，并申请开通功能。测试环境始终可用。
+  /tags/23/description: |-
+    用于管理商户公司印章的 API。
+    已登记的印章会自动加盖到通过账单功能等生成的账单、收据和账单 Web 页面中。
+    图片使用 multipart 格式上传，支持 `png`、`jpg` 和 `jpeg` 扩展名。
+  /tags/24/description: |-
+    用于管理 Webhook 设置的 API。
+    fincode 发生已指定的事件时，可在配置的端点实时接收通知。
+    [查看 Webhook 通知规范](https://docs.fincode.jp/api#tag/Webhook_)
+
+    要接收租户事件，必须为每个租户分别登记 Webhook 设置。
+
+    | 功能 | 事件 | 事件参数 |
+    | --- | --- | --- |
+    | 卡片支付 | 登记支付 | payments.card.regist |
+    | 卡片支付 | 执行支付 | payments.card.exec |
+    | 卡片支付 | 确认销售额 | payments.card.capture |
+    | 卡片支付 | 取消 | payments.card.cancel |
+    | 卡片支付 | 重新授权 | payments.card.auth |
+    | 卡片支付 | 变更金额 | payments.card.change |
+    | 3D Secure（卡片支付） | 执行认证 | payments.card.secure2.authenticate |
+    | 3D Secure（卡片支付） | 确认挑战结果 | payments.card.secure2.result |
+    | 3D Secure（卡片支付） | 执行认证后支付 | payments.card.secure |
+    | Apple Pay | 登记支付 | payments.applepay.regist |
+    | Apple Pay | 执行支付 | payments.applepay.exec |
+    | Apple Pay | 确认销售额 | payments.applepay.capture |
+    | Apple Pay | 取消 | payments.applepay.cancel |
+    | Google Pay | 登记支付 | payments.googlepay.regist |
+    | Google Pay | 执行支付 | payments.googlepay.exec |
+    | Google Pay | 确认销售额 | payments.googlepay.capture |
+    | Google Pay | 取消 | payments.googlepay.cancel |
+    | Google Pay | 重新授权 | payments.googlepay.auth |
+    | Google Pay | 变更金额 | payments.googlepay.change |
+    | 3D Secure（Google Pay） | 执行认证 | payments.googlepay.secure2.authenticate |
+    | 3D Secure（Google Pay） | 确认挑战结果 | payments.googlepay.secure2.result |
+    | 3D Secure（Google Pay） | 执行认证后支付 | payments.googlepay.secure |
+    | 便利店支付 | 登记支付 | payments.konbini.regist |
+    | 便利店支付 | 执行支付 | payments.konbini.exec |
+    | 便利店支付 | 取消 | payments.konbini.cancel |
+    | 便利店支付 | 付款通知 | payments.konbini.complete |
+    | 便利店支付 | 付款通知（模拟） | payments.konbini.complete.stub |
+    | 便利店支付 | 超过付款期限 | konbini.expired.update.batch |
+    | PayPay | 登记支付 | payments.paypay.regist |
+    | PayPay | 执行支付 | payments.paypay.exec |
+    | PayPay | 确认销售额 | payments.paypay.capture |
+    | PayPay | 取消 | payments.paypay.cancel |
+    | PayPay | 变更金额 | payments.paypay.change |
+    | PayPay | 付款通知 | payments.paypay.complete |
+    | 银行账户自动扣款 | 登记支付 | payments.directdebit.regist |
+    | 银行账户自动扣款 | 执行支付 | payments.directdebit.exec |
+    | 银行账户自动扣款 | 取消 | payments.directdebit.cancel |
+    | 银行账户自动扣款 | 变更金额 | payments.directdebit.change |
+    | 银行账户自动扣款 | 扣款通知 | payments.directdebit.complete |
+    | 银行账户自动扣款 | 扣款通知（模拟） | payments.directdebit.complete.stub |
+    | 银行转账（虚拟账户） | 登记支付 | payments.virtualaccount.regist |
+    | 银行转账（虚拟账户） | 执行支付 | payments.virtualaccount.exec |
+    | 银行转账（虚拟账户） | 取消 | payments.virtualaccount.cancel |
+    | 银行转账（虚拟账户） | 付款通知 | payments.virtualaccount.complete |
+    | 银行转账（虚拟账户） | 付款通知（模拟） | payments.virtualaccount.complete.stub |
+    | 支付方式（注 2） | 登记 | customers.payment_methods.created |
+    | 支付方式（注 1） | 更新 | customers.payment_methods.updated |
+    | 支付方式（注 2） | 停用 | customers.payment_methods.inactivated |
+    | 支付方式（注 2） | 重新启用 | customers.payment_methods.activated |
+    | 支付方式（注 2） | 删除 | customers.payment_methods.deleted |
+    | 卡片（注 1） | 登记 | card.regist |
+    | 卡片 | 更新 | card.update |
+    | 卡片 | 卡片信息自动更新 | card.updater.complete |
+    | 订阅（卡片支付） | 登记 | subscription.card.regist |
+    | 订阅（卡片支付） | 取消 | subscription.card.delete |
+    | 订阅（卡片支付） | 更新 | subscription.card.update |
+    | 订阅收费（卡片支付） | 执行 | recurring.card.batch |
+    | 订阅（银行账户自动扣款） | 登记 | subscription.directdebit.regist |
+    | 订阅（银行账户自动扣款） | 取消 | subscription.directdebit.delete |
+    | 订阅（银行账户自动扣款） | 更新 | subscription.directdebit.update |
+    | 订阅收费（银行账户自动扣款） | 执行 | recurring.directdebit.batch |
+    | 批量支付（卡片支付） | 登记 | payments.bulk.card.regist |
+    | 批量支付收费（卡片支付） | 执行 | payments.bulk.card.batch |
+    | 批量支付（虚拟账户） | 登记 | payments.bulk.virtualaccount.regist |
+    | 批量支付收费（虚拟账户） | 执行 | payments.bulk.virtualaccount.batch |
+    | 支付方式签约状态 | 更新 | contracts.status_code.updated |
+    | 拒付 | 登记 | charge_backs.regist |
+    | 拒付 | 更新 | charge_backs.update |
+    | 变更申请 | 登记 | change_requests.regist |
+    | 变更申请 | 更新 | change_requests.update |
+
+    注 1：要接收重定向式卡片登记 API 的结果通知，必须登记支付方式更新事件（`customers.payment_methods.updated`）的 Webhook 设置。
+    注 2：这些事件仅通知虚拟账户支付方式，不会通知卡片或银行账户自动扣款支付方式。
+  /tags/25/description: |-
+    事件发生时，fincode 向商户所配置的端点 URL 发送 Webhook 请求，本节说明该请求的规范。
+    [查看事件列表](https://docs.fincode.jp/api#tag/Webhook)
+    随着功能增加，通知参数可能会新增；参数名称不会在没有预告的情况下变更或删除。
+
+    使用 Webhook 时，端点必须对 Webhook 请求返回接收成功或失败的响应。
+    Webhook 请求因错误而失败时，fincode 会按照重试规则再次发送。
+  /externalDocs/description: fincodeJS 的规格请参阅 JS 参考文档。
