@@ -2754,10 +2754,8 @@ paths:
       operationId: retrievePaymentList
       tags:
       - 支付
-      summary: 決済 一覧取得
-      description: '決済情報の一覧を取得します。
-
-        '
+      summary: 支付列表查询
+      description: 获取支付信息列表。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -2765,13 +2763,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく決済から一覧で取得します。
-
-          '
+          获取与该租户商户关联的支付信息列表。'
       - name: クエリ
         in: query
         required: true
@@ -2812,9 +2808,7 @@ paths:
             - $ref: '#/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams'
             - $ref: '#/components/schemas/Pagination.QueryParams'
             title: 銀行振込（バーチャル口座）
-        description: '決済の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询支付列表时使用的查询条件参数。
       responses:
         '200':
           description: 请求成功
@@ -2901,10 +2895,8 @@ paths:
       operationId: createPayment
       tags:
       - 支付
-      summary: 決済 登録
-      description: '決済情報をfincodeに登録します。決済登録に成功した時点ではまだ顧客に対して請求はされていません。
-
-        '
+      summary: 登记支付
+      description: 向 fincode 登记支付信息。登记成功时尚未向客户收款。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -2912,13 +2904,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主として決済を登録します。テナントが`pay_type`で指定する決済手段契約の審査を完了させている必要があります。
-
-          '
+          以指定租户商户为销售主体登记支付。该租户必须已经通过 `pay_type` 所指定支付方式的签约审核。'
       requestBody:
         content:
           application/json:
@@ -3046,10 +3036,8 @@ paths:
       operationId: executePayment
       tags:
       - 支付
-      summary: 決済 実行
-      description: 'fincodeに登録された決済情報を指定し、請求を実行します。
-
-        '
+      summary: 执行支付
+      description: 对已登记到 fincode 的指定支付信息执行收款。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3057,16 +3045,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済処理を実行します。
-
-          '
+          在以该租户商户为销售主体的支付中，对 `id` 指定的支付执行支付处理。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3199,10 +3185,8 @@ paths:
       operationId: retrievePayment
       tags:
       - 支付
-      summary: 決済 取得
-      description: '指定した決済情報を取得します。
-
-        '
+      summary: 获取支付
+      description: 获取指定的支付信息。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3210,16 +3194,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済情報を取得します。
-
-          '
+          在以该租户商户为销售主体的支付中，获取 `id` 指定的支付信息。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3230,9 +3212,7 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/Payment.Retrieving.QueryParams'
-        description: '決済の取得において検索条件となるクエリパラメータ
-
-          '
+        description: 获取支付信息时使用的查询条件参数。
       responses:
         '200':
           description: 请求成功
@@ -3320,12 +3300,10 @@ paths:
       operationId: capturePayment
       tags:
       - 支付
-      summary: 決済 売上確定
-      description: '`status`が仮売上（`AUTHORIZED`）またはキャンセル（`CANCELED`）である決済に対して売上確定を行います。\
+      summary: 确认销售额
+      description: '对 `status` 为预授权（`AUTHORIZED`）或已取消（`CANCELED`）的支付确认销售额。
 
-        成功すると、ステータスが`CAPTURED`に遷移し、その時点を集計対象とした売上入金に反映されます。
-
-        '
+        成功后，状态将变为 `CAPTURED`，并计入以该时点为统计基准的销售款入账。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3333,16 +3311,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の売上確定を実行します。
-
-          '
+          在以该租户商户为销售主体的支付中，对 `id` 指定的支付确认销售额。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3450,16 +3426,13 @@ paths:
       operationId: cancelPayment
       tags:
       - 支付
-      summary: 決済 キャンセル
-      description: '決済をキャンセルします。キャンセルに成功すると`status`はキャンセル済み（`CANCELED`）に遷移します。\
+      summary: 取消支付
+      description: '取消支付。取消成功后，`status` 将变为已取消（`CANCELED`）。
 
-        \
 
-        ユーザーへの返金の行われ方などは決済手段によって異なります。\
+        向用户退款的处理方式等会因支付方式而异。
 
-        詳細は[Docs > 決済](/payment)から参照できます。
-
-        '
+        详情请参阅 [Docs > 支付](/payment)。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3467,16 +3440,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済をキャンセルします。
-
-          '
+          在以该租户商户为销售主体的支付中，取消 `id` 指定的支付。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3602,14 +3573,11 @@ paths:
       operationId: authorizePayment
       tags:
       - 支付
-      summary: 決済 再オーソリ
-      description: '決済のオーソリを再度実行します。\
+      summary: 重新授权支付
+      description: '重新执行支付授权。
 
-        \
 
-        `pay_type`が`Card`かつ`status`が`CANCELED`の決済（キャンセル済みのカード決済）に対して実行ができ、初回決済時の情報を引き継いで再オーソリを行います。
-
-        '
+        此操作可用于 `pay_type` 为 `Card` 且 `status` 为 `CANCELED` 的支付（已取消的卡片支付），并沿用首次支付的信息重新申请授权。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3617,16 +3585,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済のオーソリを再度実行します。
-
-          '
+          在以该租户商户为销售主体的支付中，对 `id` 指定的支付重新执行授权。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3723,12 +3689,10 @@ paths:
       operationId: changeAmountOfPayment
       tags:
       - 支付
-      summary: 決済 金額変更
-      description: '決済の利用金額を変更します。\
+      summary: 变更支付金额
+      description: '变更支付的使用金额。
 
-        既に売上確定となっている決済は請求金額が変更され、仮売上となっている決済は確保している与信枠の金額が変更されます。
-
-        '
+        对已确认销售额的支付会变更实际收款金额；对仍处于预授权状态的支付会变更占用的信用额度。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3736,16 +3700,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の利用金額を変更します。
-
-          '
+          在以该租户商户为销售主体的支付中，变更 `id` 指定支付的使用金额。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'
@@ -3963,10 +3925,8 @@ paths:
       operationId: generateBarcodeOfPayment
       tags:
       - 支付
-      summary: バーコード発行
-      description: 'リクエストしたデバイスの情報に合わせてコンビニ決済のバーコードを再度発行します。
-
-        '
+      summary: 生成条形码
+      description: 根据请求设备的信息，重新生成便利店支付条形码。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -3974,16 +3934,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主としたコンビニ決済のうち、`id`で指定した決済のバーコードを再度発行します。
-
-          '
+          在以该租户商户为销售主体的便利店支付中，为 `id` 指定的支付重新生成条形码。'
       - name: id
         in: path
-        description: オーダーID（決済情報のID）
+        description: 订单 ID（支付信息 ID）
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderId_schema'

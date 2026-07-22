@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2471,
+  "remainingJapaneseUnits": 2435,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -151,18 +151,6 @@
       "preview": "決済種別  * `Virtualaccount` - 銀行振込（バーチャル口座） "
     },
     {
-      "pointer": "/paths/~1v1~1payments/get/summary",
-      "preview": "決済 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/description",
-      "preview": "決済情報の一覧を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/0/title",
       "preview": "カード決済"
     },
@@ -191,10 +179,6 @@
       "preview": "銀行振込（バーチャル口座）"
     },
     {
-      "pointer": "/paths/~1v1~1payments/get/parameters/1/description",
-      "preview": "決済の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
       "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
@@ -221,18 +205,6 @@
     {
       "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/6/title",
       "preview": "銀行振込（バーチャル口座）"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/summary",
-      "preview": "決済 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/description",
-      "preview": "決済情報をfincodeに登録します。決済登録に成功した時点ではまだ顧客に対して請求はされていません。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが`pay_type`で指定する決済手段契約の審査を完了させている必要があります。 "
     },
     {
       "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/0/title",
@@ -291,22 +263,6 @@
       "preview": "銀行振込（バーチャル口座）"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/summary",
-      "preview": "決済 実行"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/description",
-      "preview": "fincodeに登録された決済情報を指定し、請求を実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済処理を実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
@@ -363,26 +319,6 @@
       "preview": "銀行振込（バーチャル口座）"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/summary",
-      "preview": "決済 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/description",
-      "preview": "指定した決済情報を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済情報を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/parameters/2/description",
-      "preview": "決済の取得において検索条件となるクエリパラメータ "
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
@@ -409,22 +345,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/6/title",
       "preview": "銀行振込（バーチャル口座）"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/summary",
-      "preview": "決済 売上確定"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/description",
-      "preview": "`status`が仮売上（`AUTHORIZED`）またはキャンセル（`CANCELED`）である決済に対して売上確定を行います。\\ 成功すると、ステータスが`CAPTURED`に遷移し、その時点を集計対象とした売上入金に反映されます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の売上確定を実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/requestBody/content/application~1json/schema/oneOf/0/title",
@@ -457,22 +377,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "PayPay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/summary",
-      "preview": "決済 キャンセル"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/description",
-      "preview": "決済をキャンセルします。キャンセルに成功すると`status`はキャンセル済み（`CANCELED`）に遷移します。\\ \\ ユーザーへの返金の行われ方などは決済手段によって異なります。\\ 詳細は[Docs > 決済](/payment)から参照できます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済をキャンセルします。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/0/title",
@@ -531,22 +435,6 @@
       "preview": "銀行振込（バーチャル口座）"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/summary",
-      "preview": "決済 再オーソリ"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/description",
-      "preview": "決済のオーソリを再度実行します。\\ \\ `pay_type`が`Card`かつ`status`が`CANCELED`の決済（キャンセル済みのカード決済）に対して実行ができ、初回決済時の情報を引き継いで再オーソリを行います。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済のオーソリを再度実行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/requestBody/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
@@ -561,22 +449,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/responses/200/content/application~1json/schema/oneOf/1/title",
       "preview": "Google Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/summary",
-      "preview": "決済 金額変更"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/description",
-      "preview": "決済の利用金額を変更します。\\ 既に売上確定となっている決済は請求金額が変更され、仮売上となっている決済は確保している与信枠の金額が変更されます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、`id`で指定した決済の利用金額を変更します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/requestBody/content/application~1json/schema/oneOf/0/title",
@@ -609,22 +481,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "口座振替"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/summary",
-      "preview": "バーコード発行"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/description",
-      "preview": "リクエストしたデバイスの情報に合わせてコンビニ決済のバーコードを再度発行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、`id`で指定した決済のバーコードを再度発行します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1barcode/put/parameters/1/description",
-      "preview": "オーダーID（決済情報のID）"
     },
     {
       "pointer": "/paths/~1v1~1sessions/post/summary",
