@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 457,
+  "remainingJapaneseUnits": 390,
   "items": [
     {
       "pointer": "/components/schemas/Customer/properties/card_registration/description",
@@ -111,44 +111,8 @@
       "preview": "加盟店戻りURL（失敗時）   購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、 3Dセキュア認証に失敗、または決済に失敗した際にリダイレクトされるURLです。   POSTメソッドでリダイレクトされます。  リクエストで指定しない場合はデフォルトの失敗ページのURLが設定されます。   また、"
     },
     {
-      "pointer": "/components/schemas/Payment.Card/properties/job_code/description",
-      "preview": "取引種別  - `CHECK`：有効性チェックのみ行う - `AUTH`：仮売上 - `CAPTURE`：即時売上 - `CANCEL`：キャンセル "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card/properties/card_id/description",
-      "preview": "カードID\\ この決済に使用されたカード情報のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card/properties/subscription_id/description",
-      "preview": "サブスクリプションID\\ この決済情報がサブスクリプションにより生成されたものである場合、このフィールドにサブスクリプションIDが設定されます。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ApplePay/properties/status/description",
-      "preview": "決済ステータス  - `UNPROCESSED`: 未処理<br /><span class=\"smallText\">請求はまだ実行されていません。</span> - `AUTHORIZED`: 仮売上<br /><span class=\"smallText\">仮売上として与信枠の確保が完了しており、売上確定により請求"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ApplePay/properties/card_no/description",
-      "preview": "マスク済みカード番号。\\ <span class=\"smallText\"> 下4桁以外をマスクしたカード番号です。\\ Apple Payでは実際のカード番号ではなくデバイスアカウント番号と呼ばれる番号で決済が行われるため、このフィールドで返される値はデバイスアカウント番号をマスクしたものになります。\\ </span> "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ApplePay/x-req-properties/token/description",
-      "preview": "Apple Pay カードトークン\\ Apple Payが利用可能なデバイスから取得したトークンをBase64エンコードした値を設定します。\\ \\ トークンの取得方法 - Swift： `PKPayment.token.paymentData`の値をBase64エンコード - JavaScript： `ApplePay"
-    },
-    {
       "pointer": "/components/schemas/GooglePayCardBrand/description",
       "preview": "カードブランドを表します。  - `VISA`: VISA - `MASTER`: Mastercard - `JCB`: JCB - `AMEX`: American Express - `DINERS`: Diners Club - `\"\"`（空文字列） : 判定不能 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay/properties/status/description",
-      "preview": "決済ステータス  - `UNPROCESSED`: 未処理<br /><span class=\"smallText\">請求はまだ実行されていません。</span> - `AUTHORIZED`: 仮売上<br /><span class=\"smallText\">仮売上として与信枠の確保が完了しており、売上確定により請求"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay/properties/card_no/description",
-      "preview": "マスク済みカード番号。\\ <span class=\"smallText\"> 下4桁以外をマスクしたカード番号です。\\ </span> 形式：`************1234` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay/x-req-properties/token/description",
-      "preview": "Google Pay カードトークン\\ Google Payを利用するデバイスから取得したトークン（`paymentMethodData.tokenizationData.token`）をBase64エンコードした値を設定します。    トークン生成時、`tokenizationSpecification`には以下の値"
     },
     {
       "pointer": "/components/schemas/KonbiniCode/description",
@@ -341,30 +305,6 @@
     {
       "pointer": "/components/schemas/Payment.GooglePay.Reauthorizing.Request/properties/pay_times/description",
       "preview": "（分割払いの場合）支払回数\\ `CANCELED`ステータスの決済に対して指定ができます。\\ \\ 指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`"
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.ChangingAmount.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [カード決済 > 制限事項 > 利用可能な金額](/payment/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.ChangingAmount.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [カード決済 > 制限事項 > 利用可能な金額](/payment/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.ChangingAmount.Request/properties/job_code/description",
-      "preview": "取引種別\\ 仮売上にするか即座に売上確定するかを指定します。  - `AUTH`：仮売上 - `CAPTURE`：即時売上 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.ChangingAmount.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.ChangingAmount.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.ChangingAmount.Request/properties/job_code/description",
-      "preview": "取引種別\\ 仮売上にするか即座に売上確定するかを指定します。  - `AUTH`：仮売上 - `CAPTURE`：即時売上 "
     },
     {
       "pointer": "/components/schemas/update_description/description",
@@ -723,18 +663,6 @@
       "preview": "削除フラグ       - `1`: 成功 "
     },
     {
-      "pointer": "/components/schemas/InvoiceDetail.Opening.Request/properties/bill_mail_send_flag/description",
-      "preview": "請求書メール送信フラグ   登録や更新で設定している場合も、こちらの設定が優先されます。    - `0`: メールを送信しない（デフォルト）   - `1`: メールを送信する   "
-    },
-    {
-      "pointer": "/components/schemas/InvoiceDetail.Opening.Request/properties/receipt_mail_send_flag/description",
-      "preview": "領収書メール送信フラグ   登録や更新で設定している場合も、こちらの設定が優先されます。    - `0`: メールを送信しない（デフォルト）   - `1`: メールを送信する   "
-    },
-    {
-      "pointer": "/components/schemas/InvoiceDetail.Opening.Request/properties/underpayment_mail_send_flag/description",
-      "preview": "差額請求メール送信フラグ   登録や更新で設定している場合も、こちらの設定が優先されます。    - `0`: メールを送信しない（デフォルト）   - `1`: メールを送信する   "
-    },
-    {
       "pointer": "/components/schemas/DepositStatusCode/description",
       "preview": "入金ステータス  - `3001`: 金額確定前<br /><span class=\"smallText\">この集計期間中の売上入金に関してまだ集計中であり金額が確定していない状態。入金はされていません。</span> - `3002`: 金額確定済み<br /><span class=\"smallText\">この集計"
     },
@@ -887,18 +815,6 @@
       "preview": "審査ファイルデータ\\ \\ 画像ファイルをマルチパートアップロードするときはこの`data`フィールドに画像データを設定します。 "
     },
     {
-      "pointer": "/components/schemas/PlatformShop.ListRetrieving.QueryParams/properties/created_from/description",
-      "preview": "作成日の範囲指定 開始日\\ この日付以降に作成されたショップを検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/PlatformShop.ListRetrieving.QueryParams/properties/created_to/description",
-      "preview": "作成日の範囲指定 終了日\\ この日付以前に作成されたショップを検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/PlatformShop.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `id`: ショップID - `shop_name`: ショップ名 - `created`: 作成日時 - `updated`: 更新日時 "
-    },
-    {
       "pointer": "/components/schemas/ShopType/description",
       "preview": "ショップタイプ。  - `(null)`: スタンダードショップ - `platform`: プラットフォームショップ - `tenant`: テナントショップ "
     },
@@ -917,34 +833,6 @@
     {
       "pointer": "/components/schemas/web_registration_fee/description",
       "preview": "（標準）プラットフォーム利用料 Web登録手数料。\\ テナントにおいて、口座振替における振替用口座登録（Web登録）に成功した際に適用されるWeb登録手数料です。\\ ※ 口座振替のみ "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.ListRetrieving.QueryParams/properties/created_from/description",
-      "preview": "作成日の範囲指定 開始日\\ この日付以降に作成されたショップを検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.ListRetrieving.QueryParams/properties/created_to/description",
-      "preview": "作成日の範囲指定 終了日\\ この日付以前に作成されたショップを検索できます。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/TenantShop.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `id`: ショップID - `shop_name`: ショップ名 - `created`: 作成日時 - `updated`: 更新日時 "
-    },
-    {
-      "pointer": "/components/schemas/TenantInvoiceRegistration.Response/properties/registration_number/description",
-      "preview": "適格請求書発行事業者登録番号（T番号）。\\ `T`に続く数字13桁。未登録の場合は `null`。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantInvoiceRegistration.Response/properties/is_displayed/description",
-      "preview": "適格請求書発行事業者登録番号の表示設定（マスタ）。\\ `false` の場合、登録番号が登録されていても各画面・帳票には表示されません。未登録の場合は `null`。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantInvoiceRegistration.Response/properties/is_displayed_for_invoice/description",
-      "preview": "インボイス（請求書）における適格請求書発行事業者登録番号の表示設定。\\ `is_displayed` が `true` の場合に有効。未登録の場合は `null`。 "
-    },
-    {
-      "pointer": "/components/schemas/TenantInvoiceRegistration.Response/properties/is_displayed_for_tenant_account_detail/description",
-      "preview": "テナント売上明細における適格請求書発行事業者登録番号の表示設定。\\ `is_displayed` が `true` の場合に有効。未登録の場合は `null`。 "
     },
     {
       "pointer": "/components/schemas/paypay_content_category_type/description",
@@ -1011,18 +899,6 @@
       "preview": "APIバージョン "
     },
     {
-      "pointer": "/components/schemas/POST.JoinTenants/x-req-properties/email/description",
-      "preview": "メールアドレス\\ \\ プラットフォームショップのユーザーのメールアドレス。 "
-    },
-    {
-      "pointer": "/components/schemas/POST.JoinTenants/x-req-properties/password/description",
-      "preview": "パスワード\\ \\ プラットフォームショップのユーザーのパスワード。 "
-    },
-    {
-      "pointer": "/components/schemas/POST.JoinTenants/x-req-properties/tenant_url_id/description",
-      "preview": "テナント登録URL ID\\ \\ テナント登録URLのID。\\ [管理画面 > プラットフォームの運用と管理 > 構成](https://dashboard.test.fincode.jp/platform/setting)の『テナント登録用のURL』の`tenant_url_id`の値をこのパラメータに指定します。 "
-    },
-    {
       "pointer": "/components/schemas/ContractStatus/description",
       "preview": "契約ステータス\\ \\ fincodeとそのショップの運営事業者の契約のステータスを表します。  - `101`: 未契約<br /><span class=\"smallText\">まだfincodeの本番環境申請の提出が完了していない状態です。</span> - `102`: 利用審査中<br /><span clas"
     },
@@ -1039,34 +915,6 @@
       "preview": "入金サイクルマスタID\\ 入金サイクルについては[Docs > 精算管理 > クレジットカード決済の入金サイクル](https://docs.fincode.jp/business_management/deposit)を参照できます。  - `1`: スタンダード（月1回, 月末締め翌月末入金） - `2`: スタン"
     },
     {
-      "pointer": "/components/schemas/ExaminationInfo.V2/properties/contract_info/description",
-      "preview": "契約情報\\ \\ fincodeと契約をする事業者の情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2/properties/shop_info/description",
-      "preview": "ショップ情報\\ \\ fincodeにおけるショップの情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2/properties/deposit_cycle_info/description",
-      "preview": "入金サイクル情報\\ \\ fincode上での売上入金の入金サイクルに関する情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2.Updating.Request/properties/contract_info/description",
-      "preview": "契約情報\\ \\ fincodeと契約をする事業者の情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2.Updating.Request/properties/shop_info/description",
-      "preview": "ショップ情報\\ \\ fincodeにおけるショップの情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2.Updating.Request/properties/deposit_cycle_info/description",
-      "preview": "入金サイクル情報\\ \\ fincode上での売上入金の入金サイクルに関する情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo.V2.Updating.Request/properties/merchant_category_code/description",
-      "preview": "業種コード\\ \\ fincodeから指定するよう要求されている場合にのみ指定します。 "
-    },
-    {
       "pointer": "/components/schemas/enable_immediate_use/description",
       "preview": "VISA/Mastercard即時利用をリクエストするかどうか  - `true`： 即時利用をリクエストする - `false`： 即時利用をリクエストしない  即時利用は以下の場合リクエストできません。  - `本番環境申請情報.contract_info.site_published`が`true`でない（審査時"
     },
@@ -1079,35 +927,11 @@
       "preview": "GMOサインの利用 "
     },
     {
-      "pointer": "/components/schemas/POST.ContractsExaminations/properties/shop_id/description",
-      "preview": "ショップID（テナント）\\ \\ 審査申請を行うテナントのショップID "
-    },
-    {
-      "pointer": "/components/schemas/POST.ContractsExaminations/properties/status_code/description",
-      "preview": "申請ステータス  - `1`: OK<br /><span class=\"smallText\">申請が完了しました。審査を行います。<br />`enable_immediate_use = true`の場合は即時利用が認められ、VISA/Mastercardブランドの決済受付が可能な状態です。</span> - `2"
-    },
-    {
-      "pointer": "/components/schemas/POST.ContractsExaminations/x-req-properties/enable_immediate_use/description",
-      "preview": "VISA/Mastercard即時利用をリクエストするかどうか  - `true`： 即時利用をリクエストする - `false`： 即時利用をリクエストしない  即時利用は以下の場合リクエストできません。  - `本番環境申請情報.contract_info.site_published`が`true`でない（審査時"
-    },
-    {
       "pointer": "/components/schemas/PaymentProvider/description",
       "preview": "- `PAYSLE`: コンビニ決済 - `PAYPAY`: PayPay - `APPLE_PAY_UC`: Apple Pay（VISA/Mastercard- UCカード） - `APPLE_PAY_JCB_AMEX`: Apple Pay（JCB/American Express） - `GOOGLE_PAY_"
     },
     {
       "pointer": "/components/schemas/provider/description",
-      "preview": "追加対象決済手段\\ \\ 追加で申請する決済手段をリストで指定します。  - `PAYSLE`: コンビニ決済 - `PAYPAY`: PayPay - `APPLE_PAY_UC`: Apple Pay（VISA/Mastercard- UCカード） - `APPLE_PAY_JCB_AMEX`: Apple Pay（"
-    },
-    {
-      "pointer": "/components/schemas/POST.ProviderReserve/properties/reservation_list/items/properties/reservation_id/description",
-      "preview": "追加申請ID"
-    },
-    {
-      "pointer": "/components/schemas/POST.ProviderReserve/properties/reservation_list/description",
-      "preview": "決済手段追加 申請リスト\\ \\ 申請中の決済手段のリストです。 "
-    },
-    {
-      "pointer": "/components/schemas/POST.ProviderReserve/x-req-properties/provider/description",
       "preview": "追加対象決済手段\\ \\ 追加で申請する決済手段をリストで指定します。  - `PAYSLE`: コンビニ決済 - `PAYPAY`: PayPay - `APPLE_PAY_UC`: Apple Pay（VISA/Mastercard- UCカード） - `APPLE_PAY_JCB_AMEX`: Apple Pay（"
     },
     {
@@ -1435,34 +1259,6 @@
       "preview": "支払い方法\\ \\ キャンセル金額の超過などによりfincodeへの支払が発生した場合の支払い方法  - `0`: クレジットカード - `1`: 銀行口座 "
     },
     {
-      "pointer": "/components/schemas/ContractBankAccountInfo/properties/bank_name/description",
-      "preview": "銀行名 "
-    },
-    {
-      "pointer": "/components/schemas/ContractBankAccountInfo/properties/bank_name_kana/description",
-      "preview": "銀行名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ContractBankAccountInfo/properties/branch_name_kana/description",
-      "preview": "支店名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ContractBankAccountInfo/properties/account_name/description",
-      "preview": "口座名義（カタカナ） "
-    },
-    {
-      "pointer": "/components/schemas/CardDestination/properties/contract_card_info_master_id/description",
-      "preview": "カードマスタID "
-    },
-    {
-      "pointer": "/components/schemas/CardDestination/properties/examination_master_id/description",
-      "preview": "審査種別マスタID   - `1`：  カード決済（VISA / Mastercard, UCカード社） - `2`：  カード決済（JCB / American Express / Diners Club / Discover） - `3`：  カード決済（VISA / Mastercard, トヨタファイナンス社）"
-    },
-    {
-      "pointer": "/components/schemas/CardDestination/properties/destination_type/description",
-      "preview": "仕向け先種別 "
-    },
-    {
       "pointer": "/components/schemas/corporate/description",
       "preview": "事業形態  - `true`: 法人 - `false`: 個人事業主 "
     },
@@ -1727,38 +1523,6 @@
       "preview": "次回課金日\\ サブスクリプションの次回課金日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
     },
     {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.DirectDebit/properties/succeeded/description",
-      "preview": "成功件数\\ \\ 今回のサブスクリプション課金において成功した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.DirectDebit/properties/failed/description",
-      "preview": "失敗件数\\ \\ 今回のサブスクリプション課金において失敗した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.DirectDebit/properties/total/description",
-      "preview": "合計件数\\ \\ 今回のサブスクリプション課金において発生した決済の合計件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.RecurringBatch.DirectDebit/properties/charge_date/description",
-      "preview": "課金日\\ 今回のサブスクリプションの課金日です。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Regist.Card/properties/regist_total_count/description",
-      "preview": "総件数\\ \\ この一括決済に登録された決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Regist.Card/properties/error_total_count/description",
-      "preview": "エラー件数\\ \\ この一括決済においてエラーが発生した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Regist.Card/properties/bulk_search_url/description",
-      "preview": "この一括決済の一括決済 詳細情報一覧取得APIのURLです。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Regist.Card/properties/error_code/description",
-      "preview": "この一括決済において発生したエラーのうち、一番最新のエラーのエラーコードです。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
       "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Batch.Card/properties/succeeded_count/description",
       "preview": "成功件数\\ \\ 今回の一括決済課金において成功した決済の件数です。 "
     },
@@ -1779,44 +1543,12 @@
       "preview": "決済事業者 契約ステータス  - `701`: 申込なし<br /><span class=\"smallText\">まだこの決済手段を利用申請していません</span> - `702`: 審査受付<br /><span class=\"smallText\">fincodeが審査を受け付けました。まだこの決済手段は利用でき"
     },
     {
-      "pointer": "/components/schemas/WebhookEvent.Contract/properties/body/description",
-      "preview": "決済手段 契約状況リスト\\ \\ 決済手段の種別とその契約ステータスを含むオブジェクトの配列です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.Contract/properties/body/items/properties/examination_task/description",
-      "preview": "審査対象（和名）  - `決済事業者審査: VISA/MASTER-UC` - `決済事業者審査: VISA/MASTER-TFC` - `決済事業者審査: VISA/MASTER-ORICO` - `決済事業者審査: JCB/AMEX` - `決済事業者審査: DINERS` - `決済事業者審査: ApplePay"
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.Contract/properties/body/items/properties/status/description",
-      "preview": "決済事業者 契約ステータス（和名）  - `申込なし` - `審査受付` - `審査待ち` - `審査中` - `審査保留中` - `審査OK` - `利用可能` - `審査NG` - `申込中止` "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.Contract/properties/body/items/properties/is_updated/description",
-      "preview": "更新の有無\\ \\ 更新があった場合は `true`になります。 "
-    },
-    {
       "pointer": "/components/schemas/WebhookEvent.Invoice/properties/invoice_id/description",
       "preview": "イベントが発生したインボイスID\\ このIDを指定してインボイス 取得APIを呼び出すことで、最新のインボイス情報を取得できます。 "
     },
     {
       "pointer": "/components/schemas/WebhookEvent.Invoice/properties/event/description",
       "preview": "Webhook通知 トリガーイベント  - `invoice.create`: インボイス 作成 - `invoice.update`: インボイス 更新 - `invoice.open`: インボイス 発行（請求実行） - `invoice.cancel`: インボイス キャンセル - `invoice.delete"
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChargeBack/properties/shop_id/description",
-      "preview": "イベントが発生したチャージバックが属するショップIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChargeBack/properties/charge_back_id/description",
-      "preview": "イベントが発生したチャージバックIDです。\\ このIDを指定してチャージバック 取得APIを呼び出すことで、最新のチャージバック情報を取得できます。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChargeBack/properties/status/description",
-      "preview": "通知時点のチャージバックのステータスです。\\ チャージバック 取得APIのレスポンスの `status_code` と同値です。  - `4005`: 要対応 - `4006`: 回答済み - `4007`: 回答済み - `4009`: 精算済み - `4011`: 回答済み "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChargeBack/properties/event/description",
-      "preview": "Webhook通知 トリガーイベント  - `charge_backs.regist`: チャージバック 公開（加盟店へ初めて公開されたとき） - `charge_backs.update`: チャージバック 更新（公開済みチャージバックのステータスが変化したとき） "
     },
     {
       "pointer": "/components/schemas/WebhookEvent.ChangeRequest/properties/shop_id/description",
