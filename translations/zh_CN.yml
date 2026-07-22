@@ -33,6 +33,21 @@ tag_names:
   Webhook設定: Webhook 设置
   Webhook_通知仕様: Webhook 通知规范
 
+tag_group_names:
+  Getting Started: 开始使用
+  顧客情報: 客户与支付方式
+  決済: 支付
+  3Dセキュア認証: 3D Secure 认证
+  リダイレクト型: 重定向式功能
+  サブスクリプション機能: 订阅功能
+  一括決済機能: 批量支付
+  インボイス機能: 发票功能
+  ショップの入金情報: 商户入账信息
+  プラットフォーム管理: 平台管理
+  ショップ管理: 商户管理
+  テナント申請管理 (Limited): 租户申请管理（受限）
+  Webhook: Webhook
+
 exact_strings:
   本番環境: 生产环境
   テスト環境: 测试环境
