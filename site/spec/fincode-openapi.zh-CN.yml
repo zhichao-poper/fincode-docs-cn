@@ -10768,14 +10768,12 @@ components:
           - '0'
           - '1'
           example: '1'
-          description: '決済手段（カード）登録状況
+          description: '银行卡支付方式登记状态。
 
 
-            - `0`: 未登録
+            - `0`：未登记
 
-            - `1`: 1件以上のカードが登録済み
-
-            '
+            - `1`：已登记至少一张银行卡'
         directdebit_registration:
           type: string
           minLength: 1
@@ -10785,14 +10783,12 @@ components:
           - '0'
           - '1'
           example: '1'
-          description: '決済手段（口座振替）登録状況
+          description: '自动扣款账户登记状态。
 
 
-            - `0`: 未登録
+            - `0`：未登记
 
-            - `1`: 1件以上の振替用口座が登録済み
-
-            '
+            - `1`：已登记至少一个扣款账户'
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -12963,13 +12959,7 @@ components:
           minLength: 1
           maxLength: 20
           nullable: false
-          description: '依頼書ID。\
-
-            依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。\
-
-            ※プラットフォームショップの場合、プラットフォーム全体で一意である必要があります。
-
-            '
+          description: 在管理后台登记纸质申请书时，由登记者指定的申请书唯一 ID。平台商户必须保证此 ID 在整个平台内唯一。
     CustomerPaymentMethod.Creating.Request:
       type: object
       properties:
@@ -13325,18 +13315,12 @@ components:
           nullable: true
           minLength: 1
           maxLength: 1
-          description: 'ACS呼出判定。
-
-            '
+          description: 是否需要调用 ACS。
         error_code:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/error_code'
-          description: 'このカードの登録・更新において発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-            [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-            '
+          description: 当前银行卡最近一次登记或更新错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
     CustomerPaymentMethod.Creating.Response:
       type: object
       properties:
@@ -14067,20 +14051,16 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: 'Apple Pay 支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `AUTHORIZED`: 仮売上
+            - `AUTHORIZED`：已授权
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认请款
 
-            - `CANCELED`: キャンセル
-
-            '
+            - `CANCELED`：已取消'
         auth_max_date_from:
           type: string
           description: '预授权有效期（起始值）。
@@ -14117,28 +14097,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。示例：`?sort=updated␣desc,created␣asc`
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
-
-
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `auth_max_date`: 仮売上有効期限
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。'
     Payment.ListRetrieving.Googlepay.QueryParams:
       type: object
       properties:
@@ -16353,20 +16314,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 7
-          description: "利用金額  \njob_code = `CHECK` 以外の場合は必須です。  \n\n`tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\\n参照： [カード決済\
-            \ > 制限事項 > 利用可能な金額](/payment/restriction)\n"
+          description: '使用金额；`job_code` 不为 `CHECK` 时必填。与 `tax` 的合计值必须在银行卡支付允许的金额范围内。
+
+            参见[银行卡支付限制](/payment/restriction)。'
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 7
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [カード決済 > 制限事項 > 利用可能な金額](/payment/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在银行卡支付允许的金额范围内。参见[银行卡支付限制](/payment/restriction)。
         tds_type:
           nullable: true
           allOf:
@@ -16437,25 +16393,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 7
-          description: '利用金額\
-
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [Apple Pay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/applepay/restriction)
-
-            '
+          description: 使用金额。与 `tax` 的合计值必须在 Apple Pay 允许的金额范围内。参见[Apple Pay 限制](https://docs.fincode.jp/payment/applepay/restriction)。
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 7
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [Apple Pay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/applepay/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在 Apple Pay 允许的金额范围内。参见[Apple Pay 限制](https://docs.fincode.jp/payment/applepay/restriction)。
         client_field_1:
           nullable: true
           allOf:
@@ -16521,19 +16465,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 7
-          description: "利用金額  \n\n`tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\\n参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction)\n"
+          description: 使用金额。与 `tax` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 7
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在 Google Pay 允许的金额范围内。参见[Google Pay 限制](/payment/googlepay/restriction)。
         tds_type:
           nullable: true
           allOf:
@@ -16586,25 +16524,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 6
-          description: '利用金額\
-
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [コンビニ決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/konbini/restriction)
-
-            '
+          description: 使用金额。与 `tax` 的合计值必须在便利店支付允许的金额范围内。参见[便利店支付限制](https://docs.fincode.jp/payment/konbini/restriction)。
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 6
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [コンビニ決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/konbini/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在便利店支付允许的金额范围内。参见[便利店支付限制](https://docs.fincode.jp/payment/konbini/restriction)。
         client_field_1:
           nullable: true
           allOf:
@@ -16669,25 +16595,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 9
-          description: '利用金額\
-
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction)
-
-            '
+          description: 使用金额。与 `tax` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 9
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
         client_field_1:
           nullable: true
           allOf:
@@ -17809,14 +17723,13 @@ components:
         acs_url:
           type: string
           nullable: true
-          description: "3Dセキュア認証初期化URL  \n決済実行後に購入者に遷移させる3Dセキュア認証ページのURLです。  \n\n3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する場合に使用します。\
-            \  \nこのURLに遷移後3Dセキュア認証が開始し、`tds2_ret_url`に後続処理のためのデータがPOSTメソッドで送信されます。  \n`tds2_ret_url`が指定された場合のみ返却されます。\n"
+          description: 支付执行后让购买者访问的 3D Secure 认证初始化 URL，适用于商户自行实现认证 API 和回调的场景。访问后开始认证，并通过 POST 将后续数据发送到 `tds2_ret_url`。仅指定
+            `tds2_ret_url` 时返回。
         redirect_url:
           type: string
           nullable: true
-          description: "リダイレクトURL  \n決済実行後に購入者に遷移させる3Dセキュア認証ページのURLです。  \n\nお客様のブラウザとfincode間で3Dセキュア認証を自動で行う場合に使用します。  \n\
-            このURLに遷移後お客様のブラウザとfincode間で3Dセキュア認証を自動で行います。  \n認証後、結果に応じて`return_url`または`return_url_on_failure`に自動で遷移します。  \n\
-            `tds2_ret_url`が指定されなかった場合のみ返却されます。\n"
+          description: 支付执行后让购买者访问的 3D Secure 认证 URL，适用于浏览器与 fincode 自动完成认证的场景。认证后根据结果自动跳转至 `return_url` 或 `return_url_on_failure`。仅未指定
+            `tds2_ret_url` 时返回。
     Payment.Card.Executing.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
@@ -17865,29 +17778,19 @@ components:
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: '支払方法\
-
-            `CANCELED`ステータスの決済に対して指定ができます。
+          description: '付款方式，可对 `CANCELED` 状态的支付指定。
 
 
-            - `1`: 一括払い
+            - `1`：一次性付款
 
-            - `2`: 分割払い
+            - `2`：分期付款
 
-            - `5`: リボ払い'
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/CardPayTimes'
-          description: '（分割払いの場合）支払回数\
-
-            `CANCELED`ステータスの決済に対して指定ができます。\
-
-            \
-
-            指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`
-
-            '
+          description: 分期付款次数，可对 `CANCELED` 状态的支付指定。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
       required:
       - pay_type
       - access_id
@@ -17927,29 +17830,19 @@ components:
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: '支払方法\
-
-            `CANCELED`ステータスの決済に対して指定ができます。
+          description: '付款方式，可对 `CANCELED` 状态的支付指定。
 
 
-            - `1`: 一括払い
+            - `1`：一次性付款
 
-            - `2`: 分割払い
+            - `2`：分期付款
 
-            - `5`: リボ払い'
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/CardPayTimes'
-          description: '（分割払いの場合）支払回数\
-
-            `CANCELED`ステータスの決済に対して指定ができます。\
-
-            \
-
-            指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`
-
-            '
+          description: 分期付款次数，可对 `CANCELED` 状态的支付指定。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
       required:
       - pay_type
       - access_id
@@ -18185,25 +18078,19 @@ components:
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: '支払方法
+          description: '付款方式。
 
 
-            - `1`: 一括払い
+            - `1`：一次性付款
 
-            - `2`: 分割払い
+            - `2`：分期付款
 
-            - `5`: リボ払い'
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/CardPayTimes'
-          description: '（分割払いの場合）支払回数\
-
-            `CANCELED`ステータスの決済に対して指定ができます。\
-
-            \
-
-            指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`'
+          description: 分期付款次数。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
       required:
       - pay_type
       - access_id
@@ -18226,25 +18113,19 @@ components:
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: '支払方法
+          description: '付款方式。
 
 
-            - `1`: 一括払い
+            - `1`：一次性付款
 
-            - `2`: 分割払い
+            - `2`：分期付款
 
-            - `5`: リボ払い'
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/CardPayTimes'
-          description: '（分割払いの場合）支払回数\
-
-            `CANCELED`ステータスの決済に対して指定ができます。\
-
-            \
-
-            指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`'
+          description: 分期付款次数。可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。
       required:
       - pay_type
       - access_id
@@ -18372,25 +18253,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/amount'
           maxLength: 9
-          description: '利用金額\
-
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction)
-
-            '
+          description: 使用金额。与 `tax` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
         tax:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tax'
           maxLength: 9
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-            参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction)
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在 PayPay 允许的金额范围内。参见[PayPay 限制](https://docs.fincode.jp/payment/paypay/restriction)。
         update_description:
           allOf:
           - $ref: '#/components/schemas/update_description'
@@ -19972,9 +19841,7 @@ components:
           nullable: true
           maxLength: 256
           example: https://secure.test.fincode.jp/v1/links/lk_**********************/konbini
-          description: 'コンビニ決済 支払い画面URL
-
-            '
+          description: 便利店支付页面 URL。
         payment_term_day:
           type: integer
           format: int64
@@ -19992,16 +19859,12 @@ components:
           - '0'
           - '1'
           example: '1'
-          description: 'コンビニ決済 支払い画面案内メール送信フラグ\
-
-            コンビニ決済の支払い画面案内メールを送信するかどうかを設定します。
+          description: '是否发送便利店支付页面引导邮件。
 
 
-            - `0`：送信しない
+            - `0`：不发送
 
-            - `1`：送信する
-
-            '
+            - `1`：发送'
       x-req-properties:
         payment_term_day:
           type: string
@@ -20041,9 +19904,7 @@ components:
           nullable: true
           maxLength: 256
           example: https://secure.test.fincode.jp/v1/links/lk_**********************/virtualaccount
-          description: '銀行振込（バーチャル口座） 支払い画面URL
-
-            '
+          description: 银行转账（虚拟账户）支付页面 URL。
         payment_term_day:
           type: integer
           format: int64
@@ -20063,16 +19924,12 @@ components:
           - '0'
           - '1'
           example: '1'
-          description: '銀行振込（バーチャル口座） 支払い画面案内メール送信フラグ\
-
-            銀行振込（バーチャル口座）の支払い画面案内メールを送信するかどうかを設定します。
+          description: '是否发送银行转账（虚拟账户）支付页面引导邮件。
 
 
-            - `0`：送信しない
+            - `0`：不发送
 
-            - `1`：送信する
-
-            '
+            - `1`：发送'
         use_exact_deposit_amount:
           type: boolean
           enum:
@@ -32975,22 +32832,12 @@ components:
           minLength: 1
           maxLength: 50
           example: w_*********************
-          description: 'Webhook設定ID
-
-            '
+          description: Webhook 设置 ID。
         url:
           type: string
           format: uri
           example: https://your-service.example.com/webhook-receiver
-          description: 'Webhook通知先 URL\
-
-            \
-
-            Webhookの通知先URLを指定します。\
-
-            fincodeのWebhookはHTTPS通信かつ443ポートでのみ受信可能です。
-
-            '
+          description: Webhook 通知目标 URL。fincode Webhook 仅支持通过 HTTPS 的 443 端口接收。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
@@ -32999,15 +32846,7 @@ components:
           minLength: 1
           maxLength: 60
           example: WEBHOOK_FROM_FINCODE
-          description: '署名\
-
-            \
-
-            このWebhookがfincodeから送信されたことを確認するための署名です。\
-
-            fincodeからのWebhook通知において`Fincode-Signature`ヘッダーにこの値が含まれます。
-
-            '
+          description: 用于确认 Webhook 由 fincode 发送的签名；通知请求的 `Fincode-Signature` 请求头中包含此值。
         created:
           nullable: false
           allOf:
@@ -33959,31 +33798,25 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PayType'
-          description: '決済種別\
-
-            この決済で利用する決済手段です。
+          description: '当前支付使用的支付方式。
 
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">振替はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行扣款
 
-            - `AWAITING_PAYMENT_APPROVAL`: 決済処理待ち<br /><span class="smallText">fincodeおよび金融機関による振替処理を待っています。</span>
+            - `AWAITING_PAYMENT_APPROVAL`：等待 fincode 及金融机构处理扣款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">振替が完了し、売上が確定しています。</span>
+            - `CAPTURED`：扣款完成，已确认销售
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この振替はキャンセルされました。</span>
+            - `CANCELED`：扣款已取消
 
-            - `FAILED`: 請求失敗<br /><span class="smallText">何らかの理由により振替に失敗しました。</span>
-
-            '
+            - `FAILED`：扣款失败'
         customer_id:
           nullable: true
           allOf:
@@ -34029,9 +33862,7 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/target_date'
-          description: '振替指定日
-
-            '
+          description: 指定扣款日期。
         withdrawal_date:
           nullable: true
           allOf:
@@ -34617,25 +34448,19 @@ components:
           type: string
           nullable: true
           example: '202601'
-          description: 'カード更新実行年月
+          description: '银行卡自动更新执行年月。
 
-            形式：`yyyyMM`
-
-            '
+            格式：`yyyyMM`'
         success_count:
           type: integer
           nullable: true
           example: 10
-          description: 'カード更新成功件数
-
-            '
+          description: 银行卡自动更新成功数量。
         processed_count:
           type: integer
           nullable: true
           example: 12
-          description: 'カード更新実施件数
-
-            '
+          description: 银行卡自动更新处理数量。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
@@ -34928,33 +34753,15 @@ components:
         succeeded_count:
           type: string
           maxLength: 10
-          description: '成功件数\
-
-            \
-
-            今回の一括決済課金において成功した決済の件数です。
-
-            '
+          description: 本次批量支付中成功的支付数量。
         failed_count:
           type: string
           maxLength: 10
-          description: '失敗件数\
-
-            \
-
-            今回の一括決済課金において失敗した決済の件数です。
-
-            '
+          description: 本次批量支付中失败的支付数量。
         total_count:
           type: string
           maxLength: 10
-          description: '合計件数\
-
-            \
-
-            今回の一括決済課金において発生した決済の合計件数です。
-
-            '
+          description: 本次批量支付产生的支付总数。
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkPayType'
@@ -35257,27 +35064,19 @@ components:
         shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'イベントが発生した変更申請が属するショップIDです。
-
-            '
+          description: 发生变更申请事件的记录所属商户 ID。
         change_request_id:
           type: string
-          description: 'イベントが発生した変更申請IDです。\
-
-            このIDとショップIDを指定して変更申請 取得APIを呼び出すことで、最新の変更申請情報を取得できます。
-
-            '
+          description: 变更申请 ID。可使用此 ID 和商户 ID 调用“获取变更申请”API 查询最新信息。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
-          description: 'Webhook通知 トリガーイベント
+          description: '触发 Webhook 的事件。
 
 
-            - `change_requests.regist`: 変更申請 登録（変更申請が発生したとき）
+            - `change_requests.regist`：产生新的变更申请
 
-            - `change_requests.update`: 変更申請 更新（変更申請のステータスが更新されたとき）
-
-            '
+            - `change_requests.update`：变更申请状态已更新'
   examples:
     payment_method:
       summary: 银行账户自动扣款与银行转账（虚拟账户）

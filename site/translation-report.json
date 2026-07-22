@@ -1,15 +1,7 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 390,
+  "remainingJapaneseUnits": 342,
   "items": [
-    {
-      "pointer": "/components/schemas/Customer/properties/card_registration/description",
-      "preview": "決済手段（カード）登録状況  - `0`: 未登録 - `1`: 1件以上のカードが登録済み "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/directdebit_registration/description",
-      "preview": "決済手段（口座振替）登録状況  - `0`: 未登録 - `1`: 1件以上の振替用口座が登録済み "
-    },
     {
       "pointer": "/components/schemas/Customer.Creating.Request/properties/id/description",
       "preview": "顧客ID\\ 任意の値を指定できます。指定しない場合はfincodeが自動的に生成します。\\ 一度fincodeに登録された顧客IDは削除後も利用できません。 "
@@ -55,10 +47,6 @@
       "preview": "依頼書登録のパラメータ "
     },
     {
-      "pointer": "/components/schemas/paper_application/properties/request_form_id/description",
-      "preview": "依頼書ID。\\ 依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。\\ ※プラットフォームショップの場合、プラットフォーム全体で一意である必要があります。 "
-    },
-    {
       "pointer": "/components/schemas/redirect_url/description",
       "preview": "リダイレクトURL \\ 購入者をこのURLへリダイレクトさせ、ステータスがAWAITING_CUSTOMER_ACTION の決済手段を有効化するための後続の処理へ誘導してください。   - 振替口座登録の場合： このURLにアクセスして振替口座登録の承認を行います。このURLには1度だけアクセスできます。 - カード"
     },
@@ -67,28 +55,12 @@
       "preview": "エラー内容を判定する場合はこの`error_code`の使用が推奨されます。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
     },
     {
-      "pointer": "/components/schemas/x-res-properties-card/properties/acs/description",
-      "preview": "ACS呼出判定。 "
-    },
-    {
-      "pointer": "/components/schemas/x-res-properties-card/properties/error_code/description",
-      "preview": "このカードの登録・更新において発生したエラーのうち、一番最新のエラーのエラーコードです。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
       "pointer": "/components/schemas/PayType/description",
       "preview": "決済種別\\ この決済で利用する決済手段です。  - `Card`: カード - `Konbini`: コンビニ決済 - `Paypay`: PayPay - `Applepay`: Apple Pay - `Googlepay`: Google Pay - `Directdebit`: 口座振替 - `Virtuala"
     },
     {
       "pointer": "/components/schemas/PaymentStatus/description",
       "preview": "決済ステータス  - `UNPROCESSED`: 未処理 - `CHECKED`: 有効性チェック済み - `AUTHORIZED`: 仮売上 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち - `AWAITING_PAYMENT_APPROVAL`: 決済承認待ち - `CAPTU"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.ApplePay.QueryParams/properties/status/description",
-      "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `AUTHORIZED`: 仮売上 - `CAPTURED`: 売上確定 - `CANCELED`: キャンセル "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.ApplePay.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
     },
     {
       "pointer": "/components/schemas/CardPayMethod/description",
@@ -151,56 +123,16 @@
       "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照例： [カード決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/restriction) "
     },
     {
-      "pointer": "/components/schemas/Payment.Card.Creating.Request/properties/amount/description",
-      "preview": "利用金額   job_code = `CHECK` 以外の場合は必須です。    `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [カード決済 > 制限事項 > 利用可能な金額](/payment/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [カード決済 > 制限事項 > 利用可能な金額](/payment/restriction) "
-    },
-    {
       "pointer": "/components/schemas/ApplePayPaymentJobCode/description",
       "preview": "取引種別\\ この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するかを指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ApplePay.Creating.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Apple Pay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/applepay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ApplePay.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Apple Pay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/applepay/restriction) "
     },
     {
       "pointer": "/components/schemas/GooglePayPaymentJobCode/description",
       "preview": "取引種別\\ この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するかを指定します。  - `AUTH`：仮売上 - `CAPTURE`：即時売上 "
     },
     {
-      "pointer": "/components/schemas/Payment.GooglePay.Creating.Request/properties/amount/description",
-      "preview": "利用金額    `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [Google Pay > 制限事項 > 利用可能な金額](/payment/googlepay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Konbini.Creating.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [コンビニ決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/konbini/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.Konbini.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [コンビニ決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/konbini/restriction) "
-    },
-    {
       "pointer": "/components/schemas/PayPayPaymentJobCode/description",
       "preview": "取引種別\\ この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するか指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.PayPay.Creating.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.PayPay.Creating.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
     },
     {
       "pointer": "/components/schemas/billing_amount/description",
@@ -259,30 +191,6 @@
       "preview": "決済手段ID\\ この決済に使用する決済手段（銀行振込（バーチャル口座））のIDです。指定しない場合、デフォルト決済手段が使用されます。 "
     },
     {
-      "pointer": "/components/schemas/Payment.Card.Executing/properties/acs_url/description",
-      "preview": "3Dセキュア認証初期化URL   決済実行後に購入者に遷移させる3Dセキュア認証ページのURLです。    3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する場合に使用します。   このURLに遷移後3Dセキュア認証が開始し、`tds2_ret_url`に後続処理のためのデータがPOST"
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.Executing/properties/redirect_url/description",
-      "preview": "リダイレクトURL   決済実行後に購入者に遷移させる3Dセキュア認証ページのURLです。    お客様のブラウザとfincode間で3Dセキュア認証を自動で行う場合に使用します。   このURLに遷移後お客様のブラウザとfincode間で3Dセキュア認証を自動で行います。   認証後、結果に応じて`return_ur"
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.Capturing.Request/properties/method/description",
-      "preview": "支払方法\\ `CANCELED`ステータスの決済に対して指定ができます。  - `1`: 一括払い - `2`: 分割払い - `5`: リボ払い"
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.Capturing.Request/properties/pay_times/description",
-      "preview": "（分割払いの場合）支払回数\\ `CANCELED`ステータスの決済に対して指定ができます。\\ \\ 指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Capturing.Request/properties/method/description",
-      "preview": "支払方法\\ `CANCELED`ステータスの決済に対して指定ができます。  - `1`: 一括払い - `2`: 分割払い - `5`: リボ払い"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Capturing.Request/properties/pay_times/description",
-      "preview": "（分割払いの場合）支払回数\\ `CANCELED`ステータスの決済に対して指定ができます。\\ \\ 指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24` "
-    },
-    {
       "pointer": "/components/schemas/capture_description/description",
       "preview": "売上確定の説明\\ 購入者のPayPayアプリ上で表示される売上確定の説明。 "
     },
@@ -291,32 +199,8 @@
       "preview": "キャンセルの説明\\ 購入者のPayPayアプリ上で表示されるキャンセルの説明。 "
     },
     {
-      "pointer": "/components/schemas/Payment.Card.Reauthorizing.Request/properties/method/description",
-      "preview": "支払方法  - `1`: 一括払い - `2`: 分割払い - `5`: リボ払い"
-    },
-    {
-      "pointer": "/components/schemas/Payment.Card.Reauthorizing.Request/properties/pay_times/description",
-      "preview": "（分割払いの場合）支払回数\\ `CANCELED`ステータスの決済に対して指定ができます。\\ \\ 指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Reauthorizing.Request/properties/method/description",
-      "preview": "支払方法  - `1`: 一括払い - `2`: 分割払い - `5`: リボ払い"
-    },
-    {
-      "pointer": "/components/schemas/Payment.GooglePay.Reauthorizing.Request/properties/pay_times/description",
-      "preview": "（分割払いの場合）支払回数\\ `CANCELED`ステータスの決済に対して指定ができます。\\ \\ 指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`"
-    },
-    {
       "pointer": "/components/schemas/update_description/description",
       "preview": "金額変更の説明\\ 購入者のPayPayアプリ上で表示される金額変更の説明。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.PayPay.ChangingAmount.Request/properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
-    },
-    {
-      "pointer": "/components/schemas/Payment.PayPay.ChangingAmount.Request/properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照： [PayPay > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/paypay/restriction) "
     },
     {
       "pointer": "/components/schemas/param/description",
@@ -391,24 +275,8 @@
       "preview": "商品コード\\ ※ 通常は`null` "
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Konbini/properties/konbini_reception_url/description",
-      "preview": "コンビニ決済 支払い画面URL "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Konbini/properties/konbini_reception_mail_send_flag/description",
-      "preview": "コンビニ決済 支払い画面案内メール送信フラグ\\ コンビニ決済の支払い画面案内メールを送信するかどうかを設定します。  - `0`：送信しない - `1`：送信する "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.PayPay/properties/job_code/description",
       "preview": "この決済URL上でPayPayによる決済を行った際、仮売上にするか即座に売上確定するか指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.VirtualAccount/properties/virtualaccount_reception_url/description",
-      "preview": "銀行振込（バーチャル口座） 支払い画面URL "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.VirtualAccount/properties/virtualaccount_reception_mail_send_flag/description",
-      "preview": "銀行振込（バーチャル口座） 支払い画面案内メール送信フラグ\\ 銀行振込（バーチャル口座）の支払い画面案内メールを送信するかどうかを設定します。  - `0`：送信しない - `1`：送信する "
     },
     {
       "pointer": "/components/schemas/properties-success_url/description",
@@ -1327,18 +1195,6 @@
       "preview": "Webhook通知 トリガーイベント "
     },
     {
-      "pointer": "/components/schemas/WebhookSetting/properties/id/description",
-      "preview": "Webhook設定ID "
-    },
-    {
-      "pointer": "/components/schemas/WebhookSetting/properties/url/description",
-      "preview": "Webhook通知先 URL\\ \\ Webhookの通知先URLを指定します。\\ fincodeのWebhookはHTTPS通信かつ443ポートでのみ受信可能です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookSetting/properties/signature/description",
-      "preview": "署名\\ \\ このWebhookがfincodeから送信されたことを確認するための署名です。\\ fincodeからのWebhook通知において`Fincode-Signature`ヘッダーにこの値が含まれます。 "
-    },
-    {
       "pointer": "/components/schemas/WebhookSetting_properties-id/description",
       "preview": "Webhook設定ID "
     },
@@ -1459,18 +1315,6 @@
       "preview": "請求結果反映 予定日\\ \\ 形式： `yyyy/MM/dd`\\ 詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替結果返却日」の列で確認できます。 "
     },
     {
-      "pointer": "/components/schemas/WebhookEvent.Payment.DirectDebit/properties/pay_type/description",
-      "preview": "決済種別\\ この決済で利用する決済手段です。  - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.Payment.DirectDebit/properties/status/description",
-      "preview": "決済ステータス  - `UNPROCESSED`: 未処理<br /><span class=\"smallText\">振替はまだ実行されていません。</span> - `AWAITING_PAYMENT_APPROVAL`: 決済処理待ち<br /><span class=\"smallText\">fincodeおよび金"
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.Payment.DirectDebit/properties/target_date/description",
-      "preview": "振替指定日 "
-    },
-    {
       "pointer": "/components/schemas/use_static_virtual_account/description",
       "preview": "顧客固定バーチャル口座利用フラグ\\ この決済において顧客固定バーチャル口座が利用されているかどうかを示すフラグです。  - `true`: 顧客固定バーチャル口座を利用している - `false`: 顧客固定バーチャル口座を利用していない "
     },
@@ -1507,32 +1351,8 @@
       "preview": "処理タイプ  - `I`: 登録 - `U`: 更新 "
     },
     {
-      "pointer": "/components/schemas/WebhookEvent.CardUpdaterComplete/properties/card_updater_process_month/description",
-      "preview": "カード更新実行年月 形式：`yyyyMM` "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.CardUpdaterComplete/properties/success_count/description",
-      "preview": "カード更新成功件数 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.CardUpdaterComplete/properties/processed_count/description",
-      "preview": "カード更新実施件数 "
-    },
-    {
       "pointer": "/components/schemas/next_charge_date/description",
       "preview": "次回課金日\\ サブスクリプションの次回課金日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Batch.Card/properties/succeeded_count/description",
-      "preview": "成功件数\\ \\ 今回の一括決済課金において成功した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Batch.Card/properties/failed_count/description",
-      "preview": "失敗件数\\ \\ 今回の一括決済課金において失敗した決済の件数です。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.PaymentBulk.Batch.Card/properties/total_count/description",
-      "preview": "合計件数\\ \\ 今回の一括決済課金において発生した決済の合計件数です。 "
     },
     {
       "pointer": "/components/schemas/Acquirer/description",
@@ -1549,18 +1369,6 @@
     {
       "pointer": "/components/schemas/WebhookEvent.Invoice/properties/event/description",
       "preview": "Webhook通知 トリガーイベント  - `invoice.create`: インボイス 作成 - `invoice.update`: インボイス 更新 - `invoice.open`: インボイス 発行（請求実行） - `invoice.cancel`: インボイス キャンセル - `invoice.delete"
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChangeRequest/properties/shop_id/description",
-      "preview": "イベントが発生した変更申請が属するショップIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChangeRequest/properties/change_request_id/description",
-      "preview": "イベントが発生した変更申請IDです。\\ このIDとショップIDを指定して変更申請 取得APIを呼び出すことで、最新の変更申請情報を取得できます。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookEvent.ChangeRequest/properties/event/description",
-      "preview": "Webhook通知 トリガーイベント  - `change_requests.regist`: 変更申請 登録（変更申請が発生したとき） - `change_requests.update`: 変更申請 更新（変更申請のステータスが更新されたとき） "
     }
   ]
 }
