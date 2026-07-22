@@ -22,7 +22,7 @@ tag_names:
   プラン: 套餐
   サブスクリプション: 订阅
   一括決済: 批量支付
-  インボイス機能: 发票功能
+  インボイス機能: 账单功能
   売上入金: 销售款入账
   プラットフォーム利用料収入: 平台使用费收入
   チャージバック: 拒付
@@ -41,7 +41,7 @@ tag_group_names:
   リダイレクト型: 重定向式功能
   サブスクリプション機能: 订阅功能
   一括決済機能: 批量支付
-  インボイス機能: 发票功能
+  インボイス機能: 账单功能
   ショップの入金情報: 商户入账信息
   プラットフォーム管理: 平台管理
   ショップ管理: 商户管理
@@ -60,6 +60,7 @@ exact_strings:
   オーダーID（決済情報のID）: 订单 ID（支付信息 ID）
   プランID: 套餐 ID
   サブスクリプションID: 订阅 ID
+  インボイスID: 账单 ID
 
 strings:
   /info/title: fincode API 中文参考
@@ -1050,3 +1051,101 @@ strings:
   /paths/~1v1~1subscriptions~1{id}~1result/get/summary: 订阅结果列表查询
   /paths/~1v1~1subscriptions~1{id}~1result/get/description: 获取订阅产生的收费结果列表。可通过查询参数缩小获取范围。
   /paths/~1v1~1subscriptions~1{id}~1result/get/parameters/0/description: 查询订阅结果列表时使用的查询条件参数。
+  /paths/~1v1~1payments~1bulk/get/summary: 批量支付列表查询
+  /paths/~1v1~1payments~1bulk/get/description: 获取已登记到 fincode 的批量支付信息列表。
+  /paths/~1v1~1payments~1bulk/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取以指定租户商户为销售主体的批量支付信息列表。
+  /paths/~1v1~1payments~1bulk/get/parameters/1/description: 查询批量支付信息列表时使用的查询条件参数。
+  /paths/~1v1~1payments~1bulk/post/summary: 登记批量支付
+  /paths/~1v1~1payments~1bulk/post/description: 通过 JSON 格式文件向 fincode 登记批量支付信息，并预约在 `process_plan_date` 指定的时间执行批量支付。
+  /paths/~1v1~1payments~1bulk/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    批量登记以指定租户商户为销售主体的支付信息。
+  /paths/~1v1~1payments~1bulk~1{id}/get/summary: 批量支付明细列表查询
+  /paths/~1v1~1payments~1bulk~1{id}/get/description: 获取由 ID 指定的批量支付明细（每笔支付的信息），以及各笔支付发生的错误信息。
+  /paths/~1v1~1payments~1bulk~1{id}/get/parameters/0/description: |-
+    批量支付 ID。
+    指定需要获取明细的批量支付信息 ID。
+  /paths/~1v1~1payments~1bulk~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取以指定租户商户为销售主体的批量支付明细列表。
+  /paths/~1v1~1payments~1bulk~1{id}/get/parameters/2/description: 查询批量支付信息列表时使用的查询条件参数。
+  /paths/~1v1~1payments~1bulk~1{id}/delete/summary: 删除批量支付
+  /paths/~1v1~1payments~1bulk~1{id}/delete/description: |-
+    删除由 ID 指定的批量支付信息。
+    仅可删除批量支付处理已检查完毕（`status` 为 `CHECKED`）的记录。
+  /paths/~1v1~1payments~1bulk~1{id}/delete/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    删除以指定租户商户为销售主体的批量支付信息。
+  /paths/~1v1~1payments~1bulk~1{id}/delete/parameters/1/description: |-
+    批量支付 ID。
+    指定要删除的批量支付信息 ID。
+  /paths/~1v1~1invoices/get/summary: 账单列表查询
+  /paths/~1v1~1invoices/get/description: 获取账单信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1invoices/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取以指定租户商户为开具方的账单信息列表。
+  /paths/~1v1~1invoices/get/parameters/1/description: 搜索条件查询参数。
+  /paths/~1v1~1invoices/post/summary: 创建账单
+  /paths/~1v1~1invoices/post/description: |-
+    创建账单信息。
+    交易内容、使用的支付方式等输入项目也可以在创建后通过“更新账单”API 填写。
+    调用“发出账单”API 前不会开始收款。
+  /paths/~1v1~1invoices/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    创建以指定租户商户为开具方的账单信息。
+  /paths/~1v1~1invoices~1{id}/get/summary: 获取账单
+  /paths/~1v1~1invoices~1{id}/get/description: 获取具有指定 ID 的账单信息。
+  /paths/~1v1~1invoices~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    指定后可获取该租户商户的账单信息。
+  /paths/~1v1~1invoices~1{id}/put/summary: 更新账单
+  /paths/~1v1~1invoices~1{id}/put/description: |-
+    更新具有指定 ID 的账单信息。
+    调用“发出账单”API 前不会开始收款。发出后仅可更新难以回收标志和商户自定义字段。
+  /paths/~1v1~1invoices~1{id}/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    更新以指定租户商户为销售主体的账单信息。
+  /paths/~1v1~1invoices~1{id}/delete/summary: 删除账单
+  /paths/~1v1~1invoices~1{id}/delete/description: |-
+    删除具有指定 ID 且处于草稿状态的账单信息。
+    已发出的账单不可删除。
+  /paths/~1v1~1invoices~1{id}/delete/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    删除以指定租户商户为销售主体的账单信息。
+  /paths/~1v1~1invoices~1{id}~1open/put/summary: 发出账单
+  /paths/~1v1~1invoices~1{id}~1open/put/description: |-
+    根据 ID 指定的账单信息开始收款，包括生成账单 Web 页面 URL、向付款客户发送邮件等操作。
+    调用此 API 后，“更新账单”API 仅可更新难以回收标志和商户自定义字段。
+  /paths/~1v1~1invoices~1{id}~1open/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    对以指定租户商户为开具方的账单执行收款。
+  /paths/~1v1~1invoices~1{id}~1cancel/put/summary: 取消账单
+  /paths/~1v1~1invoices~1{id}~1cancel/put/description: |-
+    取消具有指定 ID 且已发出的账单信息。
+    取消表示撤回收款请求，已经取消的账单不可再次用于收款。
+  /paths/~1v1~1invoices~1{id}~1cancel/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    取消以指定租户商户为开具方的账单。
+  /paths/~1v1~1invoices~1{id}~1paid_externally/put/summary: 标记为外部付款
+  /paths/~1v1~1invoices~1{id}~1paid_externally/put/description: |-
+    将具有指定 ID 的已发出账单标记为通过 fincode 支付功能以外的方式完成付款。
+    该账单的状态将变为付款完成（`PAID`），外部付款标志（`is_paid_externally`）将变为 `true`。
+  /paths/~1v1~1invoices~1{id}~1paid_externally/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    更新以指定租户商户为开具方的账单。
+  /paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/summary: 重新分配账单虚拟账户
+  /paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/description: 如果分配给指定账单的虚拟账户已过期并关闭，则重新分配一个新的虚拟账户。
