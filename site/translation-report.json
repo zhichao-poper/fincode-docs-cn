@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2249,
+  "remainingJapaneseUnits": 2149,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -155,20 +155,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments/get/parameters/1/schema/oneOf/5/title",
@@ -183,20 +171,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments/get/responses/200/content/application~1json/schema/oneOf/5/title",
@@ -211,20 +187,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments/post/requestBody/content/application~1json/schema/oneOf/5/title",
@@ -239,20 +203,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments/post/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments/post/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments/post/responses/200/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments/post/responses/200/content/application~1json/schema/oneOf/5/title",
@@ -267,20 +219,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}/put/requestBody/content/application~1json/schema/oneOf/5/title",
@@ -295,20 +235,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}/put/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/put/responses/200/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}/put/responses/200/content/application~1json/schema/oneOf/5/title",
@@ -323,20 +251,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}/get/responses/200/content/application~1json/schema/oneOf/5/title",
@@ -351,52 +267,16 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/requestBody/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/requestBody/content/application~1json/schema/oneOf/3/title",
-      "preview": "PayPay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/responses/200/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1capture/put/responses/200/content/application~1json/schema/oneOf/3/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/requestBody/content/application~1json/schema/oneOf/5/title",
@@ -411,20 +291,8 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/responses/200/content/application~1json/schema/oneOf/3/title",
       "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/responses/200/content/application~1json/schema/oneOf/4/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1cancel/put/responses/200/content/application~1json/schema/oneOf/5/title",
@@ -439,28 +307,12 @@
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/responses/200/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1{id}~1auth/put/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Google Pay"
-    },
-    {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/requestBody/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/requestBody/content/application~1json/schema/oneOf/1/title",
-      "preview": "Google Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/requestBody/content/application~1json/schema/oneOf/2/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/requestBody/content/application~1json/schema/oneOf/3/title",
@@ -469,14 +321,6 @@
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/responses/200/content/application~1json/schema/oneOf/0/title",
       "preview": "カード決済"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/responses/200/content/application~1json/schema/oneOf/1/title",
-      "preview": "Google Pay"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1{id}~1change/put/responses/200/content/application~1json/schema/oneOf/2/title",
-      "preview": "PayPay"
     },
     {
       "pointer": "/paths/~1v1~1payments~1{id}~1change/put/responses/200/content/application~1json/schema/oneOf/3/title",
@@ -527,100 +371,12 @@
       "preview": "ショップID "
     },
     {
-      "pointer": "/paths/~1v1~1webhook_settings/post/summary",
-      "preview": "Webhook設定 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings/post/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings/post/description",
-      "preview": "Webhook設定を登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings/get/summary",
-      "preview": "Webhook設定 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings/get/description",
-      "preview": "Webhook設定を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定から一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/get/summary",
-      "preview": "Webhook設定 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/get/description",
-      "preview": "IDで指定したWebhook設定を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/get/parameters/0/description",
-      "preview": "Webhook設定のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/get/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/put/summary",
-      "preview": "Webhook設定 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/put/description",
-      "preview": "IDで指定したWebhook設定を更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/put/parameters/0/description",
-      "preview": "Webhook設定のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/put/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/delete/summary",
-      "preview": "Webhook設定 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/delete/description",
-      "preview": "IDで指定したWebhook設定を削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/delete/parameters/0/description",
-      "preview": "Webhook設定のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1webhook_settings~1{id}/delete/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を削除します。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-payment/post/summary",
-      "preview": "カード決済"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-payment/post/description",
-      "preview": "カード決済に関するイベント（`payments.card.*`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-card-payment/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-payment/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-applepay-payment/post/summary",
-      "preview": "Apple Pay"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-applepay-payment/post/description",
-      "preview": "Apple Payによる決済に関するイベント（`payments.applepay.*`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-applepay-payment/post/responses/200/description",
@@ -631,28 +387,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-googlepay-payment/post/summary",
-      "preview": "GooglePay"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-googlepay-payment/post/description",
-      "preview": "GooglePayに関するイベント（`payments.googlepay.*`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-googlepay-payment/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-googlepay-payment/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-konbini-payment/post/summary",
-      "preview": "コンビニ決済"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-konbini-payment/post/description",
-      "preview": "コンビニ決済に関するイベント（`payments.konbini.*`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-konbini-payment/post/responses/200/description",
@@ -663,28 +403,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-paypay-payment/post/summary",
-      "preview": "PayPay"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-paypay-payment/post/description",
-      "preview": "PayPayによる決済に関するイベント（`payments.paypay.*`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-paypay-payment/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-paypay-payment/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-payment/post/summary",
-      "preview": "口座振替"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-payment/post/description",
-      "preview": "口座振替に関するイベント（`payments.directdebit.*`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-directdebit-payment/post/responses/200/description",
@@ -695,28 +419,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-virtualaccount-payment/post/summary",
-      "preview": "銀行振込（バーチャル口座）"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-virtualaccount-payment/post/description",
-      "preview": "銀行振込（バーチャル口座）による決済に関するイベント（`payments.virtualaccount.*`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-virtualaccount-payment/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-virtualaccount-payment/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-customer-payment_method/post/summary",
-      "preview": "決済手段"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-customer-payment_method/post/description",
-      "preview": "顧客の決済手段に関するイベント（`customers.payment_methods.*`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-customer-payment_method/post/requestBody/content/application~1json/schema/oneOf/0/title",
@@ -739,28 +447,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-card/post/summary",
-      "preview": "カード"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card/post/description",
-      "preview": "カードに関するイベント（`card.*`）で通知されるリクエストのボディの仕様です。   カード更新機能（洗替）のイベント（`card.updater.complete`）はこちらではなく、`card.updater.complete`イベントの仕様である[カード：カード更新機能（洗替）](%7Byour-endpoi"
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-card/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-updater-complete/post/summary",
-      "preview": "カード：カード更新機能（洗替）  "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-updater-complete/post/description",
-      "preview": "カード更新機能（洗替）のイベント（`card.updater.complete`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-updater-complete/post/responses/200/description",
@@ -771,28 +463,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-card-subscription/post/summary",
-      "preview": "サブスクリプション（カード決済）"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-subscription/post/description",
-      "preview": "カード決済によるサブスクリプションに関するイベント（`subscription.card.*`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-card-subscription/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-subscription/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-subscription/post/summary",
-      "preview": "サブスクリプション（口座振替）"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-subscription/post/description",
-      "preview": "口座振替によるサブスクリプションに関するイベント（`subscription.directdebit.*`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-directdebit-subscription/post/responses/200/description",
@@ -803,28 +479,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-card-recurring-batch/post/summary",
-      "preview": "サブスクリプション課金（カード決済）"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-recurring-batch/post/description",
-      "preview": "カード決済によるサブスクリプション課金のイベント（`recurring.card.batch`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-card-recurring-batch/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-recurring-batch/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-recurring-batch/post/summary",
-      "preview": "サブスクリプション課金（口座振替）"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-directdebit-recurring-batch/post/description",
-      "preview": "口座振替によるサブスクリプション課金に関するイベント（`recurring.directdebit.batch`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-directdebit-recurring-batch/post/responses/200/description",
@@ -835,28 +495,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-regist/post/summary",
-      "preview": "一括決済"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-regist/post/description",
-      "preview": "一括決済 登録イベント（`payments.bulk.*.regist`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-regist/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-regist/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-batch/post/summary",
-      "preview": "一括決済課金"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-batch/post/description",
-      "preview": "一括決済 課金イベント（`payments.bulk.*.batch`）で通知されるリクエストのボディの仕様です。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-card-payment-bulk-batch/post/responses/200/description",
@@ -867,28 +511,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-contract/post/summary",
-      "preview": "決済手段 契約状況"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-contract/post/description",
-      "preview": "決済手段 契約状況 更新イベント（`contracts.status_code.updated`）で通知されるリクエストのボディの仕様です。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-contract/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-contract/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-invoice/post/summary",
-      "preview": "インボイス"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-invoice/post/description",
-      "preview": "インボイスに関するイベント（`invoice.*`）で通知されるリクエストのボディの仕様です。\\ 通知されるボディにはインボイスIDのみが含まれます。インボイスの詳細情報が必要な場合は、インボイスIDを指定してインボイス 取得APIを呼び出してください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-invoice/post/responses/200/description",
@@ -899,28 +527,12 @@
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
     },
     {
-      "pointer": "/paths/~1your-endpoint-on-chargeback/post/summary",
-      "preview": "チャージバック"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-chargeback/post/description",
-      "preview": "チャージバックに関するイベント（`charge_backs.*`）で通知されるリクエストのボディの仕様です。\\ 通知されるボディにはチャージバックID・ショップID・ステータスのみが含まれます。チャージバックの詳細情報が必要な場合は、チャージバックIDを指定してチャージバック 取得APIを呼び出してください。 "
-    },
-    {
       "pointer": "/paths/~1your-endpoint-on-chargeback/post/responses/200/description",
       "preview": "fincodeに正常にWebhookを受信した旨をレスポンスしてください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-chargeback/post/responses/400/description",
       "preview": "4xx系、5xx系または上記以外のレスポンスを返却した場合、fincodeはエラーと判断しWebhook通知のリトライを行います。 "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-change-request/post/summary",
-      "preview": "変更申請"
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-change-request/post/description",
-      "preview": "変更申請に関するイベント（`change_requests.*`）で通知されるリクエストのボディの仕様です。\\ 通知されるボディには変更申請ID・ショップIDのみが含まれます。変更申請の詳細情報が必要な場合は、変更申請IDとショップIDを指定して変更申請 取得APIを呼び出してください。 "
     },
     {
       "pointer": "/paths/~1your-endpoint-on-change-request/post/responses/200/description",
@@ -6379,10 +5991,6 @@
       "preview": "連絡日　検索期間終端   yyyy/MM/dd形式   "
     },
     {
-      "pointer": "/components/schemas/ShopChargeBackListItem/properties/id/description",
-      "preview": "ID   "
-    },
-    {
       "pointer": "/components/schemas/ShopChargeBackListItem/properties/shop_id/description",
       "preview": "ショップID   "
     },
@@ -7453,14 +7061,6 @@
     {
       "pointer": "/components/schemas/Examination/properties/installments_payment_available/description",
       "preview": "分割払い利用可否  - `true`: 利用可 - `false`: 利用不可 "
-    },
-    {
-      "pointer": "/components/schemas/Examination/properties/mcc_1/description",
-      "preview": "MCC 1 "
-    },
-    {
-      "pointer": "/components/schemas/Examination/properties/mcc_2/description",
-      "preview": "MCC 2 "
     },
     {
       "pointer": "/components/schemas/Examination/properties/paypay_mid/description",
