@@ -14833,80 +14833,48 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の振込待ち
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者转账
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认销售
 
-            - `CANCELED`: キャンセル
+            - `CANCELED`：已取消
 
-            - `EXPIRED`: 決済の期限切れ
-
-            '
+            - `EXPIRED`：已过期'
         billing_total_amount_min:
           type: string
           minLength: 1
           maxLength: 10
-          description: '振込依頼金額 合計（始値）\
-
-            振込依頼金額 合計（`billing_total_amount`）を対象に範囲検索を行います。この値以上の合計 振込依頼金額を持つ決済情報を取得します。
-
-            '
+          description: 要求转账总金额的下限；仅返回 `billing_total_amount` 不低于该值的支付。
         billing_total_amount_max:
           type: string
           minLength: 1
           maxLength: 10
-          description: '振込依頼金額 合計（終値）\
-
-            振込依頼金額 合計（`billing_total_amount`）を対象に範囲検索を行います。この値以下の合計 振込依頼金額を持つ決済情報を取得します。
-
-            '
+          description: 要求转账总金额的上限；仅返回 `billing_total_amount` 不高于该值的支付。
         payment_term_from:
           type: string
-          description: '支払い期限（始値）\
+          description: '支付截止日期范围的起始日期；仅返回截止日期不早于该日期的支付。
 
-            支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以降に支払い期限が到来する決済情報を取得します。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         payment_term_to:
           type: string
-          description: '支払い期限（終値）\
+          description: '支付截止日期范围的结束日期；仅返回截止日期不晚于该日期的支付。
 
-            支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以前に支払い期限が到来する決済情報を取得します。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         transaction_date_from:
           type: string
-          description: '取引日（始値）\
+          description: '转账交易日期范围的起始日期；仅返回转账日期不早于该日期的支付。
 
-            \
-
-            取引日（`transaction_date`）を対象に範囲検索を行います。この日付以降に振込が行われた決済情報を取得します。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         transaction_date_to:
           type: string
-          description: '取引日（終値）\
+          description: '转账交易日期范围的结束日期；仅返回转账日期不晚于该日期的支付。
 
-            \
-
-            取引日（`transaction_date`）を対象に範囲検索を行います。この日付以前に振込が行われた決済情報を取得します。\
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         updated_from:
           type: string
           description: '更新日期（起始值）。
@@ -14928,31 +14896,19 @@ components:
           enum:
           - '0'
           - '1'
-          description: '多重支払フラグ\
-
-            同一のバーチャル口座に対して複数回支払いが行われた決済を検索する場合`1`を指定します。
-
-            '
+          description: 搜索向同一虚拟账户发生多次付款的支付时指定 `1`。
         cancel_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: 'キャンセル後支払フラグ\
-
-            キャンセルされた決済に対して支払いが行われた決済を検索する場合`1`を指定します。
-
-            '
+          description: 搜索在取消后仍发生付款的支付时指定 `1`。
         expire_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: '期限切れ後支払フラグ\
-
-            期限切れになった決済に対して支払いが行われた決済を検索する場合`1`を指定します。
-
-            '
+          description: 搜索在过期后仍发生付款的支付时指定 `1`。
         amount_pattern:
           type: string
           enum:
@@ -14963,59 +14919,35 @@ components:
           - '4'
           - '5'
           - '6'
-          description: '利用金額パターン
+          description: '要求转账总金额与实际使用总金额的关系。
 
 
-            - `null`: 全件取得
+            - `null`：返回全部
 
-            - `1`: 振込依頼金額 合計 = 利用金額 合計 である決済を取得
+            - `1`：要求转账总金额 = 实际使用总金额
 
-            - `2`: 振込依頼金額 合計 != 利用金額 合計 である決済を取得
+            - `2`：要求转账总金额 != 实际使用总金额
 
-            - `3`: 振込依頼金額 合計 < 利用金額 合計 である決済を取得
+            - `3`：要求转账总金额 < 实际使用总金额
 
-            - `4`: 振込依頼金額 合計 <= 利用金額 合計 である決済を取得
+            - `4`：要求转账总金额 <= 实际使用总金额
 
-            - `5`: 振込依頼金額 合計 > 利用金額 合計 である決済を取得
+            - `5`：要求转账总金额 > 实际使用总金额
 
-            - `6`: 振込依頼金額 合計 >= 利用金額 合計 である決済を取得
-
-            '
+            - `6`：要求转账总金额 >= 实际使用总金额'
         bulk_payment_id:
           type: string
-          description: '一括決済ID\
-
-            指定した一括決済IDに紐づく決済情報を取得します。
-
-            '
+          description: 仅返回与指定批量支付 ID 关联的支付。
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `payment_term`: 支払い期限
-
-            - `payment_date`: 支払い日時
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`payment_term`、`payment_date`、`created`、`updated`。'
     Shop_properties-id:
       type: string
       minLength: 13
@@ -21935,16 +21867,12 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/SubscriptionPayType'
-          description: '決済種別\
-
-            一覧で取得する対象の決済種別を指定します。
+          description: '要返回的支付类型。
 
 
-            - `Card`: カード
+            - `Card`：银行卡
 
-            - `Directdebit`: 口座振替
-
-            '
+            - `Directdebit`：银行账户自动扣款'
         id:
           allOf:
           - $ref: '#/components/schemas/Subscription_properties-id'
@@ -21957,155 +21885,77 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/SubscriptionStatus'
-          description: 'ステータス\
-
-            指定したステータスのサブスクリプション情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '订阅状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `ACTIVE`: サブスクリプションが有効
+            - `ACTIVE`：订阅有效
 
-            - `RUNNING`: 課金処理中
+            - `RUNNING`：正在执行扣款
 
-            - `CANCELED`: 解約済み
+            - `CANCELED`：已解约
 
-            - `INCOMPLETE`: サブスクリプションの登録時点で何らかの理由により失敗
-
-            '
+            - `INCOMPLETE`：订阅登记时因某种原因失败'
         total_amount_min:
           allOf:
           - $ref: '#/components/schemas/total_amount'
-          description: '合計金額（始値）\
-
-            利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以上の合計金額を持つサブスクリプション情報を取得します。
-
-            '
+          description: 订阅合计金额（`total_amount`）下限。
         total_amount_max:
           allOf:
           - $ref: '#/components/schemas/total_amount'
-          description: '合計金額（終値）\
-
-            利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以下の合計金額を持つサブスクリプション情報を取得します。
-
-            '
+          description: 订阅合计金额（`total_amount`）上限。
         interval_pattern:
           allOf:
           - $ref: '#/components/schemas/properties-interval_pattern'
         start_date_from:
           type: string
-          description: '課金開始日（始値）\
+          description: '扣款开始日期范围的起始日期。
 
-            課金開始日（`start_date`）を対象に範囲検索を行います。この日付以降に課金開始されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         start_date_to:
           type: string
-          description: '課金開始日（終値）\
+          description: '扣款开始日期范围的结束日期。
 
-            課金開始日（`start_date`）を対象に範囲検索を行います。この日付以前に課金開始されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         stop_date_from:
           type: string
-          description: '課金停止日（始値）\
+          description: '扣款停止日期范围的起始日期。
 
-            課金停止日（`stop_date`）を対象に範囲検索を行います。この日付以降に課金停止されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         stop_date_to:
           type: string
-          description: '課金停止日（終値）\
+          description: '扣款停止日期范围的结束日期。
 
-            課金停止日（`stop_date`）を対象に範囲検索を行います。この日付以前に課金停止されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         next_charge_date_from:
           type: string
-          description: '次回課金日（始値）\
+          description: '下次扣款日期范围的起始日期。
 
-            次回課金日（`next_charge_date`）を対象に範囲検索を行います。この日付以降に次回課金されるサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         next_charge_date_to:
           type: string
-          description: '次回課金日（終値）\
+          description: '下次扣款日期范围的结束日期。
 
-            次回課金日（`next_charge_date`）を対象に範囲検索を行います。この日付以前に次回課金されるサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         update_date_from:
           type: string
-          description: '更新日時（始値）\
+          description: '更新时间范围的起始日期。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         update_date_to:
           type: string
-          description: '更新日時（終値）\
+          description: '更新时间范围的结束日期。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新されたサブスクリプション情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `plan_id`: プランID
-
-            - `total_amount`: 合計金額
-
-            - `start_date`: 課金開始日
-
-            - `stop_date`: 課金停止日
-
-            - `next_charge_date`: 次回課金日
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`plan_id`、`total_amount`、`start_date`、`stop_date`、`next_charge_date`、`created`、`updated`。'
       required:
       - pay_type
     properties-amount:
@@ -28190,62 +28040,121 @@ components:
       properties:
         limit:
           type: number
-          description: "取得件数  \n"
+          description: 获取数量。
         page:
           type: number
-          description: "ページ  \n"
+          description: 页码。
         count_only:
           type: boolean
-          description: "総件数のみフラグ  \n"
+          description: 是否仅返回总数量。
         sort:
           type: string
-          description: "ソート  \n\n- `id`: チャージバック受付ID\n- `opened_to_shop_date`: 連絡日\n"
+          description: '排序字段。
+
+
+            - `id`：拒付受理 ID
+
+            - `opened_to_shop_date`：通知日期'
         order_id:
           type: string
           minLength: 1
           maxLength: 30
-          description: "オーダーID  \n"
+          description: 订单 ID。
         amount:
           type: number
           minimum: 1
           maximum: 9999999999
-          description: "決済金額  \n"
+          description: 支付金额。
         request:
           type: string
-          description: "依頼内容  \n複数指定可能  \nカンマ区切りで複数の申出内容を指定可能です。  \n\n- `1`: 配送保留\t\n- `2`: 配送停止\t\n- `11`: 利用覚えなし\t\n- `12`:\
-            \ サービス未提供\t\n- `13`: サービス不履行\t\n- `14`: 商品未着\t\n- `15`: 商品相違\t\n- `16`: 金額相違\t\n- `17`: 商品瑕疵\t\n- `18`: キャンセル漏れ\t\
-            \n- `19`: 解約方法確認\t\n- `20`: 代行解約希望\t\n- `21`: 問合先確認\t\n- `22`: 取引内容確認\t\n"
+          description: '申诉内容，可使用半角逗号分隔指定多个值。
+
+
+            - `1`：暂缓配送
+
+            - `2`：停止配送
+
+            - `11`：不记得使用过
+
+            - `12`：未提供服务
+
+            - `13`：未履行服务
+
+            - `14`：未收到商品
+
+            - `15`：商品不符
+
+            - `16`：金额不符
+
+            - `17`：商品存在瑕疵
+
+            - `18`：遗漏取消
+
+            - `19`：确认解约方法
+
+            - `20`：希望代为解约
+
+            - `21`：确认咨询窗口
+
+            - `22`：确认交易内容'
         status_code:
           type: string
-          description: "チャージバックステータス  \nカンマ区切りで複数のステータスを指定可能です。  \n\n- `4005`: 要対応\n- `4006, 4007, 4011`: 回答済み\t\n- `4009`:\
-            \ 精算済み\t\n"
+          description: '拒付状态，可使用半角逗号分隔指定多个值。
+
+
+            - `4005`：需要处理
+
+            - `4006`、`4007`、`4011`：已答复
+
+            - `4009`：已结算'
         category:
           type: string
-          description: "カテゴリ  \nカンマ区切りで複数のカテゴリを指定可能です。  \n\n- `0`: 不正利用懸念\n- `1`: 調査依頼\n- `2`: 不正利用確定\n"
+          description: '拒付类别，可使用半角逗号分隔指定多个值。
+
+
+            - `0`：疑似欺诈使用
+
+            - `1`：调查请求
+
+            - `2`：确认欺诈使用'
         canceled:
           type: boolean
-          description: "チャージバック取消  \n※この検索条件はstatus_codeに4009（精算済み）を指定した場合のみ有効です。\nそれ以外のステータスが指定されている場合、本パラメータは無視されます。\n\n\
-            - `null`: 取消・取消以外の両方を取得\n- `true`: 取消のみ  \n- `false`: 取消以外  \n"
+          description: '拒付取消状态。仅当 `status_code` 指定 `4009`（已结算）时有效，其他状态下本参数会被忽略。
+
+
+            - `null`：同时返回已取消和未取消记录
+
+            - `true`：仅返回已取消记录
+
+            - `false`：仅返回未取消记录'
         process_date_since:
           type: string
           minLength: 10
           maxLength: 10
-          description: "作成日　検索期間始端  \nyyyy/MM/dd形式  \n"
+          description: '创建日期筛选的起始日期。
+
+            格式：`yyyy/MM/dd`'
         process_date_until:
           type: string
           minLength: 10
           maxLength: 10
-          description: "作成日　検索期間終端  \nyyyy/MM/dd形式  \n"
+          description: '创建日期筛选的结束日期。
+
+            格式：`yyyy/MM/dd`'
         opened_to_shop_date_since:
           type: string
           minLength: 10
           maxLength: 10
-          description: "連絡日　検索期間始端  \nyyyy/MM/dd形式  \n"
+          description: '通知日期筛选的起始日期。
+
+            格式：`yyyy/MM/dd`'
         opened_to_shop_date_until:
           type: string
           minLength: 10
           maxLength: 10
-          description: "連絡日　検索期間終端  \nyyyy/MM/dd形式  \n"
+          description: '通知日期筛选的结束日期。
+
+            格式：`yyyy/MM/dd`'
     ShopChargeBackListItem:
       type: object
       properties:
@@ -28327,93 +28236,63 @@ components:
         contact_tel:
           type: string
           nullable: true
-          description: '連絡先電話番号
-
-            '
+          description: 联系电话号码。
         business_hours:
           type: string
           nullable: true
-          description: '営業時間
-
-            '
+          description: 营业时间。
         delivered:
           type: boolean
           nullable: true
-          description: '商品を発送・提供済みか
-
-            '
+          description: 是否已发货或提供商品/服务。
         delivery_provider:
           type: string
           nullable: true
-          description: '配送業者
-
-            '
+          description: 配送服务商。
         receipt_number:
           type: string
           nullable: true
-          description: '送り状番号
-
-            '
+          description: 物流单号。
         orderer_name:
           type: string
           nullable: true
-          description: '注文者氏名
-
-            '
+          description: 订购人姓名。
         orderer_address:
           type: string
           nullable: true
-          description: '注文者住所
-
-            '
+          description: 订购人地址。
         orderer_tel:
           type: string
           nullable: true
-          description: '注文者電話番号
-
-            '
+          description: 订购人电话号码。
         orderer_mail:
           type: string
           nullable: true
-          description: '注文者メールアドレス
-
-            '
+          description: 订购人电子邮箱地址。
         receiver_name:
           type: string
           nullable: true
-          description: '受取者氏名
-
-            '
+          description: 收件人姓名。
         receiver_address:
           type: string
           nullable: true
-          description: '受取者住所
-
-            '
+          description: 收件人地址。
         receiver_tel:
           type: string
           nullable: true
-          description: '受取者電話番号
-
-            '
+          description: 收件人电话号码。
         provides_product:
           type: boolean
           nullable: true
-          description: '商品・サービスを提供したか
-
-            '
+          description: 是否已提供商品或服务。
         product_detail:
           type: string
           nullable: true
-          description: '商品・サービスの詳細
-
-            '
+          description: 商品或服务的详细信息。
         memo:
           type: string
           nullable: true
-          description: 'メモ
-
-            '
+          description: 备注。
     ExaminationFileType:
       type: string
       enum:
@@ -29362,19 +29241,11 @@ components:
           minLength: 24
           maxLength: 24
           example: u_**********************
-          description: 'ユーザーID
-
-            '
+          description: 用户 ID。
         default_shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'デフォルトショップID\
-
-            \
-
-            このユーザーがログインした際、どのショップにログインするかを示すID
-
-            '
+          description: 用户登录时默认进入的商户 ID。
         role_id:
           allOf:
           - $ref: '#/components/schemas/Role_properties-id'
@@ -29383,137 +29254,107 @@ components:
           minLength: 1
           maxLength: 384
           example: Epsilon Taro
-          description: 'ユーザー名
-
-            '
+          description: 用户名称。
         email:
           type: string
           minLength: 1
           maxLength: 384
           example: new-fincode-user@example.com
-          description: 'メールアドレス
-
-            '
+          description: 电子邮箱地址。
         type:
           type: string
           enum:
           - '01'
           example: '01'
-          description: 'ユーザー種別
+          description: '用户类型。
 
 
-            - `01`: ショップユーザー
-
-            '
+            - `01`：商户用户'
         two_factor_auth_status:
           type: string
           enum:
           - '00'
           - '01'
           example: '00'
-          description: '二要素認証ステータス
+          description: '双重认证状态。
 
 
-            - `00`: 未設定\
+            - `00`：未设置
 
-            - `01`: 設定済み
-
-            '
+            - `01`：已设置'
         mail_auth_status:
           type: string
           enum:
           - '00'
           - '01'
           example: '00'
-          description: 'メールアドレス認証ステータス
+          description: '电子邮箱认证状态。
 
 
-            - `00`: 未設定\
+            - `00`：未认证
 
-            - `01`: 設定済み
-
-            '
+            - `01`：已认证'
         password_lock_status:
           type: string
           enum:
           - '00'
           - '01'
           example: '00'
-          description: 'パスワードロックステータス
+          description: '密码锁定状态。
 
 
-            - `00`: ロックされていない\
+            - `00`：未锁定
 
-            - `01`: ロック中
-
-            '
+            - `01`：已锁定'
         last_login_date:
           type: string
           nullable: true
           example: null
-          description: '最終ログイン日時\
+          description: '最后登录时间。
 
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         login_failure_date:
           type: string
           nullable: true
           example: null
-          description: 'ログイン失敗日時\
+          description: '登录失败时间。
 
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         login_failure_times:
           type: integer
           example: 0
-          description: 'ログイン失敗回数
-
-            '
+          description: 登录失败次数。
         password_expire:
           type: string
           nullable: true
           example: 2022/05/16 12.34.56.789
-          description: 'パスワード有効期限\
+          description: '密码有效期。
 
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         account_status:
           type: string
           enum:
           - '00'
           - '01'
           example: '00'
-          description: 'アカウントステータス
+          description: '账户状态。
 
 
-            - `00`: 有効
+            - `00`：有效
 
-            - `01`: 無効
-
-            '
+            - `01`：无效'
         invite_status:
           type: string
           enum:
           - '01'
           - '02'
           example: '02'
-          description: '招待ステータス
+          description: '邀请状态。
 
 
-            - `01`: 招待中
+            - `01`：邀请中
 
-            - `02`: 参加済み
-
-            '
+            - `02`：已加入'
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -32445,14 +32286,12 @@ components:
           type: boolean
           nullable: true
           example: true
-          description: '事業形態
+          description: '经营主体类型。
 
 
-            - `true`: 法人
+            - `true`：法人企业
 
-            - `false`: 個人事業主
-
-            '
+            - `false`：个体经营者'
         corporate_number:
           allOf:
           - $ref: '#/components/schemas/corporate_number'
@@ -32681,36 +32520,24 @@ components:
           type: boolean
           nullable: true
           example: false
-          description: 'その他の箇所での利用有無\
-
-            \
-
-            Webアプリケーションやネイティブアプリ上でない箇所で利用があるかどうか
+          description: '是否在 Web 应用或原生应用之外的场景使用 fincode。
 
 
-            - `true`: Webアプリ／ネイティブアプリでない箇所でfincodeを使用する
-
-            '
+            - `true`：在 Web 应用或原生应用之外使用 fincode'
         site_existing:
           type: number
           enum:
           - 0
           - 1
           - 2
-          description: 'Webサイトの公開状況\
-
-            \
-
-            fincode審査時点で決済機能を提供するWebサイトが閲覧可能かどうかを示します。
+          description: '网站公开状态，表示 fincode 审核时能否访问提供支付功能的网站。
 
 
-            - `0`: fincode審査チームがサイトを閲覧可能
+            - `0`：审核团队可以访问
 
-            - `1`: fincode審査チームがサイトを閲覧不可能（ただし準備中）
+            - `1`：审核团队暂时无法访问，网站仍在准备中
 
-            - `2`: fincode審査チームがサイトを閲覧不可能
-
-            '
+            - `2`：审核团队无法访问'
         url:
           allOf:
           - $ref: '#/components/schemas/url'
@@ -32736,9 +32563,7 @@ components:
           minLength: 1
           maxLength: 300
           nullable: true
-          description: '販売者業者名
-
-            '
+          description: 销售方企业名称。
         shop_sales_manager_name:
           allOf:
           - $ref: '#/components/schemas/shop_sales_manager_name'
@@ -32752,81 +32577,55 @@ components:
           minLength: 1
           maxLength: 15
           nullable: true
-          description: '問い合わせ先電話番号\
-
-            \
-
-            購入者が問い合わせる窓口となる電話番号
-
-            '
+          description: 面向购买者的咨询电话号码。
         shop_support_mail:
           type: string
           minLength: 1
           maxLength: 254
           nullable: true
-          description: '問い合わせ先メールアドレス\
-
-            \
-
-            購入者が問い合わせる窓口となるメールアドレス
-
-            '
+          description: 面向购买者的咨询电子邮箱地址。
         shop_post_code:
           type: string
           minLength: 1
           maxLength: 8
           nullable: true
-          description: 'ショップ住所 郵便番号
-
-            '
+          description: 商户地址的邮政编码。
         shop_prefecture:
           type: string
           minLength: 1
           maxLength: 4
           nullable: true
-          description: 'ショップ住所 都道府県
-
-            '
+          description: 商户地址的都道府县。
         shop_address_municipality:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
-          description: 'ショップ住所 市区町村
-
-            '
+          description: 商户地址的市区町村。
         shop_address_section:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
-          description: 'ショップ住所 町域
-
-            '
+          description: 商户地址的町域。
         shop_address_chrome:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
-          description: 'ショップ住所 番地
-
-            '
+          description: 商户地址的门牌号。
         shop_address_building_name:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
-          description: 'ショップ住所 建物名等
-
-            '
+          description: 商户地址的建筑物名称等信息。
         shop_address_building_name_kana:
           type: string
           minLength: 1
           maxLength: 100
           nullable: true
-          description: 'ショップ住所 建物名等（カナ）
-
-            '
+          description: 商户地址的建筑物名称等信息（片假名）。
         shop_payment_method:
           allOf:
           - $ref: '#/components/schemas/shop_how_to_pay'
@@ -32882,9 +32681,7 @@ components:
           minLength: 1
           maxLength: 10
           nullable: true
-          description: '取扱商材カテゴリID
-
-            '
+          description: 经营商品或服务的类别 ID。
         content_description:
           allOf:
           - $ref: '#/components/schemas/content_description'
