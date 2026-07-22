@@ -1603,14 +1603,12 @@ paths:
       operationId: createCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 登録
-      description: '`customer_id`で指定した顧客に対し、決済手段を登録します。
-
-        '
+      summary: 登记支付方式
+      description: 为 `customer_id` 指定的客户登记支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
@@ -1620,13 +1618,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。
-
-          '
+          为与该租户商户关联的客户中，由 ID 指定的客户登记支付方式。'
       requestBody:
         content:
           application/json:
@@ -1733,14 +1729,12 @@ paths:
       operationId: retrieveCustomerPaymentMethodList
       tags:
       - 支付方式
-      summary: 決済手段 一覧取得
-      description: '`customer_id`で指定した顧客に対し紐づく決済手段を一覧で取得します。
-
-        '
+      summary: 获取支付方式列表
+      description: 获取与 `customer_id` 指定的客户关联的支付方式列表。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
@@ -1751,22 +1745,18 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerPaymentMethod.ListRetrieving.QueryParams'
-        description: '決済手段の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 获取支付方式列表时使用的查询条件参数。
       - in: header
         name: Tenant-Shop-Id
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。
-
-          '
+          获取与该租户商户关联的指定客户所拥有的支付方式列表。'
       responses:
         '200':
           description: 请求成功
@@ -1835,25 +1825,21 @@ paths:
       operationId: retrieveCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 取得
-      description: '`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを取得します。
-
-        '
+      summary: 获取支付方式
+      description: 从与 `customer_id` 指定的客户关联的支付方式中，获取由 `id` 指定的支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
         required: true
       - name: id
         in: path
-        description: '決済手段ID\
+        description: '支付方式 ID。
 
-          <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-          '
+          <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>'
         schema:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodId_schema'
@@ -1868,22 +1854,18 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。
-
-          '
+          从与该租户商户关联的指定客户所拥有的支付方式中，获取由 ID 指定的支付方式。'
       - name: クエリ
         in: query
         required: true
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerPaymentMethod.Retrieving.QueryParams'
-        description: '決済手段の取得において検索条件となるクエリパラメータ
-
-          '
+        description: 获取支付方式时使用的查询条件参数。
       responses:
         '200':
           description: 请求成功
@@ -1956,25 +1938,21 @@ paths:
       operationId: deleteCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 削除
-      description: '`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを削除します。
-
-        '
+      summary: 删除支付方式
+      description: 从与 `customer_id` 指定的客户关联的支付方式中，删除由 `id` 指定的支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
         required: true
       - name: id
         in: path
-        description: '決済手段ID\
+        description: '支付方式 ID。
 
-          <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-          '
+          <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>'
         schema:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodId_schema'
@@ -1989,25 +1967,22 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。
-
-          '
+          从与该租户商户关联的指定客户所拥有的支付方式中，删除由 ID 指定的支付方式。'
       - in: query
         name: pay_type
         required: true
-        description: '決済種別
+        description: '支付类型：
 
-          - `Card` - カード
 
-          - `Directdebit` - 口座振替
+          - `Card`：卡片
 
-          - `Virtualaccount` - 銀行振込（バーチャル口座）
+          - `Directdebit`：银行账户自动扣款
 
-          '
+          - `Virtualaccount`：银行转账（虚拟账户）'
         schema:
           type: string
           minLength: 1
@@ -2084,25 +2059,21 @@ paths:
       operationId: updateCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 更新
-      description: '`customer_id`で指定した顧客に対し紐づく決済手段のうち、`id`で指定したものを更新します。
-
-        '
+      summary: 更新支付方式
+      description: 从与 `customer_id` 指定的客户关联的支付方式中，更新由 `id` 指定的支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
         required: true
       - name: id
         in: path
-        description: '決済手段ID\
+        description: '支付方式 ID。
 
-          <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-          '
+          <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>'
         schema:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodId_schema'
@@ -2117,13 +2088,13 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。
+          从与该租户商户关联的指定客户所拥有的支付方式中，更新由 ID 指定的支付方式。
 
-          '
+          <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“更新”翻译。</span>'
       requestBody:
         content:
           application/json:
@@ -2544,25 +2515,19 @@ paths:
       operationId: reactivateCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 再有効化
-      description: '`customer_id`で指定した顧客に対し紐づくバーチャル口座決済手段のうち、`id`で指定したものを再有効化します。
-
-        '
+      summary: 重新启用支付方式
+      description: 从与 `customer_id` 指定的客户关联的虚拟账户支付方式中，重新启用由 `id` 指定的支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
         required: true
       - name: id
         in: path
-        description: '決済手段ID\
-
-          <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-          '
+        description: 支付方式 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodId_schema'
@@ -2572,13 +2537,13 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。
+          从与该租户商户关联的指定客户所拥有的支付方式中，重新启用由 ID 指定的虚拟账户支付方式。
 
-          '
+          <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“重新启用”翻译。</span>'
       requestBody:
         content:
           application/json:
@@ -2670,25 +2635,19 @@ paths:
       operationId: inactivateCustomerPaymentMethod
       tags:
       - 支付方式
-      summary: 決済手段 停止
-      description: '`customer_id`で指定した顧客に対し紐づくバーチャル口座決済手段のうち、`id`で指定したものを停止します。
-
-        '
+      summary: 停用支付方式
+      description: 从与 `customer_id` 指定的客户关联的虚拟账户支付方式中，停用由 `id` 指定的支付方式。
       parameters:
       - name: customer_id
         in: path
-        description: 顧客ID
+        description: 客户 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
         required: true
       - name: id
         in: path
-        description: '決済手段ID\
-
-          <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-          '
+        description: 支付方式 ID。
         schema:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodId_schema'
@@ -2698,13 +2657,13 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。
+          从与该租户商户关联的指定客户所拥有的支付方式中，停用由 ID 指定的虚拟账户支付方式。
 
-          '
+          <span class="smallText">译注：官方日文原文此处写作“删除”，结合本接口用途按“停用”翻译。</span>'
       requestBody:
         content:
           application/json:
@@ -12149,25 +12108,21 @@ components:
       - Directdebit
       - Virtualaccount
       example: Card
-      description: '決済種別（決済手段APIに対応しているもの）
+      description: '支付类型（支付方式 API 支持的类型）。
 
 
-        - `Card`: カード
+        - `Card`：卡片
 
-        - `Directdebit`: 口座振替
+        - `Directdebit`：银行账户自动扣款
 
-        - `Virtualaccount`: 銀行振込（バーチャル口座）
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
     CustomerPaymentMethod.ListRetrieving.QueryParams:
       type: object
       properties:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodPayType'
-          description: '決済種別
-
-            '
+          description: 支付类型。
       required:
       - pay_type
     PaymentMethod_properties-id:
@@ -12175,18 +12130,14 @@ components:
       example: pm_**********************
       minLength: 25
       maxLength: 25
-      description: '決済手段ID\
+      description: '支付方式 ID。
 
-        <span class="smallText">※ `pay_type = Card`（カード）の場合は `cs_` から始まるIDになります。</span>
-
-        '
+        <span class="smallText">当 `pay_type = Card`（卡片）时，ID 以 `cs_` 开头。</span>'
     properties-customer_id:
       type: string
       example: c_********************
       maxLength: 60
-      description: 'この決済手段が紐づく顧客のID
-
-        '
+      description: 与该支付方式关联的客户 ID。
     PaymentMethodStatus:
       type: string
       enum:
@@ -12195,26 +12146,22 @@ components:
       - ACTIVATED
       - FAILED
       example: ACTIVATED
-      description: '決済手段のステータス
+      description: '支付方式状态。
 
 
-        - `INACTIVATED`: 有効化前<br /><span class="smallText">まだこの決済手段は決済に使用できません。</span>
+        - `INACTIVATED`：尚未启用。<br /><span class="smallText">该支付方式目前不可用于支付。</span>
 
-        - `AWAITING_CUSTOMER_ACTION`: 顧客のアクション待ち<br /><span class="smallText">この決済手段は登録のための購入者の承認がされていない状態です。まだこの決済手段は決済に使用できません。</span>
+        - `AWAITING_CUSTOMER_ACTION`：等待客户操作。<br /><span class="smallText">购买者尚未批准登记该支付方式，目前不可用于支付。</span>
 
-        - `ACTIVATED`: 有効化済み<br /><span class="smallText">この決済手段は決済に使用できます。</span>
+        - `ACTIVATED`：已启用。<br /><span class="smallText">该支付方式可以用于支付。</span>
 
-        - `FAILED`: 失敗<br /><span class="smallText">この決済手段は決済に使用できません。</span>
-
-        '
+        - `FAILED`：失败。<br /><span class="smallText">该支付方式不可用于支付。</span>'
     status:
       allOf:
       - $ref: '#/components/schemas/PaymentMethodStatus'
-      description: '決済手段のステータス。\
+      description: '支付方式状态。
 
-        <span class="smallText">※ `pay_type`によって返却されるステータスが異なります。詳細は[こちら](https://docs.fincode.jp/payment/payment_method)をご確認ください。</span>
-
-        '
+        <span class="smallText">`pay_type` 不同，返回的状态也不同。详情请参阅[支付方式说明](https://docs.fincode.jp/payment/payment_method)。</span>'
     redirect_url_accessed_flag:
       type: string
       enum:
@@ -12270,18 +12217,16 @@ components:
       minLength: 1
       maxLength: 1
       example: '1'
-      description: 'デフォルトフラグ。\
+      description: '默认支付方式标志。
 
-        この決済手段が決済実行やサブスクリプション登録などで決済手段IDを指定しない場合に自動的に使用する決済手段かどうかを示すフラグです。\
+        表示在执行支付、登记订阅等未指定支付方式 ID 的情况下，是否自动使用该支付方式。
 
-        顧客に対して、決済種別ごとに必ず1つのデフォルト決済手段が存在します。（決済手段が1つも登録されていない場合を除く）
+        每个客户的每种支付类型必须存在一个默认支付方式（尚未登记任何支付方式时除外）。
 
 
-        - `0`: デフォルト決済手段ではない
+        - `0`：不是默认支付方式
 
-        - `1`: デフォルト決済手段
-
-        '
+        - `1`：默认支付方式'
     client_field_n:
       type: string
       nullable: true
@@ -12953,9 +12898,7 @@ components:
               id:
                 allOf:
                 - $ref: '#/components/schemas/PaymentMethod_properties-id'
-                description: '決済手段ID
-
-                  '
+                description: 支付方式 ID。
               pay_type:
                 type: string
                 enum:
@@ -12963,13 +12906,11 @@ components:
                 - Directdebit
                 - Virtualaccount
                 example: Directdebit
-                description: '- `Card`
+                description: '- `Card`：卡片
 
-                  - `Directdebit`
+                  - `Directdebit`：银行账户自动扣款
 
-                  - `Virtualaccount`
-
-                  '
+                  - `Virtualaccount`：银行转账（虚拟账户）'
               customer_id:
                 allOf:
                 - $ref: '#/components/schemas/properties-customer_id'
@@ -12981,13 +12922,11 @@ components:
                 example: https://url.to/redirect/payer
                 maxLength: 256
                 nullable: true
-                description: 'リダイレクトURL \
+                description: '重定向 URL。
 
-                  購入者をこのURLへリダイレクトさせ、ステータスがAWAITING_CUSTOMER_ACTION の決済手段を有効化するための後続の処理へ誘導してください。
+                  请将购买者重定向至此 URL，引导其执行后续步骤，以启用状态为 `AWAITING_CUSTOMER_ACTION` 的支付方式。
 
-                  - 振替口座登録の場合： このURLにアクセスして振替口座登録の承認を行います。このURLには1度だけアクセスできます。
-
-                  '
+                  银行账户自动扣款的账户登记：访问此 URL 批准登记扣款账户。此 URL 只能访问一次。'
               redirect_url_accessed_flag:
                 allOf:
                 - $ref: '#/components/schemas/redirect_url_accessed_flag'
@@ -13920,29 +13859,21 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_1'
-          description: '加盟店自由項目 1
-
-            '
+          description: 商户自定义字段 1。
         client_field_2:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_2'
-          description: '加盟店自由項目 2
-
-            '
+          description: 商户自定义字段 2。
         client_field_3:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/client_field_3'
-          description: '加盟店自由項目 3
-
-            '
+          description: 商户自定义字段 3。
         card:
           type: object
           nullable: true
-          description: '<span class="smallText">※ `pay_type = "Card"`（この決済手段登録がカード情報登録である）のとき必須</span>
-
-            '
+          description: <span class="smallText">当 `pay_type = "Card"`（登记卡片信息）时必填。</span>
           properties:
             token:
               nullable: false
@@ -13952,23 +13883,19 @@ components:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/card_updater_mode'
-              description: 'カード更新機能（洗替）利用設定
-
-                '
+              description: 卡片自动更新服务（Account Updater）使用设置。
             tds_type:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/tds_type'
-              description: '3Dセキュア認証を利用するか。\
+              description: '是否使用 3D Secure 认证。
 
-                <span class="smallText">カード情報を登録する場合に指定します（省略可能）。</span>
+                <span class="smallText">登记卡片信息时指定，可省略。</span>
 
 
-                - `0`: 3Dセキュア認証を利用しない（デフォルト）
+                - `0`：不使用 3D Secure 认证（默认）
 
-                - `2`: 3Dセキュア2.0認証を利用する
-
-                '
+                - `2`：使用 3D Secure 2.0 认证'
             tds2_type:
               nullable: true
               allOf:
@@ -14169,7 +14096,7 @@ components:
         directdebit:
           type: object
           nullable: true
-          description: <span class="smallText">※ `pay_type = "Directdebit"`（この決済手段登録が口座振替用の口座情報登録である）のとき必須</span>
+          description: <span class="smallText">当 `pay_type = "Directdebit"`（登记银行账户自动扣款使用的账户信息）时必填。</span>
           properties:
             application_type:
               nullable: false
@@ -14322,13 +14249,11 @@ components:
           - Directdebit
           - Virtualaccount
           example: Directdebit
-          description: '- `Card`
+          description: '- `Card`：卡片
 
-            - `Directdebit`
+            - `Directdebit`：银行账户自动扣款
 
-            - `Virtualaccount`
-
-            '
+            - `Virtualaccount`：银行转账（虚拟账户）'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/properties-customer_id'
@@ -14393,9 +14318,7 @@ components:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PaymentMethodPayType'
-          description: '決済種別
-
-            '
+          description: 支付类型。
       required:
       - pay_type
     CustomerPaymentMethod.Retrieving.Response:
@@ -14404,9 +14327,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID
-
-            '
+          description: 支付方式 ID。
         pay_type:
           type: string
           enum:
@@ -14414,13 +14335,11 @@ components:
           - Directdebit
           - Virtualaccount
           example: Directdebit
-          description: '- `Card`
+          description: '- `Card`：卡片
 
-            - `Directdebit`
+            - `Directdebit`：银行账户自动扣款
 
-            - `Virtualaccount`
-
-            '
+            - `Virtualaccount`：银行转账（虚拟账户）'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/properties-customer_id'
@@ -14487,22 +14406,19 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '更新された決済手段のIDです。
-
-            '
+          description: 已更新支付方式的 ID。
         pay_type:
           type: string
           enum:
           - Card
           - Virtualaccount
           example: Virtualaccount
-          description: '- `Card`
+          description: '- `Card`：卡片
 
-            - `Virtualaccount`\
+            - `Virtualaccount`：银行转账（虚拟账户）
 
-            ※ 現時点では`Card`（クレジットカード）、`Virtualaccount`（銀行振込（バーチャル口座））のみ指定可能です。
 
-            '
+            目前只可指定 `Card`（卡片）或 `Virtualaccount`（银行转账／虚拟账户）。'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/properties-customer_id'
@@ -14551,9 +14467,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '削除された決済手段のIDです。
-
-            '
+          description: 已删除支付方式的 ID。
         pay_type:
           type: string
           enum:
@@ -14561,13 +14475,11 @@ components:
           - Directdebit
           - Virtualaccount
           example: Directdebit
-          description: '- `Card`
+          description: '- `Card`：卡片
 
-            - `Directdebit`
+            - `Directdebit`：银行账户自动扣款
 
-            - `Virtualaccount`
-
-            '
+            - `Virtualaccount`：银行转账（虚拟账户）'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/properties-customer_id'
@@ -14628,17 +14540,13 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '更新された決済手段のIDです。
-
-            '
+          description: 已更新支付方式的 ID。
         pay_type:
           type: string
           enum:
           - Virtualaccount
           example: Virtualaccount
-          description: '- `Virtualaccount`
-
-            '
+          description: '- `Virtualaccount`：银行转账（虚拟账户）'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/properties-customer_id'
