@@ -2167,16 +2167,12 @@ paths:
                       nullable: true
                       allOf:
                       - $ref: '#/components/schemas/tds_type'
-                      description: '3Dセキュア認証を利用するか。\
-
-                        <span class="smallText">※ カード情報（`token`・`holder_name`・`expire`等）を更新する場合は必須</span>
+                      description: '是否使用 3D Secure 进行支付。
 
 
-                        - `0`: 3Dセキュア認証を利用しない
+                        - `0`：不使用（默认）
 
-                        - `2`: 3Dセキュア2.0認証を利用する
-
-                        '
+                        - `2`：使用 3D Secure 2.0'
                     tds2_type:
                       nullable: true
                       allOf:
@@ -11720,14 +11716,12 @@ components:
       minLength: 1
       maxLength: 1
       nullable: true
-      description: '3Dセキュア認証を利用するか。
+      description: '是否使用 3D Secure 进行支付。
 
 
-        - `0`: 3Dセキュア認証を利用しない（デフォルト）
+        - `0`：不使用（默认）
 
-        - `2`: 3Dセキュア2.0認証を利用する
-
-        '
+        - `2`：使用 3D Secure 2.0'
     tds2_type:
       type: string
       enum:
@@ -11737,16 +11731,14 @@ components:
       minLength: 1
       maxLength: 1
       nullable: true
-      description: '3Dセキュア2.0非対応時の挙動設定\
-
-        購入者がこの決済に利用したカードが3Dセキュア2.0に非対応である場合の後続処理を設定します。
+      description: '发卡机构不支持 3D Secure 2.0 时的后续处理方式。
 
 
-        - `2`: エラーをレスポンスし、処理を終了する。（デフォルト）
+        - `1`：执行 3D Secure 1.0 认证
 
-        - `3`: 3Dセキュア認証なしで処理を継続する。
+        - `2`：按错误结束处理（默认）
 
-        '
+        - `3`：不执行 3D Secure 认证，直接进行常规授权'
     tds2_ret_url:
       type: string
       example: https://your-server.example.com/3ds2-return
@@ -11878,27 +11870,23 @@ components:
         tds_type:
           allOf:
           - $ref: '#/components/schemas/tds_type'
-          description: 'カード登録時3Dセキュア認証を利用するか。
+          description: '是否使用 3D Secure 进行支付。
 
 
-            - `0`: 3Dセキュア認証を利用しない（デフォルト）
+            - `0`：不使用（默认）
 
-            - `2`: 3Dセキュア2.0認証を利用する
-
-            '
+            - `2`：使用 3D Secure 2.0'
         tds2_type:
           allOf:
           - $ref: '#/components/schemas/tds2_type'
-          description: '3Dセキュア2.0非対応時の挙動設定\
-
-            購入者がこの決済に利用したカードが3Dセキュア2.0に非対応である場合の後続処理を設定します。
+          description: '发卡机构不支持 3D Secure 2.0 时的后续处理方式。
 
 
-            - `2`: エラーをレスポンスし、処理を終了する。（デフォルト）
+            - `1`：执行 3D Secure 1.0 认证
 
-            - `3`: 3Dセキュア認証なしで登録を行う。
+            - `2`：按错误结束处理（默认）
 
-            '
+            - `3`：不执行 3D Secure 认证，直接进行常规授权'
         tds2_ret_url:
           nullable: true
           allOf:
@@ -12504,18 +12492,16 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
-
-        客户用户账户登录方式。设置此项时，还必须设置登录记录和登录时间。
+      description: '客户用户账户的登录方式。填写时，还必须同时填写登录认证记录和登录时间。
 
 
         - `01`：无认证（以访客身份登录）
 
-        - `02`：商户自身的认证信息
+        - `02`：使用商户自身的认证信息
 
         - `03`：SSO（单点登录）
 
-        - `04`：发卡机构的认证信息
+        - `04`：使用发卡机构的认证信息
 
         - `05`：第三方认证
 
@@ -20246,18 +20232,16 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
-
-            客户用户账户登录方式。设置此项时，还必须设置登录记录和登录时间。
+          description: '客户用户账户的登录方式。填写时，还必须同时填写登录认证记录和登录时间。
 
 
             - `01`：无认证（以访客身份登录）
 
-            - `02`：商户自身的认证信息
+            - `02`：使用商户自身的认证信息
 
             - `03`：SSO（单点登录）
 
-            - `04`：发卡机构的认证信息
+            - `04`：使用发卡机构的认证信息
 
             - `05`：第三方认证
 
@@ -24138,43 +24122,35 @@ components:
           maxLength: 30
         status:
           type: string
-          description: 'インボイス請求書のステータス
+          description: '账单状态。
 
 
-            - `DRAFT`: 下書き
+            - `DRAFT`：草稿
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 支払い待ち
+            - `AWAITING_CUSTOMER_PAYMENT`：等待客户支付
 
-            - `PAID`: 支払い完了
+            - `PAID`：已支付
 
-            - `CANCELED`: キャンセル済
-
-            '
+            - `CANCELED`：已取消'
           minLength: 1
           maxLength: 25
         bill_pdf_url:
           type: string
-          description: '[非推奨] インボイス請求書PDFダウンロードURL\
+          description: '[已弃用] 账单 PDF 下载 URL。
 
-            ※ 2024年10月現在、請求書を表示するWebページのURLがレスポンスされます。このページへはインボイス 請求ページからアクセスできます。
-
-            '
+            截至 2024 年 10 月，响应实际返回账单展示网页的 URL；也可从账单支付页面访问该网页。'
           minLength: 1
           maxLength: 256
         receipt_pdf_url:
           type: string
-          description: '[非推奨] インボイス領収書PDFダウンロードURL\
+          description: '[已弃用] 账单收据 PDF 下载 URL。
 
-            ※ 2024年10月現在、領収書を表示するWebページのURLがレスポンスされます。このページへは支払い完了後にインボイス 請求ページからアクセスできます。
-
-            '
+            截至 2024 年 10 月，响应实际返回收据展示网页的 URL；支付完成后也可从账单支付页面访问该网页。'
           minLength: 1
           maxLength: 256
         invoice_number:
           type: string
-          description: '請求番号
-
-            '
+          description: 账单编号
           minLength: 1
           maxLength: 30
         bill_id:
@@ -24184,70 +24160,54 @@ components:
           maxLength: 30
         customer_id:
           type: string
-          description: '顧客（請求先）ID
-
-            '
+          description: 客户（账单接收方）ID
           minLength: 1
           maxLength: 60
         customer_name:
           type: string
-          description: '顧客（請求先）宛名
-
-            '
+          description: 客户（账单接收方）名称
           minLength: 1
           maxLength: 384
         overwrite_customer_name:
           type: string
-          description: '上書き顧客（請求先）宛名
-
-            '
+          description: 覆盖后的客户（账单接收方）名称
           minLength: 1
           maxLength: 384
         issue_date:
           type: string
-          description: '発行年月日
+          description: '开具日期。
 
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
           minLength: 1
           maxLength: 10
         total_amount:
           type: number
-          description: '合計金額
-
-            '
+          description: 合计金额
           minimum: 0
           maximum: 99999999999999
         billing_total_amount:
           type: number
-          description: '請求金額合計
-
-            '
+          description: 账单金额合计
           minimum: 0
           maximum: 99999999999999
         pay_types:
           type: array
           items:
             type: string
-          description: '利用可能な決済種別リスト
+          description: '可用支付类型列表。
 
 
-            - `"Virtualaccount"`: 銀行振込（バーチャル口座）決済
+            - `"Virtualaccount"`：银行转账（虚拟账户）
 
-            - `"Card"`: カード決済
+            - `"Card"`：银行卡支付
 
-            - `"Directdebit"`: 口座振替決済
-
-            '
+            - `"Directdebit"`：银行账户自动扣款'
         due_date:
           type: string
           maxLength: 10
-          description: '支払期日
+          description: '支付截止日期。
 
-            yyyy/MM/dd形式
-
-            '
+            格式：`yyyy/MM/dd`'
         client_field_1:
           type: string
           maxLength: 100
@@ -24262,14 +24222,10 @@ components:
           description: 商户自定义字段 3
         is_uncollectible:
           type: boolean
-          description: '回収困難フラグ
-
-            '
+          description: 难以收回款项标志
         is_paid_externally:
           type: boolean
-          description: 'fincode外支払フラグ
-
-            '
+          description: fincode 外部支付标志
         transaction_date:
           type: string
           description: 支払完了日 形式：`yyyy/MM/dd HH:mm:ss.SSS`
@@ -24292,30 +24248,26 @@ components:
       - $ref: '#/components/schemas/Invoice.list'
     tax_included_amount:
       type: number
-      description: "税込金額  \n"
+      description: 含税金额
     input_type:
       type: string
       enum:
       - amount
-      description: '取引金額の入力方式
+      description: '交易金额的填写方式。
 
-        - null：単価入力時(デフォルト)
+        - `null`：按单价填写（默认）
 
-        - `amount`：金額(税込)入力時
-
-        '
+        - `amount`：按含税金额填写'
     properties-payment_method_id:
       type: string
       minLength: 1
       maxLength: 25
-      description: 決済手段ID
+      description: 支付方式 ID
     properties-target_date:
       type: string
-      description: '振替指定日
+      description: '指定扣款日期。
 
-        形式：`YYYY/MM/DD`
-
-        '
+        格式：`YYYY/MM/DD`'
     properties-remarks:
       type: string
       description: 账单明细显示内容
@@ -24324,132 +24276,141 @@ components:
       enum:
       - '0'
       - '1'
-      description: '口座振替失敗メール送信フラグ
+      description: '自动扣款失败邮件发送标志。用于决定扣款失败时是否向账单发起方发送通知邮件。
 
 
-        口座振替失敗時に請求元に対し通知メールを送るか決定するフラグ
+        - `0`：不发送邮件（默认）
 
-
-        - `0`：メールを送信しない（デフォルト）
-
-        - `1`：メールを送信する
-
-        '
+        - `1`：发送邮件'
     Invoice.Creating.Request:
       type: object
       properties:
         id:
           type: string
           maxLength: 30
-          description: "インボイスID  \n  \nショップ内で一意な値を設定してください。  \n未指定の場合自動生成します。\n"
+          description: '账单 ID。
+
+
+            请设置商户内唯一的值；未填写时由系统自动生成。'
         bill_mail_send_flag:
           type: string
-          description: "請求書メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する  \n"
+          description: '账单邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         receipt_mail_send_flag:
           type: string
-          description: "領収書メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する  \n"
+          description: '收据邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         underpayment_mail_send_flag:
           type: string
-          description: "差額請求メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する  \n"
+          description: '差额付款通知邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         invoice_number:
           type: string
           minLength: 1
           maxLength: 30
-          description: "請求番号  \n指定しないまま請求書を開始した場合、自動採番されます。\n"
+          description: 账单编号。启动账单而未指定编号时，系统将自动编号。
         customer_id:
           type: string
           maxLength: 60
-          description: 顧客（請求先）ID
+          description: 客户（账单接收方）ID
         customer_honorific:
           type: string
           maxLength: 20
-          description: 顧客（請求先）敬称
+          description: 客户（账单接收方）称谓
         customer_overwrite:
           type: object
-          description: '上書き顧客（請求先）情報\
+          description: '覆盖后的客户（账单接收方）信息。
 
-            `customer_id`で指定した顧客の情報のうち、上書きを行う場合に指定します。\
-
-            顧客情報の上書きはこのインボイス情報においてのみ適用されます。
-
-            '
+            如需覆盖 `customer_id` 所指定客户的部分信息，请填写本字段。覆盖内容仅对当前账单生效，不会修改客户主数据。'
           properties:
             name:
               type: string
               maxLength: 384
-              description: 上書き顧客（請求先）宛名
+              description: 覆盖后的客户（账单接收方）名称
             email:
               type: string
               maxLength: 254
-              description: 上書き顧客（請求先）メールアドレス
+              description: 覆盖后的客户（账单接收方）电子邮箱地址
             addr_country:
               type: string
               maxLength: 3
-              description: 上書き顧客（請求先）住所の国コード
+              description: 覆盖后的客户（账单接收方）地址：国家/地区代码
             addr_state:
               type: string
               maxLength: 3
-              description: 上書き顧客（請求先） 住所の都道府県コード
+              description: 覆盖后的客户（账单接收方）地址：都道府县代码
             addr_city:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の市区町村
+              description: 覆盖后的客户（账单接收方）地址：市区町村
             addr_line_1:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の町名・番地
+              description: 覆盖后的客户（账单接收方）地址：街道及门牌号
             addr_line_2:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の建物名・部屋番号
+              description: 覆盖后的客户（账单接收方）地址：建筑物名称及房间号
             addr_line_3:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先）住所 その他
+              description: 覆盖后的客户（账单接收方）地址：其他信息
             addr_post_code:
               type: string
               maxLength: 16
-              description: 上書き顧客（請求先） 住所の郵便番号
+              description: 覆盖后的客户（账单接收方）地址：邮政编码
         issuer_overwrite:
           type: object
-          description: "発行元事業者情報  \n指定しなかった場合、本番環境申請の際にご提出いただいた情報を利用します。  \n"
+          description: 开票方企业信息。未填写时，使用申请生产环境时提交的信息。
           properties:
             addr_country:
               type: string
               maxLength: 3
-              description: 発行元事業者住所の国コード
+              description: 开票方企业地址：国家/地区代码
             addr_state:
               type: string
               maxLength: 3
-              description: 発行元事業者住所の都道府県コード
+              description: 开票方企业地址：都道府县代码
             addr_city:
               type: string
               maxLength: 50
-              description: 発行元事業者住所の市区町村
+              description: 开票方企业地址：市区町村
             addr_line_1:
               type: string
               maxLength: 100
-              description: 発行元事業者住所の町名・番地
+              description: 开票方企业地址：街道及门牌号
             addr_line_2:
               type: string
               maxLength: 100
-              description: 発行元事業者住所の建物名・部屋番号
+              description: 开票方企业地址：建筑物名称及房间号
             addr_line_3:
               type: string
               maxLength: 50
-              description: 発行元事業者住所 その他
+              description: 开票方企业地址：其他信息
             addr_post_code:
               type: string
               maxLength: 8
-              description: 発行元事業者住所の郵便番号
+              description: 开票方企业地址：邮政编码
             email:
               type: string
               maxLength: 254
-              description: 発行元事業者のメールアドレス
+              description: 开票方企业的电子邮箱地址
             phone_number:
               type: string
               maxLength: 15
-              description: 発行元事業者の電話番号
+              description: 开票方企业电话号码
         is_tax_included:
           type: boolean
           description: '是否以含税方式显示。
@@ -24461,13 +24422,15 @@ components:
         due_date:
           type: string
           maxLength: 10
-          description: "支払期日  \nyyyy/MM/dd形式  \n"
+          description: '支付截止日期。
+
+            格式：`yyyy/MM/dd`'
         memo:
           type: string
           description: 备注
         lines:
           type: array
-          description: 取引内容
+          description: 交易明细
           items:
             type: object
             properties:
@@ -24475,27 +24438,29 @@ components:
                 type: string
                 minLength: 10
                 maxLength: 10
-                description: "日付  \nyyyy/MM/dd  \n"
+                description: '日期。
+
+                  格式：`yyyy/MM/dd`'
               name:
                 type: string
                 minLength: 1
                 maxLength: 200
-                description: 品目
+                description: 商品或服务项目
               unit_price:
                 type: number
                 minLength: 1
                 maxLength: 11
-                description: "単価  \n"
+                description: 单价
               quantity:
                 type: number
                 minimum: 0
                 maximum: 2147483647
-                description: "数量  \n"
+                description: 数量
               tax_rate:
                 type: number
                 minLength: 1
                 maxLength: 3
-                description: 適用税率（%）
+                description: 适用税率（%）
               tax_included_amount:
                 allOf:
                 - $ref: '#/components/schemas/tax_included_amount'
@@ -24503,32 +24468,54 @@ components:
           type: array
           items:
             type: string
-          description: "ショップで利用可能な決済種別のリスト  \n利用可能にする決済種別全てを指定してください。  \n  \n- `Virtualaccount`: 銀行振込（バーチャル口座）決済\n- `Card`:\
-            \ カード決済\n- `Directdebit`: 口座振替決済\n"
+          description: '商户可使用的支付类型列表。请填写需要启用的全部支付类型。
+
+
+            - `Virtualaccount`：银行转账（虚拟账户）
+
+            - `Card`：银行卡支付
+
+            - `Directdebit`：银行账户自动扣款'
         input_type:
           allOf:
           - $ref: '#/components/schemas/input_type'
         card:
           type: object
-          description: カード決済情報
+          description: 银行卡支付信息
           properties:
             job_code:
               type: string
               minLength: 1
               maxLength: 7
               default: AUTH
-              description: "処理区分  \n以下のいずれかを指定してください。  \n\n- `AUTH`: 仮売上  \n- `CAPTURE`: 即時売上  \n"
+              description: '银行卡支付的处理类型，请指定以下任一值。
+
+
+                - `AUTH`：仅授权
+
+                - `CAPTURE`：立即请款'
             tds_type:
               type: string
               minLength: 1
               maxLength: 1
-              description: "3DS利用種別  \n3DSを使用して決済を行うかを設定します。  \n- `0`: 行わない（デフォルト）  \n- `2`: 行う（3DS2.0を利用）  \n"
+              description: '是否使用 3D Secure 进行支付。
+
+
+                - `0`：不使用（默认）
+
+                - `2`：使用 3D Secure 2.0'
             tds2_type:
               type: string
               minLength: 1
               maxLength: 1
-              description: "3DS2非対応時設定  \n仕向先カード会社が3DS2.0に未対応な場合の、後続処理を設定します。  \n- `1`: 3DS1.0での認証を実施  \n- `2`: エラーとして処理終了（デフォルト）\
-                \  \n- `3`: 通常オーソリを実施\n"
+              description: '发卡机构不支持 3D Secure 2.0 时的后续处理方式。
+
+
+                - `1`：执行 3D Secure 1.0 认证
+
+                - `2`：按错误结束处理（默认）
+
+                - `3`：不执行 3D Secure 认证，直接进行常规授权'
             tds2_tenant_name:
               type: string
               minLength: 1
@@ -25009,14 +24996,16 @@ components:
                 仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
         virtual_account:
           type: object
-          description: 銀行振込（バーチャル口座）情報
+          description: 银行转账（虚拟账户）信息
           properties:
             reference_invoice_id:
               type: string
               minLength: 1
               maxLength: 30
-              description: "バーチャル口座 再利用 インボイスID\\\n\\\nあるインボイス情報が持つバーチャル口座を再利用する場合、そのインボイス情報のIDを参照先として指定します。\\\nバーチャル口座の再利用が可能なインボイスの条件は以下の通りです。\n\
-                \n - 参照するインボイスのステータスが `PAID` であること\n - 参照するインボイスのステータスが `PAID` に遷移してから90日以内であること\n"
+              description: '用于复用虚拟账户的账单 ID。
+
+
+                如需复用另一账单持有的虚拟账户，请填写该账单 ID。被引用的账单必须处于 `PAID` 状态，且转为 `PAID` 后未超过 90 天。'
             use_exact_deposit_amount:
               type: boolean
               enum:
@@ -25071,370 +25060,372 @@ components:
           maxLength: 30
         status:
           type: string
-          description: "インボイス請求書のステータス  \n  \n- `DRAFT`: 下書き\n- `AWAITING_CUSTOMER_PAYMENT`: 支払い待ち\n- `PAID`: 支払い完了\n- `CANCELED`:\
-            \ キャンセル済\n"
+          description: '账单状态。
+
+
+            - `DRAFT`：草稿
+
+            - `AWAITING_CUSTOMER_PAYMENT`：等待客户支付
+
+            - `PAID`：已支付
+
+            - `CANCELED`：已取消'
           minLength: 1
           maxLength: 25
         invoice_url:
           type: string
-          description: 'インボイス 請求ページURL
-
-            '
+          description: 账单支付页面 URL
           minLength: 1
           maxLength: 256
         bill_mail_send_flag:
           type: string
-          description: '請求書メール送信フラグ (0: メールを送信しない 1: メールを送信する)
-
-            '
+          description: 账单邮件发送标志（`0`：不发送，`1`：发送）
           enum:
           - '0'
           - '1'
         bill_pdf_url:
           type: string
-          description: '[非推奨] インボイス請求書PDFダウンロードURL\
+          description: '[已弃用] 账单 PDF 下载 URL。
 
-            ※ 2024年10月現在、請求書を表示するWebページのURLがレスポンスされます。このページへはインボイス 請求ページからアクセスできます。
-
-            '
+            截至 2024 年 10 月，响应实际返回账单展示网页的 URL；也可从账单支付页面访问该网页。'
           minLength: 1
           maxLength: 256
         receipt_mail_send_flag:
           type: string
-          description: '領収書メール送信フラグ (0: メールを送信しない 1: メールを送信する)
-
-            '
+          description: 收据邮件发送标志（`0`：不发送，`1`：发送）
           enum:
           - '0'
           - '1'
         underpayment_mail_send_flag:
           type: string
-          description: '差額請求メール送信フラグ (0: メールを送信しない 1: メールを送信する)
-
-            '
+          description: 差额付款通知邮件发送标志（`0`：不发送，`1`：发送）
           enum:
           - '0'
           - '1'
         receipt_pdf_url:
           type: string
-          description: '[非推奨] インボイス領収書PDFダウンロードURL\
+          description: '[已弃用] 账单收据 PDF 下载 URL。
 
-            ※ 2024年10月現在、領収書を表示するWebページのURLがレスポンスされます。このページへは支払い完了後にインボイス 請求ページからアクセスできます。
-
-            '
+            截至 2024 年 10 月，响应实际返回收据展示网页的 URL；支付完成后也可从账单支付页面访问该网页。'
           minLength: 1
           maxLength: 256
         invoice_number:
           type: string
-          description: '請求番号
-
-            '
+          description: 账单编号
           minLength: 1
           maxLength: 30
         customer_id:
           type: string
-          description: '顧客（請求先）ID
-
-            '
+          description: 客户（账单接收方）ID
           minLength: 1
           maxLength: 60
         customer_honorific:
           type: string
-          description: '顧客（請求先）敬称
-
-            '
+          description: 客户（账单接收方）称谓
           minLength: 1
           maxLength: 20
         customer:
           type: object
-          description: '顧客（請求先）情報
-
-            '
+          description: 客户（账单接收方）信息
           properties:
             name:
               type: string
               minLength: 1
               maxLength: 384
-              description: '顧客（請求先）宛名
-
-                '
+              description: 客户（账单接收方）名称
             email:
               type: string
               minLength: 1
               maxLength: 254
-              description: '顧客（請求先）メールアドレス
-
-                '
+              description: 客户（账单接收方）的电子邮箱地址
             addr_country:
               type: string
-              description: "顧客（請求先）住所の国コード  \n"
+              description: 客户（账单接收方）地址：国家/地区代码
               minLength: 1
               maxLength: 3
             addr_state:
               type: string
-              description: "顧客（請求先）住所の都道府県コード  \n"
+              description: 客户（账单接收方）地址：都道府县代码
               minLength: 1
               maxLength: 3
             addr_city:
               type: string
-              description: "顧客（請求先）住所の市区町村  \n"
+              description: 客户（账单接收方）地址：市区町村
               minLength: 1
               maxLength: 50
             addr_line_1:
               type: string
-              description: "顧客（請求先）住所の町名・番地  \n"
+              description: 客户（账单接收方）地址：街道及门牌号
               minLength: 1
               maxLength: 50
             addr_line_2:
               type: string
-              description: "顧客（請求先）住所の建物名・部屋番号  \n"
+              description: 客户（账单接收方）地址：建筑物名称及房间号
               minLength: 1
               maxLength: 50
             addr_line_3:
               type: string
-              description: "顧客（請求先）住所 その他  \n"
+              description: 客户（账单接收方）地址：其他信息
               minLength: 1
               maxLength: 50
             addr_post_code:
               type: string
-              description: "顧客（請求先）住所の郵便番号  \n"
+              description: 客户（账单接收方）地址：邮政编码
               minLength: 1
               maxLength: 16
         customer_overwrite:
           type: object
-          description: "上書き顧客（請求先）情報  \n"
+          description: 覆盖后的客户（账单接收方）信息
           properties:
             name:
               type: string
-              description: "上書き顧客（請求先）宛名  \n"
+              description: 覆盖后的客户（账单接收方）名称
               minLength: 1
               maxLength: 384
             email:
               type: string
-              description: "上書き顧客（請求先）メールアドレス  \n"
+              description: 覆盖后的客户（账单接收方）电子邮箱地址
               minLength: 1
               maxLength: 254
             addr_country:
               type: string
-              description: "上書き顧客（請求先）住所の国コード  \n"
+              description: 覆盖后的客户（账单接收方）地址：国家/地区代码
               minLength: 1
               maxLength: 3
             addr_state:
               type: string
-              description: "上書き顧客（請求先）住所の都道府県コード  \n"
+              description: 覆盖后的客户（账单接收方）地址：都道府县代码
               minLength: 1
               maxLength: 3
             addr_city:
               type: string
-              description: "上書き顧客（請求先）住所の市区町村  \n"
+              description: 覆盖后的客户（账单接收方）地址：市区町村
               minLength: 1
               maxLength: 50
             addr_line_1:
               type: string
-              description: "上書き顧客（請求先）住所の町名・番地  \n"
+              description: 覆盖后的客户（账单接收方）地址：街道及门牌号
               minLength: 1
               maxLength: 50
             addr_line_2:
               type: string
-              description: "上書き顧客（請求先）住所の建物名・部屋番号  \n"
+              description: 覆盖后的客户（账单接收方）地址：建筑物名称及房间号
               minLength: 1
               maxLength: 50
             addr_line_3:
               type: string
-              description: "上書き顧客（請求先）住所 その他  \n"
+              description: 覆盖后的客户（账单接收方）地址：其他信息
               minLength: 1
               maxLength: 50
             addr_post_code:
               type: string
-              description: "上書き顧客（請求先）住所の郵便番号  \n"
+              description: 覆盖后的客户（账单接收方）地址：邮政编码
               minLength: 1
               maxLength: 16
         issuer:
           type: object
-          description: "発行元事業者情報  \n"
+          description: 开票方企业信息
           properties:
             name:
               type: string
-              description: "発行元事業者名  \n"
+              description: 开票方企业名称
               minLength: 1
               maxLength: 150
             invoice_registration_number:
               type: string
-              description: "適格請求書発行事業者登録番号  \n"
+              description: 日本合规发票开具企业登记编号
               minLength: 1
               maxLength: 14
             addr_state:
               type: string
-              description: "発行元事業者住所の都道府県コード  \n"
+              description: 开票方企业地址：都道府县代码
               minLength: 1
               maxLength: 3
             addr_city:
               type: string
-              description: "発行元事業者住所の市区町村  \n"
+              description: 开票方企业地址：市区町村
               minLength: 1
               maxLength: 50
             addr_line_1:
               type: string
-              description: "発行元事業者住所の町名・番地  \n"
+              description: 开票方企业地址：街道及门牌号
               minLength: 1
               maxLength: 100
             addr_line_2:
               type: string
-              description: "発行元事業者住所の建物名・部屋番号  \n"
+              description: 开票方企业地址：建筑物名称及房间号
               minLength: 1
               maxLength: 100
             addr_line_3:
               type: string
-              description: "発行元事業者住所 その他  \n"
+              description: 开票方企业地址：其他信息
               minLength: 1
               maxLength: 50
             addr_post_code:
               type: string
-              description: "発行元事業者住所の郵便番号  \n"
+              description: 开票方企业地址：邮政编码
               minLength: 1
               maxLength: 8
             email:
               type: string
-              description: "発行元事業者のメールアドレス  \n"
+              description: 开票方企业的电子邮箱地址
               minLength: 3
               maxLength: 254
             phone_number:
               type: string
-              description: "発行元事業者の電話番号  \n"
+              description: 开票方企业电话号码
               minLength: 1
               maxLength: 15
         issuer_overwrite:
           type: object
-          description: "上書き発行元事業者情報  \n"
+          description: 覆盖后的开票方企业信息
           properties:
             addr_state:
               type: string
-              description: "発行元事業者住所の都道府県コード  \n"
+              description: 开票方企业地址：都道府县代码
               minLength: 1
               maxLength: 3
             addr_city:
               type: string
-              description: "発行元事業者住所の市区町村  \n"
+              description: 开票方企业地址：市区町村
               minLength: 1
               maxLength: 50
             addr_line_1:
               type: string
-              description: "発行元事業者住所の町名・番地  \n"
+              description: 开票方企业地址：街道及门牌号
               minLength: 1
               maxLength: 100
             addr_line_2:
               type: string
-              description: "発行元事業者住所の建物名・部屋番号  \n"
+              description: 开票方企业地址：建筑物名称及房间号
               minLength: 1
               maxLength: 100
             addr_line_3:
               type: string
-              description: "発行元事業者住所 その他  \n"
+              description: 开票方企业地址：其他信息
               minLength: 1
               maxLength: 50
             addr_post_code:
               type: string
-              description: "発行元事業者住所の郵便番号  \n"
+              description: 开票方企业地址：邮政编码
               minLength: 1
               maxLength: 8
             email:
               type: string
-              description: "発行元事業者のメールアドレス  \n"
+              description: 开票方企业的电子邮箱地址
               minLength: 3
               maxLength: 254
             phone_number:
               type: string
-              description: "発行元事業者の電話番号  \n"
+              description: 开票方企业电话号码
               minLength: 1
               maxLength: 15
         issue_date:
           type: string
-          description: "発行年月日  \n形式： `yyyy/MM/dd`  \n"
+          description: '开具日期。
+
+            格式：`yyyy/MM/dd`'
           minLength: 1
           maxLength: 10
         lines:
           type: array
-          description: "取引内容レコード  \n"
+          description: 交易明细记录
           items:
             type: object
             properties:
               date:
                 type: string
-                description: "日付  \n形式： `yyyy/MM/dd`  \n"
+                description: '日期。
+
+                  格式：`yyyy/MM/dd`'
                 minLength: 1
                 maxLength: 10
               name:
                 type: string
-                description: "品目  \n"
+                description: 商品或服务项目
                 minLength: 1
                 maxLength: 200
               unit_price:
                 type: number
-                description: "単価  \n"
+                description: 单价
                 minimum: 0
                 maximum: 99999999999
               quantity:
                 type: integer
-                description: "数量  \n"
+                description: 数量
                 minimum: 1
                 maximum: 2147483647
               tax_rate:
                 type: number
-                description: "適用税率（%）  \n"
+                description: 适用税率（%）
               tax_included_amount:
                 type: number
-                description: "税込金額  \n"
+                description: 含税金额
         total_amount:
           type: number
-          description: "合計金額  \n"
+          description: 合计金额
           minimum: 0
           maximum: 99999999999999
         billing_total_amount:
           type: number
-          description: "請求金額合計  \n"
+          description: 账单金额合计
           minimum: 0
           maximum: 99999999999999
         pay_types:
           type: array
           items:
             type: string
-          description: "利用可能な決済種別リスト  \n  \n- `\"Virtualaccount\"`: 銀行振込（バーチャル口座）決済\n- `\"Card\"`: カード決済\n- `\"Directdebit\"\
-            `: 口座振替決済\n"
+          description: '可用支付类型列表。
+
+
+            - `"Virtualaccount"`：银行转账（虚拟账户）
+
+            - `"Card"`：银行卡支付
+
+            - `"Directdebit"`：银行账户自动扣款'
         input_type:
           type: string
           enum:
           - amount
-          description: '取引金額の入力方式
+          description: '交易金额的填写方式。
 
-            - null：単価入力時(デフォルト)
+            - `null`：按单价填写（默认）
 
-            - `amount`：金額(税込)入力時
-
-            '
+            - `amount`：按含税金额填写'
         card:
           type: object
-          description: 'カード決済情報
-
-            '
+          description: 银行卡支付信息
           properties:
             job_code:
               type: string
-              description: "処理区分  \n"
+              description: 处理类型
               minLength: 1
               maxLength: 7
             tds_type:
               type: string
-              description: "3DS利用種別  \n"
+              description: '是否使用 3D Secure 进行支付。
+
+
+                - `0`：不使用（默认）
+
+                - `2`：使用 3D Secure 2.0'
               minLength: 1
               maxLength: 1
             tds2_type:
               type: string
-              description: "3DS2非対応時設定  \n"
+              description: '发卡机构不支持 3D Secure 2.0 时的后续处理方式。
+
+
+                - `1`：执行 3D Secure 1.0 认证
+
+                - `2`：按错误结束处理（默认）
+
+                - `3`：不执行 3D Secure 认证，直接进行常规授权'
               minLength: 1
               maxLength: 1
             td_tenant_name:
               type: string
-              description: "3Dセキュア表示店舗名  \n"
+              description: 3D Secure 认证页面上显示的商户名称。
               minLength: 1
               maxLength: 25
             tds2_ch_acc_change:
@@ -25559,8 +25550,20 @@ components:
               maxLength: 2048
             tds2_three_ds_req_auth_method:
               type: string
-              description: "ログイン方法  \n01 = 認証なし（ゲストとしてログイン）  \n02 = 加盟店様自身の認証情報  \n03 = SSO(シングルサインオン)  \n04 = イシュアーの認証情報\
-                \  \n05 = サードパーティ認証  \n06 = FIDO認証  \n"
+              description: '客户用户账户的登录方式。填写时，还必须同时填写登录认证记录和登录时间。
+
+
+                - `01`：无认证（以访客身份登录）
+
+                - `02`：使用商户自身的认证信息
+
+                - `03`：SSO（单点登录）
+
+                - `04`：使用发卡机构的认证信息
+
+                - `05`：第三方认证
+
+                - `06`：FIDO 认证'
               minLength: 2
               maxLength: 2
             tds2_three_ds_req_auth_timestamp:
@@ -25916,11 +25919,11 @@ components:
               maxLength: 4
         virtual_account:
           type: object
-          description: "銀行振込（バーチャル口座）情報  \n"
+          description: 银行转账（虚拟账户）信息
           properties:
             reference_invoice_id:
               type: string
-              description: "バーチャル口座 再利用 インボイスID  \n"
+              description: 用于复用虚拟账户的账单 ID
               minLength: 0
               maxLength: 30
             use_exact_deposit_amount:
@@ -25938,15 +25941,11 @@ components:
                 - `false`：不设置可入账金额（默认）'
         embedded_virtual_account:
           type: object
-          description: 'このインボイス情報に対して発行されたバーチャル口座情報\
-
-            このバーチャル口座に対して振込を行うことでインボイスによる請求に対して支払いできます。
-
-            '
+          description: 为当前账单签发的虚拟账户信息。向该虚拟账户转账即可支付当前账单。
           properties:
             virtual_account_id:
               type: string
-              description: "バーチャル口座ID  \n"
+              description: 虚拟账户 ID
               minLength: 1
               maxLength: 25
             branch_name:
@@ -25980,7 +25979,9 @@ components:
         due_date:
           type: string
           maxLength: 10
-          description: "支払期日  \nyyyy/MM/dd形式\n"
+          description: '支付截止日期。
+
+            格式：`yyyy/MM/dd`'
         memo:
           type: string
           description: 备注
@@ -25998,13 +25999,13 @@ components:
           description: 商户自定义字段 3
         is_uncollectible:
           type: boolean
-          description: "回収困難フラグ  \n"
+          description: 难以收回款项标志
         is_paid_externally:
           type: boolean
-          description: "fincode外支払フラグ  \n"
+          description: fincode 外部支付标志
         transaction_date:
           type: string
-          description: 支払完了日
+          description: 支付完成日期
         bill_id:
           type: string
           description: 账单 ID
@@ -26018,47 +26019,36 @@ components:
               type: string
               minLength: 1
               maxLength: 25
-              description: 決済手段ID
+              description: 支付方式 ID
             target_date:
               type: string
-              description: '振替指定日
+              description: '指定扣款日期。
 
-                形式：`YYYY/MM/DD`
-
-                '
+                格式：`YYYY/MM/DD`'
             remarks:
               type: string
               description: 账单明细显示内容
             settlement_route:
               type: string
-              description: '振替サービス
+              description: '自动扣款服务类型。
 
-                - `1`: 口座振替（5・6・23・27日）
+                - `1`：自动扣款（每月 5、6、23、27 日）
 
-                - `2`: 口座振替（1・5・20・26日）
-
-                '
+                - `2`：自动扣款（每月 1、5、20、26 日）'
             directdebit_failure_mail_send_flag:
               type: string
               enum:
               - '0'
               - '1'
-              description: '口座振替失敗メール送信フラグ
+              description: '自动扣款失败邮件发送标志。用于决定扣款失败时是否向账单发起方发送通知邮件。
 
 
-                口座振替失敗時に請求元に対し通知メールを送るか決定するフラグ
+                - `0`：不发送邮件（默认）
 
-
-                - `0`：メールを送信しない（デフォルト）
-
-                - `1`：メールを送信する
-
-                '
+                - `1`：发送邮件'
         embedded_directdebit:
           type: object
-          description: 'このインボイス情報に対する口座振替の口座情報 この口座から引き落とし完了することでインボイスによる請求に対して支払いできます。
-
-            '
+          description: 当前账单的自动扣款账户信息。从该账户成功扣款后，即视为当前账单已支付。
           properties:
             bank_name:
               type: string
@@ -26074,19 +26064,19 @@ components:
               description: 分行代码
             account_type:
               type: string
-              description: 預金種別
+              description: 存款账户类型
             account_number:
               type: string
               description: 银行账号
             account_name_kana:
               type: string
-              description: 口座名義人名（カナ）
+              description: 账户名义人姓名（片假名）
         created:
           type: string
-          description: 作成日時
+          description: 创建时间
         updated:
           type: string
-          description: 更新日時
+          description: 更新时间
     Invoice.Creating.Response:
       allOf:
       - $ref: '#/components/schemas/Invoice'
@@ -26105,115 +26095,126 @@ components:
       properties:
         is_uncollectible:
           type: boolean
-          description: 回収困難フラグ
+          description: 难以收回款项标志
         bill_mail_send_flag:
           type: string
-          description: "請求書メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する\n"
+          description: '账单邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         receipt_mail_send_flag:
           type: string
-          description: "領収書メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する\n"
+          description: '收据邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         underpayment_mail_send_flag:
           type: string
-          description: "差額請求メール送信フラグ  \n  \n- `0`: メールを送信しない（デフォルト）  \n- `1`: メールを送信する\n"
+          description: '差额付款通知邮件发送标志。
+
+
+            - `0`：不发送邮件（默认）
+
+            - `1`：发送邮件'
         invoice_number:
           type: string
           minLength: 1
           maxLength: 30
-          description: "請求番号  \n指定しないまま請求書を開始した場合、自動採番されます。\n"
+          description: 账单编号。启动账单而未指定编号时，系统将自动编号。
         customer_id:
           type: string
           maxLength: 60
-          description: 顧客（請求先）ID
+          description: 客户（账单接收方）ID
         customer_honorific:
           type: string
           maxLength: 20
-          description: 顧客（請求先）敬称
+          description: 客户（账单接收方）称谓
         customer_overwrite:
           type: object
-          description: '上書き顧客（請求先）情報\
+          description: '覆盖后的客户（账单接收方）信息。
 
-            `customer_id`で指定した顧客の情報のうち、上書きを行う場合に指定します。\
-
-            顧客情報の上書きはこのインボイス情報においてのみ適用されます。
-
-            '
+            如需覆盖 `customer_id` 所指定客户的部分信息，请填写本字段。覆盖内容仅对当前账单生效，不会修改客户主数据。'
           properties:
             name:
               type: string
               maxLength: 384
-              description: 上書き顧客（請求先）宛名
+              description: 覆盖后的客户（账单接收方）名称
             email:
               type: string
               maxLength: 254
-              description: 上書き顧客（請求先）メールアドレス
+              description: 覆盖后的客户（账单接收方）电子邮箱地址
             addr_country:
               type: string
               maxLength: 3
-              description: 上書き顧客（請求先）住所の国コード
+              description: 覆盖后的客户（账单接收方）地址：国家/地区代码
             addr_state:
               type: string
               maxLength: 3
-              description: 上書き顧客（請求先） 住所の都道府県コード
+              description: 覆盖后的客户（账单接收方）地址：都道府县代码
             addr_city:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の市区町村
+              description: 覆盖后的客户（账单接收方）地址：市区町村
             addr_line_1:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の町名・番地
+              description: 覆盖后的客户（账单接收方）地址：街道及门牌号
             addr_line_2:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先） 住所の建物名・部屋番号
+              description: 覆盖后的客户（账单接收方）地址：建筑物名称及房间号
             addr_line_3:
               type: string
               maxLength: 50
-              description: 上書き顧客（請求先）住所 その他
+              description: 覆盖后的客户（账单接收方）地址：其他信息
             addr_post_code:
               type: string
               maxLength: 16
-              description: 上書き顧客（請求先） 住所の郵便番号
+              description: 覆盖后的客户（账单接收方）地址：邮政编码
         issuer_overwrite:
           type: object
-          description: "発行元事業者情報  \n指定しなかった場合、本番環境申請の際にご提出いただいた情報を利用します。\n"
+          description: 开票方企业信息。未填写时，使用申请生产环境时提交的信息。
           properties:
             addr_country:
               type: string
               maxLength: 3
-              description: 発行元事業者住所の国コード
+              description: 开票方企业地址：国家/地区代码
             addr_state:
               type: string
               maxLength: 3
-              description: 発行元事業者住所の都道府県コード
+              description: 开票方企业地址：都道府县代码
             addr_city:
               type: string
               maxLength: 50
-              description: 発行元事業者住所の市区町村
+              description: 开票方企业地址：市区町村
             addr_line_1:
               type: string
               maxLength: 100
-              description: 発行元事業者住所の町名・番地
+              description: 开票方企业地址：街道及门牌号
             addr_line_2:
               type: string
               maxLength: 100
-              description: 発行元事業者住所の建物名・部屋番号
+              description: 开票方企业地址：建筑物名称及房间号
             addr_line_3:
               type: string
               maxLength: 50
-              description: 発行元事業者住所 その他
+              description: 开票方企业地址：其他信息
             addr_post_code:
               type: string
               maxLength: 8
-              description: 発行元事業者住所の郵便番号
+              description: 开票方企业地址：邮政编码
             email:
               type: string
               maxLength: 254
-              description: 発行元事業者のメールアドレス
+              description: 开票方企业的电子邮箱地址
             phone_number:
               type: string
               maxLength: 15
-              description: 発行元事業者の電話番号
+              description: 开票方企业电话号码
         is_tax_included:
           type: boolean
           description: '是否以含税方式显示。
@@ -26225,13 +26226,15 @@ components:
         due_date:
           type: string
           maxLength: 10
-          description: "支払期日  \nyyyy/MM/dd形式  \n"
+          description: '支付截止日期。
+
+            格式：`yyyy/MM/dd`'
         memo:
           type: string
           description: 备注
         lines:
           type: array
-          description: 取引内容
+          description: 交易明细
           items:
             type: object
             properties:
@@ -26239,31 +26242,29 @@ components:
                 type: string
                 minLength: 10
                 maxLength: 10
-                description: "日付  \nyyyy/MM/dd\n"
+                description: '日期。
+
+                  格式：`yyyy/MM/dd`'
               name:
                 type: string
                 minLength: 1
                 maxLength: 200
-                description: 品目
+                description: 商品或服务项目
               unit_price:
                 type: number
                 minLength: 1
                 maxLength: 11
-                description: '単価
-
-                  '
+                description: 单价
               quantity:
                 type: number
                 minimum: 0
                 maximum: 2147483647
-                description: '数量
-
-                  '
+                description: 数量
               tax_rate:
                 type: number
                 minLength: 1
                 maxLength: 3
-                description: 適用税率（%）
+                description: 适用税率（%）
               tax_included_amount:
                 allOf:
                 - $ref: '#/components/schemas/tax_included_amount'
@@ -26271,32 +26272,54 @@ components:
           type: array
           items:
             type: string
-          description: "ショップで利用可能な決済種別のリスト  \n利用可能にする決済種別全てを指定してください。  \n  \n- `Virtualaccount`: 銀行振込（バーチャル口座）決済\n- `Card`:\
-            \ カード決済\n- `Directdebit`: 口座振替決済\n"
+          description: '商户可使用的支付类型列表。请填写需要启用的全部支付类型。
+
+
+            - `Virtualaccount`：银行转账（虚拟账户）
+
+            - `Card`：银行卡支付
+
+            - `Directdebit`：银行账户自动扣款'
         input_type:
           allOf:
           - $ref: '#/components/schemas/input_type'
         card:
           type: object
-          description: カード決済情報
+          description: 银行卡支付信息
           properties:
             job_code:
               type: string
               minLength: 1
               maxLength: 7
               default: AUTH
-              description: "処理区分  \n以下のいずれかを指定してください。  \n\n- `AUTH`: 仮売上  \n- `CAPTURE`: 即時売上\n"
+              description: '银行卡支付的处理类型，请指定以下任一值。
+
+
+                - `AUTH`：仅授权
+
+                - `CAPTURE`：立即请款'
             tds_type:
               type: string
               minLength: 1
               maxLength: 1
-              description: "3DS利用種別  \n3DSを使用して決済を行うかを設定します。  \n- `0`: 行わない（デフォルト）  \n- `2`: 行う（3DS2.0を利用）\n"
+              description: '是否使用 3D Secure 进行支付。
+
+
+                - `0`：不使用（默认）
+
+                - `2`：使用 3D Secure 2.0'
             tds2_type:
               type: string
               minLength: 1
               maxLength: 1
-              description: "3DS2非対応時設定  \n仕向先カード会社が3DS2.0に未対応な場合の、後続処理を設定します。  \n- `1`: 3DS1.0での認証を実施  \n- `2`: エラーとして処理終了（デフォルト）\
-                \  \n- `3`: 通常オーソリを実施\n"
+              description: '发卡机构不支持 3D Secure 2.0 时的后续处理方式。
+
+
+                - `1`：执行 3D Secure 1.0 认证
+
+                - `2`：按错误结束处理（默认）
+
+                - `3`：不执行 3D Secure 认证，直接进行常规授权'
             tds2_tenant_name:
               type: string
               minLength: 1
@@ -26777,14 +26800,16 @@ components:
                 仅限订阅等持续扣款业务使用。填写持续扣款的最短扣款间隔天数。'
         virtual_account:
           type: object
-          description: 銀行振込（バーチャル口座）情報
+          description: 银行转账（虚拟账户）信息
           properties:
             reference_invoice_id:
               type: string
               minLength: 1
               maxLength: 30
-              description: "バーチャル口座 再利用 インボイスID\\\n\\\nあるインボイス情報が持つバーチャル口座を再利用する場合、そのインボイス情報のIDを参照先として指定します。\\\nバーチャル口座の再利用が可能なインボイスの条件は以下の通りです。\n\
-                \n - 参照するインボイスのステータスが `PAID` であること\n - 参照するインボイスのステータスが `PAID` に遷移してから90日以内であること\n"
+              description: '用于复用虚拟账户的账单 ID。
+
+
+                如需复用另一账单持有的虚拟账户，请填写该账单 ID。被引用的账单必须处于 `PAID` 状态，且转为 `PAID` 后未超过 90 天。'
             use_exact_deposit_amount:
               type: boolean
               enum:
@@ -34661,9 +34686,7 @@ components:
         account_kind:
           type: integer
           nullable: true
-          description: '預金種別
-
-            '
+          description: 存款账户类型
         account_number:
           type: string
           nullable: true
@@ -36755,9 +36778,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID
-
-            '
+          description: 支付方式 ID
         pay_type:
           type: string
           enum:
