@@ -43,7 +43,7 @@
       const loading = document.querySelector('#loading');
       const specUrl = './spec/fincode-openapi.zh-CN.json';
 
-      fetch(specUrl)
+      fetch(specUrl, { cache: 'no-cache' })
         .then((response) => {
           if (!response.ok) throw new Error(`OpenAPI 规格加载失败（${response.status}）`);
           return response.json();
