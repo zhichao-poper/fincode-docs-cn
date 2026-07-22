@@ -282,7 +282,7 @@ tags:
     一括決済の処理は非同期で行われ、Webhookイベント`payments.bulk.*.batch`（一括決済課金 実行）で課金結果を受け取ることができます。
 
     '
-- name: 发票功能
+- name: 账单功能
   description: 'インボイス機能に関するAPI群です。\
 
     機能の詳細は[こちら](/payment/invoice)をご確認ください。\
@@ -5382,10 +5382,8 @@ paths:
       operationId: retrievePaymentBulkList
       tags:
       - 批量支付
-      summary: 一括決済 一覧取得
-      description: 'fincodeに登録した一括決済の情報を一覧で取得します。
-
-        '
+      summary: 批量支付列表查询
+      description: 获取已登记到 fincode 的批量支付信息列表。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -5393,18 +5391,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした一括決済情報を一覧で取得します。
-
-          '
+          获取以指定租户商户为销售主体的批量支付信息列表。'
       - in: query
         name: クエリ
-        description: '一括決済情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询批量支付信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -5475,10 +5469,8 @@ paths:
       operationId: createPaymentBulk
       tags:
       - 批量支付
-      summary: 一括決済 登録
-      description: 'fincodeにJSON形式のファイルで一括決済情報を登録し、`process_plan_date`で指定した日時に一括決済処理を予約します。
-
-        '
+      summary: 登记批量支付
+      description: 通过 JSON 格式文件向 fincode 登记批量支付信息，并预约在 `process_plan_date` 指定的时间执行批量支付。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -5486,13 +5478,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした決済情報を一括登録します。
-
-          '
+          批量登记以指定租户商户为销售主体的支付信息。'
       - in: query
         name: pay_type
         required: true
@@ -5600,39 +5590,31 @@ paths:
       operationId: retrievePaymentBulkDetailList
       tags:
       - 批量支付
-      summary: 一括決済詳細 一覧取得
-      description: 'IDで指定した一括決済情報の詳細（決済1件ごとの情報）と各決済で発生したエラーの情報を一覧で取得します。
-
-        '
+      summary: 批量支付明细列表查询
+      description: 获取由 ID 指定的批量支付明细（每笔支付的信息），以及各笔支付发生的错误信息。
       parameters:
       - in: path
         name: id
         required: true
         schema:
           $ref: '#/components/schemas/PaymentBulkId_schema'
-        description: '一括決済ID。\
+        description: '批量支付 ID。
 
-          詳細を取得する一括決済情報のIDを指定します。
-
-          '
+          指定需要获取明细的批量支付信息 ID。'
       - in: header
         name: Tenant-Shop-Id
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。
-
-          '
+          获取以指定租户商户为销售主体的批量支付明细列表。'
       - in: query
         name: クエリ
-        description: '一括決済情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 查询批量支付信息列表时使用的查询条件参数。
         required: true
         schema:
           allOf:
@@ -5706,12 +5688,10 @@ paths:
       operationId: deletePaymentBulk
       tags:
       - 批量支付
-      summary: 一括決済 削除
-      description: 'IDで指定した一括決済情報を削除します。\
+      summary: 删除批量支付
+      description: '删除由 ID 指定的批量支付信息。
 
-        一括決済処理がチェック済み（`status`が`CHECKED`）のものに限り削除できます。
-
-        '
+        仅可删除批量支付处理已检查完毕（`status` 为 `CHECKED`）的记录。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -5719,23 +5699,19 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした一括決済情報を削除します。
-
-          '
+          删除以指定租户商户为销售主体的批量支付信息。'
       - in: path
         name: id
         required: true
         schema:
           $ref: '#/components/schemas/PaymentBulkId_schema'
-        description: '一括決済ID。\
+        description: '批量支付 ID。
 
-          削除対象の一括決済情報のIDを指定します。
-
-          '
+          指定要删除的批量支付信息 ID。'
       responses:
         '200':
           description: 请求成功
@@ -5800,9 +5776,9 @@ paths:
       - Secret-Basic-Auth: []
       operationId: getInvoicesList
       tags:
-      - 发票功能
-      summary: インボイス 一覧取得
-      description: "インボイス情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。 \n"
+      - 账单功能
+      summary: 账单列表查询
+      description: 获取账单信息列表。可通过查询参数缩小获取范围。
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -5810,18 +5786,14 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを請求元とした請求書情報を一覧で取得します。
-
-          '
+          获取以指定租户商户为开具方的账单信息列表。'
       - in: query
         name: クエリ
-        description: '検索条件クエリパラメータ
-
-          '
+        description: 搜索条件查询参数。
         required: false
         schema:
           allOf:
@@ -5890,15 +5862,13 @@ paths:
       - Secret-Basic-Auth: []
       operationId: registerInvoices
       tags:
-      - 发票功能
-      summary: インボイス 作成
-      description: 'インボイス情報を作成します。\
+      - 账单功能
+      summary: 创建账单
+      description: '创建账单信息。
 
-        取引内容やご利用の決済手段などの各種入力項目は、インボイス 更新APIを利用して後から入力することも可能です。\
+        交易内容、使用的支付方式等输入项目也可以在创建后通过“更新账单”API 填写。
 
-        インボイス 発行APIを呼び出すまで請求は行われません。
-
-        '
+        调用“发出账单”API 前不会开始收款。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -5906,13 +5876,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを請求元とした請求書情報を作成します。
-
-          '
+          创建以指定租户商户为开具方的账单信息。'
       requestBody:
         content:
           application/json:
@@ -5982,11 +5950,9 @@ paths:
       - Secret-Basic-Auth: []
       operationId: getInvoices
       tags:
-      - 发票功能
-      summary: インボイス 取得
-      description: '指定したIDを持つインボイス情報を取得します。
-
-        '
+      - 账单功能
+      summary: 获取账单
+      description: 获取具有指定 ID 的账单信息。
       parameters:
       - in: path
         name: id
@@ -6000,13 +5966,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定することで、指定したテナントショップのインボイス請求書情報を取得できます。
-
-          '
+          指定后可获取该租户商户的账单信息。'
       responses:
         '200':
           description: 请求成功
@@ -6077,13 +6041,11 @@ paths:
       - Secret-Basic-Auth: []
       operationId: updateInvoices
       tags:
-      - 发票功能
-      summary: インボイス 更新
-      description: '指定したIDを持つインボイス情報を更新します。\
+      - 账单功能
+      summary: 更新账单
+      description: '更新具有指定 ID 的账单信息。
 
-        インボイス 発行APIを呼び出すまで請求は行われません。発行後は 回収困難フラグ、および 加盟店自由項目 のみが更新可能です。
-
-        '
+        调用“发出账单”API 前不会开始收款。发出后仅可更新难以回收标志和商户自定义字段。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -6091,13 +6053,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした請求書情報を更新します。
-
-          '
+          更新以指定租户商户为销售主体的账单信息。'
       - in: path
         name: id
         required: true
@@ -6266,13 +6226,11 @@ paths:
       - Secret-Basic-Auth: []
       operationId: deleteInvoices
       tags:
-      - 发票功能
-      summary: インボイス 削除
-      description: '指定したIDを持つ、下書き状態のインボイス情報を削除します。\
+      - 账单功能
+      summary: 删除账单
+      description: '删除具有指定 ID 且处于草稿状态的账单信息。
 
-        発行済みのインボイス情報は削除できません。
-
-        '
+        已发出的账单不可删除。'
       parameters:
       - in: header
         name: Tenant-Shop-Id
@@ -6280,13 +6238,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを販売主とした請求書情報を削除します。
-
-          '
+          删除以指定租户商户为销售主体的账单信息。'
       - in: path
         name: id
         required: true
@@ -6361,13 +6317,11 @@ paths:
       - Secret-Basic-Auth: []
       operationId: openInvoices
       tags:
-      - 发票功能
-      summary: インボイス 発行
-      description: 'IDで指定したインボイス情報をもとに請求を開始します。請求書WebページのURL発行、請求先顧客へのメール送信などを行います。\
+      - 账单功能
+      summary: 发出账单
+      description: '根据 ID 指定的账单信息开始收款，包括生成账单 Web 页面 URL、向付款客户发送邮件等操作。
 
-        このAPIの呼び出し以降はインボイス 更新APIでは 回収困難フラグ 、および 加盟店自由項目 のみ更新できます。
-
-        '
+        调用此 API 后，“更新账单”API 仅可更新难以回收标志和商户自定义字段。'
       parameters:
       - in: path
         name: id
@@ -6383,13 +6337,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを請求元としたインボイス請求書の請求を実施します。
-
-          '
+          对以指定租户商户为开具方的账单执行收款。'
       requestBody:
         content:
           application/json:
@@ -6475,13 +6427,11 @@ paths:
       - Secret-Basic-Auth: []
       operationId: cancelInvoices
       tags:
-      - 发票功能
-      summary: インボイス キャンセル
-      description: '指定したIDを持つ、発行済みのインボイス情報をキャンセルします。\
+      - 账单功能
+      summary: 取消账单
+      description: '取消具有指定 ID 且已发出的账单信息。
 
-        キャンセルは請求の取り下げを意味し、一度キャンセルしたインボイス情報をもとに再度請求することはできません。
-
-        '
+        取消表示撤回收款请求，已经取消的账单不可再次用于收款。'
       parameters:
       - in: path
         name: id
@@ -6497,13 +6447,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを請求元としたインボイス請求書のキャンセルができます。
-
-          '
+          取消以指定租户商户为开具方的账单。'
       responses:
         '200':
           description: 请求成功
@@ -6573,13 +6521,11 @@ paths:
       - Secret-Basic-Auth: []
       operationId: paidExternallyInvoices
       tags:
-      - 发票功能
-      summary: インボイス 外部支払いマーク
-      description: '指定したIDを持つ発行済みのインボイス情報を、fincodeによる決済機能でない方法で支払われたとしてマークします。\
+      - 账单功能
+      summary: 标记为外部付款
+      description: '将具有指定 ID 的已发出账单标记为通过 fincode 支付功能以外的方式完成付款。
 
-        このインボイス情報のステータスは支払い完了（`PAID`）へ遷移し、fincode外支払フラグ（`is_paid_externally`）が`true` になります。
-
-        '
+        该账单的状态将变为付款完成（`PAID`），外部付款标志（`is_paid_externally`）将变为 `true`。'
       parameters:
       - in: path
         name: id
@@ -6595,13 +6541,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ プラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅平台主商户可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          指定したテナントショップを請求元としたインボイス請求書についての更新ができます。
-
-          '
+          更新以指定租户商户为开具方的账单。'
       requestBody:
         content:
           application/json:
@@ -6687,11 +6631,9 @@ paths:
       - Secret-Basic-Auth: []
       operationId: refreshInvoicesVirtualaccount
       tags:
-      - 发票功能
-      summary: インボイス バーチャル口座再発行
-      description: '指定したインボイスに割り当てられているバーチャル口座について、期限が切れていて口座がクローズされている場合、新たなバーチャル口座を割り当てます。
-
-        '
+      - 账单功能
+      summary: 重新分配账单虚拟账户
+      description: 如果分配给指定账单的虚拟账户已过期并关闭，则重新分配一个新的虚拟账户。
       parameters:
       - name: id
         in: path
@@ -6700,7 +6642,7 @@ paths:
           type: string
           minLength: 1
           maxLength: 30
-        description: インボイスID
+        description: 账单 ID
       responses:
         '200':
           description: 请求成功
@@ -38638,9 +38580,9 @@ x-tagGroups:
 - name: 批量支付
   tags:
   - 批量支付
-- name: 发票功能
+- name: 账单功能
   tags:
-  - 发票功能
+  - 账单功能
 - name: 商户入账信息
   tags:
   - 销售款入账

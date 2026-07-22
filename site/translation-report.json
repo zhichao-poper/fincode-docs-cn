@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2397,
+  "remainingJapaneseUnits": 2353,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -483,208 +483,32 @@
       "preview": "口座振替"
     },
     {
-      "pointer": "/paths/~1v1~1payments~1bulk/get/summary",
-      "preview": "一括決済 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/get/description",
-      "preview": "fincodeに登録した一括決済の情報を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/get/parameters/1/description",
-      "preview": "一括決済情報の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/post/summary",
-      "preview": "一括決済 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/post/description",
-      "preview": "fincodeにJSON形式のファイルで一括決済情報を登録し、`process_plan_date`で指定した日時に一括決済処理を予約します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk/post/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/get/summary",
-      "preview": "一括決済詳細 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/get/description",
-      "preview": "IDで指定した一括決済情報の詳細（決済1件ごとの情報）と各決済で発生したエラーの情報を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/get/parameters/0/description",
-      "preview": "一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/get/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/get/parameters/2/description",
-      "preview": "一括決済情報の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/delete/summary",
-      "preview": "一括決済 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/delete/description",
-      "preview": "IDで指定した一括決済情報を削除します。\\ 一括決済処理がチェック済み（`status`が`CHECKED`）のものに限り削除できます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/delete/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1payments~1bulk~1{id}/delete/parameters/1/description",
-      "preview": "一括決済ID。\\ 削除対象の一括決済情報のIDを指定します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/get/summary",
-      "preview": "インボイス 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/get/description",
-      "preview": "インボイス情報を一覧で取得します。クエリパラメータを指定して取得する条件を絞り込めます。  "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/get/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/get/parameters/1/description",
-      "preview": "検索条件クエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/post/summary",
-      "preview": "インボイス 作成"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/post/description",
-      "preview": "インボイス情報を作成します。\\ 取引内容やご利用の決済手段などの各種入力項目は、インボイス 更新APIを利用して後から入力することも可能です。\\ インボイス 発行APIを呼び出すまで請求は行われません。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices/post/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/get/summary",
-      "preview": "インボイス 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/get/description",
-      "preview": "指定したIDを持つインボイス情報を取得します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1invoices~1{id}/get/parameters/0/description",
       "preview": "インボイスID   "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/get/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定することで、指定したテナントショップのインボイス請求書情報を取得できます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/put/summary",
-      "preview": "インボイス 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/put/description",
-      "preview": "指定したIDを持つインボイス情報を更新します。\\ インボイス 発行APIを呼び出すまで請求は行われません。発行後は 回収困難フラグ、および 加盟店自由項目 のみが更新可能です。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/put/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 "
     },
     {
       "pointer": "/paths/~1v1~1invoices~1{id}/put/parameters/1/description",
       "preview": "インボイスID "
     },
     {
-      "pointer": "/paths/~1v1~1invoices~1{id}/delete/summary",
-      "preview": "インボイス 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/delete/description",
-      "preview": "指定したIDを持つ、下書き状態のインボイス情報を削除します。\\ 発行済みのインボイス情報は削除できません。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}/delete/parameters/0/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を削除します。 "
-    },
-    {
       "pointer": "/paths/~1v1~1invoices~1{id}/delete/parameters/1/description",
       "preview": "インボイスID "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1open/put/summary",
-      "preview": "インボイス 発行"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1open/put/description",
-      "preview": "IDで指定したインボイス情報をもとに請求を開始します。請求書WebページのURL発行、請求先顧客へのメール送信などを行います。\\ このAPIの呼び出し以降はインボイス 更新APIでは 回収困難フラグ 、および 加盟店自由項目 のみ更新できます。 "
     },
     {
       "pointer": "/paths/~1v1~1invoices~1{id}~1open/put/parameters/0/description",
       "preview": "インボイスID "
     },
     {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1open/put/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1cancel/put/summary",
-      "preview": "インボイス キャンセル"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1cancel/put/description",
-      "preview": "指定したIDを持つ、発行済みのインボイス情報をキャンセルします。\\ キャンセルは請求の取り下げを意味し、一度キャンセルしたインボイス情報をもとに再度請求することはできません。 "
-    },
-    {
       "pointer": "/paths/~1v1~1invoices~1{id}~1cancel/put/parameters/0/description",
       "preview": "インボイスID "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1cancel/put/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書のキャンセルができます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/summary",
-      "preview": "インボイス 外部支払いマーク"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/description",
-      "preview": "指定したIDを持つ発行済みのインボイス情報を、fincodeによる決済機能でない方法で支払われたとしてマークします。\\ このインボイス情報のステータスは支払い完了（`PAID`）へ遷移し、fincode外支払フラグ（`is_paid_externally`）が`true` になります。 "
     },
     {
       "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/parameters/0/description",
       "preview": "インボイスID "
     },
     {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ プラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 "
-    },
-    {
       "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/requestBody/content/application~1json/schema/properties/transaction_date/description",
       "preview": "支払い完了日   yyyy/MM/dd形式   "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/summary",
-      "preview": "インボイス バーチャル口座再発行"
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/description",
-      "preview": "指定したインボイスに割り当てられているバーチャル口座について、期限が切れていて口座がクローズされている場合、新たなバーチャル口座を割り当てます。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/parameters/0/description",
-      "preview": "インボイスID"
     },
     {
       "pointer": "/paths/~1v1~1accounts/get/summary",
