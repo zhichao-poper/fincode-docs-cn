@@ -175,7 +175,7 @@ tags:
     顧客には名前やメールアドレス、請求先住所を登録し管理でき、決済やカード情報・決済手段などのリソースが関連付けられます。
 
     '
-- name: 信用卡
+- name: 卡片
   description: '顧客が持つカードを管理するAPIです。\
 
     カードにはクレジットカード/デビッドカード/プリペイドカードの有効期限や名義などの情報が含まれており、決済の実行時にカードのIDを指定することでそのカードに対して請求（決済）を行います。\
@@ -243,7 +243,7 @@ tags:
     リクエスト時に`guide_mail_send_flag`（決済メール送信フラグ）に`1`（送信する）を指定することでリダイレクト型決済URLを添付したメールをfincodeから送信させられます。
 
     '
-- name: 重定向式信用卡登记
+- name: 重定向式卡片登记
   description: 'リダイレクト型カード登録URLを作成するAPIです。
 
 
@@ -1011,23 +1011,21 @@ paths:
       - Secret-Bearer-Auth: []
       - Secret-Basic-Auth: []
       tags:
-      - 信用卡
+      - 卡片
       operationId: createCustomerCard
-      summary: カード 登録
-      description: '`customer_id`で指定した顧客に対しカードを登録します。
+      summary: 卡片登记
+      description: '为 `customer_id` 指定的客户登记卡片。
 
 
-        <span class="smallText">※ カードの登録は決済手段API（<code>POST /v1/customers/{customer_id}/payment_methods</code>, <code>pay_type
-        = "Card"</code>）でも行えます。新規に実装する場合は、口座振替・銀行振込（バーチャル口座）と同じ形式で扱える決済手段APIの利用を推奨します。</span>
-
-        '
+        <span class="smallText">也可以通过支付方式 API（<code>POST /v1/customers/{customer_id}/payment_methods</code>，<code>pay_type
+        = "Card"</code>）登记卡片。新开发时，建议使用支付方式 API，以便采用与银行账户自动扣款、银行转账（虚拟账户）相同的形式进行处理。</span>'
       parameters:
       - name: customer_id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
-        description: このカードが紐づく顧客のID
+        description: 与该卡片关联的客户 ID。
         required: true
       - in: header
         name: Tenant-Shop-Id
@@ -1035,13 +1033,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。
-
-          '
+          为与该租户商户关联的客户中，由 ID 指定的客户登记卡片。'
       requestBody:
         content:
           application/json:
@@ -1119,27 +1115,23 @@ paths:
       - Public-Bearer-Auth: []
       - Secret-Basic-Auth: []
       tags:
-      - 信用卡
+      - 卡片
       operationId: retrieveCustomerCardList
-      summary: カード 一覧取得
-      description: '`customer_id`で指定した顧客に対し紐づくカードを一覧で取得します。
+      summary: 获取卡片列表
+      description: '获取与 `customer_id` 指定的客户关联的卡片列表。
 
 
-        <span class="smallText">※ カード情報の一覧は決済手段API（<code>GET /v1/customers/{customer_id}/payment_methods</code>, <code>pay_type
-        = "Card"</code>）でも取得できます。新規に実装する場合は決済手段APIの利用を推奨します。</span>
-
-        '
+        <span class="smallText">也可以通过支付方式 API（<code>GET /v1/customers/{customer_id}/payment_methods</code>，<code>pay_type
+        = "Card"</code>）获取卡片信息列表。新开发时，建议使用支付方式 API。</span>'
       parameters:
       - name: customer_id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
-        description: '顧客ID。 \
+        description: '客户 ID。
 
-          この顧客に紐づくカードを一覧で取得します。
-
-          '
+          获取与该客户关联的卡片列表。'
         required: true
       - in: header
         name: Tenant-Shop-Id
@@ -1147,13 +1139,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの一覧を取得します。
-
-          '
+          获取与该租户商户关联的指定客户已登记的卡片列表。'
       responses:
         '200':
           description: 请求成功
@@ -1217,30 +1207,28 @@ paths:
       - Public-Bearer-Auth: []
       - Secret-Basic-Auth: []
       tags:
-      - 信用卡
+      - 卡片
       operationId: retrieveCustomerCard
-      summary: カード 取得
-      description: '`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを取得します。
+      summary: 获取卡片
+      description: '从与 `customer_id` 指定的客户关联的卡片中，获取由 `id` 指定的卡片。
 
 
-        <span class="smallText">※ カード情報の取得は決済手段API（<code>GET /v1/customers/{customer_id}/payment_methods/{id}</code>, <code>pay_type
-        = "Card"</code>）でも行えます。新規に実装する場合は決済手段APIの利用を推奨します。</span>
-
-        '
+        <span class="smallText">也可以通过支付方式 API（<code>GET /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type
+        = "Card"</code>）获取卡片信息。新开发时，建议使用支付方式 API。</span>'
       parameters:
       - name: customer_id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
-        description: このカードが紐づく顧客のID
+        description: 与该卡片关联的客户 ID。
         required: true
       - name: id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CardId_schema'
-        description: 取得するカードのID
+        description: 要获取的卡片 ID。
         required: true
       - in: header
         name: Tenant-Shop-Id
@@ -1248,13 +1236,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードから取得します。
-
-          '
+          从与该租户商户关联的指定客户已登记的卡片中获取目标卡片。'
       responses:
         '200':
           description: 请求成功
@@ -1318,30 +1304,28 @@ paths:
       - Secret-Bearer-Auth: []
       - Secret-Basic-Auth: []
       tags:
-      - 信用卡
+      - 卡片
       operationId: updateCustomerCard
-      summary: カード 更新
-      description: '`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを更新します。
+      summary: 更新卡片
+      description: '从与 `customer_id` 指定的客户关联的卡片中，更新由 `id` 指定的卡片。
 
 
-        <span class="smallText">※ カード情報の更新は決済手段API（<code>PUT /v1/customers/{customer_id}/payment_methods/{id}</code>, <code>pay_type
-        = "Card"</code>）でも行えます。新規に実装する場合は決済手段APIの利用を推奨します。</span>
-
-        '
+        <span class="smallText">也可以通过支付方式 API（<code>PUT /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type
+        = "Card"</code>）更新卡片信息。新开发时，建议使用支付方式 API。</span>'
       parameters:
       - name: customer_id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
-        description: このカードが紐づく顧客のID
+        description: 与该卡片关联的客户 ID。
         required: true
       - name: id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CardId_schema'
-        description: 更新するカードのID
+        description: 要更新的卡片 ID。
         required: true
       - in: header
         name: Tenant-Shop-Id
@@ -1349,13 +1333,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。
-
-          '
+          更新与该租户商户关联的指定客户已登记的卡片信息。'
       requestBody:
         content:
           application/json:
@@ -1429,30 +1411,28 @@ paths:
           \nmain\n"
     delete:
       tags:
-      - 信用卡
+      - 卡片
       operationId: deleteCustomerCard
-      summary: カード 削除
-      description: '`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを削除します。
+      summary: 删除卡片
+      description: '从与 `customer_id` 指定的客户关联的卡片中，删除由 `id` 指定的卡片。
 
 
-        <span class="smallText">※ カード情報の削除は決済手段API（<code>DELETE /v1/customers/{customer_id}/payment_methods/{id}</code>, <code>pay_type
-        = "Card"</code>）でも行えます。新規に実装する場合は決済手段APIの利用を推奨します。</span>
-
-        '
+        <span class="smallText">也可以通过支付方式 API（<code>DELETE /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type
+        = "Card"</code>）删除卡片信息。新开发时，建议使用支付方式 API。</span>'
       parameters:
       - name: customer_id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CustomerId_schema'
-        description: このカードが紐づく顧客のID
+        description: 与该卡片关联的客户 ID。
         required: true
       - name: id
         in: path
         schema:
           allOf:
           - $ref: '#/components/schemas/CardId_schema'
-        description: 削除するカードのID
+        description: 要删除的卡片 ID。
         required: true
       - in: header
         name: Tenant-Shop-Id
@@ -1460,13 +1440,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードを削除します。
-
-          '
+          删除与该租户商户关联的指定客户已登记的卡片。'
       responses:
         '200':
           description: 请求成功
@@ -1531,18 +1509,14 @@ paths:
       - Secret-Bearer-Auth: []
       - Secret-Basic-Auth: []
       tags:
-      - 信用卡
+      - 卡片
       operationId: retrieveCardList
-      summary: カード 一覧取得（顧客情報共有グループ単位）
-      description: '顧客情報共有グループ単位でカード情報を一覧取得する API
-
-        '
+      summary: 获取卡片列表（按客户信息共享组）
+      description: 按客户信息共享组获取卡片信息列表。
       parameters:
       - in: query
         name: クエリ
-        description: 'カード情報の一覧取得において検索条件となるクエリパラメータ
-
-          '
+        description: 获取卡片信息列表时使用的查询条件参数。
         required: false
         schema:
           allOf:
@@ -1554,13 +1528,11 @@ paths:
         schema:
           allOf:
           - $ref: '#/components/schemas/schema'
-        description: '<span class="smallText color--red-400">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\
+        description: '<span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
 
-          テナントショップID。\
+          租户商户 ID。
 
-          このテナントショップに紐づく顧客情報共有グループのカード情報から一覧で取得します。
-
-          '
+          从与该租户商户关联的客户信息共享组所拥有的卡片信息中获取列表。'
       responses:
         '200':
           description: 请求成功
@@ -4513,7 +4485,7 @@ paths:
       - Secret-Basic-Auth: []
       operationId: createCardRegistrationSession
       tags:
-      - 重定向式信用卡登记
+      - 重定向式卡片登记
       summary: カード登録URL 作成
       parameters:
       - in: header
@@ -11113,21 +11085,19 @@ components:
           type: integer
           minLength: 1
           nullable: true
-          description: ページ番号
+          description: 页码。
         limit:
           type: integer
           nullable: true
           minLength: 10
           maxLength: 100
-          description: 1回で取得するデータの最大件数
+          description: 单次获取的数据条数上限。
         count_only:
           type: boolean
           nullable: true
-          description: '総件数のみ取得するか。\
+          description: '是否仅获取总条数。
 
-            `true`を指定した場合、検索結果の総件数（`total_count`）のみ取得します。
-
-            '
+            指定为 `true` 时，只获取查询结果的总条数（`total_count`）。'
       x-common-properties:
         sort:
           type: string
@@ -11220,46 +11190,42 @@ components:
         total_count:
           type: integer
           example: 100
-          description: 総件数
+          description: 总条数。
         last_page:
           type: integer
           example: 20
-          description: 最後のページのページ数
+          description: 最后一页的页码。
         current_page:
           type: integer
           example: 3
-          description: 現在のページのページ数
+          description: 当前页码。
         limit:
           type: integer
           example: 5
-          description: 1ページの最大件数
+          description: 每页最大条数。
         link_next:
           type: string
           example: /v1/{resource}?limit=5&page=4
           nullable: true
-          description: 次のページのコンテンツを取得するためのURL
+          description: 用于获取下一页内容的 URL。
         link_previous:
           type: string
           example: /v1/{resource}?limit=5&page=2
           nullable: true
-          description: 前のページのコンテンツを取得するためのURL
+          description: 用于获取上一页内容的 URL。
     created:
       type: string
       example: 2022/05/16 23:59:59.999
-      description: '作成日\
+      description: '创建时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     updated:
       type: string
       nullable: true
       example: 2022/05/16 23:59:59.999
-      description: '更新日\
+      description: '更新时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     Customer:
       type: object
       properties:
@@ -11429,27 +11395,21 @@ components:
       - $ref: '#/components/schemas/Customer.list'
     FincodeAPIError:
       type: object
-      description: '1つのエラーを表現するオブジェクト。
-
-        '
+      description: 表示单个错误的对象。
       properties:
         error_code:
           type: string
           minLength: 11
           maxLength: 11
           example: E**********
-          description: 'エラー内容を判定する場合はこの`error_code`の使用が推奨されます。\
+          description: '判断错误内容时，建议使用 `error_code`。
 
-            [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-            '
+            各错误码的定义请参阅[错误码一览](https://docs.fincode.jp/develop_support/error)。'
         error_message:
           type: string
-          description: 'エラーの内容を表現するメッセージです。\
+          description: '表示错误内容的消息。
 
-            このエラーメッセージは予告なく変更されるため、エラー内容を判定する場合はこの値ではなく`error_code`の使用が推奨されます。
-
-            '
+            该错误消息可能在不事先通知的情况下变更；判断错误内容时，建议使用 `error_code`，不要依赖此字段。'
     FincodeAPIError.Response:
       type: object
       properties:
@@ -11462,9 +11422,7 @@ components:
       example: c_**********************
       minLength: 1
       maxLength: 60
-      description: '顧客ID
-
-        '
+      description: 客户 ID。
     name:
       type: string
       minLength: 1
@@ -11695,7 +11653,7 @@ components:
       - '1'
       - '0'
       example: '1'
-      description: 削除フラグ
+      description: 删除标志。
     Customer.Deleting.Response:
       type: object
       properties:
@@ -11710,39 +11668,33 @@ components:
       type: string
       example: '************1234'
       maxLength: 16
-      description: 'マスク済みカード番号。\
+      description: '已掩码的卡号。
 
         <span class="smallText">
 
-        下4桁以外をマスクしたカード番号です。\
+        除末 4 位之外均已掩码。
 
-        カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。\
+        遵循不保存卡片信息的原则，fincode 用户可保存此值，以替代未掩码的完整卡号。
 
         </span>
 
-        形式：`************1234`
-
-        '
+        格式：`************1234`'
     expire:
       type: string
       minLength: 4
       maxLength: 4
       example: '4012'
       nullable: true
-      description: 'カード有効期限。\
+      description: '卡片有效期。
 
-        形式：`YYMM`
-
-        '
+        格式：`YYMM`'
     holder_name:
       type: string
       example: TARO EPSILON
       minLength: 1
       maxLength: 50
       nullable: true
-      description: 'カード名義人名。
-
-        '
+      description: 持卡人姓名。
     CardType:
       type: string
       enum:
@@ -11752,18 +11704,16 @@ components:
       - '3'
       minLength: 1
       maxLength: 1
-      description: 'クレジットカード種別。
+      description: '支付卡类型。
 
 
-        - `0`: 不明（[テストカード](https://docs.fincode.jp/develop_support/test_resources)を含む）
+        - `0`：未知（包括[测试卡](https://docs.fincode.jp/develop_support/test_resources)）
 
-        - `1`: デビットカード
+        - `1`：借记卡
 
-        - `2`: プリペイドカード
+        - `2`：预付卡
 
-        - `3`: クレジットカード
-
-        '
+        - `3`：信用卡'
     CardBrand:
       type: string
       maxLength: 50
@@ -11775,40 +11725,36 @@ components:
       - DINERS
       - DISCOVER
       - ''
-      description: 'カードブランドを表します。
+      description: '表示卡组织品牌。
 
 
-        - `VISA`: VISA
+        - `VISA`：Visa
 
-        - `MASTER`: Mastercard
+        - `MASTER`：Mastercard
 
-        - `JCB`: JCB
+        - `JCB`：JCB
 
-        - `AMEX`: American Express
+        - `AMEX`：American Express
 
-        - `DINERS`: Diners Club
+        - `DINERS`：Diners Club
 
-        - `DISCOVER`: Discover
+        - `DISCOVER`：Discover
 
-        - `""`（空文字列） : 判定不能
-
-        '
+        - `""`（空字符串）：无法判断'
     card_no_hash:
       type: string
       example: abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz01
       minLength: 1
       maxLength: 64
-      description: 'カード番号をもとに生成されたハッシュ値。\
+      description: '根据卡号生成的哈希值。
 
         <span class="smallText">
 
-        おなじカード番号に対しては常に同じ値が返されます。\
+        同一卡号始终返回相同的值。
 
-        カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。
+        遵循不保存卡片信息的原则，fincode 用户可保存此值，以替代未掩码的完整卡号。
 
-        </span>
-
-        '
+        </span>'
     Card:
       type: object
       properties:
@@ -11817,37 +11763,31 @@ components:
           example: cs_**********************
           minLength: 25
           maxLength: 25
-          description: 'カードID
-
-            '
+          description: 卡片 ID。
         customer_id:
           type: string
           example: c_**********************
           minLength: 1
           maxLength: 60
-          description: '顧客ID\
+          description: '客户 ID。
 
-            このカードが紐づく顧客のID
-
-            '
+            与该卡片关联的客户 ID。'
         default_flag:
           type: string
           enum:
           - '0'
           - '1'
           example: '0'
-          description: 'デフォルトフラグ。\
+          description: '默认卡片标志。
 
-            このカードが決済実行やサブスクリプション登録などでカードIDを指定しない場合に自動的に使用するカードかどうかを示すフラグです。\
+            表示在执行支付、登记订阅等未指定卡片 ID 的情况下，是否自动使用该卡片。
 
-            顧客に対して必ず1つのデフォルトカードが存在します。（カードが1つも登録されていない場合を除く）
+            每个客户必须存在一张默认卡片（尚未登记任何卡片时除外）。
 
 
-            - `0`: デフォルトカードではない
+            - `0`：不是默认卡片
 
-            - `1`: デフォルトカード
-
-            '
+            - `1`：默认卡片'
         card_no:
           allOf:
           - $ref: '#/components/schemas/card_no'
@@ -11881,15 +11821,12 @@ components:
           maxLength: 512
           example: '34567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
           nullable: true
-          description: 'カードトークン\
+          description: '卡片令牌。
 
-            \
 
-            fincode JSの`tokens`メソッドで取得したトークンを指定します。\
+            指定通过 fincode JS 的 `tokens` 方法取得的令牌。
 
-            JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。
-
-            '
+            JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。'
     Card.list:
       type: object
       properties:
@@ -11901,11 +11838,9 @@ components:
       type: string
       nullable: true
       example: 2022/05/16 23:59:59.999
-      description: '処理日\
+      description: '处理时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     CardUpdater:
       type: object
       properties:
@@ -11916,36 +11851,30 @@ components:
           - enabled
           - disabled
           - inherit
-          description: 'カード更新対象カードステータス
+          description: '卡片自动更新状态。
 
 
-            - `enabled`：カード更新する
+            - `enabled`：自动更新卡片
 
-            - `disabled`：カード更新しない
+            - `disabled`：不自动更新卡片
 
-            - `inherit`：ショップ設定に準ずる
-
-            '
+            - `inherit`：遵循商户设置'
         card_updater_last_success_date:
           allOf:
           - $ref: '#/components/schemas/process_date'
-          description: 'カード更新成功日時
+          description: '卡片自动更新最近成功时间。
 
-            最後にカード情報の更新に成功した日時\
+            最后一次成功更新卡片信息的时间。
 
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         card_updater_last_attempt_date:
           allOf:
           - $ref: '#/components/schemas/process_date'
-          description: 'カード更新実施日時
+          description: '卡片自动更新最近执行时间。
 
-            最後にカード情報の更新を実施した日時\
+            最后一次执行卡片信息更新的时间。
 
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     CustomerCard.ListRetrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Card.list'
@@ -11962,33 +11891,28 @@ components:
       minLength: 1
       maxLength: 512
       example: '34567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
-      description: 'カードトークン\
+      description: '卡片令牌。
 
-        \
 
-        fincode JSの`tokens`メソッドで取得したトークンを指定します。\
+        指定通过 fincode JS 的 `tokens` 方法取得的令牌。
 
-        JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。
-
-        '
+        JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。'
     default_flag:
       type: string
       enum:
       - '0'
       - '1'
       example: '0'
-      description: 'デフォルトフラグ。\
+      description: '默认卡片标志。
 
-        このカードが決済実行やサブスクリプション登録などでカードIDを指定しない場合に自動的に使用するカードかどうかを示すフラグです。\
+        表示在执行支付、登记订阅等未指定卡片 ID 的情况下，是否自动使用该卡片。
 
-        顧客に対して必ず1つのデフォルトカードが存在します。（カードが1つも登録されていない場合を除く）
+        每个客户必须存在一张默认卡片（尚未登记任何卡片时除外）。
 
 
-        - `0`: デフォルトカードではない
+        - `0`：不是默认卡片
 
-        - `1`: デフォルトカード
-
-        '
+        - `1`：默认卡片'
     card_updater_mode:
       type: string
       nullable: true
@@ -11996,16 +11920,14 @@ components:
       - enabled
       - disabled
       - inherit
-      description: 'カード更新対象カードステータス
+      description: '卡片自动更新状态。
 
 
-        - `enabled`：カード更新する
+        - `enabled`：自动更新卡片
 
-        - `disabled`：カード更新しない
+        - `disabled`：不自动更新卡片
 
-        - `inherit`：ショップ設定に準ずる
-
-        '
+        - `inherit`：遵循商户设置'
     CustomerCard.Creating.Request:
       type: object
       properties:
@@ -12018,16 +11940,14 @@ components:
         card_updater_mode:
           allOf:
           - $ref: '#/components/schemas/card_updater_mode'
-          description: 'カード更新機能（洗替）利用設定
+          description: '卡片自动更新服务（Account Updater）使用设置。
 
 
-            - `enabled`：カード更新する
+            - `enabled`：自动更新卡片
 
-            - `disabled`：カード更新しない
+            - `disabled`：不自动更新卡片
 
-            - `inherit`：ショップ設定に準ずる
-
-            '
+            - `inherit`：遵循商户设置'
       required:
       - token
       - default_flag
@@ -12048,15 +11968,12 @@ components:
       maxLength: 512
       example: '34567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
       nullable: true
-      description: 'カードトークン\
+      description: '卡片令牌。
 
-        \
 
-        fincode JSの`tokens`メソッドで取得したトークンを指定します。\
+        指定通过 fincode JS 的 `tokens` 方法取得的令牌。
 
-        JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。
-
-        '
+        JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。'
     CustomerCard.Updating.Request:
       type: object
       properties:
@@ -12068,46 +11985,38 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/default_flag'
-          description: 'デフォルトフラグ。\
+          description: '默认卡片标志。
 
-            指定した場合のみ更新されます。
-
-            '
+            仅在指定该字段时更新。'
         holder_name:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/holder_name'
-          description: '※ `token`に入力がある場合は無視\
+          description: '指定 `token` 时忽略此字段。
 
-            カード名義人名
-
-            '
+            持卡人姓名。'
         expire:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/expire'
-          description: '※ `token`に入力がある場合は無視\
+          description: '指定 `token` 时忽略此字段。
 
-            カード有効期限。\
+            卡片有效期。
 
-            形式：`YYMM`
-
-            '
+            格式：`YYMM`'
         card_updater_mode:
           allOf:
           - $ref: '#/components/schemas/card_updater_mode'
-          description: 'カード更新機能（洗替）利用設定\
+          description: '卡片自动更新服务（Account Updater）使用设置。
 
-            指定した場合のみ更新されます。
+            仅在指定该字段时更新。
 
 
-            - `enabled`：カード更新する
+            - `enabled`：自动更新卡片
 
-            - `disabled`：カード更新しない
+            - `disabled`：不自动更新卡片
 
-            - `inherit`：ショップ設定に準ずる
-
-            '
+            - `inherit`：遵循商户设置'
     CustomerCard.Updating.Response:
       allOf:
       - $ref: '#/components/schemas/Card'
@@ -12117,20 +12026,18 @@ components:
       example: cs_**********************
       minLength: 25
       maxLength: 25
-      description: 'カードID
-
-        '
+      description: 卡片 ID。
     CustomerCard.Deleting.Response:
       type: object
       properties:
         id:
           allOf:
           - $ref: '#/components/schemas/properties-id'
-          description: 削除されたカードのID
+          description: 已删除卡片的 ID。
         customer_id:
           allOf:
           - $ref: '#/components/schemas/id'
-          description: 削除されたカードを持つ顧客のID
+          description: 持有已删除卡片的客户 ID。
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -12139,11 +12046,9 @@ components:
       example: c_**********************
       minLength: 1
       maxLength: 60
-      description: '顧客ID\
+      description: '客户 ID。
 
-        このカードが紐づく顧客のID
-
-        '
+        与该卡片关联的客户 ID。'
     Card.ListRetrieving.QueryParams:
       type: object
       properties:
@@ -12151,96 +12056,81 @@ components:
           allOf:
           - $ref: '#/components/schemas/properties-id'
           nullable: true
-          description: 'カードID\
+          description: '卡片 ID。
 
-            指定したカードIDに一致するカード情報を取得します。
-
-            '
+            获取与指定卡片 ID 一致的卡片信息。'
         customer_id:
           allOf:
           - $ref: '#/components/schemas/customer_id'
           nullable: true
-          description: '顧客ID\
+          description: '客户 ID。
 
-            指定した顧客IDに紐づくカード情報を取得します。
-
-            '
+            获取与指定客户 ID 关联的卡片信息。'
         card_updater_last_success_date_from:
           type: string
           nullable: true
           example: 2022/05/16
-          description: 'カード更新成功日 範囲指定 開始日\
+          description: '卡片自动更新成功日期范围的开始日期。
 
-            カード更新成功日（`card_updater_last_success_date`）を対象に範囲検索を行います。\
+            以卡片自动更新成功日期（`card_updater_last_success_date`）为条件进行范围查询。
 
-            この日付以降にカード更新成功したカード情報を取得します。\
+            获取在该日期及之后自动更新成功的卡片信息。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         card_updater_last_success_date_to:
           type: string
           nullable: true
           example: 2022/05/16
-          description: 'カード更新成功日 範囲指定 終了日\
+          description: '卡片自动更新成功日期范围的结束日期。
 
-            カード更新成功日（`card_updater_last_success_date`）を対象に範囲検索を行います。\
+            以卡片自动更新成功日期（`card_updater_last_success_date`）为条件进行范围查询。
 
-            この日付以前にカード更新成功したカード情報を取得します。\
+            获取在该日期及之前自动更新成功的卡片信息。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         card_updater_last_attempt_date_from:
           type: string
           nullable: true
           example: 2022/05/16
-          description: 'カード更新実施日 範囲指定 開始日\
+          description: '卡片自动更新执行日期范围的开始日期。
 
-            カード更新実施日（`card_updater_last_attempt_date`）を対象に範囲検索を行います。\
+            以卡片自动更新执行日期（`card_updater_last_attempt_date`）为条件进行范围查询。
 
-            この日付以降にカード更新を実施したカード情報を取得します。\
+            获取在该日期及之后执行过自动更新的卡片信息。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         card_updater_last_attempt_date_to:
           type: string
           nullable: true
           example: 2022/05/16
-          description: 'カード更新実施日 範囲指定 終了日\
+          description: '卡片自动更新执行日期范围的结束日期。
 
-            カード更新実施日（`card_updater_last_attempt_date`）を対象に範囲検索を行います。\
+            以卡片自动更新执行日期（`card_updater_last_attempt_date`）为条件进行范围查询。
 
-            この日付以前にカード更新を実施したカード情報を取得します。\
+            获取在该日期及之前执行过自动更新的卡片信息。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段与顺序。
 
-            例： `?sort=customer_id␣asc,created␣desc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=customer_id␣asc,created␣desc`
 
 
-            - `id`: カードID
+            可排序字段：
 
-            - `customer_id`: 顧客ID
 
-            - `created`: 作成日時
+            - `id`：卡片 ID
 
-            - `card_updater_last_success_date`: カード更新成功日
+            - `customer_id`：客户 ID
 
-            - `card_updater_last_attempt_date`: カード更新実施日
+            - `created`：创建时间
 
-            '
+            - `card_updater_last_success_date`：卡片自动更新成功日期
+
+            - `card_updater_last_attempt_date`：卡片自动更新执行日期'
     Card.ListRetrieving.Response:
       allOf:
       - $ref: '#/components/schemas/_ListResponse'

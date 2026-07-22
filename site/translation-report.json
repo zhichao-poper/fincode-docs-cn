@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 2673,
+  "remainingJapaneseUnits": 2596,
   "items": [
     {
       "pointer": "/tags/6/description",
@@ -85,114 +85,6 @@
     {
       "pointer": "/externalDocs/description",
       "preview": "fincodeJSの仕様はこちらの JSリファレンス から確認できます。"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/post/summary",
-      "preview": "カード 登録"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/post/description",
-      "preview": "`customer_id`で指定した顧客に対しカードを登録します。  <span class=\"smallText\">※ カードの登録は決済手段API（<code>POST /v1/customers/{customer_id}/payment_methods</code>, <code>pay_type = \"Car"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/post/parameters/0/description",
-      "preview": "このカードが紐づく顧客のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/post/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/get/summary",
-      "preview": "カード 一覧取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/get/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくカードを一覧で取得します。  <span class=\"smallText\">※ カード情報の一覧は決済手段API（<code>GET /v1/customers/{customer_id}/payment_methods</code>, <code>pay_type"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/get/parameters/0/description",
-      "preview": "顧客ID。 \\ この顧客に紐づくカードを一覧で取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards/get/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの一覧を取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/summary",
-      "preview": "カード 取得"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを取得します。  <span class=\"smallText\">※ カード情報の取得は決済手段API（<code>GET /v1/customers/{customer_id}/payment_methods/{id}</code>"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/0/description",
-      "preview": "このカードが紐づく顧客のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/1/description",
-      "preview": "取得するカードのID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードから取得します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/summary",
-      "preview": "カード 更新"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを更新します。  <span class=\"smallText\">※ カード情報の更新は決済手段API（<code>PUT /v1/customers/{customer_id}/payment_methods/{id}</code>"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/0/description",
-      "preview": "このカードが紐づく顧客のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/1/description",
-      "preview": "更新するカードのID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/summary",
-      "preview": "カード 削除"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/description",
-      "preview": "`customer_id`で指定した顧客に対し紐づくカードのうち`id`で指定したものを削除します。  <span class=\"smallText\">※ カード情報の削除は決済手段API（<code>DELETE /v1/customers/{customer_id}/payment_methods/{id}</co"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/0/description",
-      "preview": "このカードが紐づく顧客のID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/1/description",
-      "preview": "削除するカードのID"
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/2/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードを削除します。 "
-    },
-    {
-      "pointer": "/paths/~1v1~1cards/get/summary",
-      "preview": "カード 一覧取得（顧客情報共有グループ単位）"
-    },
-    {
-      "pointer": "/paths/~1v1~1cards/get/description",
-      "preview": "顧客情報共有グループ単位でカード情報を一覧取得する API "
-    },
-    {
-      "pointer": "/paths/~1v1~1cards/get/parameters/0/description",
-      "preview": "カード情報の一覧取得において検索条件となるクエリパラメータ "
-    },
-    {
-      "pointer": "/paths/~1v1~1cards/get/parameters/1/description",
-      "preview": "<span class=\"smallText color--red-400\">※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可</span>\\ テナントショップID。\\ このテナントショップに紐づく顧客情報共有グループのカード情報から一覧で取得します。 "
     },
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods/post/summary",
@@ -2143,18 +2035,6 @@
       "preview": "このAPIはシークレットキーまたはパブリックキーによる認証を必要とします。\\ Basic認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でシークレットキーまたはパブリックキーを指定します。 ``` JavaScript   Authorization: Basic␣{Base64でエンコ"
     },
     {
-      "pointer": "/components/schemas/Pagination.QueryParams/properties/page/description",
-      "preview": "ページ番号"
-    },
-    {
-      "pointer": "/components/schemas/Pagination.QueryParams/properties/limit/description",
-      "preview": "1回で取得するデータの最大件数"
-    },
-    {
-      "pointer": "/components/schemas/Pagination.QueryParams/properties/count_only/description",
-      "preview": "総件数のみ取得するか。\\ `true`を指定した場合、検索結果の総件数（`total_count`）のみ取得します。 "
-    },
-    {
       "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/id/description",
       "preview": "顧客ID "
     },
@@ -2177,38 +2057,6 @@
     {
       "pointer": "/components/schemas/Customer.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `id`: 顧客ID - `name`: 顧客名 - `email`: 顧客メールアドレス - `created`: 作成日時 - `updated`: 更新日時 "
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/total_count/description",
-      "preview": "総件数"
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/last_page/description",
-      "preview": "最後のページのページ数"
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/current_page/description",
-      "preview": "現在のページのページ数"
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/limit/description",
-      "preview": "1ページの最大件数"
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/link_next/description",
-      "preview": "次のページのコンテンツを取得するためのURL"
-    },
-    {
-      "pointer": "/components/schemas/_ListResponse/properties/link_previous/description",
-      "preview": "前のページのコンテンツを取得するためのURL"
-    },
-    {
-      "pointer": "/components/schemas/created/description",
-      "preview": "作成日\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/updated/description",
-      "preview": "更新日\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
     },
     {
       "pointer": "/components/schemas/Customer/properties/id/description",
@@ -2267,22 +2115,6 @@
       "preview": "決済手段（口座振替）登録状況  - `0`: 未登録 - `1`: 1件以上の振替用口座が登録済み "
     },
     {
-      "pointer": "/components/schemas/FincodeAPIError/description",
-      "preview": "1つのエラーを表現するオブジェクト。 "
-    },
-    {
-      "pointer": "/components/schemas/FincodeAPIError/properties/error_code/description",
-      "preview": "エラー内容を判定する場合はこの`error_code`の使用が推奨されます。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
-      "pointer": "/components/schemas/FincodeAPIError/properties/error_message/description",
-      "preview": "エラーの内容を表現するメッセージです。\\ このエラーメッセージは予告なく変更されるため、エラー内容を判定する場合はこの値ではなく`error_code`の使用が推奨されます。 "
-    },
-    {
-      "pointer": "/components/schemas/id/description",
-      "preview": "顧客ID "
-    },
-    {
       "pointer": "/components/schemas/name/description",
       "preview": "顧客の名前 "
     },
@@ -2331,148 +2163,8 @@
       "preview": "顧客ID\\ 任意の値を指定できます。指定しない場合はfincodeが自動的に生成します。\\ 一度fincodeに登録された顧客IDは削除後も利用できません。 "
     },
     {
-      "pointer": "/components/schemas/delete_flag/description",
-      "preview": "削除フラグ"
-    },
-    {
       "pointer": "/components/schemas/Customer.Deleting.Response/properties/id/description",
       "preview": "削除された顧客のID"
-    },
-    {
-      "pointer": "/components/schemas/card_no/description",
-      "preview": "マスク済みカード番号。\\ <span class=\"smallText\"> 下4桁以外をマスクしたカード番号です。\\ カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。\\ </span> 形式：`************1234` "
-    },
-    {
-      "pointer": "/components/schemas/expire/description",
-      "preview": "カード有効期限。\\ 形式：`YYMM` "
-    },
-    {
-      "pointer": "/components/schemas/holder_name/description",
-      "preview": "カード名義人名。 "
-    },
-    {
-      "pointer": "/components/schemas/CardType/description",
-      "preview": "クレジットカード種別。  - `0`: 不明（[テストカード](https://docs.fincode.jp/develop_support/test_resources)を含む） - `1`: デビットカード - `2`: プリペイドカード - `3`: クレジットカード "
-    },
-    {
-      "pointer": "/components/schemas/CardBrand/description",
-      "preview": "カードブランドを表します。  - `VISA`: VISA - `MASTER`: Mastercard - `JCB`: JCB - `AMEX`: American Express - `DINERS`: Diners Club - `DISCOVER`: Discover - `\"\"`（空文字列） : 判定不能 "
-    },
-    {
-      "pointer": "/components/schemas/card_no_hash/description",
-      "preview": "カード番号をもとに生成されたハッシュ値。\\ <span class=\"smallText\"> おなじカード番号に対しては常に同じ値が返されます。\\ カード情報非保持の原則に基づき、fincodeユーザーはマスクされていないカード番号の代わりにこの値を保持することができます。 </span> "
-    },
-    {
-      "pointer": "/components/schemas/Card/properties/id/description",
-      "preview": "カードID "
-    },
-    {
-      "pointer": "/components/schemas/Card/properties/customer_id/description",
-      "preview": "顧客ID\\ このカードが紐づく顧客のID "
-    },
-    {
-      "pointer": "/components/schemas/Card/properties/default_flag/description",
-      "preview": "デフォルトフラグ。\\ このカードが決済実行やサブスクリプション登録などでカードIDを指定しない場合に自動的に使用するカードかどうかを示すフラグです。\\ 顧客に対して必ず1つのデフォルトカードが存在します。（カードが1つも登録されていない場合を除く）  - `0`: デフォルトカードではない - `1`: デフォルトカー"
-    },
-    {
-      "pointer": "/components/schemas/Card/x-req-properties/token/description",
-      "preview": "カードトークン\\ \\ fincode JSの`tokens`メソッドで取得したトークンを指定します。\\ JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。 "
-    },
-    {
-      "pointer": "/components/schemas/process_date/description",
-      "preview": "処理日\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/CardUpdater/properties/card_updater_mode/description",
-      "preview": "カード更新対象カードステータス  - `enabled`：カード更新する - `disabled`：カード更新しない - `inherit`：ショップ設定に準ずる "
-    },
-    {
-      "pointer": "/components/schemas/CardUpdater/properties/card_updater_last_success_date/description",
-      "preview": "カード更新成功日時 最後にカード情報の更新に成功した日時\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/CardUpdater/properties/card_updater_last_attempt_date/description",
-      "preview": "カード更新実施日時 最後にカード情報の更新を実施した日時\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/token/description",
-      "preview": "カードトークン\\ \\ fincode JSの`tokens`メソッドで取得したトークンを指定します。\\ JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。 "
-    },
-    {
-      "pointer": "/components/schemas/default_flag/description",
-      "preview": "デフォルトフラグ。\\ このカードが決済実行やサブスクリプション登録などでカードIDを指定しない場合に自動的に使用するカードかどうかを示すフラグです。\\ 顧客に対して必ず1つのデフォルトカードが存在します。（カードが1つも登録されていない場合を除く）  - `0`: デフォルトカードではない - `1`: デフォルトカー"
-    },
-    {
-      "pointer": "/components/schemas/card_updater_mode/description",
-      "preview": "カード更新対象カードステータス  - `enabled`：カード更新する - `disabled`：カード更新しない - `inherit`：ショップ設定に準ずる "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Creating.Request/properties/card_updater_mode/description",
-      "preview": "カード更新機能（洗替）利用設定  - `enabled`：カード更新する - `disabled`：カード更新しない - `inherit`：ショップ設定に準ずる "
-    },
-    {
-      "pointer": "/components/schemas/x-req-properties-token/description",
-      "preview": "カードトークン\\ \\ fincode JSの`tokens`メソッドで取得したトークンを指定します。\\ JavaScriptの利用については、[JavaScriptリファレンス](https://docs.fincode.jp/js)をご参照ください。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Updating.Request/properties/default_flag/description",
-      "preview": "デフォルトフラグ。\\ 指定した場合のみ更新されます。 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Updating.Request/properties/holder_name/description",
-      "preview": "※ `token`に入力がある場合は無視\\ カード名義人名 "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Updating.Request/properties/expire/description",
-      "preview": "※ `token`に入力がある場合は無視\\ カード有効期限。\\ 形式：`YYMM` "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Updating.Request/properties/card_updater_mode/description",
-      "preview": "カード更新機能（洗替）利用設定\\ 指定した場合のみ更新されます。  - `enabled`：カード更新する - `disabled`：カード更新しない - `inherit`：ショップ設定に準ずる "
-    },
-    {
-      "pointer": "/components/schemas/properties-id/description",
-      "preview": "カードID "
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Deleting.Response/properties/id/description",
-      "preview": "削除されたカードのID"
-    },
-    {
-      "pointer": "/components/schemas/CustomerCard.Deleting.Response/properties/customer_id/description",
-      "preview": "削除されたカードを持つ顧客のID"
-    },
-    {
-      "pointer": "/components/schemas/customer_id/description",
-      "preview": "顧客ID\\ このカードが紐づく顧客のID "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/card_id/description",
-      "preview": "カードID\\ 指定したカードIDに一致するカード情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/customer_id/description",
-      "preview": "顧客ID\\ 指定した顧客IDに紐づくカード情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_success_date_from/description",
-      "preview": "カード更新成功日 範囲指定 開始日\\ カード更新成功日（`card_updater_last_success_date`）を対象に範囲検索を行います。\\ この日付以降にカード更新成功したカード情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_success_date_to/description",
-      "preview": "カード更新成功日 範囲指定 終了日\\ カード更新成功日（`card_updater_last_success_date`）を対象に範囲検索を行います。\\ この日付以前にカード更新成功したカード情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_attempt_date_from/description",
-      "preview": "カード更新実施日 範囲指定 開始日\\ カード更新実施日（`card_updater_last_attempt_date`）を対象に範囲検索を行います。\\ この日付以降にカード更新を実施したカード情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_attempt_date_to/description",
-      "preview": "カード更新実施日 範囲指定 終了日\\ カード更新実施日（`card_updater_last_attempt_date`）を対象に範囲検索を行います。\\ この日付以前にカード更新を実施したカード情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Card.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=customer_id␣asc,created␣desc`\\ \\ ソート可能な項目  - `id`: カードID - `customer_id`: 顧客ID - `created`: 作成日時 - `card_updater_last_success_date`"
     },
     {
       "pointer": "/components/schemas/PaymentMethodPayType/description",
