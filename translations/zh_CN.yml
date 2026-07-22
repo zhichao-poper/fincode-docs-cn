@@ -604,3 +604,334 @@ strings:
   /components/schemas/status/description: |-
     支付方式状态。
     <span class="smallText">`pay_type` 不同，返回的状态也不同。详情请参阅[支付方式说明](https://docs.fincode.jp/payment/payment_method)。</span>
+
+  /paths/~1v1~1payments~1{id}~1secure/put/summary: 执行认证后支付
+  /paths/~1v1~1payments~1{id}~1secure/put/description: |-
+    执行 3D Secure 认证后的支付。
+
+    当“执行 3D Secure 认证”API 或“确认认证结果”API 返回的 3D Secure 认证结果（`tds2_trans_result`）为 `Y` 或 `A` 时，调用此 API 完成认证后的支付。
+  /paths/~1v1~1payments~1{id}~1secure/put/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    在以该租户商户为销售主体的支付中，对 `id` 指定的支付执行 3D Secure 认证后支付。
+  /paths/~1v1~1payments~1{id}~1secure/put/parameters/1/description: 订单 ID（支付信息 ID）。
+  /paths/~1v1~1secure2~1{access_id}/put/summary: 执行 3D Secure 认证
+  /paths/~1v1~1secure2~1{access_id}/put/description: |-
+    开始对 `access_id` 指定的卡片支付交易执行 3D Secure 2.0 认证。
+
+    当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `ThreeDSecureMethodFinished` 或 `ThreeDSecureMethodSkipped` 事件通知时，调用此 API。
+
+    - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
+    - 当响应中的 `tds2_trans_result` 为 `C` 时，将购买者重定向至 `challenge_url` 完成挑战认证，然后调用“确认 3D Secure 认证结果”API 确认结果。
+    - 当响应中的 `tds2_trans_result` 为上述值以外的值时，表示该支付被 3D Secure 认证拒绝。
+  /paths/~1v1~1secure2~1{access_id}/put/parameters/0/description: 交易 ID。
+  /paths/~1v1~1secure2~1{access_id}/put/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    对该租户商户的支付信息中由 `access_id` 指定的卡片支付开始执行 3D Secure 认证。
+  /paths/~1v1~1secure2~1{access_id}/get/summary: 确认 3D Secure 认证结果
+  /paths/~1v1~1secure2~1{access_id}/get/description: |-
+    确认 `access_id` 指定的卡片支付交易的 3D Secure 认证结果。
+
+    购买者在 `challenge_url` 页面完成挑战认证后，当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `AuthResultReady` 事件通知时，调用此 API。
+
+    - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
+    - 当响应中的 `tds2_trans_result` 为上述值以外的值时，表示该支付被 3D Secure 认证拒绝。
+  /paths/~1v1~1secure2~1{access_id}/get/parameters/0/description: 交易 ID。
+  /paths/~1v1~1secure2~1{access_id}/get/parameters/1/description: |-
+    本次支付使用的支付类型。未指定时为 `Card`。
+
+    - `Card`：卡片（默认）
+    - `Googlepay`：Google Pay
+  /paths/~1v1~1secure2~1{access_id}/get/parameters/2/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    对该租户商户的支付信息中由 `access_id` 指定的卡片支付确认 3D Secure 认证结果。
+  /components/schemas/ThreeDSecure2Status/description: |-
+    3D Secure 2.0 认证处理状态。
+
+    - `AUTHENTICATING`：正在进行 3D Secure 认证
+    - `CHALLENGE`：需要执行挑战认证
+    - `AUTHENTICATED`：3D Secure 认证处理已完成
+  /components/schemas/ThreeDSecure2TransactionResult/description: |-
+    3D Secure 2.0 认证处理结果。
+
+    - `Y`：认证成功
+    - `A`：认证尝试获准<br><span class="smallText">虽未实际执行认证或确认，但已提供尝试认证或确认的证明。</span>
+    - `C`：需要追加挑战认证<br><span class="smallText">购买者需要在 `challenge_url` 页面完成追加认证。</span>
+    - `N`：交易被拒绝，或未认证／未确认账户
+    - `R`：认证或账户确认被拒绝<br><span class="smallText">发卡机构拒绝认证，并要求不要尝试授权。</span>
+    - `U`：认证或账户确认执行失败，或发生技术问题
+  /components/schemas/ThreeDSecure2TransactionResultReason/description: |-
+    3D Secure 认证结果原因码。
+
+    表示 3D Secure 2.0 认证结果（`tds2_trans_result`）原因的代码。
+
+    - `01`：卡片认证失败
+    - `02`：未知设备
+    - `03`：不支持的设备
+    - `04`：超过认证频率上限
+    - `05`：卡片已过期
+    - `06`：卡号无效
+    - `07`：交易无效
+    - `08`：不存在卡片记录
+    - `09`：安全故障
+    - `10`：被盗卡片
+    - `11`：疑似欺诈
+    - `12`：持卡人无权执行该交易
+    - `13`：持卡人未注册该服务
+    - `14`：交易在 3D Secure 处理服务中超时
+    - `15`：可信度低
+    - `16`：可信度中等
+    - `17`：可信度高
+    - `18`：可信度非常高
+    - `19`：超过 3D Secure 处理服务允许的最大挑战次数
+    - `20`：不支持非支付交易
+    - `21`：不支持 3RI 交易
+    - `22`：3D Secure 处理服务发生技术问题
+    - `23`：3D Secure 处理服务判定需要解耦认证，但 3D Secure 请求方未提出该要求
+    - `24`：超过 3D Secure Requestor Decoupled Max Time
+    - `25`：未提供足够时间完成解耦认证中的持卡人认证
+    - `26`：已尝试认证，但持卡人未执行认证
+  /components/schemas/Payment.Card.ExecutingAfterThreeDSecure.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Googlepay`：Google Pay
+  /components/schemas/Payment.Card.ExecutingAfterThreeDSecure.Request/properties/pa_res/description: |-
+    已停用功能。
+    3D Secure 服务结果报文。
+
+    仅使用 3D Secure 1.0 时必填。
+  /components/schemas/ThreeDSecure.Confirming.Response/allOf/0/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。未指定时为 `Card`。
+
+    - `Card`：卡片（默认）
+    - `Googlepay`：Google Pay
+  /components/schemas/ThreeDSecure.Authorizing.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。未指定时为 `Card`。
+
+    - `Card`：卡片（默认）
+    - `Googlepay`：Google Pay
+  /components/schemas/ThreeDSecure.Authorizing.Response/allOf/0/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。未指定时为 `Card`。
+
+    - `Card`：卡片（默认）
+    - `Googlepay`：Google Pay
+  /components/schemas/ThreeDSecure.Authorizing.Response/allOf/0/properties/challenge_url/description: |-
+    3D Secure 2.0 认证挑战 URL。
+
+    购买者访问 `acs_url` 后，如发卡机构判定需要追加挑战认证，则在此参数中返回对应 URL。
+  /components/schemas/DirectDebitApplicationType/description: |-
+    登记此自动扣款账户时使用的申请方式。
+
+    - `PAPER`：通过扣款申请书登记
+    - `ONLINE`：通过 Web 在线登记
+  /components/schemas/DirectDebitSettlementRoute/description: |-
+    自动扣款服务。
+
+    - `1`：自动扣款（每月 5、6、23、27 日）
+    - `2`：自动扣款（每月 1、5、20、26 日）
+  /components/schemas/DirectDebitLastResultCode/description: |-
+    最近一次扣款结果码。
+    表示使用此支付方式执行的最近一次自动扣款结果。
+
+    - `0`：扣款成功
+    - `1`：因余额不足而失败
+    - `2`：因无存款账户交易而失败<br /><span class="smallText">例如向不存在的账户发起扣款时会出现此结果。</span>
+    - `3`：因购买者原因而失败
+    - `4`：因扣款申请书未送达或内容有误而失败<br /><span class="smallText">金融机构尚未登记银行账户自动扣款申请书时会出现此结果。</span>
+    - `7`：因数据错误而失败<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `8`：因商户原因而失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `9`：其他失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `E`：因数据错误而失败<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `N`：未收到扣款结果<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+
+    [联系 fincode](https://form.fincode.jp/contact)
+  /components/schemas/DirectDebitResultCode/description: |-
+    扣款结果码。
+
+    - `0`：扣款成功
+    - `1`：因余额不足而失败
+    - `2`：因无存款账户交易而失败<br /><span class="smallText">例如向不存在的账户发起扣款时会出现此结果。</span>
+    - `3`：因购买者原因而失败
+    - `4`：因扣款申请书未送达或内容有误而失败<br /><span class="smallText">金融机构尚未登记银行账户自动扣款申请书时会出现此结果。</span>
+    - `7`：因数据错误而失败<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `8`：因商户原因而失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `9`：其他失败<br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `E`：因数据错误而失败<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+    - `N`：未收到扣款结果<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span><br /><span class="smallText">通常不会出现。如需调查，请联系 fincode。</span>
+
+    [联系 fincode](https://form.fincode.jp/contact)
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/target_date_from/description: |-
+    扣款指定日期（起始值）。
+    按扣款指定日期（`target_date`）进行范围查询，获取扣款指定日期不早于此日期的支付信息。
+
+    格式：`yyyy/MM/dd`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/target_date_to/description: |-
+    扣款指定日期（结束值）。
+    按扣款指定日期（`target_date`）进行范围查询，获取扣款指定日期不晚于此日期的支付信息。
+
+    格式：`yyyy/MM/dd`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/withdrawal_date_from/description: |-
+    实际扣款日期（起始值）。
+    按实际扣款日期（`withdrawal_date`）进行范围查询，获取不早于此日期完成扣款的支付信息。
+
+    格式：`yyyy/MM/dd`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/withdrawal_date_to/description: |-
+    实际扣款日期（结束值）。
+    按实际扣款日期（`withdrawal_date`）进行范围查询，获取不晚于此日期完成扣款的支付信息。
+
+    格式：`yyyy/MM/dd`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/result_code/description: |-
+    扣款结果码。
+    获取符合指定扣款结果的支付信息。使用逗号分隔可指定多个值（OR 查询）。
+
+    - `0`：扣款成功
+    - `1`：余额不足（失败）
+    - `2`：无存款账户交易（失败）
+    - `3`：购买者原因（失败）
+    - `4`：扣款申请书未送达或内容有误（失败）
+    - `7`：数据错误（失败）<br /><span class="smallText">仅适用于每月 1、5、20、26 日扣款的服务。</span>
+    - `8`：商户原因（失败）
+    - `9`：其他原因（失败）
+    - `E`：数据错误（失败）<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span>
+    - `N`：未收到扣款结果（失败）<br /><span class="smallText">仅适用于每月 5、6、23、27 日扣款的服务。</span>
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/pay_pattern/description: |-
+    收费类型。
+    获取符合指定收费类型的支付信息。使用逗号分隔可指定多个值（OR 查询）。
+
+    - `onetime`：非订阅的一次性支付
+    - `subscription`：订阅支付
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/subscription_id/description: |-
+    订阅 ID。
+    指定订阅 ID 后，获取由该订阅创建的支付信息。
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/updated_from/description: |-
+    更新日期（起始值）。
+
+    按更新时间（`updated`）进行范围查询，获取不早于此日期更新的支付信息。
+    格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/updated_to/description: |-
+    更新日期（结束值）。
+
+    按更新时间（`updated`）进行范围查询，获取不晚于此日期更新的支付信息。
+    格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/Payment.ListRetrieving.DirectDebit.QueryParams/properties/sort/description: |-
+    指定排序字段与顺序。
+    示例：`?sort=updated␣desc,created␣asc`
+
+    可排序字段：
+
+    - `status`：状态
+    - `process_date`：处理时间
+    - `total_amount`：合计金额
+    - `target_date`：扣款指定日期
+    - `withdrawal_date`：实际扣款日期
+    - `created`：创建时间
+    - `updated`：更新时间
+  /components/schemas/Payment.DirectDebit/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Directdebit`：银行账户自动扣款
+  /components/schemas/Payment.DirectDebit/properties/status/description: |-
+    支付状态。
+
+    - `UNPROCESSED`：未处理<br /><span class="smallText">尚未执行自动扣款。</span>
+    - `AWAITING_PAYMENT_APPROVAL`：等待支付处理<br /><span class="smallText">正在等待 fincode 和金融机构处理扣款。</span>
+    - `CAPTURED`：销售额已确认<br /><span class="smallText">扣款已完成，销售额已经确认。</span>
+    - `CANCELED`：已取消<br /><span class="smallText">本次扣款已取消。</span>
+    - `FAILED`：扣款失败<br /><span class="smallText">因某种原因未能完成扣款。</span>
+  /components/schemas/Payment.DirectDebit/properties/target_date/description: |-
+    扣款指定日期。
+    指定计划执行扣款的日期。
+    实际扣款会在金融机构营业日执行，因此不一定会在指定日期完成。
+    可指定日期与实际扣款日期请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款指定日期”和“扣款日期”栏。
+  /components/schemas/Payment.DirectDebit/properties/withdrawal_date/description: |-
+    实际扣款日期。
+    实际从购买者账户完成扣款的日期。
+
+    格式：`yyyy/MM/dd`
+  /components/schemas/Payment.DirectDebit/properties/request_accept_end_date/description: |-
+    扣款请求受理截止日期。
+    接受扣款请求的最后日期；可在该日 23:59 前提交扣款请求（执行支付）。
+
+    格式：`yyyy/MM/dd`
+    详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款请求受理截止日期”栏。
+  /components/schemas/Payment.DirectDebit/properties/transfer_return_date/description: |-
+    预计扣款结果反映日期。
+
+    格式：`yyyy/MM/dd`
+    详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款结果返回日期”栏。
+  /components/schemas/Payment.DirectDebit/properties/payment_method_id/description: |-
+    支付方式 ID。
+    本次支付使用的支付方式 ID。
+  /components/schemas/Payment.DirectDebit/properties/bank_code/description: |-
+    金融机构代码。
+    fincode 银行账户自动扣款支持的金融机构代码列表，请参阅 [Docs > 可用金融机构（银行账户自动扣款）](https://docs.fincode.jp/payment/directdebit/restriction)。
+  /components/schemas/Payment.DirectDebit/properties/bank_name/description: 金融机构名称。
+  /components/schemas/Payment.DirectDebit/properties/branch_code/description: 分行代码。
+  /components/schemas/Payment.DirectDebit/properties/branch_name/description: 分行名称。
+  /components/schemas/Payment.DirectDebit/properties/remarks/description: |-
+    账单明细显示内容。
+
+    - 格式：半角英数字及片假名／全角英数字及片假名／部分符号／半角或全角空格
+    - 默认值：`商户名称片假名的前 9 个字符`
+
+    可用符号：
+
+    - 半角：`.`、`(`、`)`、`–`
+    - 全角：`．`、`（`、`）`、`ー`
+  /components/schemas/Payment.DirectDebit/properties/subscription_id/description: |-
+    订阅 ID。
+    此支付信息由订阅生成时，本字段中会设置对应的订阅 ID。
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Directdebit`：银行账户自动扣款
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/amount/description: |-
+    使用金额。
+    与 `tax` 的合计值必须处于该支付方式规定的支付金额范围内。
+    参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/tax/description: |-
+    税费及运费。
+    与 `amount` 的合计值必须处于该支付方式规定的支付金额范围内。
+    参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_1/description: |-
+    商户自定义字段 1。
+    可写入任意值并保存到支付信息中。
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_2/description: 商户自定义字段 2。
+  /components/schemas/Payment.DirectDebit.Creating.Request/properties/client_field_3/description: 商户自定义字段 3。
+  /components/schemas/Payment.DirectDebit.Executing.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Directdebit`：银行账户自动扣款
+  /components/schemas/Payment.DirectDebit.Executing.Request/properties/customer_id/description: |-
+    客户 ID。
+    作为购买者的客户 ID。
+  /components/schemas/Payment.DirectDebit.Executing.Request/properties/payment_method_id/description: |-
+    支付方式 ID。
+    本次支付使用的支付方式（自动扣款账户）ID。未指定时使用默认支付方式。
+  /components/schemas/Payment.DirectDebit.Canceling.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Directdebit`：银行账户自动扣款
+  /components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/pay_type/description: |-
+    支付类型。
+    本次支付使用的支付方式。
+
+    - `Directdebit`：银行账户自动扣款
+  /components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/amount/description: |-
+    使用金额。
+    与 `tax` 的合计值必须处于该支付方式规定的支付金额范围内。
+    参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)
+  /components/schemas/Payment.DirectDebit.ChangingAmount.Request/properties/tax/description: |-
+    税费及运费。
+    与 `amount` 的合计值必须处于该支付方式规定的支付金额范围内。
+    参阅：[银行账户自动扣款 > 限制事项 > 可用金额](https://docs.fincode.jp/payment/directdebit/restriction)
