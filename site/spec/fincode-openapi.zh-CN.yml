@@ -2050,19 +2050,25 @@ paths:
                   type: string
                   minLength: 1
                   maxLength: 50
-                  description: "決済種別\n\n* `Card` - カード\n* `Virtualaccount` - 銀行振込（バーチャル口座）\n\n<span class=\"smallText\">\n\
-                    \  ※ 現時点では<code>Card</code>（カード）、<code>Virtualaccount</code>（銀行振込（バーチャル口座））のみ指定可能です。\n</span>\n"
+                  description: '支付类型。
+
+
+                    - `Card`：银行卡
+
+                    - `Virtualaccount`：银行转账（虚拟账户）
+
+
+                    目前仅可指定 `Card` 或 `Virtualaccount`。'
                 default_flag:
                   type: string
                   enum:
                   - '1'
                   minLength: 1
                   maxLength: 1
-                  description: 'デフォルトフラグ
+                  description: '默认支付方式标志。
 
-                    * `1` - デフォルト
 
-                    '
+                    - `1`：设为默认支付方式'
                 return_url:
                   nullable: true
                   allOf:
@@ -2077,92 +2083,58 @@ paths:
                   nullable: true
                   allOf:
                   - $ref: '#/components/schemas/client_field_1'
-                  description: '加盟店自由項目 1\
-
-                    <span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
-
-                    '
+                  description: 商户自由字段 1；仅当 `pay_type = "Card"` 时可以指定。
                 client_field_2:
                   nullable: true
                   allOf:
                   - $ref: '#/components/schemas/client_field_2'
-                  description: '加盟店自由項目 2\
-
-                    <span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
-
-                    '
+                  description: 商户自由字段 2；仅当 `pay_type = "Card"` 时可以指定。
                 client_field_3:
                   nullable: true
                   allOf:
                   - $ref: '#/components/schemas/client_field_3'
-                  description: '加盟店自由項目 3\
-
-                    <span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
-
-                    '
+                  description: 商户自由字段 3；仅当 `pay_type = "Card"` 时可以指定。
                 card:
                   type: object
                   nullable: true
-                  description: '<span class="smallText">※ `pay_type = "Card"`のとき指定可能。カード情報自体（カード番号）は変更できません。省略した場合は`default_flag`/`client_field_*`のみが更新されます。</span>
-
-                    '
+                  description: 仅当 `pay_type = "Card"` 时可以指定。不能更改银行卡号本身；省略时仅更新 `default_flag` 和 `client_field_*`。
                   properties:
                     token:
                       nullable: true
                       allOf:
                       - $ref: '#/components/schemas/token'
-                      description: 'カードトークン\
-
-                        <span class="smallText">指定した場合、トークンを用いてカード情報（有効期限・セキュリティコード等）を更新します。`expire`/`holder_name`/`security_code`を直接指定する場合は省略可能です。</span>
-
-                        '
+                      description: 银行卡令牌。指定后使用令牌更新有效期、安全码等银行卡信息；直接指定 `expire`、`holder_name`、`security_code` 时可以省略。
                     expire:
                       nullable: true
                       allOf:
                       - $ref: '#/components/schemas/properties-expire'
-                      description: 'カード有効期限\
+                      description: '银行卡有效期。未指定 `token` 时必填。
 
-                        <span class="smallText">`token`未指定時は必須</span>\
-
-                        形式：`YYMM`
-
-                        '
+                        格式：`YYMM`'
                     holder_name:
                       nullable: true
                       allOf:
                       - $ref: '#/components/schemas/properties-holder_name'
-                      description: 'カード名義人名\
-
-                        <span class="smallText">`token`未指定時のみ指定可能</span>
-
-                        '
+                      description: 银行卡持卡人姓名；仅在未指定 `token` 时可以指定。
                     security_code:
                       nullable: true
                       type: string
                       minLength: 1
                       maxLength: 6
                       example: '123'
-                      description: 'セキュリティコード\
-
-                        <span class="smallText">`token`未指定時のみ指定可能</span>
-
-                        '
+                      description: 银行卡安全码；仅在未指定 `token` 时可以指定。
                     card_updater_mode:
                       nullable: true
                       allOf:
                       - $ref: '#/components/schemas/card_updater_mode'
-                      description: '洗替対象設定\
-
-                        <span class="smallText">洗替対象設定を変更する場合のみ指定します（省略可能）</span>
+                      description: '银行卡自动更新设置，仅在需要变更设置时指定。
 
 
-                        - `enabled`：カード更新する
+                        - `enabled`：启用银行卡自动更新
 
-                        - `disabled`：カード更新しない
+                        - `disabled`：不启用银行卡自动更新
 
-                        - `inherit`：ショップ設定に準ずる（デフォルト）
-
-                        '
+                        - `inherit`：沿用商户设置（默认）'
                     tds_type:
                       nullable: true
                       allOf:
@@ -6477,7 +6449,9 @@ paths:
                   type: string
                   minLength: 10
                   maxLength: 10
-                  description: "支払い完了日  \nyyyy/MM/dd形式  \n"
+                  description: '支付完成日期。
+
+                    格式：`yyyy/MM/dd`'
       responses:
         '200':
           description: 请求成功
@@ -10509,33 +10483,69 @@ components:
     Secret-Bearer-Auth:
       type: http
       scheme: bearer
-      description: "このAPIはシークレットキーによる認証を必要とします。\\\nBearer認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でシークレットキーを指定します。\n```\n \
-        \ Authorization: Bearer␣{APIキー}\n```\nシークレットキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 需要使用 Secret Key 认证。Bearer 认证时，请在请求头中按以下格式指定从 fincode 管理后台取得的 Secret Key：
+
+
+        ```text
+
+        Authorization: Bearer␣{API Key}
+
+        ```'
     Secret-Basic-Auth:
       type: http
       scheme: basic
-      description: "このAPIはシークレットキーによる認証を必要とします。\\\nBasic認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でシークレットキーを指定します。\n``` JavaScript\n\
-        \  Authorization: Basic␣{Base64でエンコードしたAPIキー}\n```\nシークレットキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 需要使用 Secret Key 认证。Basic 认证时，请在请求头中按以下格式指定经过 Base64 编码的 Secret Key：
+
+
+        ```text
+
+        Authorization: Basic␣{Base64 编码后的 API Key}
+
+        ```'
     Public-Bearer-Auth:
       type: http
       scheme: bearer
-      description: "このAPIはパブリックキーによる認証で利用できます。\\\nBearer認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でパブリックキーを指定します。\n```\n  Authorization:\
-        \ Bearer␣{APIキー}\n```\nパブリックキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 可以使用 Public Key 认证。Bearer 认证时，请在请求头中按以下格式指定从 fincode 管理后台取得的 Public Key：
+
+
+        ```text
+
+        Authorization: Bearer␣{API Key}
+
+        ```'
     Public-Basic-Auth:
       type: http
       scheme: basic
-      description: "このAPIはパブリックキーによる認証を必要とします。\\\nBasic認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でパブリックキーを指定します。\n``` JavaScript\n\
-        \  Authorization: Basic␣{Base64でエンコードしたAPIキー}\n```\nパブリックキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 需要使用 Public Key 认证。Basic 认证时，请在请求头中按以下格式指定经过 Base64 编码的 Public Key：
+
+
+        ```text
+
+        Authorization: Basic␣{Base64 编码后的 API Key}
+
+        ```'
     Both-Bearer-Auth:
       type: http
       scheme: bearer
-      description: "このAPIはシークレットキーまたはパブリックキーによる認証を必要とします。\\\nBearer認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でシークレットキーまたはパブリックキーを指定します。\n\
-        ```\n  Authorization: Bearer␣{APIキー}\n```\nシークレットキーまたはパブリックキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 需要使用 Secret Key 或 Public Key 认证。Bearer 认证时，请在请求头中按以下格式指定从 fincode 管理后台取得的任一 API Key：
+
+
+        ```text
+
+        Authorization: Bearer␣{API Key}
+
+        ```'
     Both-Basic-Auth:
       type: http
       scheme: basic
-      description: "このAPIはシークレットキーまたはパブリックキーによる認証を必要とします。\\\nBasic認証を用いる場合、リクエストヘッダー `Authorization`に下記の形式でシークレットキーまたはパブリックキーを指定します。\n\
-        ``` JavaScript\n  Authorization: Basic␣{Base64でエンコードしたAPIキー}\n```\nシークレットキーまたはパブリックキーはfincodeの管理画面から取得できます。\n"
+      description: '此 API 需要使用 Secret Key 或 Public Key 认证。Basic 认证时，请在请求头中按以下格式指定经过 Base64 编码的任一 API Key：
+
+
+        ```text
+
+        Authorization: Basic␣{Base64 编码后的 API Key}
+
+        ```'
   schemas:
     Pagination.QueryParams:
       type: object
@@ -14339,66 +14349,38 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '便利店支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者付款
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认销售
 
-            - `CANCELED`: キャンセル
+            - `CANCELED`：已取消
 
-            - `EXPIRED`: 決済の期限切れ
-
-            '
+            - `EXPIRED`：已过期'
         payment_term_from:
           type: string
-          description: '支払い期限（始値）\
+          description: '支付截止日期范围的起始日期；仅返回截止日期不早于该日期的支付。
 
-            支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以降に支払い期限が到来する決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         payment_term_to:
           type: string
-          description: '支払い期限（終値）\
+          description: '支付截止日期范围的结束日期；仅返回截止日期不晚于该日期的支付。
 
-            支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以前に支払い期限が到来する決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         payment_date_from:
           type: string
-          description: '支払い日時（始値）\
+          description: '支付日期范围的起始日期；仅返回支付日期不早于该日期的支付。
 
-            支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以降に支払いが行われた決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         payment_date_to:
           type: string
-          description: '支払い日時（終値）\
+          description: '支付日期范围的结束日期；仅返回支付日期不晚于该日期的支付。
 
-            支払い日時（`payment_date`）を対象に範囲検索を行います。この日付以前に支払いが行われた決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         updated_from:
           type: string
           description: '更新日期（起始值）。
@@ -14420,49 +14402,23 @@ components:
           enum:
           - '0'
           - '1'
-          description: '多重支払フラグ\
-
-            同一のバーコードで複数回支払いが行われた決済を検索する場合`1`を指定します。
-
-            '
+          description: 搜索使用同一条形码发生多次付款的支付时指定 `1`。
         cancel_overpayment_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: 'キャンセル後支払フラグ\
-
-            キャンセルされた決済に対して支払いが行われた決済を検索する場合`1`を指定します。
-
-            '
+          description: 搜索取消后仍发生付款的支付时指定 `1`。
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `payment_term`: 支払い期限
-
-            - `payment_date`: 支払い日時
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`payment_term`、`payment_date`、`created`、`updated`。'
     Payment.ListRetrieving.PayPay.QueryParams:
       type: object
       properties:
@@ -17239,11 +17195,7 @@ components:
         token:
           allOf:
           - $ref: '#/components/schemas/token'
-          description: 'カードトークン\
-
-            `customer_id`と`card_id`を指定しない場合、fincode JSの`tokens`メソッドで取得したトークンをこのフィールドに指定します。
-
-            '
+          description: 未指定 `customer_id` 和 `card_id` 时，填写通过 fincode JS 的 `tokens` 方法取得的银行卡令牌。
         customer_id:
           allOf:
           - $ref: '#/components/schemas/id'
@@ -17253,37 +17205,25 @@ components:
         card_id:
           allOf:
           - $ref: '#/components/schemas/properties-id'
-          description: 'カードID\
-
-            この決済に使用するカードのIDです。指定しない場合、デフォルトカードが使用されます。
-
-            '
+          description: 当前支付使用的银行卡 ID；未指定时使用默认银行卡。
         security_code:
           type: string
           minLength: 3
           maxLength: 4
           example: '123'
           nullable: true
-          description: 'セキュリティコード\
-
-            登録済みのカードを使用する場合に、セキュリティコードを再度指定できます。
-
-            '
+          description: 使用已登记银行卡时，可以重新指定安全码。
         method:
           allOf:
           - $ref: '#/components/schemas/CardPayMethod'
-          description: '支払方法\
-
-            この決済の`job_code`（処理区分）が`AUTH`または`CAPTURE`であるとき、このフィールドを指定する必要があります。
+          description: '当当前支付的 `job_code` 为 `AUTH` 或 `CAPTURE` 时必须指定付款方式。
 
 
-            - `1`: 一括払い
+            - `1`：一次性付款
 
-            - `2`: 分割払い
+            - `2`：分期付款
 
-            - `5`: リボ払い
-
-            '
+            - `5`：循环信贷付款'
         pay_times:
           nullable: true
           allOf:
@@ -17292,20 +17232,28 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/tds2_ret_url'
-          description: "3Dセキュア認証における戻りURL  \n3Dセキュア認証処理に使用するURLを指定してください。  \nこのURLに後続処理のためのデータがPOSTメソッドで送信されます。   \n\n※ 指定した場合、3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する必要があります。\n\
-            お客様のブラウザとfincode間で3Dセキュア認証を自動で行う場合はこのパラメータを未指定としてください。\n\n詳細はDocs [3Dセキュア2.0認証を使用する](/payment/fraud_protection/3d_secure_2)を確認してください。\n"
+          description: '3D Secure 认证回调 URL。后续处理数据会通过 POST 方法发送到此 URL。
+
+
+            指定后，商户必须自行实现 3D Secure 所需的全部 API 调用和回调处理。如果希望由购买者浏览器与 fincode 自动完成认证，请不要指定本字段。
+
+            详情参见 [使用 3D Secure 2.0 认证](/payment/fraud_protection/3d_secure_2)。'
         return_url:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/x-req-properties-return_url'
-          description: "加盟店戻りURL（成功時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証処理後、決済に成功した際にリダイレクトされるURLです。  \nPOSTメソッドでリダイレクトされます。\n\
-            \n指定しない場合はデフォルトの成功ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定した場合は無視されます。  \n"
+          description: '由购买者浏览器与 fincode 自动执行 3D Secure 时，认证及支付成功后通过 POST 方法重定向的商户 URL。
+
+
+            未指定时使用默认成功页面；指定 `tds2_ret_url` 时本字段会被忽略。'
         return_url_on_failure:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/x-req-properties-return_url_on_failure'
-          description: "加盟店戻りURL（失敗時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証に失敗、または決済に失敗した際にリダイレクトされるURLです。  \n\
-            POSTメソッドでリダイレクトされます。\n\n指定しない場合はデフォルトの失敗ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定した場合は無視されます。  \n"
+          description: '由购买者浏览器与 fincode 自动执行 3D Secure 时，认证或支付失败后通过 POST 方法重定向的商户 URL。
+
+
+            未指定时使用默认失败页面；指定 `tds2_ret_url` 时本字段会被忽略。'
         tds2_ch_acc_change:
           nullable: true
           allOf:
@@ -21057,65 +21005,39 @@ components:
         total_amount_min:
           type: integer
           format: int64
-          description: '合計金額（始値）\
-
-            利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以上の合計金額を持つプラン情報を取得します。
-
-            '
+          description: 套餐合计金额（`total_amount`）下限。
         total_amount_max:
           type: integer
           format: int64
-          description: '合計金額（終値）\
-
-            利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以下の合計金額を持つプラン情報を取得します。
-
-            '
+          description: 套餐合计金额（`total_amount`）上限。
         interval_pattern:
           type: string
           enum:
           - month
           - year
-          description: '課金間隔
+          description: '扣款周期单位。
 
 
-            - `month`: 月
+            - `month`：月
 
-            - `year`: 年
-
-            '
+            - `year`：年'
         update_date_from:
           type: string
-          description: '更新日時（始値）\
+          description: '更新时间范围的起始日期；仅返回不早于该日期更新的套餐。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         update_date_to:
           type: string
-          description: '更新日時（終値）\
+          description: '更新时间范围的结束日期；仅返回不晚于该日期更新的套餐。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         plan_name:
           type: string
           nullable: true
           minLength: 1
           maxLength: 25
           example: Gold Plan
-          description: 'プラン名\
-
-            `plan_name`に対する部分一致検索を行います。
-
-            '
+          description: 按套餐名称部分匹配查询。
         delete_flag:
           type: string
           nullable: true
@@ -21124,29 +21046,17 @@ components:
           enum:
           - '0'
           - '1'
-          description: '削除済みフラグ
-
-            '
+          description: 已删除标志。
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `total_amount`: 合計金額
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`total_amount`、`created`、`updated`。'
     Plan:
       type: object
       properties:
@@ -22193,29 +22103,17 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/id'
-          description: '顧客ID\
-
-            サブスクリプションで請求した顧客のIDです。
-
-            '
+          description: 当前订阅扣款的客户 ID。
         payment_method_id:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID\
-
-            サブスクリプションで使用された決済手段のIDです。
-
-            '
+          description: 当前订阅扣款使用的支付方式 ID。
         card_id:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/properties-id'
-          description: 'カードID\
-
-            サブスクリプションで使用されたカードのIDです。
-
-            '
+          description: 当前订阅扣款使用的银行卡 ID。
         card_no:
           nullable: true
           allOf:
@@ -22272,41 +22170,25 @@ components:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/DirectDebitSettlementRoute'
-          description: '振替サービス\
-
-            ※`pay_type = Directdebit`のみ
+          description: '自动扣款服务，仅适用于 `pay_type = Directdebit`。
 
 
-            - `1`: 口座振替（5・6・23・27日）
+            - `1`：每月 5、6、23、27 日自动扣款
 
-            - `2`: 口座振替（1・5・20・26日）
-
-            '
+            - `2`：每月 1、5、20、26 日自动扣款'
         is_retry_scheduled:
           type: boolean
           nullable: true
-          description: 'リトライフラグ\
-
-            この課金がリトライバッチによって実行されたものである場合`true`を返します。
-
-            '
+          description: 当前扣款由重试批处理执行时返回 `true`。
         process_interface:
           type: string
           nullable: true
-          description: '処理種別\
-
-            この課金ログを生成した処理の種別です。
-
-            '
+          description: 生成当前扣款日志的处理类型。
         error_code:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/error_code'
-          description: 'この課金において発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-            [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-            '
+          description: 当前扣款最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -22369,56 +22251,38 @@ components:
           type: string
           nullable: true
           example: 2022/05/01
-          description: '処理予定日の範囲指定（開始日）を指定します。\
+          description: '计划处理日期范围的起始日期；仅返回计划日期不早于该日期的批量支付。
 
-            処理予定日（`process_plan_date`）を対象に範囲検索を行います。この日付以降に処理予定日が設定された一括決済情報を検索します。\
-
-            \
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         process_plan_date_to:
           type: string
           nullable: true
           example: 2022/05/31
-          description: '処理予定日の範囲指定（終了日）を指定します。\
+          description: '计划处理日期范围的结束日期；仅返回计划日期不晚于该日期的批量支付。
 
-            処理予定日（`process_plan_date`）を対象に範囲検索を行います。この日付以前に処理予定日が設定された一括決済情報を検索します。\
-
-            \
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkStatus'
-          description: '一括決済 ステータス。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '批量支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `CHECKING`: チェック中
+            - `CHECKING`：检查中
 
-            - `CHECKED`: チェック済み
+            - `CHECKED`：检查完成
 
-            - `RUNNING`: 決済処理中
+            - `RUNNING`：支付处理中
 
-            - `COMPLETED`: 完了
+            - `COMPLETED`：完成
 
-            - `ERROR`: エラー
-
-            '
+            - `ERROR`：错误'
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkPayType'
         file_name:
           allOf:
           - $ref: '#/components/schemas/file_name'
-          description: '一括決済データファイル名\
-
-            `file_name`に対する部分一致検索を行います。
-
-            '
+          description: 按批量支付数据文件名部分匹配查询。
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -22426,54 +22290,26 @@ components:
           type: string
           nullable: true
           example: 2022/05/01
-          description: '作成日時の範囲指定（開始日）を指定します。\
+          description: '创建日期范围的起始日期；仅返回不早于该日期登记的批量支付。
 
-            作成日時（`created`）を対象に範囲検索を行います。この日付以降に登録された一括決済情報を検索します。\
-
-            \
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         created_to:
           type: string
           nullable: true
           example: 2022/05/31
-          description: '作成日時の範囲指定（終了日）を指定します。\
+          description: '创建日期范围的结束日期；仅返回不晚于该日期登记的批量支付。
 
-            作成日時（`created`）を対象に範囲検索を行います。この日付以前に登録された一括決済情報を検索します。\
-
-            \
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=created␣asc,process_plan_date␣desc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=created␣asc,process_plan_date␣desc`
 
 
-            - `process_plan_date`: 一括決済 処理予定日
-
-            - `status`: ステータス
-
-            - `pay_type`: 決済種別
-
-            - `file_name`: 一括決済データファイル名
-
-            - `delete_flag`: 削除フラグ
-
-            - `created`: 作成日時
-
-            '
+            可排序字段：`process_plan_date`、`status`、`pay_type`、`file_name`、`delete_flag`、`created`。'
     PaymentBulk:
       type: object
       properties:
@@ -28224,37 +28060,21 @@ components:
           format: double
           nullable: true
           example: 5
-          description: '（標準）プラットフォーム利用料率。\
+          description: '标准平台使用费率。未单独设置费率的租户使用 `id` 指定的支付方式时适用此费率。
 
-            個別のプラットフォーム利用料率が設定されていないテナントが`id`で指定した決済手段で決済を行うと、このプラットフォーム利用料率が適用されます。\
-
-            \
-
-            特定のテナントに個別のプラットフォーム利用料を適用するには テナントショップ 更新API を使用します。
-
-            '
+            如需为特定租户设置单独费率，请使用“更新租户商户”API。'
         fixed_fee:
           type: integer
           format: int32
           nullable: true
           example: 120
-          description: '（標準）プラットフォーム利用料 最低料金。\
-
-            テナントが`examination_master_id`で指定した決済手段で決済を行った際、`platform_rate`による利用料がこの最低料金を下回ると、この最低料金が適用されます。
-
-            '
+          description: 使用 `examination_master_id` 指定的支付方式时，如果按 `platform_rate` 计算的费用低于此值，则适用此标准最低平台使用费。
         web_registration_fee:
           type: number
           format: double
           nullable: true
           example: 480
-          description: '（標準）プラットフォーム利用料 Web登録手数料。\
-
-            テナントにおいて、口座振替における振替用口座登録（Web登録）に成功した際に適用されるWeb登録手数料です。\
-
-            ※ 口座振替のみ
-
-            '
+          description: 租户客户成功通过 Web 登记自动扣款账户时适用的标准 Web 登记手续费。仅适用于银行账户自动扣款。
         paypay_content_category_type:
           type: integer
           enum:
@@ -28262,68 +28082,42 @@ components:
           - 2
           nullable: true
           example: 1
-          description: 'PayPay審査により決定されるPayPay商材カテゴリー。
+          description: 'PayPay 审核确定的商品类别，仅适用于 PayPay。
 
 
-            - `1`: 物販／サービスショップ
+            - `1`：实物商品或服务商户
 
-            - `2`: デジタルコンテンツショップ
-
-
-            ※ PayPayのみ
-
-            '
+            - `2`：数字内容商户'
       x-req-properties:
         platform_rate:
           type: string
           nullable: true
           example: '5.0'
-          description: '（標準）プラットフォーム利用料率。\
+          description: '标准平台使用费率。未单独设置费率的租户使用 `id` 指定的支付方式时适用此费率。
 
-            個別のプラットフォーム利用料率が設定されていないテナントが`id`で指定した決済手段で決済を行うと、このプラットフォーム利用料率が適用されます。\
-
-            \
-
-            特定のテナントに個別のプラットフォーム利用料を適用するには テナントショップ 更新API を使用します。
-
-            '
+            如需为特定租户设置单独费率，请使用“更新租户商户”API。'
         fixed_fee:
           type: string
           example: '120'
           nullable: true
-          description: '（標準）プラットフォーム利用料 最低料金。\
-
-            テナントが`examination_master_id`で指定した決済手段で決済を行った際、`platform_rate`による利用料がこの最低料金を下回ると、この最低料金が適用されます。
-
-            '
+          description: 使用 `examination_master_id` 指定的支付方式时，如果按 `platform_rate` 计算的费用低于此值，则适用此标准最低平台使用费。
         web_registration_fee:
           type: string
           nullable: true
           example: '480'
-          description: '（標準）プラットフォーム利用料 Web登録手数料。\
-
-            テナントにおいて、口座振替における振替用口座登録（Web登録）に成功した際に適用されるWeb登録手数料です。\
-
-            ※ 口座振替のみ
-
-            '
+          description: 租户客户成功通过 Web 登记自动扣款账户时适用的标准 Web 登记手续费。仅适用于银行账户自动扣款。
         paypay_content_category_type:
           type: string
           enum:
           - '1'
           - '2'
           nullable: true
-          description: 'PayPay審査により決定されるPayPay商材カテゴリー。
+          description: 'PayPay 审核确定的商品类别，仅适用于 PayPay。
 
 
-            - `1`: 物販／サービスショップ
+            - `1`：实物商品或服务商户
 
-            - `2`: デジタルコンテンツショップ
-
-
-            ※ PayPayのみ
-
-            '
+            - `2`：数字内容商户'
     Shop:
       type: object
       properties:
@@ -29816,73 +29610,55 @@ components:
           minLength: 1
           maxLength: 200
           example: サンプル商材1
-          description: '商材1 名称
-
-            '
+          description: 商品或服务 1 的名称。
         content1_description:
           type: string
           minLength: 1
           maxLength: 200
           example: サンプル商材1の説明
-          description: '商材1 説明
-
-            '
+          description: 商品或服务 1 的说明。
         content1_unit_price:
           type: integer
           minLength: 1
           maxLength: 19
           example: 1000
-          description: '商材1 単価
-
-            '
+          description: 商品或服务 1 的单价。
         content2_name:
           type: string
           minLength: 1
           maxLength: 200
           example: サンプル商材2
-          description: '商材2 名称
-
-            '
+          description: 商品或服务 2 的名称。
         content2_description:
           type: string
           minLength: 1
           maxLength: 200
           example: サンプル商材2の説明
-          description: '商材2 説明
-
-            '
+          description: 商品或服务 2 的说明。
         content2_unit_price:
           type: integer
           minLength: 1
           maxLength: 19
           example: 2000
-          description: '商材2 単価
-
-            '
+          description: 商品或服务 2 的单价。
         content3_name:
           type: string
           minLength: 1
           maxLength: 200
           example: サンプル商材3
-          description: '商材3 名称
-
-            '
+          description: 商品或服务 3 的名称。
         content3_description:
           type: string
           minLength: 1
           maxLength: 200
           example: サンプル商材3の説明
-          description: '商材3 説明
-
-            '
+          description: 商品或服务 3 的说明。
         content3_unit_price:
           type: integer
           minLength: 1
           maxLength: 19
           example: 3000
-          description: '商材3 単価
-
-            '
+          description: 商品或服务 3 的单价。
     ShopInfo.V2:
       type: object
       properties:
@@ -30807,31 +30583,25 @@ components:
           minLength: 1
           maxLength: 20
           nullable: true
-          description: '加盟店番号
-
-            '
+          description: 收单机构签发的商户编号。
         tds_available:
           type: boolean
           nullable: true
-          description: '3Dセキュア認証利用可否
+          description: '是否可以使用 3D Secure 认证。
 
 
-            - `true`: 利用可
+            - `true`：可以使用
 
-            - `false`: 利用不可
-
-            '
+            - `false`：不可使用'
         installments_payment_available:
           type: boolean
           nullable: true
-          description: '分割払い利用可否
+          description: '是否可以使用分期付款。
 
 
-            - `true`: 利用可
+            - `true`：可以使用
 
-            - `false`: 利用不可
-
-            '
+            - `false`：不可使用'
         mcc_1:
           type: string
           nullable: true
@@ -30847,41 +30617,29 @@ components:
         paypay_mid:
           type: string
           nullable: true
-          description: 'PayPay 加盟店番号
-
-            '
+          description: PayPay 商户编号。
         paypay_store_id:
           type: string
           nullable: true
-          description: 'PayPay 店舗ID
-
-            '
+          description: PayPay 门店 ID。
         paysle_merchant_code:
           type: string
           nullable: true
-          description: 'PAYSLE 企業コード
-
-            '
+          description: PAYSLE 企业代码。
         paysle_user_id:
           type: string
           nullable: true
-          description: 'PAYSLE ログイン企業ID
-
-            '
+          description: PAYSLE 企业登录 ID。
         paysle_user_password:
           type: string
           nullable: true
-          description: 'PAYSLE システム接続パスワード
-
-            '
+          description: PAYSLE 系统连接密码。
         cut_over_at:
           type: string
           nullable: true
-          description: '利用開始日\
+          description: '开始使用日期。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
     corporate_number:
       type: string
       minLength: 13
@@ -33544,54 +33302,39 @@ components:
         filename:
           type: string
           maxLength: 100
-          description: '社印ファイル名\
-
-            \
-
-            拡張子を含むアップロードされたファイルの名称
-
-            '
+          description: 上传的公司印章文件名，包括扩展名。
         extension:
           type: string
           maxLength: 10
-          description: '社印ファイルの拡張子（`png`, `jpg`, `jpeg`）
-
-            '
+          description: 公司印章文件扩展名，可使用 `png`、`jpg` 或 `jpeg`。
         data:
           type: string
-          description: "社印ファイルデータ（Base64 エンコード文字列）  \nファイルサイズは512KB以下\n"
+          description: 公司印章图片数据。JSON 请求中为 Base64 编码字符串，文件大小不得超过 512 KB；multipart 请求中请直接设置上传的图片数据。
         delete_flag:
           type: string
           enum:
           - '0'
-          description: '削除フラグ
+          description: '删除标志。
 
-            * `0` - 未削除
 
-            '
+            - `0`：未删除'
         create_date:
           type: string
           format: date-time
-          description: '作成日時 形式：`yyyy/MM/dd HH:mm:ss.SSS`
+          description: '创建时间。
 
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         update_date:
           type: string
           format: date-time
-          description: '更新日時 形式：`yyyy/MM/dd HH:mm:ss.SSS`
+          description: '更新时间。
 
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
       x-req-properties:
         data:
           type: string
           format: binary
-          description: '社印ファイルデータ（マルチパートアップロード）\
-
-            \
-
-            画像ファイルをマルチパートアップロードするときはこの `data` フィールドに画像データを設定します。
-
-            '
+          description: 公司印章图片数据。JSON 请求中为 Base64 编码字符串，文件大小不得超过 512 KB；multipart 请求中请直接设置上传的图片数据。
     CompanyStamp.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/CompanyStamp'
@@ -36136,7 +35879,7 @@ components:
             '
   examples:
     payment_method:
-      summary: 口座振替・銀行振込（バーチャル口座）
+      summary: 银行账户自动扣款与银行转账（虚拟账户）
       value: pm_**********************
     card:
       summary: 卡片
