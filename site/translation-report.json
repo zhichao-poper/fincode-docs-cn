@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 849,
+  "remainingJapaneseUnits": 766,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -385,58 +385,6 @@
     {
       "pointer": "/components/schemas/Payment.ListRetrieving.PayPay.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/status/description",
-      "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の振込待ち - `CAPTURED`: 売上確定 - `CANCELED`: キャンセル -"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/billing_total_amount_min/description",
-      "preview": "振込依頼金額 合計（始値）\\ 振込依頼金額 合計（`billing_total_amount`）を対象に範囲検索を行います。この値以上の合計 振込依頼金額を持つ決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/billing_total_amount_max/description",
-      "preview": "振込依頼金額 合計（終値）\\ 振込依頼金額 合計（`billing_total_amount`）を対象に範囲検索を行います。この値以下の合計 振込依頼金額を持つ決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/payment_term_from/description",
-      "preview": "支払い期限（始値）\\ 支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以降に支払い期限が到来する決済情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/payment_term_to/description",
-      "preview": "支払い期限（終値）\\ 支払い期限（`payment_term`）を対象に範囲検索を行います。この日付以前に支払い期限が到来する決済情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/transaction_date_from/description",
-      "preview": "取引日（始値）\\ \\ 取引日（`transaction_date`）を対象に範囲検索を行います。この日付以降に振込が行われた決済情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/transaction_date_to/description",
-      "preview": "取引日（終値）\\ \\ 取引日（`transaction_date`）を対象に範囲検索を行います。この日付以前に振込が行われた決済情報を取得します。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/overpayment_flag/description",
-      "preview": "多重支払フラグ\\ 同一のバーチャル口座に対して複数回支払いが行われた決済を検索する場合`1`を指定します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/cancel_overpayment_flag/description",
-      "preview": "キャンセル後支払フラグ\\ キャンセルされた決済に対して支払いが行われた決済を検索する場合`1`を指定します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/expire_overpayment_flag/description",
-      "preview": "期限切れ後支払フラグ\\ 期限切れになった決済に対して支払いが行われた決済を検索する場合`1`を指定します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/amount_pattern/description",
-      "preview": "利用金額パターン  - `null`: 全件取得 - `1`: 振込依頼金額 合計 = 利用金額 合計 である決済を取得 - `2`: 振込依頼金額 合計 != 利用金額 合計 である決済を取得 - `3`: 振込依頼金額 合計 < 利用金額 合計 である決済を取得 - `4`: 振込依頼金額 合計 <= 利用金額 合"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/bulk_payment_id/description",
-      "preview": "一括決済ID\\ 指定した一括決済IDに紐づく決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.VirtualAccount.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `payment_term`: 支払い期限 - `p"
     },
     {
       "pointer": "/components/schemas/Payment/properties/id/description",
@@ -1175,58 +1123,6 @@
       "preview": "課金間隔  - `month`：月 - `year`：年 "
     },
     {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/pay_type/description",
-      "preview": "決済種別\\ 一覧で取得する対象の決済種別を指定します。  - `Card`: カード - `Directdebit`: 口座振替 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/status/description",
-      "preview": "ステータス\\ 指定したステータスのサブスクリプション情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `ACTIVE`: サブスクリプションが有効 - `RUNNING`: 課金処理中 - `CANCELED`: 解約済み - `INCOMPLETE`: サブスクリプションの登録時点で何ら"
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/total_amount_min/description",
-      "preview": "合計金額（始値）\\ 利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以上の合計金額を持つサブスクリプション情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/total_amount_max/description",
-      "preview": "合計金額（終値）\\ 利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以下の合計金額を持つサブスクリプション情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/start_date_from/description",
-      "preview": "課金開始日（始値）\\ 課金開始日（`start_date`）を対象に範囲検索を行います。この日付以降に課金開始されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/start_date_to/description",
-      "preview": "課金開始日（終値）\\ 課金開始日（`start_date`）を対象に範囲検索を行います。この日付以前に課金開始されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/stop_date_from/description",
-      "preview": "課金停止日（始値）\\ 課金停止日（`stop_date`）を対象に範囲検索を行います。この日付以降に課金停止されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/stop_date_to/description",
-      "preview": "課金停止日（終値）\\ 課金停止日（`stop_date`）を対象に範囲検索を行います。この日付以前に課金停止されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/next_charge_date_from/description",
-      "preview": "次回課金日（始値）\\ 次回課金日（`next_charge_date`）を対象に範囲検索を行います。この日付以降に次回課金されるサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/next_charge_date_to/description",
-      "preview": "次回課金日（終値）\\ 次回課金日（`next_charge_date`）を対象に範囲検索を行います。この日付以前に次回課金されるサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/update_date_from/description",
-      "preview": "更新日時（始値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/update_date_to/description",
-      "preview": "更新日時（終値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新されたサブスクリプション情報を取得します。\\ \\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `plan_id`: プランID - `total_amount`: 合計金額 - `start_date`: 課金開始日 - `stop_date`: 課金停止日 - `next"
-    },
-    {
       "pointer": "/components/schemas/start_date/description",
       "preview": "課金開始日\\ サブスクリプションの開始日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
     },
@@ -1787,62 +1683,6 @@
       "preview": "プラットフォーム利用料収入のサマリー情報のリスト "
     },
     {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/limit/description",
-      "preview": "取得件数   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/page/description",
-      "preview": "ページ   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/count_only/description",
-      "preview": "総件数のみフラグ   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/sort/description",
-      "preview": "ソート    - `id`: チャージバック受付ID - `opened_to_shop_date`: 連絡日 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/order_id/description",
-      "preview": "オーダーID   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/amount/description",
-      "preview": "決済金額   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/request/description",
-      "preview": "依頼内容   複数指定可能   カンマ区切りで複数の申出内容を指定可能です。    - `1`: 配送保留\t - `2`: 配送停止\t - `11`: 利用覚えなし\t - `12`: サービス未提供\t - `13`: サービス不履行\t - `14`: 商品未着\t - `15`: 商品相違\t - `16`: 金額相違\t "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/status_code/description",
-      "preview": "チャージバックステータス   カンマ区切りで複数のステータスを指定可能です。    - `4005`: 要対応 - `4006, 4007, 4011`: 回答済み\t - `4009`: 精算済み\t "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/category/description",
-      "preview": "カテゴリ   カンマ区切りで複数のカテゴリを指定可能です。    - `0`: 不正利用懸念 - `1`: 調査依頼 - `2`: 不正利用確定 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/canceled/description",
-      "preview": "チャージバック取消   ※この検索条件はstatus_codeに4009（精算済み）を指定した場合のみ有効です。 それ以外のステータスが指定されている場合、本パラメータは無視されます。  - `null`: 取消・取消以外の両方を取得 - `true`: 取消のみ   - `false`: 取消以外   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/process_date_since/description",
-      "preview": "作成日　検索期間始端   yyyy/MM/dd形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/process_date_until/description",
-      "preview": "作成日　検索期間終端   yyyy/MM/dd形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/opened_to_shop_date_since/description",
-      "preview": "連絡日　検索期間始端   yyyy/MM/dd形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.ListRetrieving.QueryParams/properties/opened_to_shop_date_until/description",
-      "preview": "連絡日　検索期間終端   yyyy/MM/dd形式   "
-    },
-    {
       "pointer": "/components/schemas/ShopChargeBackListItem/properties/order_id/description",
       "preview": "オーダーID   "
     },
@@ -1881,66 +1721,6 @@
     {
       "pointer": "/components/schemas/ShopChargeBackListItem/properties/canceled_date/description",
       "preview": "キャンセル日   yyyy/MM/dd HH:mm形式   "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/contact_tel/description",
-      "preview": "連絡先電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/business_hours/description",
-      "preview": "営業時間 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/delivered/description",
-      "preview": "商品を発送・提供済みか "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/delivery_provider/description",
-      "preview": "配送業者 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/receipt_number/description",
-      "preview": "送り状番号 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/orderer_name/description",
-      "preview": "注文者氏名 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/orderer_address/description",
-      "preview": "注文者住所 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/orderer_tel/description",
-      "preview": "注文者電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/orderer_mail/description",
-      "preview": "注文者メールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/receiver_name/description",
-      "preview": "受取者氏名 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/receiver_address/description",
-      "preview": "受取者住所 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/receiver_tel/description",
-      "preview": "受取者電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/provides_product/description",
-      "preview": "商品・サービスを提供したか "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/product_detail/description",
-      "preview": "商品・サービスの詳細 "
-    },
-    {
-      "pointer": "/components/schemas/ShopChargeBack.Reply.Request/properties/memo/description",
-      "preview": "メモ "
     },
     {
       "pointer": "/components/schemas/ExaminationFileType/description",
@@ -2161,62 +1941,6 @@
     {
       "pointer": "/components/schemas/Role_properties-id/description",
       "preview": "ロールID\\ \\ ユーザーの管理画面における権限を示すIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/id/description",
-      "preview": "ユーザーID "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/default_shop_id/description",
-      "preview": "デフォルトショップID\\ \\ このユーザーがログインした際、どのショップにログインするかを示すID "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/name/description",
-      "preview": "ユーザー名 "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/email/description",
-      "preview": "メールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/type/description",
-      "preview": "ユーザー種別  - `01`: ショップユーザー "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/two_factor_auth_status/description",
-      "preview": "二要素認証ステータス  - `00`: 未設定\\ - `01`: 設定済み "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/mail_auth_status/description",
-      "preview": "メールアドレス認証ステータス  - `00`: 未設定\\ - `01`: 設定済み "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/password_lock_status/description",
-      "preview": "パスワードロックステータス  - `00`: ロックされていない\\ - `01`: ロック中 "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/last_login_date/description",
-      "preview": "最終ログイン日時\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/login_failure_date/description",
-      "preview": "ログイン失敗日時\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/login_failure_times/description",
-      "preview": "ログイン失敗回数 "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/password_expire/description",
-      "preview": "パスワード有効期限\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/account_status/description",
-      "preview": "アカウントステータス  - `00`: 有効 - `01`: 無効 "
-    },
-    {
-      "pointer": "/components/schemas/User/properties/invite_status/description",
-      "preview": "招待ステータス  - `01`: 招待中 - `02`: 参加済み "
     },
     {
       "pointer": "/components/schemas/POST.TenantEntries/properties/user_data/description",
@@ -2785,62 +2509,6 @@
     {
       "pointer": "/components/schemas/deals_long_apply_content/description",
       "preview": "fincode審査に時間がかかるコンテンツを取り扱うかどうかの表明  - `true`: fincode審査に時間がかかるコンテンツを取り扱う - `false`: fincode審査に時間がかかるコンテンツを取り扱わない  以下の商材を取り扱う場合は`true`を指定する必要があります。  - 呉服 - コンサルディ"
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/corporate/description",
-      "preview": "事業形態  - `true`: 法人 - `false`: 個人事業主 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/used_on_other/description",
-      "preview": "その他の箇所での利用有無\\ \\ Webアプリケーションやネイティブアプリ上でない箇所で利用があるかどうか  - `true`: Webアプリ／ネイティブアプリでない箇所でfincodeを使用する "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/site_existing/description",
-      "preview": "Webサイトの公開状況\\ \\ fincode審査時点で決済機能を提供するWebサイトが閲覧可能かどうかを示します。  - `0`: fincode審査チームがサイトを閲覧可能 - `1`: fincode審査チームがサイトを閲覧不可能（ただし準備中） - `2`: fincode審査チームがサイトを閲覧不可能 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_distributor_name/description",
-      "preview": "販売者業者名 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_support_tel/description",
-      "preview": "問い合わせ先電話番号\\ \\ 購入者が問い合わせる窓口となる電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_support_mail/description",
-      "preview": "問い合わせ先メールアドレス\\ \\ 購入者が問い合わせる窓口となるメールアドレス "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_post_code/description",
-      "preview": "ショップ住所 郵便番号 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_prefecture/description",
-      "preview": "ショップ住所 都道府県 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_address_municipality/description",
-      "preview": "ショップ住所 市区町村 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_address_section/description",
-      "preview": "ショップ住所 町域 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_address_chrome/description",
-      "preview": "ショップ住所 番地 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_address_building_name/description",
-      "preview": "ショップ住所 建物名等 "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/shop_address_building_name_kana/description",
-      "preview": "ショップ住所 建物名等（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ContractDetail/properties/content_category_master_id/description",
-      "preview": "取扱商材カテゴリID "
     },
     {
       "pointer": "/components/schemas/ShopPaymentMethod/description",

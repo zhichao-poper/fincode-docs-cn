@@ -2184,6 +2184,237 @@ schema_property_descriptions:
     business_operator_account_number: 经营者银行账号。
     business_operator_account_name: 经营者银行账户名义人。
     memo: 备注。
+  ShopChargeBack.Reply.Request:
+    contact_tel: 联系电话号码。
+    business_hours: 营业时间。
+    delivered: 是否已发货或提供商品/服务。
+    delivery_provider: 配送服务商。
+    receipt_number: 物流单号。
+    orderer_name: 订购人姓名。
+    orderer_address: 订购人地址。
+    orderer_tel: 订购人电话号码。
+    orderer_mail: 订购人电子邮箱地址。
+    receiver_name: 收件人姓名。
+    receiver_address: 收件人地址。
+    receiver_tel: 收件人电话号码。
+    provides_product: 是否已提供商品或服务。
+    product_detail: 商品或服务的详细信息。
+    memo: 备注。
+  ShopChargeBack.ListRetrieving.QueryParams:
+    limit: 获取数量。
+    page: 页码。
+    count_only: 是否仅返回总数量。
+    sort: |-
+      排序字段。
+
+      - `id`：拒付受理 ID
+      - `opened_to_shop_date`：通知日期
+    order_id: 订单 ID。
+    amount: 支付金额。
+    request: |-
+      申诉内容，可使用半角逗号分隔指定多个值。
+
+      - `1`：暂缓配送
+      - `2`：停止配送
+      - `11`：不记得使用过
+      - `12`：未提供服务
+      - `13`：未履行服务
+      - `14`：未收到商品
+      - `15`：商品不符
+      - `16`：金额不符
+      - `17`：商品存在瑕疵
+      - `18`：遗漏取消
+      - `19`：确认解约方法
+      - `20`：希望代为解约
+      - `21`：确认咨询窗口
+      - `22`：确认交易内容
+    status_code: |-
+      拒付状态，可使用半角逗号分隔指定多个值。
+
+      - `4005`：需要处理
+      - `4006`、`4007`、`4011`：已答复
+      - `4009`：已结算
+    category: |-
+      拒付类别，可使用半角逗号分隔指定多个值。
+
+      - `0`：疑似欺诈使用
+      - `1`：调查请求
+      - `2`：确认欺诈使用
+    canceled: |-
+      拒付取消状态。仅当 `status_code` 指定 `4009`（已结算）时有效，其他状态下本参数会被忽略。
+
+      - `null`：同时返回已取消和未取消记录
+      - `true`：仅返回已取消记录
+      - `false`：仅返回未取消记录
+    process_date_since: |-
+      创建日期筛选的起始日期。
+      格式：`yyyy/MM/dd`
+    process_date_until: |-
+      创建日期筛选的结束日期。
+      格式：`yyyy/MM/dd`
+    opened_to_shop_date_since: |-
+      通知日期筛选的起始日期。
+      格式：`yyyy/MM/dd`
+    opened_to_shop_date_until: |-
+      通知日期筛选的结束日期。
+      格式：`yyyy/MM/dd`
+  User:
+    id: 用户 ID。
+    default_shop_id: 用户登录时默认进入的商户 ID。
+    name: 用户名称。
+    email: 电子邮箱地址。
+    type: |-
+      用户类型。
+
+      - `01`：商户用户
+    two_factor_auth_status: |-
+      双重认证状态。
+
+      - `00`：未设置
+      - `01`：已设置
+    mail_auth_status: |-
+      电子邮箱认证状态。
+
+      - `00`：未认证
+      - `01`：已认证
+    password_lock_status: |-
+      密码锁定状态。
+
+      - `00`：未锁定
+      - `01`：已锁定
+    last_login_date: |-
+      最后登录时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    login_failure_date: |-
+      登录失败时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    login_failure_times: 登录失败次数。
+    password_expire: |-
+      密码有效期。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    account_status: |-
+      账户状态。
+
+      - `00`：有效
+      - `01`：无效
+    invite_status: |-
+      邀请状态。
+
+      - `01`：邀请中
+      - `02`：已加入
+  ContractDetail:
+    corporate: |-
+      经营主体类型。
+
+      - `true`：法人企业
+      - `false`：个体经营者
+    used_on_other: |-
+      是否在 Web 应用或原生应用之外的场景使用 fincode。
+
+      - `true`：在 Web 应用或原生应用之外使用 fincode
+    site_existing: |-
+      网站公开状态，表示 fincode 审核时能否访问提供支付功能的网站。
+
+      - `0`：审核团队可以访问
+      - `1`：审核团队暂时无法访问，网站仍在准备中
+      - `2`：审核团队无法访问
+    shop_distributor_name: 销售方企业名称。
+    shop_support_tel: 面向购买者的咨询电话号码。
+    shop_support_mail: 面向购买者的咨询电子邮箱地址。
+    shop_post_code: 商户地址的邮政编码。
+    shop_prefecture: 商户地址的都道府县。
+    shop_address_municipality: 商户地址的市区町村。
+    shop_address_section: 商户地址的町域。
+    shop_address_chrome: 商户地址的门牌号。
+    shop_address_building_name: 商户地址的建筑物名称等信息。
+    shop_address_building_name_kana: 商户地址的建筑物名称等信息（片假名）。
+    content_category_master_id: 经营商品或服务的类别 ID。
+  Payment.ListRetrieving.VirtualAccount.QueryParams:
+    status: |-
+      支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `UNPROCESSED`：未处理
+      - `AWAITING_CUSTOMER_PAYMENT`：等待购买者转账
+      - `CAPTURED`：已确认销售
+      - `CANCELED`：已取消
+      - `EXPIRED`：已过期
+    billing_total_amount_min: 要求转账总金额的下限；仅返回 `billing_total_amount` 不低于该值的支付。
+    billing_total_amount_max: 要求转账总金额的上限；仅返回 `billing_total_amount` 不高于该值的支付。
+    payment_term_from: |-
+      支付截止日期范围的起始日期；仅返回截止日期不早于该日期的支付。
+      格式：`yyyy/MM/dd`
+    payment_term_to: |-
+      支付截止日期范围的结束日期；仅返回截止日期不晚于该日期的支付。
+      格式：`yyyy/MM/dd`
+    transaction_date_from: |-
+      转账交易日期范围的起始日期；仅返回转账日期不早于该日期的支付。
+      格式：`yyyy/MM/dd`
+    transaction_date_to: |-
+      转账交易日期范围的结束日期；仅返回转账日期不晚于该日期的支付。
+      格式：`yyyy/MM/dd`
+    overpayment_flag: 搜索向同一虚拟账户发生多次付款的支付时指定 `1`。
+    cancel_overpayment_flag: 搜索在取消后仍发生付款的支付时指定 `1`。
+    expire_overpayment_flag: 搜索在过期后仍发生付款的支付时指定 `1`。
+    amount_pattern: |-
+      要求转账总金额与实际使用总金额的关系。
+
+      - `null`：返回全部
+      - `1`：要求转账总金额 = 实际使用总金额
+      - `2`：要求转账总金额 != 实际使用总金额
+      - `3`：要求转账总金额 < 实际使用总金额
+      - `4`：要求转账总金额 <= 实际使用总金额
+      - `5`：要求转账总金额 > 实际使用总金额
+      - `6`：要求转账总金额 >= 实际使用总金额
+    bulk_payment_id: 仅返回与指定批量支付 ID 关联的支付。
+    sort: |-
+      指定排序字段和顺序。
+      示例：`?sort=updated␣desc,created␣asc`
+
+      可排序字段：`status`、`process_date`、`total_amount`、`payment_term`、`payment_date`、`created`、`updated`。
+  Subscription.ListRetrieving.QueryParams:
+    pay_type: |-
+      要返回的支付类型。
+
+      - `Card`：银行卡
+      - `Directdebit`：银行账户自动扣款
+    status: |-
+      订阅状态，可使用半角逗号分隔指定多个值（OR 查询）。
+
+      - `ACTIVE`：订阅有效
+      - `RUNNING`：正在执行扣款
+      - `CANCELED`：已解约
+      - `INCOMPLETE`：订阅登记时因某种原因失败
+    total_amount_min: 订阅合计金额（`total_amount`）下限。
+    total_amount_max: 订阅合计金额（`total_amount`）上限。
+    start_date_from: |-
+      扣款开始日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    start_date_to: |-
+      扣款开始日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    stop_date_from: |-
+      扣款停止日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    stop_date_to: |-
+      扣款停止日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    next_charge_date_from: |-
+      下次扣款日期范围的起始日期。
+      格式：`yyyy/MM/dd`
+    next_charge_date_to: |-
+      下次扣款日期范围的结束日期。
+      格式：`yyyy/MM/dd`
+    update_date_from: |-
+      更新时间范围的起始日期。
+      格式：`yyyy/MM/dd`
+    update_date_to: |-
+      更新时间范围的结束日期。
+      格式：`yyyy/MM/dd`
+    sort: |-
+      指定排序字段和顺序。
+      示例：`?sort=updated␣desc,created␣asc`
+
+      可排序字段：`plan_id`、`total_amount`、`start_date`、`stop_date`、`next_charge_date`、`created`、`updated`。
 
 strings:
   /components/schemas/td_tenant_name/description: |-
