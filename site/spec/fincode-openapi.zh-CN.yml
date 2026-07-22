@@ -2067,16 +2067,12 @@ paths:
                   nullable: true
                   allOf:
                   - $ref: '#/components/schemas/return_url'
-                  description: '<span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
-
-                    '
+                  description: <span class="smallText">仅当 `pay_type = "Card"` 时可指定。</span>
                 return_url_on_failure:
                   nullable: true
                   allOf:
                   - $ref: '#/components/schemas/return_url_on_failure'
-                  description: '<span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
-
-                    '
+                  description: <span class="smallText">仅当 `pay_type = "Card"` 时可指定。</span>
                 client_field_1:
                   nullable: true
                   allOf:
@@ -2499,12 +2495,10 @@ paths:
                   type: string
                   minLength: 1
                   maxLength: 50
-                  description: '決済種別
+                  description: '支付类型。
 
 
-                    * `Virtualaccount` - 銀行振込（バーチャル口座）
-
-                    '
+                    * `Virtualaccount` - 银行转账（虚拟账户）'
       responses:
         '200':
           description: 请求成功
@@ -2619,12 +2613,10 @@ paths:
                   type: string
                   minLength: 1
                   maxLength: 50
-                  description: '決済種別
+                  description: '支付类型。
 
 
-                    * `Virtualaccount` - 銀行振込（バーチャル口座）
-
-                    '
+                    * `Virtualaccount` - 银行转账（虚拟账户）'
       responses:
         '200':
           description: 请求成功
@@ -10113,7 +10105,7 @@ paths:
               oneOf:
               - allOf:
                 - $ref: '#/components/schemas/WebhookEvent.CustomerPaymentMethodCard'
-                title: カード
+                title: 卡片
               - allOf:
                 - $ref: '#/components/schemas/WebhookEvent.CustomerPaymentMethodDirectDebit'
                 title: 银行账户自动扣款
@@ -10708,105 +10700,83 @@ components:
           maxLength: 384
           nullable: true
           example: John Doe
-          description: '顧客の名前
-
-            '
+          description: 客户姓名
         email:
           type: string
           minLength: 1
           maxLength: 254
           nullable: true
           example: john@example.com
-          description: '顧客のメールアドレス\
+          description: '客户邮箱地址。
 
-            形式： RFC5322
-
-            '
+            格式：RFC5322'
         phone_cc:
           type: string
           minLength: 1
           maxLength: 3
           nullable: true
           example: '81'
-          description: '顧客の電話番号の国コード（`+`は含まない）
-
-            '
+          description: 客户电话号码的国家或地区代码（不包含 `+`）。
         phone_no:
           type: string
           minLength: 1
           maxLength: 15
           nullable: true
           example: 09012345678
-          description: '顧客の電話番号
-
-            '
+          description: 客户电话号码
         addr_country:
           type: string
           minLength: 1
           maxLength: 3
           nullable: true
           example: '392'
-          description: '顧客の住所の国コード\
+          description: '客户地址的国家代码。
 
-            形式： ISO 3166-1 numeric
-
-            '
+            格式：ISO 3166-1 numeric'
         addr_state:
           type: string
           minLength: 1
           maxLength: 3
           nullable: true
           example: '13'
-          description: '顧客の住所の州コードまたは都道府県コード\
+          description: '客户地址的州代码或都道府县代码。
 
-            参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
-
-            '
+            参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
         addr_city:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 渋谷区
-          description: '顧客の住所の都市名
-
-            '
+          description: 客户地址中的城市名称
         addr_line_1:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: 道玄坂1-14-6
-          description: '顧客の住所の番地・区画
-
-            '
+          description: 客户地址中的门牌号及街区
         addr_line_2:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: ヒューマックス渋谷ビル 7F
-          description: '顧客の住所の建物名・部屋番号
-
-            '
+          description: 客户地址中的楼宇名称及房间号
         addr_line_3:
           type: string
           minLength: 1
           maxLength: 50
           nullable: true
           example: GMOイプシロン株式会社
-          description: '顧客の住所 その他
-
-            '
+          description: 客户地址的其他信息
         addr_post_code:
           type: string
           minLength: 1
           maxLength: 16
           nullable: true
           example: 150-0043
-          description: '顧客の住所の郵便番号
-
-            '
+          description: 客户地址的邮政编码
         card_registration:
           type: string
           minLength: 1
@@ -10894,105 +10864,83 @@ components:
       maxLength: 384
       nullable: true
       example: John Doe
-      description: '顧客の名前
-
-        '
+      description: 客户姓名
     email:
       type: string
       minLength: 1
       maxLength: 254
       nullable: true
       example: john@example.com
-      description: '顧客のメールアドレス\
+      description: '客户邮箱地址。
 
-        形式： RFC5322
-
-        '
+        格式：RFC5322'
     phone_cc:
       type: string
       minLength: 1
       maxLength: 3
       nullable: true
       example: '81'
-      description: '顧客の電話番号の国コード（`+`は含まない）
-
-        '
+      description: 客户电话号码的国家或地区代码（不包含 `+`）。
     phone_no:
       type: string
       minLength: 1
       maxLength: 15
       nullable: true
       example: 09012345678
-      description: '顧客の電話番号
-
-        '
+      description: 客户电话号码
     addr_country:
       type: string
       minLength: 1
       maxLength: 3
       nullable: true
       example: '392'
-      description: '顧客の住所の国コード\
+      description: '客户地址的国家代码。
 
-        形式： ISO 3166-1 numeric
-
-        '
+        格式：ISO 3166-1 numeric'
     addr_state:
       type: string
       minLength: 1
       maxLength: 3
       nullable: true
       example: '13'
-      description: '顧客の住所の州コードまたは都道府県コード\
+      description: '客户地址的州代码或都道府县代码。
 
-        参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
-
-        '
+        参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
     addr_city:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 渋谷区
-      description: '顧客の住所の都市名
-
-        '
+      description: 客户地址中的城市名称
     addr_line_1:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 道玄坂1-14-6
-      description: '顧客の住所の番地・区画
-
-        '
+      description: 客户地址中的门牌号及街区
     addr_line_2:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: ヒューマックス渋谷ビル 7F
-      description: '顧客の住所の建物名・部屋番号
-
-        '
+      description: 客户地址中的楼宇名称及房间号
     addr_line_3:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: GMOイプシロン株式会社
-      description: '顧客の住所 その他
-
-        '
+      description: 客户地址的其他信息
     addr_post_code:
       type: string
       minLength: 1
       maxLength: 16
       nullable: true
       example: 150-0043
-      description: '顧客の住所の郵便番号
-
-        '
+      description: 客户地址的邮政编码
     Customer.Creating.Request:
       type: object
       properties:
@@ -12125,35 +12073,25 @@ components:
           minLength: 4
           maxLength: 4
           nullable: true
-          description: '金融機関コード。\
+          description: '金融机构代码。
 
-            金融機関のコードです。\
-
-            例：`0310`
-
-            '
+            示例：`0310`'
         bank_name:
           type: string
           example: GMOあおぞらネット銀行
           minLength: 1
           maxLength: 45
           nullable: true
-          description: '金融機関名
-
-            '
+          description: 金融机构名称
         branch_code:
           type: string
           example: '301'
           minLength: 3
           maxLength: 3
           nullable: true
-          description: '支店コード。\
+          description: '金融机构分行代码。
 
-            金融機関の支店コードです。\
-
-            例：`001`
-
-            '
+            示例：`001`'
         branch_name:
           type: string
           example: うみ支店
@@ -12169,14 +12107,12 @@ components:
           maxLength: 1
           example: '1'
           nullable: true
-          description: '預金区分
+          description: '存款账户类型。
 
 
-            - `1`: 普通
+            - `1`：普通存款账户
 
-            - `2`: 当座
-
-            '
+            - `2`：往来存款账户'
         account_number:
           type: string
           example: '1234567'
@@ -12190,18 +12126,14 @@ components:
           nullable: true
           minLength: 1
           maxLength: 5
-          description: 'ゆうちょ 預金記号
-
-            '
+          description: 日本邮政银行存款记号
         postal_account_number_2:
           type: string
           example: 06789012
           nullable: true
           minLength: 1
           maxLength: 8
-          description: 'ゆうちょ 預金番号
-
-            '
+          description: 日本邮政银行存款号码
         account_name:
           type: string
           example: イプシロン　太郎
@@ -12215,9 +12147,7 @@ components:
           nullable: true
           minLength: 1
           maxLength: 30
-          description: '口座名義（カナ）
-
-            '
+          description: 账户名义人（片假名）
         paper_application:
           type: object
           nullable: true
@@ -12248,92 +12178,66 @@ components:
               minLength: 1
               maxLength: 20
               nullable: true
-              description: '依頼書ID。\
+              description: '扣款申请书 ID。
 
-                依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。
-
-                '
+                从管理后台登记申请书时，由登记者指定，用于唯一标识该申请书。'
             paper_failure_description:
               type: string
               example: 依頼書の登録が○○○という理由で失敗しました。
               nullable: true
               minLength: 1
               maxLength: 200
-              description: '依頼書登録に失敗した理由。
-
-                '
+              description: 扣款申请书登记失败的原因。
     va_branch_code:
       type: string
       nullable: true
       minLength: 1
       maxLength: 3
       example: '502'
-      description: '支店コード\
+      description: '分行代码。
 
-        \
-
-        発行されたバーチャル口座の支店コードです。
-
-        '
+        已分配虚拟账户的分行代码。'
     va_branch_name:
       type: string
       nullable: true
       maxLength: 15
       example: アジサイ
-      description: '支店名\
+      description: '分行名称。
 
-        \
-
-        発行されたバーチャル口座の支店名です。
-
-        '
+        已分配虚拟账户的分行名称。'
     va_account_number:
       type: string
       nullable: true
       minLength: 7
       maxLength: 7
       example: '1234567'
-      description: '口座番号\
+      description: '银行账号。
 
-        \
-
-        発行されたバーチャル口座の口座番号です。
-
-        '
+        已分配虚拟账户的银行账号。'
     va_account_name:
       type: string
       nullable: true
       maxLength: 40
       example: ジーエムオーイプシロン（カ
-      description: '口座名義\
+      description: '账户名义人。
 
-        \
-
-        発行されたバーチャル口座の口座名義です。
-
-        '
+        已分配虚拟账户的账户名义人。'
     virtual_account_id:
       type: string
       nullable: true
       minLength: 10
       maxLength: 10
       example: '1234567890'
-      description: 'バーチャル口座ID\
+      description: '虚拟账户 ID。
 
-        \
-
-        発行されたバーチャル口座のIDです。
-
-        '
+        已分配虚拟账户的 ID。'
     account_assignment_date:
       type: string
       nullable: true
       example: 2022/05/16 12:34:56.999
-      description: 'バーチャル口座 割当日時\
+      description: '虚拟账户分配时间。
 
-        形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     virtualaccount:
       type: object
       nullable: true
@@ -12357,24 +12261,20 @@ components:
           type: string
           example: 2022/05/16 23:59:59.999
           nullable: true
-          description: '最終有効化日時\
+          description: '最近启用时间。
 
-            このバーチャル口座が有効化された最終日時です。\
+            该虚拟账户最近一次启用的时间。
 
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         latest_transaction_date:
           type: string
           example: 2022/05/16
           nullable: true
-          description: '最新取引日時\
+          description: '最近交易日期。
 
-            このバーチャル口座で発生した取引のうち、最も新しい日時です。\
+            该虚拟账户发生的最近一笔交易日期。
 
-            形式：`yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
     CustomerPaymentMethod.ListRetrieving.Response:
       type: object
       properties:
@@ -12466,99 +12366,82 @@ components:
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者ユーザーアカウント 最終更新日\
+        购买者用户账户最近更新日期。
 
-        形式：`YYYYMMDD`\
+        格式：`YYYYMMDD`
 
-        \
 
-        加盟店アプリケーションにおけるユーザーアカウントの情報が最後に更新された日付を設定します。
-
-        '
+        设置商户应用中最后更新该用户账户信息的日期。'
     tds2_ch_acc_date:
       type: string
       example: '20220101'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者ユーザーアカウント 開設日\
+        购买者用户账户开设日期。
 
-        形式：`YYYYMMDD`\
+        格式：`YYYYMMDD`
 
-        \
 
-        加盟店アプリケーションにおけるユーザーアカウントの開設日を設定します。
-
-        '
+        设置商户应用中开设该用户账户的日期。'
     tds2_ch_acc_pw_change:
       type: string
       example: '20230101'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者ユーザーアカウント パスワード最終更新日\
+        购买者用户账户密码最近更新日期。
 
-        形式：`YYYYMMDD`\
+        格式：`YYYYMMDD`
 
-        \
 
-        加盟店アプリケーションにおけるユーザーアカウントのパスワードが最後に更新された日付を設定します。
-
-        '
+        设置商户应用中最后更新该用户账户密码的日期。'
     tds2_nb_purchase_account:
       type: string
       example: '9999'
       minLength: 1
       maxLength: 4
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者の過去6カ月間の購入回数
-
-        '
+        购买者过去 6 个月的购买次数。'
     tds2_payment_acc_age:
       type: string
       example: '20231231'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント カード登録日。\
+        客户用户账户的卡片登记日期。
 
-        形式：`YYYYMMDD`
-
-        '
+        格式：`YYYYMMDD`'
     tds2_provision_attempts_day:
       type: string
       example: '999'
       minLength: 3
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント 過去24時間のカード追加の試行回数
-
-        '
+        客户用户账户过去 24 小时尝试添加卡片的次数。'
     tds2_ship_address_usage:
       type: string
       example: '20230930'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        配送先住所の最初の使用日。\
+        收货地址首次使用日期。
 
-        形式：`YYYYMMDD`
-
-        '
+        格式：`YYYYMMDD`'
     tds2_ship_name_ind:
       type: string
       enum:
@@ -12567,18 +12450,14 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者名と配送先名が一致しているか否か\
-
-        購入者名と登録に使用される配送先名の一致/不一致を設定
+        购买者姓名是否与收货人姓名一致。
 
 
-        - `01`: 顧客名と配送先名が一致
+        - `01`：客户姓名与收货人姓名一致
 
-        - `02`: 顧客名と配送先名が不一致
-
-        '
+        - `02`：客户姓名与收货人姓名不一致'
     tds2_suspicious_acc_activity:
       type: string
       enum:
@@ -12587,57 +12466,44 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント 不審行為有無\
-
-        顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定
+        客户用户账户是否存在可疑行为。设置商户是否发现过可疑行为，包括历史欺诈行为。
 
 
-        - `01`: 不審な行動なし
+        - `01`：无可疑行为
 
-        - `02`: 不審な行動あり
-
-        '
+        - `02`：有可疑行为'
     tds2_txn_activity_day:
       type: string
       example: '999'
       minLength: 3
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        購入者の過去24時間の取引回数
-
-        '
+        购买者过去 24 小时的交易次数。'
     tds2_txn_activity_year:
       type: string
       example: '999'
       minLength: 3
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        前年の取引回数
-
-        '
+        过去一年的交易次数。'
     tds2_three_ds_req_auth_data:
       type: string
       minLength: 1
       maxLength: 2048
       nullable: true
       example: null
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント ログイン証跡\
+        客户用户账户登录记录。
 
-        \
 
-        加盟店アプリケーションにおけるログインの証跡。
-
-        ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。
-
-        '
+        商户应用中的登录记录。设置此项时，还必须设置登录方式和登录时间。'
     tds2_three_ds_req_auth_method:
       type: string
       enum:
@@ -12650,73 +12516,62 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント ログイン方法\
-
-        ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。
+        客户用户账户登录方式。设置此项时，还必须设置登录记录和登录时间。
 
 
-        - `01`: 認証なし（ゲストとしてログイン）
+        - `01`：无认证（以访客身份登录）
 
-        - `02`: 加盟店様自身の認証情報
+        - `02`：商户自身的认证信息
 
-        - `03`: SSO(シングルサインオン)
+        - `03`：SSO（单点登录）
 
-        - `04`: イシュアーの認証情報
+        - `04`：发卡机构的认证信息
 
-        - `05`: サードパーティ認証
+        - `05`：第三方认证
 
-        - `06`: FIDO認証
-
-        '
+        - `06`：FIDO 认证'
     tds2_three_ds_req_auth_timestamp:
       type: string
       example: '202205191234'
       minLength: 12
       maxLength: 12
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客ユーザーアカウント ログイン日時\
+        客户用户账户登录时间。
 
-        \
 
-        ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。\
+        设置登录记录时，还必须设置登录方式和登录时间。
 
-        形式：`YYYYMMDDHHmm`
-
-        '
+        格式：`YYYYMMDDHHmm`'
     tds2_email:
       type: string
       minLength: 1
       maxLength: 254
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客のメールアドレス\
-
-        \
-
-        未指定の場合、顧客の`email`が自動で設定されます。\
-
-        \
-
-        2024年8月12日以降、下記の内少なくとも1つが必須となります。
+        客户邮箱地址。
 
 
-        - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-        - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-        - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-        - 顧客のメールアドレス（`tds2_email`）
+        未指定时自动使用客户的 `email`。
 
 
-        ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
+        自 2024 年 8 月 12 日起，以下字段至少需要提供一个：
 
-        '
+
+        - 客户住宅电话号码（`tds2_home_phone_no`）
+
+        - 客户手机号码（`tds2_mobile_phone_no`）
+
+        - 客户工作单位电话号码（`tds2_work_phone_no`）
+
+        - 客户邮箱地址（`tds2_email`）
+
+
+        目前即使没有提供也会执行认证，但未来可能不再支持。'
     tds2_addr_match:
       type: string
       enum:
@@ -12726,16 +12581,14 @@ components:
       minLength: 1
       maxLength: 1
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        請求先住所と配送先住所が一致しているか否か
+        账单地址是否与收货地址一致。
 
 
-        - `Y`: 住所は一致している
+        - `Y`：地址一致
 
-        - `N`: 住所は一致していない
-
-        '
+        - `N`：地址不一致'
     tds2_bill_addr_country:
       type: string
       example: '392'
@@ -12777,29 +12630,23 @@ components:
       minLength: 1
       maxLength: 50
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の請求先住所 区域部2行目\
+        客户账单地址第 2 行。
 
-        \
 
-        顧客の住所の建物名・部屋番号を指定してください。未指定の場合、顧客に登録された`addr_line_2`を設定します。
-
-        '
+        指定楼宇名称和房间号。未指定时使用客户已登记的 `addr_line_2`。'
     tds2_bill_addr_line_3:
       type: string
       example: 7F
       minLength: 1
       maxLength: 50
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の請求先住所 区域部3行目\
+        客户账单地址第 3 行。
 
-        \
 
-        顧客の住所のその他を指定してください。未指定の場合、顧客に登録された`addr_line_3`を設定します。
-
-        '
+        指定地址的其他信息。未指定时使用客户已登记的 `addr_line_3`。'
     tds2_bill_addr_post_code:
       type: string
       example: 150-0043
@@ -12814,81 +12661,67 @@ components:
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 国コード。\
+        客户收货地址的国家代码。
 
-        形式：ISO 3166-1 numeric
-
-        '
+        格式：ISO 3166-1 numeric'
     tds2_ship_addr_state:
       type: string
       example: '13'
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 州または都道府県コード。\
+        客户收货地址的州代码或都道府县代码。
 
-        参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
-
-        '
+        参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
     tds2_ship_addr_city:
       type: string
       example: 渋谷区
       minLength: 1
       maxLength: 50
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 都市名
-
-        '
+        客户收货地址的城市名称。'
     tds2_ship_addr_line_1:
       type: string
       example: 道玄坂1-14-6
       minLength: 1
       maxLength: 50
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 区域部1行目
-
-        '
+        客户收货地址第 1 行。'
     tds2_ship_addr_line_2:
       type: string
       example: ヒューマックス渋谷ビル
       minLength: 1
       maxLength: 50
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 区域部2行目
-
-        '
+        客户收货地址第 2 行。'
     tds2_ship_addr_line_3:
       type: string
       example: 7F
       minLength: 1
       maxLength: 50
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 区域部3行目
-
-        '
+        客户收货地址第 3 行。'
     tds2_ship_addr_post_code:
       type: string
       example: 150-0043
       minLength: 1
       maxLength: 16
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の配送先住所 郵便番号
-
-        '
+        客户收货地址的邮政编码。'
     tds2_ship_ind:
       type: string
       enum:
@@ -13225,26 +13058,18 @@ components:
       minLength: 4
       maxLength: 4
       nullable: true
-      description: '金融機関コード。\
+      description: '金融机构代码。
 
-        金融機関のコードです。\
-
-        例：`0310`
-
-        '
+        示例：`0310`'
     branch_code:
       type: string
       example: '301'
       minLength: 3
       maxLength: 3
       nullable: true
-      description: '支店コード。\
+      description: '金融机构分行代码。
 
-        金融機関の支店コードです。\
-
-        例：`001`
-
-        '
+        示例：`001`'
     account_type:
       type: string
       enum:
@@ -13254,14 +13079,12 @@ components:
       maxLength: 1
       example: '1'
       nullable: true
-      description: '預金区分
+      description: '存款账户类型。
 
 
-        - `1`: 普通
+        - `1`：普通存款账户
 
-        - `2`: 当座
-
-        '
+        - `2`：往来存款账户'
     account_number:
       type: string
       example: '1234567'
@@ -13282,9 +13105,7 @@ components:
       nullable: true
       minLength: 1
       maxLength: 30
-      description: '口座名義（カナ）
-
-        '
+      description: 账户名义人（片假名）
     paper_application:
       type: object
       description: '依頼書登録のパラメータ
@@ -13297,18 +13118,14 @@ components:
           nullable: true
           minLength: 1
           maxLength: 5
-          description: 'ゆうちょ 預金記号
-
-            '
+          description: 日本邮政银行存款记号
         postal_account_number_2:
           type: string
           example: 06789012
           nullable: true
           minLength: 1
           maxLength: 8
-          description: 'ゆうちょ 預金番号
-
-            '
+          description: 日本邮政银行存款号码
         request_form_id:
           type: string
           example: '12345678901234567890'
@@ -16909,15 +16726,12 @@ components:
           minLength: 1
           maxLength: 2
           example: 3
-          description: '支払期限日数\
+          description: '付款期限天数。
 
-            \
 
-            実行日から見て、支払期限日数後の翌日AMに期限切れになります。\
+            从执行日算起，在期限天数后的次日上午过期。
 
-            例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ
-
-            '
+            示例：2024/4/1 执行支付且付款期限天数为 `2` 时，于 2024/4/4 上午过期。'
         payment_term:
           type: string
           nullable: true
@@ -16934,72 +16748,50 @@ components:
           minLength: 1
           maxLength: 3
           example: '502'
-          description: '支店コード\
+          description: '分行代码。
 
-            \
-
-            発行されたバーチャル口座の支店コードです。
-
-            '
+            已分配虚拟账户的分行代码。'
         va_branch_name:
           type: string
           nullable: true
           maxLength: 15
           example: アジサイ
-          description: '支店名\
+          description: '分行名称。
 
-            \
-
-            発行されたバーチャル口座の支店名です。
-
-            '
+            已分配虚拟账户的分行名称。'
         va_account_number:
           type: string
           nullable: true
           minLength: 7
           maxLength: 7
           example: '1234567'
-          description: '口座番号\
+          description: '银行账号。
 
-            \
-
-            発行されたバーチャル口座の口座番号です。
-
-            '
+            已分配虚拟账户的银行账号。'
         va_account_name:
           type: string
           nullable: true
           maxLength: 40
           example: ジーエムオーイプシロン（カ
-          description: '口座名義\
+          description: '账户名义人。
 
-            \
-
-            発行されたバーチャル口座の口座名義です。
-
-            '
+            已分配虚拟账户的账户名义人。'
         virtual_account_id:
           type: string
           nullable: true
           minLength: 10
           maxLength: 10
           example: '1234567890'
-          description: 'バーチャル口座ID\
+          description: '虚拟账户 ID。
 
-            \
-
-            発行されたバーチャル口座のIDです。
-
-            '
+            已分配虚拟账户的 ID。'
         account_assignment_date:
           type: string
           nullable: true
           example: 2022/05/16 12:34:56.999
-          description: 'バーチャル口座 割当日時\
+          description: '虚拟账户分配时间。
 
-            形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         transaction_date:
           type: string
           nullable: false
@@ -17181,20 +16973,15 @@ components:
         reference_order_id:
           allOf:
           - $ref: '#/components/schemas/Payment_properties-id'
-          description: 'バーチャル口座 再利用 オーダーID\
-
-            \
-
-            あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\
-
-            バーチャル口座の再利用が可能な決済の条件は以下の通りです。
+          description: '虚拟账户复用参考订单 ID。
 
 
-            1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること
+            复用其他订单的虚拟账户时，指定该支付的订单 ID 作为参考。可复用的支付必须同时满足：
 
-            2. 参照する決済に紐づくバーチャル口座への振込から90日以内であること
 
-            '
+            1. 参考支付的 `status` 为 `CAPTURED`、`CANCELED` 或 `EXPIRED`
+
+            2. 距离向该支付所关联虚拟账户的最近一次转账不超过 90 天'
         use_exact_deposit_amount:
           type: boolean
           enum:
@@ -18717,20 +18504,15 @@ components:
     reference_order_id:
       allOf:
       - $ref: '#/components/schemas/Payment_properties-id'
-      description: 'バーチャル口座 再利用 オーダーID\
-
-        \
-
-        あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\
-
-        バーチャル口座の再利用が可能な決済の条件は以下の通りです。
+      description: '虚拟账户复用参考订单 ID。
 
 
-        1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること
+        复用其他订单的虚拟账户时，指定该支付的订单 ID 作为参考。可复用的支付必须同时满足：
 
-        2. 参照する決済に紐づくバーチャル口座への振込から90日以内であること
 
-        '
+        1. 参考支付的 `status` 为 `CAPTURED`、`CANCELED` 或 `EXPIRED`
+
+        2. 距离向该支付所关联虚拟账户的最近一次转账不超过 90 天'
     Payment.VirtualAccount.Executing.Request:
       type: object
       properties:
@@ -20403,99 +20185,82 @@ components:
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者ユーザーアカウント 最終更新日\
+            购买者用户账户最近更新日期。
 
-            形式：`YYYYMMDD`\
+            格式：`YYYYMMDD`
 
-            \
 
-            加盟店アプリケーションにおけるユーザーアカウントの情報が最後に更新された日付を設定します。
-
-            '
+            设置商户应用中最后更新该用户账户信息的日期。'
         tds2_ch_acc_date:
           type: string
           example: '20220101'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者ユーザーアカウント 開設日\
+            购买者用户账户开设日期。
 
-            形式：`YYYYMMDD`\
+            格式：`YYYYMMDD`
 
-            \
 
-            加盟店アプリケーションにおけるユーザーアカウントの開設日を設定します。
-
-            '
+            设置商户应用中开设该用户账户的日期。'
         tds2_ch_acc_pw_change:
           type: string
           example: '20230101'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者ユーザーアカウント パスワード最終更新日\
+            购买者用户账户密码最近更新日期。
 
-            形式：`YYYYMMDD`\
+            格式：`YYYYMMDD`
 
-            \
 
-            加盟店アプリケーションにおけるユーザーアカウントのパスワードが最後に更新された日付を設定します。
-
-            '
+            设置商户应用中最后更新该用户账户密码的日期。'
         tds2_nb_purchase_account:
           type: string
           example: '9999'
           minLength: 1
           maxLength: 4
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者の過去6カ月間の購入回数
-
-            '
+            购买者过去 6 个月的购买次数。'
         tds2_payment_acc_age:
           type: string
           example: '20231231'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント カード登録日。\
+            客户用户账户的卡片登记日期。
 
-            形式：`YYYYMMDD`
-
-            '
+            格式：`YYYYMMDD`'
         tds2_provision_attempts_day:
           type: string
           example: '999'
           minLength: 3
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント 過去24時間のカード追加の試行回数
-
-            '
+            客户用户账户过去 24 小时尝试添加卡片的次数。'
         tds2_ship_address_usage:
           type: string
           example: '20230930'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            配送先住所の最初の使用日。\
+            收货地址首次使用日期。
 
-            形式：`YYYYMMDD`
-
-            '
+            格式：`YYYYMMDD`'
         tds2_ship_name_ind:
           type: string
           enum:
@@ -20504,18 +20269,14 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者名と配送先名が一致しているか否か\
-
-            購入者名と登録に使用される配送先名の一致/不一致を設定
+            购买者姓名是否与收货人姓名一致。
 
 
-            - `01`: 顧客名と配送先名が一致
+            - `01`：客户姓名与收货人姓名一致
 
-            - `02`: 顧客名と配送先名が不一致
-
-            '
+            - `02`：客户姓名与收货人姓名不一致'
         tds2_suspicious_acc_activity:
           type: string
           enum:
@@ -20524,57 +20285,44 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント 不審行為有無\
-
-            顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定
+            客户用户账户是否存在可疑行为。设置商户是否发现过可疑行为，包括历史欺诈行为。
 
 
-            - `01`: 不審な行動なし
+            - `01`：无可疑行为
 
-            - `02`: 不審な行動あり
-
-            '
+            - `02`：有可疑行为'
         tds2_txn_activity_day:
           type: string
           example: '999'
           minLength: 3
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            購入者の過去24時間の取引回数
-
-            '
+            购买者过去 24 小时的交易次数。'
         tds2_txn_activity_year:
           type: string
           example: '999'
           minLength: 3
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            前年の取引回数
-
-            '
+            过去一年的交易次数。'
         tds2_three_ds_req_auth_data:
           type: string
           minLength: 1
           maxLength: 2048
           nullable: true
           example: null
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント ログイン証跡\
+            客户用户账户登录记录。
 
-            \
 
-            加盟店アプリケーションにおけるログインの証跡。
-
-            ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。
-
-            '
+            商户应用中的登录记录。设置此项时，还必须设置登录方式和登录时间。'
         tds2_three_ds_req_auth_method:
           type: string
           enum:
@@ -20587,73 +20335,62 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント ログイン方法\
-
-            ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。
+            客户用户账户登录方式。设置此项时，还必须设置登录记录和登录时间。
 
 
-            - `01`: 認証なし（ゲストとしてログイン）
+            - `01`：无认证（以访客身份登录）
 
-            - `02`: 加盟店様自身の認証情報
+            - `02`：商户自身的认证信息
 
-            - `03`: SSO(シングルサインオン)
+            - `03`：SSO（单点登录）
 
-            - `04`: イシュアーの認証情報
+            - `04`：发卡机构的认证信息
 
-            - `05`: サードパーティ認証
+            - `05`：第三方认证
 
-            - `06`: FIDO認証
-
-            '
+            - `06`：FIDO 认证'
         tds2_three_ds_req_auth_timestamp:
           type: string
           example: '202205191234'
           minLength: 12
           maxLength: 12
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客ユーザーアカウント ログイン日時\
+            客户用户账户登录时间。
 
-            \
 
-            ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。\
+            设置登录记录时，还必须设置登录方式和登录时间。
 
-            形式：`YYYYMMDDHHmm`
-
-            '
+            格式：`YYYYMMDDHHmm`'
         tds2_email:
           type: string
           minLength: 1
           maxLength: 254
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客のメールアドレス\
-
-            \
-
-            未指定の場合、顧客の`email`が自動で設定されます。\
-
-            \
-
-            2024年8月12日以降、下記の内少なくとも1つが必須となります。
+            客户邮箱地址。
 
 
-            - 顧客の自宅電話番号（`tds2_home_phone_no`）
-
-            - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
-
-            - 顧客の職場電話番号（`tds2_work_phone_no`）
-
-            - 顧客のメールアドレス（`tds2_email`）
+            未指定时自动使用客户的 `email`。
 
 
-            ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
+            自 2024 年 8 月 12 日起，以下字段至少需要提供一个：
 
-            '
+
+            - 客户住宅电话号码（`tds2_home_phone_no`）
+
+            - 客户手机号码（`tds2_mobile_phone_no`）
+
+            - 客户工作单位电话号码（`tds2_work_phone_no`）
+
+            - 客户邮箱地址（`tds2_email`）
+
+
+            目前即使没有提供也会执行认证，但未来可能不再支持。'
         tds2_addr_match:
           type: string
           enum:
@@ -20663,16 +20400,14 @@ components:
           minLength: 1
           maxLength: 1
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            請求先住所と配送先住所が一致しているか否か
+            账单地址是否与收货地址一致。
 
 
-            - `Y`: 住所は一致している
+            - `Y`：地址一致
 
-            - `N`: 住所は一致していない
-
-            '
+            - `N`：地址不一致'
         tds2_bill_addr_country:
           type: string
           example: '392'
@@ -20714,29 +20449,23 @@ components:
           minLength: 1
           maxLength: 50
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の請求先住所 区域部2行目\
+            客户账单地址第 2 行。
 
-            \
 
-            顧客の住所の建物名・部屋番号を指定してください。未指定の場合、顧客に登録された`addr_line_2`を設定します。
-
-            '
+            指定楼宇名称和房间号。未指定时使用客户已登记的 `addr_line_2`。'
         tds2_bill_addr_line_3:
           type: string
           example: 7F
           minLength: 1
           maxLength: 50
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の請求先住所 区域部3行目\
+            客户账单地址第 3 行。
 
-            \
 
-            顧客の住所のその他を指定してください。未指定の場合、顧客に登録された`addr_line_3`を設定します。
-
-            '
+            指定地址的其他信息。未指定时使用客户已登记的 `addr_line_3`。'
         tds2_bill_addr_post_code:
           type: string
           example: 150-0043
@@ -20751,81 +20480,67 @@ components:
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 国コード。\
+            客户收货地址的国家代码。
 
-            形式：ISO 3166-1 numeric
-
-            '
+            格式：ISO 3166-1 numeric'
         tds2_ship_addr_state:
           type: string
           example: '13'
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 州または都道府県コード。\
+            客户收货地址的州代码或都道府县代码。
 
-            参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
-
-            '
+            参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)'
         tds2_ship_addr_city:
           type: string
           example: 渋谷区
           minLength: 1
           maxLength: 50
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 都市名
-
-            '
+            客户收货地址的城市名称。'
         tds2_ship_addr_line_1:
           type: string
           example: 道玄坂1-14-6
           minLength: 1
           maxLength: 50
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 区域部1行目
-
-            '
+            客户收货地址第 1 行。'
         tds2_ship_addr_line_2:
           type: string
           example: ヒューマックス渋谷ビル
           minLength: 1
           maxLength: 50
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 区域部2行目
-
-            '
+            客户收货地址第 2 行。'
         tds2_ship_addr_line_3:
           type: string
           example: 7F
           minLength: 1
           maxLength: 50
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 区域部3行目
-
-            '
+            客户收货地址第 3 行。'
         tds2_ship_addr_post_code:
           type: string
           example: 150-0043
           minLength: 1
           maxLength: 16
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の配送先住所 郵便番号
-
-            '
+            客户收货地址的邮政编码。'
         tds2_ship_ind:
           type: string
           enum:
@@ -21246,15 +20961,12 @@ components:
           minLength: 1
           maxLength: 2
           example: 90
-          description: '支払期限日数\
+          description: '付款期限天数。
 
-            \
 
-            実行日から見て、支払期限日数後の翌日AMに期限切れになります。\
+            从执行日算起，在期限天数后的次日上午过期。
 
-            例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ
-
-            '
+            示例：2024/4/1 执行支付且付款期限天数为 `2` 时，于 2024/4/4 上午过期。'
         virtualaccount_reception_mail_send_flag:
           type: string
           nullable: false
@@ -21289,20 +21001,15 @@ components:
         reference_order_id:
           allOf:
           - $ref: '#/components/schemas/Payment_properties-id'
-          description: 'バーチャル口座 再利用 オーダーID\
-
-            \
-
-            あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\
-
-            バーチャル口座の再利用が可能な決済の条件は以下の通りです。
+          description: '虚拟账户复用参考订单 ID。
 
 
-            1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること
+            复用其他订单的虚拟账户时，指定该支付的订单 ID 作为参考。可复用的支付必须同时满足：
 
-            2. 参照する決済に紐づくバーチャル口座への振込から90日以内であること
 
-            '
+            1. 参考支付的 `status` 为 `CAPTURED`、`CANCELED` 或 `EXPIRED`
+
+            2. 距离向该支付所关联虚拟账户的最近一次转账不超过 90 天'
         payment_term_day:
           type: string
           nullable: true
@@ -24306,15 +24013,12 @@ components:
       minLength: 1
       maxLength: 2
       example: 3
-      description: '支払期限日数\
+      description: '付款期限天数。
 
-        \
 
-        実行日から見て、支払期限日数後の翌日AMに期限切れになります。\
+        从执行日算起，在期限天数后的次日上午过期。
 
-        例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ
-
-        '
+        示例：2024/4/1 执行支付且付款期限天数为 `2` 时，于 2024/4/4 上午过期。'
     payment_term:
       type: string
       nullable: true
@@ -26075,7 +25779,7 @@ components:
           properties:
             bank_name:
               type: string
-              description: 金融機関名
+              description: 金融机构名称
             bank_code:
               type: string
               description: 金融机构代码
@@ -31295,9 +30999,7 @@ components:
           minLength: 1
           maxLength: 20
           example: GMOあおぞらネット銀行
-          description: '金融機関名
-
-            '
+          description: 金融机构名称
         bank_name_kana:
           type: string
           minLength: 1
@@ -36439,19 +36141,15 @@ components:
           minLength: 1
           maxLength: 20
           nullable: true
-          description: '依頼書ID。\
+          description: '扣款申请书 ID。
 
-            依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。
-
-            '
+            从管理后台登记申请书时，由登记者指定，用于唯一标识该申请书。'
         paper_failure_description:
           type: string
           nullable: true
           minLength: 1
           maxLength: 200
-          description: '依頼書登録に失敗した理由。
-
-            '
+          description: 扣款申请书登记失败的原因。
     WebhookEvent.CustomerPaymentMethodDirectDebit:
       type: object
       properties:
@@ -36506,24 +36204,20 @@ components:
       type: string
       example: 2022/05/16 23:59:59.999
       nullable: true
-      description: '最終有効化日時\
+      description: '最近启用时间。
 
-        このバーチャル口座が有効化された最終日時です。\
+        该虚拟账户最近一次启用的时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     latest_transaction_date:
       type: string
       example: 2022/05/16
       nullable: true
-      description: '最新取引日時\
+      description: '最近交易日期。
 
-        このバーチャル口座で発生した取引のうち、最も新しい日時です。\
+        该虚拟账户发生的最近一笔交易日期。
 
-        形式：`yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     WebhookPaymentMethodVirtualaccount:
       type: object
       properties:
@@ -37486,7 +37180,7 @@ components:
       summary: 口座振替・銀行振込（バーチャル口座）
       value: pm_**********************
     card:
-      summary: カード
+      summary: 卡片
       value: cs_**********************
 x-tagGroups:
 - name: 开始使用

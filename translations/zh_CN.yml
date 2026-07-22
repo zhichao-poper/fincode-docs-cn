@@ -343,6 +343,467 @@ exact_strings:
 
     - `0`：普通存款账户
     - `1`：往来存款账户
+  カード: 卡片
+  顧客の名前: 客户姓名
+  顧客の電話番号: 客户电话号码
+  顧客の住所の都市名: 客户地址中的城市名称
+  顧客の住所の番地・区画: 客户地址中的门牌号及街区
+  顧客の住所の建物名・部屋番号: 客户地址中的楼宇名称及房间号
+  顧客の住所 その他: 客户地址的其他信息
+  顧客の住所の郵便番号: 客户地址的邮政编码
+  金融機関名: 金融机构名称
+  ゆうちょ 預金記号: 日本邮政银行存款记号
+  ゆうちょ 預金番号: 日本邮政银行存款号码
+  口座名義（カナ）: 账户名义人（片假名）
+  依頼書登録に失敗した理由。: 扣款申请书登记失败的原因。
+  ? |-
+    <span class="smallText">※ `pay_type = "Card"`のとき指定可能</span>
+  : <span class="smallText">仅当 `pay_type = "Card"` 时可指定。</span>
+  ? |-
+    決済種別
+
+    * `Virtualaccount` - 銀行振込（バーチャル口座）
+  : |-
+    支付类型。
+
+    * `Virtualaccount` - 银行转账（虚拟账户）
+  ? |-
+    顧客のメールアドレス\
+    形式： RFC5322
+  : |-
+    客户邮箱地址。
+    格式：RFC5322
+  ? |-
+    顧客の電話番号の国コード（`+`は含まない）
+  : 客户电话号码的国家或地区代码（不包含 `+`）。
+  ? |-
+    顧客の住所の国コード\
+    形式： ISO 3166-1 numeric
+  : |-
+    客户地址的国家代码。
+    格式：ISO 3166-1 numeric
+  ? |-
+    顧客の住所の州コードまたは都道府県コード\
+    参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+  : |-
+    客户地址的州代码或都道府县代码。
+    参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+  ? |-
+    金融機関コード。\
+    金融機関のコードです。\
+    例：`0310`
+  : |-
+    金融机构代码。
+    示例：`0310`
+  ? |-
+    支店コード。\
+    金融機関の支店コードです。\
+    例：`001`
+  : |-
+    金融机构分行代码。
+    示例：`001`
+  ? |-
+    預金区分
+
+    - `1`: 普通
+    - `2`: 当座
+  : |-
+    存款账户类型。
+
+    - `1`：普通存款账户
+    - `2`：往来存款账户
+  ? |-
+    依頼書ID。\
+    依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。
+  : |-
+    扣款申请书 ID。
+    从管理后台登记申请书时，由登记者指定，用于唯一标识该申请书。
+  ? |-
+    支店コード\
+    \
+    発行されたバーチャル口座の支店コードです。
+  : |-
+    分行代码。
+    已分配虚拟账户的分行代码。
+  ? |-
+    支店名\
+    \
+    発行されたバーチャル口座の支店名です。
+  : |-
+    分行名称。
+    已分配虚拟账户的分行名称。
+  ? |-
+    口座番号\
+    \
+    発行されたバーチャル口座の口座番号です。
+  : |-
+    银行账号。
+    已分配虚拟账户的银行账号。
+  ? |-
+    口座名義\
+    \
+    発行されたバーチャル口座の口座名義です。
+  : |-
+    账户名义人。
+    已分配虚拟账户的账户名义人。
+  ? |-
+    バーチャル口座ID\
+    \
+    発行されたバーチャル口座のIDです。
+  : |-
+    虚拟账户 ID。
+    已分配虚拟账户的 ID。
+  ? |-
+    バーチャル口座 割当日時\
+    形式： `yyyy/MM/dd HH:mm:ss.SSS`
+  : |-
+    虚拟账户分配时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  ? |-
+    最終有効化日時\
+    このバーチャル口座が有効化された最終日時です。\
+    形式：`yyyy/MM/dd HH:mm:ss.SSS`
+  : |-
+    最近启用时间。
+    该虚拟账户最近一次启用的时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  ? |-
+    最新取引日時\
+    このバーチャル口座で発生した取引のうち、最も新しい日時です。\
+    形式：`yyyy/MM/dd`
+  : |-
+    最近交易日期。
+    该虚拟账户发生的最近一笔交易日期。
+    格式：`yyyy/MM/dd`
+  ? |-
+    支払期限日数\
+    \
+    実行日から見て、支払期限日数後の翌日AMに期限切れになります。\
+    例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ
+  : |-
+    付款期限天数。
+
+    从执行日算起，在期限天数后的次日上午过期。
+    示例：2024/4/1 执行支付且付款期限天数为 `2` 时，于 2024/4/4 上午过期。
+  ? |-
+    バーチャル口座 再利用 オーダーID\
+    \
+    あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\
+    バーチャル口座の再利用が可能な決済の条件は以下の通りです。
+
+    1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること
+    2. 参照する決済に紐づくバーチャル口座への振込から90日以内であること
+  : |-
+    虚拟账户复用参考订单 ID。
+
+    复用其他订单的虚拟账户时，指定该支付的订单 ID 作为参考。可复用的支付必须同时满足：
+
+    1. 参考支付的 `status` 为 `CAPTURED`、`CANCELED` 或 `EXPIRED`
+    2. 距离向该支付所关联虚拟账户的最近一次转账不超过 90 天
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者ユーザーアカウント 最終更新日\
+    形式：`YYYYMMDD`\
+    \
+    加盟店アプリケーションにおけるユーザーアカウントの情報が最後に更新された日付を設定します。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户最近更新日期。
+    格式：`YYYYMMDD`
+
+    设置商户应用中最后更新该用户账户信息的日期。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者ユーザーアカウント 開設日\
+    形式：`YYYYMMDD`\
+    \
+    加盟店アプリケーションにおけるユーザーアカウントの開設日を設定します。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户开设日期。
+    格式：`YYYYMMDD`
+
+    设置商户应用中开设该用户账户的日期。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者ユーザーアカウント パスワード最終更新日\
+    形式：`YYYYMMDD`\
+    \
+    加盟店アプリケーションにおけるユーザーアカウントのパスワードが最後に更新された日付を設定します。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者用户账户密码最近更新日期。
+    格式：`YYYYMMDD`
+
+    设置商户应用中最后更新该用户账户密码的日期。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者の過去6カ月間の購入回数
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者过去 6 个月的购买次数。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント カード登録日。\
+    形式：`YYYYMMDD`
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户的卡片登记日期。
+    格式：`YYYYMMDD`
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント 過去24時間のカード追加の試行回数
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户过去 24 小时尝试添加卡片的次数。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    配送先住所の最初の使用日。\
+    形式：`YYYYMMDD`
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    收货地址首次使用日期。
+    格式：`YYYYMMDD`
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者名と配送先名が一致しているか否か\
+    購入者名と登録に使用される配送先名の一致/不一致を設定
+
+    - `01`: 顧客名と配送先名が一致
+    - `02`: 顧客名と配送先名が不一致
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者姓名是否与收货人姓名一致。
+
+    - `01`：客户姓名与收货人姓名一致
+    - `02`：客户姓名与收货人姓名不一致
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント 不審行為有無\
+    顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定
+
+    - `01`: 不審な行動なし
+    - `02`: 不審な行動あり
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户是否存在可疑行为。设置商户是否发现过可疑行为，包括历史欺诈行为。
+
+    - `01`：无可疑行为
+    - `02`：有可疑行为
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    購入者の過去24時間の取引回数
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    购买者过去 24 小时的交易次数。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    前年の取引回数
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    过去一年的交易次数。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント ログイン証跡\
+    \
+    加盟店アプリケーションにおけるログインの証跡。
+    ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户登录记录。
+
+    商户应用中的登录记录。设置此项时，还必须设置登录方式和登录时间。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント ログイン方法\
+    ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。
+
+    - `01`: 認証なし（ゲストとしてログイン）
+    - `02`: 加盟店様自身の認証情報
+    - `03`: SSO(シングルサインオン)
+    - `04`: イシュアーの認証情報
+    - `05`: サードパーティ認証
+    - `06`: FIDO認証
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户登录方式。设置此项时，还必须设置登录记录和登录时间。
+
+    - `01`：无认证（以访客身份登录）
+    - `02`：商户自身的认证信息
+    - `03`：SSO（单点登录）
+    - `04`：发卡机构的认证信息
+    - `05`：第三方认证
+    - `06`：FIDO 认证
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客ユーザーアカウント ログイン日時\
+    \
+    ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。\
+    形式：`YYYYMMDDHHmm`
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户用户账户登录时间。
+
+    设置登录记录时，还必须设置登录方式和登录时间。
+    格式：`YYYYMMDDHHmm`
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客のメールアドレス\
+    \
+    未指定の場合、顧客の`email`が自動で設定されます。\
+    \
+    2024年8月12日以降、下記の内少なくとも1つが必須となります。
+
+    - 顧客の自宅電話番号（`tds2_home_phone_no`）
+    - 顧客の携帯電話番号（`tds2_mobile_phone_no`）
+    - 顧客の職場電話番号（`tds2_work_phone_no`）
+    - 顧客のメールアドレス（`tds2_email`）
+
+    ※当面は連携しなかった場合でも認証は実施されますが、将来的には利用不可になる可能性があります。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户邮箱地址。
+
+    未指定时自动使用客户的 `email`。
+
+    自 2024 年 8 月 12 日起，以下字段至少需要提供一个：
+
+    - 客户住宅电话号码（`tds2_home_phone_no`）
+    - 客户手机号码（`tds2_mobile_phone_no`）
+    - 客户工作单位电话号码（`tds2_work_phone_no`）
+    - 客户邮箱地址（`tds2_email`）
+
+    目前即使没有提供也会执行认证，但未来可能不再支持。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    請求先住所と配送先住所が一致しているか否か
+
+    - `Y`: 住所は一致している
+    - `N`: 住所は一致していない
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    账单地址是否与收货地址一致。
+
+    - `Y`：地址一致
+    - `N`：地址不一致
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 国コード\
+    形式：ISO 3166-1 numeric
+    \
+    未指定の場合、顧客の`addr_country`が自動で設定されます。\
+    ショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
+    ※住所情報を保持していない場合、指定は不要です。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的国家代码。
+    格式：ISO 3166-1 numeric
+
+    未指定时自动使用客户的 `addr_country`。商户保存了客户地址时必须指定；未保存地址时无需指定。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 州または都道府県コード。\
+    参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)\
+    \
+    未指定の場合、顧客の`addr_state`が自動で設定されます。\
+    ショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
+    ※住所情報を保持していない場合、指定は不要です。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的州代码或都道府县代码。
+    参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+
+    未指定时自动使用客户的 `addr_state`。商户保存了客户地址时必须指定；未保存地址时无需指定。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 都市名\
+    \
+    未指定の場合、顧客の`addr_city`が自動で設定されます。\
+    ショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
+    ※住所情報を保持していない場合、指定は不要です。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的城市名称。
+
+    未指定时自动使用客户的 `addr_city`。商户保存了客户地址时必须指定；未保存地址时无需指定。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 区域部2行目\
+    \
+    顧客の住所の建物名・部屋番号を指定してください。未指定の場合、顧客に登録された`addr_line_2`を設定します。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址第 2 行。
+
+    指定楼宇名称和房间号。未指定时使用客户已登记的 `addr_line_2`。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 区域部3行目\
+    \
+    顧客の住所のその他を指定してください。未指定の場合、顧客に登録された`addr_line_3`を設定します。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址第 3 行。
+
+    指定地址的其他信息。未指定时使用客户已登记的 `addr_line_3`。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の請求先住所 郵便番号\
+    \
+    未指定の場合、顧客に登録された`addr_post_code`を設定します。\
+    ショップ側で顧客の住所情報を保持している場合、指定が必須となります。\
+    ※住所情報を保持していない場合、指定は不要です。
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户账单地址的邮政编码。
+
+    未指定时使用客户已登记的 `addr_post_code`。商户保存了客户地址时必须指定；未保存地址时无需指定。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 国コード。\
+    形式：ISO 3166-1 numeric
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的国家代码。
+    格式：ISO 3166-1 numeric
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 州または都道府県コード。\
+    参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的州代码或都道府县代码。
+    参阅：[日本国土交通省都道府县代码](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html)
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 都市名
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的城市名称。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 区域部1行目
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址第 1 行。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 区域部2行目
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址第 2 行。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 区域部3行目
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址第 3 行。
+  ? |-
+    <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+    顧客の配送先住所 郵便番号
+  : |-
+    <span class="smallText color--blue-400">[3D Secure 认证参数]</span>
+    客户收货地址的邮政编码。
 
 strings:
   /info/title: fincode API 中文参考

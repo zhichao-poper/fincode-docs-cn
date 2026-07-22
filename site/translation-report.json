@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 1655,
+  "remainingJapaneseUnits": 1536,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -9,14 +9,6 @@
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/default_flag/description",
       "preview": "デフォルトフラグ * `1` - デフォルト "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/return_url/description",
-      "preview": "<span class=\"smallText\">※ `pay_type = \"Card\"`のとき指定可能</span> "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/return_url_on_failure/description",
-      "preview": "<span class=\"smallText\">※ `pay_type = \"Card\"`のとき指定可能</span> "
     },
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/client_field_1/description",
@@ -59,20 +51,8 @@
       "preview": "3Dセキュア認証を利用するか。\\ <span class=\"smallText\">※ カード情報（`token`・`holder_name`・`expire`等）を更新する場合は必須</span>  - `0`: 3Dセキュア認証を利用しない - `2`: 3Dセキュア2.0認証を利用する "
     },
     {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1reactivate/put/requestBody/content/application~1json/schema/properties/pay_type/description",
-      "preview": "決済種別  * `Virtualaccount` - 銀行振込（バーチャル口座） "
-    },
-    {
-      "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}~1inactivate/put/requestBody/content/application~1json/schema/properties/pay_type/description",
-      "preview": "決済種別  * `Virtualaccount` - 銀行振込（バーチャル口座） "
-    },
-    {
       "pointer": "/paths/~1v1~1invoices~1{id}~1paid_externally/put/requestBody/content/application~1json/schema/properties/transaction_date/description",
       "preview": "支払い完了日   yyyy/MM/dd形式   "
-    },
-    {
-      "pointer": "/paths/~1your-endpoint-on-customer-payment_method/post/requestBody/content/application~1json/schema/oneOf/0/title",
-      "preview": "カード"
     },
     {
       "pointer": "/components/securitySchemes/Secret-Bearer-Auth/description",
@@ -115,100 +95,12 @@
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `id`: 顧客ID - `name`: 顧客名 - `email`: 顧客メールアドレス - `created`: 作成日時 - `updated`: 更新日時 "
     },
     {
-      "pointer": "/components/schemas/Customer/properties/name/description",
-      "preview": "顧客の名前 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/email/description",
-      "preview": "顧客のメールアドレス\\ 形式： RFC5322 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/phone_cc/description",
-      "preview": "顧客の電話番号の国コード（`+`は含まない） "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/phone_no/description",
-      "preview": "顧客の電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_country/description",
-      "preview": "顧客の住所の国コード\\ 形式： ISO 3166-1 numeric "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_state/description",
-      "preview": "顧客の住所の州コードまたは都道府県コード\\ 参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html) "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_city/description",
-      "preview": "顧客の住所の都市名 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_line_1/description",
-      "preview": "顧客の住所の番地・区画 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_line_2/description",
-      "preview": "顧客の住所の建物名・部屋番号 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_line_3/description",
-      "preview": "顧客の住所 その他 "
-    },
-    {
-      "pointer": "/components/schemas/Customer/properties/addr_post_code/description",
-      "preview": "顧客の住所の郵便番号 "
-    },
-    {
       "pointer": "/components/schemas/Customer/properties/card_registration/description",
       "preview": "決済手段（カード）登録状況  - `0`: 未登録 - `1`: 1件以上のカードが登録済み "
     },
     {
       "pointer": "/components/schemas/Customer/properties/directdebit_registration/description",
       "preview": "決済手段（口座振替）登録状況  - `0`: 未登録 - `1`: 1件以上の振替用口座が登録済み "
-    },
-    {
-      "pointer": "/components/schemas/name/description",
-      "preview": "顧客の名前 "
-    },
-    {
-      "pointer": "/components/schemas/email/description",
-      "preview": "顧客のメールアドレス\\ 形式： RFC5322 "
-    },
-    {
-      "pointer": "/components/schemas/phone_cc/description",
-      "preview": "顧客の電話番号の国コード（`+`は含まない） "
-    },
-    {
-      "pointer": "/components/schemas/phone_no/description",
-      "preview": "顧客の電話番号 "
-    },
-    {
-      "pointer": "/components/schemas/addr_country/description",
-      "preview": "顧客の住所の国コード\\ 形式： ISO 3166-1 numeric "
-    },
-    {
-      "pointer": "/components/schemas/addr_state/description",
-      "preview": "顧客の住所の州コードまたは都道府県コード\\ 参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html) "
-    },
-    {
-      "pointer": "/components/schemas/addr_city/description",
-      "preview": "顧客の住所の都市名 "
-    },
-    {
-      "pointer": "/components/schemas/addr_line_1/description",
-      "preview": "顧客の住所の番地・区画 "
-    },
-    {
-      "pointer": "/components/schemas/addr_line_2/description",
-      "preview": "顧客の住所の建物名・部屋番号 "
-    },
-    {
-      "pointer": "/components/schemas/addr_line_3/description",
-      "preview": "顧客の住所 その他 "
-    },
-    {
-      "pointer": "/components/schemas/addr_post_code/description",
-      "preview": "顧客の住所の郵便番号 "
     },
     {
       "pointer": "/components/schemas/Customer.Creating.Request/properties/id/description",
@@ -307,34 +199,6 @@
       "preview": "金融機関種別。  - `0`: ゆうちょ銀行以外の金融機関 - `1`: ゆうちょ銀行 "
     },
     {
-      "pointer": "/components/schemas/directdebit/properties/bank_code/description",
-      "preview": "金融機関コード。\\ 金融機関のコードです。\\ 例：`0310` "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/bank_name/description",
-      "preview": "金融機関名 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/branch_code/description",
-      "preview": "支店コード。\\ 金融機関の支店コードです。\\ 例：`001` "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/account_type/description",
-      "preview": "預金区分  - `1`: 普通 - `2`: 当座 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/postal_account_number_1/description",
-      "preview": "ゆうちょ 預金記号 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/postal_account_number_2/description",
-      "preview": "ゆうちょ 預金番号 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/account_name_kana/description",
-      "preview": "口座名義（カナ） "
-    },
-    {
       "pointer": "/components/schemas/directdebit/properties/paper_application/description",
       "preview": "依頼書登録のパラメータ<br /> <span class=\"smallText\"> ※ 依頼書登録により登録された口座の場合、この`paper_application`オブジェクトに依頼書からfincodeに転記した内容が含められます。 </span> "
     },
@@ -343,112 +207,8 @@
       "preview": "依頼書 仮登録日時。\\ 依頼書を仮登録した日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
     },
     {
-      "pointer": "/components/schemas/directdebit/properties/paper_application/properties/request_form_id/description",
-      "preview": "依頼書ID。\\ 依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/directdebit/properties/paper_application/properties/paper_failure_description/description",
-      "preview": "依頼書登録に失敗した理由。 "
-    },
-    {
-      "pointer": "/components/schemas/va_branch_code/description",
-      "preview": "支店コード\\ \\ 発行されたバーチャル口座の支店コードです。 "
-    },
-    {
-      "pointer": "/components/schemas/va_branch_name/description",
-      "preview": "支店名\\ \\ 発行されたバーチャル口座の支店名です。 "
-    },
-    {
-      "pointer": "/components/schemas/va_account_number/description",
-      "preview": "口座番号\\ \\ 発行されたバーチャル口座の口座番号です。 "
-    },
-    {
-      "pointer": "/components/schemas/va_account_name/description",
-      "preview": "口座名義\\ \\ 発行されたバーチャル口座の口座名義です。 "
-    },
-    {
-      "pointer": "/components/schemas/virtual_account_id/description",
-      "preview": "バーチャル口座ID\\ \\ 発行されたバーチャル口座のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/account_assignment_date/description",
-      "preview": "バーチャル口座 割当日時\\ 形式： `yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
       "pointer": "/components/schemas/virtualaccount/description",
       "preview": "<span class=\"smallText\">この決済手段が銀行振込（バーチャル口座）を表す（`pay_type = Virtualaccount`）とき、バーチャル口座情報の詳細がこの`virtualaccount`オブジェクトに格納されます。</span> "
-    },
-    {
-      "pointer": "/components/schemas/virtualaccount/properties/last_activated_date/description",
-      "preview": "最終有効化日時\\ このバーチャル口座が有効化された最終日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/virtualaccount/properties/latest_transaction_date/description",
-      "preview": "最新取引日時\\ このバーチャル口座で発生した取引のうち、最も新しい日時です。\\ 形式：`yyyy/MM/dd` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ch_acc_change/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント 最終更新日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントの情報が最後に更新された日付を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ch_acc_date/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント 開設日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントの開設日を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ch_acc_pw_change/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント パスワード最終更新日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントのパスワードが最後に更新された日付を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_nb_purchase_account/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者の過去6カ月間の購入回数 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_payment_acc_age/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント カード登録日。\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_provision_attempts_day/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント 過去24時間のカード追加の試行回数 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_address_usage/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 配送先住所の最初の使用日。\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_name_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者名と配送先名が一致しているか否か\\ 購入者名と登録に使用される配送先名の一致/不一致を設定  - `01`: 顧客名と配送先名が一致 - `02`: 顧客名と配送先名が不一致 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_suspicious_acc_activity/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント 不審行為有無\\ 顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定  - `01`: 不審な行動なし - `02`: 不審な"
-    },
-    {
-      "pointer": "/components/schemas/tds2_txn_activity_day/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者の過去24時間の取引回数 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_txn_activity_year/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 前年の取引回数 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_three_ds_req_auth_data/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン証跡\\ \\ 加盟店アプリケーションにおけるログインの証跡。 ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_three_ds_req_auth_method/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン方法\\ ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。  - `01`: 認証なし（ゲストとしてログイン） - `02`: 加盟店様自"
-    },
-    {
-      "pointer": "/components/schemas/tds2_three_ds_req_auth_timestamp/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン日時\\ \\ ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。\\ 形式：`YYYYMMDDHHmm` "
-    },
-    {
-      "pointer": "/components/schemas/tds2_email/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客のメールアドレス\\ \\ 未指定の場合、顧客の`email`が自動で設定されます。\\ \\ 2024年8月12日以降、下記の内少なくとも1つが必須となります。  - 顧客の自宅電話番号（`td"
-    },
-    {
-      "pointer": "/components/schemas/tds2_addr_match/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 請求先住所と配送先住所が一致しているか否か  - `Y`: 住所は一致している - `N`: 住所は一致していない "
     },
     {
       "pointer": "/components/schemas/tds2_bill_addr_country/description",
@@ -467,44 +227,8 @@
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部1行目\\ \\ 顧客の住所の番地・区画を指定してください。未指定の場合。顧客の`addr_line_1`が自動で設定されます。  - 都道府県や市区を含めることができます"
     },
     {
-      "pointer": "/components/schemas/tds2_bill_addr_line_2/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部2行目\\ \\ 顧客の住所の建物名・部屋番号を指定してください。未指定の場合、顧客に登録された`addr_line_2`を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_bill_addr_line_3/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部3行目\\ \\ 顧客の住所のその他を指定してください。未指定の場合、顧客に登録された`addr_line_3`を設定します。 "
-    },
-    {
       "pointer": "/components/schemas/tds2_bill_addr_post_code/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 郵便番号\\ \\ 未指定の場合、顧客に登録された`addr_post_code`を設定します。   ショップ側で顧客の住所情報を保持している場合、指定が必須となります。   ※"
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_country/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 国コード。\\ 形式：ISO 3166-1 numeric "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_state/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 州または都道府県コード。\\ 参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html"
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_city/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 都市名 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_line_1/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部1行目 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_line_2/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部2行目 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_line_3/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部3行目 "
-    },
-    {
-      "pointer": "/components/schemas/tds2_ship_addr_post_code/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 郵便番号 "
     },
     {
       "pointer": "/components/schemas/tds2_ship_ind/description",
@@ -575,32 +299,8 @@
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ ※ プリペイドカードまたはギフトカードを購入する場合のみ\\ プリペイドカードまたはギフトカードの通貨コード。\\ 形式：ISO 4217 numeric\\ \\ 以下の通貨コードは利用できません。"
     },
     {
-      "pointer": "/components/schemas/bank_code/description",
-      "preview": "金融機関コード。\\ 金融機関のコードです。\\ 例：`0310` "
-    },
-    {
-      "pointer": "/components/schemas/branch_code/description",
-      "preview": "支店コード。\\ 金融機関の支店コードです。\\ 例：`001` "
-    },
-    {
-      "pointer": "/components/schemas/account_type/description",
-      "preview": "預金区分  - `1`: 普通 - `2`: 当座 "
-    },
-    {
-      "pointer": "/components/schemas/account_name_kana/description",
-      "preview": "口座名義（カナ） "
-    },
-    {
       "pointer": "/components/schemas/paper_application/description",
       "preview": "依頼書登録のパラメータ "
-    },
-    {
-      "pointer": "/components/schemas/paper_application/properties/postal_account_number_1/description",
-      "preview": "ゆうちょ 預金記号 "
-    },
-    {
-      "pointer": "/components/schemas/paper_application/properties/postal_account_number_2/description",
-      "preview": "ゆうちょ 預金番号 "
     },
     {
       "pointer": "/components/schemas/paper_application/properties/request_form_id/description",
@@ -1127,34 +827,6 @@
       "preview": "振込依頼金額 合計\\ 振込依頼金額と振込依頼金額（税送料）の合計金額です。 "
     },
     {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/payment_term_day/description",
-      "preview": "支払期限日数\\ \\ 実行日から見て、支払期限日数後の翌日AMに期限切れになります。\\ 例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/va_branch_code/description",
-      "preview": "支店コード\\ \\ 発行されたバーチャル口座の支店コードです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/va_branch_name/description",
-      "preview": "支店名\\ \\ 発行されたバーチャル口座の支店名です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/va_account_number/description",
-      "preview": "口座番号\\ \\ 発行されたバーチャル口座の口座番号です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/va_account_name/description",
-      "preview": "口座名義\\ \\ 発行されたバーチャル口座の口座名義です。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/virtual_account_id/description",
-      "preview": "バーチャル口座ID\\ \\ 発行されたバーチャル口座のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/properties/account_assignment_date/description",
-      "preview": "バーチャル口座 割当日時\\ 形式： `yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
       "pointer": "/components/schemas/Payment.VirtualAccount/properties/transaction_date/description",
       "preview": "取引日\\ \\ 形式： `yyyy/MM/dd` "
     },
@@ -1197,10 +869,6 @@
     {
       "pointer": "/components/schemas/Payment.VirtualAccount/x-req-properties/billing_tax/description",
       "preview": "振込依頼金額（税送料）\\ `billing_amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\\ 参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restri"
-    },
-    {
-      "pointer": "/components/schemas/Payment.VirtualAccount/x-req-properties/reference_order_id/description",
-      "preview": "バーチャル口座 再利用 オーダーID\\ \\ あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\\ バーチャル口座の再利用が可能な決済の条件は以下の通りです。  1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること "
     },
     {
       "pointer": "/components/schemas/Payment_properties-id/description",
@@ -1373,10 +1041,6 @@
     {
       "pointer": "/components/schemas/target_date/description",
       "preview": "振替指定日\\ 振替を行う日を指定します。\\ 実際の振替は営業日に行われるため、必ずしも指定した日付に引き落としが行われるとは限りません。\\ 指定可能な日付及び引き落とし日は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule"
-    },
-    {
-      "pointer": "/components/schemas/reference_order_id/description",
-      "preview": "バーチャル口座 再利用 オーダーID\\ \\ あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\\ バーチャル口座の再利用が可能な決済の条件は以下の通りです。  1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること "
     },
     {
       "pointer": "/components/schemas/Payment.VirtualAccount.Executing.Request/properties/payment_method_id/description",
@@ -1583,70 +1247,6 @@
       "preview": "商品コード\\ ※ 通常は`null` "
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ch_acc_change/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント 最終更新日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントの情報が最後に更新された日付を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ch_acc_date/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント 開設日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントの開設日を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ch_acc_pw_change/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者ユーザーアカウント パスワード最終更新日\\ 形式：`YYYYMMDD`\\ \\ 加盟店アプリケーションにおけるユーザーアカウントのパスワードが最後に更新された日付を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_nb_purchase_account/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者の過去6カ月間の購入回数 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_payment_acc_age/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント カード登録日。\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_provision_attempts_day/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント 過去24時間のカード追加の試行回数 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_address_usage/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 配送先住所の最初の使用日。\\ 形式：`YYYYMMDD` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_name_ind/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者名と配送先名が一致しているか否か\\ 購入者名と登録に使用される配送先名の一致/不一致を設定  - `01`: 顧客名と配送先名が一致 - `02`: 顧客名と配送先名が不一致 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_suspicious_acc_activity/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント 不審行為有無\\ 顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定  - `01`: 不審な行動なし - `02`: 不審な"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_txn_activity_day/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 購入者の過去24時間の取引回数 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_txn_activity_year/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 前年の取引回数 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_three_ds_req_auth_data/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン証跡\\ \\ 加盟店アプリケーションにおけるログインの証跡。 ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_three_ds_req_auth_method/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン方法\\ ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。  - `01`: 認証なし（ゲストとしてログイン） - `02`: 加盟店様自"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_three_ds_req_auth_timestamp/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客ユーザーアカウント ログイン日時\\ \\ ログイン証跡を設定する場合、ログイン方法とログイン日時の設定が必要です。\\ 形式：`YYYYMMDDHHmm` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_email/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客のメールアドレス\\ \\ 未指定の場合、顧客の`email`が自動で設定されます。\\ \\ 2024年8月12日以降、下記の内少なくとも1つが必須となります。  - 顧客の自宅電話番号（`td"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_addr_match/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 請求先住所と配送先住所が一致しているか否か  - `Y`: 住所は一致している - `N`: 住所は一致していない "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_bill_addr_country/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 国コード\\ 形式：ISO 3166-1 numeric \\ 未指定の場合、顧客の`addr_country`が自動で設定されます。   ショップ側で顧客の住所情報を保持してい"
     },
@@ -1663,44 +1263,8 @@
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部1行目\\ \\ 顧客の住所の番地・区画を指定してください。未指定の場合。顧客の`addr_line_1`が自動で設定されます。  - 都道府県や市区を含めることができます"
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_bill_addr_line_2/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部2行目\\ \\ 顧客の住所の建物名・部屋番号を指定してください。未指定の場合、顧客に登録された`addr_line_2`を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_bill_addr_line_3/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 区域部3行目\\ \\ 顧客の住所のその他を指定してください。未指定の場合、顧客に登録された`addr_line_3`を設定します。 "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_bill_addr_post_code/description",
       "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の請求先住所 郵便番号\\ \\ 未指定の場合、顧客に登録された`addr_post_code`を設定します。   ショップ側で顧客の住所情報を保持している場合、指定が必須となります。   ※"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_country/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 国コード。\\ 形式：ISO 3166-1 numeric "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_state/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 州または都道府県コード。\\ 参照： [国土交通省 都道府県コード](https://nlftp.mlit.go.jp/ksj/gml/codelist/PrefCd.html"
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_city/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 都市名 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_line_1/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部1行目 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_line_2/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部2行目 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_line_3/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 区域部3行目 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_addr_post_code/description",
-      "preview": "<span class=\"smallText color--blue-400\">[3Dセキュア認証パラメータ]</span>\\ 顧客の配送先住所 郵便番号 "
     },
     {
       "pointer": "/components/schemas/PaymentSession.Card/x-req-properties/tds2_ship_ind/description",
@@ -1791,16 +1355,8 @@
       "preview": "銀行振込（バーチャル口座） 支払い画面URL "
     },
     {
-      "pointer": "/components/schemas/PaymentSession.VirtualAccount/properties/payment_term_day/description",
-      "preview": "支払期限日数\\ \\ 実行日から見て、支払期限日数後の翌日AMに期限切れになります。\\ 例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ "
-    },
-    {
       "pointer": "/components/schemas/PaymentSession.VirtualAccount/properties/virtualaccount_reception_mail_send_flag/description",
       "preview": "銀行振込（バーチャル口座） 支払い画面案内メール送信フラグ\\ 銀行振込（バーチャル口座）の支払い画面案内メールを送信するかどうかを設定します。  - `0`：送信しない - `1`：送信する "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.VirtualAccount/x-req-properties/reference_order_id/description",
-      "preview": "バーチャル口座 再利用 オーダーID\\ \\ あるオーダーIDのバーチャル口座を再利用する場合、その決済のオーダーIDを参照先として指定します。\\ バーチャル口座の再利用が可能な決済の条件は以下の通りです。  1. 参照する決済の`status`が`CAPTURED`、`CANCELED`、`EXPIRED`であること "
     },
     {
       "pointer": "/components/schemas/PaymentSession/properties/id/description",
@@ -2465,10 +2021,6 @@
     {
       "pointer": "/components/schemas/expire_overpayment_flag/description",
       "preview": "期限切れ後支払フラグ\\ この決済の支払期限が過ぎた後に購入者がバーチャル口座に対して支払いを行った場合`1`になります。  - `0`: 期限切れ後支払は行われていない - `1`: 期限切れ後支払が行われた "
-    },
-    {
-      "pointer": "/components/schemas/properties-payment_term_day/description",
-      "preview": "支払期限日数\\ \\ 実行日から見て、支払期限日数後の翌日AMに期限切れになります。\\ 例）2024/4/1に、`支払期限日数=2`で決済実行した場合、2024/4/4 AMに期限切れ "
     },
     {
       "pointer": "/components/schemas/PaymentBulkDetail.VirtualAccount/properties/status/description",
@@ -3513,10 +3065,6 @@
     {
       "pointer": "/components/schemas/Invoice/properties/embedded_directdebit/description",
       "preview": "このインボイス情報に対する口座振替の口座情報 この口座から引き落とし完了することでインボイスによる請求に対して支払いできます。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice/properties/embedded_directdebit/properties/bank_name/description",
-      "preview": "金融機関名"
     },
     {
       "pointer": "/components/schemas/Invoice/properties/embedded_directdebit/properties/account_type/description",
@@ -5359,10 +4907,6 @@
       "preview": "返品・交換に関する条件\\ \\ 返品・交換に関する条件についての説明 "
     },
     {
-      "pointer": "/components/schemas/BankAccountInfo.V2.Response/properties/bank_name/description",
-      "preview": "金融機関名 "
-    },
-    {
       "pointer": "/components/schemas/BankAccountInfo.V2.Response/properties/bank_name_kana/description",
       "preview": "金融機関名カナ "
     },
@@ -6435,24 +5979,8 @@
       "preview": "3Dセキュア2.0認証処理 ステータス  - `AUTHENTICATED`: 3Dセキュア認証中<br /><span class=\"smallText\">認証でNGとなった際もこの値で通知されます</span> - `CHECK`: 3Dセキュア認証完了  3Dセキュア認証を利用しない場合はnullを設定します "
     },
     {
-      "pointer": "/components/schemas/WebhookPaymentMethodDirectdebit/properties/request_form_id/description",
-      "preview": "依頼書ID。\\ 依頼書を管理画面から登録した際に登録者が指定した、依頼書を一意に識別するIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/WebhookPaymentMethodDirectdebit/properties/paper_failure_description/description",
-      "preview": "依頼書登録に失敗した理由。 "
-    },
-    {
       "pointer": "/components/schemas/WebhookEvent.CustomerPaymentMethodDirectDebit/properties/directdebit/description",
       "preview": "口座振替 決済手段登録情報 "
-    },
-    {
-      "pointer": "/components/schemas/last_activated_date/description",
-      "preview": "最終有効化日時\\ このバーチャル口座が有効化された最終日時です。\\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/latest_transaction_date/description",
-      "preview": "最新取引日時\\ このバーチャル口座で発生した取引のうち、最も新しい日時です。\\ 形式：`yyyy/MM/dd` "
     },
     {
       "pointer": "/components/schemas/WebhookEvent.CustomerPaymentMethodVirtualAccount/properties/id/description",
@@ -6617,10 +6145,6 @@
     {
       "pointer": "/components/examples/payment_method/summary",
       "preview": "口座振替・銀行振込（バーチャル口座）"
-    },
-    {
-      "pointer": "/components/examples/card/summary",
-      "preview": "カード"
     }
   ]
 }

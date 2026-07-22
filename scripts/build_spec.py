@@ -46,17 +46,26 @@ def set_pointer(document: Any, pointer: str, value: str) -> None:
         current[last] = value
 
 
-def replace_exact_strings(value: Any, replacements: dict[str, str]) -> Any:
+def normalize_translation_key(value: str) -> str:
+    return "\n".join(line.rstrip() for line in value.strip().splitlines())
+
+
+def replace_exact_strings(
+    value: Any, replacements: dict[str, str], normalized_replacements: dict[str, str]
+) -> Any:
     if isinstance(value, dict):
-        return {key: replace_exact_strings(item, replacements) for key, item in value.items()}
+        return {
+            key: replace_exact_strings(item, replacements, normalized_replacements)
+            for key, item in value.items()
+        }
     if isinstance(value, list):
-        return [replace_exact_strings(item, replacements) for item in value]
+        return [replace_exact_strings(item, replacements, normalized_replacements) for item in value]
     if isinstance(value, str):
         if value in replacements:
             return replacements[value]
-        stripped = value.strip()
-        if stripped in replacements:
-            return replacements[stripped]
+        normalized = normalize_translation_key(value)
+        if normalized in normalized_replacements:
+            return normalized_replacements[normalized]
         return value
     return value
 
@@ -106,7 +115,11 @@ def main() -> None:
     translations = load_yaml(TRANSLATIONS)
     result = copy.deepcopy(source)
 
-    result = replace_exact_strings(result, translations.get("exact_strings", {}))
+    exact_strings = translations.get("exact_strings", {})
+    normalized_exact_strings = {
+        normalize_translation_key(key): value for key, value in exact_strings.items()
+    }
+    result = replace_exact_strings(result, exact_strings, normalized_exact_strings)
     translate_tags(
         result,
         translations.get("tag_names", {}),
