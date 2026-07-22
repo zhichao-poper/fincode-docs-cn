@@ -2,6 +2,8 @@ name: 构建并发布中文文档
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 permissions:
   contents: read

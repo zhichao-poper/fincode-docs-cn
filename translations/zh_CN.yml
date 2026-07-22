@@ -13,12 +13,12 @@ tag_names:
   エラーオブジェクト: 错误对象
   エラー: 错误
   顧客: 客户
-  カード: 信用卡
+  カード: 卡片
   決済手段: 支付方式
   決済: 支付
   3Dセキュア認証: 3D Secure 认证
   リダイレクト型決済: 重定向式支付
-  リダイレクト型カード登録: 重定向式信用卡登记
+  リダイレクト型カード登録: 重定向式卡片登记
   プラン: 套餐
   サブスクリプション: 订阅
   一括決済: 批量支付
@@ -198,3 +198,249 @@ strings:
     <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
     租户商户 ID。
     从与该租户商户关联的客户中，删除指定 ID 的客户信息。
+
+  /paths/~1v1~1customers~1{customer_id}~1cards/post/summary: 卡片登记
+  /paths/~1v1~1customers~1{customer_id}~1cards/post/description: |-
+    为 `customer_id` 指定的客户登记卡片。
+
+    <span class="smallText">也可以通过支付方式 API（<code>POST /v1/customers/{customer_id}/payment_methods</code>，<code>pay_type = "Card"</code>）登记卡片。新开发时，建议使用支付方式 API，以便采用与银行账户自动扣款、银行转账（虚拟账户）相同的形式进行处理。</span>
+  /paths/~1v1~1customers~1{customer_id}~1cards/post/parameters/0/description: 与该卡片关联的客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards/post/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    为与该租户商户关联的客户中，由 ID 指定的客户登记卡片。
+  /paths/~1v1~1customers~1{customer_id}~1cards/get/summary: 获取卡片列表
+  /paths/~1v1~1customers~1{customer_id}~1cards/get/description: |-
+    获取与 `customer_id` 指定的客户关联的卡片列表。
+
+    <span class="smallText">也可以通过支付方式 API（<code>GET /v1/customers/{customer_id}/payment_methods</code>，<code>pay_type = "Card"</code>）获取卡片信息列表。新开发时，建议使用支付方式 API。</span>
+  /paths/~1v1~1customers~1{customer_id}~1cards/get/parameters/0/description: |-
+    客户 ID。
+    获取与该客户关联的卡片列表。
+  /paths/~1v1~1customers~1{customer_id}~1cards/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    获取与该租户商户关联的指定客户已登记的卡片列表。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/summary: 获取卡片
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/description: |-
+    从与 `customer_id` 指定的客户关联的卡片中，获取由 `id` 指定的卡片。
+
+    <span class="smallText">也可以通过支付方式 API（<code>GET /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type = "Card"</code>）获取卡片信息。新开发时，建议使用支付方式 API。</span>
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/0/description: 与该卡片关联的客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/1/description: 要获取的卡片 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/get/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的指定客户已登记的卡片中获取目标卡片。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/summary: 更新卡片
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/description: |-
+    从与 `customer_id` 指定的客户关联的卡片中，更新由 `id` 指定的卡片。
+
+    <span class="smallText">也可以通过支付方式 API（<code>PUT /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type = "Card"</code>）更新卡片信息。新开发时，建议使用支付方式 API。</span>
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/0/description: 与该卡片关联的客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/1/description: 要更新的卡片 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/put/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    更新与该租户商户关联的指定客户已登记的卡片信息。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/summary: 删除卡片
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/description: |-
+    从与 `customer_id` 指定的客户关联的卡片中，删除由 `id` 指定的卡片。
+
+    <span class="smallText">也可以通过支付方式 API（<code>DELETE /v1/customers/{customer_id}/payment_methods/{id}</code>，<code>pay_type = "Card"</code>）删除卡片信息。新开发时，建议使用支付方式 API。</span>
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/0/description: 与该卡片关联的客户 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/1/description: 要删除的卡片 ID。
+  /paths/~1v1~1customers~1{customer_id}~1cards~1{id}/delete/parameters/2/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    删除与该租户商户关联的指定客户已登记的卡片。
+  /paths/~1v1~1cards/get/summary: 获取卡片列表（按客户信息共享组）
+  /paths/~1v1~1cards/get/description: 按客户信息共享组获取卡片信息列表。
+  /paths/~1v1~1cards/get/parameters/0/description: 获取卡片信息列表时使用的查询条件参数。
+  /paths/~1v1~1cards/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅当平台主商户不共享客户信息时可指定</span>
+    租户商户 ID。
+    从与该租户商户关联的客户信息共享组所拥有的卡片信息中获取列表。
+
+  /components/schemas/Card/properties/id/description: 卡片 ID。
+  /components/schemas/Card/properties/customer_id/description: |-
+    客户 ID。
+    与该卡片关联的客户 ID。
+  /components/schemas/Card/properties/default_flag/description: |-
+    默认卡片标志。
+    表示在执行支付、登记订阅等未指定卡片 ID 的情况下，是否自动使用该卡片。
+    每个客户必须存在一张默认卡片（尚未登记任何卡片时除外）。
+
+    - `0`：不是默认卡片
+    - `1`：默认卡片
+  /components/schemas/Card/x-req-properties/token/description: |-
+    卡片令牌。
+
+    指定通过 fincode JS 的 `tokens` 方法取得的令牌。
+    JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/card_id/description: |-
+    卡片 ID。
+    获取与指定卡片 ID 一致的卡片信息。
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/customer_id/description: |-
+    客户 ID。
+    获取与指定客户 ID 关联的卡片信息。
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_success_date_from/description: |-
+    卡片自动更新成功日期范围的开始日期。
+    以卡片自动更新成功日期（`card_updater_last_success_date`）为条件进行范围查询。
+    获取在该日期及之后自动更新成功的卡片信息。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_success_date_to/description: |-
+    卡片自动更新成功日期范围的结束日期。
+    以卡片自动更新成功日期（`card_updater_last_success_date`）为条件进行范围查询。
+    获取在该日期及之前自动更新成功的卡片信息。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_attempt_date_from/description: |-
+    卡片自动更新执行日期范围的开始日期。
+    以卡片自动更新执行日期（`card_updater_last_attempt_date`）为条件进行范围查询。
+    获取在该日期及之后执行过自动更新的卡片信息。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/card_updater_last_attempt_date_to/description: |-
+    卡片自动更新执行日期范围的结束日期。
+    以卡片自动更新执行日期（`card_updater_last_attempt_date`）为条件进行范围查询。
+    获取在该日期及之前执行过自动更新的卡片信息。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Card.ListRetrieving.QueryParams/properties/sort/description: |-
+    指定排序字段与顺序。
+    示例：`?sort=customer_id␣asc,created␣desc`
+
+    可排序字段：
+
+    - `id`：卡片 ID
+    - `customer_id`：客户 ID
+    - `created`：创建时间
+    - `card_updater_last_success_date`：卡片自动更新成功日期
+    - `card_updater_last_attempt_date`：卡片自动更新执行日期
+  /components/schemas/CardBrand/description: |-
+    表示卡组织品牌。
+
+    - `VISA`：Visa
+    - `MASTER`：Mastercard
+    - `JCB`：JCB
+    - `AMEX`：American Express
+    - `DINERS`：Diners Club
+    - `DISCOVER`：Discover
+    - `""`（空字符串）：无法判断
+  /components/schemas/CardType/description: |-
+    支付卡类型。
+
+    - `0`：未知（包括[测试卡](https://docs.fincode.jp/develop_support/test_resources)）
+    - `1`：借记卡
+    - `2`：预付卡
+    - `3`：信用卡
+  /components/schemas/CardUpdater/properties/card_updater_mode/description: |-
+    卡片自动更新状态。
+
+    - `enabled`：自动更新卡片
+    - `disabled`：不自动更新卡片
+    - `inherit`：遵循商户设置
+  /components/schemas/CardUpdater/properties/card_updater_last_success_date/description: |-
+    卡片自动更新最近成功时间。
+    最后一次成功更新卡片信息的时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/CardUpdater/properties/card_updater_last_attempt_date/description: |-
+    卡片自动更新最近执行时间。
+    最后一次执行卡片信息更新的时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/CustomerCard.Creating.Request/properties/card_updater_mode/description: |-
+    卡片自动更新服务（Account Updater）使用设置。
+
+    - `enabled`：自动更新卡片
+    - `disabled`：不自动更新卡片
+    - `inherit`：遵循商户设置
+  /components/schemas/CustomerCard.Deleting.Response/properties/id/description: 已删除卡片的 ID。
+  /components/schemas/CustomerCard.Deleting.Response/properties/customer_id/description: 持有已删除卡片的客户 ID。
+  /components/schemas/CustomerCard.Updating.Request/properties/default_flag/description: |-
+    默认卡片标志。
+    仅在指定该字段时更新。
+  /components/schemas/CustomerCard.Updating.Request/properties/holder_name/description: |-
+    指定 `token` 时忽略此字段。
+    持卡人姓名。
+  /components/schemas/CustomerCard.Updating.Request/properties/expire/description: |-
+    指定 `token` 时忽略此字段。
+    卡片有效期。
+    格式：`YYMM`
+  /components/schemas/CustomerCard.Updating.Request/properties/card_updater_mode/description: |-
+    卡片自动更新服务（Account Updater）使用设置。
+    仅在指定该字段时更新。
+
+    - `enabled`：自动更新卡片
+    - `disabled`：不自动更新卡片
+    - `inherit`：遵循商户设置
+  /components/schemas/FincodeAPIError/description: 表示单个错误的对象。
+  /components/schemas/FincodeAPIError/properties/error_code/description: |-
+    判断错误内容时，建议使用 `error_code`。
+    各错误码的定义请参阅[错误码一览](https://docs.fincode.jp/develop_support/error)。
+  /components/schemas/FincodeAPIError/properties/error_message/description: |-
+    表示错误内容的消息。
+    该错误消息可能在不事先通知的情况下变更；判断错误内容时，建议使用 `error_code`，不要依赖此字段。
+  /components/schemas/Pagination.QueryParams/properties/page/description: 页码。
+  /components/schemas/Pagination.QueryParams/properties/limit/description: 单次获取的数据条数上限。
+  /components/schemas/Pagination.QueryParams/properties/count_only/description: |-
+    是否仅获取总条数。
+    指定为 `true` 时，只获取查询结果的总条数（`total_count`）。
+  /components/schemas/_ListResponse/properties/total_count/description: 总条数。
+  /components/schemas/_ListResponse/properties/last_page/description: 最后一页的页码。
+  /components/schemas/_ListResponse/properties/current_page/description: 当前页码。
+  /components/schemas/_ListResponse/properties/limit/description: 每页最大条数。
+  /components/schemas/_ListResponse/properties/link_next/description: 用于获取下一页内容的 URL。
+  /components/schemas/_ListResponse/properties/link_previous/description: 用于获取上一页内容的 URL。
+  /components/schemas/card_no/description: |-
+    已掩码的卡号。
+    <span class="smallText">
+    除末 4 位之外均已掩码。
+    遵循不保存卡片信息的原则，fincode 用户可保存此值，以替代未掩码的完整卡号。
+    </span>
+    格式：`************1234`
+  /components/schemas/card_no_hash/description: |-
+    根据卡号生成的哈希值。
+    <span class="smallText">
+    同一卡号始终返回相同的值。
+    遵循不保存卡片信息的原则，fincode 用户可保存此值，以替代未掩码的完整卡号。
+    </span>
+  /components/schemas/card_updater_mode/description: |-
+    卡片自动更新状态。
+
+    - `enabled`：自动更新卡片
+    - `disabled`：不自动更新卡片
+    - `inherit`：遵循商户设置
+  /components/schemas/created/description: |-
+    创建时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/customer_id/description: |-
+    客户 ID。
+    与该卡片关联的客户 ID。
+  /components/schemas/default_flag/description: |-
+    默认卡片标志。
+    表示在执行支付、登记订阅等未指定卡片 ID 的情况下，是否自动使用该卡片。
+    每个客户必须存在一张默认卡片（尚未登记任何卡片时除外）。
+
+    - `0`：不是默认卡片
+    - `1`：默认卡片
+  /components/schemas/delete_flag/description: 删除标志。
+  /components/schemas/expire/description: |-
+    卡片有效期。
+    格式：`YYMM`
+  /components/schemas/holder_name/description: 持卡人姓名。
+  /components/schemas/id/description: 客户 ID。
+  /components/schemas/process_date/description: |-
+    处理时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/properties-id/description: 卡片 ID。
+  /components/schemas/token/description: |-
+    卡片令牌。
+
+    指定通过 fincode JS 的 `tokens` 方法取得的令牌。
+    JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。
+  /components/schemas/updated/description: |-
+    更新时间。
+    格式：`yyyy/MM/dd HH:mm:ss.SSS`
+  /components/schemas/x-req-properties-token/description: |-
+    卡片令牌。
+
+    指定通过 fincode JS 的 `tokens` 方法取得的令牌。
+    JavaScript 的使用方法请参阅 [JavaScript 参考](https://docs.fincode.jp/js)。
