@@ -14090,24 +14090,20 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス\
-
-            指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '银行卡支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `UNPROCESSED`: 未処理
+            - `UNPROCESSED`：未处理
 
-            - `CHECKED`: 有効性チェック済み
+            - `CHECKED`：已完成有效性检查
 
-            - `AUTHORIZED`: 仮売上
+            - `AUTHORIZED`：已授权
 
-            - `CAPTURED`: 売上確定
+            - `CAPTURED`：已确认请款
 
-            - `CANCELED`: キャンセル
+            - `CANCELED`：已取消
 
-            - `AUTHENTICATED`: 未処理（3Dセキュア認証待ち）
-
-            '
+            - `AUTHENTICATED`：未处理，等待 3D Secure 认证'
         auth_max_date_from:
           type: string
           description: '预授权有效期（起始值）。
@@ -14126,36 +14122,24 @@ components:
             格式：`yyyy/MM/dd`'
         subscription_id:
           type: string
-          description: 'サブスクリプションID\
-
-            サブスクリプションIDを指定して、指定したサブスクリプションによって作成された決済情報を取得します。
-
-            '
+          description: 仅返回由指定订阅 ID 创建的支付。
         pay_pattern:
           type: string
           enum:
           - onetime
           - subscription
           - bulk
-          description: '課金種別\
-
-            指定した課金種別の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '扣款类型，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `onetime`: サブスクリプションでない都度払い
+            - `onetime`：非订阅的单次支付
 
-            - `subscription`: サブスクリプション
-
-            '
+            - `subscription`：订阅扣款'
         last_four_digits:
           type: string
           minLength: 4
           maxLength: 4
-          description: 'カード番号（下4桁）\
-
-            カード番号の下4桁を指定して、該当する決済情報を取得します。
-
-            '
+          description: 仅返回银行卡号末 4 位与指定值一致的支付。
         search_scope:
           type: string
           enum:
@@ -14163,86 +14147,41 @@ components:
           - sub
           - tenant
           example: self,sub,tenant
-          description: '検索範囲\
+          description: '搜索范围，仅主平台商户可以指定；可使用半角逗号分隔指定多个值。
 
-            メインプラットフォームショップのみ指定可能な項目です。\
 
-            指定された検索範囲において決済情報の検索を行います。カンマ区切りにすることで複数指定できます。
+            - `self`：当前商户（默认）
 
-            - `self`: 自身のショップ（デフォルト）
+            - `sub`：平台下的全部子商户
 
-            - `sub`: プラットフォーム上全てのサブショップ
-
-            - `tenant`: プラットフォーム上全てのテナントショップ
-
-            '
+            - `tenant`：平台下的全部租户商户'
         shop_id_list:
           type: string
           example: s_***********,s_***********,s_***********
-          description: '検索対象ショップIDリスト\
-
-            メインプラットフォームショップのみ指定可能な項目です。\
-
-            指定されたにショップおいて決済情報の検索を行います。カンマ区切りにすることで複数指定できます。
-
-            '
+          description: 搜索目标商户 ID 列表，仅主平台商户可以指定；多个值使用半角逗号分隔。
         order_id:
           type: string
-          description: 'オーダーID\
-
-            メインプラットフォームショップのみ指定可能な項目です。\
-
-            指定のオーダーIDに紐づく決済情報を取得します。
-
-            '
+          description: 仅返回与指定订单 ID 关联的支付；仅主平台商户可以指定。
         update_date_from:
           type: string
-          description: '更新日時（始値）\
+          description: '更新时间范围的起始时间；仅返回不早于该时间更新的支付。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`'
         update_date_to:
           type: string
-          description: '更新日時（終値）\
+          description: '更新时间范围的结束时间；仅返回不晚于该时间更新的支付。
 
-            更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\
-
-            \
-
-            形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss` 或 `yyyy/MM/dd HH:mm:ss.SSS`'
         sort:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=updated␣desc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=updated␣desc,created␣asc`
 
 
-            - `status`: ステータス
-
-            - `process_date`: 処理日時
-
-            - `total_amount`: 合計金額
-
-            - `auth_max_date`: 仮売上有効期限
-
-            - `created`: 作成日時
-
-            - `updated`: 更新日時
-
-            '
+            可排序字段：`status`、`process_date`、`total_amount`、`auth_max_date`、`created`、`updated`。'
     Payment.ListRetrieving.ApplePay.QueryParams:
       type: object
       properties:
@@ -19415,11 +19354,7 @@ components:
       properties:
         transaction:
           type: object
-          description: '決済共通項目\
-
-            決済手段を問わず共通して使用される決済に関するパラメータです。
-
-            '
+          description: 与支付方式无关的通用支付参数。
           properties:
             pay_type:
               nullable: true
@@ -19432,24 +19367,12 @@ components:
               minLength: 1
               maxLength: 10
               example: '1000'
-              description: '決済金額\
-
-                決済金額を指定します。\
-
-                \
-
-                指定可能な金額の範囲は各決済手段ごとの制限事項に準じます。
-
-                '
+              description: 支付金额；可指定范围须遵循各支付方式的限制。
             order_id:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/Payment_properties-id'
-              description: 'オーダーID\
-
-                このリダイレクト型決済URL上で決済後生成される決済情報のIDを予め指定できます。
-
-                '
+              description: 可预先指定通过当前支付链接完成支付后生成的支付记录 ID。
             tax:
               nullable: true
               default: null
@@ -19457,15 +19380,7 @@ components:
               minLength: 1
               maxLength: 10
               example: '100'
-              description: '税送料\
-
-                税送料を指定します。\
-
-                \
-
-                指定可能な金額の範囲は各決済手段ごとの制限事項に準じます。
-
-                '
+              description: 税费及运费；可指定范围须遵循各支付方式的限制。
             client_field_1:
               nullable: true
               default: null
@@ -19489,11 +19404,7 @@ components:
         card:
           type: object
           nullable: true
-          description: 'カード決済パラメータ\
-
-            `pay_type`に`Card`を含めた場合に用いられる、カード決済に関するパラメータです。
-
-            '
+          description: 当 `pay_type` 包含 `Card` 时使用的银行卡支付参数。
           properties:
             job_code:
               nullable: true
@@ -19658,11 +19569,7 @@ components:
         konbini:
           type: object
           nullable: true
-          description: 'コンビニ決済パラメータ\
-
-            `pay_type`に`Konbini`を含めた場合に用いられる、コンビニ決済に関するパラメータです。
-
-            '
+          description: 当 `pay_type` 包含 `Konbini` 时使用的便利店支付参数。
           properties:
             payment_term_day:
               nullable: true
@@ -19677,24 +19584,18 @@ components:
         paypay:
           type: object
           nullable: true
-          description: 'PayPayパラメータ\
-
-            `pay_type`に`Paypay`を含めた場合に用いられる、PayPayによる決済に関するパラメータです。
-
-            '
+          description: 当 `pay_type` 包含 `Paypay` 时使用的 PayPay 支付参数。
           properties:
             job_code:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/PayPayPaymentJobCode'
-              description: 'この決済URL上でPayPayによる決済を行った際、仮売上にするか即座に売上確定するか指定します。
+              description: '使用 PayPay 支付时的处理类型。
 
 
-                - `AUTH`：仮売上にする
+                - `AUTH`：仅授权
 
-                - `CAPTURE`：即時売上
-
-                '
+                - `CAPTURE`：立即确认请款'
             order_description:
               nullable: true
               allOf:
@@ -19704,11 +19605,7 @@ components:
         virtualaccount:
           type: object
           nullable: true
-          description: '銀行振込（バーチャル口座）パラメータ\
-
-            `pay_type`に`Virtualaccount`を含めた場合に用いられる、銀行振込（バーチャル口座）に関するパラメータです。
-
-            '
+          description: 当 `pay_type` 包含 `Virtualaccount` 时使用的银行转账（虚拟账户）参数。
           properties:
             payment_term_day:
               nullable: true
@@ -19742,18 +19639,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/PaymentSession_properties-expire'
           nullable: true
-          description: 'リダイレクト型決済URL 有効期限\
+          description: '重定向式支付链接的有效期。
 
-            形式： `yyyy/MM/dd HH:mm:ss`
+            格式：`yyyy/MM/dd HH:mm:ss`
 
 
-            - デフォルト： URL発行時点から24時間
+            - 默认：签发链接后的 24 小时
 
-            - 最長： 30日
+            - 最长：30 天
 
-            - 最短： 5分
-
-            '
+            - 最短：5 分钟'
         shop_service_name:
           nullable: true
           example: Your Service
@@ -19765,16 +19660,12 @@ components:
           example: '1'
           allOf:
           - $ref: '#/components/schemas/guide_mail_send_flag'
-          description: '決済メール 送信フラグ\
-
-            リダイレクト型決済URLを添付したメールをfincodeから送信するかどうかを指定します。
+          description: '是否由 fincode 发送附有支付链接的邮件。
 
 
-            - `0`：送信しない（デフォルト）
+            - `0`：不发送（默认）
 
-            - `1`：送信する
-
-            '
+            - `1`：发送'
         receiver_mail:
           nullable: true
           example: receiver-email@example.com
@@ -21139,40 +21030,26 @@ components:
           maxLength: 25
           nullable: false
           example: lk_**********************
-          description: 'リダイレクト型カード登録URL ID
-
-            '
+          description: 重定向式银行卡登记链接 ID。
         link_url:
           type: string
           minLength: 1
           maxLength: 100
           nullable: false
           example: https://secure.test.fincode.jp/v1/links_customers_and_cards/lk_**********************
-          description: 'リダイレクト型カード登録URL\
-
-            カード登録を行うユーザーがこのURLにアクセスし、カード情報を登録することで登録手続きが完了します。
-
-            '
+          description: 用户访问该链接并填写银行卡信息后，即可完成银行卡登记。
         success_url:
           type: string
           nullable: true
           maxLength: 256
           example: https://your-service.example.com/success
-          description: '成功時リダイレクトURL\
-
-            `link_url`上でカード登録に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-            '
+          description: 在 `link_url` 中登记成功后，fincode 通过 POST 方法重定向到的 URL。
         cancel_url:
           type: string
           nullable: true
           maxLength: 256
           example: https://your-service.example.com/cancel
-          description: 'キャンセル時リダイレクトURL\
-
-            `link_url`上でカード登録がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-            '
+          description: 在 `link_url` 中取消登记后，fincode 通过 POST 方法重定向到的 URL。
         status:
           allOf:
           - $ref: '#/components/schemas/CardRegistrationSessionStatus'
@@ -21180,25 +21057,15 @@ components:
           type: string
           nullable: false
           example: 2022/02/31 23:59:59.999
-          description: 'リダイレクト型カード登録URL 有効期限\
+          description: '重定向式银行卡登记链接的有效期。
 
-            形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         shop_service_name:
           type: string
           nullable: true
           maxLength: 100
           example: Your Service
-          description: 'ショップ／サービス名\
-
-            カード登録URL上で表示されるショップおよびサービスの名称です。\
-
-            \
-
-            デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。
-
-            '
+          description: 银行卡登记页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
         guide_mail_send_flag:
           type: string
           enum:
@@ -21206,78 +21073,46 @@ components:
           - '1'
           nullable: false
           example: '1'
-          description: 'カード登録メール 送信フラグ\
-
-            リダイレクト型カード登録URLをfincodeからのメール送信機能で送信したかどうかを示します。
+          description: '是否通过 fincode 邮件功能发送了银行卡登记链接。
 
 
-            - `0`：送信しなかった（デフォルト）
+            - `0`：未发送（默认）
 
-            - `1`：送信した
-
-            '
+            - `1`：已发送'
         receiver_mail:
           type: string
           nullable: true
           maxLength: 254
           example: receiver-email@example.com
-          description: 'カード登録メール 送信先メールアドレス\
-
-            リダイレクト型カード登録URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。
-
-            '
+          description: 通过 fincode 邮件功能发送银行卡登记链接时的收件人邮箱地址。
         mail_customer_name:
           type: string
           nullable: true
           maxLength: 384
           example: 買物 太郎
-          description: 'カード登録メール カード登録をするユーザーの名前\
-
-            リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられるユーザーの名前です。\
-
-            \
-
-            fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。
-
-            '
+          description: 邮件中显示的银行卡登记用户姓名。fincode 默认邮件模板已包含称谓。
         completion_mail_send_flag:
           type: string
           enum:
           - '0'
           - '1'
           nullable: false
-          description: '完了メール 送信フラグ\
-
-            決済が完了した際にカード登録をしたユーザーに完了メールを送信するかどうかを示します。
+          description: '银行卡登记完成后是否向用户发送完成通知邮件。
 
 
-            - `0`：送信しない（デフォルト）
+            - `0`：不发送（默认）
 
-            - `1`：送信する
-
-            '
+            - `1`：发送'
         shop_mail_template_id:
           type: string
           nullable: true
           maxLength: 25
           example: null
-          description: 'メールテンプレートID\
-
-            メールテンプレートIDが設定されている場合、リダイレクト型カード登録URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\
-
-            \
-
-            fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。
-
-            '
+          description: 邮件模板 ID。设置后将更改发送给用户的邮件模板；使用 fincode 默认模板时请设置为 `null`。
         customer_id:
           allOf:
           - $ref: '#/components/schemas/id'
-          description: '顧客ID\
-
-            カード登録URLによりカードが登録される顧客のIDです。
-
-            '
+          description: 通过当前链接登记银行卡的客户 ID。
         customer_name:
           type: string
           nullable: true
@@ -21414,17 +21249,13 @@ components:
           nullable: false
           maxLength: 200
           example: Basic Plan
-          description: 'プラン名
-
-            '
+          description: 套餐名称。
         description:
           type: string
           nullable: true
           maxLength: 400
           example: Basic Plan Description
-          description: 'プランの説明
-
-            '
+          description: 套餐说明。
         shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
@@ -21433,23 +21264,19 @@ components:
           format: int64
           nullable: false
           example: 1000
-          description: 使用金额
+          description: 使用金额。与 `tax` 的合计值必须在该支付方式允许的金额范围内。
         tax:
           type: integer
           format: int64
           nullable: false
           example: 100
-          description: 税费及运费
+          description: 税费及运费。与 `amount` 的合计值必须在该支付方式允许的金额范围内。
         total_amount:
           type: integer
           format: int64
           nullable: false
           example: 1100
-          description: '合計金額\
-
-            利用金額と税送料の合計金額です。
-
-            '
+          description: 合计金额，即使用金额与税费及运费之和。
         interval_pattern:
           type: string
           enum:
@@ -21457,14 +21284,12 @@ components:
           - year
           nullable: false
           example: month
-          description: '課金間隔
+          description: '扣款周期单位。指定 `interval_count` 时必填；省略时默认为 `month`。
 
 
             - `month`：月
 
-            - `year`：年
-
-            '
+            - `year`：年'
         interval_count:
           type: number
           format: integer
@@ -21474,18 +21299,16 @@ components:
           - 2
           - 3
           - 6
-          description: '課金間隔数
+          description: '扣款周期间隔数。指定 `interval_pattern` 时必填；省略时默认为 `1`。
 
 
-            - `1`：月次／年次の課金
+            - `1`：每月或每年扣款
 
-            - `2`：2ヶ月に1回の課金
+            - `2`：每 2 个月扣款一次
 
-            - `3`：3ヶ月に1回の課金
+            - `3`：每 3 个月扣款一次
 
-            - `6`：6ヶ月に1回の課金
-
-            '
+            - `6`：每 6 个月扣款一次'
         used_flag:
           type: string
           nullable: false
@@ -21493,16 +21316,12 @@ components:
           - '0'
           - '1'
           example: '1'
-          description: '利用済みフラグ\
-
-            このプランを用いたサブスクリプション（解約含む）が1つ以上存在する場合`1`を返し、存在しない場合`0`を返します。
+          description: '是否已有订阅使用过当前套餐，包括已解约的订阅。
 
 
-            - `0`：このプランを用いたサブスクリプションはまだ存在しない
+            - `0`：尚无订阅使用当前套餐
 
-            - `1`：このプランを用いたサブスクリプションが存在する
-
-            '
+            - `1`：已有订阅使用当前套餐'
         subscription_retry_mode:
           type: string
           nullable: false
@@ -21510,16 +21329,12 @@ components:
           - enabled
           - disabled
           example: disabled
-          description: 'リトライ対象設定\
-
-            このプランを利用したサブスクリプション課金が失敗した場合に、自動でリトライを行うかどうかの設定です。
+          description: '扣款失败时是否自动重试；省略时默认为 `disabled`。
 
 
-            - `enabled`：リトライ対象
+            - `enabled`：启用重试
 
-            - `disabled`：リトライ対象外
-
-            '
+            - `disabled`：不启用重试'
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -21538,22 +21353,14 @@ components:
           minLength: 1
           maxLength: 7
           example: '1000'
-          description: '利用金額\
-
-            `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。
-
-            '
+          description: 使用金额。与 `tax` 的合计值必须在该支付方式允许的金额范围内。
         tax:
           type: string
           nullable: false
           minLength: 1
           maxLength: 7
           example: '100'
-          description: '税送料\
-
-            `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。
-
-            '
+          description: 税费及运费。与 `amount` 的合计值必须在该支付方式允许的金额范围内。
         interval_pattern:
           type: string
           enum:
@@ -21561,18 +21368,12 @@ components:
           - year
           nullable: false
           example: month
-          description: '課金間隔\
-
-            課金間隔数（`interval_count`）を指定した場合必須です。
-
-            省略した場合、`month`が設定されます。
+          description: '扣款周期单位。指定 `interval_count` 时必填；省略时默认为 `month`。
 
 
             - `month`：月
 
-            - `year`：年
-
-            '
+            - `year`：年'
         interval_count:
           type: string
           nullable: false
@@ -21582,22 +21383,16 @@ components:
           - '3'
           - '6'
           default: '1'
-          description: '課金間隔数\
-
-            課金間隔（`interval_pattern`）を指定した場合必須です。
-
-            省略した場合、`1`が設定されます。
+          description: '扣款周期间隔数。指定 `interval_pattern` 时必填；省略时默认为 `1`。
 
 
-            - `1`：月次／年次の課金
+            - `1`：每月或每年扣款
 
-            - `2`：2ヶ月に1回の課金
+            - `2`：每 2 个月扣款一次
 
-            - `3`：3ヶ月に1回の課金
+            - `3`：每 3 个月扣款一次
 
-            - `6`：6ヶ月に1回の課金
-
-            '
+            - `6`：每 6 个月扣款一次'
         subscription_retry_mode:
           type: string
           nullable: true
@@ -21605,16 +21400,12 @@ components:
           - enabled
           - disabled
           default: disabled
-          description: 'リトライ対象設定\
-
-            課金失敗時に自動リトライを行うかを指定します。省略した場合 `disabled` が設定されます。
+          description: '扣款失败时是否自动重试；省略时默认为 `disabled`。
 
 
-            - `enabled`：リトライ対象
+            - `enabled`：启用重试
 
-            - `disabled`：リトライ対象外
-
-            '
+            - `disabled`：不启用重试'
     Plan.list:
       type: object
       properties:
@@ -26794,104 +26585,78 @@ components:
         corporate:
           type: boolean
           example: true
-          description: '法人口座か
+          description: '是否为法人账户。
 
 
-            - `true`: 法人口座
+            - `true`：法人账户
 
-            - `false`: 個人口座
-
-            '
+            - `false`：个人账户'
         recipient_corporate_name:
           type: string
           minLength: 1
           maxLength: 150
-          description: '入金先法人名
-
-            '
+          description: 收款法人名称。
         recipient_represntative_last_name:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先代表者氏名 姓
-
-            '
+          description: 收款方代表人姓氏。
         recipient_represntative_first_name:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先代表者氏名 名
-
-            '
+          description: 收款方代表人名字。
         bank_code:
           type: string
           minLength: 1
           maxLength: 32
-          description: '入金先 金融機関コード
-
-            '
+          description: 收款金融机构代码。
         bank_name:
           type: string
           minLength: 1
           maxLength: 96
-          description: '入金先 金融機関名
-
-            '
+          description: 收款金融机构名称。
         bank_name_kana:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先 金融機関名 カナ
-
-            '
+          description: 收款金融机构名称（片假名）。
         branch_code:
           type: string
           minLength: 1
           maxLength: 32
-          description: '入金先 支店コード
-
-            '
+          description: 收款银行分行代码。
         branch_name:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先 支店名
-
-            '
+          description: 收款银行分行名称。
         branch_name_kana:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先 支店名 カナ
-
-            '
+          description: 收款银行分行名称（片假名）。
         account_kind:
           type: string
           enum:
           - '0'
           - '1'
-          description: '入金先 口座種別
+          description: '收款账户类型。
 
 
-            - `0`: 普通
+            - `0`：普通存款账户
 
-            - `1`: 当座
-
-            '
+            - `1`：往来存款账户'
         account_number:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先 口座番号
-
-            '
+          description: 收款银行账号。
         account_name:
           type: string
           minLength: 1
           maxLength: 208
-          description: '入金先 口座名義
-
-            '
+          description: 收款银行账户名义人。
     Account:
       type: object
       properties:
@@ -33786,9 +33551,7 @@ components:
         shop_id:
           allOf:
           - $ref: '#/components/schemas/Shop_properties-id'
-          description: 'ショップID（テナント）
-
-            '
+          description: 商户 ID（租户商户）。
         platform_id:
           allOf:
           - $ref: '#/components/schemas/platform_id'
@@ -33810,25 +33573,13 @@ components:
               pay_by:
                 allOf:
                 - $ref: '#/components/schemas/ShopPaymentMethod'
-          description: '契約情報\
-
-            \
-
-            fincodeに登録されているショップ運営事業者の契約情報の詳細
-
-            '
+          description: fincode 中登记的商户运营方合同详细信息。
         shop_item_detail:
           type: array
           items:
             allOf:
             - $ref: '#/components/schemas/ContentInfo'
-          description: 'ショップ 取扱商材情報\
-
-            \
-
-            fincodeに登録されているショップの取扱商材情報
-
-            '
+          description: fincode 中登记的商户经营商品或服务信息。
         contract_bank_account:
           allOf:
           - $ref: '#/components/schemas/ContractBankAccountInfo'
@@ -33844,97 +33595,49 @@ components:
               - $ref: '#/components/schemas/ContractInputStatus'
             contract_info_input:
               type: boolean
-              description: '契約情報入力完了フラグ\
-
-                \
-
-                契約情報の入力が完了しているかどうか
-
-                '
+              description: 是否已完成合同信息填写。
             shop_info_input:
               type: boolean
-              description: 'ショップ情報入力完了フラグ\
-
-                \
-
-                ショップ情報の入力が完了しているかどうか
-
-                '
+              description: 是否已完成商户信息填写。
             account_info_input:
               type: boolean
-              description: '銀行口座情報入力完了フラグ\
-
-                \
-
-                銀行口座情報の入力が完了しているかどうか
-
-                '
+              description: 是否已完成银行账户信息填写。
             card_info_input:
               type: boolean
-              description: '請求先クレジットカード情報入力完了フラグ\
-
-                \
-
-                fincodeが請求を行う際に請求先となるクレジットカード情報の入力が完了しているかどうか
-
-                '
+              description: 是否已完成 fincode 请款所用银行卡信息填写。
       x-req-properties:
         update_contract_detail:
           type: boolean
           default: false
           nullable: true
-          description: '契約情報更新フラグ\
-
-            \
-
-            契約情報の更新を行うかどうか
+          description: '是否更新合同信息。
 
 
-            - `true`: 更新を行う
-
-            '
+            - `true`：执行更新'
         update_shop:
           type: boolean
           default: false
           nullable: true
-          description: 'ショップ情報更新フラグ\
-
-            \
-
-            ショップ情報の更新を行うかどうか
+          description: '是否更新商户信息。
 
 
-            - `true`: 更新を行う
-
-            '
+            - `true`：执行更新'
         update_bank_account:
           type: boolean
           default: false
           nullable: true
-          description: '入金用銀行口座情報更新フラグ\
-
-            \
-
-            fincodeの売上の入金先となる銀行口座情報の更新を行うかどうか
+          description: '是否更新 fincode 销售款收款银行账户信息。
 
 
-            - `true`: 更新を行う
-
-            '
+            - `true`：执行更新'
         update_deposit_cycle:
           type: boolean
           default: false
           nullable: true
-          description: '入金サイクル情報更新フラグ\
-
-            \
-
-            fincodeの売上の入金サイクル情報の更新を行うかどうか
+          description: '是否更新 fincode 销售款入账周期信息。
 
 
-            - `true`: 更新を行う
-
-            '
+            - `true`：执行更新'
     ExaminationInfo.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/ExaminationInfo'

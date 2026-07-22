@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 766,
+  "remainingJapaneseUnits": 697,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -273,46 +273,6 @@
     {
       "pointer": "/components/schemas/PaymentStatus/description",
       "preview": "決済ステータス  - `UNPROCESSED`: 未処理 - `CHECKED`: 有効性チェック済み - `AUTHORIZED`: 仮売上 - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち - `AWAITING_PAYMENT_APPROVAL`: 決済承認待ち - `CAPTU"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/status/description",
-      "preview": "決済ステータス\\ 指定したステータスの決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `UNPROCESSED`: 未処理 - `CHECKED`: 有効性チェック済み - `AUTHORIZED`: 仮売上 - `CAPTURED`: 売上確定 - `CANCELED`: キャンセ"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/subscription_id/description",
-      "preview": "サブスクリプションID\\ サブスクリプションIDを指定して、指定したサブスクリプションによって作成された決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/pay_pattern/description",
-      "preview": "課金種別\\ 指定した課金種別の決済情報を取得します。カンマ区切りにすることで複数指定（OR検索）できます。  - `onetime`: サブスクリプションでない都度払い - `subscription`: サブスクリプション "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/last_four_digits/description",
-      "preview": "カード番号（下4桁）\\ カード番号の下4桁を指定して、該当する決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/search_scope/description",
-      "preview": "検索範囲\\ メインプラットフォームショップのみ指定可能な項目です。\\ 指定された検索範囲において決済情報の検索を行います。カンマ区切りにすることで複数指定できます。 - `self`: 自身のショップ（デフォルト） - `sub`: プラットフォーム上全てのサブショップ - `tenant`: プラットフォーム上全ての"
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/shop_id_list/description",
-      "preview": "検索対象ショップIDリスト\\ メインプラットフォームショップのみ指定可能な項目です。\\ 指定されたにショップおいて決済情報の検索を行います。カンマ区切りにすることで複数指定できます。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/order_id/description",
-      "preview": "オーダーID\\ メインプラットフォームショップのみ指定可能な項目です。\\ 指定のオーダーIDに紐づく決済情報を取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/update_date_from/description",
-      "preview": "更新日時（始値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以降に更新された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/update_date_to/description",
-      "preview": "更新日時（終値）\\ 更新日時（`updated`）を対象に範囲検索を行います。この日付以前に更新された決済情報を取得します。\\ \\ 形式：`yyyy/MM/dd`、`yyyy/MM/dd HH:mm:ss`、`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Payment.ListRetrieving.Card.QueryParams/properties/sort/description",
-      "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `status`: ステータス - `process_date`: 処理日時 - `total_amount`: 合計金額 - `auth_max_date`: 仮売上有効期限 -"
     },
     {
       "pointer": "/components/schemas/Payment.ListRetrieving.ApplePay.QueryParams/properties/status/description",
@@ -827,50 +787,6 @@
       "preview": "メールテンプレートID\\ メールテンプレートIDが設定されている場合、リダイレクト型決済URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\\ \\ fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。 "
     },
     {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/transaction/description",
-      "preview": "決済共通項目\\ 決済手段を問わず共通して使用される決済に関するパラメータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/transaction/properties/amount/description",
-      "preview": "決済金額\\ 決済金額を指定します。\\ \\ 指定可能な金額の範囲は各決済手段ごとの制限事項に準じます。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/transaction/properties/order_id/description",
-      "preview": "オーダーID\\ このリダイレクト型決済URL上で決済後生成される決済情報のIDを予め指定できます。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/transaction/properties/tax/description",
-      "preview": "税送料\\ 税送料を指定します。\\ \\ 指定可能な金額の範囲は各決済手段ごとの制限事項に準じます。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/card/description",
-      "preview": "カード決済パラメータ\\ `pay_type`に`Card`を含めた場合に用いられる、カード決済に関するパラメータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/konbini/description",
-      "preview": "コンビニ決済パラメータ\\ `pay_type`に`Konbini`を含めた場合に用いられる、コンビニ決済に関するパラメータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/paypay/description",
-      "preview": "PayPayパラメータ\\ `pay_type`に`Paypay`を含めた場合に用いられる、PayPayによる決済に関するパラメータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/paypay/properties/job_code/description",
-      "preview": "この決済URL上でPayPayによる決済を行った際、仮売上にするか即座に売上確定するか指定します。  - `AUTH`：仮売上にする - `CAPTURE`：即時売上 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/virtualaccount/description",
-      "preview": "銀行振込（バーチャル口座）パラメータ\\ `pay_type`に`Virtualaccount`を含めた場合に用いられる、銀行振込（バーチャル口座）に関するパラメータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/expire/description",
-      "preview": "リダイレクト型決済URL 有効期限\\ 形式： `yyyy/MM/dd HH:mm:ss`  - デフォルト： URL発行時点から24時間 - 最長： 30日 - 最短： 5分 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession.Creating.Request/properties/guide_mail_send_flag/description",
-      "preview": "決済メール 送信フラグ\\ リダイレクト型決済URLを添付したメールをfincodeから送信するかどうかを指定します。  - `0`：送信しない（デフォルト） - `1`：送信する "
-    },
-    {
       "pointer": "/components/schemas/PaymentSessionStatus/description",
       "preview": "ステータス\\ リダイレクト型決済URLのステータスを表します。  - `CREATE`：決済URLが作成された状態 "
     },
@@ -951,54 +867,6 @@
       "preview": "ステータス\\ リダイレクト型カード登録URLのステータスを表します。  - `CREATE`：カード登録URLが作成された状態 "
     },
     {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/id/description",
-      "preview": "リダイレクト型カード登録URL ID "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/link_url/description",
-      "preview": "リダイレクト型カード登録URL\\ カード登録を行うユーザーがこのURLにアクセスし、カード情報を登録することで登録手続きが完了します。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/success_url/description",
-      "preview": "成功時リダイレクトURL\\ `link_url`上でカード登録に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/cancel_url/description",
-      "preview": "キャンセル時リダイレクトURL\\ `link_url`上でカード登録がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/expire/description",
-      "preview": "リダイレクト型カード登録URL 有効期限\\ 形式： `yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/shop_service_name/description",
-      "preview": "ショップ／サービス名\\ カード登録URL上で表示されるショップおよびサービスの名称です。\\ \\ デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/guide_mail_send_flag/description",
-      "preview": "カード登録メール 送信フラグ\\ リダイレクト型カード登録URLをfincodeからのメール送信機能で送信したかどうかを示します。  - `0`：送信しなかった（デフォルト） - `1`：送信した "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/receiver_mail/description",
-      "preview": "カード登録メール 送信先メールアドレス\\ リダイレクト型カード登録URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/mail_customer_name/description",
-      "preview": "カード登録メール カード登録をするユーザーの名前\\ リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられるユーザーの名前です。\\ \\ fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/completion_mail_send_flag/description",
-      "preview": "完了メール 送信フラグ\\ 決済が完了した際にカード登録をしたユーザーに完了メールを送信するかどうかを示します。  - `0`：送信しない（デフォルト） - `1`：送信する "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/shop_mail_template_id/description",
-      "preview": "メールテンプレートID\\ メールテンプレートIDが設定されている場合、リダイレクト型カード登録URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\\ \\ fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/CardRegistrationSession/properties/customer_id/description",
-      "preview": "顧客ID\\ カード登録URLによりカードが登録される顧客のIDです。 "
-    },
-    {
       "pointer": "/components/schemas/Plan.ListRetrieving.QueryParams/properties/total_amount_min/description",
       "preview": "合計金額（始値）\\ 利用金額と税送料の合計額（`total_amount`）を対象に範囲検索を行います。この値以上の合計金額を持つプラン情報を取得します。 "
     },
@@ -1029,54 +897,6 @@
     {
       "pointer": "/components/schemas/Plan.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `total_amount`: 合計金額 - `created`: 作成日時 - `updated`: 更新日時 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/plan_name/description",
-      "preview": "プラン名 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/description/description",
-      "preview": "プランの説明 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/total_amount/description",
-      "preview": "合計金額\\ 利用金額と税送料の合計金額です。 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/interval_pattern/description",
-      "preview": "課金間隔  - `month`：月 - `year`：年 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/interval_count/description",
-      "preview": "課金間隔数  - `1`：月次／年次の課金 - `2`：2ヶ月に1回の課金 - `3`：3ヶ月に1回の課金 - `6`：6ヶ月に1回の課金 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/used_flag/description",
-      "preview": "利用済みフラグ\\ このプランを用いたサブスクリプション（解約含む）が1つ以上存在する場合`1`を返し、存在しない場合`0`を返します。  - `0`：このプランを用いたサブスクリプションはまだ存在しない - `1`：このプランを用いたサブスクリプションが存在する "
-    },
-    {
-      "pointer": "/components/schemas/Plan/properties/subscription_retry_mode/description",
-      "preview": "リトライ対象設定\\ このプランを利用したサブスクリプション課金が失敗した場合に、自動でリトライを行うかどうかの設定です。  - `enabled`：リトライ対象 - `disabled`：リトライ対象外 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/x-req-properties/amount/description",
-      "preview": "利用金額\\ `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/x-req-properties/tax/description",
-      "preview": "税送料\\ `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/x-req-properties/interval_pattern/description",
-      "preview": "課金間隔\\ 課金間隔数（`interval_count`）を指定した場合必須です。 省略した場合、`month`が設定されます。  - `month`：月 - `year`：年 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/x-req-properties/interval_count/description",
-      "preview": "課金間隔数\\ 課金間隔（`interval_pattern`）を指定した場合必須です。 省略した場合、`1`が設定されます。  - `1`：月次／年次の課金 - `2`：2ヶ月に1回の課金 - `3`：3ヶ月に1回の課金 - `6`：6ヶ月に1回の課金 "
-    },
-    {
-      "pointer": "/components/schemas/Plan/x-req-properties/subscription_retry_mode/description",
-      "preview": "リトライ対象設定\\ 課金失敗時に自動リトライを行うかを指定します。省略した場合 `disabled` が設定されます。  - `enabled`：リトライ対象 - `disabled`：リトライ対象外 "
     },
     {
       "pointer": "/components/schemas/plan_name/description",
@@ -1501,58 +1321,6 @@
     {
       "pointer": "/components/schemas/platform_fee_tax_amount/description",
       "preview": "この売上入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税\\ ※ テナントのみ "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/corporate/description",
-      "preview": "法人口座か  - `true`: 法人口座 - `false`: 個人口座 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/recipient_corporate_name/description",
-      "preview": "入金先法人名 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/recipient_represntative_last_name/description",
-      "preview": "入金先代表者氏名 姓 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/recipient_represntative_first_name/description",
-      "preview": "入金先代表者氏名 名 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/bank_code/description",
-      "preview": "入金先 金融機関コード "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/bank_name/description",
-      "preview": "入金先 金融機関名 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/bank_name_kana/description",
-      "preview": "入金先 金融機関名 カナ "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/branch_code/description",
-      "preview": "入金先 支店コード "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/branch_name/description",
-      "preview": "入金先 支店名 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/branch_name_kana/description",
-      "preview": "入金先 支店名 カナ "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/account_kind/description",
-      "preview": "入金先 口座種別  - `0`: 普通 - `1`: 当座 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/account_number/description",
-      "preview": "入金先 口座番号 "
-    },
-    {
-      "pointer": "/components/schemas/DepositTargetBankAccountInfo/properties/account_name/description",
-      "preview": "入金先 口座名義 "
     },
     {
       "pointer": "/components/schemas/AccountDetailTradeType/description",
@@ -2637,50 +2405,6 @@
     {
       "pointer": "/components/schemas/ContractInputStatus/description",
       "preview": "本番環境申請情報入力ステータス  - `301`: 全項目未入力 - `302`: 一部入力済み - `303`: 全項目入力済み - `304`: 本番環境申請済み "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/shop_id/description",
-      "preview": "ショップID（テナント） "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/contract_detail/description",
-      "preview": "契約情報\\ \\ fincodeに登録されているショップ運営事業者の契約情報の詳細 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/shop_item_detail/description",
-      "preview": "ショップ 取扱商材情報\\ \\ fincodeに登録されているショップの取扱商材情報 "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/contract_input_status/properties/contract_info_input/description",
-      "preview": "契約情報入力完了フラグ\\ \\ 契約情報の入力が完了しているかどうか "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/contract_input_status/properties/shop_info_input/description",
-      "preview": "ショップ情報入力完了フラグ\\ \\ ショップ情報の入力が完了しているかどうか "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/contract_input_status/properties/account_info_input/description",
-      "preview": "銀行口座情報入力完了フラグ\\ \\ 銀行口座情報の入力が完了しているかどうか "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/properties/contract_input_status/properties/card_info_input/description",
-      "preview": "請求先クレジットカード情報入力完了フラグ\\ \\ fincodeが請求を行う際に請求先となるクレジットカード情報の入力が完了しているかどうか "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/x-req-properties/update_contract_detail/description",
-      "preview": "契約情報更新フラグ\\ \\ 契約情報の更新を行うかどうか  - `true`: 更新を行う "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/x-req-properties/update_shop/description",
-      "preview": "ショップ情報更新フラグ\\ \\ ショップ情報の更新を行うかどうか  - `true`: 更新を行う "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/x-req-properties/update_bank_account/description",
-      "preview": "入金用銀行口座情報更新フラグ\\ \\ fincodeの売上の入金先となる銀行口座情報の更新を行うかどうか  - `true`: 更新を行う "
-    },
-    {
-      "pointer": "/components/schemas/ExaminationInfo/x-req-properties/update_deposit_cycle/description",
-      "preview": "入金サイクル情報更新フラグ\\ \\ fincodeの売上の入金サイクル情報の更新を行うかどうか  - `true`: 更新を行う "
     },
     {
       "pointer": "/components/schemas/update_contract_detail/description",
