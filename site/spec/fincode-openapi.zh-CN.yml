@@ -20693,37 +20693,25 @@ components:
           example: lk_**********************
           minLength: 25
           maxLength: 25
-          description: 'リダイレクト型決済URL ID
-
-            '
+          description: 重定向式支付链接 ID。
         link_url:
           type: string
           nullable: false
           maxLength: 100
           example: https://secure.test.fincode.jp/v1/links/lk_**********************
-          description: 'リダイレクト型決済URL
-
-            '
+          description: 重定向式支付链接 URL。
         success_url:
           type: string
           nullable: true
           maxLength: 256
           example: https://your-service.example.com/success
-          description: '成功時リダイレクトURL\
-
-            `link_url`上で決済に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-            '
+          description: 在 `link_url` 中支付成功后，fincode 通过 POST 方法重定向到的 URL。
         cancel_url:
           type: string
           nullable: true
           maxLength: 256
           example: https://your-service.example.com/cancel
-          description: 'キャンセル時リダイレクトURL\
-
-            `link_url`上で決済がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-            '
+          description: 在 `link_url` 中取消支付后，fincode 通过 POST 方法重定向到的 URL。
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentSessionStatus'
@@ -20731,25 +20719,15 @@ components:
           type: string
           nullable: false
           example: 2022/02/31 23:59:59.999
-          description: 'リダイレクト型決済URL 有効期限\
+          description: '重定向式支付链接的有效期。
 
-            形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         shop_service_name:
           type: string
           nullable: true
           maxLength: 100
           example: Your Service
-          description: 'ショップ／サービス名\
-
-            決済URL上で表示されるショップおよびサービスの名称です。\
-
-            \
-
-            デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。
-
-            '
+          description: 支付页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
         guide_mail_send_flag:
           type: string
           enum:
@@ -20757,78 +20735,46 @@ components:
           - '1'
           nullable: false
           example: '1'
-          description: '決済メール 送信フラグ\
-
-            リダイレクト型決済URLをfincodeからのメール送信機能で送信したかどうかを示します。
+          description: '是否通过 fincode 的邮件发送功能发送了支付链接。
 
 
-            - `0`：送信しなかった（デフォルト）
+            - `0`：未发送（默认）
 
-            - `1`：送信した
-
-            '
+            - `1`：已发送'
         receiver_mail:
           type: string
           nullable: true
           maxLength: 254
           example: receiver-email@example.com
-          description: '決済メール 送信先メールアドレス\
-
-            リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。
-
-            '
+          description: 通过 fincode 邮件功能发送支付链接时的收件人邮箱地址。
         mail_customer_name:
           type: string
           nullable: true
           maxLength: 384
           example: 買物 太郎
-          description: '購入メール 購入者の名前\
-
-            リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられる購入者の名前です。\
-
-            \
-
-            fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。
-
-            '
+          description: 使用 fincode 邮件功能发送支付链接时，邮件中显示的购买者姓名。fincode 默认邮件模板已包含称谓。
         thanks_mail_send_flag:
           type: string
           enum:
           - '0'
           - '1'
           nullable: false
-          description: '完了メール 送信フラグ\
-
-            決済が完了した際に購入者に完了メールを送信するかどうかを示します。
+          description: '支付完成后是否向购买者发送完成通知邮件。
 
 
-            - `0`：送信しない（デフォルト）
+            - `0`：不发送（默认）
 
-            - `1`：送信する
-
-            '
+            - `1`：发送'
         shop_mail_template_id:
           type: string
           nullable: true
           maxLength: 25
           example: null
-          description: 'メールテンプレートID\
-
-            メールテンプレートIDが設定されている場合、リダイレクト型決済URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\
-
-            \
-
-            fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。
-
-            '
+          description: 邮件模板 ID。设置后，将更改发送给支付链接收件人的邮件模板；使用 fincode 默认模板时请设置为 `null`。
         transaction:
           type: object
           nullable: false
-          description: '決済共通項目\
-
-            決済手段を問わず共通して使用される、決済に関するデータです。
-
-            '
+          description: 与支付方式无关的通用支付信息。
           properties:
             pay_type:
               type: array
@@ -20836,29 +20782,21 @@ components:
               items:
                 allOf:
                 - $ref: '#/components/schemas/PaymentSessionPayType'
-              description: '決済手段\
-
-                この決済URL上で使用できる決済手段を指定します。複数指定可能です。
+              description: '当前支付链接允许使用的支付方式，可指定多个。
 
 
-                - `Card`：カード決済
+                - `Card`：银行卡支付
 
-                - `Konbini`：コンビニ決済
+                - `Konbini`：便利店支付
 
                 - `Paypay`：PayPay
 
-                - `Virtualaccount`：バーチャル口座決済
-
-                '
+                - `Virtualaccount`：银行转账（虚拟账户）'
             order_id:
               nullable: false
               allOf:
               - $ref: '#/components/schemas/Payment_properties-id'
-              description: 'オーダーID\
-
-                このリダイレクト型決済URL上で決済後生成される決済情報のID
-
-                '
+              description: 通过当前重定向式支付链接完成支付后生成的支付记录 ID。
             amount:
               type: integer
               format: int32
@@ -20894,30 +20832,22 @@ components:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/PaymentSession.Card'
-          description: 'カード決済に関する情報
-
-            '
+          description: 银行卡支付相关信息。
         konbini:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/PaymentSession.Konbini'
-          description: 'コンビニ決済に関する情報
-
-            '
+          description: 便利店支付相关信息。
         paypay:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/PaymentSession.PayPay'
-          description: 'PayPayに関する情報
-
-            '
+          description: PayPay 支付相关信息。
         virtualaccount:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/PaymentSession.VirtualAccount'
-          description: '銀行振込（バーチャル口座）に関する情報
-
-            '
+          description: 银行转账（虚拟账户）相关信息。
         bill_id:
           type: string
           description: 账单 ID
@@ -22215,33 +22145,15 @@ components:
         customer_id:
           allOf:
           - $ref: '#/components/schemas/id'
-          description: '顧客ID\
-
-            \
-
-            このサブスクリプションの請求先となる顧客のIDです。
-
-            '
+          description: 当前订阅的付款客户 ID。
         card_id:
           allOf:
           - $ref: '#/components/schemas/properties-id'
-          description: 'カードID\
-
-            \
-
-            このサブスクリプションの決済に使用するカードのIDです。
-
-            '
+          description: 当前订阅支付所使用的银行卡 ID。
         payment_method_id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID\
-
-            \
-
-            このサブスクリプションの決済に使用する決済手段のIDです。
-
-            '
+          description: 当前订阅支付所使用的支付方式 ID。
         amount:
           allOf:
           - $ref: '#/components/schemas/properties-amount'
@@ -22255,88 +22167,50 @@ components:
           type: integer
           minLength: 1
           maxLength: 9999999
-          description: '初回利用金額\
-
-            \
-
-            この値が設定されているとき、このサブスクリプションは初回の課金のみこの金額で課金し、2回目以降はプラン情報がもつ`amount`の金額で課金します。
-
-            '
+          description: 设置后，首次扣款使用此金额，第二次及以后使用套餐信息中的 `amount`。
         initial_tax:
           type: integer
           minLength: 1
           maxLength: 9999999
-          description: '初回税送料\
-
-            \
-
-            この値が設定されているとき、このサブスクリプションは初回の課金のみこの金額で課金し、2回目以降はプラン情報がもつ`tax`の金額で課金します。
-
-            '
+          description: 设置后，首次扣款使用此税费及运费金额，第二次及以后使用套餐信息中的 `tax`。
         initial_total_amount:
           type: integer
           minLength: 1
           maxLength: 9999999
-          description: '初回合計金額\
-
-            \
-
-            `initial_amount`と`initial_tax`の合計金額です。
-
-            '
+          description: 首次扣款合计金额，即 `initial_amount` 与 `initial_tax` 之和。
         status:
           allOf:
           - $ref: '#/components/schemas/SubscriptionStatus'
         start_date:
           type: string
           example: 2022/05/16 00:00:00.000
-          description: '課金開始日\
+          description: '订阅扣款开始日期。
 
-            サブスクリプションの開始日です。\
-
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         next_charge_date:
           type: string
           example: 2022/06/16 00:00:00.000
-          description: '次回課金日\
+          description: '下次扣款日期。
 
-            サブスクリプションの次回課金日です。\
-
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         stop_date:
           type: string
           example: 2022/06/16 00:00:00.000
           nullable: true
-          description: '課金停止日\
+          description: '订阅停止日期。
 
-            サブスクリプションの停止日です。\
-
-            \
-
-            形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss.SSS`'
         end_month_flag:
           type: string
           enum:
           - '0'
           - '1'
-          description: '月末課金フラグ
+          description: '月末扣款标志。
 
 
-            - `0`：月末課金を行わない
+            - `0`：不在月末扣款
 
-            - `1`：月末課金を行う
-
-            '
+            - `1`：在月末扣款'
         send_url:
           type: string
           nullable: true
@@ -22348,33 +22222,21 @@ components:
           enum:
           - enabled
           - disabled
-          description: 'リトライ対象設定\
-
-            このサブスクリプションが使用するプランのリトライ設定です。
+          description: '当前订阅所用套餐的重试设置。
 
 
-            - `enabled`：リトライ対象
+            - `enabled`：启用重试
 
-            - `disabled`：リトライ対象外
-
-            '
+            - `disabled`：不启用重试'
         is_retry_scheduled:
           type: boolean
           nullable: true
-          description: 'リトライ予定フラグ\
-
-            課金失敗後にリトライが予定されている場合`true`を返します。
-
-            '
+          description: 扣款失败后已安排重试时返回 `true`。
         error_code:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/error_code'
-          description: 'このサブスクリプションにおいて発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-            [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-            '
+          description: 当前订阅最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
         client_field_1:
           nullable: true
           allOf:
@@ -22398,16 +22260,12 @@ components:
           nullable: false
           allOf:
           - $ref: '#/components/schemas/DirectDebitSettlementRoute'
-          description: '振替サービス\
-
-            ※`pay_type = Directdebit`のみ
+          description: '自动扣款服务，仅适用于 `pay_type = Directdebit`。
 
 
-            - `1`: 口座振替（5・6・23・27日）
+            - `1`：每月 5、6、23、27 日自动扣款
 
-            - `2`: 口座振替（1・5・20・26日）
-
-            '
+            - `2`：每月 1、5、20、26 日自动扣款'
         created:
           allOf:
           - $ref: '#/components/schemas/created'
@@ -22419,24 +22277,12 @@ components:
           type: string
           minLength: 1
           maxLength: 7
-          description: '初回利用金額\
-
-            \
-
-            この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`amount`の金額で課金します。
-
-            '
+          description: 设置后，首次扣款使用此金额，第二次及以后使用套餐信息中的 `amount`。
         initial_tax:
           type: string
           minLength: 1
           maxLength: 7
-          description: '初回税送料\
-
-            \
-
-            この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`tax`の金額で課金します。
-
-            '
+          description: 设置后，首次扣款使用此税费及运费金额，第二次及以后使用套餐信息中的 `tax`。
     Subscription.list:
       type: object
       properties:
@@ -23859,91 +23705,126 @@ components:
       properties:
         status:
           type: string
-          description: "インボイス請求書のステータス  \n   \nカンマ(,)区切りで複数指定も可能です。  \n   \n- `DRAFT`: 下書き\n- `AWAITING_CUSTOMER_PAYMENT`:\
-            \ 支払い待ち\n- `PAID`: 支払い完了\n- `CANCELED`: キャンセル済\n"
+          description: '账单状态，可使用半角逗号分隔指定多个值。
+
+
+            - `DRAFT`：草稿
+
+            - `AWAITING_CUSTOMER_PAYMENT`：等待支付
+
+            - `PAID`：已支付
+
+            - `CANCELED`：已取消'
         keyword:
           type: string
           minLength: 1
           maxLength: 150
-          description: "キーワード  \n  \n指定した場合、請求書作成時に指定した client_field_1, client_field_2, client_field_3 のいずれかにおいて指定したワードが部分一致する請求データのみを取得します。\n"
+          description: 指定后，仅返回 `client_field_1`、`client_field_2` 或 `client_field_3` 中部分匹配该关键词的账单。
         due_date_from:
           type: string
           minLength: 10
           maxLength: 10
-          description: "支払期日範囲（開始）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、支払期日が指定日以降である請求データのみを取得します。\n"
+          description: '支付截止日期范围的起始日期。仅返回截止日期不早于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         due_date_to:
           type: string
           minLength: 10
           maxLength: 10
-          description: "支払期日範囲（終了）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、支払期日が指定日以前の請求データのみを取得します。\n"
+          description: '支付截止日期范围的结束日期。仅返回截止日期不晚于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         issue_date_from:
           type: string
           minLength: 10
           maxLength: 10
-          description: "発行日範囲（開始）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、発行日が指定日以降である請求データのみを取得します。\n"
+          description: '开具日期范围的起始日期。仅返回开具日期不早于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         issue_date_to:
           type: string
           minLength: 10
           maxLength: 10
-          description: "発行日の範囲指定（終了）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、発行日が指定日以前の請求データのみを取得します。\n"
+          description: '开具日期范围的结束日期。仅返回开具日期不晚于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         total_amount_max:
           type: number
           minLength: 1
           maxLength: 14
-          description: "合計金額範囲（上限）  \n  \n指定した場合、合計金額が指定金額以下の請求データのみを取得します。\n"
+          description: 账单合计金额上限；仅返回合计金额不超过该值的账单。
         total_amount_min:
           type: number
           minLength: 1
           maxLength: 14
-          description: "合計金額範囲（下限）  \n  \n指定した場合、合計金額が指定金額以上の請求データのみを取得します。\n"
+          description: 账单合计金额下限；仅返回合计金额不低于该值的账单。
         created_from:
           type: string
           minLength: 10
           maxLength: 10
-          description: "作成日範囲（開始）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、作成日が指定日以降である請求データのみを取得します。\n"
+          description: '创建日期范围的起始日期。仅返回创建日期不早于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         created_to:
           type: string
           minLength: 10
           maxLength: 10
-          description: "作成日範囲（終了）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、作成日が指定日以前の請求データのみを取得します。\n"
+          description: '创建日期范围的结束日期。仅返回创建日期不晚于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         customer_id:
           type: string
           minLength: 1
           maxLength: 60
-          description: "顧客ID  \n  \n指定した場合、顧客IDが完全一致する請求データのみを取得します。\n"
+          description: 客户 ID；仅返回客户 ID 完全一致的账单。
         customer_name:
           type: string
           minLength: 1
           maxLength: 384
-          description: "顧客名（請求先宛名）  \n  \n指定した場合、顧客名が部分一致する請求データのみを取得します。\n"
+          description: 客户名称（账单接收方）；仅返回客户名称部分匹配的账单。
         invoice_number:
           type: string
           minLength: 1
           maxLength: 30
-          description: "請求番号  \n  \n指定した場合、請求番号が一致する請求データのみを取得します。\n"
+          description: 账单编号；仅返回账单编号完全一致的账单。
         lines_date_from:
           type: string
           minLength: 10
           maxLength: 10
-          description: "取引日付範囲（開始）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、「取引の日付」として入力した取引日が指定日以降の請求データのみを取得します。\n"
+          description: '交易日期范围的起始日期。仅返回“交易日期”不早于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         lines_date_to:
           type: string
           minLength: 10
           maxLength: 10
-          description: "取引日範囲（終了）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、「取引の日付」として入力した取引日が指定日以前の請求データのみを取得します。\n"
+          description: '交易日期范围的结束日期。仅返回“交易日期”不晚于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         transaction_date_from:
           type: string
           minLength: 10
           maxLength: 10
-          description: "支払完了日範囲（開始）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、支払い完了日が指定日以降の請求データのみを取得します。\n"
+          description: '支付完成日期范围的起始日期。仅返回支付完成日期不早于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         transaction_date_to:
           type: string
           minLength: 10
           maxLength: 10
-          description: "支払完了日範囲（終了）  \n形式： `yyyy/MM/dd`  \n  \n指定した場合、支払い完了日が指定日以前の請求データのみを取得します。\n"
+          description: '支付完成日期范围的结束日期。仅返回支付完成日期不晚于该日期的账单。
+
+            格式：`yyyy/MM/dd`'
         is_uncollectible:
           type: boolean
-          description: "回収困難マーク  \n  \n- `true`: 回収困難マーク済の請求データのみを取得\n- `false`: 回収困難マークの無い請求データのみを取得\n- `null`: いずれも取得\n"
+          description: '难以收回款项标记筛选条件。
+
+
+            - `true`：仅返回已标记的账单
+
+            - `false`：仅返回未标记的账单
+
+            - `null`：两者均返回'
     Invoice.ListItem:
       type: object
       description: インボイス情報 一覧項目
@@ -30005,9 +29886,7 @@ components:
           maxLength: 13
           nullable: true
           example: '1234567890123'
-          description: '法人番号
-
-            '
+          description: 日本法人编号。
         corporate_name:
           type: string
           minLength: 1
@@ -30026,177 +29905,119 @@ components:
           maxLength: 300
           nullable: true
           example: https://www.sample-corp.example.com
-          description: '企業サイトURL
-
-            '
+          description: 企业网站 URL。
         capital:
           type: number
           nullable: true
           minLength: 1
           maxLength: 19
           example: 1000000
-          description: '資本金
-
-            '
+          description: 注册资本。
         established_at:
           type: string
           nullable: true
           minLength: 10
           maxLength: 10
           example: 2020/01/01
-          description: '設立日
-
-            '
+          description: 成立日期。
         yearly_sales:
           type: number
           nullable: true
           minLength: 1
           maxLength: 19
           example: 1000000
-          description: '年商
-
-            '
+          description: 年销售额。
         business_details:
           type: string
           nullable: true
           minLength: 1
           maxLength: 5000
           example: ○○の製造・販売を行っており、fincodeによるオンラインでの販売を予定。
-          description: '事業内容
-
-            '
+          description: 经营业务内容。
         company_postal_code:
           type: string
           nullable: true
           minLength: 8
           maxLength: 8
           example: 123-4567
-          description: '会社住所 郵便番号\
-
-            形式： 半角数字（ハイフンあり）
-
-            '
+          description: 公司地址的邮政编码；使用包含连字符的半角数字。
         company_prefecture:
           type: string
           nullable: true
           minLength: 3
           maxLength: 4
           example: 東京都
-          description: '会社住所 都道府県\
-
-            形式： 漢字
-
-            '
+          description: 公司地址的都道府县；使用汉字。
         company_prefecture_kana:
           type: string
           nullable: true
           minLength: 1
           maxLength: 6
           example: トウキョウト
-          description: '会社住所 都道府県（カナ）\
-
-            形式： 全角カタカナ
-
-            '
+          description: 公司地址的都道府县（片假名）；使用全角片假名。
         company_address_municipality:
           type: string
           nullable: true
           minLength: 1
           maxLength: 50
           example: 渋谷区
-          description: '会社住所 市区町村\
-
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+          description: 公司地址的市区町村；可使用汉字、平假名、片假名和半角英数字。
         company_address_municipality_kana:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: シブヤク
-          description: '会社住所 市区町村（カナ）\
-
-            形式： 全角カタカナ
-
-            '
+          description: 公司地址的市区町村（片假名）；使用全角片假名。
         company_address_section:
           type: string
           nullable: true
           minLength: 1
           maxLength: 50
           example: 道玄坂
-          description: '会社住所 町域\
-
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+          description: 公司地址的町域；可使用汉字、平假名、片假名和半角英数字。
         company_address_section_kana:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: ドウゲンザカ
-          description: '会社住所 町域（カナ）\
-
-            形式： 全角カタカナ
-
-            '
+          description: 公司地址的町域（片假名）；使用全角片假名。
         company_address_chrome:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: 1-2-3
-          description: '会社住所 番地\
-
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+          description: 公司地址的门牌号；可使用汉字、平假名、片假名和半角英数字。
         company_address_chrome_kana:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: イチニサン
-          description: '会社住所 番地（カナ）\
-
-            形式： 全角カタカナ
-
-            '
+          description: 公司地址的门牌号（片假名）；使用全角片假名。
         company_address_building_name:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: サンプルビル
-          description: '会社住所 ビル名\
-
-            形式： 漢字/ひらがな/カタカナ/半角英数
-
-            '
+          description: 公司地址的建筑物名称；可使用汉字、平假名、片假名和半角英数字。
         company_address_building_name_kana:
           type: string
           nullable: true
           minLength: 1
           maxLength: 100
           example: サンプルビル
-          description: '会社住所 ビル名（カナ）\
-
-            形式： 全角カタカナ
-
-            '
+          description: 公司地址的建筑物名称（片假名）；使用全角片假名。
         company_tel:
           type: string
           nullable: true
           minLength: 1
           maxLength: 15
           example: 0312345678
-          description: '会社情報 電話番号\
-
-            形式： 半角数字（ハイフンなし）
-
-            '
+          description: 公司电话号码；使用不含连字符的半角数字。
       required:
       - corporate_number
       - corporate_name
@@ -33861,9 +33682,7 @@ components:
           - $ref: '#/components/schemas/Shop_properties-id'
         need_change_examination:
           type: boolean
-          description: '変更申請（審査）を行うか
-
-            '
+          description: 是否提交需要审核的变更申请。
         corporate:
           $ref: '#/components/schemas/corporate'
         corporate_number:
@@ -34001,9 +33820,7 @@ components:
         provides_digital_contents:
           type: boolean
           nullable: true
-          description: 'デジタルコンテンツを取り扱うか
-
-            '
+          description: 是否经营数字内容。
         prepaid:
           $ref: '#/components/schemas/prepaid'
         unit_price:
@@ -34013,21 +33830,15 @@ components:
         bank_name:
           type: string
           nullable: true
-          description: '銀行名
-
-            '
+          description: 银行名称。
         bank_name_kana:
           type: string
           nullable: true
-          description: '銀行名（カナ）
-
-            '
+          description: 银行名称（片假名）。
         bank_code:
           type: string
           nullable: true
-          description: '銀行コード
-
-            '
+          description: 银行代码。
         branch_name:
           type: string
           nullable: true
@@ -34035,9 +33846,7 @@ components:
         branch_name_kana:
           type: string
           nullable: true
-          description: '支店名（カナ）
-
-            '
+          description: 分行名称（片假名）。
         branch_code:
           type: string
           nullable: true
@@ -34057,63 +33866,43 @@ components:
         business_operator_bank_name:
           type: string
           nullable: true
-          description: '事業者 銀行名
-
-            '
+          description: 经营者银行名称。
         business_operator_bank_name_kana:
           type: string
           nullable: true
-          description: '事業者 銀行名（カナ）
-
-            '
+          description: 经营者银行名称（片假名）。
         business_operator_bank_code:
           type: string
           nullable: true
-          description: '事業者 銀行コード
-
-            '
+          description: 经营者银行代码。
         business_operator_branch_name:
           type: string
           nullable: true
-          description: '事業者 支店名
-
-            '
+          description: 经营者银行分行名称。
         business_operator_branch_name_kana:
           type: string
           nullable: true
-          description: '事業者 支店名（カナ）
-
-            '
+          description: 经营者银行分行名称（片假名）。
         business_operator_branch_code:
           type: string
           nullable: true
-          description: '事業者 支店コード
-
-            '
+          description: 经营者银行分行代码。
         business_operator_account_kind:
           type: integer
           nullable: true
-          description: '事業者 預金種別
-
-            '
+          description: 经营者银行账户类型。
         business_operator_account_number:
           type: string
           nullable: true
-          description: '事業者 口座番号
-
-            '
+          description: 经营者银行账号。
         business_operator_account_name:
           type: string
           nullable: true
-          description: '事業者 口座名義
-
-            '
+          description: 经营者银行账户名义人。
         memo:
           type: string
           nullable: true
-          description: 'メモ
-
-            '
+          description: 备注。
     ChangeRequest.Registering.Response:
       allOf:
       - $ref: '#/components/schemas/ChangeRequest.Registering.Request'

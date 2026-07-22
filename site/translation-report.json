@@ -1,6 +1,6 @@
 {
   "contractIntegrity": "passed",
-  "remainingJapaneseUnits": 935,
+  "remainingJapaneseUnits": 849,
   "items": [
     {
       "pointer": "/paths/~1v1~1customers~1{customer_id}~1payment_methods~1{id}/put/requestBody/content/application~1json/schema/properties/pay_type/description",
@@ -955,78 +955,6 @@
       "preview": "銀行振込（バーチャル口座） 支払い画面案内メール送信フラグ\\ 銀行振込（バーチャル口座）の支払い画面案内メールを送信するかどうかを設定します。  - `0`：送信しない - `1`：送信する "
     },
     {
-      "pointer": "/components/schemas/PaymentSession/properties/id/description",
-      "preview": "リダイレクト型決済URL ID "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/link_url/description",
-      "preview": "リダイレクト型決済URL "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/success_url/description",
-      "preview": "成功時リダイレクトURL\\ `link_url`上で決済に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/cancel_url/description",
-      "preview": "キャンセル時リダイレクトURL\\ `link_url`上で決済がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/expire/description",
-      "preview": "リダイレクト型決済URL 有効期限\\ 形式： `yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/shop_service_name/description",
-      "preview": "ショップ／サービス名\\ 決済URL上で表示されるショップおよびサービスの名称です。\\ \\ デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/guide_mail_send_flag/description",
-      "preview": "決済メール 送信フラグ\\ リダイレクト型決済URLをfincodeからのメール送信機能で送信したかどうかを示します。  - `0`：送信しなかった（デフォルト） - `1`：送信した "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/receiver_mail/description",
-      "preview": "決済メール 送信先メールアドレス\\ リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/mail_customer_name/description",
-      "preview": "購入メール 購入者の名前\\ リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられる購入者の名前です。\\ \\ fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/thanks_mail_send_flag/description",
-      "preview": "完了メール 送信フラグ\\ 決済が完了した際に購入者に完了メールを送信するかどうかを示します。  - `0`：送信しない（デフォルト） - `1`：送信する "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/shop_mail_template_id/description",
-      "preview": "メールテンプレートID\\ メールテンプレートIDが設定されている場合、リダイレクト型決済URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\\ \\ fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/transaction/description",
-      "preview": "決済共通項目\\ 決済手段を問わず共通して使用される、決済に関するデータです。 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/transaction/properties/pay_type/description",
-      "preview": "決済手段\\ この決済URL上で使用できる決済手段を指定します。複数指定可能です。  - `Card`：カード決済 - `Konbini`：コンビニ決済 - `Paypay`：PayPay - `Virtualaccount`：バーチャル口座決済 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/transaction/properties/order_id/description",
-      "preview": "オーダーID\\ このリダイレクト型決済URL上で決済後生成される決済情報のID "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/card/description",
-      "preview": "カード決済に関する情報 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/konbini/description",
-      "preview": "コンビニ決済に関する情報 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/paypay/description",
-      "preview": "PayPayに関する情報 "
-    },
-    {
-      "pointer": "/components/schemas/PaymentSession/properties/virtualaccount/description",
-      "preview": "銀行振込（バーチャル口座）に関する情報 "
-    },
-    {
       "pointer": "/components/schemas/properties-success_url/description",
       "preview": "成功時リダイレクトURL\\ `link_url`上でカード登録に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。 "
     },
@@ -1297,70 +1225,6 @@
     {
       "pointer": "/components/schemas/Subscription.ListRetrieving.QueryParams/properties/sort/description",
       "preview": "ソートする項目と順序を指定します。\\ 例： `?sort=updated␣desc,created␣asc`\\ \\ ソート可能な項目  - `plan_id`: プランID - `total_amount`: 合計金額 - `start_date`: 課金開始日 - `stop_date`: 課金停止日 - `next"
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/customer_id/description",
-      "preview": "顧客ID\\ \\ このサブスクリプションの請求先となる顧客のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/card_id/description",
-      "preview": "カードID\\ \\ このサブスクリプションの決済に使用するカードのIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/payment_method_id/description",
-      "preview": "決済手段ID\\ \\ このサブスクリプションの決済に使用する決済手段のIDです。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/initial_amount/description",
-      "preview": "初回利用金額\\ \\ この値が設定されているとき、このサブスクリプションは初回の課金のみこの金額で課金し、2回目以降はプラン情報がもつ`amount`の金額で課金します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/initial_tax/description",
-      "preview": "初回税送料\\ \\ この値が設定されているとき、このサブスクリプションは初回の課金のみこの金額で課金し、2回目以降はプラン情報がもつ`tax`の金額で課金します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/initial_total_amount/description",
-      "preview": "初回合計金額\\ \\ `initial_amount`と`initial_tax`の合計金額です。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/start_date/description",
-      "preview": "課金開始日\\ サブスクリプションの開始日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/next_charge_date/description",
-      "preview": "次回課金日\\ サブスクリプションの次回課金日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/stop_date/description",
-      "preview": "課金停止日\\ サブスクリプションの停止日です。\\ \\ 形式：`yyyy/MM/dd HH:mm:ss.SSS` "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/end_month_flag/description",
-      "preview": "月末課金フラグ  - `0`：月末課金を行わない - `1`：月末課金を行う "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/subscription_retry_mode/description",
-      "preview": "リトライ対象設定\\ このサブスクリプションが使用するプランのリトライ設定です。  - `enabled`：リトライ対象 - `disabled`：リトライ対象外 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/is_retry_scheduled/description",
-      "preview": "リトライ予定フラグ\\ 課金失敗後にリトライが予定されている場合`true`を返します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/error_code/description",
-      "preview": "このサブスクリプションにおいて発生したエラーのうち、一番最新のエラーのエラーコードです。\\ [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/properties/settlement_route/description",
-      "preview": "振替サービス\\ ※`pay_type = Directdebit`のみ  - `1`: 口座振替（5・6・23・27日） - `2`: 口座振替（1・5・20・26日） "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/x-req-properties/initial_amount/description",
-      "preview": "初回利用金額\\ \\ この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`amount`の金額で課金します。 "
-    },
-    {
-      "pointer": "/components/schemas/Subscription/x-req-properties/initial_tax/description",
-      "preview": "初回税送料\\ \\ この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`tax`の金額で課金します。 "
     },
     {
       "pointer": "/components/schemas/start_date/description",
@@ -1637,78 +1501,6 @@
     {
       "pointer": "/components/schemas/PaymentBulk.Deleting.Response/properties/id/description",
       "preview": "削除された一括決済のID"
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/status/description",
-      "preview": "インボイス請求書のステータス       カンマ(,)区切りで複数指定も可能です。       - `DRAFT`: 下書き - `AWAITING_CUSTOMER_PAYMENT`: 支払い待ち - `PAID`: 支払い完了 - `CANCELED`: キャンセル済 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/keyword/description",
-      "preview": "キーワード      指定した場合、請求書作成時に指定した client_field_1, client_field_2, client_field_3 のいずれかにおいて指定したワードが部分一致する請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/due_date_from/description",
-      "preview": "支払期日範囲（開始）   形式： `yyyy/MM/dd`      指定した場合、支払期日が指定日以降である請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/due_date_to/description",
-      "preview": "支払期日範囲（終了）   形式： `yyyy/MM/dd`      指定した場合、支払期日が指定日以前の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/issue_date_from/description",
-      "preview": "発行日範囲（開始）   形式： `yyyy/MM/dd`      指定した場合、発行日が指定日以降である請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/issue_date_to/description",
-      "preview": "発行日の範囲指定（終了）   形式： `yyyy/MM/dd`      指定した場合、発行日が指定日以前の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/total_amount_max/description",
-      "preview": "合計金額範囲（上限）      指定した場合、合計金額が指定金額以下の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/total_amount_min/description",
-      "preview": "合計金額範囲（下限）      指定した場合、合計金額が指定金額以上の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/created_from/description",
-      "preview": "作成日範囲（開始）   形式： `yyyy/MM/dd`      指定した場合、作成日が指定日以降である請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/created_to/description",
-      "preview": "作成日範囲（終了）   形式： `yyyy/MM/dd`      指定した場合、作成日が指定日以前の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/customer_id/description",
-      "preview": "顧客ID      指定した場合、顧客IDが完全一致する請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/customer_name/description",
-      "preview": "顧客名（請求先宛名）      指定した場合、顧客名が部分一致する請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/invoice_number/description",
-      "preview": "請求番号      指定した場合、請求番号が一致する請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/lines_date_from/description",
-      "preview": "取引日付範囲（開始）   形式： `yyyy/MM/dd`      指定した場合、「取引の日付」として入力した取引日が指定日以降の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/lines_date_to/description",
-      "preview": "取引日範囲（終了）   形式： `yyyy/MM/dd`      指定した場合、「取引の日付」として入力した取引日が指定日以前の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/transaction_date_from/description",
-      "preview": "支払完了日範囲（開始）   形式： `yyyy/MM/dd`      指定した場合、支払い完了日が指定日以降の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/transaction_date_to/description",
-      "preview": "支払完了日範囲（終了）   形式： `yyyy/MM/dd`      指定した場合、支払い完了日が指定日以前の請求データのみを取得します。 "
-    },
-    {
-      "pointer": "/components/schemas/Invoice.ListRetrieving.QueryParams/properties/is_uncollectible/description",
-      "preview": "回収困難マーク      - `true`: 回収困難マーク済の請求データのみを取得 - `false`: 回収困難マークの無い請求データのみを取得 - `null`: いずれも取得 "
     },
     {
       "pointer": "/components/schemas/Invoice.ListItem/description",
@@ -2519,78 +2311,6 @@
       "preview": "契約ステータス\\ \\ fincodeとそのショップの運営事業者の契約のステータスを表します。  - `101`: 未契約<br /><span class=\"smallText\">まだfincodeの本番環境申請の提出が完了していない状態です。</span> - `102`: 利用審査中<br /><span clas"
     },
     {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/corporate_number/description",
-      "preview": "法人番号 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/hp/description",
-      "preview": "企業サイトURL "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/capital/description",
-      "preview": "資本金 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/established_at/description",
-      "preview": "設立日 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/yearly_sales/description",
-      "preview": "年商 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/business_details/description",
-      "preview": "事業内容 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_postal_code/description",
-      "preview": "会社住所 郵便番号\\ 形式： 半角数字（ハイフンあり） "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_prefecture/description",
-      "preview": "会社住所 都道府県\\ 形式： 漢字 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_prefecture_kana/description",
-      "preview": "会社住所 都道府県（カナ）\\ 形式： 全角カタカナ "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_municipality/description",
-      "preview": "会社住所 市区町村\\ 形式： 漢字/ひらがな/カタカナ/半角英数 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_municipality_kana/description",
-      "preview": "会社住所 市区町村（カナ）\\ 形式： 全角カタカナ "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_section/description",
-      "preview": "会社住所 町域\\ 形式： 漢字/ひらがな/カタカナ/半角英数 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_section_kana/description",
-      "preview": "会社住所 町域（カナ）\\ 形式： 全角カタカナ "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_chrome/description",
-      "preview": "会社住所 番地\\ 形式： 漢字/ひらがな/カタカナ/半角英数 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_chrome_kana/description",
-      "preview": "会社住所 番地（カナ）\\ 形式： 全角カタカナ "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_building_name/description",
-      "preview": "会社住所 ビル名\\ 形式： 漢字/ひらがな/カタカナ/半角英数 "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_address_building_name_kana/description",
-      "preview": "会社住所 ビル名（カナ）\\ 形式： 全角カタカナ "
-    },
-    {
-      "pointer": "/components/schemas/CorporateInfo.V2/properties/company_tel/description",
-      "preview": "会社情報 電話番号\\ 形式： 半角数字（ハイフンなし） "
-    },
-    {
       "pointer": "/components/schemas/ContentInfo.V2/properties/content1_name/description",
       "preview": "商材1 名称 "
     },
@@ -3221,70 +2941,6 @@
     {
       "pointer": "/components/schemas/used_on_other/description",
       "preview": "その他の箇所での利用有無\\ \\ Webアプリケーションやネイティブアプリ上でない箇所で利用があるかどうか  - `true`: Webアプリ／ネイティブアプリでない箇所でfincodeを使用する "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/need_change_examination/description",
-      "preview": "変更申請（審査）を行うか "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/provides_digital_contents/description",
-      "preview": "デジタルコンテンツを取り扱うか "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/bank_name/description",
-      "preview": "銀行名 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/bank_name_kana/description",
-      "preview": "銀行名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/bank_code/description",
-      "preview": "銀行コード "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/branch_name_kana/description",
-      "preview": "支店名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_bank_name/description",
-      "preview": "事業者 銀行名 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_bank_name_kana/description",
-      "preview": "事業者 銀行名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_bank_code/description",
-      "preview": "事業者 銀行コード "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_branch_name/description",
-      "preview": "事業者 支店名 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_branch_name_kana/description",
-      "preview": "事業者 支店名（カナ） "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_branch_code/description",
-      "preview": "事業者 支店コード "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_account_kind/description",
-      "preview": "事業者 預金種別 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_account_number/description",
-      "preview": "事業者 口座番号 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/business_operator_account_name/description",
-      "preview": "事業者 口座名義 "
-    },
-    {
-      "pointer": "/components/schemas/ChangeRequest.Registering.Request/properties/memo/description",
-      "preview": "メモ "
     },
     {
       "pointer": "/components/schemas/ChangeRequest.Registering.Response/allOf/1/properties/id/description",
