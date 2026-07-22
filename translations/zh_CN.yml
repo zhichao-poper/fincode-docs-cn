@@ -61,6 +61,9 @@ exact_strings:
   プランID: 套餐 ID
   サブスクリプションID: 订阅 ID
   インボイスID: 账单 ID
+  売上入金ID: 销售款入账 ID
+  プラットフォーム利用料収入ID: 平台使用费收入 ID
+  チャージバックID: 拒付 ID
 
 strings:
   /info/title: fincode API 中文参考
@@ -1149,3 +1152,65 @@ strings:
     更新以指定租户商户为开具方的账单。
   /paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/summary: 重新分配账单虚拟账户
   /paths/~1v1~1invoices~1{id}~1virtual_account~1refresh/put/description: 如果分配给指定账单的虚拟账户已过期并关闭，则重新分配一个新的虚拟账户。
+  /paths/~1v1~1accounts/get/summary: 销售款入账列表查询
+  /paths/~1v1~1accounts/get/description: 获取销售款入账信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1accounts/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取该租户商户的销售款入账信息列表。
+  /paths/~1v1~1accounts/get/parameters/1/description: 查询销售款入账信息列表时使用的查询条件参数。
+  /paths/~1v1~1accounts~1{id}/get/summary: 获取销售款入账
+  /paths/~1v1~1accounts~1{id}/get/description: |-
+    获取由 ID 指定的销售款入账信息。
+    其中包含从 `aggregate_term_start` 至 `aggregate_term_end` 期间的销售额汇总结果。
+
+    如需获取汇总中的每一条记录，请使用“销售款入账明细列表查询”API。
+  /paths/~1v1~1accounts~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取该租户商户的销售款入账信息中由 ID 指定的记录。
+  /paths/~1v1~1accounts~1{id}~1detail/get/summary: 销售款入账明细列表查询
+  /paths/~1v1~1accounts~1{id}~1detail/get/description: |-
+    获取与 ID 指定的销售款入账关联的明细列表。
+    每条销售款入账明细对应一笔支付、取消、拒付或拒付撤销调整。
+  /paths/~1v1~1accounts~1{id}~1detail/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取该租户商户由 ID 指定的销售款入账记录的明细。
+  /paths/~1v1~1accounts~1{id}~1detail/get/parameters/2/description: 查询销售款入账明细列表时使用的查询条件参数。
+  /paths/~1v1~1platform_accounts/get/summary: 平台使用费收入列表查询
+  /paths/~1v1~1platform_accounts/get/description: 获取平台使用费产生的销售款入账信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1platform_accounts/get/parameters/0/description: 查询平台使用费产生的销售款入账信息列表时使用的查询条件参数。
+  /paths/~1v1~1platform_accounts~1{id}/get/summary: 获取平台使用费收入
+  /paths/~1v1~1platform_accounts~1{id}/get/description: |-
+    获取由 ID 指定的平台使用费销售款入账信息。
+    其中包含从 `aggregate_term_start` 至 `aggregate_term_end` 期间由平台使用费产生的销售额汇总结果。
+
+    如需查看各租户商户的使用费收入，请使用“平台使用费收入汇总列表查询”API。
+  /paths/~1v1~1platform_accounts~1{id}~1summary/get/summary: 平台使用费收入汇总列表查询
+  /paths/~1v1~1platform_accounts~1{id}~1summary/get/description: |-
+    获取由 ID 指定的平台使用费收入汇总列表。可通过查询参数缩小获取范围。
+    汇总信息中包含各租户商户的使用费收入。
+  /paths/~1v1~1platform_accounts~1{id}~1summary/get/parameters/1/description: 查询平台使用费产生的销售款入账信息列表时使用的查询条件参数。
+  /paths/~1v1~1shop_charge_backs/get/summary: 拒付列表查询
+  /paths/~1v1~1shop_charge_backs/get/description: 获取拒付信息列表。可通过查询参数缩小获取范围。
+  /paths/~1v1~1shop_charge_backs/get/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    租户商户 ID。
+    获取该租户商户的拒付信息列表。
+  /paths/~1v1~1shop_charge_backs/get/parameters/1/description: 查询拒付信息列表时使用的查询条件参数。
+  /paths/~1v1~1shop_charge_backs~1{id}/get/summary: 获取拒付
+  /paths/~1v1~1shop_charge_backs~1{id}/get/description: 获取拒付信息。
+  /paths/~1v1~1shop_charge_backs~1{id}/get/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    代为执行操作的目标租户商户 ID。
+  /paths/~1v1~1shop_charge_backs~1{id}~1reply/post/summary: 登记拒付答复
+  /paths/~1v1~1shop_charge_backs~1{id}~1reply/post/description: 登记对拒付的答复。
+  /paths/~1v1~1shop_charge_backs~1{id}~1reply/post/parameters/1/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    代为执行操作的目标租户商户 ID。
+  /paths/~1v1~1charge_backs~1file_upload/post/summary: 上传拒付抗辩材料
+  /paths/~1v1~1charge_backs~1file_upload/post/description: 上传用于拒付抗辩的材料文件。
+  /paths/~1v1~1charge_backs~1file_upload/post/parameters/0/description: |-
+    <span class="smallText color--red-400">仅平台主商户可指定</span>
+    代为执行操作的目标租户商户 ID。
