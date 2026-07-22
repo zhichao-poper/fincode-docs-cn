@@ -63,6 +63,29 @@ def find_remaining(
     return found
 
 
+def contract_projection(value: Any, pointer: str = "") -> Any:
+    """移除允许本地化的展示文本，保留其余全部契约、枚举和示例供逐值比较。"""
+    if isinstance(value, dict):
+        projected: dict[str, Any] = {}
+        for key, child in value.items():
+            child_pointer = f"{pointer}/{key}"
+            if key in TRANSLATABLE_KEYS or key.startswith("x-description-"):
+                continue
+            if pointer == "/info" and key == "x-translation":
+                continue
+            if pointer.startswith("/tags/") and key == "name":
+                continue
+            if pointer.startswith("/x-tagGroups/") and key in {"name", "tags"}:
+                continue
+            if pointer.startswith("/paths/") and key == "tags":
+                continue
+            projected[key] = contract_projection(child, child_pointer)
+        return projected
+    if isinstance(value, list):
+        return [contract_projection(child, f"{pointer}/{index}") for index, child in enumerate(value)]
+    return value
+
+
 def main() -> None:
     source = load(SOURCE)
     translated = load(TRANSLATED)
@@ -73,6 +96,9 @@ def main() -> None:
     assert set(source.get("components", {}).get("schemas", {})) == set(
         translated.get("components", {}).get("schemas", {})
     ), "数据模型集合不一致"
+    assert contract_projection(source) == contract_projection(translated), (
+        "除允许本地化的展示文本和导航标签外，字段名、类型、必填项、枚举值、示例或其他契约内容发生变化"
+    )
 
     operation_tags = {
         tag

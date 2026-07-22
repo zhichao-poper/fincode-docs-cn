@@ -10926,13 +10926,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/id'
           nullable: true
-          description: '顧客ID\
-
-            任意の値を指定できます。指定しない場合はfincodeが自動的に生成します。\
-
-            一度fincodeに登録された顧客IDは削除後も利用できません。
-
-            '
+          description: 客户 ID。可以指定任意值；未指定时由 fincode 自动生成。客户 ID 一旦登记，即使删除后也不能再次使用。
         name:
           nullable: true
           allOf:
@@ -11051,7 +11045,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/id'
-          description: 削除された顧客のID
+          description: 被删除客户的 ID。
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -11601,46 +11595,24 @@ components:
       - '1'
       example: '1'
       nullable: true
-      description: 'リダイレクトURLアクセス済みフラグ \
-
-        （`pay_type = Directdebit`の場合のみ利用可能）\
-
-        購入者が`redirect_url`にアクセスしたことがあるかどうかを示すフラグです。
+      description: '是否已访问重定向 URL，仅适用于 `pay_type = Directdebit`。
 
 
-        - `0`: 未アクセス
+        - `0`：尚未访问
 
-        - `1`: 1回以上アクセス済み
-
-        '
+        - `1`：已访问至少一次'
     return_url:
       type: string
       example: https://url.to/return/payer/success
       maxLength: 256
       nullable: true
-      description: '（`pay_type ="Card" / "Directdebit"`の場合のみ利用可能）\
-
-        加盟店戻りURL（成功時）\
-
-        購入者がアクションを完了し、決済手段の登録に成功した際にリダイレクトされるURLです。\
-
-        POSTメソッドでリダイレクトがされます。
-
-        '
+      description: 商户成功回跳 URL，仅适用于 `pay_type = Card` 或 `Directdebit`。购买者完成操作并成功登记支付方式后，通过 POST 方法重定向至此 URL。
     return_url_on_failure:
       type: string
       example: https://url.to/return/payer/failure
       maxLength: 256
       nullable: true
-      description: '加盟店戻りURL（失敗時）\
-
-        （`pay_type = Card`の場合のみ利用可能）\
-
-        購入者がアクションを完了し、決済手段の登録に失敗した際にリダイレクトされるURLです。\
-
-        POSTメソッドでリダイレクトがされます。
-
-        '
+      description: 商户失败回跳 URL，仅适用于 `pay_type = Card`。购买者完成操作但支付方式登记失败后，通过 POST 方法重定向至此 URL。
     properties-default_flag:
       type: string
       enum:
@@ -11665,9 +11637,7 @@ components:
       minLength: 1
       maxLength: 100
       example: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-      description: '加盟店自由項目
-
-        '
+      description: 商户自由字段。
     client_field_1:
       allOf:
       - $ref: '#/components/schemas/client_field_n'
@@ -11726,9 +11696,21 @@ components:
       example: https://your-server.example.com/3ds2-return
       maxLength: 256
       nullable: true
-      description: "3Dセキュア認証における戻りURL  \n3Dセキュア認証に必要なAPIの呼び出しやコールバック処理をすべて加盟店で実装する場合のみ使用します。  \nfincodeは3Dセキュア認証処理の過程において、このURLにPOSTメソッド、`Content-Type:application/x-www-form-urlencoded`で値を返します。\
-        \  \n\n- `MD`: クエリパラメータとして返されます。 `access_id`と等しい値です。\n- `event`: フォームデータとして返されます。この値を判定し後続の処理を分岐します。\n- `param`: フォームデータとして返されます。[3Dセキュア認証API](https://docs.fincode.jp/api#tag/ThreeDSecureecure/executeThreeDSecureecureAuth)で使用します。\n\
-        - `requestorTransId`: フォームデータとして返されます。（後続処理では使用しません。）\n\n返却されるそれぞれの値についての[詳細はDocsで確認](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)できます。\n"
+      description: '3D Secure 认证回调 URL，仅在商户自行实现全部认证 API 调用和回调处理时使用。fincode 会在认证过程中使用 POST 方法及 `Content-Type: application/x-www-form-urlencoded`
+        向此 URL 返回数据。
+
+
+        - `MD`：通过查询参数返回，值与 `access_id` 相同
+
+        - `event`：通过表单数据返回，用于判断并分支后续处理
+
+        - `param`：通过表单数据返回，供 [3D Secure 认证 API](https://docs.fincode.jp/api#tag/ThreeDSecureecure/executeThreeDSecureecureAuth)
+        使用
+
+        - `requestorTransId`：通过表单数据返回，后续处理不使用
+
+
+        详情参见 [3D Secure 2.0 文档](https://docs.fincode.jp/payment/fraud_protection/3d_secure_2)。'
     ThreeDSecure2Status:
       type: string
       enum:
@@ -11764,23 +11746,19 @@ components:
     card_updater_last_success_date:
       allOf:
       - $ref: '#/components/schemas/process_date'
-      description: 'カード更新成功日時
+      description: '卡片自动更新最近成功时间。
 
-        最後にカード情報の更新に成功した日時\
+        最后一次成功更新卡片信息的时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     card_updater_last_attempt_date:
       allOf:
       - $ref: '#/components/schemas/process_date'
-      description: 'カード更新実施日時
+      description: '卡片自动更新最近执行时间。
 
-        最後にカード情報の更新を実施した日時\
+        最后一次执行卡片信息更新的时间。
 
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     card:
       type: object
       nullable: true
@@ -12147,9 +12125,7 @@ components:
     virtualaccount:
       type: object
       nullable: true
-      description: '<span class="smallText">この決済手段が銀行振込（バーチャル口座）を表す（`pay_type = Virtualaccount`）とき、バーチャル口座情報の詳細がこの`virtualaccount`オブジェクトに格納されます。</span>
-
-        '
+      description: 当支付方式为银行转账（`pay_type = Virtualaccount`）时，虚拟账户详细信息保存在此 `virtualaccount` 对象中。
       properties:
         va_branch_code:
           $ref: '#/components/schemas/va_branch_code'
@@ -12935,9 +12911,7 @@ components:
       description: 账户名义人（片假名）
     paper_application:
       type: object
-      description: '依頼書登録のパラメータ
-
-        '
+      description: 纸质申请书登记参数。
       properties:
         postal_account_number_1:
           type: string
@@ -13293,19 +13267,23 @@ components:
       example: https://url.to/redirect/payer
       maxLength: 256
       nullable: true
-      description: "リダイレクトURL \\\n購入者をこのURLへリダイレクトさせ、ステータスがAWAITING_CUSTOMER_ACTION の決済手段を有効化するための後続の処理へ誘導してください。  \n- 振替口座登録の場合：\
-        \ このURLにアクセスして振替口座登録の承認を行います。このURLには1度だけアクセスできます。\n- カード登録の場合： このURLにアクセスして3Dセキュア認証を行います。\\\n<span class=\"smallText\"\
-        >※ `pay_type = Card`（カード）の場合、この項目は決済手段の登録・更新のレスポンスでのみ返却されます（取得・一覧取得・削除のレスポンスでは返却されません）。</span>\n"
+      description: '重定向 URL。请将购买者引导至此 URL，继续处理并激活状态为 `AWAITING_CUSTOMER_ACTION` 的支付方式。
+
+
+        - 登记扣款账户时：访问此 URL 批准账户登记；URL 只能访问一次
+
+        - 登记银行卡时：访问此 URL 执行 3D Secure 认证
+
+
+        当 `pay_type = Card` 时，本字段仅在支付方式登记或更新响应中返回，获取、列表和删除响应不返回。'
     error_code:
       type: string
       minLength: 11
       maxLength: 11
       example: E**********
-      description: 'エラー内容を判定する場合はこの`error_code`の使用が推奨されます。\
+      description: '判断错误内容时，建议使用 `error_code`。
 
-        [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-        '
+        各错误码的定义请参阅[错误码一览](https://docs.fincode.jp/develop_support/error)。'
     x-res-properties-card:
       type: object
       properties:
@@ -13677,26 +13655,22 @@ components:
       - Directdebit
       - Virtualaccount
       example: Card
-      description: '決済種別\
-
-        この決済で利用する決済手段です。
+      description: '当前支付使用的支付方式。
 
 
-        - `Card`: カード
+        - `Card`：银行卡
 
-        - `Konbini`: コンビニ決済
+        - `Konbini`：便利店支付
 
-        - `Paypay`: PayPay
+        - `Paypay`：PayPay
 
-        - `Applepay`: Apple Pay
+        - `Applepay`：Apple Pay
 
-        - `Googlepay`: Google Pay
+        - `Googlepay`：Google Pay
 
-        - `Directdebit`: 口座振替
+        - `Directdebit`：银行账户自动扣款
 
-        - `Virtualaccount`: 銀行振込（バーチャル口座）
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
       x-description-card: '支付类型。
 
         本次支付使用的支付方式。
@@ -13825,30 +13799,28 @@ components:
       - AUTHENTICATED
       - FAILED
       example: CAPTURED
-      description: '決済ステータス
+      description: '支付状态。
 
 
-        - `UNPROCESSED`: 未処理
+        - `UNPROCESSED`：未处理
 
-        - `CHECKED`: 有効性チェック済み
+        - `CHECKED`：有效性检查完成
 
-        - `AUTHORIZED`: 仮売上
+        - `AUTHORIZED`：已授权
 
-        - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち
+        - `AWAITING_CUSTOMER_PAYMENT`：等待购买者支付
 
-        - `AWAITING_PAYMENT_APPROVAL`: 決済承認待ち
+        - `AWAITING_PAYMENT_APPROVAL`：等待支付批准
 
-        - `CAPTURED`: 売上確定
+        - `CAPTURED`：已确认请款
 
-        - `CANCELED`: キャンセル
+        - `CANCELED`：已取消
 
-        - `EXPIRED`: 決済の期限切れ
+        - `EXPIRED`：已过期
 
-        - `AUTHENTICATED`: 未処理（3Dセキュア認証待ち）
+        - `AUTHENTICATED`：未处理，等待 3D Secure 认证
 
-        - `FAILED`: 決済失敗
-
-        '
+        - `FAILED`：支付失败'
       x-description-card: '支付状态。
 
 
@@ -14729,16 +14701,14 @@ components:
       - '2'
       - '5'
       example: '1'
-      description: '支払方法
+      description: '付款方式。
 
 
-        - `1`: 一括払い
+        - `1`：一次性付款
 
-        - `2`: 分割払い
+        - `2`：分期付款
 
-        - `5`: リボ払い
-
-        '
+        - `5`：循环信贷付款'
     CardPayTimesResponse:
       type: integer
       format: int64
@@ -14753,14 +14723,12 @@ components:
       - 18
       - 20
       - 24
-      description: "（分割払いの場合）支払回数  \n"
+      description: 分期付款次数。
     PaymentBulk_properties-id:
       type: string
       minLength: 25
       maxLength: 25
-      description: '一括決済ID
-
-        '
+      description: 批量支付 ID。
     Subscription_properties-id:
       type: string
       example: su_*********************
@@ -14772,15 +14740,19 @@ components:
       example: https://your-server.example.com/3ds2-return/success
       maxLength: 256
       nullable: true
-      description: "加盟店戻りURL（成功時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証処理後、決済に成功した際にリダイレクトされるURLです。  \nPOSTメソッドでリダイレクトされます。\n\
-        \nリクエストで指定しない場合はデフォルトの成功ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定していない場合のみ返却されます。  \n"
+      description: '商户成功回跳 URL。浏览器与 fincode 自动执行 3D Secure 时，认证及支付成功后通过 POST 方法重定向至此 URL。
+
+
+        请求未指定时使用默认成功页面；仅未指定 `tds2_ret_url` 时返回。'
     x-req-properties-return_url_on_failure:
       type: string
       example: https://your-server.example.com/3ds2-return/failure
       maxLength: 256
       nullable: true
-      description: "加盟店戻りURL（失敗時）  \n購入者のブラウザとfincode間で3Dセキュア認証を自動で行う場合に、\n3Dセキュア認証に失敗、または決済に失敗した際にリダイレクトされるURLです。  \nPOSTメソッドでリダイレクトされます。\n\
-        \nリクエストで指定しない場合はデフォルトの失敗ページのURLが設定されます。  \nまた、`tds2_ret_url`を指定していない場合のみ返却されます。  \n"
+      description: '商户失败回跳 URL。浏览器与 fincode 自动执行 3D Secure 时，认证或支付失败后通过 POST 方法重定向至此 URL。
+
+
+        请求未指定时使用默认失败页面；仅未指定 `tds2_ret_url` 时返回。'
     Payment.Card:
       type: object
       properties:
@@ -15119,22 +15091,20 @@ components:
       - AMEX
       - DINERS
       - ''
-      description: 'カードブランドを表します。
+      description: '银行卡品牌。
 
 
-        - `VISA`: VISA
+        - `VISA`：Visa
 
-        - `MASTER`: Mastercard
+        - `MASTER`：Mastercard
 
-        - `JCB`: JCB
+        - `JCB`：JCB
 
-        - `AMEX`: American Express
+        - `AMEX`：American Express
 
-        - `DINERS`: Diners Club
+        - `DINERS`：Diners Club
 
-        - `""`（空文字列） : 判定不能
-
-        '
+        - `""`：无法判断'
     Payment.GooglePay:
       type: object
       properties:
@@ -15310,68 +15280,52 @@ components:
       - '00760'
       minLength: 5
       maxLength: 5
-      description: 'コンビニ事業者コード\
-
-        購入者が払い込みを行ったコンビニ事業者をあらわすコード。
+      description: '购买者完成付款的便利店运营商代码。
 
 
-        - `00010`: セブン-イレブン
+        - `00010`：7-Eleven
 
-        - `00020`: ローソン
+        - `00020`：Lawson
 
-        - `00030`: ファミリーマート
+        - `00030`：FamilyMart
 
-        - `00080`: ミニストップ
+        - `00080`：MINISTOP
 
-        - `00760`: セイコーマート
-
-        '
+        - `00760`：Seicomart'
     device_name:
       type: string
       minLength: 1
       maxLength: 20
       example: iPhone
-      description: 'デバイス名\
-
-        バーコード表示を行うデバイスの名前を指定します。
+      description: '显示条形码的设备名称。
 
 
-        - Androidの場合： [ユーザーエージェントクライアントヒントAPI](https://developer.mozilla.org/ja/docs/Web/API/User-Agent_Client_Hints_API)またはNavigator:
-        userAgentプロパティ（非推奨）で取得できる文字列から取得したデバイス名を指定します。
+        - Android：填写通过 [User-Agent Client Hints API](https://developer.mozilla.org/ja/docs/Web/API/User-Agent_Client_Hints_API)
+        或 `Navigator.userAgent`（已弃用）取得的信息中解析出的设备名称
 
-        - iPhoneの場合： 固定文字列`iPhone`を指定します。
-
-        '
+        - iPhone：填写固定字符串 `iPhone`'
     win_width:
       type: string
       minLength: 1
       maxLength: 5
       example: '375'
-      description: 'デバイス画面幅\
-
-        バーコード表示を行うデバイスの画面幅を指定します。
+      description: '显示条形码的设备屏幕宽度。
 
 
-        - Androidの場合： `window.screen.width`で取得した値に `pixel_ratio`（ピクセル比）の値を乗じたものを指定します。
+        - Android：`window.screen.width` 乘以 `pixel_ratio`
 
-        - iPhoneの場合： `window.screen.width`で取得した値を指定します。
-
-        '
+        - iPhone：`window.screen.width`'
     win_height:
       type: string
       minLength: 1
       maxLength: 5
       example: '812'
-      description: 'デバイス画面の高さ\
-
-        バーコード表示を行うデバイス画面の高さを指定します。
+      description: '显示条形码的设备屏幕高度。
 
 
-        - Androidの場合： `window.screen.height`で取得した値に `pixel_ratio`（ピクセル比）の値を乗じたものを指定します。
+        - Android：`window.screen.height` 乘以 `pixel_ratio`
 
-        - iPhoneの場合： `window.screen.height`で取得した値を指定します。
-
-        '
+        - iPhone：`window.screen.height`'
     KonbiniPaymentProcessResult:
       type: string
       enum:
@@ -15392,40 +15346,38 @@ components:
       - '900'
       minLength: 3
       maxLength: 3
-      description: 'コンビニ事業者の決済処理結果コード
+      description: '便利店运营商处理结果代码。
 
 
-        - `000`: 正常終了
+        - `000`：正常完成
 
-        - `001`: 認証失敗
+        - `001`：认证失败
 
-        - `002`: 注文登録には成功したものの端末情報が確認できなかったためバーコード画像の発行なし
+        - `002`：订单登记成功，但无法确认设备信息，未签发条形码图片
 
-        - `003`: 必須項目の不備によるエラー
+        - `003`：必填字段不完整
 
-        - `004`: バーコードデータ内の識別子が不正
+        - `004`：条形码数据标识符无效
 
-        - `005`: バーコードデータ内のメーカーコードが不正
+        - `005`：条形码数据制造商代码无效
 
-        - `006`: バーコードデータ内の企業識別コードが不正
+        - `006`：条形码数据企业识别代码无效
 
-        - `007`: 支払い期限日時を超過している、または形式が不正
+        - `007`：超过支付期限或日期格式无效
 
-        - `008`: 支払い金額が上限もしくは下限を超えている
+        - `008`：支付金额超出上下限
 
-        - `009`: 全体チェックデジットが不正
+        - `009`：整体校验位无效
 
-        - `010`: その他の理由によりバーコード画像の発行に失敗
+        - `010`：其他原因导致条形码图片签发失败
 
-        - `011`: 印紙フラグ（内部データ）不正
+        - `011`：印花税标志（内部数据）无效
 
-        - `012`: 端末情報の指定値の桁数不正
+        - `012`：设备信息长度无效
 
-        - `013`: 既に同一のバーコードが登録済み
+        - `013`：相同条形码已经登记
 
-        - `900`: 予期せぬエラー
-
-        '
+        - `900`：意外错误'
     Payment.Konbini:
       type: object
       properties:
@@ -16244,11 +16196,7 @@ components:
       minLength: 1
       maxLength: 30
       example: o_**********************
-      description: 'オーダーID\
-
-        決済情報のIDです。
-
-        '
+      description: 订单 ID，即支付信息 ID。
     CardPaymentJobCode:
       type: string
       enum:
@@ -16256,42 +16204,26 @@ components:
       - AUTH
       - CAPTURE
       example: CAPTURE
-      description: '取引種別\
-
-        この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するか、カードの有効性チェックのみを行うかを指定します。
+      description: '银行卡支付执行时的交易类型。
 
 
-        - `CHECK`：有効性チェックのみ行う
+        - `CHECK`：仅执行有效性检查
 
-        - `AUTH`：仮売上にする
+        - `AUTH`：仅授权
 
-        - `CAPTURE`：即時売上
-
-        '
+        - `CAPTURE`：立即确认请款'
     amount:
       type: string
       nullable: false
       minLength: 1
       example: '1000'
-      description: '利用金額\
-
-        `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-        参照例： [カード決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/restriction)
-
-        '
+      description: 使用金额。与 `tax` 的合计值必须在支付方式允许的金额范围内。参见[银行卡支付限制](https://docs.fincode.jp/payment/restriction)。
     tax:
       type: string
       nullable: false
       minLength: 1
       example: '100'
-      description: '税送料\
-
-        `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-        参照例： [カード決済 > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/restriction)
-
-        '
+      description: 税费及运费。与 `amount` 的合计值必须在支付方式允许的金额范围内。参见[银行卡支付限制](https://docs.fincode.jp/payment/restriction)。
     Payment.Card.Creating.Request:
       type: object
       properties:
@@ -16361,16 +16293,12 @@ components:
       - AUTH
       - CAPTURE
       example: CAPTURE
-      description: '取引種別\
-
-        この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するかを指定します。
+      description: 'Apple Pay 支付执行时的交易类型。
 
 
-        - `AUTH`：仮売上にする
+        - `AUTH`：仅授权
 
-        - `CAPTURE`：即時売上
-
-        '
+        - `CAPTURE`：立即确认请款'
     Payment.ApplePay.Creating.Request:
       type: object
       properties:
@@ -16433,16 +16361,12 @@ components:
       - AUTH
       - CAPTURE
       example: CAPTURE
-      description: '取引種別\
-
-        この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するかを指定します。
+      description: 'Google Pay 支付执行时的交易类型。
 
 
-        - `AUTH`：仮売上
+        - `AUTH`：仅授权
 
-        - `CAPTURE`：即時売上
-
-        '
+        - `CAPTURE`：立即确认请款'
     Payment.GooglePay.Creating.Request:
       type: object
       properties:
@@ -16557,16 +16481,12 @@ components:
       - AUTH
       - CAPTURE
       example: CAPTURE
-      description: '取引種別\
-
-        この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するか指定します。
+      description: 'PayPay 支付执行时的交易类型。
 
 
-        - `AUTH`：仮売上にする
+        - `AUTH`：仅授权
 
-        - `CAPTURE`：即時売上
-
-        '
+        - `CAPTURE`：立即确认请款'
     order_description:
       type: string
       nullable: true
@@ -16700,25 +16620,17 @@ components:
       type: string
       minLength: 1
       maxLength: 10
-      description: '振込依頼金額\
+      description: '要求转账的商品或服务金额。与 `billing_tax` 的合计值必须处于该支付方式允许的金额范围内。
 
-        `billing_tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-        参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restriction)
-
-        '
+        参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
     billing_tax:
       type: string
       nullable: true
       minLength: 1
       maxLength: 10
-      description: '振込依頼金額（税送料）\
+      description: '要求转账的税费及运费金额。与 `billing_amount` 的合计值必须处于该支付方式允许的金额范围内。
 
-        `billing_amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。\
-
-        参照例： [銀行振込（バーチャル口座） > 制限事項 > 利用可能な金額](https://docs.fincode.jp/payment/virtualaccount/restriction)
-
-        '
+        参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
     use_exact_deposit_amount:
       type: boolean
       enum:
@@ -16774,17 +16686,12 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/use_exact_deposit_amount'
-          description: '入金可能額設定利用フラグ\
+          description: '是否为当前支付的虚拟账户设置可入账金额。启用后，购买者只能汇入请款金额。
 
-            この決済で使用されるバーチャル口座に対して入金可能額を設定するかどうかを示すフラグです。\
 
-            設定した場合、購入者は請求金額以外の金額を振り込むことができなくなります。
+            - `true`：设置可入账金额
 
-            - `true`: 入金可能額を設定する
-
-            - `false`: 入金可能額を設定しない（デフォルト）
-
-            '
+            - `false`：不设置（默认）'
       required:
       - pay_type
       - billing_amount
@@ -16868,13 +16775,9 @@ components:
       - '20'
       - '24'
       example: null
-      description: '（分割払いの場合）支払回数\
+      description: '分期付款次数。
 
-        \
-
-        指定可能な値： `3`, `5`, `6`, `10`, `12`, `15`, `18`, `20`, `24`
-
-        '
+        可用值：`3`、`5`、`6`、`10`、`12`、`15`、`18`、`20`、`24`。'
     Payment.Card.Executing.Request:
       type: object
       properties:
@@ -17145,23 +17048,15 @@ components:
     Payment.ApplePay_x-req-properties-token:
       type: string
       example: eyJoZWFkZXIiOnsiZXBoZW1lcmFsUHVibGljS2V5IjoidGVzdFB1YmxpY0tleSIsInB1YmxpY0tleUhhc2giOiJ0ZXN0S2V5SGFzaCIsInRyYW5zYWN0aW9uSWQiOiJ0ZXN0VHJhbnNhY3Rpb24ifSwiZGF0YSI6ImV5SmhjSEJzYVdOaGRHbHZibEJ5YVcxaGNubEJZMk52ZFc1MFRuVnRZbVZ5SWpvaU5ERXhNVEV4TVRFeE1URXhNVEV4TVNJc0ltRndjR3hwWTJGMGFXOXVSWGh3YVhKaGRHbHZia1JoZEdVaU9pSXlOakV5TXpFaUxDSmpkWEp5Wlc1amVVTnZaR1VpT2lJek9USWlMQ0owY21GdWMyRmpkR2x2YmtGdGIzVnVkQ0k2SWpFeE1URWlMQ0pqWVhKa2FHOXNaR1Z5VG1GdFpTSTZJaUlzSW1SbGRtbGpaVTFoYm5WbVlXTjBkWEpsY2tsa1pXNTBhV1pwWlhJaU9pSWlMQ0p3WVhsdFpXNTBSR0YwWVZSNWNHVWlPaUl6UkZObFkzVnlaU0lzSW5CaGVXMWxiblJFWVhSaElqcDdJbTl1YkdsdVpWQmhlVzFsYm5SRGNubHdkRzluY21GdElqb2lSSFZ0YlhsRFFWWldRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRU0lzSW1WamFVbHVaR2xqWVhSdmNpSTZJalVpZlgwPSIsInNpZ25hdHVyZSI6InRlc3RTaWduYXR1cmUiLCJ2ZXJzaW9uIjoiTW9jayJ9
-      description: 'Apple Pay カードトークン\
-
-        Apple Payが利用可能なデバイスから取得したトークンをBase64エンコードした値を設定します。\
-
-        \
-
-        トークンの取得方法
-
-        - Swift： `PKPayment.token.paymentData`の値をBase64エンコード
-
-        - JavaScript： `ApplePayPaymentAuthorizedEvent.payment.token`の値をBase64エンコード
+      description: '从支持 Apple Pay 的设备取得并进行 Base64 编码的银行卡令牌。
 
 
-        詳細は[Docs > 決済処理を実行する（Apple Pay）](https://docs.fincode.jp/payment/applepay/execution)または[Offering Apple Pay in Your
-        App](https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/offering_apple_pay_in_your_app)（Apple公式）を参照できます。
+        - Swift：对 `PKPayment.token.paymentData` 进行 Base64 编码
 
-        '
+        - JavaScript：对 `ApplePayPaymentAuthorizedEvent.payment.token` 进行 Base64 编码
+
+
+        参见 [Apple Pay 支付执行](https://docs.fincode.jp/payment/applepay/execution)及 [Apple 官方文档](https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/offering_apple_pay_in_your_app)。'
     Payment.ApplePay.Executing.Request:
       type: object
       properties:
@@ -17193,9 +17088,12 @@ components:
     Payment.GooglePay_x-req-properties-token:
       type: string
       example: eyJ2ZXJzaW9uIjoiR21vTW9jayIsInByb3RvY29sVmVyc2lvbiI6IkVDdjIiLCJzaWduYXR1cmUiOiJNRVFDSUR4Qm9VQ29GUkdSZUxkWi9jQUJsU1NSSUtvT0VGb1UzZTI3YzE0dk1adGZBaUJ0WDNwR01FcG53Nm1TQWJuYWdDQ2dIbENrM05jRndXWUV5eElFNktHWlZBdTAwM2R1MDAzZCIsInNpZ25lZE1lc3NhZ2UiOiJ7XCJlbmNyeXB0ZWRNZXNzYWdlXCI6XCJleUpuWVhSbGQyRjVUV1Z5WTJoaGJuUkpaQ0k2SUNKemIyMWxMVzFsY21Ob1lXNTBMV2xrSWl3aWJXVnpjMkZuWlVWNGNHbHlZWFJwYjI0aU9pQWlNalUxTmpFeE1UVTVPVEF3TUNJc0ltMWxjM05oWjJWSlpDSTZJQ0pCU0RKRmFuUmpPRGhhU0VvdE1tRlpRbEZYZWtoM2RuQTJiREJLYzBOSVozaFdkRGh6T1RGQkxWcFZhV3RoV0U1aVkycHpSbTAyWjJjNVJYaGxWbEl0YW5wSmVWUXRiVXAyUVY5dWRIWm1Vbk5FUkU5SU1tcHVTMDFxWkZSMFdFbEtkbEIwTUU1Q1ZWVTBOVkkzTFdkdWFuaHJlQzF6U1RCc1pHTlhkbUpFU0hOV01EY3pOWGxHUkdKWGF5SXNJbkJoZVcxbGJuUk5aWFJvYjJRaU9pQWlRMEZTUkNJc0luQmhlVzFsYm5STlpYUm9iMlJFWlhSaGFXeHpJam9nZXlKbGVIQnBjbUYwYVc5dVdXVmhjaUk2SURJd05UQXNJbVY0Y0dseVlYUnBiMjVOYjI1MGFDSTZJREV5TENKd1lXNGlPaUFpTkRFd01EQXdNREF3TURBd01ERXdNQ0lzSW1GMWRHaE5aWFJvYjJRaU9pQWlVRUZPWDA5T1RGa2lmWDA9XCIsXCJlcGhlbWVyYWxQdWJsaWNLZXlcIjpcIkJHTXhlc256S0NWRFlTWTdpNk5sWHJyeDNDRTFvRERUTElhOGx2QUFpZkxnZ2s0WW92bHV5SXZWNlh4VVllTTI1VzRqeWFKaWtNcVF3MGh3ZDVCVEw4OD1cIixcInRhZ1wiOlwiWlZ3bEp0N2RVOFBsazArcjhyUEY4RG1QVHZEaU9BMVVBb05qRFYrU3FERXUwMDNkXCJ9In0=
-      description: "Google Pay カードトークン\\\nGoogle Payを利用するデバイスから取得したトークン（`paymentMethodData.tokenizationData.token`）をBase64エンコードした値を設定します。\
-        \  \n\nトークン生成時、`tokenizationSpecification`には以下の値を指定してください。\n- gateway： `fincode`\n- gatewayMerchantId： `{{ショップID}}`<br>（例：s_01234567890）\n\
-        \n詳細は[Docs > 決済処理を実行する（Google Pay）](/payment/googlepay/execution)または[Google Pay ウェブ デベロッパー向けドキュメント](https://developers.google.com/pay/api/web?hl=ja)（Google公式）を参照してください。\n"
+      description: '对 Google Pay 设备取得的 `paymentMethodData.tokenizationData.token` 进行 Base64 编码后填写。
+
+
+        生成令牌时，`tokenizationSpecification` 请指定 `gateway: fincode` 和 `gatewayMerchantId: {{商户 ID}}`（例如 `s_01234567890`）。
+
+        参见 [Google Pay 支付执行](/payment/googlepay/execution)及 [Google Pay Web 开发者文档](https://developers.google.com/pay/api/web?hl=ja)。'
     Payment.GooglePay.Executing.Request:
       type: object
       properties:
@@ -17448,26 +17346,18 @@ components:
       minLength: 1
       maxLength: 2
       example: '2'
-      description: '支払い期限日数\
-
-        この決済の支払い期限日数です。`0`日から`14`日まで指定できます。
+      description: '支付期限天数，可指定 `0`～`14` 天。
 
 
-        - `0`を指定すると決済を作成した当日に限り支払いが可能な決済が作成されます。
+        - 指定 `0` 时，仅可在创建支付的当天完成付款
 
-        - デフォルト：`2`
-
-        '
+        - 默认值：`2`'
     pixel_ratio:
       type: string
       minLength: 1
       maxLength: 5
       example: '2.00'
-      description: 'デバイスピクセル比\
-
-        `window.devicePixelRatio`から取得した値を小数点以下2桁まで指定します。
-
-        '
+      description: 设备像素比。填写 `window.devicePixelRatio` 的值，最多保留两位小数。
     win_size_type:
       type: string
       enum:
@@ -17476,16 +17366,12 @@ components:
       minLength: 1
       maxLength: 1
       example: '1'
-      description: '画面サイズ種別\
-
-        バーコード表示を行うデバイスのピクセルの種類を指定します。
+      description: '显示条形码设备的像素类型。
 
 
-        - `1`: 物理ピクセル（Androidのときはこちらを指定）
+        - `1`：物理像素，Android 使用此值
 
-        - `2`: CSSピクセル（iPhoneのときはこちらを指定）
-
-        '
+        - `2`：CSS 像素，iPhone 使用此值'
     Payment.Konbini.Executing.Request:
       type: object
       properties:
@@ -17539,11 +17425,7 @@ components:
       minLength: 1
       maxLength: 256
       example: https://your-service.example.com/on-payment-complete
-      description: 'リダイレクトURL\
-
-        決済が完了した際のPayPayからのリダイレクト先URL。
-
-        '
+      description: 支付完成后，PayPay 将购买者重定向到的 URL。
     redirect_type:
       type: string
       nullable: true
@@ -17551,26 +17433,18 @@ components:
       - '1'
       - '2'
       example: '1'
-      description: 'リダイレクト先種別\
-
-        `redirect_url`の種別
+      description: '`redirect_url` 的目标类型。
 
 
-        - `1`： Webページ／Webアプリケーション
+        - `1`：网站或 Web 应用
 
-        - `2`： ネイティブアプリ
-
-        '
+        - `2`：原生应用'
     user_agent:
       type: string
       minLength: 1
       maxLength: 256
       example: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3
-      description: 'ユーザーエージェント\
-
-        リクエストを送信したユーザーエージェントの情報。`redirect_type`が`1`（Webページ／Webアプリケーション）の場合指定できます。
-
-        '
+      description: 发送请求的 User-Agent 信息。当 `redirect_type` 为 `1`（网站或 Web 应用）时可以指定。
     Payment.PayPay.Executing.Request:
       type: object
       properties:
@@ -17609,15 +17483,13 @@ components:
       type: string
       nullable: true
       example: 2022/05/06
-      description: '振替指定日\
+      description: '扣款指定日期。
 
-        振替を行う日を指定します。\
+        指定计划执行扣款的日期。
 
-        実際の振替は営業日に行われるため、必ずしも指定した日付に引き落としが行われるとは限りません。\
+        实际扣款会在金融机构营业日执行，因此不一定会在指定日期完成。
 
-        指定可能な日付及び引き落とし日は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替指定日」及び「振替日」の列で確認できます。
-
-        '
+        可指定日期与实际扣款日期请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款指定日期”和“扣款日期”栏。'
     Payment.DirectDebit.Executing.Request:
       type: object
       properties:
@@ -17709,11 +17581,7 @@ components:
         payment_method_id:
           allOf:
           - $ref: '#/components/schemas/PaymentMethod_properties-id'
-          description: '決済手段ID\
-
-            この決済に使用する決済手段（銀行振込（バーチャル口座））のIDです。指定しない場合、デフォルト決済手段が使用されます。
-
-            '
+          description: 当前支付使用的银行转账（虚拟账户）支付方式 ID；未指定时使用默认支付方式。
       required:
       - pay_type
       - access_id
@@ -17851,11 +17719,7 @@ components:
       nullable: true
       maxLength: 100
       example: ○○の発送完了
-      description: '売上確定の説明\
-
-        購入者のPayPayアプリ上で表示される売上確定の説明。
-
-        '
+      description: 在购买者 PayPay 应用中显示的确认请款说明。
     Payment.PayPay.Capturing.Request:
       type: object
       properties:
@@ -17970,11 +17834,7 @@ components:
       nullable: true
       maxLength: 100
       example: ○○の購入キャンセル
-      description: 'キャンセルの説明\
-
-        購入者のPayPayアプリ上で表示されるキャンセルの説明。
-
-        '
+      description: 在购买者 PayPay 应用中显示的取消说明。
     Payment.PayPay.Canceling.Request:
       type: object
       properties:
@@ -18229,11 +18089,7 @@ components:
       nullable: true
       maxLength: 100
       example: ○○の変更の適用
-      description: '金額変更の説明\
-
-        購入者のPayPayアプリ上で表示される金額変更の説明。
-
-        '
+      description: 在购买者 PayPay 应用中显示的金额变更说明。
     Payment.PayPay.ChangingAmount.Request:
       type: object
       properties:
@@ -18544,13 +18400,7 @@ components:
       minLength: 1
       maxLength: 2000
       example: ew0KICAgICJicm93c2VyQWNjZXB0SGVhZGVyIjogInRleHQvaHRtbCxhcHBsaWNhdGlvbi94aHRtbCt4bWwsYXBwbGljYXRpb24veG1sO3E9MC45LGltYWdlL2F2aWYsaW1hZ2Uvd2VicCxpbWFnZS9hcG5nLCovKjtxPTAuOCxhcHBsaWNhdGlvbi9zaWduZWQtZXhjaGFuZ2U7dj1iMztxPTAuNyIsDQogICAgImJyb3dzZXJJUCI6ICIxOTIuMTY4LngueCIsDQogICAgImJyb3dzZXJKYXZhRW5hYmxlZCI6IGZhbHNlLA0KICAgICJicm93c2VyTGFuZ3VhZ2UiOiAiamEtSlAiLA0KICAgICJicm93c2VySmF2YXNjcmlwdEVuYWJsZWQiOiB0cnVlLA0KICAgICJicm93c2VyQ29sb3JEZXB0aCI6ICJ7e0NvbG9yIGRlcHRofX0iLA0KICAgICJicm93c2VyU2NyZWVuSGVpZ2h0IjogInt7U2NyZWVuIGhlaWdodH19IiwNCiAgICAiYnJvd3NlclNjcmVlbldpZHRoIjogInt7U2NyZWVuIHdpZHRofX0iLA0KICAgICJicm93c2VyVFoiOiAiLTU0MCIsDQogICAgImJyb3dzZXJVc2VyQWdlbnQiOiAiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEyMi4wLjAuMCBTYWZhcmkvNTM3LjM2Ig0KfQ0K
-      description: 'ブラウザ情報\
-
-        \
-
-        購入者が`acs_url`にアクセスしたことをトリガーにfincodeが`tds2_ret_url`宛てに送信するデータのうち、`param`の値を設定します。
-
-        '
+      description: 浏览器信息。购买者访问 `acs_url` 后，fincode 向 `tds2_ret_url` 发送的数据中 `param` 的值。
     ThreeDSecure.Authorizing.Request:
       type: object
       properties:
@@ -18608,41 +18458,32 @@ components:
       - Konbini
       - Paypay
       - Virtualaccount
-      description: '決済方法\
+      description: '重定向式支付链接可使用的支付方式。
 
-        このリダイレクト型決済で利用できる決済方法です。\
 
-        \
+        - `Card`：银行卡支付
 
-        - `Card`：カード決済\
-
-        - `Konbini`：コンビニ決済\
+        - `Konbini`：便利店支付
 
         - `Paypay`：PayPay
 
-        - `Virtualaccount`：バーチャル口座決済
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
     pay_type:
       type: array
       nullable: false
       items:
         allOf:
         - $ref: '#/components/schemas/PaymentSessionPayType'
-      description: '決済手段\
-
-        この決済URL上で使用できる決済手段を指定します。複数指定可能です。
+      description: '当前支付链接允许使用的支付方式，可指定多个。
 
 
-        - `Card`：カード決済
+        - `Card`：银行卡支付
 
-        - `Konbini`：コンビニ決済
+        - `Konbini`：便利店支付
 
         - `Paypay`：PayPay
 
-        - `Virtualaccount`：バーチャル口座決済
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
     CardPaymentSessionJobCode:
       type: string
       enum:
@@ -18650,16 +18491,12 @@ components:
       - CAPTURE
       example: CAPTURE
       default: AUTH
-      description: '取引種別\
-
-        この決済URL上でカード決済を行った際、仮売上にするか即座に売上確定するか指定します。
+      description: '支付链接中银行卡支付的交易类型。
 
 
-        - `AUTH`：仮売上にする（デフォルト）
+        - `AUTH`：仅授权（默认）
 
-        - `CAPTURE`：即時売上
-
-        '
+        - `CAPTURE`：立即确认请款'
     PaymentSession.Konbini_x-req-properties-payment_term_day:
       type: string
       nullable: true
@@ -18676,26 +18513,18 @@ components:
       - '0'
       - '1'
       example: '1'
-      description: 'コンビニ決済 支払い画面案内メール送信フラグ\
-
-        コンビニ決済の支払い画面案内メールを送信するかどうかを設定します。
+      description: '是否发送便利店支付页面引导邮件。
 
 
-        - `0`：送信しない
+        - `0`：不发送
 
-        - `1`：送信する
-
-        '
+        - `1`：发送'
     properties-order_description:
       nullable: true
       type: string
       maxLength: 100
       example: Your Shop上での購入
-      description: '注文内容の説明\
-
-        PayPayアプリ上で注文内容として表示されます。
-
-        '
+      description: 支付时在购买者 PayPay 应用中显示的订单说明。
     PaymentSession.VirtualAccount_x-req-properties-payment_term_day:
       type: string
       nullable: true
@@ -18717,59 +18546,37 @@ components:
       - '0'
       - '1'
       example: '1'
-      description: '銀行振込（バーチャル口座） 支払い画面案内メール送信フラグ\
-
-        銀行振込（バーチャル口座）の支払い画面案内メールを送信するかどうかを設定します。
+      description: '是否发送银行转账（虚拟账户）支付页面引导邮件。
 
 
-        - `0`：送信しない
+        - `0`：不发送
 
-        - `1`：送信する
-
-        '
+        - `1`：发送'
     success_url:
       type: string
       nullable: true
       maxLength: 256
       example: https://your-service.example.com/success
-      description: '成功時リダイレクトURL\
-
-        `link_url`上で決済に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-        '
+      description: 在 `link_url` 中支付成功后，fincode 通过 POST 方法重定向到的 URL。
     cancel_url:
       type: string
       nullable: true
       maxLength: 256
       example: https://your-service.example.com/cancel
-      description: 'キャンセル時リダイレクトURL\
-
-        `link_url`上で決済がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-        '
+      description: 在 `link_url` 中取消支付后，fincode 通过 POST 方法重定向到的 URL。
     PaymentSession_properties-expire:
       type: string
       nullable: false
       example: 2022/02/31 23:59:59.999
-      description: 'リダイレクト型決済URL 有効期限\
+      description: '重定向式支付链接的有效期。
 
-        形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     shop_service_name:
       type: string
       nullable: true
       maxLength: 100
       example: Your Service
-      description: 'ショップ／サービス名\
-
-        決済URL上で表示されるショップおよびサービスの名称です。\
-
-        \
-
-        デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。
-
-        '
+      description: 支付页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
     guide_mail_send_flag:
       type: string
       enum:
@@ -18777,70 +18584,42 @@ components:
       - '1'
       nullable: false
       example: '1'
-      description: '決済メール 送信フラグ\
-
-        リダイレクト型決済URLをfincodeからのメール送信機能で送信したかどうかを示します。
+      description: '是否通过 fincode 的邮件发送功能发送了支付链接。
 
 
-        - `0`：送信しなかった（デフォルト）
+        - `0`：未发送（默认）
 
-        - `1`：送信した
-
-        '
+        - `1`：已发送'
     receiver_mail:
       type: string
       nullable: true
       maxLength: 254
       example: receiver-email@example.com
-      description: '決済メール 送信先メールアドレス\
-
-        リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。
-
-        '
+      description: 通过 fincode 邮件功能发送支付链接时的收件人邮箱地址。
     mail_customer_name:
       type: string
       nullable: true
       maxLength: 384
       example: 買物 太郎
-      description: '購入メール 購入者の名前\
-
-        リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられる購入者の名前です。\
-
-        \
-
-        fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。
-
-        '
+      description: 使用 fincode 邮件功能发送支付链接时，邮件中显示的购买者姓名。fincode 默认邮件模板已包含称谓。
     thanks_mail_send_flag:
       type: string
       enum:
       - '0'
       - '1'
       nullable: false
-      description: '完了メール 送信フラグ\
-
-        決済が完了した際に購入者に完了メールを送信するかどうかを示します。
+      description: '支付完成后是否向购买者发送完成通知邮件。
 
 
-        - `0`：送信しない（デフォルト）
+        - `0`：不发送（默认）
 
-        - `1`：送信する
-
-        '
+        - `1`：发送'
     shop_mail_template_id:
       type: string
       nullable: true
       maxLength: 25
       example: null
-      description: 'メールテンプレートID\
-
-        メールテンプレートIDが設定されている場合、リダイレクト型決済URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\
-
-        \
-
-        fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。
-
-        '
+      description: 邮件模板 ID。设置后，将更改发送给支付链接收件人的邮件模板；使用 fincode 默认模板时请设置为 `null`。
     PaymentSession.Creating.Request:
       type: object
       properties:
@@ -19187,14 +18966,10 @@ components:
       maxLength: 10
       nullable: false
       example: CREATE
-      description: 'ステータス\
-
-        リダイレクト型決済URLのステータスを表します。
+      description: '重定向式支付链接状态。
 
 
-        - `CREATE`：決済URLが作成された状態
-
-        '
+        - `CREATE`：支付链接已创建'
     PaymentSession.Card:
       type: object
       properties:
@@ -19214,11 +18989,7 @@ components:
           nullable: true
           maxLength: 100
           example: null
-          description: '商品コード\
-
-            ※ 通常は`null`
-
-            '
+          description: 商品代码，通常为 `null`。
       x-req-properties:
         tds2_ch_acc_change:
           type: string
@@ -19882,14 +19653,12 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/PayPayPaymentJobCode'
-          description: 'この決済URL上でPayPayによる決済を行った際、仮売上にするか即座に売上確定するか指定します。
+          description: '使用 PayPay 支付时的处理类型。
 
 
-            - `AUTH`：仮売上にする
+            - `AUTH`：仅授权
 
-            - `CAPTURE`：即時売上
-
-            '
+            - `CAPTURE`：立即确认请款'
         order_description:
           nullable: true
           type: string
@@ -20166,68 +19935,38 @@ components:
       nullable: true
       maxLength: 256
       example: https://your-service.example.com/success
-      description: '成功時リダイレクトURL\
-
-        `link_url`上でカード登録に成功すると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-        '
+      description: 在 `link_url` 中登记成功后，fincode 通过 POST 方法重定向到的 URL。
     properties-cancel_url:
       type: string
       nullable: true
       maxLength: 256
       example: https://your-service.example.com/cancel
-      description: 'キャンセル時リダイレクトURL\
-
-        `link_url`上でカード登録がキャンセルされると、fincodeはこのURLにPOSTメソッドでリダイレクトします。
-
-        '
+      description: 在 `link_url` 中取消登记后，fincode 通过 POST 方法重定向到的 URL。
     CardRegistrationSession_properties-expire:
       type: string
       nullable: false
       example: 2022/02/31 23:59:59.999
-      description: 'リダイレクト型カード登録URL 有効期限\
+      description: '重定向式银行卡登记链接的有效期。
 
-        形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     properties-shop_service_name:
       type: string
       nullable: true
       maxLength: 100
       example: Your Service
-      description: 'ショップ／サービス名\
-
-        カード登録URL上で表示されるショップおよびサービスの名称です。\
-
-        \
-
-        デフォルトでは本番環境申請時に登録した「明細書表記」の値が設定されます。
-
-        '
+      description: 银行卡登记页面上显示的商户或服务名称。默认使用申请生产环境时登记的“账单显示名称”。
     properties-receiver_mail:
       type: string
       nullable: true
       maxLength: 254
       example: receiver-email@example.com
-      description: 'カード登録メール 送信先メールアドレス\
-
-        リダイレクト型カード登録URLをfincodeからのメール送信機能で送信する場合の送信先メールアドレスです。
-
-        '
+      description: 通过 fincode 邮件功能发送银行卡登记链接时的收件人邮箱地址。
     properties-mail_customer_name:
       type: string
       nullable: true
       maxLength: 384
       example: 買物 太郎
-      description: 'カード登録メール カード登録をするユーザーの名前\
-
-        リダイレクト型決済URLをfincodeからのメール送信機能で送信する場合のメール中で用いられるユーザーの名前です。\
-
-        \
-
-        fincodeが提供するデフォルトのメールテンプレートでは敬称がテンプレート側に含まれています。
-
-        '
+      description: 邮件中显示的银行卡登记用户姓名。fincode 默认邮件模板已包含称谓。
     properties-guide_mail_send_flag:
       type: string
       enum:
@@ -20235,54 +19974,34 @@ components:
       - '1'
       nullable: false
       example: '1'
-      description: 'カード登録メール 送信フラグ\
-
-        リダイレクト型カード登録URLをfincodeからのメール送信機能で送信したかどうかを示します。
+      description: '是否通过 fincode 邮件功能发送了银行卡登记链接。
 
 
-        - `0`：送信しなかった（デフォルト）
+        - `0`：未发送（默认）
 
-        - `1`：送信した
-
-        '
+        - `1`：已发送'
     completion_mail_send_flag:
       type: string
       enum:
       - '0'
       - '1'
       nullable: false
-      description: '完了メール 送信フラグ\
-
-        決済が完了した際にカード登録をしたユーザーに完了メールを送信するかどうかを示します。
+      description: '银行卡登记完成后是否向用户发送完成通知邮件。
 
 
-        - `0`：送信しない（デフォルト）
+        - `0`：不发送（默认）
 
-        - `1`：送信する
-
-        '
+        - `1`：发送'
     properties-shop_mail_template_id:
       type: string
       nullable: true
       maxLength: 25
       example: null
-      description: 'メールテンプレートID\
-
-        メールテンプレートIDが設定されている場合、リダイレクト型カード登録URLの送信先メールアドレスに送信されるメールのテンプレートが変更されます。\
-
-        \
-
-        fincodeが提供するデフォルトのメールテンプレートを使用する場合は`null`を設定します。
-
-        '
+      description: 邮件模板 ID。设置后将更改发送给用户的邮件模板；使用 fincode 默认模板时请设置为 `null`。
     CardRegistrationSession_properties-customer_id:
       allOf:
       - $ref: '#/components/schemas/id'
-      description: '顧客ID\
-
-        カード登録URLによりカードが登録される顧客のIDです。
-
-        '
+      description: 通过当前链接登记银行卡的客户 ID。
     customer_name:
       type: string
       nullable: true
@@ -20302,11 +20021,9 @@ components:
         expire:
           allOf:
           - $ref: '#/components/schemas/CardRegistrationSession_properties-expire'
-          description: 'リダイレクト型カード登録URL 有効期限\
+          description: '重定向式银行卡登记链接有效期。
 
-            形式： `yyyy/MM/dd HH:mm:ss`
-
-            '
+            格式：`yyyy/MM/dd HH:mm:ss`'
         shop_service_name:
           allOf:
           - $ref: '#/components/schemas/properties-shop_service_name'
@@ -20489,14 +20206,10 @@ components:
       maxLength: 10
       nullable: false
       example: CREATE
-      description: 'ステータス\
-
-        リダイレクト型カード登録URLのステータスを表します。
+      description: '重定向式银行卡登记链接状态。
 
 
-        - `CREATE`：カード登録URLが作成された状態
-
-        '
+        - `CREATE`：银行卡登记链接已创建'
     CardRegistrationSession:
       type: object
       properties:
@@ -20867,39 +20580,27 @@ components:
       nullable: false
       maxLength: 200
       example: Basic Plan
-      description: 'プラン名
-
-        '
+      description: 套餐名称。
     description:
       type: string
       nullable: true
       maxLength: 400
       example: Basic Plan Description
-      description: 'プランの説明
-
-        '
+      description: 套餐说明。
     x-req-properties-amount:
       type: string
       nullable: false
       minLength: 1
       maxLength: 7
       example: '1000'
-      description: '利用金額\
-
-        `tax`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。
-
-        '
+      description: 使用金额。与 `tax` 的合计值必须在该支付方式允许的金额范围内。
     x-req-properties-tax:
       type: string
       nullable: false
       minLength: 1
       maxLength: 7
       example: '100'
-      description: '税送料\
-
-        `amount`との合計値が決済手段ごとに定められた決済金額の範囲内に収まる必要があります。
-
-        '
+      description: 税费及运费。与 `amount` 的合计值必须在该支付方式允许的金额范围内。
     interval_pattern:
       type: string
       enum:
@@ -20907,18 +20608,12 @@ components:
       - year
       nullable: false
       example: month
-      description: '課金間隔\
-
-        課金間隔数（`interval_count`）を指定した場合必須です。
-
-        省略した場合、`month`が設定されます。
+      description: '扣款周期单位。指定 `interval_count` 时必填；省略时默认为 `month`。
 
 
         - `month`：月
 
-        - `year`：年
-
-        '
+        - `year`：年'
     interval_count:
       type: string
       nullable: false
@@ -20928,22 +20623,16 @@ components:
       - '3'
       - '6'
       default: '1'
-      description: '課金間隔数\
-
-        課金間隔（`interval_pattern`）を指定した場合必須です。
-
-        省略した場合、`1`が設定されます。
+      description: '扣款周期间隔数。指定 `interval_pattern` 时必填；省略时默认为 `1`。
 
 
-        - `1`：月次／年次の課金
+        - `1`：每月或每年扣款
 
-        - `2`：2ヶ月に1回の課金
+        - `2`：每 2 个月扣款一次
 
-        - `3`：3ヶ月に1回の課金
+        - `3`：每 3 个月扣款一次
 
-        - `6`：6ヶ月に1回の課金
-
-        '
+        - `6`：每 6 个月扣款一次'
     subscription_retry_mode:
       type: string
       nullable: true
@@ -20951,16 +20640,12 @@ components:
       - enabled
       - disabled
       default: disabled
-      description: 'リトライ対象設定\
-
-        課金失敗時に自動リトライを行うかを指定します。省略した場合 `disabled` が設定されます。
+      description: '扣款失败时是否自动重试；省略时默认为 `disabled`。
 
 
-        - `enabled`：リトライ対象
+        - `enabled`：启用重试
 
-        - `disabled`：リトライ対象外
-
-        '
+        - `disabled`：不启用重试'
     Plan.Creating.Request:
       type: object
       properties:
@@ -21036,14 +20721,12 @@ components:
       - Card
       - Directdebit
       example: Card
-      description: '決済種別（サブスクリプションに対応しているもの）
+      description: '订阅支持的支付方式。
 
 
-        - `Card`: カード
+        - `Card`：银行卡
 
-        - `Directdebit`: 口座振替
-
-        '
+        - `Directdebit`：银行账户自动扣款'
     SubscriptionStatus:
       type: string
       enum:
@@ -21053,28 +20736,22 @@ components:
       - INCOMPLETE
       minLength: 6
       maxLength: 10
-      description: 'ステータス
+      description: '订阅状态。
 
 
-        - `ACTIVE`: サブスクリプションが有効<br /><span class="smallText">設定した課金日に顧客に対して課金が行われます。</span>
+        - `ACTIVE`：有效，将在设定日期向客户扣款
 
-        - `RUNNING`: 課金処理中
+        - `RUNNING`：扣款处理中
 
-        - `CANCELED`: 解約済み<br /><span class="smallText">顧客に対して課金は行われません。</span>
+        - `CANCELED`：已解约，不再向客户扣款
 
-        - `INCOMPLETE`: 登録失敗<br /><span class="smallText">何らかの理由により登録に失敗しました。顧客に対して課金は行われません。</span>
-
-        '
+        - `INCOMPLETE`：登记失败，不会向客户扣款'
     total_amount:
       type: integer
       format: int64
       nullable: false
       example: 1100
-      description: '合計金額\
-
-        利用金額と税送料の合計金額です。
-
-        '
+      description: 合计金额，即使用金额与税费及运费之和。
     properties-interval_pattern:
       type: string
       enum:
@@ -21082,14 +20759,12 @@ components:
       - year
       nullable: false
       example: month
-      description: '課金間隔
+      description: '扣款周期单位。指定 `interval_count` 时必填；省略时默认为 `month`。
 
 
         - `month`：月
 
-        - `year`：年
-
-        '
+        - `year`：年'
     Subscription.ListRetrieving.QueryParams:
       type: object
       properties:
@@ -21379,63 +21054,37 @@ components:
     start_date:
       type: string
       example: 2022/05/16 00:00:00.000
-      description: '課金開始日\
+      description: '订阅扣款开始日期。
 
-        サブスクリプションの開始日です。\
-
-        \
-
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     stop_date:
       type: string
       example: 2022/06/16 00:00:00.000
       nullable: true
-      description: '課金停止日\
+      description: '订阅停止日期。
 
-        サブスクリプションの停止日です。\
-
-        \
-
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     end_month_flag:
       type: string
       enum:
       - '0'
       - '1'
-      description: '月末課金フラグ
+      description: '月末扣款标志。
 
 
-        - `0`：月末課金を行わない
+        - `0`：不在月末扣款
 
-        - `1`：月末課金を行う
-
-        '
+        - `1`：在月末扣款'
     initial_amount:
       type: string
       minLength: 1
       maxLength: 7
-      description: '初回利用金額\
-
-        \
-
-        この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`amount`の金額で課金します。
-
-        '
+      description: 设置后，首次扣款使用此金额，第二次及以后使用套餐信息中的 `amount`。
     initial_tax:
       type: string
       minLength: 1
       maxLength: 7
-      description: '初回税送料\
-
-        \
-
-        この値を設定すると、このサブスクリプションは初回の課金のみこの金額で課金し2回目以降はプラン情報がもつ`tax`の金額で課金します。
-
-        '
+      description: 设置后，首次扣款使用此税费及运费金额，第二次及以后使用套餐信息中的 `tax`。
     send_url:
       type: string
       nullable: true
@@ -21596,20 +21245,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/sort'
           nullable: true
-          description: 'ソートする項目と順序を指定します。\
+          description: '指定排序字段和顺序。
 
-            例： `?sort=process_date␣asc,created␣asc`\
-
-            \
-
-            ソート可能な項目
+            示例：`?sort=process_date␣asc,created␣asc`
 
 
-            - `process_date`: 処理日時
-
-            - `created`: 作成日時
-
-            '
+            可排序字段：`process_date`、`created`。'
       required:
       - pay_type
     SubscriptionResultStatus:
@@ -21621,18 +21262,14 @@ components:
       minLength: 1
       maxLength: 15
       example: SUCCEEDED
-      description: 'ステータス\
-
-        サブスクリプション課金のステータス（結果）です。
+      description: '订阅扣款结果状态。
 
 
-        - `CHECKED`：有効性チェックに成功
+        - `CHECKED`：有效性检查成功
 
-        - `SUCCEEDED`：課金成功
+        - `SUCCEEDED`：扣款成功
 
-        - `FAILED`：課金失敗
-
-        '
+        - `FAILED`：扣款失败'
     properties-card_no:
       allOf:
       - $ref: '#/components/schemas/card_no'
@@ -21645,18 +21282,16 @@ components:
       - 2
       - 3
       - 6
-      description: '課金間隔数
+      description: '扣款周期间隔数。指定 `interval_pattern` 时必填；省略时默认为 `1`。
 
 
-        - `1`：月次／年次の課金
+        - `1`：每月或每年扣款
 
-        - `2`：2ヶ月に1回の課金
+        - `2`：每 2 个月扣款一次
 
-        - `3`：3ヶ月に1回の課金
+        - `3`：每 3 个月扣款一次
 
-        - `6`：6ヶ月に1回の課金
-
-        '
+        - `6`：每 6 个月扣款一次'
     SubscriptionResult:
       type: object
       properties:
@@ -21801,41 +21436,35 @@ components:
       - RUNNING
       - COMPLETED
       - ERROR
-      description: '一括決済 ステータス
+      description: '批量支付状态。
 
 
-        - `CHECKING`: チェック中<br /><span class="smallText">アップロードした一括決済リクエストデータの形式などをチェック中です。</span>
+        - `CHECKING`：正在检查上传数据格式
 
-        - `CHECKED`: チェック済み<br /><span class="smallText">データのチェックが完了し、決済処理の実行を待っています。</span>
+        - `CHECKED`：检查完成，等待执行支付
 
-        - `RUNNING`: 決済処理中<br /><span class="smallText">一括決済処理を実行中です。</span>
+        - `RUNNING`：支付处理中
 
-        - `COMPLETED`: 完了<br /><span class="smallText">一括決済処理が完了しました。</span>
+        - `COMPLETED`：处理完成
 
-        - `ERROR`: エラー<br /><span class="smallText">チェック処理中に1件以上のエラーが発生しました。</span>
-
-        '
+        - `ERROR`：检查时发生至少一项错误'
     PaymentBulkPayType:
       type: string
       enum:
       - Card
       - Virtualaccount
       example: Card
-      description: '決済種別（一括決済に対応しているもの）
+      description: '批量支付支持的支付方式。
 
 
-        - `Card`: カード
+        - `Card`：银行卡
 
-        - `Virtualaccount`: 銀行振込（バーチャル口座）
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
     file_name:
       type: string
       minLength: 1
       maxLength: 100
-      description: '一括決済データファイル名
-
-        '
+      description: 批量支付数据文件名。
     PaymentBulk.ListRetrieving.QueryParams:
       type: object
       properties:
@@ -21999,37 +21628,25 @@ components:
       - $ref: '#/components/schemas/PaymentBulk.list'
     process_plan_date:
       type: string
-      description: '一括決済 処理予定日\
+      description: '批量支付的计划处理日期。`pay_type = Card` 时必填。
 
-        この一括決済の処理予定日です。\
-
-        pay_type=`Card`の場合は指定必須です。\
-
-        形式：`yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     file:
       type: string
-      description: "一括決済情報を記載したJSONファイル。\\\n\\\n以下のようなファイルをアップロードします。\\\npay_type=`Card`の場合\n```json\n{\n    \"data\": [\n\
-        \        {\n            \"id\": \"order_001\",\n            \"amount\": \"1000\",\n            \"tax\": \"100\",\n\
-        \            \"customer_id\": \"c_**********************\",\n            \"card_id\": \"cs_**********************\"\
-        ,\n            \"client_field_1\": \"自由項目1\",\n            \"client_field_2\": \"自由項目2\",\n            \"client_field_3\"\
-        : \"自由項目3\"\n        },\n        {\n            \"id\": \"order_002\",\n            \"amount\": \"1000\",\n      \
-        \      \"customer_id\": \"c_**********************\",\n            \"card_id\": \"cs_**********************\"\n  \
-        \      },\n        ...\n    ]\n}\n```\nパラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）\n\n- `data`: 決済情報のリストを格納する配列\n\
-        - `data[].id`: オーダーID\n- `data[].amount`: 利用金額*\n- `data[].tax`: 税送料\n- `data[].customer_id`: 顧客ID*\n- `data[].card_id`:\
-        \ カードID\n- `data[].client_field_1`: 自由項目1\n- `data[].client_field_2`: 自由項目2\n- `data[].client_field_3`: 自由項目3\n\n\
-        pay_type=`Virtualaccount`の場合\n```json\n{\n    \"data\": [\n        {\n            \"id\": \"order_001\",\n       \
-        \     \"billing_amount\": \"1000\",\n            \"billing_tax\": \"100\",\n            \"customer_id\": \"c_**********************\"\
-        ,\n            \"payment_method_id\": \"pm_**********************\",\n            \"client_field_1\": \"自由項目1\",\n\
-        \            \"client_field_2\": \"自由項目2\",\n            \"client_field_3\": \"自由項目3\"\n        },\n        {\n  \
-        \          \"id\": \"order_002\",\n            \"billing_amount\": \"1000\",\n            \"payment_term_day\":\"\
-        2\",\n            \"reference_order_id\":\"order_101\",\n            \"use_exact_deposit_amount\": true\n        },\n\
-        \        ...\n    ]\n}\n```\nパラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）\n\n- `data`: 決済情報のリストを格納する配列\n-\
-        \ `data[].id`: オーダーID\n- `data[].billing_amount`: 請求金額*\n- `data[].billing_tax`: 請求税送料\n- `data[].customer_id`: 顧客ID\n\
-        - `data[].payment_method_id`: 決済手段ID\n- `data[].client_field_1`: 自由項目1\n- `data[].client_field_2`: 自由項目2\n- `data[].client_field_3`:\
-        \ 自由項目3\n- `data[].payment_term_day`: 支払期限日数\n- `data[].reference_order_id`: バーチャル口座 再利用 オーダーID\n- `data[].use_exact_deposit_amount`:\
-        \ 入金可能額設定\n"
+      description: "记录批量支付信息的 JSON 文件。各参数格式遵循支付登记和支付执行 API，`*` 表示必填。\n\n`pay_type = Card` 时上传以下结构：\n\n```json\n{\n  \"data\"\
+        : [\n    {\n      \"id\": \"order_001\",\n      \"amount\": \"1000\",\n      \"tax\": \"100\",\n      \"customer_id\"\
+        : \"c_**********************\",\n      \"card_id\": \"cs_**********************\",\n      \"client_field_1\": \"自由字段1\"\
+        ,\n      \"client_field_2\": \"自由字段2\",\n      \"client_field_3\": \"自由字段3\"\n    }\n  ]\n}\n```\n\n- `data`：支付信息数组\n\
+        - `data[].id`：订单 ID\n- `data[].amount`：使用金额*\n- `data[].tax`：税费及运费\n- `data[].customer_id`：客户 ID*\n- `data[].card_id`：银行卡\
+        \ ID\n- `data[].client_field_1`～`data[].client_field_3`：商户自由字段\n\n`pay_type = Virtualaccount` 时上传以下结构：\n\n```json\n\
+        {\n  \"data\": [\n    {\n      \"id\": \"order_001\",\n      \"billing_amount\": \"1000\",\n      \"billing_tax\"\
+        : \"100\",\n      \"customer_id\": \"c_**********************\",\n      \"payment_method_id\": \"pm_**********************\"\
+        ,\n      \"client_field_1\": \"自由字段1\",\n      \"client_field_2\": \"自由字段2\",\n      \"client_field_3\": \"自由字段3\"\
+        \n    },\n    {\n      \"id\": \"order_002\",\n      \"billing_amount\": \"1000\",\n      \"payment_term_day\": \"\
+        2\",\n      \"reference_order_id\": \"order_101\",\n      \"use_exact_deposit_amount\": true\n    }\n  ]\n}\n```\n\
+        \n- `data`：支付信息数组\n- `data[].id`：订单 ID\n- `data[].billing_amount`：请款金额*\n- `data[].billing_tax`：请款税费及运费\n- `data[].customer_id`：客户\
+        \ ID\n- `data[].payment_method_id`：支付方式 ID\n- `data[].client_field_1`～`data[].client_field_3`：商户自由字段\n- `data[].payment_term_day`：支付期限天数\n\
+        - `data[].reference_order_id`：用于复用虚拟账户的订单 ID\n- `data[].use_exact_deposit_amount`：可入账金额设置"
     PaymentBulk.Creating.Request:
       type: object
       properties:
@@ -22048,50 +21665,40 @@ components:
       - CHECKED
       - SUCCEEDED
       - FAILED
-      description: 'ステータス
+      description: '批量支付明细状态。
 
 
-        - `CHECKED`: チェック済み<br /><span class="smallText">データのチェックが完了し、決済処理の実行を待っています。</span>
+        - `CHECKED`：检查完成，等待执行支付
 
-        - `SUCCEEDED`: 決済成功<br /><span class="smallText">この決済の処理においてエラーが発生せず請求が完了しました。</span>
+        - `SUCCEEDED`：支付成功
 
-        - `FAILED`: 決済失敗<br /><span class="smallText">この決済の処理において1件以上のエラーが発生しました。</span>
-
-        '
+        - `FAILED`：支付失败'
     PaymentBulkDetail.ListRetrieving.QueryParams:
       type: object
       properties:
         pay_type:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkPayType'
-          description: '決済種別\
-
-            決済種別を指定します。
+          description: '支付方式。
 
 
-            - `Card`: カード
+            - `Card`：银行卡
 
-            - `Virtualaccount`: 銀行振込（バーチャル口座）
-
-            '
+            - `Virtualaccount`：银行转账（虚拟账户）'
         order_id:
           allOf:
           - $ref: '#/components/schemas/Payment_properties-id'
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkDetailStatus'
-          description: 'ステータス\
-
-            決済ステータスを指定します。カンマ区切りにすることで複数指定（OR検索）できます。
+          description: '支付状态，可使用半角逗号分隔指定多个值（OR 查询）。
 
 
-            - `CHECKED`: チェック済み<br /><span class="smallText">データのチェックが完了し、決済処理の実行を待っています。</span>
+            - `CHECKED`：检查完成，等待执行支付
 
-            - `SUCCEEDED`: 決済成功<br /><span class="smallText">この決済の処理においてエラーが発生せず請求が完了しました。</span>
+            - `SUCCEEDED`：支付成功
 
-            - `FAILED`: 決済失敗<br /><span class="smallText">この決済の処理において1件以上のエラーが発生しました。</span>
-
-            '
+            - `FAILED`：支付失败'
       required:
       - pay_type
     Payment_properties-amount:
@@ -22109,11 +21716,7 @@ components:
       format: int64
       nullable: false
       example: 1100
-      description: '合計金額\
-
-        `amount`と`tax`の合計値です。
-
-        '
+      description: 合计金额，即 `amount` 与 `tax` 之和。
     item_code:
       type: string
       nullable: true
@@ -22156,28 +21759,24 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkDetailStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `CHECKED`: チェック済み<br /><span class="smallText">データのチェックが完了し、決済処理の実行を待っています。</span>
+            - `CHECKED`：检查完成，等待执行支付
 
-            - `SUCCEEDED`: 決済成功<br /><span class="smallText">この決済の処理においてエラーが発生せず請求が完了しました。</span>
+            - `SUCCEEDED`：支付成功
 
-            - `FAILED`: 決済失敗<br /><span class="smallText">この決済の処理において1件以上のエラーが発生しました。</span>
-
-            '
+            - `FAILED`：支付失败'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
         job_code:
           allOf:
           - $ref: '#/components/schemas/CardPaymentJobCode'
-          description: '取引種別
+          description: '交易类型。
 
 
-            - `CAPTURE`：売上確定
-
-            '
+            - `CAPTURE`：确认请款'
         amount:
           allOf:
           - $ref: '#/components/schemas/Payment_properties-amount'
@@ -22246,21 +21845,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentBulkDetail'
-          description: '一括決済詳細リスト\
-
-            \
-
-            決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます。
-
-            '
+          description: 批量支付明细列表；每笔支付对应一个对象，对象内保存该笔支付信息。
     PaymentBulkErrorDetail:
       type: object
       properties:
         number:
           type: string
-          description: '行数
-
-            '
+          description: 行号。
         order_id:
           allOf:
           - $ref: '#/components/schemas/Payment_properties-id'
@@ -22275,22 +21866,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentBulkErrorDetail'
-          description: '一括決済エラー詳細リスト\
-
-            \
-
-            エラー1件につき1オブジェクトが格納され、オブジェクト内にはエラーが発生した決済のIDとその決済で発生したエラーのリストが格納されます。
-
-            '
+          description: 批量支付错误明细列表；每项错误对应一个对象，包含发生错误的支付 ID 及该支付的错误列表。
     properties-billing_amount:
       type: integer
       format: int64
       minLength: 1
       maxLength: 10
       example: 1000
-      description: '振込依頼金額
+      description: '要求转账的商品或服务金额。与 `billing_tax` 的合计值必须处于该支付方式允许的金额范围内。
 
-        '
+        参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
     properties-billing_tax:
       type: integer
       format: int64
@@ -22298,20 +21883,16 @@ components:
       minLength: 1
       maxLength: 10
       example: 100
-      description: '振込依頼金額（税送料）
+      description: '要求转账的税费及运费金额。与 `billing_amount` 的合计值必须处于该支付方式允许的金额范围内。
 
-        '
+        参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。'
     billing_total_amount:
       type: integer
       format: int64
       minLength: 1
       maxLength: 10
       example: 1100
-      description: '振込依頼金額 合計\
-
-        振込依頼金額と振込依頼金額（税送料）の合計金額です。
-
-        '
+      description: 要求转账的总金额，即 `billing_amount` 与 `billing_tax` 之和。
     payment_method_id:
       allOf:
       - $ref: '#/components/schemas/PaymentMethod_properties-id'
@@ -22319,107 +21900,67 @@ components:
       type: string
       nullable: false
       example: 2022/05/16
-      description: '取引日\
+      description: '交易日期。
 
-        \
-
-        形式： `yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     value_date:
       type: string
       nullable: true
       example: 2022/05/16
-      description: '起算日\
+      description: '起息日，即银行处理入账的营业日。
 
-        \
-
-        銀行で入金が処理された営業日\
-
-        形式： `yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     remitter_account_name:
       type: string
       nullable: true
       maxLength: 48
       example: ヤマダ　タロウ
-      description: '振込依頼人 氏名\
-
-        \
-
-        振込依頼人（購入者）の氏名です。
-
-        '
+      description: 汇款人（购买者）姓名。
     remitter_bank_name:
       type: string
       nullable: true
       maxLength: 30
       example: イロハギンコウ
-      description: '振込依頼人 銀行名\
-
-        \
-
-        振込依頼人（購入者）の銀行名です。
-
-        '
+      description: 汇款人（购买者）的银行名称。
     remitter_branch_name:
       type: string
       nullable: true
       maxLength: 15
       example: ホンテン
-      description: '振込依頼人 支店名\
-
-        \
-
-        振込依頼人（購入者）の支店名です。
-
-        '
+      description: 汇款人（购买者）的银行分行名称。
     overpayment_flag:
       type: string
       enum:
       - '0'
       - '1'
-      description: '多重支払フラグ\
-
-        この決済に対して複数回支払いが行われた場合`1`になります。
+      description: '重复付款标志。同一笔支付发生多次付款时为 `1`。
 
 
-        - `0`: 0回、または1回の支払いが行われた
+        - `0`：付款 0 次或 1 次
 
-        - `1`: 2回以上、同一のバーチャル口座に対して支払いが行われた
-
-        '
+        - `1`：向同一虚拟账户付款 2 次或以上'
     cancel_overpayment_flag:
       type: string
       enum:
       - '0'
       - '1'
-      description: 'キャンセル後支払フラグ\
-
-        この決済をキャンセルした後に購入者がバーチャル口座に対して支払いを行った場合`1`になります。
+      description: '取消后付款标志。取消支付后，购买者仍向虚拟账户付款时为 `1`。
 
 
-        - `0`: キャンセル後支払は行われていない
+        - `0`：取消后未付款
 
-        - `1`: キャンセル後支払が行われた
-
-        '
+        - `1`：取消后已付款'
     expire_overpayment_flag:
       type: string
       enum:
       - '0'
       - '1'
-      description: '期限切れ後支払フラグ\
-
-        この決済の支払期限が過ぎた後に購入者がバーチャル口座に対して支払いを行った場合`1`になります。
+      description: '过期后付款标志。超过支付期限后，购买者仍向虚拟账户付款时为 `1`。
 
 
-        - `0`: 期限切れ後支払は行われていない
+        - `0`：过期后未付款
 
-        - `1`: 期限切れ後支払が行われた
-
-        '
+        - `1`：过期后已付款'
     properties-payment_term_day:
       type: integer
       format: int64
@@ -22467,16 +22008,14 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentBulkDetailStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `CHECKED`: チェック済み<br /><span class="smallText">データのチェックが完了し、決済処理の実行を待っています。</span>
+            - `CHECKED`：检查完成，等待执行支付
 
-            - `SUCCEEDED`: 決済成功<br /><span class="smallText">この決済の処理においてエラーが発生せず請求が完了しました。</span>
+            - `SUCCEEDED`：支付成功
 
-            - `FAILED`: 決済失敗<br /><span class="smallText">この決済の処理において1件以上のエラーが発生しました。</span>
-
-            '
+            - `FAILED`：支付失败'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
@@ -22571,13 +22110,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentBulkDetail.VirtualAccount'
-          description: '一括決済詳細リスト\
-
-            \
-
-            決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます。
-
-            '
+          description: 批量支付明细列表；每笔支付对应一个对象，对象内保存该笔支付信息。
     PaymentBulkDetail.ListRetrieving.Response:
       oneOf:
       - allOf:
@@ -22587,11 +22120,7 @@ components:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/error_code'
-              description: 'この一括決済処理において発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-                [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-                '
+              description: 当前批量支付处理最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
         - $ref: '#/components/schemas/PaymentBulkDetail.list'
         - $ref: '#/components/schemas/PaymentBulkErrorDetail.list'
         title: 卡片支付
@@ -22602,11 +22131,7 @@ components:
               nullable: true
               allOf:
               - $ref: '#/components/schemas/error_code'
-              description: 'この一括決済処理において発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-                [各エラーコードの定義はこちらを参照](https://docs.fincode.jp/develop_support/error)して確認できます。
-
-                '
+              description: 当前批量支付处理最近一次错误的错误代码。定义参见[错误代码](https://docs.fincode.jp/develop_support/error)。
         - $ref: '#/components/schemas/PaymentBulkDetail.VirtualAccount.list'
         - $ref: '#/components/schemas/PaymentBulkErrorDetail.list'
         title: 银行转账（虚拟账户）
@@ -22616,7 +22141,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/PaymentBulk_properties-id'
-          description: 削除された一括決済のID
+          description: 被删除批量支付的 ID。
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -24729,7 +24254,7 @@ components:
       properties:
         company_stamp_data:
           type: string
-          description: 社印データをBase64エンコードした文字列
+          description: 公司印章数据的 Base64 编码字符串。
     InvoiceDetail.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Invoice'
@@ -25511,7 +25036,10 @@ components:
           maxLength: 30
         delete_flag:
           type: string
-          description: "削除フラグ  \n  \n - `1`: 成功\n"
+          description: '删除标志。
+
+
+            - `1`：成功'
     InvoiceDetail.Opening.Request:
       type: object
       properties:
@@ -25574,36 +25102,34 @@ components:
       - 3011
       - 3012
       - 3013
-      description: '入金ステータス
+      description: '入账状态。
 
 
-        - `3001`: 金額確定前<br /><span class="smallText">この集計期間中の売上入金に関してまだ集計中であり金額が確定していない状態。入金はされていません。</span>
+        - `3001`：金额确定前，仍在汇总且尚未入账
 
-        - `3002`: 金額確定済み<br /><span class="smallText">この集計期間中の売上入金の金額が確定した状態。入金はされていません。</span>
+        - `3002`：金额已确定但尚未入账
 
-        - `3003`: 入金済み<br /><span class="smallText">この集計期間中のfincodeからの売上の入金が完了した状態。</span>
+        - `3003`：已入账
 
-        - `3004`: 入金停止中<br /><span class="smallText">この集計期間中のfincodeからの売上の入金に際し何らかの懸念事項があり差し止めている状態。解消後fincodeはできるだけ早く入金を再試行します。</span>
+        - `3004`：入账暂停中，问题解决后 fincode 将尽快重试
 
-        - `3005`: 入金エラー<br /><span class="smallText">この集計期間中のfincodeからの売上の入金に何らかの理由で失敗した状態。解消後fincodeはできるだけ早く入金を再試行します。</span>
+        - `3005`：入账错误，问题解决后 fincode 将尽快重试
 
-        - `3006`: 請求中<br /><span class="smallText">集計期間中のキャンセル金額が売上金額を上回り、fincodeからショップへ請求している状態。</span>
+        - `3006`：请款中，取消金额超过销售金额，需要商户付款
 
-        - `3007`: 請求エラー<br /><span class="smallText">集計期間中のキャンセル金額が売上金額を上回り、fincodeからショップへ請求が必要になったものの何らかのエラーにより失敗した状態。</span>
+        - `3007`：请款错误
 
-        - `3008`: 請求停止中<br /><span class="smallText">集計期間中のキャンセル金額が売上金額を上回り、fincodeからショップへ請求が必要になったものの何らかの理由により差し止めている状態。</span>
+        - `3008`：请款暂停中
 
-        - `3009`: 支払済み<br /><span class="smallText">集計期間中のキャンセル金額が売上金額を上回り発生したfincodeからショップへの請求に対する入金が確認できた状担。</span>
+        - `3009`：已确认商户支付请款金额
 
-        - `3010`: 本人確認書類未確認<br /><span class="smallText">この集計期間中のfincodeからの売上の入金に際し本人確認書類の提出が確認できないため差し止めている状態。解消後fincodeはできるだけ早く入金を再試行します。</span>
+        - `3010`：因身份验证资料未确认而暂停入账
 
-        - `3011`: 精算済み<br /><span class="smallText">売上が0円のまま入金額が確定した状態。</span>
+        - `3011`：销售额为 0 日元并已完成结算
 
-        - `3012`: 入金開始前<br /><span class="smallText">初回入金がまだ実施されていない状態。</span>
+        - `3012`：首次入账尚未执行
 
-        - `3013`: 契約不成立<br /><span class="smallText">fincodeとの契約が不成立となった状態。</span>
-
-        '
+        - `3013`：与 fincode 的合同未成立'
     Account.ListRetrieving.QueryParams:
       type: object
       properties:
@@ -25683,63 +25209,49 @@ components:
       type: string
       nullable: false
       example: 2022/05/16 23:59
-      description: '売上入金 入金予定日\
+      description: '销售结算预计入账日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     aggregate_term_start:
       type: string
       nullable: false
       example: 2022/05/16 23:59
-      description: '売上入金 集計期間の開始日\
+      description: '销售结算统计期间的开始时间。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     aggregate_term_end:
       type: string
       nullable: false
       example: 2022/05/16 23:59
-      description: '売上入金 集計期間の終了日\
+      description: '销售结算统计期间的结束时间。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     deposit_date:
       type: string
       nullable: true
       example: 2022/05/16 23:59
-      description: '売上入金 入金実績日\
+      description: '销售结算实际入账日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     payment_deadline:
       type: string
       nullable: true
       example: null
-      description: '（請求が発生した場合）支払期限日\
+      description: '产生应付款时的支付截止日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     payment_completion_date:
       type: string
       nullable: true
       example: null
-      description: '（請求が発生した場合）請求日\
+      description: '产生应付款时的请款日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     count:
       type: integer
       nullable: false
       example: 3
-      description: 'この売上入金に含まれる売上入金詳細の件数
-
-        '
+      description: 当前销售结算中包含的结算明细数量。
     bank_transfer_fee:
       type: integer
       format: int64
@@ -25751,50 +25263,37 @@ components:
       format: int64
       nullable: false
       example: 1000
-      description: 'この売上入金において精算の対象となった取引の総額。
-
-        '
+      description: 当前销售结算所涵盖交易的总金额。
     fee_amount:
       type: integer
       format: int64
       nullable: false
       example: 30
-      description: 'この売上入金において精算の対象となった取引にかかるfincodeへの手数料
-
-        '
+      description: 当前销售结算所涵盖交易应向 fincode 支付的手续费。
     deposit_amount:
       type: integer
       format: int64
       nullable: false
       example: 568
-      description: '売上入金 入金額
+      description: '销售结算的入账金额，即商户实际或预计收到的销售款。
 
-
-        ショップに入金される（入金が予定されている）売上金額です。\
-
-        精算金額（`settlement_amount`）から振込手数料（`bank_transfer_fee`）を引いた金額に一致します。
-
-        '
+        该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。'
     platform_fee_amount:
       type: integer
       format: int64
       nullable: false
       example: 0
-      description: 'この売上入金において精算の対象となった取引にかかるプラットフォーム利用料\
+      description: '当前销售结算所涵盖交易的平台使用费。
 
-        ※ テナントのみ
-
-        '
+        仅适用于租户商户。'
     platform_fee_tax_amount:
       type: integer
       format: int64
       nullable: false
       example: 0
-      description: 'この売上入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税\
+      description: '当前销售结算所涵盖交易的平台使用费消费税。
 
-        ※ テナントのみ
-
-        '
+        仅适用于租户商户。'
     AccountListItem:
       type: object
       properties:
@@ -26140,34 +25639,30 @@ components:
       - 7
       - 8
       example: 1
-      description: '取引種別\
-
-        値によって、集計の際にこの売上入金明細の利用金額が加算されるか減算されるかが異なります。
+      description: '交易类型。不同值决定汇总销售结算明细时对使用金额进行加算或减算。
 
 
-        - `1`: 決済（加算）<br /><span class="smallText">この売上入金明細はある決済1件に対し発生したものであることを示します。</span>
+        - `1`：支付（加算），由一笔支付产生
 
-        - `2`: 返金（減算）<br /><span class="smallText">この売上入金明細はある決済に対し発生したキャンセル1件に対し発生したものであることを示します。</span>
+        - `2`：退款（减算），由一笔支付取消产生
 
-        - `3`: チャージバック（減算）<br /><span class="smallText">この売上入金明細はある決済に対し発生したチャージバック1件に対し発生したものであることを示します。</span>
+        - `3`：拒付（减算），由一笔拒付产生
 
-        - `4`: 調整（加算）<br /><span class="smallText">この売上入金明細は何らかの理由で売上入金情報を調整するために発生したものであることを示します。減算のためマイナス値が返されることもあります。</span>
+        - `4`：调整（加算），用于调整销售结算；减算时也可能返回负数
 
-        - `5`: チャージバックの取消（加算）<br /><span class="smallText">この売上入金明細はある決済に対し発生したチャージバック1件が取り消されたとき発生したものであることを示します。</span>
+        - `5`：取消拒付（加算），由一笔拒付被取消产生
 
-        - `6`: 口座振替失敗時の手数料（減算）<br /><span class="smallText">この売上入金明細はある口座振替が失敗し、その決済手数料により発生したものであることを示します。</span>
+        - `6`：自动扣款失败手续费（减算）
 
-        - `7`: 口座振替 振替用口座Web登録手数料（減算）<br /><span class="smallText">この売上入金明細は振替用口座のWeb登録に成功し、登録に係る手数料により発生したものであることを示します。</span>
+        - `7`：自动扣款账户 Web 登记手续费（减算）
 
-        - `8`: 口座振替 振替用口座依頼書登録手数料（減算）<br /><span class="smallText">この売上入金明細は振替用口座の依頼書登録に成功し、登録に係る手数料により発生したものであることを示します。</span>
+        - `8`：自动扣款账户纸质申请书登记手续费（减算）
 
-        - `10`: バーチャル口座 入金可能額設定手数料（減算）<br /><span class="smallText">この売上入金明細はバーチャル口座の入金可能額設定に成功し、設定に係る手数料により発生したものであることを示します。</span>
+        - `10`：虚拟账户可入账金额设置手续费（减算）
 
-        - `11`: バーチャル口座 顧客型固定バーチャル口座登録手数料（減算）<br /><span class="smallText">この売上入金明細は顧客型固定バーチャル口座の登録に成功し、登録に係る手数料により発生したものであることを示します。</span>
+        - `11`：客户固定虚拟账户登记手续费（减算）
 
-        - `12`: バーチャル口座 一括決済未使用手数料（減算）<br /><span class="smallText">この売上入金明細はバーチャル口座の一括決済機能において、実際には使用されなかった口座に対して発生した手数料であることを示します。</span>
-
-        '
+        - `12`：虚拟账户批量支付未使用手续费（减算）'
     AccountPaymentMethod:
       type: string
       enum:
@@ -26183,32 +25678,30 @@ components:
       - DirectdebitMizuho
       - Virtualaccount
       example: VM
-      description: 'この売上入金明細に対応する決済で利用された決済手段
+      description: '当前销售结算明细对应支付所使用的支付方式。
 
 
-        - `VM`: カード決済（VISA / Mastercard）
+        - `VM`：银行卡（VISA/Mastercard）
 
-        - `JA`: カード決済（JCB / American Express / Diners Club / Discover）
+        - `JA`：银行卡（JCB/American Express/Diners Club/Discover）
 
-        - `KONBINI`: コンビニ決済
+        - `KONBINI`：便利店支付
 
-        - `Paypay`: PayPay決済
+        - `Paypay`：PayPay
 
-        - `ApplepayVM`: Apple Pay決済（VISA / Mastercard）
+        - `ApplepayVM`：Apple Pay（VISA/Mastercard）
 
-        - `ApplepayJA`: Apple Pay決済（JCB / American Express / Discover）
+        - `ApplepayJA`：Apple Pay（JCB/American Express/Discover）
 
-        - `GooglepayVM`: Google Pay決済（VISA / Mastercard）
+        - `GooglepayVM`：Google Pay（VISA/Mastercard）
 
-        - `GooglepayJA`: Google Pay決済（JCB / American Express / Diners Club）
+        - `GooglepayJA`：Google Pay（JCB/American Express/Diners Club）
 
-        - `Directdebit`: 口座振替（5・6・23・27日）
+        - `Directdebit`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `DirectdebitMizuho`: 口座振替（1・5・20・26日）
+        - `DirectdebitMizuho`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `Virtualaccount`: 銀行振込（バーチャル口座）
-
-        '
+        - `Virtualaccount`：银行转账（虚拟账户）'
     AccountDetail:
       type: object
       properties:
@@ -26464,17 +25957,17 @@ components:
         client_field_1:
           type: string
           nullable: true
-          example: 商户自定义字段 1
+          example: 加盟店自由項目 1
           description: 商户自定义字段 1
         client_field_2:
           type: string
           nullable: true
-          example: 商户自定义字段 2
+          example: 加盟店自由項目 2
           description: 商户自定义字段 2
         client_field_3:
           type: string
           nullable: true
-          example: 商户自定义字段 3
+          example: 加盟店自由項目 3
           description: 商户自定义字段 3
         created:
           allOf:
@@ -26566,65 +26059,47 @@ components:
       type: integer
       nullable: true
       example: 568
-      description: 'プラットフォーム利用料収入 入金額\
+      description: '平台使用费收入的实际或预计入账金额。
 
-        \
-
-        プラットフォームショップに入金される（入金が予定されている）プラットフォーム利用料による売上金の額です。\
-
-        精算金額（`settlement_amount`）から振込手数料（`bank_transfer_fee`）を引いた金額に一致します。
-
-        '
+        该金额等于结算金额（`settlement_amount`）减去银行转账手续费（`bank_transfer_fee`）。'
     properties-deposit_date:
       type: string
       nullable: true
       example: 2022/05/16 23:59
-      description: 'プラットフォーム利用料収入 入金実績日\
+      description: '平台使用费收入的实际入账日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     properties-scheduled_deposit_date:
       type: string
       nullable: true
       example: 2022/05/16 23:59
-      description: 'プラットフォーム利用料収入 入金予定日\
+      description: '平台使用费收入的预计入账日期。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     properties-aggregate_term_start:
       type: string
       nullable: true
       example: 2022/05/16 23:59
-      description: 'プラットフォーム利用料収入 集計期間 開始日\
+      description: '平台使用费收入统计期间的开始时间。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     properties-aggregate_term_end:
       type: string
       nullable: true
       example: 2022/05/16 23:59
-      description: 'プラットフォーム利用料収入 集計期間 終了日\
+      description: '平台使用费收入统计期间的结束时间。
 
-        形式： `yyyy/MM/dd HH:MM`
-
-        '
+        格式：`yyyy/MM/dd HH:MM`'
     properties-count:
       type: integer
       nullable: true
       example: 3
-      description: 'このプラットフォーム利用料収入に含まれる決済の件数
-
-        '
+      description: 当前平台使用费收入中包含的支付交易数量。
     settlement_amount:
       type: integer
       nullable: true
       example: 568
-      description: '精算金額
-
-        '
+      description: 平台使用费收入的结算金额。
     properties-bank_transfer_fee:
       type: integer
       nullable: true
@@ -26634,37 +26109,27 @@ components:
       type: integer
       nullable: true
       example: 1000
-      description: 'このプラットフォーム利用料入金において精算の対象となった取引の総額。
-
-        '
+      description: 当前平台使用费结算所涵盖交易的总金额。
     properties-fee_amount:
       type: integer
       nullable: true
       example: 30
-      description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるfincodeへの手数料
-
-        '
+      description: 当前平台使用费结算所涵盖交易应向 fincode 支付的手续费。
     properties-platform_fee_amount:
       type: integer
       nullable: true
       example: 0
-      description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるプラットフォーム利用料
-
-        '
+      description: 当前结算所涵盖交易的平台使用费。
     tax_amount:
       type: integer
       nullable: true
       example: 2
-      description: '決済手数料 消費税額
-
-        '
+      description: 支付手续费的消费税金额。
     verified:
       type: boolean
       example: true
       deprecated: true
-      description: '検証確認フラグ
-
-        '
+      description: 验证确认标志。
     PlatformAccountListItem:
       type: object
       properties:
@@ -26740,9 +26205,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlatformAccountListItem'
-          description: 'プラットフォーム利用料による売上入金情報のリスト
-
-            '
+          description: 平台使用费销售结算信息列表。
     PlatformAccount.ListRetrieving.Response:
       allOf:
       - $ref: '#/components/schemas/_ListResponse'
@@ -26910,25 +26373,17 @@ components:
           format: date
           nullable: true
           example: 2022/05/01
-          description: '入金予定日の範囲指定（開始日）を指定します。\
+          description: '预计入账日期范围的起始日期。
 
-            この日付以降に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
         scheduled_to:
           type: string
           format: date
           nullable: true
           example: 2022/05/31
-          description: '入金予定日の範囲指定（終了日）を指定します。\
+          description: '预计入账日期范围的结束日期。
 
-            この日付以前に入金が行われた売上入金情報を検索できます。\
-
-            形式： `yyyy/MM/dd`
-
-            '
+            格式：`yyyy/MM/dd`'
     shop_name:
       type: string
       minLength: 1
@@ -26940,39 +26395,29 @@ components:
       type: integer
       nullable: true
       example: 0
-      description: '決済手数料 課税対象額
-
-        '
+      description: 支付手续费中的应税金额。
     nontaxable_fee_amount:
       type: integer
       nullable: true
       example: 0
-      description: '決済手数料 非課税対象額
-
-        '
+      description: 支付手续费中的非应税金额。
     web_registration_fee_amount:
       type: integer
       nullable: true
       example: 400
-      description: 'このプラットフォーム利用料入金の精算期間中に発生した振替口座のWeb登録手数料\
+      description: '结算期间产生的自动扣款账户 Web 登记手续费。
 
-        ※ 口座振替のみ
-
-        '
+        仅适用于银行账户自动扣款。'
     platform_web_registration_fee_amount:
       type: integer
       nullable: true
       example: 0
-      description: 'このプラットフォーム利用料入金の精算期間中に発生した、プラットフォームが設定した振替口座のWeb登録手数料
-
-        '
+      description: 结算期间产生的、由平台设定的自动扣款账户 Web 登记手续费。
     properties-platform_fee_tax_amount:
       type: integer
       nullable: true
       example: 0
-      description: 'このプラットフォーム利用料入金において精算の対象となった取引にかかるプラットフォーム利用料の消費税
-
-        '
+      description: 当前结算所涵盖交易的平台使用费消费税。
     PlatformAccountSummary:
       type: object
       properties:
@@ -27055,9 +26500,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlatformAccountSummary'
-          description: 'プラットフォーム利用料収入のサマリー情報のリスト
-
-            '
+          description: 平台使用费收入汇总信息列表。
     PlatformAccountSummary.ListRetrieving.Response:
       allOf:
       - $ref: '#/components/schemas/_ListResponse'
@@ -27393,34 +26836,44 @@ components:
       - SALES_LICENSE_2
       - SALES_LICENSE_3
       example: DRIVER_LICENSE_FRONT
-      description: "審査ファイルタイプ\\\n\\\nfincode審査チームに提出する画像ファイル等の種別を指定します。\n\n- `DRIVER_LICENSE_FRONT`: 本人確認書類; 運転免許証（表）<br /><span\
-        \ class=\"smallText\">本人確認書類として運転免許証を提出する場合に指定します。裏面も提出する必要があります。</span>\n- `DRIVER_LICENSE_BACK`: 本人確認書類; 運転免許証（裏）<br\
-        \ /><span class=\"smallText\">本人確認書類として運転免許証を提出する場合に指定します。表面も提出する必要があります。</span>\n- `SEAL_REGISTRATION_FRONT`: 本人確認書類;\
-        \ 印鑑証明書（表）<br /><span class=\"smallText\">本人確認書類として印鑑証明書を提出する場合に指定します。</span>\n- `RESIDENT_CARD_FRONT`: 本人確認書類; 在留カード（表）<br\
-        \ /><span class=\"smallText\">本人確認書類として在留カードを提出する場合に指定します。裏面も提出する必要があります。</span>\n- `RESIDENT_CARD_BACK`: 本人確認書類;\
-        \ 在留カード（裏）<br /><span class=\"smallText\">本人確認書類として在留カードを提出する場合に指定します。表面も提出する必要があります。</span>\n- `SPECIAL_PERMANENT_RESIDENT_FRONT`:\
-        \ 本人確認書類; 特別永住者証明書（表）<br /><span class=\"smallText\">本人確認書類として特別永住者証明書を提出する場合に指定します。裏面も提出する必要があります。</span>\n- `SPECIAL_PERMANENT_RESIDENT_BACK`:\
-        \ 本人確認書類; 特別永住者証明書（裏）<br /><span class=\"smallText\">本人確認書類として特別永住者証明書を提出する場合に指定します。表面も提出する必要があります。</span>\n- `CERTIFICATE_OF_RESIDENCE_FRONT`:\
-        \ 本人確認書類; 住民票（表）<br /><span class=\"smallText\">本人確認書類として住民票を提出する場合に指定します。</span>\n- `MY_NUMBER_CARD_FRONT`: 本人確認書類;\
-        \ マイナンバーカード（表）<br /><span class=\"smallText\">本人確認書類としてマイナンバーカードを提出する場合に指定します。</span>\n- `PRODUCT_IMAGE_1`: 商材審査;\
-        \ 物販商材1 画像<br /><span class=\"smallText\">物販商材の情報を提出する場合に指定します。`product_content_info.content1_*`に対応する画像を添付してください。</span>\n\
-        - `PRODUCT_IMAGE_2`: 商材審査; 物販商材2 画像<br /><span class=\"smallText\">物販商材の情報を提出する場合に指定します。`product_content_info.content2_*`に対応する画像を添付してください。</span>\n\
-        - `PRODUCT_IMAGE_3`: 商材審査; 物販商材3 画像<br /><span class=\"smallText\">物販商材の情報を提出する場合に指定します。`product_content_info.content3_*`に対応する画像を添付してください。</span>\n\
-        - `APP_IMAGE_TOP`: アプリ審査; アプリトップ画像<br /><span class=\"smallText\">fincodeをスマートフォン上のネイティブアプリで使用し、かつfincodeによる審査時点でWebサイトが存在しない場合に指定します。アプリのトップ画面のスクリーンショットの画像を添付してください。</span>\n\
-        - `APP_IMAGE_ICON`: アプリ審査; アプリアイコン<br /><span class=\"smallText\">fincodeをスマートフォン上のネイティブアプリで使用し、かつfincodeによる審査時点でWebサイトが存在しない場合に指定します。アプリのアイコン画像を添付してください。</span>\n\
-        - `SALES_LICENSE_1`: 販売免許等; 販売免許等1<br />\n    <span class=\"smallText\">\n    ショップで取り扱う商品・サービスによっては、下記の許可証の提出が必要となります。免許・許可証の名義は契約名義と一致している必要があります。\n\
-        \        <ul>\n            <li>酒類: 酒類小売業販売許可証</li>\n            <li>古物: 古物商許可証</li>\n            <li>コンタクトレンズ: 高度管理医療機器販売業許可証</li>\n\
-        \            <li>象牙: 経済産業省の許可証</li>\n            <li>決済業者から免許証および許可証を求められた場合は提出を依頼することがあります。</li>\n        </ul>\n\
-        \    </span>\n- `SALES_LICENSE_2`: 販売免許等; 販売免許等2<br /><span class=\"smallText\">許可証が複数ファイルに渡る場合、2ファイル目を提出する場合に指定します。</span>\n\
-        - `SALES_LICENSE_3`: 販売免許等; 販売免許等3<br /><span class=\"smallText\">許可証が複数ファイルに渡る場合、3ファイル目を提出する場合に指定します。</span>\n"
+      description: '提交给 fincode 审核团队的图片或文件类型。
+
+
+        - `DRIVER_LICENSE_FRONT`：驾驶证正面；同时必须提交背面
+
+        - `DRIVER_LICENSE_BACK`：驾驶证背面；同时必须提交正面
+
+        - `SEAL_REGISTRATION_FRONT`：印鉴登记证明正面
+
+        - `RESIDENT_CARD_FRONT`：在留卡正面；同时必须提交背面
+
+        - `RESIDENT_CARD_BACK`：在留卡背面；同时必须提交正面
+
+        - `SPECIAL_PERMANENT_RESIDENT_FRONT`：特别永住者证明正面；同时必须提交背面
+
+        - `SPECIAL_PERMANENT_RESIDENT_BACK`：特别永住者证明背面；同时必须提交正面
+
+        - `CERTIFICATE_OF_RESIDENCE_FRONT`：住民票正面
+
+        - `MY_NUMBER_CARD_FRONT`：个人编号卡正面
+
+        - `PRODUCT_IMAGE_1`：实物商品 1 图片，对应 `product_content_info.content1_*`
+
+        - `PRODUCT_IMAGE_2`：实物商品 2 图片，对应 `product_content_info.content2_*`
+
+        - `PRODUCT_IMAGE_3`：实物商品 3 图片，对应 `product_content_info.content3_*`
+
+        - `APP_IMAGE_TOP`：原生应用首页截图；审核时没有网站的原生应用需要提交
+
+        - `APP_IMAGE_ICON`：原生应用图标；审核时没有网站的原生应用需要提交
+
+        - `SALES_LICENSE_1`：销售许可证等第 1 个文件。酒类、古物、隐形眼镜、象牙等商品可能需要提交对应许可证，许可证名义必须与签约名义一致；支付服务商要求时也可能需要提交
+
+        - `SALES_LICENSE_2`：许可证等包含多个文件时的第 2 个文件
+
+        - `SALES_LICENSE_3`：许可证等包含多个文件时的第 3 个文件'
     data:
-      description: '審査ファイルデータ\
-
-        \
-
-        画像ファイルをマルチパートアップロードするときはこの`data`フィールドに画像データを設定します。
-
-        '
+      description: multipart 上传图片时，在此字段设置图片数据。
     ExaminationFile.Uploading.Request:
       type: object
       required:
@@ -27518,16 +26971,14 @@ components:
       - platform
       - tenant
       example: platform
-      description: 'ショップタイプ。
+      description: '商户类型。
 
 
-        - `(null)`: スタンダードショップ
+        - `null`：标准商户
 
-        - `platform`: プラットフォームショップ
+        - `platform`：平台商户
 
-        - `tenant`: テナントショップ
-
-        '
+        - `tenant`：租户商户'
     ExaminationMasterId:
       type: string
       enum:
@@ -27543,34 +26994,30 @@ components:
       - directdebit_mizuho
       - virtualaccount
       example: vm
-      description: '審査種別マスタID。\
-
-        プラットフォーム料率の適用対象とする決済手段の種別を表します。
+      description: '审核类型主数据 ID，表示平台费率对应的支付方式。
 
 
-        - `vm`: カード決済（VISA / Mastercard）
+        - `vm`：银行卡（VISA/Mastercard）
 
-        - `jad`: カード決済（JCB / American Express / Diners Club / Discover）
+        - `jad`：银行卡（JCB/American Express/Diners Club/Discover）
 
-        - `applepay_vm`: Apple Pay（VISA / Mastercard）
+        - `applepay_vm`：Apple Pay（VISA/Mastercard）
 
-        - `applepay_jad`: Apple Pay（JCB / American Express / Diners Club / Discover）
+        - `applepay_jad`：Apple Pay（JCB/American Express/Diners Club/Discover）
 
-        - `googlepay_vm`: Google Pay（VISA / Mastercard）
+        - `googlepay_vm`：Google Pay（VISA/Mastercard）
 
-        - `googlepay_jad`: Google Pay(JCB / American Express / Diners Club / Discover）
+        - `googlepay_jad`：Google Pay（JCB/American Express/Diners Club/Discover）
 
-        - `konbini`: コンビニ決済
+        - `konbini`：便利店支付
 
-        - `paypay`: PayPay
+        - `paypay`：PayPay
 
-        - `directdebit`: 口座振替（5・6・23・27日）
+        - `directdebit`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `directdebit_mizuho`: 口座振替（1・5・20・26日）
+        - `directdebit_mizuho`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `virtualaccount`: 銀行振込（バーチャル口座）
-
-        '
+        - `virtualaccount`：银行转账（虚拟账户）'
     PlatformRateConfig:
       type: object
       properties:
@@ -27772,35 +27219,19 @@ components:
       type: string
       nullable: true
       example: '5.0'
-      description: '（標準）プラットフォーム利用料率。\
+      description: '标准平台使用费率。未单独设置费率的租户使用 `id` 指定的支付方式时适用此费率。
 
-        個別のプラットフォーム利用料率が設定されていないテナントが`id`で指定した決済手段で決済を行うと、このプラットフォーム利用料率が適用されます。\
-
-        \
-
-        特定のテナントに個別のプラットフォーム利用料を適用するには テナントショップ 更新API を使用します。
-
-        '
+        如需为特定租户设置单独费率，请使用“更新租户商户”API。'
     fixed_fee:
       type: string
       example: '120'
       nullable: true
-      description: '（標準）プラットフォーム利用料 最低料金。\
-
-        テナントが`examination_master_id`で指定した決済手段で決済を行った際、`platform_rate`による利用料がこの最低料金を下回ると、この最低料金が適用されます。
-
-        '
+      description: 使用 `examination_master_id` 指定的支付方式时，如果按 `platform_rate` 计算的费用低于此值，则适用此标准最低平台使用费。
     web_registration_fee:
       type: string
       nullable: true
       example: '480'
-      description: '（標準）プラットフォーム利用料 Web登録手数料。\
-
-        テナントにおいて、口座振替における振替用口座登録（Web登録）に成功した際に適用されるWeb登録手数料です。\
-
-        ※ 口座振替のみ
-
-        '
+      description: 租户客户成功通过 Web 登记自动扣款账户时适用的标准 Web 登记手续费。仅适用于银行账户自动扣款。
     PlatformShop.Updating.Request:
       type: object
       properties:
@@ -27916,17 +27347,12 @@ components:
       - '1'
       - '2'
       nullable: true
-      description: 'PayPay審査により決定されるPayPay商材カテゴリー。
+      description: 'PayPay 审核确定的商品类别，仅适用于 PayPay。
 
 
-        - `1`: 物販／サービスショップ
+        - `1`：实物商品或服务商户
 
-        - `2`: デジタルコンテンツショップ
-
-
-        ※ PayPayのみ
-
-        '
+        - `2`：数字内容商户'
     api_key_display_flag:
       type: string
       minLength: 1
@@ -27936,14 +27362,12 @@ components:
       - '0'
       - '1'
       example: '0'
-      description: '管理画面におけるAPIキー表示フラグ。
+      description: '管理后台是否显示 API Key。
 
 
-        - `0`: 表示しない
+        - `0`：不显示
 
-        - `1`: 表示する
-
-        '
+        - `1`：显示'
     TenantShop.Updating.Request:
       type: object
       properties:
@@ -28023,68 +27447,36 @@ components:
       minLength: 1
       maxLength: 254
       example: new-fincode-user@example.com
-      description: 'メールアドレス\
+      description: '在 fincode 中创建的新用户邮箱地址。指定已登记的邮箱会返回错误 `E0087012014`。
 
-        \
-
-        fincodeに新規作成するユーザーのメールアドレス。\
-
-        すでに登録されているメールアドレスを指定するとエラーとなります。（エラーコード：`E0087012014`）\
-
-        \
-
-        形式： RFC 5322
-
-        '
+        格式：RFC 5322。'
     password:
       type: string
       minLength: 12
       maxLength: 254
       example: password1234
-      description: 'パスワード\
-
-        \
-
-        fincodeに新規作成するユーザーのパスワード。\
-
-        パスワードは以下の条件を満たす必要があります。
+      description: '在 fincode 中创建的新用户密码，必须满足以下条件：
 
 
-        - 半角英数のみ
+        - 仅使用半角英数字
 
-        - 12文字以上
+        - 至少 12 个字符
 
-        - 英数ともに使用
+        - 同时包含字母和数字
 
-        - 大文字小文字ともに使用
-
-        '
+        - 同时包含大写和小写字母'
     x-req-properties-name:
       type: string
       minLength: 1
       maxLength: 384
       example: Epsilon Taro
-      description: 'ユーザー名\
-
-        \
-
-        fincodeに新規作成するユーザーの名前
-
-        '
+      description: 在 fincode 中创建的新用户名称。
     tenant_url_id:
       type: string
       minLength: 25
       maxLength: 25
       example: tu_**********************
-      description: 'テナント登録URL ID\
-
-        \
-
-        テナント登録URLのID。\
-
-        [管理画面 > プラットフォームの運用と管理 > 構成](https://dashboard.test.fincode.jp/platform/setting)の『テナント登録用のURL』の`tenant_url_id`の値をこのパラメータに指定します。
-
-        '
+      description: 租户登记链接 ID。请填写[管理后台 > 平台运营与管理 > 配置](https://dashboard.test.fincode.jp/platform/setting)中“租户登记用 URL”的 `tenant_url_id`。
     POST.TenantEntries.Request:
       type: object
       properties:
@@ -28110,13 +27502,7 @@ components:
       minLength: 1
       maxLength: 11
       example: 9
-      description: 'ロールID\
-
-        \
-
-        ユーザーの管理画面における権限を示すIDです。
-
-        '
+      description: 用户在管理后台中的角色权限 ID。
     User:
       type: object
       properties:
@@ -28321,25 +27707,13 @@ components:
       minLength: 1
       maxLength: 254
       example: new-fincode-user@example.com
-      description: 'メールアドレス\
-
-        \
-
-        プラットフォームショップのユーザーのメールアドレス。
-
-        '
+      description: 平台商户用户的电子邮箱地址。
     x-req-properties-password:
       type: string
       minLength: 12
       maxLength: 254
       example: password1234
-      description: 'パスワード\
-
-        \
-
-        プラットフォームショップのユーザーのパスワード。
-
-        '
+      description: 平台商户用户的密码。
     POST.JoinTenants.Request:
       type: object
       properties:
@@ -28362,17 +27736,13 @@ components:
       maxLength: 40
       nullable: true
       example: マイショップ
-      description: 'ショップ名（カナ）
-
-        '
+      description: 商户名称（片假名）。
     platform_id:
       type: string
       minLength: 13
       maxLength: 13
       example: p_***********
-      description: 'プラットフォームID
-
-        '
+      description: 平台 ID。
     platform_name:
       type: string
       minLength: 1
@@ -28389,34 +27759,26 @@ components:
       - '1'
       example: '0'
       nullable: true
-      description: '顧客情報共有フラグ
+      description: '客户信息共享标志。
 
 
-        - `0`: 顧客情報を共有しない<br /><span class="smallText">顧客情報は各テナントごとに管理され、各テナントは自ショップに登録された顧客に対してのみ決済を行えます。</span>
+        - `0`：不共享；客户信息由各租户分别管理，各租户只能向本商户登记的客户收款
 
-        - `1`: 顧客情報を共有する<br /><span class="smallText">顧客情報はプラットフォーム全体で共有され、いずれのテナントもいずれの顧客に対し決済を行えます。</span>
-
-        '
+        - `1`：共享；客户信息在整个平台共享，所有租户均可向任意客户收款'
     customer_group_id:
       type: string
       minLength: 13
       maxLength: 13
       example: cg_***********
       nullable: true
-      description: '顧客情報共有グループID\
-
-        fincodeは同じ顧客情報共有グループIDを持つショップ間で顧客情報を共有します。
-
-        '
+      description: 客户信息共享组 ID。fincode 会在具有相同组 ID 的商户之间共享客户信息。
     send_mail_address:
       type: string
       minLength: 1
       maxLength: 255
       nullable: true
       example: send@example.com
-      description: '通知先メールアドレス
-
-        '
+      description: 通知接收邮箱地址。
     shop_mail_address:
       type: string
       minLength: 1
@@ -28430,18 +27792,14 @@ components:
       maximum: 9999
       nullable: true
       example: null
-      description: 'ログ保存日数
-
-        '
+      description: 日志保留天数。
     api_version:
       type: string
       minLength: 1
       maxLength: 8
       nullable: true
       example: '20211001'
-      description: 'APIバージョン
-
-        '
+      description: API 版本。
     POST.JoinTenants:
       type: object
       properties:
@@ -28521,26 +27879,20 @@ components:
       - '105'
       - '106'
       - '107'
-      description: '契約ステータス\
-
-        \
-
-        fincodeとそのショップの運営事業者の契約のステータスを表します。
+      description: 'fincode 与商户运营方的合同状态。
 
 
-        - `101`: 未契約<br /><span class="smallText">まだfincodeの本番環境申請の提出が完了していない状態です。</span>
+        - `101`：未签约，尚未提交生产环境申请
 
-        - `102`: 利用審査中<br /><span class="smallText">fincodeの本番環境申請の提出が完了し、利用審査中の状態です。</span>
+        - `102`：使用审核中，已提交生产环境申请
 
-        - `103`: 利用審査中（VISA/Mastercard利用可）<br /><span class="smallText">即時利用によりVISA/Mastercardブランドの決済受付が可能な状態です。審査は継続して行われます。</span>
+        - `103`：使用审核中，但可立即受理 VISA/Mastercard 支付
 
-        - `105`: 解約済
+        - `105`：已解约
 
-        - `106`: 契約不成立<br /><span class="smallText">審査の結果、fincodeの利用が不可となった状態です。</span>
+        - `106`：合同未成立，审核后不允许使用 fincode
 
-        - `107`: 稼働中<br /><span class="smallText">fincodeの本番環境申請が完了し、クレジットカード決済の受付が可能な状態です。</span>
-
-        '
+        - `107`：运行中，可受理生产环境银行卡支付'
     CorporateInfo.V2:
       type: object
       properties:
@@ -29438,9 +28790,7 @@ components:
           minLength: 1
           maxLength: 20
           example: ジーエムオーアオゾラネットギンコウ
-          description: '金融機関名カナ
-
-            '
+          description: 金融机构名称（片假名）。
         bank_code:
           type: string
           minLength: 4
@@ -29458,9 +28808,7 @@ components:
           minLength: 1
           maxLength: 20
           example: ウミシテン
-          description: '支店名カナ
-
-            '
+          description: 分行名称（片假名）。
         branch_code:
           type: string
           minLength: 3
@@ -29503,16 +28851,12 @@ components:
       enum:
       - 1
       - 2
-      description: '入金サイクルマスタID\
-
-        入金サイクルについては[Docs > 精算管理 > クレジットカード決済の入金サイクル](https://docs.fincode.jp/business_management/deposit)を参照できます。
+      description: '入账周期主数据 ID。详情参见[销售结算入账周期](https://docs.fincode.jp/business_management/deposit)。
 
 
-        - `1`: スタンダード（月1回, 月末締め翌月末入金）
+        - `1`：标准，每月 1 次；月末截止，次月月末入账
 
-        - `2`: スタンダード（月2回, 15日&月末締め15日後入金）
-
-        '
+        - `2`：标准，每月 2 次；15 日及月末截止，15 天后入账'
     DepositCycleInfo.V2:
       type: object
       properties:
@@ -29629,22 +28973,16 @@ components:
     enable_immediate_use:
       type: boolean
       example: true
-      description: 'VISA/Mastercard即時利用をリクエストするかどうか
+      description: '是否申请立即使用 VISA/Mastercard。
 
 
-        - `true`： 即時利用をリクエストする
+        - `true`：申请立即使用
 
-        - `false`： 即時利用をリクエストしない
-
-
-        即時利用は以下の場合リクエストできません。
+        - `false`：不申请立即使用
 
 
-        - `本番環境申請情報.contract_info.site_published`が`true`でない（審査時点でWebサイトが用意されていない）
-
-        - `本番環境申請情報.shop_info.deals_long_apply_content`が`true`である（審査に時間がかかる商材を取り扱うと表明している）
-
-        '
+        网站在审核时尚不可访问（`本番環境申請情報.contract_info.site_published` 不为 `true`），或声明经营需长时间审核的商品（`本番環境申請情報.shop_info.deals_long_apply_content`
+        为 `true`）时不可申请。'
     POST.ContractsExaminations.Request:
       type: object
       properties:
@@ -29656,20 +28994,16 @@ components:
           - $ref: '#/components/schemas/enable_immediate_use'
         force_credit_check_skip:
           type: boolean
-          description: '信用情報チェックを強制的にスキップする。
+          description: '是否强制跳过信用信息检查。
 
 
-            - `true`: 審査管理画面から強制OKをする場合のみ
+            - `true`：仅限在审核管理后台强制批准时使用
 
-            - `false`: 本番環境申請時
-
-            '
+            - `false`：提交生产环境申请时使用'
         use_gmo_sign:
           type: boolean
           default: false
-          description: 'GMOサインの利用
-
-            '
+          description: 是否使用 GMO Sign。
       required:
       - shop_id
       - enable_immediate_use
@@ -29730,33 +29064,34 @@ components:
       - DIRECT_DEBIT_MIZUHO
       - VIRTUAL_ACCOUNT
       - VIRTUAL_ACCOUNT_BULK
-      description: '- `PAYSLE`: コンビニ決済
+      description: '可追加申请的支付服务。
 
-        - `PAYPAY`: PayPay
 
-        - `APPLE_PAY_UC`: Apple Pay（VISA/Mastercard- UCカード）
+        - `PAYSLE`：便利店支付
 
-        - `APPLE_PAY_JCB_AMEX`: Apple Pay（JCB/American Express）
+        - `PAYPAY`：PayPay
 
-        - `GOOGLE_PAY_UC`: Google Pay（VISA/Mastercard - UCカード）
+        - `APPLE_PAY_UC`：Apple Pay（VISA/Mastercard，UC Card）
 
-        - `GOOGLE_PAY_TFC`: Google Pay（VISA/Mastercard - トヨタファイナンス）
+        - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB/American Express）
 
-        - `GOOGLE_PAY_ORICO`: Google Pay（VISA/Mastercard - オリエントコーポレーション）
+        - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
 
-        - `GOOGLE_PAY_JCB_AMEX`: Google Pay（JCB/American Express）
+        - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
 
-        - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
+        - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
 
-        - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
+        - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
 
-        - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
+        - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
 
-        - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
+        - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
+        - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        '
+        - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
+
+        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）'
     provider:
       type: array
       items:
@@ -29776,40 +29111,34 @@ components:
       - DIRECT_DEBIT_MIZUHO
       - VIRTUAL_ACCOUNT
       - VIRTUAL_ACCOUNT_BULK
-      description: '追加対象決済手段\
-
-        \
-
-        追加で申請する決済手段をリストで指定します。
+      description: '要追加申请的支付方式列表。
 
 
-        - `PAYSLE`: コンビニ決済
+        - `PAYSLE`：便利店支付
 
-        - `PAYPAY`: PayPay
+        - `PAYPAY`：PayPay
 
-        - `APPLE_PAY_UC`: Apple Pay（VISA/Mastercard- UCカード）
+        - `APPLE_PAY_UC`：Apple Pay（VISA/Mastercard，UC Card）
 
-        - `APPLE_PAY_JCB_AMEX`: Apple Pay（JCB/American Express）
+        - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB/American Express）
 
-        - `GOOGLE_PAY_UC`: Google Pay（VISA/Mastercard - UCカード）
+        - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
 
-        - `GOOGLE_PAY_TFC`: Google Pay（VISA/Mastercard - トヨタファイナンス）
+        - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
 
-        - `GOOGLE_PAY_ORICO`: Google Pay（VISA/Mastercard - オリエントコーポレーション）
+        - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
 
-        - `GOOGLE_PAY_JCB_AMEX`: Google Pay（JCB/American Express）
+        - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
 
-        - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
+        - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
 
-        - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
+        - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
+        - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
+        - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
 
-        - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
-
-        '
+        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）'
     POST.ProviderReserve.Request:
       type: object
       properties:
@@ -29910,60 +29239,54 @@ components:
       - 401
       - 403
       example: 1
-      description: '審査種別マスタID\
-
-        この審査情報がどの決済手段の審査かを示す値です。
+      description: '表示审核信息对应支付方式的审核类型主数据 ID。
 
 
-        - `1`：  カード決済（VISA / Mastercard, UCカード社）
+        - `1`：VISA/Mastercard（UC Card）
 
-        - `2`：  カード決済（JCB / American Express / Diners Club / Discover）
+        - `2`：JCB/American Express/Diners Club/Discover
 
-        - `3`：  カード決済（VISA / Mastercard, トヨタファイナンス社）
+        - `3`：VISA/Mastercard（Toyota Finance）
 
-        - `4`：  カード決済（VISA / Mastercard, オリエントコーポレーション）
+        - `4`：VISA/Mastercard（Orient Corporation）
 
-        - `51`： Apple Pay（VISA / Mastercard, UCカード社）
+        - `51`：Apple Pay（VISA/Mastercard，UC Card）
 
-        - `52`： Apple Pay（JCB / American Express）
+        - `52`：Apple Pay（JCB/American Express）
 
-        - `56`： Google Pay（VISA / Mastercard, UCカード社）
+        - `56`：Google Pay（VISA/Mastercard，UC Card）
 
-        - `57`： Google Pay（JCB / American Express / Diners Club）
+        - `57`：Google Pay（JCB/American Express/Diners Club）
 
-        - `58`： Google Pay（VISA / Mastercard, トヨタファイナンス社）
+        - `58`：Google Pay（VISA/Mastercard，Toyota Finance）
 
-        - `59`： Google Pay（VISA / Mastercard, オリエントコーポレーション）
+        - `59`：Google Pay（VISA/Mastercard，Orient Corporation）
 
-        - `101`： コンビニ決済
+        - `101`：便利店支付
 
-        - `201`： PayPay
+        - `201`：PayPay
 
-        - `301`： 口座振替（5・6・23・27日）
+        - `301`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `302`： 口座振替（1・5・20・26日）
+        - `302`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `401`： 銀行振込（バーチャル口座）
+        - `401`：银行转账（虚拟账户）
 
-        - `403`： 一括決済（バーチャル口座）
-
-        '
+        - `403`：批量支付（虚拟账户）'
     ExaminationStatus:
       type: string
       enum:
       - '1'
       - '2'
       - '3'
-      description: '審査ステータス
+      description: '审核状态。
 
 
-        - `1`: 審査中<br /><span class="smallText">まだこの決済手段による決済を受け付けることはできません。</span>
+        - `1`：审核中，尚不可使用该支付方式
 
-        - `2`: 審査OK<br /><span class="smallText">この決済手段による決済を受け付けることができます。</span>
+        - `2`：审核通过，可以使用该支付方式
 
-        - `3`: 審査NG<br /><span class="smallText">この決済手段による決済を受け付けることはできません。</span>
-
-        '
+        - `3`：审核未通过，不可使用该支付方式'
     Examination:
       type: object
       properties:
@@ -30041,9 +29364,7 @@ components:
       maxLength: 13
       nullable: true
       example: '1234567890123'
-      description: '法人番号
-
-        '
+      description: 日本法人编号。
     corporate_name:
       type: string
       minLength: 1
@@ -30062,233 +29383,163 @@ components:
       maxLength: 300
       nullable: true
       example: https://www.sample-corp.example.com
-      description: '企業サイトURL
-
-        '
+      description: 企业网站 URL。
     capital:
       type: number
       nullable: true
       minLength: 1
       maxLength: 19
       example: 1000000
-      description: '資本金
-
-        '
+      description: 注册资本。
     established_at:
       type: string
       nullable: true
       minLength: 10
       maxLength: 10
       example: 2020/01/01
-      description: '設立日
-
-        '
+      description: 成立日期。
     yearly_sales:
       type: number
       nullable: true
       minLength: 1
       maxLength: 19
       example: 1000000
-      description: '年商
-
-        '
+      description: 年销售额。
     business_details:
       type: string
       nullable: true
       minLength: 1
       maxLength: 5000
       example: ○○の製造・販売を行っており、fincodeによるオンラインでの販売を予定。
-      description: '事業内容
-
-        '
+      description: 经营业务内容。
     company_postal_code:
       type: string
       nullable: true
       minLength: 8
       maxLength: 8
       example: 123-4567
-      description: '会社住所 郵便番号\
-
-        形式： 半角数字（ハイフンあり）
-
-        '
+      description: 公司地址的邮政编码；使用包含连字符的半角数字。
     company_prefecture:
       type: string
       nullable: true
       minLength: 3
       maxLength: 4
       example: 東京都
-      description: '会社住所 都道府県\
-
-        形式： 漢字
-
-        '
+      description: 公司地址的都道府县；使用汉字。
     company_prefecture_kana:
       type: string
       nullable: true
       minLength: 1
       maxLength: 6
       example: トウキョウト
-      description: '会社住所 都道府県（カナ）\
-
-        形式： 全角カタカナ
-
-        '
+      description: 公司地址的都道府县（片假名）；使用全角片假名。
     company_address_municipality:
       type: string
       nullable: true
       minLength: 1
       maxLength: 50
       example: 渋谷区
-      description: '会社住所 市区町村\
-
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+      description: 公司地址的市区町村；可使用汉字、平假名、片假名和半角英数字。
     company_address_municipality_kana:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: シブヤク
-      description: '会社住所 市区町村（カナ）\
-
-        形式： 全角カタカナ
-
-        '
+      description: 公司地址的市区町村（片假名）；使用全角片假名。
     company_address_section:
       type: string
       nullable: true
       minLength: 1
       maxLength: 50
       example: 道玄坂
-      description: '会社住所 町域\
-
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+      description: 公司地址的町域；可使用汉字、平假名、片假名和半角英数字。
     company_address_section_kana:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: ドウゲンザカ
-      description: '会社住所 町域（カナ）\
-
-        形式： 全角カタカナ
-
-        '
+      description: 公司地址的町域（片假名）；使用全角片假名。
     company_address_chrome:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: 1-2-3
-      description: '会社住所 番地\
-
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+      description: 公司地址的门牌号；可使用汉字、平假名、片假名和半角英数字。
     company_address_chrome_kana:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: イチニサン
-      description: '会社住所 番地（カナ）\
-
-        形式： 全角カタカナ
-
-        '
+      description: 公司地址的门牌号（片假名）；使用全角片假名。
     company_address_building_name:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: サンプルビル
-      description: '会社住所 ビル名\
-
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+      description: 公司地址的建筑物名称；可使用汉字、平假名、片假名和半角英数字。
     company_address_building_name_kana:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: サンプルビル
-      description: '会社住所 ビル名（カナ）\
-
-        形式： 全角カタカナ
-
-        '
+      description: 公司地址的建筑物名称（片假名）；使用全角片假名。
     company_tel:
       type: string
       nullable: true
       minLength: 1
       maxLength: 15
       example: 0312345678
-      description: '会社情報 電話番号\
-
-        形式： 半角数字（ハイフンなし）
-
-        '
+      description: 公司电话号码；使用不含连字符的半角数字。
     representative_last_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 山田
-      description: '代表者 姓
+      description: '法定代表人姓氏。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字
-
-        '
+        可用字符：汉字、平假名、片假名、半角英文字母。'
     representative_last_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: ヤマダ
-      description: '代表者 姓（カナ）\
+      description: '法定代表人姓氏（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_first_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 太郎
-      description: '代表者 名\
+      description: '法定代表人名字。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字
-
-        '
+        可用字符：汉字、平假名、片假名、半角英文字母。'
     representative_first_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: タロウ
-      description: '代表者 名（カナ）\
+      description: '法定代表人名字（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_birthday:
       type: string
       pattern: ^\d{4}/\d{2}/\d{2}$
       nullable: true
       example: 1980/01/01
-      description: '代表者 生年月日\
+      description: '法定代表人出生日期。
 
-        \
-
-        形式：`yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     representative_gender:
       type: integer
       enum:
@@ -30296,14 +29547,12 @@ components:
       - 1
       nullable: true
       example: 0
-      description: '代表者 性別
+      description: '法定代表人性别。
 
 
-        - `0`: 男性
+        - `0`：男性
 
-        - `1`: 女性
-
-        '
+        - `1`：女性'
     representative_postal_code:
       type: string
       pattern: ^\d{3}-\d{4}$
@@ -30311,119 +29560,97 @@ components:
       minLength: 8
       maxLength: 8
       example: 150-0043
-      description: '代表者 住所 郵便番号\
+      description: '法定代表人地址的邮政编码。
 
-        形式：`xxx-xxxx`
-
-        '
+        格式：`xxx-xxxx`'
     representative_prefecture:
       type: string
       minLength: 1
       maxLength: 4
       nullable: true
       example: 東京都
-      description: '代表者 住所 都道府県\
+      description: '法定代表人地址的都道府县。
 
-        形式： 漢字
-
-        '
+        格式：汉字。'
     representative_prefecture_kana:
       type: string
       minLength: 1
       maxLength: 6
       nullable: true
       example: トウキョウト
-      description: '代表者 住所 都道府県（カナ）\
+      description: '法定代表人地址的都道府县（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_address_municipality:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 渋谷区
-      description: '代表者 住所 市区町村\
+      description: '法定代表人地址的市区町村。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     representative_address_municipality_kana:
       type: string
       minLength: 1
       maxLength: 100
       nullable: true
       example: シブヤク
-      description: '代表者 住所 市区町村（カナ）\
+      description: '法定代表人地址的市区町村（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_address_section:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 道玄坂
-      description: '代表者 住所 町域\
+      description: '法定代表人地址的町域。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     representative_address_section_kana:
       type: string
       minLength: 1
       maxLength: 100
       nullable: true
       example: ドウゲンザカ
-      description: '代表者 住所 町域（カナ）\
+      description: '法定代表人地址的町域（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_address_chrome:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 1-14-6
-      description: '代表者 住所 番地\
+      description: '法定代表人地址的门牌号。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     representative_address_chrome_kana:
       type: string
       minLength: 1
       maxLength: 100
       nullable: true
       example: 1-14-6
-      description: '代表者 住所 番地（カナ）
-
-        '
+      description: 法定代表人地址的门牌号（片假名）。
     representative_address_building_name:
       type: string
       minLength: 1
       maxLength: 100
       nullable: true
       example: ヒューマックス渋谷ビル 7F
-      description: '代表者 住所 建物名\
+      description: '法定代表人地址的建筑物名称。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     representative_address_building_name_kana:
       type: string
       minLength: 1
       maxLength: 100
       nullable: true
       example: ヒューマックスシブヤビル ナナカイ
-      description: '代表者 住所 建物名（カナ）\
+      description: '法定代表人地址的建筑物名称（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     representative_tel:
       type: string
       minLength: 1
@@ -30431,81 +29658,66 @@ components:
       pattern: ^\d{1,15}$
       nullable: true
       example: '0364330000'
-      description: '代表者 電話番号\
+      description: '法定代表人电话号码。
 
-        形式： 半角数字（ハイフンなし、PHS番号不可）
-
-        '
+        格式：不含连字符的半角数字；不可使用 PHS 号码。'
     staff1_last_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 鈴木
-      description: '担当者1 姓\
+      description: '第一联系人姓氏。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字\
+        可用字符：汉字、平假名、片假名、半角英文字母。
 
-        \
 
-        fincodeは担当者1,2宛てに審査結果の通知や審査保留対応の連絡などを行います。
-
-        '
+        fincode 会向第一、第二联系人发送审核结果通知及审核暂缓事项的处理通知。'
     staff1_last_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: スズキ
-      description: '担当者1 姓（カナ）\
+      description: '第一联系人姓氏（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     staff1_first_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 次郎
-      description: '担当者1 名\
+      description: '第一联系人名字。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字
-
-        '
+        可用字符：汉字、平假名、片假名、半角英文字母。'
     staff1_first_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: ジロウ
-      description: '担当者1 名（カナ）\
+      description: '第一联系人名字（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     staff1_company_name:
       type: string
       minLength: 1
       maxLength: 150
       nullable: true
       example: サンプル株式会社
-      description: '担当者1 会社名\
+      description: '第一联系人公司名称。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     staff1_belongs:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: EC事業部
-      description: '担当者1 部署名\
+      description: '第一联系人所属部门。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     staff1_tel:
       type: string
       minLength: 1
@@ -30513,11 +29725,9 @@ components:
       pattern: ^\d{1,15}$
       nullable: true
       example: 09000000000
-      description: '担当者1 電話番号\
+      description: '第一联系人电话号码。
 
-        形式： 半角数字（ハイフンなし、PHS番号不可）
-
-        '
+        格式：不含连字符的半角数字；不可使用 PHS 号码。'
     staff1_mail:
       type: string
       minLength: 1
@@ -30525,77 +29735,63 @@ components:
       format: email
       nullable: true
       example: staff-1@example.com
-      description: '担当者1 メールアドレス\
+      description: '第一联系人电子邮箱地址。
 
-        形式： RFC 5322
-
-        '
+        格式：RFC 5322。'
     staff2_last_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 佐藤
-      description: '担当者2 姓\
+      description: '第二联系人姓氏。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字
-
-        '
+        可用字符：汉字、平假名、片假名、半角英文字母。'
     staff2_last_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: サトウ
-      description: '担当者2 姓（カナ）\
+      description: '第二联系人姓氏（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     staff2_first_name:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: 三郎
-      description: '担当者2 名\
+      description: '第二联系人名字。
 
-        形式： 漢字/ひらがな/カタカナ/半角英字
-
-        '
+        可用字符：汉字、平假名、片假名、半角英文字母。'
     staff2_first_name_kana:
       type: string
       minLength: 1
       maxLength: 20
       nullable: true
       example: サブロウ
-      description: '担当者2 名（カナ）\
+      description: '第二联系人名字（片假名）。
 
-        形式： 全角カナ
-
-        '
+        格式：全角片假名。'
     staff2_company_name:
       type: string
       minLength: 1
       maxLength: 150
       nullable: true
       example: サンプル株式会社
-      description: '担当者2 会社名\
+      description: '第二联系人公司名称。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     staff2_belongs:
       type: string
       minLength: 1
       maxLength: 50
       nullable: true
       example: 営業統括部
-      description: '担当者2 部署名\
+      description: '第二联系人所属部门。
 
-        形式： 漢字/ひらがな/カタカナ/半角英数
-
-        '
+        可用字符：汉字、平假名、片假名、半角英数字。'
     staff2_tel:
       type: string
       minLength: 1
@@ -30603,11 +29799,9 @@ components:
       pattern: ^\d{1,15}$
       nullable: true
       example: 09000000000
-      description: '担当者2 電話番号\
+      description: '第二联系人电话号码。
 
-        形式： 半角数字（ハイフンなし、PHS番号不可）
-
-        '
+        格式：不含连字符的半角数字；不可使用 PHS 号码。'
     staff2_mail:
       type: string
       minLength: 1
@@ -30615,128 +29809,78 @@ components:
       format: email
       nullable: true
       example: staff-2@example.com
-      description: '担当者2 メールアドレス\
+      description: '第二联系人电子邮箱地址。
 
-        形式： RFC 5322
-
-        '
+        格式：RFC 5322。'
     used_on_app:
       type: boolean
       nullable: true
       example: true
-      description: 'ネイティブアプリ利用有無\
-
-        \
-
-        ネイティブアプリでfincodeを使用するかどうか
+      description: '是否在原生应用中使用 fincode。
 
 
-        - `true`: ネイティブアプリでfincodeを使用する
-
-        '
+        - `true`：在原生应用中使用 fincode'
     used_on_web:
       type: boolean
       nullable: true
       example: true
-      description: 'Webサイト利用有無\
-
-        \
-
-        Webサイト/Webアプリでfincodeを使用するかどうか
+      description: '是否在网站或 Web 应用中使用 fincode。
 
 
-        - `true`: Webサイト/Webアプリでfincodeを使用する
-
-        '
+        - `true`：在网站或 Web 应用中使用 fincode'
     url:
       type: string
       nullable: true
       minLength: 1
       maxLength: 300
       example: https://example.com
-      description: 'WebサイトURL\
-
-        \
-
-        fincode審査チームがサイトを閲覧するためのURL
-
-        '
+      description: fincode 审核团队用于访问网站的 URL。
     credential:
       type: string
       nullable: true
       minLength: 1
       maxLength: 100
       example: 'ID: example_user,Password: password'
-      description: 'ログイン情報\
-
-        \
-
-        fincode審査チームがサイトを閲覧するためのログイン情報
-
-        '
+      description: fincode 审核团队访问网站所需的登录信息。
     properties-shop_name:
       type: string
       minLength: 1
       maxLength: 100
       example: サンプルショップ東京
-      description: 'fincodeにおけるショップ名
-
-        '
+      description: fincode 中登记的商户名称。
     properties-shop_name_kana:
       type: string
       minLength: 1
       maxLength: 100
       example: サンプルショップトウキョウ
-      description: 'fincodeにおけるショップ名（カナ）
-
-        '
+      description: fincode 中登记的商户名称（片假名）。
     shop_name_en:
       type: string
       minLength: 1
       maxLength: 25
       example: Sample Shop Tokyo
-      description: 'fincodeにおけるショップ名（英語）
-
-        '
+      description: fincode 中登记的商户英文名称。
     shop_sales_manager_name:
       type: string
       nullable: true
       minLength: 1
       maxLength: 300
       example: イプシロン太郎
-      description: '販売責任者氏名\
-
-        \
-
-        ショップの販売責任者の氏名
-
-        '
+      description: 商户销售负责人的姓名。
     additional_info-properties-shop_service_name:
       type: string
       nullable: true
       minLength: 1
       maxLength: 300
       example: サンプルショップ
-      description: '屋号・サービス名\
-
-        \
-
-        ショップのサービスの名称
-
-        '
+      description: 商号或服务名称。
     shop_how_to_pay:
       type: string
       nullable: true
       minLength: 1
       maxLength: 1000
       example: クレジットカード、コンビニ決済
-      description: '支払い方法\
-
-        \
-
-        ショップで利用可能な支払い方法
-
-        '
+      description: 商户可使用的支付方式。
     shop_charge_description:
       type: string
       nullable: true
@@ -30745,13 +29889,7 @@ components:
       example: 'インターネット接続費用およびその他インターネット利用に必要な費用。モバイルデバイスをご利用の場合にはデータ通信料が発生する場合があります。
 
         '
-      description: '商品代金以外の料金の説明\
-
-        \
-
-        送料、手数料、消費税などの商品代金以外の料金についての説明
-
-        '
+      description: 商品价格之外的费用说明，例如运费、手续费和消费税。
     shop_product_delivery_time:
       type: string
       nullable: true
@@ -30760,13 +29898,7 @@ components:
       example: 'サンプルショップのサービス提供開始日はユーザーアカウントで初めて認証手続を行った日となります。
 
         '
-      description: '商品の引き渡し時期\
-
-        \
-
-        商品の引き渡し時期についての説明
-
-        '
+      description: 商品交付时间说明。
     shop_return_goods_handing_conditions:
       type: string
       nullable: true
@@ -30777,92 +29909,55 @@ components:
         2. デジタルコンテンツサービスの特性上、購入後の返品・キャンセルはお受付いたしかねます。
 
         '
-      description: '返品・交換に関する条件\
-
-        \
-
-        返品・交換に関する条件についての説明
-
-        '
+      description: 退货及换货条件说明。
     support_tel:
       type: string
       nullable: true
       minLength: 1
       maxLength: 15
       example: 312345678
-      description: '購入者向けサポート窓口 電話番号\
+      description: '面向购买者的客服电话号码。
 
-        形式： 電話番号（ハイフンなし）
-
-        '
+        格式：不含连字符的电话号码。'
     support_mail:
       type: string
       nullable: true
       minLength: 1
       maxLength: 254
       example: support@example.com
-      description: '購入者向けサポート窓口 メールアドレス\
+      description: '面向购买者的客服电子邮箱地址。
 
-        形式： RFC 5322
-
-        '
+        格式：RFC 5322。'
     product:
       type: boolean
       nullable: true
       example: false
-      description: '物販商材 提供有無\
-
-        \
-
-        ショップが物品販売を行うかどうか
-
-        '
+      description: 是否销售实物商品。
     service:
       type: boolean
       nullable: true
       example: false
-      description: 'サービス商材 提供有無\
-
-        \
-
-        ショップがサービス提供を行うかどうか
-
-        '
+      description: 是否提供服务类商品。
     digital_contents:
       type: boolean
       nullable: true
       example: true
-      description: 'デジタルコンテンツ 提供有無\
-
-        \
-
-        ショップがデジタルコンテンツ販売を行うかどうか
-
-        '
+      description: 是否销售数字内容。
     prepaid_point:
       type: boolean
       nullable: true
       example: true
-      description: 'プリペイドポイントの有無\
-
-        \
-
-        ショップがプリペイドポイントを導入しているかどうか
-
-        '
+      description: 是否在商户中使用预付积分。
     unit_price:
       type: number
       nullable: true
       minLength: 1
       maxLength: 23
       example: 1000
-      description: '1回の決済における金額（単価）\
+      description: '单笔支付的商品或服务单价。
 
-        \
 
-        例： `1000`（1000円）
-
-        '
+        示例：`1000`（1000 日元）'
     content_description:
       type: string
       nullable: true
@@ -30871,133 +29966,80 @@ components:
       example: '本サービスは、ユーザーが自由にWeb記事を投稿・販売できるコンテンツを提供しています。
 
         '
-      description: '取扱商材の説明\
-
-        \
-
-        ショップの提供する商材についての説明
-
-        '
+      description: 商户所提供商品或服务的说明。
     about_expiration:
       type: string
       nullable: true
       minLength: 1
       maxLength: 300
       example: ポイントは1年間有効。
-      description: 'ポイント有効期限について\
-
-        \
-
-        プリペイドポイントの有効期限について
-
-        '
+      description: 预付积分的有效期说明。
     how_to_use:
       type: string
       nullable: true
       minLength: 1
       maxLength: 300
       example: ポイントは購入時に利用可能で、合計金額からポイントを差し引いて決済を行う。
-      description: 'ポイント利用方法\
-
-        \
-
-        プリペイドポイントの利用方法
-
-        '
+      description: 预付积分的使用方式。
     lost_trial:
       type: boolean
       nullable: true
       example: true
-      description: '改正割賦販売法に基づく訴訟敗訴歴があるかどうかの表明
+      description: '是否存在依据日本修订分期付款销售法提起诉讼并败诉的历史。
 
 
-        - `true`: 改正割賦販売法に基づく訴訟敗訴歴がない
+        - `true`：不存在败诉记录
 
-        - `false`: 改正割賦販売法に基づく訴訟敗訴歴がある
-
-        '
+        - `false`：存在败诉记录'
     deals_insecure_content:
       type: boolean
       nullable: true
       example: true
-      description: 'fincodeで取扱不可の商材を取り扱わないことの表明
+      description: '是否确认不经营 fincode 禁止处理的商品或服务。
 
 
-        - `true`: 取扱不可の商材を取り扱う予定はない
+        - `true`：没有经营禁止品类的计划
 
-        - `false`: 取扱不可の商材を取り扱う予定がある
-
-
-        fincodeの禁止商材は以下の通りです。
+        - `false`：计划经营禁止品类
 
 
-        - 金融行為（クレジットカードショッピング枠の現金化等）
+        fincode 禁止经营的品类如下：
 
-        - 仮想通貨取引、金券（印紙、切手等含む）、商品券、プリペイドカード、有価証券
 
-        - 賭博、ギャンブル
+        - 金融行为，例如信用卡购物额度套现
 
-        - RMT（リアルマネートレーディング）
+        - 虚拟货币交易、票券（包括印花税票和邮票）、商品券、预付卡、有价证券
 
-        - ペット等の生き物全般（※標本・剥製も含む）
+        - 赌博及博彩
 
-        - お布施
+        - RMT（真实货币交易）
 
-        - 危険ドラッグ、デザイナーズドラッグ
+        - 宠物等所有活体，包括标本和剥制品
 
-        - 処方箋なしで購入できる処方薬（ルミガン・ラディース・クラッシュビスタ・ケアプロスト等）
+        - 布施
 
-        - 第三者の著作権・肖像権・知的所有権等を侵害する恐れがあるもの
+        - 危险药物及设计师药物
 
-        - 公序良俗に反するもの（アダルト、出会い系サイトを含む）
+        - 无处方购买处方药，例如 Lumigan、Latisse、Glash Vista、Careprost 等
 
-        - 法律・法令の定めに違反するもの（銃刀法・麻薬取締法・ワシントン条約・薬事法）
+        - 可能侵犯第三方著作权、肖像权或知识产权的商品或内容
 
-        '
+        - 违反公序良俗的商品或服务，包括成人内容和交友网站
+
+        - 违反法律法规的商品或服务，包括违反枪刀法、麻药取缔法、华盛顿公约或药事法的内容'
     deals_long_apply_content:
       type: boolean
       nullable: true
       example: true
-      description: 'fincode審査に時間がかかるコンテンツを取り扱うかどうかの表明
+      description: '是否经营需要较长 fincode 审核时间的商品或服务。
 
 
-        - `true`: fincode審査に時間がかかるコンテンツを取り扱う
+        - `true`：经营此类商品或服务
 
-        - `false`: fincode審査に時間がかかるコンテンツを取り扱わない
-
-
-        以下の商材を取り扱う場合は`true`を指定する必要があります。
+        - `false`：不经营此类商品或服务
 
 
-        - 呉服
-
-        - コンサルディングサービス
-
-        - エステ、美容サロン、美容医療
-
-        - スポーツ施設・フィットネスクラブ
-
-        - カルチャースクール・通信講座
-
-        - データ販売
-
-        - 情報詳細（情報の内容自体が商品となるもの）
-
-        - 占い
-
-        - サプリメント・健康食品
-
-        - 美容品・化粧品
-
-        - カツラ
-
-        - 旅行業に該当するサービス
-
-        - タバコ・CBD
-
-        - 寄付金
-
-        '
+        经营以下内容时必须指定为 `true`：和服、咨询服务、美容护理/美容院/医疗美容、体育设施/健身俱乐部、文化学校/函授课程、数据销售、以信息本身为商品的信息内容、占卜、营养补充剂/健康食品、美容用品/化妆品、假发、属于旅行业的服务、烟草/CBD、捐款。'
     ContractDetail:
       type: object
       properties:
@@ -31430,18 +30472,12 @@ components:
       enum:
       - 0
       - 1
-      description: '支払い方法\
-
-        \
-
-        キャンセル金額の超過などによりfincodeへの支払が発生した場合の支払い方法
+      description: '因取消金额超出销售金额等原因需要向 fincode 付款时的支付方式。
 
 
-        - `0`: クレジットカード
+        - `0`：银行卡
 
-        - `1`: 銀行口座
-
-        '
+        - `1`：银行账户'
     ContractBankAccountInfo:
       type: object
       properties:
@@ -31859,14 +30895,12 @@ components:
       type: boolean
       nullable: true
       example: true
-      description: '事業形態
+      description: '经营主体类型。
 
 
-        - `true`: 法人
+        - `true`：法人企业
 
-        - `false`: 個人事業主
-
-        '
+        - `false`：个体经营者'
     properties-corporate_number:
       allOf:
       - $ref: '#/components/schemas/corporate_number'
@@ -32095,16 +31129,10 @@ components:
       type: boolean
       nullable: true
       example: false
-      description: 'その他の箇所での利用有無\
-
-        \
-
-        Webアプリケーションやネイティブアプリ上でない箇所で利用があるかどうか
+      description: '是否在 Web 应用或原生应用之外的场景使用 fincode。
 
 
-        - `true`: Webアプリ／ネイティブアプリでない箇所でfincodeを使用する
-
-        '
+        - `true`：在 Web 应用或原生应用之外使用 fincode'
     properties-url:
       allOf:
       - $ref: '#/components/schemas/url'
@@ -32392,15 +31420,11 @@ components:
         properties:
           id:
             type: string
-            description: '変更申請ID
-
-              '
+            description: 变更申请 ID。
           status_code:
             type: integer
             nullable: true
-            description: '申請ステータス
-
-              '
+            description: 申请状态。
     ChangeRequest.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/ChangeRequest.Registering.Request'
@@ -32408,15 +31432,11 @@ components:
         properties:
           id:
             type: string
-            description: '変更申請ID
-
-              '
+            description: 变更申请 ID。
           status_code:
             type: integer
             nullable: true
-            description: '申請ステータス
-
-              '
+            description: 申请状态。
     ContentInfo:
       allOf:
       - $ref: '#/components/schemas/ContentInfo.V2'
@@ -32427,25 +31447,21 @@ components:
             minLength: 1
             maxLength: 19
             nullable: true
-            description: '商品情報ID
-
-              '
+            description: 商品或服务信息 ID。
           type:
             type: number
             enum:
             - 0
             - 1
             - 2
-            description: '取扱商材 品目種別
+            description: '经营商品或服务的项目类型。
 
 
-              - `0`: 物品販売
+              - `0`：实物商品
 
-              - `1`: サービス
+              - `1`：服务
 
-              - `2`: デジタルコンテンツ
-
-              '
+              - `2`：数字内容'
     ContractInputStatus:
       type: number
       enum:
@@ -32453,18 +31469,16 @@ components:
       - 302
       - 303
       - 304
-      description: '本番環境申請情報入力ステータス
+      description: '生产环境申请信息填写状态。
 
 
-        - `301`: 全項目未入力
+        - `301`：所有字段均未填写
 
-        - `302`: 一部入力済み
+        - `302`：部分字段已填写
 
-        - `303`: 全項目入力済み
+        - `303`：所有字段已填写
 
-        - `304`: 本番環境申請済み
-
-        '
+        - `304`：已提交生产环境申请'
     ExaminationInfo:
       type: object
       properties:
@@ -32565,58 +31579,34 @@ components:
       type: boolean
       default: false
       nullable: true
-      description: '契約情報更新フラグ\
-
-        \
-
-        契約情報の更新を行うかどうか
+      description: '是否更新合同信息。
 
 
-        - `true`: 更新を行う
-
-        '
+        - `true`：执行更新'
     update_shop:
       type: boolean
       default: false
       nullable: true
-      description: 'ショップ情報更新フラグ\
-
-        \
-
-        ショップ情報の更新を行うかどうか
+      description: '是否更新商户信息。
 
 
-        - `true`: 更新を行う
-
-        '
+        - `true`：执行更新'
     update_bank_account:
       type: boolean
       default: false
       nullable: true
-      description: '入金用銀行口座情報更新フラグ\
-
-        \
-
-        fincodeの売上の入金先となる銀行口座情報の更新を行うかどうか
+      description: '是否更新 fincode 销售款收款银行账户信息。
 
 
-        - `true`: 更新を行う
-
-        '
+        - `true`：执行更新'
     update_deposit_cycle:
       type: boolean
       default: false
       nullable: true
-      description: '入金サイクル情報更新フラグ\
-
-        \
-
-        fincodeの売上の入金サイクル情報の更新を行うかどうか
+      description: '是否更新 fincode 销售款入账周期信息。
 
 
-        - `true`: 更新を行う
-
-        '
+        - `true`：执行更新'
     ExaminationInfo.Updating.Request:
       type: object
       properties:
@@ -32643,25 +31633,13 @@ components:
               pay_by:
                 allOf:
                 - $ref: '#/components/schemas/ShopPaymentMethod'
-          description: '契約情報\
-
-            \
-
-            fincodeに登録するショップ運営事業者の契約情報の詳細
-
-            '
+          description: 在 fincode 中登记的商户运营方合同详细信息。
         shop_item_detail:
           type: array
           items:
             allOf:
             - $ref: '#/components/schemas/ContentInfo'
-          description: 'ショップ 取扱商材情報\
-
-            \
-
-            fincodeに登録するショップの取扱商材情報
-
-            '
+          description: 在 fincode 中登记的商户经营商品或服务信息。
         contract_bank_account:
           allOf:
           - $ref: '#/components/schemas/ContractBankAccountInfo'
@@ -32722,13 +31700,7 @@ components:
     x-req-properties-data:
       type: string
       format: binary
-      description: '社印ファイルデータ（マルチパートアップロード）\
-
-        \
-
-        画像ファイルをマルチパートアップロードするときはこの `data` フィールドに画像データを設定します。
-
-        '
+      description: 公司印章图片数据。JSON 请求中为 Base64 编码字符串，文件大小不得超过 512 KB；multipart 请求中请直接设置上传的图片数据。
     CompanyStamp.Creating.Request:
       type: object
       required:
@@ -32821,9 +31793,7 @@ components:
       minLength: 1
       maxLength: 40
       example: payments.card.secure
-      description: 'Webhook通知 トリガーイベント
-
-        '
+      description: Webhook 通知触发事件。
     WebhookSetting:
       type: object
       properties:
@@ -32870,36 +31840,18 @@ components:
       minLength: 1
       maxLength: 50
       example: w_*********************
-      description: 'Webhook設定ID
-
-        '
+      description: Webhook 设置 ID。
     WebhookSetting_properties-url:
       type: string
       format: uri
       example: https://your-service.example.com/webhook-receiver
-      description: 'Webhook通知先 URL\
-
-        \
-
-        Webhookの通知先URLを指定します。\
-
-        fincodeのWebhookはHTTPS通信かつ443ポートでのみ受信可能です。
-
-        '
+      description: Webhook 通知目标 URL。fincode Webhook 仅支持通过 HTTPS 的 443 端口接收。
     signature:
       type: string
       minLength: 1
       maxLength: 60
       example: WEBHOOK_FROM_FINCODE
-      description: '署名\
-
-        \
-
-        このWebhookがfincodeから送信されたことを確認するための署名です。\
-
-        fincodeからのWebhook通知において`Fincode-Signature`ヘッダーにこの値が含まれます。
-
-        '
+      description: 用于确认 Webhook 由 fincode 发送的签名；通知请求的 `Fincode-Signature` 请求头中包含此值。
     WebhookSetting.Creating.Request:
       type: object
       properties:
@@ -32947,7 +31899,7 @@ components:
         id:
           allOf:
           - $ref: '#/components/schemas/WebhookSetting_properties-id'
-          description: 削除されたWebhook設定のID
+          description: 被删除的 Webhook 设置 ID。
         delete_flag:
           allOf:
           - $ref: '#/components/schemas/delete_flag'
@@ -32956,14 +31908,10 @@ components:
       enum:
       - JPY
       example: JPY
-      description: '通貨コード\
-
-        この決済で利用された通貨のコードです。
+      description: '当前支付使用的货币代码。
 
 
-        - `JPY`: 日本円
-
-        '
+        - `JPY`：日元'
     job_code:
       type: string
       enum:
@@ -32972,18 +31920,16 @@ components:
       - CAPTURE
       - CANCEL
       example: CAPTURE
-      description: '取引種別
+      description: '交易类型。
 
 
-        - `CHECK`：有効性チェックのみ行う
+        - `CHECK`：仅执行有效性检查
 
-        - `AUTH`：仮売上
+        - `AUTH`：仅授权
 
-        - `CAPTURE`：即時売上
+        - `CAPTURE`：立即确认请款
 
-        - `CANCEL`：キャンセル
-
-        '
+        - `CANCEL`：取消'
     WebhookEvent.Payment.Card:
       type: object
       properties:
@@ -33105,25 +32051,20 @@ components:
           - '0'
           - '1'
           example: '0'
-          description: 'Webhook通知受信\
-
-            \
-
-            Webhookの受信が正常に完了したかどうかをfincodeにレスポンスします。
+          description: '向 fincode 返回 Webhook 是否正常接收。
 
 
-            - `0`: 受信成功<br /><span class="smallText">fincodeは受信に成功したと判断し、通知を終了します。</span>
+            - `0`：接收成功，fincode 结束通知
 
-            - `1`: 受信失敗<br /><span class="smallText">fincodeは受信に失敗したと判断します。Webhookの受信に失敗した場合は、fincodeはリトライを行います。</span>
-
-            '
+            - `1`：接收失败，fincode 将重试通知'
     WebhookResponse-plain:
       type: string
-      description: '- `0`: 受信成功<br /><span class="smallText">fincodeは受信に成功したと判断し、通知を終了します。</span>
+      description: 'Webhook 接收结果。
 
-        - `1`: 受信失敗<br /><span class="smallText">fincodeは受信に失敗したと判断します。Webhookの受信に失敗した場合は、fincodeはリトライを行います。</span>
 
-        '
+        - `0`：接收成功，fincode 结束通知
+
+        - `1`：接收失败，fincode 将重试通知'
       example: 0
     properties-job_code:
       type: string
@@ -33164,18 +32105,16 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未请款
 
-            - `AUTHORIZED`: 仮売上<br /><span class="smallText">仮売上として与信枠の確保が完了しており、売上確定により請求を完了できます。</span>
+            - `AUTHORIZED`：已授权，可通过确认请款完成扣款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">請求が完了し、売上が確定しています。</span>
+            - `CAPTURED`：已确认请款
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
-
-            '
+            - `CANCELED`：已取消'
         customer_id:
           nullable: true
           allOf:
@@ -33335,11 +32274,7 @@ components:
           nullable: true
           allOf:
           - $ref: '#/components/schemas/error_code'
-          description: 'この決済において発生したエラーのうち、一番最新のエラーのエラーコードです。\
-
-            [各エラーコードの定義はこちらを参照](/develop_support/error)して確認できます。
-
-            '
+          description: 当前支付最近一次错误的错误代码。定义参见[错误代码](/develop_support/error)。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
@@ -33348,80 +32283,50 @@ components:
       enum:
       - '0'
       - '1'
-      description: '多重支払フラグ\
-
-        この決済に対して複数回支払いが行われた場合`1`になります。
+      description: '重复付款标志。同一笔支付发生多次付款时为 `1`。
 
 
-        - `0`: 0回、または1回の支払いが行われた
+        - `0`：付款 0 次或 1 次
 
-        - `1`: 2回以上、同一のバーコードを用いて支払いが行われた
-
-        '
+        - `1`：使用同一条形码付款 2 次或以上'
     properties-cancel_overpayment_flag:
       type: string
       enum:
       - '0'
       - '1'
-      description: 'キャンセル後支払フラグ\
-
-        この決済をキャンセルした後に購入者がバーコードを用いて支払いを行った場合`1`になります。
+      description: '取消后付款标志。取消支付后，购买者仍使用条形码付款时为 `1`。
 
 
-        - `0`: キャンセル後支払は行われていない
+        - `0`：取消后未付款
 
-        - `1`: キャンセル後、購入者による支払いが行われた
-
-        '
+        - `1`：取消后已付款'
     payment_date:
       type: string
       nullable: true
-      description: '支払日時\
+      description: '购买者在便利店柜台完成付款的时间。
 
-        コンビニ店頭で購入者が支払いを行った日時です。\
-
-        \
-
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     properties-payment_term:
       type: string
       nullable: true
-      description: '支払い期限日時\
+      description: '便利店支付的截止时间。
 
-        コンビニ決済の支払い期限日時です。\
-
-        \
-
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     Payment_properties-process_date:
       type: string
       example: 2022/01/01 12:34:56.789
-      description: '決済 処理日時\
-
-        決済の各種処理（決済実行、キャンセルなど）が行われた日時です。
-
-        '
+      description: 执行支付、取消等支付处理的时间。
     konbini_store_code:
       nullable: true
       minLength: 1
       maxLength: 8
-      description: 'コンビニ店舗コード\
-
-        コンビニ事業者ごとに独自体系の店舗コードです。
-
-        '
+      description: 便利店门店代码；编码体系由各便利店运营商自行定义。
     order_serial:
       type: string
       nullable: true
       minLength: 1
       maxLength: 18
-      description: '注文管理ID
-
-        '
+      description: 订单管理 ID。
     invoice_id:
       type: string
       nullable: true
@@ -33452,20 +32357,18 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるコンビニ店頭レジでの払い込みを待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在便利店柜台付款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">請求が完了し、売上が確定しています。</span>
+            - `CAPTURED`：已支付，销售确认完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         customer_id:
           nullable: true
           allOf:
@@ -33552,69 +32455,53 @@ components:
       type: string
       nullable: true
       example: 2022/05/16
-      description: '仮売上期限\
+      description: '授权有效期。
 
-        形式： `yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     code_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
       example: '123456'
-      description: 'PayPayの支払いコードID
-
-        '
+      description: PayPay 支付码 ID。
     payment_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
-      description: 'PayPay 決済ID
-
-        '
+      description: PayPay 支付 ID。
     properties-payment_date:
       type: string
       nullable: true
       example: 2022/05/16 12:34:56.999
-      description: '支払日時\
+      description: '支付时间。
 
-        形式： `yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     merchant_payment_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
-      description: 'PayPay トランザクションID
-
-        '
+      description: PayPay 交易 ID。
     merchant_update_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
-      description: 'PayPay 金額変更ID
-
-        '
+      description: PayPay 金额变更 ID。
     merchant_revert_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
-      description: 'PayPay キャンセルID
-
-        '
+      description: PayPay 取消 ID。
     merchant_refund_id:
       type: string
       nullable: true
       minLength: 1
       maxLength: 64
-      description: 'PayPay 返金ID
-
-        '
+      description: PayPay 退款 ID。
     WebhookEvent.Payment.PayPay:
       type: object
       properties:
@@ -33639,22 +32526,20 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるPayPay上での取引承認を待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在 PayPay 中确认交易
 
-            - `AUTHORIZED`: 仮売上<br /><span class="smallText">仮売上としてPayPay残高の確保が完了しており、売上確定により請求を完了できます。</span>
+            - `AUTHORIZED`：已授权，已冻结 PayPay 余额，可通过确认请款完成扣款
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">請求が完了し、売上が確定しています。</span>
+            - `CAPTURED`：已确认请款，扣款和销售确认均已完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         customer_id:
           nullable: true
           allOf:
@@ -33746,43 +32631,34 @@ components:
       type: string
       nullable: true
       example: 2022/05/06
-      description: '引き落とし日\
+      description: '实际扣款日期。
 
-        実際に購入者の口座から引き落としが行われた実績日です。\
+        实际从购买者账户完成扣款的日期。
 
-        \
 
-        形式： `yyyy/MM/dd`
-
-        '
+        格式：`yyyy/MM/dd`'
     request_accept_end_date:
       type: string
       nullable: true
       example: 2022/04/25
-      description: '請求依頼受付期間 終了日\
+      description: '扣款请求受理截止日期。
 
-        振替依頼を受け付ける最終日。この日付の23:59までに振替依頼（決済実行）を受け付けます。\
+        接受扣款请求的最后日期；可在该日 23:59 前提交扣款请求（执行支付）。
 
-        \
 
-        形式： `yyyy/MM/dd`\
+        格式：`yyyy/MM/dd`
 
-        詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「請求依頼受付期間終了日」の列で確認できます。
-
-        '
+        详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款请求受理截止日期”栏。'
     transfer_return_date:
       type: string
       nullable: true
       example: 2022/05/11
-      description: '請求結果反映 予定日\
+      description: '预计扣款结果反映日期。
 
-        \
 
-        形式： `yyyy/MM/dd`\
+        格式：`yyyy/MM/dd`
 
-        詳細は[Docs > 口座振替年間スケジュール](https://docs.fincode.jp/payment/directdebit/schedule)の「振替結果返却日」の列で確認できます。
-
-        '
+        详情请参阅 [Docs > 银行账户自动扣款年度日程](https://docs.fincode.jp/payment/directdebit/schedule)中的“扣款结果返回日期”栏。'
     WebhookEvent.Payment.DirectDebit:
       type: object
       properties:
@@ -33910,16 +32786,12 @@ components:
       enum:
       - true
       - false
-      description: '顧客固定バーチャル口座利用フラグ\
-
-        この決済において顧客固定バーチャル口座が利用されているかどうかを示すフラグです。
+      description: '是否使用客户固定虚拟账户。
 
 
-        - `true`: 顧客固定バーチャル口座を利用している
+        - `true`：使用客户固定虚拟账户
 
-        - `false`: 顧客固定バーチャル口座を利用していない
-
-        '
+        - `false`：不使用客户固定虚拟账户'
     WebhookEvent.Payment.VirtualAccount:
       type: object
       properties:
@@ -33944,20 +32816,18 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/PaymentStatus'
-          description: '決済ステータス
+          description: '支付状态。
 
 
-            - `UNPROCESSED`: 未処理<br /><span class="smallText">請求はまだ実行されていません。</span>
+            - `UNPROCESSED`：未处理，尚未执行请款
 
-            - `AWAITING_CUSTOMER_PAYMENT`: 購入者の支払い待ち<br /><span class="smallText">購入者によるバーチャル口座への振込を待っている状態。</span>
+            - `AWAITING_CUSTOMER_PAYMENT`：等待购买者向虚拟账户转账
 
-            - `CAPTURED`: 売上確定<br /><span class="smallText">振込が完了し、売上が確定しています。</span>
+            - `CAPTURED`：转账完成，销售确认完成
 
-            - `CANCELED`: キャンセル<br /><span class="smallText">この決済はキャンセルされました。</span>
+            - `CANCELED`：支付已取消
 
-            - `EXPIRED`: 決済の期限切れ<br /><span class="smallText">この決済は期限が切れています。</span>
-
-            '
+            - `EXPIRED`：支付已过期'
         customer_group_id:
           nullable: true
           allOf:
@@ -34107,14 +32977,12 @@ components:
           enum:
           - I
           - U
-          description: '処理タイプ
+          description: '处理类型。
 
 
-            - `I`: 登録
+            - `I`：登记
 
-            - `U`: 更新
-
-            '
+            - `U`：更新'
         card_no_display:
           nullable: true
           allOf:
@@ -34137,17 +33005,15 @@ components:
           - AUTHENTICATED
           - CHECK
           example: AUTHENTICATED
-          description: '3Dセキュア2.0認証処理 ステータス
+          description: '3D Secure 2.0 认证处理状态。
 
 
-            - `AUTHENTICATED`: 3Dセキュア認証中<br /><span class="smallText">認証でNGとなった際もこの値で通知されます</span>
+            - `AUTHENTICATED`：认证中；认证未通过时也使用此值通知
 
-            - `CHECK`: 3Dセキュア認証完了
+            - `CHECK`：认证完成
 
 
-            3Dセキュア認証を利用しない場合はnullを設定します
-
-            '
+            不使用 3D Secure 时为 `null`。'
         access_id:
           allOf:
           - $ref: '#/components/schemas/access_id'
@@ -34249,9 +33115,7 @@ components:
         directdebit:
           allOf:
           - $ref: '#/components/schemas/WebhookPaymentMethodDirectdebit'
-          description: '口座振替 決済手段登録情報
-
-            '
+          description: 银行账户自动扣款支付方式登记信息。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
@@ -34357,9 +33221,7 @@ components:
         virtual_account:
           allOf:
           - $ref: '#/components/schemas/WebhookPaymentMethodVirtualaccount'
-          description: '銀行振込（バーチャル口座） 決済手段登録情報
-
-            '
+          description: 银行转账（虚拟账户）支付方式登记信息。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
@@ -34369,11 +33231,7 @@ components:
       minLength: 13
       maxLength: 13
       example: cg_**********
-      description: '顧客情報共有グループID\
-
-        プラットフォームショップにおいて顧客情報が共有されている場合、顧客が所属する共有グループのIDです。
-
-        '
+      description: 平台共享客户信息时，该客户所属的客户信息共享组 ID。
     WebhookEvent.Card:
       type: object
       properties:
@@ -34407,22 +33265,18 @@ components:
         process_date:
           type: string
           example: 2022/01/01 12:34:56.789
-          description: '処理日時
-
-            '
+          description: 处理时间。
         process_type:
           type: string
           enum:
           - I
           - U
-          description: '処理タイプ
+          description: '处理类型。
 
 
-            - `I`: 登録
+            - `I`：登记
 
-            - `U`: 更新
-
-            '
+            - `U`：更新'
         pay_type:
           type: string
           enum:
@@ -34467,15 +33321,9 @@ components:
     next_charge_date:
       type: string
       example: 2022/06/16 00:00:00.000
-      description: '次回課金日\
+      description: '下次扣款日期。
 
-        サブスクリプションの次回課金日です。\
-
-        \
-
-        形式：`yyyy/MM/dd HH:mm:ss.SSS`
-
-        '
+        格式：`yyyy/MM/dd HH:mm:ss.SSS`'
     WebhookEvent.Subscription.Card:
       type: object
       properties:
@@ -34788,44 +33636,42 @@ components:
       - DIRECT DEBIT MIZUHO
       - VIRTUAL ACCOUNT
       - VIRTUAL ACCOUNT BULK
-      description: '審査対象
+      description: '审核对象。以下代码值对应支付服务商或支付方式：
 
 
-        - `UC`: VISA／Mastercard（UCカード）
+        - `UC`：VISA/Mastercard（UC Card）
 
-        - `TFC`: VISA／Mastercard（トヨタファイナンス）
+        - `TFC`：VISA/Mastercard（Toyota Finance）
 
-        - `ORICO`: VISA／Mastercard（オリエントコーポレーション）
+        - `ORICO`：VISA/Mastercard（Orient Corporation）
 
-        - `JCB/AMEX`: JCB／AMEX（JCB）
+        - `JCB/AMEX`：JCB/AMEX（JCB）
 
-        - `DINERS`: DINERS（JCB）
+        - `DINERS`：Diners（JCB）
 
-        - `APPLE PAY UC`: Apple Pay（UCカード）
+        - `APPLE PAY UC`：Apple Pay（UC Card）
 
-        - `APPLE PAY JCB/AMEX`: Apple Pay（JCB）
+        - `APPLE PAY JCB/AMEX`：Apple Pay（JCB）
 
-        - `GOOGLE PAY UC`: Google Pay（UCカード）
+        - `GOOGLE PAY UC`：Google Pay（UC Card）
 
-        - `GOOGLE PAY TFC`: Google Pay（トヨタファイナンス）
+        - `GOOGLE PAY TFC`：Google Pay（Toyota Finance）
 
-        - `GOOGLE PAY ORICO`: Google Pay（オリエントコーポレーション）
+        - `GOOGLE PAY ORICO`：Google Pay（Orient Corporation）
 
-        - `GOOGLE PAY JCB`: Google Pay（JCB）
+        - `GOOGLE PAY JCB`：Google Pay（JCB）
 
-        - `PAYSLE`: コンビニ決済（電算システム）
+        - `PAYSLE`：便利店支付（Densan System）
 
-        - `PAYPAY`: コンビニ決済（PayPay）
+        - `PAYPAY`：PayPay
 
-        - `DIRECT DEBIT`: 口座振替（5・6・23・27日）
+        - `DIRECT DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
 
-        - `DIRECT DEBIT MIZUHO`: 口座振替（1・5・20・26日）
+        - `DIRECT DEBIT MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `VIRTUAL ACCOUNT`: 銀行振込（バーチャル口座）
+        - `VIRTUAL ACCOUNT`：银行转账（虚拟账户）
 
-        - `VIRTUAL ACCOUNT BULK`: 一括決済（バーチャル口座）
-
-        '
+        - `VIRTUAL ACCOUNT BULK`：批量支付（虚拟账户）'
       x-ja-description: '審査対象（和名）
 
 
@@ -34878,28 +33724,26 @@ components:
       - '707'
       - '708'
       - '709'
-      description: '決済事業者 契約ステータス
+      description: '支付服务商合同状态。
 
 
-        - `701`: 申込なし<br /><span class="smallText">まだこの決済手段を利用申請していません</span>
+        - `701`：尚未申请
 
-        - `702`: 審査受付<br /><span class="smallText">fincodeが審査を受け付けました。まだこの決済手段は利用できません。</span>
+        - `702`：fincode 已受理审核，暂不可使用
 
-        - `703`: 審査待ち<br /><span class="smallText">fincodeによる審査開始を待っています。まだこの決済手段は利用できません。</span>
+        - `703`：等待 fincode 开始审核，暂不可使用
 
-        - `704`: 審査中<br /><span class="smallText">fincodeによる審査中です。まだこの決済手段は利用できません。</span>
+        - `704`：审核中，暂不可使用
 
-        - `705`: 審査保留中<br /><span class="smallText">審査の過程で保留中が発生しました。まだこの決済手段は利用できません。</span>
+        - `705`：审核暂缓，暂不可使用
 
-        - `706`: 審査OK<br /><span class="smallText">fincodeによる審査の結果OKとなりました。まだこの決済手段は利用できません。</span>
+        - `706`：fincode 审核通过，但暂不可使用
 
-        - `707`: 利用可能<br /><span class="smallText">この決済手段は利用可能です。</span>
+        - `707`：可以使用
 
-        - `708`: 審査NG<br /><span class="smallText">fincodeによる審査の結果NGとなりました。この決済手段は利用できません。</span>
+        - `708`：审核未通过，不可使用
 
-        - `709`: 申込中止<br /><span class="smallText">この決済手段の利用申請を中止しました。</span>
-
-        '
+        - `709`：已中止申请'
       x-ja-description: '決済事業者 契約ステータス（和名）
 
 
@@ -35003,32 +33847,26 @@ components:
         invoice_id:
           allOf:
           - $ref: '#/components/schemas/Invoice_properties-id'
-          description: 'イベントが発生したインボイスID\
-
-            このIDを指定してインボイス 取得APIを呼び出すことで、最新のインボイス情報を取得できます。
-
-            '
+          description: 发生事件的账单 ID。可使用该 ID 调用“获取账单”API 查询最新信息。
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
-          description: 'Webhook通知 トリガーイベント
+          description: '触发 Webhook 的事件。
 
 
-            - `invoice.create`: インボイス 作成
+            - `invoice.create`：创建账单
 
-            - `invoice.update`: インボイス 更新
+            - `invoice.update`：更新账单
 
-            - `invoice.open`: インボイス 発行（請求実行）
+            - `invoice.open`：开具账单并执行请款
 
-            - `invoice.cancel`: インボイス キャンセル
+            - `invoice.cancel`：取消账单
 
-            - `invoice.delete`: インボイス 削除
+            - `invoice.delete`：删除账单
 
-            - `invoice.expired`: インボイス 支払期限超過
+            - `invoice.expired`：超过支付期限
 
-            - `invoice.paid`: インボイス 支払い完了
-
-            '
+            - `invoice.paid`：支付完成'
     WebhookEvent.ChargeBack:
       type: object
       properties:

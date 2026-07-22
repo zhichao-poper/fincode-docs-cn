@@ -51,16 +51,29 @@ def normalize_translation_key(value: str) -> str:
 
 
 def replace_exact_strings(
-    value: Any, replacements: dict[str, str], normalized_replacements: dict[str, str]
+    value: Any,
+    replacements: dict[str, str],
+    normalized_replacements: dict[str, str],
+    key: str | None = None,
 ) -> Any:
     if isinstance(value, dict):
         return {
-            key: replace_exact_strings(item, replacements, normalized_replacements)
-            for key, item in value.items()
+            child_key: replace_exact_strings(
+                item,
+                replacements,
+                normalized_replacements,
+                child_key,
+            )
+            for child_key, item in value.items()
         }
     if isinstance(value, list):
-        return [replace_exact_strings(item, replacements, normalized_replacements) for item in value]
-    if isinstance(value, str):
+        return [
+            replace_exact_strings(item, replacements, normalized_replacements, key)
+            for item in value
+        ]
+    if isinstance(value, str) and (
+        key in TRANSLATABLE_KEYS or (isinstance(key, str) and key.startswith("x-description-"))
+    ):
         if value in replacements:
             return replacements[value]
         normalized = normalize_translation_key(value)
@@ -157,6 +170,67 @@ def count_units(source: Any, translated_value: Any, key: str | None = None) -> t
     return total, translated
 
 
+def collect_translation_memory(
+    source: Any,
+    translated_value: Any,
+    memory: dict[str, set[str]],
+    key: str | None = None,
+) -> None:
+    """收集已人工翻译的同源文本；同一原文存在多种译文时保留为歧义项。"""
+    if isinstance(source, dict):
+        for child_key, child in source.items():
+            collect_translation_memory(
+                child,
+                translated_value[child_key],
+                memory,
+                child_key,
+            )
+    elif isinstance(source, list):
+        for index, child in enumerate(source):
+            collect_translation_memory(child, translated_value[index], memory, key)
+    elif (
+        isinstance(source, str)
+        and isinstance(translated_value, str)
+        and key in TRANSLATABLE_KEYS
+        and source != translated_value
+    ):
+        memory.setdefault(normalize_translation_key(source), set()).add(translated_value)
+
+
+def apply_translation_memory(
+    source: Any,
+    translated_value: Any,
+    memory: dict[str, set[str]],
+    key: str | None = None,
+) -> Any:
+    """仅将唯一且原文完全相同的既有人工译文复用到尚未翻译的单元。"""
+    if isinstance(source, dict):
+        return {
+            child_key: apply_translation_memory(
+                child,
+                translated_value[child_key],
+                memory,
+                child_key,
+            )
+            for child_key, child in source.items()
+        }
+    if isinstance(source, list):
+        return [
+            apply_translation_memory(child, translated_value[index], memory, key)
+            for index, child in enumerate(source)
+        ]
+    if (
+        isinstance(source, str)
+        and isinstance(translated_value, str)
+        and key in TRANSLATABLE_KEYS
+        and source == translated_value
+    ):
+        candidates = memory.get(normalize_translation_key(source), set())
+        if len(candidates) == 1:
+            return next(iter(candidates))
+    return translated_value
+
+
 def main() -> None:
     source = load_yaml(SOURCE)
     translations = load_yaml(TRANSLATIONS)
@@ -173,10 +247,9 @@ def main() -> None:
         result,
         translations.get("property_descriptions", {}),
     )
-    translate_named_schema_descriptions(
-        result,
-        translations.get("property_descriptions", {}),
-    )
+    named_schema_descriptions = dict(translations.get("property_descriptions", {}))
+    named_schema_descriptions.update(translations.get("schema_descriptions", {}))
+    translate_named_schema_descriptions(result, named_schema_descriptions)
     translate_schema_property_descriptions(
         result,
         translations.get("schema_property_descriptions", {}),
@@ -188,6 +261,10 @@ def main() -> None:
     )
     for pointer, text in translations.get("strings", {}).items():
         set_pointer(result, pointer, text)
+
+    translation_memory: dict[str, set[str]] = {}
+    collect_translation_memory(source, result, translation_memory)
+    result = apply_translation_memory(source, result, translation_memory)
 
     result["info"]["x-translation"] = {
         "language": "zh-CN",
