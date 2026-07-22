@@ -12736,26 +12736,24 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        取引商品の配送方法
+        交易商品的配送方式。
 
 
-        - `01`: 顧客の請求先住所に配送
+        - `01`：配送至客户账单地址
 
-        - `02`: 加盟店が保持している確認済み住所（請求先住所でない）に配送
+        - `02`：配送至商户保存的其他已验证地址
 
-        - `03`: 顧客の請求先住所と異なる住所に配送
+        - `03`：配送至与客户账单地址不同的地址
 
-        - `04`: 店舗への配送（店舗の住所は配送先住所で指定）
+        - `04`：配送至门店（门店地址通过收货地址指定）
 
-        - `05`: デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む）
+        - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
 
-        - `06`: 配送なし（旅行およびイベントのチケット）
+        - `06`：无需配送（旅行及活动门票）
 
-        - `07`: その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）
-
-        '
+        - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）'
     tds2_delivery_email_address:
       type: string
       example: email@example.com
@@ -12773,17 +12771,11 @@ components:
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の自宅電話番号の国コード（+を含まない）\
+        客户住宅电话号码的国家或地区代码（不包含 `+`）。
 
-        ※ この値を設定する場合、`tds2_home_phone_no`の設定が必要です。\
-
-        \
-
-        未指定の場合、顧客の`phone_cc`が自動で設定されます。
-
-        '
+        设置此值时还必须设置 `tds2_home_phone_no`。未指定时自动使用客户的 `phone_cc`。'
     tds2_home_phone_no:
       type: string
       example: '312345678'
@@ -12823,13 +12815,11 @@ components:
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の携帯電話番号の国コード（+を含まない）\
+        客户手机号码的国家或地区代码（不包含 `+`）。
 
-        ※ この値を設定する場合、`tds2_mobile_phone_no`の設定が必要です。
-
-        '
+        设置此值时还必须设置 `tds2_mobile_phone_no`。'
     tds2_mobile_phone_no:
       type: string
       example: '9012345678'
@@ -12865,13 +12855,11 @@ components:
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        顧客の勤務先電話番号の国コード（+を含まない）\
+        客户工作单位电话号码的国家或地区代码（不包含 `+`）。
 
-        ※ この値を設定する場合、`tds2_work_phone_no`の設定が必要です。
-
-        '
+        设置此值时还必须设置 `tds2_work_phone_no`。'
     tds2_work_phone_no:
       type: string
       example: '312345678'
@@ -12912,33 +12900,29 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品納品時間枠
+        商品交付时间范围。
 
 
-        - `01`: 電子デリバリー
+        - `01`：电子交付
 
-        - `02`: 当日出荷
+        - `02`：当日发货
 
-        - `03`: 翌日出荷
+        - `03`：次日发货
 
-        - `04`: 2日目以降の出荷
-
-        '
+        - `04`：第 2 天以后发货'
     tds2_pre_order_date:
       type: string
       example: '20231231'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品の発売予定日\
+        商品预计发售日期。
 
-        形式：`YYYYMMDD`
-
-        '
+        格式：`YYYYMMDD`'
     tds2_pre_order_purchase_ind:
       type: string
       enum:
@@ -12948,16 +12932,14 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品の販売時期情報
+        商品销售时期。
 
 
-        - `01`: 発売済み商品
+        - `01`：已经发售的商品
 
-        - `02`: 先行予約商品
-
-        '
+        - `02`：预售商品'
     tds2_reorder_items_ind:
       type: string
       enum:
@@ -12967,91 +12949,78 @@ components:
       minLength: 2
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        商品の注文が初回か再注文か
+        商品订单是首次下单还是再次下单。
 
 
-        - `01`: 初回注文
+        - `01`：首次下单
 
-        - `02`: 再注文
-
-        '
+        - `02`：再次下单'
     tds2_recurring_expiry:
       type: string
       example: '20231231'
       minLength: 8
       maxLength: 8
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        ※ サブスクリプションなど継続課金型のビジネスモデルのみ\
+        仅适用于订阅等持续收费业务模式。
 
-        継続課金の終了日\
+        持续收费结束日期。
 
-        形式：`YYYYMMDD`
-
-        '
+        格式：`YYYYMMDD`'
     tds2_recurring_frequency:
       type: string
       example: '99'
       minLength: 1
       maxLength: 4
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        ※ サブスクリプションなど継続課金型のビジネスモデルのみ\
+        仅适用于订阅等持续收费业务模式。
 
-        継続課金の課金間隔の日数（最小）
-
-        '
+        持续收费的最小收费间隔天数。'
     tds2_gift_card_amount:
       type: string
       example: '999999'
       minLength: 1
       maxLength: 15
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+        仅限购买预付卡或礼品卡时使用。
 
-        プリペイドカードまたはギフトカードの総購入金額
-
-        '
+        预付卡或礼品卡的购买总金额。'
     tds2_gift_card_count:
       type: string
       example: '99'
       minLength: 1
       maxLength: 2
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+        仅限购买预付卡或礼品卡时使用。
 
-        購入したプリペイドカードまたはギフトカードの総数
-
-        '
+        已购买预付卡或礼品卡的总数量。'
     tds2_gift_card_curr:
       type: string
       example: '392'
       minLength: 1
       maxLength: 3
       nullable: true
-      description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+      description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-        ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+        仅限购买预付卡或礼品卡时使用。
 
-        プリペイドカードまたはギフトカードの通貨コード。\
+        预付卡或礼品卡的货币代码。
 
-        形式：ISO 4217 numeric\
+        格式：ISO 4217 numeric
 
-        \
 
-        以下の通貨コードは利用できません。（債券市場単位等）\
+        不可使用以下货币代码（债券市场单位等）：
 
-        `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`
-
-        '
+        `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`'
     bank_code:
       type: string
       example: '0310'
@@ -20555,26 +20524,24 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            取引商品の配送方法
+            交易商品的配送方式。
 
 
-            - `01`: 顧客の請求先住所に配送
+            - `01`：配送至客户账单地址
 
-            - `02`: 加盟店が保持している確認済み住所（請求先住所でない）に配送
+            - `02`：配送至商户保存的其他已验证地址
 
-            - `03`: 顧客の請求先住所と異なる住所に配送
+            - `03`：配送至与客户账单地址不同的地址
 
-            - `04`: 店舗への配送（店舗の住所は配送先住所で指定）
+            - `04`：配送至门店（门店地址通过收货地址指定）
 
-            - `05`: デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む）
+            - `05`：数字商品（包括在线服务、电子礼品卡及兑换码）
 
-            - `06`: 配送なし（旅行およびイベントのチケット）
+            - `06`：无需配送（旅行及活动门票）
 
-            - `07`: その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）
-
-            '
+            - `07`：其他（游戏、无需配送的数字服务、电子媒体订阅费等）'
         tds2_delivery_email_address:
           type: string
           example: email@example.com
@@ -20592,17 +20559,11 @@ components:
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の自宅電話番号の国コード（+を含まない）\
+            客户住宅电话号码的国家或地区代码（不包含 `+`）。
 
-            ※ この値を設定する場合、`tds2_home_phone_no`の設定が必要です。\
-
-            \
-
-            未指定の場合、顧客の`phone_cc`が自動で設定されます。
-
-            '
+            设置此值时还必须设置 `tds2_home_phone_no`。未指定时自动使用客户的 `phone_cc`。'
         tds2_home_phone_no:
           type: string
           example: '312345678'
@@ -20642,13 +20603,11 @@ components:
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の携帯電話番号の国コード（+を含まない）\
+            客户手机号码的国家或地区代码（不包含 `+`）。
 
-            ※ この値を設定する場合、`tds2_mobile_phone_no`の設定が必要です。
-
-            '
+            设置此值时还必须设置 `tds2_mobile_phone_no`。'
         tds2_mobile_phone_no:
           type: string
           example: '9012345678'
@@ -20684,13 +20643,11 @@ components:
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            顧客の勤務先電話番号の国コード（+を含まない）\
+            客户工作单位电话号码的国家或地区代码（不包含 `+`）。
 
-            ※ この値を設定する場合、`tds2_work_phone_no`の設定が必要です。
-
-            '
+            设置此值时还必须设置 `tds2_work_phone_no`。'
         tds2_work_phone_no:
           type: string
           example: '312345678'
@@ -20731,33 +20688,29 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品納品時間枠
+            商品交付时间范围。
 
 
-            - `01`: 電子デリバリー
+            - `01`：电子交付
 
-            - `02`: 当日出荷
+            - `02`：当日发货
 
-            - `03`: 翌日出荷
+            - `03`：次日发货
 
-            - `04`: 2日目以降の出荷
-
-            '
+            - `04`：第 2 天以后发货'
         tds2_pre_order_date:
           type: string
           example: '20231231'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品の発売予定日\
+            商品预计发售日期。
 
-            形式：`YYYYMMDD`
-
-            '
+            格式：`YYYYMMDD`'
         tds2_pre_order_purchase_ind:
           type: string
           enum:
@@ -20767,16 +20720,14 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品の販売時期情報
+            商品销售时期。
 
 
-            - `01`: 発売済み商品
+            - `01`：已经发售的商品
 
-            - `02`: 先行予約商品
-
-            '
+            - `02`：预售商品'
         tds2_reorder_items_ind:
           type: string
           enum:
@@ -20786,91 +20737,78 @@ components:
           minLength: 2
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            商品の注文が初回か再注文か
+            商品订单是首次下单还是再次下单。
 
 
-            - `01`: 初回注文
+            - `01`：首次下单
 
-            - `02`: 再注文
-
-            '
+            - `02`：再次下单'
         tds2_recurring_expiry:
           type: string
           example: '20231231'
           minLength: 8
           maxLength: 8
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            ※ サブスクリプションなど継続課金型のビジネスモデルのみ\
+            仅适用于订阅等持续收费业务模式。
 
-            継続課金の終了日\
+            持续收费结束日期。
 
-            形式：`YYYYMMDD`
-
-            '
+            格式：`YYYYMMDD`'
         tds2_recurring_frequency:
           type: string
           example: '99'
           minLength: 1
           maxLength: 4
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            ※ サブスクリプションなど継続課金型のビジネスモデルのみ\
+            仅适用于订阅等持续收费业务模式。
 
-            継続課金の課金間隔の日数（最小）
-
-            '
+            持续收费的最小收费间隔天数。'
         tds2_gift_card_amount:
           type: string
           example: '999999'
           minLength: 1
           maxLength: 15
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+            仅限购买预付卡或礼品卡时使用。
 
-            プリペイドカードまたはギフトカードの総購入金額
-
-            '
+            预付卡或礼品卡的购买总金额。'
         tds2_gift_card_count:
           type: string
           example: '99'
           minLength: 1
           maxLength: 2
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+            仅限购买预付卡或礼品卡时使用。
 
-            購入したプリペイドカードまたはギフトカードの総数
-
-            '
+            已购买预付卡或礼品卡的总数量。'
         tds2_gift_card_curr:
           type: string
           example: '392'
           minLength: 1
           maxLength: 3
           nullable: true
-          description: '<span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>\
+          description: '<span class="smallText color--blue-400">[3D Secure 认证参数]</span>
 
-            ※ プリペイドカードまたはギフトカードを購入する場合のみ\
+            仅限购买预付卡或礼品卡时使用。
 
-            プリペイドカードまたはギフトカードの通貨コード。\
+            预付卡或礼品卡的货币代码。
 
-            形式：ISO 4217 numeric\
+            格式：ISO 4217 numeric
 
-            \
 
-            以下の通貨コードは利用できません。（債券市場単位等）\
+            不可使用以下货币代码（债券市场单位等）：
 
-            `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`
-
-            '
+            `955`, `956`, `957`, `958`, `959`, `960`, `961`, `962`, `963`, `964`, `999`'
     PaymentSession.Konbini:
       type: object
       properties:
