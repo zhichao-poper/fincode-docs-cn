@@ -1903,6 +1903,130 @@ schema_property_descriptions:
     credit_card_setting: |-
       银行卡支付设置，包括是否启用 3D Secure、审核后是否被要求必须使用 3D Secure，以及是否可使用分期付款或循环信贷付款等信息。
     official_registered_corporate_info: 工商登记中的法人企业信息。
+  Payment.PayPay:
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未执行请款
+      - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在 PayPay 中确认交易
+      - `AUTHORIZED`：已授权，已冻结 PayPay 余额，可通过确认请款完成扣款
+      - `CAPTURED`：已确认请款，扣款和销售确认均已完成
+      - `CANCELED`：支付已取消
+      - `EXPIRED`：支付已过期
+    code_url: PayPay 支付 URL。将购买者重定向至该 URL，即可开始 PayPay 交易。
+    redirect_url: 支付完成后，PayPay 将购买者重定向到的 URL。
+    redirect_type: |-
+      `redirect_url` 的目标类型。
+
+      - `1`：网站或 Web 应用
+      - `2`：原生应用
+    auth_max_date: |-
+      授权有效期。
+      格式：`yyyy/MM/dd`
+    order_description: 在购买者 PayPay 应用中显示的订单说明。
+    capture_description: 在购买者 PayPay 应用中显示的确认请款说明。
+    update_description: 在购买者 PayPay 应用中显示的金额变更说明。
+    cancel_description: 在购买者 PayPay 应用中显示的取消说明。
+    store_id: PayPay 签发的门店 ID。
+    code_id: PayPay 支付码 ID。
+    payment_id: PayPay 支付 ID。
+    paypay_result_code: PayPay 处理结果代码。
+    merchant_payment_id: PayPay 交易 ID。
+    merchant_capture_id: PayPay 确认请款 ID。
+    merchant_update_id: PayPay 金额变更 ID。
+    merchant_revert_id: PayPay 取消 ID。
+    merchant_refund_id: PayPay 退款 ID。
+    payment_date: |-
+      支付时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    user_agent: |-
+      发送请求的 User-Agent 信息。当 `redirect_type` 为 `1`（网站或 Web 应用）时可以指定。
+  Payment.Konbini:
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未执行请款
+      - `AWAITING_CUSTOMER_PAYMENT`：等待购买者在便利店柜台付款
+      - `CAPTURED`：已支付，销售确认完成
+      - `CANCELED`：支付已取消
+      - `EXPIRED`：支付已过期
+    payment_term_day: |-
+      支付期限天数，可指定 `0`～`14` 天。
+
+      - 指定 `0` 时，仅可在创建支付的当天完成付款
+      - 默认值：`2`
+    payment_term: |-
+      便利店支付的截止时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    payment_date: |-
+      购买者在便利店柜台完成付款的时间。
+      格式：`yyyy/MM/dd HH:mm:ss.SSS`
+    barcode: |-
+      便利店柜台付款所用条形码图片的 Base64 编码数据。请解码后显示，并遵循条形码展示规范。
+      详情参见 [Docs > 规范与注意事项](https://docs.fincode.jp/payment/konbini/note)。
+    barcode_format: 已签发条形码图片（`barcode`）的文件格式。
+    barcode_width: 已签发条形码图片（`barcode`）的宽度（px）。
+    barcode_height: 已签发条形码图片（`barcode`）的高度（px）。
+    overpayment_flag: |-
+      重复付款标志。同一笔支付发生多次付款时为 `1`。
+
+      - `0`：付款 0 次或 1 次
+      - `1`：使用同一条形码付款 2 次或以上
+    cancel_overpayment_flag: |-
+      取消后付款标志。取消支付后，购买者仍使用条形码付款时为 `1`。
+
+      - `0`：取消后未付款
+      - `1`：取消后已付款
+    konbini_store_code: 便利店门店代码；编码体系由各便利店运营商自行定义。
+    os_version: 操作系统版本。
+    xdpi: 屏幕水平方向的 DPI。
+    ydpi: 屏幕垂直方向的 DPI。
+    order_serial: 订单管理 ID。
+  Payment.VirtualAccount:
+    status: |-
+      支付状态。
+
+      - `UNPROCESSED`：未处理，尚未执行请款
+      - `AWAITING_CUSTOMER_PAYMENT`：等待购买者向虚拟账户转账
+      - `CAPTURED`：转账完成，销售确认完成
+      - `CANCELED`：支付已取消
+      - `EXPIRED`：支付已过期
+    billing_amount: |-
+      要求转账的商品或服务金额。与 `billing_tax` 的合计值必须处于该支付方式允许的金额范围内。
+      参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。
+    billing_tax: |-
+      要求转账的税费及运费金额。与 `billing_amount` 的合计值必须处于该支付方式允许的金额范围内。
+      参见[银行转账（虚拟账户）> 限制事项 > 可用金额](https://docs.fincode.jp/payment/virtualaccount/restriction)。
+    billing_total_amount: 要求转账的总金额，即 `billing_amount` 与 `billing_tax` 之和。
+    transaction_date: |-
+      交易日期。
+      格式：`yyyy/MM/dd`
+    value_date: |-
+      起息日，即银行处理入账的营业日。
+      格式：`yyyy/MM/dd`
+    remitter_account_name: 汇款人（购买者）姓名。
+    remitter_bank_name: 汇款人（购买者）的银行名称。
+    remitter_branch_name: 汇款人（购买者）的银行分行名称。
+    overpayment_flag: |-
+      重复付款标志。同一笔支付发生多次付款时为 `1`。
+
+      - `0`：付款 0 次或 1 次
+      - `1`：向同一虚拟账户付款 2 次或以上
+    cancel_overpayment_flag: |-
+      取消后付款标志。取消支付后，购买者仍向虚拟账户付款时为 `1`。
+
+      - `0`：取消后未付款
+      - `1`：取消后已付款
+    expire_overpayment_flag: |-
+      过期后付款标志。超过支付期限后，购买者仍向虚拟账户付款时为 `1`。
+
+      - `0`：过期后未付款
+      - `1`：过期后已付款
+    use_static_virtual_account: |-
+      是否使用客户固定虚拟账户。
+
+      - `true`：使用客户固定虚拟账户
+      - `false`：不使用客户固定虚拟账户
 
 strings:
   /components/schemas/td_tenant_name/description: |-
