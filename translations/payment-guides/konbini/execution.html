@@ -1,0 +1,55 @@
+<h1 id="execute-payment">执行支付处理</h1>
+
+<p>fincode 的便利店支付，是使用 fincode API 响应返回的条形码图片构建 GUI，购买者在便利店门店出示包含该条形码图片的 GUI 后完成支付。<br>
+
+仅凭一张条形码图片，即可由 fincode 支持的所有便利店服务商进行读取，因此开发者无须事先确认购买者将在哪一家便利店支付。</p>
+
+<h2 id="payment-api">使用支付执行 API</h2>
+
+<p>
+<img alt="使用支付执行 API" src="/assets/images/konbini/payment_konbini.png">
+</p>
+
+<ol>
+
+<li>购买者选择便利店支付作为支付方式。</li>
+
+<li>店铺在 fincode 中进行<span class="inline-api">支付注册</span>。</li>
+
+<li>店铺在 fincode 中进行<span class="inline-api">支付执行</span>。fincode 向便利店服务商请求发行条形码，并返回条形码。</li>
+
+<li>店铺显示条形码支付页面。</li>
+
+<li>购买者在便利店出示条形码支付页面并完成支付。</li>
+
+<li>便利店服务商向 fincode 发送支付完成通知。</li>
+
+</ol>
+
+<p>7. fincode 将相应交易设为销售额已确定，并向店铺发送支付通知的结果通知。</p>
+
+<h2 id="payment-js">使用支付执行 JS</h2>
+
+<p>使用支付执行 JS，即可轻松地从前端应用实现便利店支付的支付执行处理。</p>
+
+<p>
+<img alt="使用支付执行 JS" src="/assets/images/konbini/payment_konbini_js.png">
+</p>
+
+<ol>
+
+<li>购买者选择便利店支付作为支付方式。</li>
+
+<li>店铺在 fincode 中进行<span class="inline-api">支付注册</span>。</li>
+
+<li>店铺在 fincode 中进行<span class="inline-api">支付执行 JS</span>。fincode 向便利店服务商请求发行条形码，并返回条形码。</li>
+
+<li>店铺显示条形码支付页面。</li>
+
+<li>购买者在便利店出示条形码支付页面并完成支付。</li>
+
+<li>便利店服务商向 fincode 发送支付完成通知。</li>
+
+<li>fincode 将相应交易设为销售额已确定，并向店铺发送支付通知的结果通知。</li>
+
+</ol>

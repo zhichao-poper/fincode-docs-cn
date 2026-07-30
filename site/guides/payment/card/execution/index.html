@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 执行支付处理中文指南。" />
+    <title>执行支付处理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../index.html">支付</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
+        <a class="active" href="../../../index.html">支付</a>
+        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
+        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
+        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
+        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
+        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">卡片支付简介</a></li>
+<li><a href="index.html" aria-current="page" class="active">执行支付处理</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="../restrictions/index.html">限制事项</a></li>
+<li><a href="../notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">执行支付处理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="execute-payment">执行支付处理</h1>
+
+<p>本页介绍卡片信息的处理方式，以实现店铺不保存、也不经手卡片信息。<br>
+
+如果要构建由购买者每次输入卡片信息来完成支付的机制，或者要将卡片信息登记到 fincode 的客户信息中，请注意以下事项。</p>
+
+<h2 id="user-input-case">由购买者每次输入卡片信息时</h2>
+
+<p>由购买者每次输入卡片信息来完成支付时，请将卡号令牌化，或使用支付执行 JS。</p>
+
+<h3 id="use-token-for-payment">使用令牌</h3>
+
+<p>将购买者输入的卡号替换为其他字符串（令牌）后进行通信。<br>
+
+请构建由客户端调用 fincode 的令牌化 API，并使用获取到的令牌执行支付 API 的网站。</p>
+
+<p>
+<img alt="使用令牌 JS 的流程" src="../../../../assets/payment-guides/card/payments_card_token.png">
+</p>
+
+<ol>
+
+<li>购买者选择卡片支付作为支付方式。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">支付登记</span>。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">令牌 JS</span>。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">支付执行</span>。</li>
+
+<li>fincode 向信用卡公司执行授权处理。</li>
+
+</ol>
+
+<h3 id="js-input-case">使用支付执行 JS</h3>
+
+<p>使用支付执行 JS，可以将卡片信息直接发送给 fincode 并完成支付。</p>
+
+<p>
+<img alt="使用支付执行 JS 的流程" src="../../../../assets/payment-guides/card/payments_card_js.png">
+</p>
+
+<ol>
+
+<li>购买者选择卡片支付作为支付方式。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">支付登记</span>。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">支付执行 JS</span>。</li>
+
+<li>fincode 向信用卡公司执行授权处理。</li>
+
+</ol>
+
+<h2 id="customer-input-case">为客户登记卡片信息时</h2>
+
+<p>将卡片信息登记到 fincode 的客户信息后，无需使用卡片信息，即可通过客户 ID 完成支付。<br>
+
+但在登记卡片信息时，与每次输入卡片信息完成支付的情况一样，请对卡号进行令牌化，或使用卡片登记 JS。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">
+        每条 fincode 客户信息最多可以登记 5 条卡片信息（Card 以及 Payment Method）。已有 5 条记录时，如需登记其他卡片，请先删除已有的卡片信息再进行登记。
+    </div>
+
+</div>
+
+<h3 id="use-token-for-card-registration">使用令牌</h3>
+
+<p>将购买者输入的卡号替换为其他字符串（令牌）后进行通信。<br>
+
+请构建由客户端调用 fincode 的令牌化 API，并使用获取到的令牌执行卡片登记 API 的网站。</p>
+
+<p>
+<img alt="使用令牌 JS 的流程" src="../../../../assets/payment-guides/card/customers_id_cards_token.png">
+</p>
+
+<ol>
+
+<li>购买者选择卡片支付作为支付方式。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">令牌 JS</span>。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">卡片登记</span>。</li>
+
+<li>fincode 向信用卡公司执行有效性检查。</li>
+
+</ol>
+
+<h3 id="use-card-registration-js">使用卡片登记 JS</h3>
+
+<p>使用卡片登记 JS，可以将卡片信息直接发送给 fincode，并将卡片信息登记到客户信息中。</p>
+
+<p>
+<img alt="使用卡片登记 JS 的流程" src="../../../../assets/payment-guides/card/customers_id_cards_js.png">
+</p>
+
+<ol>
+
+<li>购买者选择卡片支付作为支付方式。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">卡片登记 JS</span>。</li>
+
+<li>fincode 向信用卡公司执行有效性检查。</li>
+
+</ol>
+
+<h2 id="use-card">指定已登记的卡片执行支付时</h2>
+
+<p>可以使用通过令牌或卡片登记 JS 预先为客户登记的卡片信息完成支付，无需每次都让购买者输入卡片信息。</p>
+
+<p>
+<img alt="指定已登记卡片执行支付的流程" src="../../../../assets/payment-guides/card/payments_card_id.png">
+</p>
+
+<ol>
+
+<li>购买者选择卡片支付作为支付方式。</li>
+
+<li>店铺调用 fincode 的<span class="inline-api">支付登记</span>。</li>
+
+<li>店铺让购买者选择卡片。</li>
+
+<li>指定所选卡片的 ID，并向店铺服务器请求执行支付。</li>
+
+<li>店铺指定卡片 ID 和客户 ID，调用<span class="inline-api">支付执行</span>。</li>
+
+<li>fincode 尝试使用指定卡片进行授权，并返回结果。</li>
+
+<li>店铺向购买者显示支付完成页面。</li>
+
+</ol>
+
+<p>此外，也可以在任意时间，以任意金额对已登记的卡片执行支付。<br>
+
+利用此功能，例如可以使用购买者已登记的卡片信息定期收费。</p>
+
+<p>A. 店铺调用 fincode 的<span class="inline-api">支付登记</span>。<br>
+
+B. 店铺指定卡片 ID 和客户 ID，调用<span class="inline-api">支付执行</span>。<br>
+
+C. fincode 尝试使用指定卡片进行授权，并返回结果。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/execution" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

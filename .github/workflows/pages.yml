@@ -25,6 +25,8 @@ jobs:
       - run: pip install PyYAML==6.0.3
       - run: python scripts/build_spec.py
       - run: python scripts/audit.py
+      - run: python scripts/build_guides.py
+      - run: python scripts/audit_guides.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

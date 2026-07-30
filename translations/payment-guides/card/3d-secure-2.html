@@ -1,0 +1,231 @@
+<h1 id="use-3d-secure-2">使用 3D Secure 2.0 认证</h1>
+
+<p>鉴于卡片支付欺诈造成的损失急剧增加，日本经济产业省在《信用卡安全指南》中宣布，要求日本国内所有电商特约商户在 2025 年 3 月底之前引入 EMV 3-D Secure（3D Secure 2.0）。使用 fincode 必须引入 EMV 3-D Secure。</p>
+
+<h2 id="enter-card-each-time">每次支付时输入卡片信息</h2>
+
+<p>
+<img alt="购买时输入卡片信息的流程：自动重定向" src="/assets/images/card/payments_card_token_3ds2_auto.png">
+</p>
+
+<ol>
+
+<li>客户选择信用卡支付作为支付方式。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">登记支付</span>。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">令牌 JS</span>。</li>
+
+<li>商户发送令牌。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">执行支付</span>。</li>
+
+<li>商户将客户重定向至<span class="inline-api">执行支付</span>响应中的 <code>redirect_url</code>。</li>
+
+<li>客户的浏览器与 fincode 自动交互并执行 3D Secure 认证。</li>
+
+<li>如果触发验证挑战，页面会自动跳转至发卡机构提供的页面进行本人认证。</li>
+
+<li>3D Secure 认证完成后，客户会自动返回商户网站。
+
+<ol>
+
+<li>如果 3D Secure 认证失败或发生错误等，将不执行授权，并重定向至执行支付时指定的 <code>return_url_on_failure</code>。</li>
+
+<li>3D Secure 认证后支付成功时，将通过 POST 重定向至执行支付时指定的 <code>return_url</code>。</li>
+
+<li>3D Secure 认证后支付失败时，将重定向至执行支付时指定的 <code>return_url_on_failure</code>。</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+<h2 id="use-registered-card">使用 fincode 中已登记的卡片，无需输入卡片信息</h2>
+
+<p>可以使用令牌或卡片登记 JS，利用预先为客户登记的卡片信息完成支付，无需每次输入卡片信息。</p>
+
+<p>
+<img alt="指定已登记卡片并执行支付的流程：自动重定向" src="/assets/images/card/payments_card_id_3ds2_auto.png">
+</p>
+
+<ol>
+
+<li>客户选择信用卡支付作为支付方式。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">登记支付</span>。</li>
+
+<li>商户使用与客户账户关联的客户 ID 执行<span class="inline-api">获取卡片列表</span>。</li>
+
+<li>商户让客户从获取到的卡片信息列表中选择卡片。</li>
+
+<li>商户指定所选卡片的 ID 和客户 ID，执行<span class="inline-api">执行支付</span>。</li>
+
+<li>商户将客户重定向至<span class="inline-api">执行支付</span>响应中的 <code>redirect_url</code>。</li>
+
+<li>客户的浏览器与 fincode 自动交互并执行 3D Secure 认证。</li>
+
+<li>如果触发验证挑战，页面会自动跳转至发卡机构提供的页面进行本人认证。</li>
+
+<li>3D Secure 认证完成后，客户会自动返回商户网站。
+
+<ol>
+
+<li>如果 3D Secure 认证失败或发生错误等，将不执行授权，并重定向至执行支付时指定的 <code>return_url_on_failure</code>。</li>
+
+<li>3D Secure 认证后支付成功时，将通过 POST 重定向至执行支付时指定的 <code>return_url</code>。</li>
+
+<li>3D Secure 认证后支付失败时，将重定向至执行支付时指定的 <code>return_url_on_failure</code>。</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+<h2 id="custom-3d-secure-implementation">进阶：从零开始实现包含 3D Secure 认证的卡片支付</h2>
+
+<p>在 fincode 的卡片支付中，与 3D Secure 认证相关的页面跳转和回调处理，会以访问 <code>redirect_url</code> 为触发条件自动执行。不过，商户也可以自行实现 3D Secure 认证所需的全部 API 调用、回调处理和重定向处理，从而完全自定义支付体验。</p>
+
+<p>请求<span class="inline-api">执行支付</span>时，不指定 <code>return_url</code>，而是指定 <code>tds2_ret_url</code>，响应中便会返回 <code>acs_url</code>，而不是 <code>redirect_url</code>。当购买者访问该 URL 时，将启动完全自定义的 3D Secure 认证。</p>
+
+<p>
+<img alt="指定已登记卡片并执行支付的流程" src="/assets/images/card/payments_card_id_3ds2.png">
+</p>
+
+<ol>
+
+<li>客户选择信用卡支付作为支付方式。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">登记支付</span>。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">令牌 JS</span>。</li>
+
+<li>商户发送令牌。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">执行支付</span>。fincode 登记 3D Secure 2.0 认证并返回结果。</li>
+
+<li>商户将客户重定向至 <code>3D Secure 认证初始化 URL（acs_url）</code>。在 <code>3D Secure 认证初始化 URL（acs_url）</code> 中，3D Secure 服务器会初始化 3D Secure 2.0 认证，然后重定向至<code>商户返回 URL（tds2_ret_url）</code>。</li>
+
+<li>商户接收发往<code>商户返回 URL（tds2_ret_url）</code>的回调。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">执行 3D Secure 认证</span>。fincode 执行 3D Secure 2.0 认证处理并返回结果。</li>
+
+<li>如果需要验证挑战，商户将客户重定向至 challenge_url，启动 3D Secure 2.0 认证挑战。</li>
+
+<li>客户访问 3D Secure 2.0 认证页面。</li>
+
+<li>客户输入认证信息并进行本人认证。3D Secure 服务器将客户重定向至<code>商户返回 URL（tds2_ret_url）</code>。</li>
+
+<li>商户接收发往<code>商户返回 URL（tds2_ret_url）</code>的回调。</li>
+
+<li>商户执行<span class="inline-api">确认 3D Secure 认证结果</span>。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">执行认证后支付</span>。fincode 向发卡机构执行授权处理并返回结果。</li>
+
+<li>商户显示完成页面。</li>
+
+</ol>
+
+<p>※重定向至 3D Secure 服务器的环节属于客户与 3D Secure 服务之间的交互，因此商户需要引导客户访问 fincode 返回的 <code>3D Secure 认证初始化 URL（acs_url）</code>。<br>
+
+在 <code>3D Secure 认证初始化 URL（acs_url）</code> 中会初始化 3D Secure 2.0 认证，并通过 HTTP POST 方法跳转至<code>商户返回 URL（tds2_ret_url）</code>。<br>
+
+在 3D Secure 2.0 中，根据发卡机构的判断，有时不需要显示密码输入页面。<br>
+
+此外，如果卡片不支持 3D Secure 2.0，可以通过设置<span class="inline-api">登记支付</span>中的<code>不支持 3D Secure 2.0 时的操作（tds2_type）</code>，选择继续执行授权或返回错误。</p>
+
+<h3 id="3d-secure-callback">来自 3D Secure 2.0 服务器的回调</h3>
+
+<p>通过<span class="inline-api">执行支付</span>中设置的<code>商户返回 URL（tds2_ret_url）</code>接收来自 3D Secure 服务器的回调，并根据回调内容决定后续处理分支。</p>
+
+<p>回调会在以下时机发生。HTTP 方法为 POST。</p>
+
+<ul>
+
+<li>访问执行支付响应中的 <code>acs_url</code> 时。<br>
+※商户引导客户访问 <code>acs_url</code>（使其发生重定向），且 3D Secure 服务器完成 3D Secure 2.0 认证初始化之后</li>
+
+<li>验证挑战完成时。<br>
+※商户引导客户访问 <code>3D Secure 2.0 认证挑战 URL（challenge_url）</code>（使其发生重定向），且持卡人完成本人认证之后</li>
+
+</ul>
+
+<p>3D Secure 服务器会向商户的<code>商户返回 URL（tds2_ret_url）</code>返回以下信息。</p>
+
+<table>
+<thead>
+<tr><th align="left">参数</th><th align="left">数据格式</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">MD</td><td align="left">查询字符串</td><td align="left"><code>access_id</code></td></tr>
+
+<tr><td align="left">requestorTransId</td><td align="left">application/x-www-form-urlencoded</td><td align="left">请求方交易 ID（不使用此值）</td></tr>
+
+<tr><td align="left">event</td><td align="left">application/x-www-form-urlencoded</td><td align="left">事件<br>
+<code>3DSMethodFinished</code>：3D Secure 2.0 初始化处理已完成。请执行<span class="inline-api">执行 3D Secure 认证</span>。<br>
+<code>3DSMethodSkipped</code>：已跳过 3D Secure 2.0 初始化处理。请执行<span class="inline-api">执行 3D Secure 认证</span>。<br>
+<code>AuthResultReady</code>：请执行<span class="inline-api">确认 3D Secure 认证结果</span>。</td></tr>
+
+<tr><td align="left">param</td><td align="left">application/x-www-form-urlencoded</td><td align="left">3D Secure 2.0 认证参数。用于<span class="inline-api">执行 3D Secure 认证</span>。</td></tr>
+</tbody>
+</table>
+
+<h2 id="authenticate-when-registering-card">向 fincode 登记卡片信息时执行 3D Secure 认证</h2>
+
+<p>为客户登记卡片时，也可以执行 3D Secure 2.0 认证。<br>
+
+如果希望在登记卡片时的有效性检查中执行 3D Secure 2.0 认证，请使用<span class="inline-api">登记支付方式</span>。<br>
+
+有关 API 规范，请参阅<a href="/api#tag/%E6%B1%BA%E6%B8%88%E6%89%8B%E6%AE%B5/operation/postPaymentMethods">API 参考 - 登记支付方式</a>。</p>
+
+<p>※同样用于为客户登记卡片信息的<span class="inline-api">卡片登记</span>，仅支持不执行 3D Secure 2.0 认证的情况。<br>
+
+有关 API 规范，请参阅<a href="/api#tag/%E3%82%AB%E3%83%BC%E3%83%89/operation/postCustomersCustomer_idCards">API 参考 - 卡片登记</a>。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">登记卡片时，建议使用<span class="inline-api">登记支付方式</span>。<br>
+
+    ※截至 2024 年 8 月，获取、更新和删除已登记卡片信息时，请使用<span class="inline-api">卡片</span> API。<br>
+
+    今后计划支持通过<span class="inline-api">支付方式</span> API 执行相同操作。
+</div>
+
+</div>
+
+<p>
+<img alt="为客户登记卡片信息的流程：手动" src="/assets/images/card/payment_methods_card_3ds2.png">
+</p>
+
+<ol>
+
+<li>客户登记购买者信息。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">客户登记</span>。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">令牌 JS</span>。</li>
+
+<li>商户发送令牌。</li>
+
+<li>商户执行 fincode 的<span class="inline-api">登记支付方式</span>。fincode 登记 3D Secure 2.0 认证，并在响应中返回 3DS 认证页面 URL <code>redirect_url</code>。</li>
+
+<li>商户将客户重定向至 <code>redirect_url</code>。客户与 3D Secure 服务之间会执行 3DS 认证处理。</li>
+
+<li>fincode 执行 3D Secure 2.0 认证处理。</li>
+
+<li>如果需要验证挑战，客户与 3D Secure 服务之间会启动 3D Secure 2.0 认证挑战。</li>
+
+<li>客户访问 3D Secure 2.0 认证页面。</li>
+
+<li>客户输入认证信息并进行本人认证。</li>
+
+<li>fincode 确认认证结果。</li>
+
+<li>fincode 根据认证结果向发卡机构执行授权处理，并返回结果。</li>
+
+<li>fincode 根据授权结果，将客户跳转至成功或失败 URL。</li>
+
+</ol>

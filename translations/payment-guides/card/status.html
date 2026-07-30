@@ -1,0 +1,93 @@
+<h1 id="payment-status">查看支付状态</h1>
+
+<p>本页说明支付交易的状态。</p>
+
+<h2 id="status-list">交易状态一览</h2>
+
+<table>
+<thead>
+<tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">未处理</td><td align="left">UNPROCESSED</td><td align="left">支付尚未完成的状态（例如购买者在下单过程中离开）</td></tr>
+
+<tr><td align="left">未处理（3DS）</td><td align="left">AUTHENTICATED</td><td align="left">支付尚未完成的状态（购买者正在输入 3DS 认证信息）</td></tr>
+
+<tr><td align="left">有效性检查</td><td align="left">CHECKED</td><td align="left">支付已正常完成，且已确认卡片有效的状态</td></tr>
+
+<tr><td align="left">预授权</td><td align="left">AUTHORIZED</td><td align="left">支付已正常完成，且已占用卡片额度的状态（不会向购买者请款，但某些发卡机构可能会将其列入 Web 账单明细）</td></tr>
+
+<tr><td align="left">请款完成</td><td align="left">CAPTURED</td><td align="left">请款已确定的状态</td></tr>
+
+<tr><td align="left">已取消</td><td align="left">CANCELED</td><td align="left">交易已取消的状态</td></tr>
+</tbody>
+</table>
+
+<h2 id="status-transitions">交易状态迁移</h2>
+
+<p>“－”表示没有相应的结果或操作。</p>
+
+<table>
+<thead>
+<tr><th align="left">操作</th><th align="left">操作结果</th><th align="left">操作前状态</th><th align="left">操作后状态</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">登记支付</td><td align="left">－</td><td align="left">－</td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行支付<br>
+（使用 3DS 时）</td><td align="left">成功</td><td align="left">未处理</td><td align="left">未处理（已登记 3DS）</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行支付<br>
+（不使用 3DS 时）</td><td align="left">成功</td><td align="left"> </td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行认证后支付</td><td align="left">成功</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理（已登记 3DS）</td></tr>
+
+<tr><td align="left"> </td><td align="left">成功</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成/已取消</td></tr>
+
+<tr><td align="left">修改金额</td><td align="left">成功</td><td align="left">预授权/请款完成/已取消</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成/已取消</td></tr>
+
+<tr><td align="left">取消</td><td align="left">成功</td><td align="left">预授权/请款完成</td><td align="left">已取消</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left">重新授权</td><td align="left">成功</td><td align="left">已取消</td><td align="left">预授权</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">已取消</td></tr>
+
+<tr><td align="left">本人认证已过期</td><td align="left">－</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成/已取消</td></tr>
+</tbody>
+</table>
+
+<h2 id="available-operations">各交易状态下可执行的操作</h2>
+
+<p>下表列出了各交易状态下可使用的操作。</p>
+
+<table>
+<thead>
+<tr><th align="left"> </th><th align="left">预授权</th><th align="left">请款</th><th align="left">即时扣款</th><th align="left">取消</th><th align="left">有效性检查</th><th align="left">修改金额</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">未处理</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td></tr>
+
+<tr><td align="left">预授权</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td></tr>
+
+<tr><td align="left">请款完成</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td></tr>
+
+<tr><td align="left">已取消</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">-</td><td align="left">-</td></tr>
+
+<tr><td align="left">有效性检查</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td></tr>
+</tbody>
+</table>

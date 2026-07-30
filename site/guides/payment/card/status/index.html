@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 查看支付状态中文指南。" />
+    <title>查看支付状态 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/status" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../index.html">支付</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/status" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
+        <a class="active" href="../../../index.html">支付</a>
+        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
+        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
+        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
+        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
+        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">卡片支付简介</a></li>
+<li><a href="../execution/index.html">执行支付处理</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="index.html" aria-current="page" class="active">查看支付状态</a></li>
+<li><a href="../restrictions/index.html">限制事项</a></li>
+<li><a href="../notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">查看支付状态</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="payment-status">查看支付状态</h1>
+
+<p>本页说明支付交易的状态。</p>
+
+<h2 id="status-list">交易状态一览</h2>
+
+<table>
+<thead>
+<tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">未处理</td><td align="left">UNPROCESSED</td><td align="left">支付尚未完成的状态（例如购买者在下单过程中离开）</td></tr>
+
+<tr><td align="left">未处理（3DS）</td><td align="left">AUTHENTICATED</td><td align="left">支付尚未完成的状态（购买者正在输入 3DS 认证信息）</td></tr>
+
+<tr><td align="left">有效性检查</td><td align="left">CHECKED</td><td align="left">支付已正常完成，且已确认卡片有效的状态</td></tr>
+
+<tr><td align="left">预授权</td><td align="left">AUTHORIZED</td><td align="left">支付已正常完成，且已占用卡片额度的状态（不会向购买者请款，但某些发卡机构可能会将其列入 Web 账单明细）</td></tr>
+
+<tr><td align="left">请款完成</td><td align="left">CAPTURED</td><td align="left">请款已确定的状态</td></tr>
+
+<tr><td align="left">已取消</td><td align="left">CANCELED</td><td align="left">交易已取消的状态</td></tr>
+</tbody>
+</table>
+
+<h2 id="status-transitions">交易状态迁移</h2>
+
+<p>“－”表示没有相应的结果或操作。</p>
+
+<table>
+<thead>
+<tr><th align="left">操作</th><th align="left">操作结果</th><th align="left">操作前状态</th><th align="left">操作后状态</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">登记支付</td><td align="left">－</td><td align="left">－</td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行支付<br>
+（使用 3DS 时）</td><td align="left">成功</td><td align="left">未处理</td><td align="left">未处理（已登记 3DS）</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行支付<br>
+（不使用 3DS 时）</td><td align="left">成功</td><td align="left"> </td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理</td></tr>
+
+<tr><td align="left">执行认证后支付</td><td align="left">成功</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">未处理（已登记 3DS）</td></tr>
+
+<tr><td align="left"> </td><td align="left">成功</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成/已取消</td></tr>
+
+<tr><td align="left">修改金额</td><td align="left">成功</td><td align="left">预授权/请款完成/已取消</td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成/已取消</td></tr>
+
+<tr><td align="left">取消</td><td align="left">成功</td><td align="left">预授权/请款完成</td><td align="left">已取消</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">预授权/请款完成</td></tr>
+
+<tr><td align="left">重新授权</td><td align="left">成功</td><td align="left">已取消</td><td align="left">预授权</td></tr>
+
+<tr><td align="left"> </td><td align="left">失败</td><td align="left"> </td><td align="left">已取消</td></tr>
+
+<tr><td align="left">本人认证已过期</td><td align="left">－</td><td align="left">未处理（已登记 3DS）</td><td align="left">预授权/请款完成/已取消</td></tr>
+</tbody>
+</table>
+
+<h2 id="available-operations">各交易状态下可执行的操作</h2>
+
+<p>下表列出了各交易状态下可使用的操作。</p>
+
+<table>
+<thead>
+<tr><th align="left"> </th><th align="left">预授权</th><th align="left">请款</th><th align="left">即时扣款</th><th align="left">取消</th><th align="left">有效性检查</th><th align="left">修改金额</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">未处理</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td></tr>
+
+<tr><td align="left">预授权</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td></tr>
+
+<tr><td align="left">请款完成</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">○</td></tr>
+
+<tr><td align="left">已取消</td><td align="left">○</td><td align="left">-</td><td align="left">○</td><td align="left">-</td><td align="left">-</td><td align="left">-</td></tr>
+
+<tr><td align="left">有效性检查</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td><td align="left">-</td></tr>
+</tbody>
+</table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/status" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

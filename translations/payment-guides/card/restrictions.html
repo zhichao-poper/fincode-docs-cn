@@ -1,0 +1,68 @@
+<h1 id="restrictions">限制事项</h1>
+
+<p>可在此查看相关限制事项。</p>
+
+<table>
+<thead>
+<tr><th align="left">限制对象</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">可用金额</td><td align="left">1 日元～99,999,999 日元（使用金额与税费及运费的合计）<br>
+※根据店铺连接的卡片公司（收单机构），单次可用金额的上限有时为 9,999,999 日元。</td></tr>
+
+<tr><td align="left">从开始本人认证到支付的时间</td><td align="left">900 秒<br>
+显示本人认证密码输入页面后，如果经过 900 秒以上，支付将无法正常完成。</td></tr>
+
+<tr><td align="left">可用品牌</td><td align="left">VISA<br>
+MasterCard<br>
+JCB<br>
+American Express<br>
+Diners Club<br>
+Discover</td></tr>
+
+<tr><td align="left">可指定的分期付款期数（付款次数）</td><td align="left">3、5、6、10、12、15、18、20、24 期<br>
+<br>
+※根据店铺的审核结果，某些品牌可能无法使用分期付款。<br>
+※根据购买者与发卡机构的合同内容等，可能无法使用分期付款。</td></tr>
+
+<tr><td align="left">可使用 EMV 3-D Secure 的品牌</td><td align="left">VISA(Visa Secure)<br>
+MasterCard(Mastercard ID check)<br>
+JCB(J/Secure)<br>
+American Express(American Express SafeKey)<br>
+Diners Club(ProtectBuy)<br>
+Discover(ProtectBuy)</td></tr>
+
+<tr><td align="left">重试输入 EMV 3-D Secure 密码</td><td align="left">取决于发卡机构。</td></tr>
+
+<tr><td align="left">同时使用 PIN 码和 EMV 3-D Secure</td><td align="left">不支持<br>
+只有在签约时设置为使用 PIN 码的店铺才能使用 PIN 码。</td></tr>
+
+<tr><td align="left">将“预授权”状态的交易更改为“请款完成”的期限</td><td align="left">25 天<br>
+当天按第 0 天计算。<br>
+<br>
+超过可更改期限后执行“请款”将发生错误。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
+此外，如果时间间隔较长，再次授权时可能会因卡片状态而发生有效期错误或超出额度等错误。<br>
+由于具体原因涉及个人信息，请持卡人本人联系卡面所载的发卡机构。</td></tr>
+
+<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“请款完成”状态的交易执行“取消”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“已取消”状态的交易重新授权的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">每笔交易的历史记录数<br>
+（取消、重新授权等操作的次数）</td><td align="left">无限制</td></tr>
+
+<tr><td align="left">关于删除交易</td><td align="left">无法删除交易。即使结果发生错误也不例外，请注意。<br>
+因此，请勿将订单编号等无法更改的编号用作订单 ID。如确实必须使用，建议采用“订单编号 + 连号”等编号规则。</td></tr>
+
+<tr><td align="left">关于卡号限制</td><td align="left">API 和控制面板中显示的卡号，将以除末 4 位之外均被掩码的格式返回。</td></tr>
+</tbody>
+</table>

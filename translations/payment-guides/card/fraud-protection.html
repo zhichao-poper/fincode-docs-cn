@@ -1,0 +1,117 @@
+<h1 id="fraud-protection">防止欺诈使用（3D Secure）</h1>
+
+<h2 id="what-is-3d-secure">什么是 3D Secure</h2>
+
+<p>3D Secure 是一种身份认证机制，用于防止在线卡片支付中的欺诈使用。
+随着卡片支付欺诈造成的损失急剧增加，日本经济产业省在《信用卡安全指南》中规定，日本国内所有电商加盟店必须在 2025 年 3 月底前导入 EMV 3-D Secure（3D Secure 2.0）。
+根据该指南，使用 fincode 必须导入 EMV 3-D Secure。</p>
+
+<h2 id="emv-3d-secure-features">EMV 3-D Secure 的特点</h2>
+
+<p>EMV 3-D Secure 支持“基于风险的认证”，即在电商网站支付时，根据购买者的设备信息、行为信息和属性信息等判断风险程度。<br>
+
+3D Secure 1.0 要求每次购买时都必须认证，而 EMV 3-D Secure 在判断风险较低时，无需认证即可完成支付。<br>
+
+只有在信用卡公司判断存在欺诈使用风险时，才会额外要求使用一次性密码等方式进行认证。<br>
+
+※一次性密码由信用卡公司发送至持卡人预先登记的手机号码或电子邮箱。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title custom-block-title-common">
+    执行支付时指定的 3DS 认证参数将用于基于风险的认证。
+  </div>
+
+</div>
+
+<img alt="基于风险的认证" src="/assets/images/fraud_protection/fincode_docs3ds-graphic.png" width="90%">
+
+<h2 id="emv-3d-secure-benefits">导入 EMV 3-D Secure 的优势</h2>
+
+<p>在使用 EMV 3-D Secure 的支付中，如果以下情况发生欺诈使用，原则上由信用卡公司承担拒付损失。</p>
+
+<ul>
+
+<li>认证成功时（即 3D Secure 2.0 处理状态为“已认证（AUTHENTICATED）”时）</li>
+
+<li>已执行认证，但信用卡公司或持卡人尚未导入 EMV 3-D Secure 时</li>
+
+</ul>
+
+<p><b>注意事项：</b></p>
+
+<ul>
+
+<li>由于 3D Secure 1.0 已停止支持，只有使用 EMV 3-D Secure（3D Secure 2.0）且状态为“已认证（AUTHENTICATED）”的支付，才属于免责对象。</li>
+
+<li>认证成功后，如果执行“取消”“重新授权”或“变更金额”而重新获取授权，最新状态将不再是“已认证（AUTHENTICATED）”。<br>
+在这种情况下，将不属于信用卡公司的免责对象，请务必注意。</li>
+
+</ul>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title custom-block-title-common">
+    在卡片支付中，持卡人因遭受欺诈使用等原因拒绝向信用卡公司支付款项，称为拒付。<br>
+
+    发生拒付时，信用卡公司可能会根据调查结果要求店铺返还销售款，但已完成认证的交易不会被要求返还销售款。<br>
+
+    请查看<a href="/business_management/chargeback">拒付详情</a>。
+  </div>
+
+</div>
+
+<h2 id="mandatory-emv-3d-secure-requirements">EMV 3-D Secure 强制要求</h2>
+
+<p>EMV 3-D Secure 的强制要求规定，必须在每次登记卡片时，或在每次支付时执行 3D Secure。对于 2025 年 5 月底以后创建的 fincode 新店铺，必须启用 EMV 3-D Secure 设置。因此，请注意，未使用 EMV 3-D Secure 的支付将发生错误。<br>
+
+对于现有店铺，目前没有规格变更；但为遵守安全指南，要求在 2025 年 3 月底前完成对应。尚未完成对应时，请尽快处理。</p>
+
+<p><b>单次支付（支付 API、重定向型支付 URL、发票功能）时</b><br>
+
+每次支付都需要执行 3D Secure 认证。<br>
+
+请在<span class="inline-api">支付 登记</span>、<span class="inline-api">重定向型支付 URL 创建</span>或<span class="inline-api">发票 创建</span>中设置使用 EMV 3-D Secure。</p>
+
+<p><b>使用订阅功能时</b><br>
+
+为客户登记卡片时需要执行认证。<br>
+
+通过使用<span class="inline-api">支付方式 登记</span> API，可以在登记卡片的同时使用 EMV 3-D Secure 进行认证。<br>
+
+※但如果发生构成拒付的情况，将不予免责，并会产生拒付。</p>
+
+<p><b>使用批量支付功能时</b><br>
+
+为客户登记卡片时需要执行认证。<br>
+
+通过使用<span class="inline-api">支付方式 登记</span> API，可以在登记卡片的同时使用 EMV 3-D Secure 进行认证。<br>
+
+※但如果发生构成拒付的情况，将不予免责，并会产生拒付。</p>
+
+<h2 id="implement-emv-3d-secure">导入 EMV 3-D Secure</h2>
+
+<h3 id="personal-information-protection">遵守《个人信息保护法》</h3>
+
+<p>使用 EMV 3-D Secure 时，为了进行基于风险的认证，贵公司将处理贵公司客户（购买者）的属性信息、设备信息等个人信息或可能构成个人信息的信息。<br>
+
+因此，贵公司作为《个人信息保护法》规定的“个人信息处理经营者”，需要在贵公司的服务中取得贵公司客户的同意。<br>
+
+在开始使用 EMV 3-D Secure 时，请贵公司准备相应流程，以取得贵公司客户对本事项的“个人信息处理同意”。</p>
+
+<p>▼示例文本</p>
+
+<div class="custom-block-common custom-block">
+    为了供发卡机构检测和防止欺诈使用，本公司将向客户所使用卡片的发卡机构提供本公司从购买者处收集的以下个人信息等。<br>
+
+    姓名、电话号码、电子邮箱地址、账单地址、配送地址、与互联网使用环境相关的信息等（请根据发送的参数内容填写个人信息）<br>
+
+    如果客户使用的卡片发卡机构位于境外，这些信息可能会被转移至该发卡机构所属的国家或地区。<br>
+
+    如果客户是未成年人，应在获得其监护人或法定代理人同意后使用本服务。<br>
+
+</div>
+
+<p>关于上述详细内容、加盟店需要采取的措施以及取得同意时所用文本的示例，请参阅<a href="https://www.j-credit.or.jp/security/document/index.html" rel="nofollow,noopener,noreferrer" target="_blank">日本信用卡协会提供的指南</a>中的<br>
+
+《EMV 3-D Secure 导入指南》。</p>

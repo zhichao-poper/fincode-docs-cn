@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 便利店支付简介中文指南。" />
+    <title>便利店支付简介 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/konbini" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../index.html">支付</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/konbini" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
+        <a class="active" href="../../index.html">支付</a>
+        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
+        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
+        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
+        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
+        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card/index.html">卡片支付简介</a></li>
+<li><a href="../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../card/operation/index.html">运营示例</a></li>
+<li><a href="../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../card/status/index.html">查看支付状态</a></li>
+<li><a href="../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../card/notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">便利店支付简介</a></li>
+<li><a href="execution/index.html">执行支付处理</a></li>
+<li><a href="status/index.html">查看支付状态</a></li>
+<li><a href="notes/index.html">规范与注意事项</a></li>
+<li><a href="restrictions/index.html">限制事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../../index.html">支付</a></li><li><a href="index.html">便利店支付</a></li><li aria-current="page">便利店支付简介</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="overview">什么是便利店支付</h1>
+
+<p>导入便利店支付后，即可接受购买者在便利店门店以现金支付在线购买的商品。<br>
+
+您既可以使用 fincode API 获取条形码图片并将其嵌入自有 GUI，也可以使用已构建完成的重定向支付页面，通过少量编码快速开始使用便利店支付。<br>
+
+fincode 支持在以下便利店进行支付。<br>
+
+<code>7-Eleven</code>、<code>Lawson</code>、<code>MINISTOP</code>、<code>Seicomart</code>、<code>FamilyMart</code><br>
+
+※本服务使用株式会社 BPORTUS 提供的 PAYSLE。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">在测试环境中，完成用户注册后即可立即试用所有支付方式。<br>
+
+    如需在生产环境中使用，则须在开通卡片支付后，通过管理后台另行提交使用申请。
+</div>
+
+</div>
+
+<h2 id="getting-started">开始使用便利店支付</h2>
+
+<p>在开发过程中，便利店支付与 fincode 的卡片支付一样，可以简单地集成。<br>
+
+通过控制面板中的支付服务设置提交使用申请，审核完成后即可使用执行便利店支付的 API。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">根据审核结果，可能无法使用该服务。审核期间如有需要进一步确认的事项，fincode 将通过电子邮件与您联系，请予以回复。
+    审核通常需要约 1～2 个月；如回复耗时较长，审核时间可能会进一步延长，敬请注意。
+    </div>
+
+</div>
+
+<h2 id="payment-execution-api">使用支付执行 API 时</h2>
+
+<p>在生产环境中，即使便利店支付审核已完成，也暂时无法使用便利店支付的支付执行 API。<br>
+
+这是因为在生产环境中，商户展示通过支付执行 API 响应获取的条形码时，需要由支付服务商进行条形码读取测试。<br>
+
+因此，如需在生产环境中使用支付执行 API，并由商户获取和展示条形码，则必须事先完成以下步骤。<br>
+
+※使用重定向方式时，无须执行以下步骤。</p>
+
+<h3 id="request-api-access">①申请使用支付执行 API</h3>
+
+<p>便利店支付审核完成后，请通过<a href="https://dashboard.fincode.jp/contact" rel="nofollow,noopener,noreferrer" target="_blank">咨询表单</a>联系我们，告知您希望使用支付执行 API。<br>
+
+收到您的联系后，我们将为您开通便利店支付的支付执行 API。</p>
+
+<h3 id="barcode-reading-test">②由支付服务商进行条形码读取测试</h3>
+
+<p>完成步骤①后，请在生产环境中准备好能够获取和展示条形码的环境，然后再次通过<a href="https://dashboard.fincode.jp/contact" rel="nofollow,noopener,noreferrer" target="_blank">咨询表单</a>联系我们，申请进行条形码读取测试。<br>
+
+条形码展示页面请遵循此处的<a href="notes/index.html">规范指南</a>。<br>
+
+（预计测试周期：2～3 周）</p>
+
+<h2 id="supported-features">支持的功能</h2>
+
+<p>fincode 中可使用便利店支付的功能如下。</p>
+
+<table>
+<thead>
+<tr><th align="left"></th><th align="left">单次支付</th><th align="left">订阅</th><th align="left">重定向型支付</th><th align="left">在原生应用中使用</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">便利店支付</td><td align="left">
+<img alt="支持" src="../../../assets/payment-guides/icon-checked.svg">
+</td><td align="left">
+<img alt="不支持" src="../../../assets/payment-guides/icon-out.svg">
+</td><td align="left">
+<img alt="支持" src="../../../assets/payment-guides/icon-checked.svg">
+</td><td align="left">
+<img alt="支持" src="../../../assets/payment-guides/icon-checked.svg">
+</td></tr>
+</tbody>
+</table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/konbini" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

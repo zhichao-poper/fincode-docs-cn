@@ -1,0 +1,115 @@
+<h1 id="regulations-and-notes">规范与注意事项</h1>
+
+<h2 id="regulation-guidelines">规范指南</h2>
+
+<p>fincode 的便利店支付采用条形码方式。API 通过请求接收设备像素数等信息，并响应返回经 Base64 编码的图片数据。<br>
+
+将该图片解码并显示在画面上时，为了更加可靠地读取条形码，设有相应的展示规范。<br>
+
+构建 GUI 时，请遵循以下规范。</p>
+
+<h3 id="regulation-guide">规范指南</h3>
+
+<p>
+<img alt="规范指南" src="/assets/images/konbini/konbini_guide_v2.png">
+</p>
+
+<h4 id="barcode-screen-requirements">【须在条形码展示页面中注明】</h4>
+
+<ol>
+
+<li>注明“支付（收款代理）”</li>
+
+<li>明确标示支付金额</li>
+
+<li>以原始尺寸显示包含 PAYSLE 标志的条形码图片（页面不可横向滚动，须相对于页面左右居中显示）／仅显示一张</li>
+
+<li>注明与条形码展示有关的注意事项<sup>※1</sup></li>
+
+<li>明确标示支付期限</li>
+
+<li>显示支持的便利店图片<sup>※2</sup></li>
+
+</ol>
+
+<h4 id="site-or-screen-requirements">【须在网站内或条形码展示页面中注明】</h4>
+
+<ol start="7">
+
+<li>注明与收款代理服务有关的注意事项<sup>※3</sup></li>
+
+</ol>
+
+<p><sup>※1</sup>与条形码展示有关的注意事项<br>
+请在条形码展示页面中注明以下内容。</p>
+
+<div class="custom-block-common custom-block">
+
+<p>· 请勿出示屏幕截图。<br>
+
+    · 如未将屏幕亮度调至最高，可能无法读取。<br>
+
+    · 请勿横向显示屏幕。<br>
+
+    · 如对画面执行放大或缩小操作，可能无法读取。<br>
+
+    · 如屏幕损坏或贴有保护膜，可能无法读取。<br>
+
+    · 支付结果可能需要一定时间才能反映。<br>
+
+  </p>
+</div>
+
+<p><sup>※2</sup>支持的便利店图片<br>
+
+标志数据 - 矢量格式 ▶ <a target="_blank" href="/assets/images/konbini/konbini_logos_v2.svg">konbini_logos_v2.svg</a><br>
+
+标志数据 - PNG 格式（小）▶ <a target="_blank" href="/assets/images/konbini/konbini_logos_w720_v2.png">konbini_logos_w720_v2.png</a><br>
+
+标志数据 - PNG 格式（中）▶ <a target="_blank" href="/assets/images/konbini/konbini_logos_w1125_v2.png">konbini_logos_w1125_v2.png</a><br>
+
+标志数据 - PNG 格式（大）▶ <a target="_blank" href="/assets/images/konbini/konbini_logos_w2160_v2.png">konbini_logos_w2160_v2.png</a></p>
+
+<br>
+
+<sup>※3</sup>与收款代理服务有关的注意事项
+请在网站内或条形码展示页面中注明以下内容。<br>
+
+※示例中将全部注意事项都标示在条形码展示页面中。
+
+<div class="custom-block-common custom-block">
+
+<p>· 请勿出示屏幕截图。<br>
+
+    · 收款代理机构 DSK 电算系统受店铺经营者委托，办理收款代理业务。<br>
+
+    · 可受理的便利店受收款代理机构 DSK 电算系统委托，代为收取款项。<br>
+
+    　如需咨询，请联系店铺经营者。<br>
+
+    · 条形码无法读取等不能受理的情况，便利店将无法处理。<br>
+
+  </p>
+</div>
+
+<h3 id="completed-example">完成示例</h3>
+
+<p>
+<img alt="完成示例" src="/assets/images/konbini/konbini_display_sample_v2.png">
+</p>
+
+<h2 id="precautions">注意事项</h2>
+
+<h3 id="duplicate-payment">重复支付</h3>
+
+<p>根据条形码便利店支付的规格，购买者可以使用同一个条形码进行多次支付，这种情况称为重复支付。<br>
+
+因购买者重复支付而产生的销售额，即使属于误支付，fincode 也会将全部款项作为销售额汇给商户。如发生重复支付，请商户根据需要直接向购买者退款。</p>
+
+<h3 id="overpayment-notification">重复支付通知</h3>
+
+<p>如购买者发生重复支付，系统将近乎实时地通过电子邮件和 Webhook 通知店铺已发生重复支付。<br>
+
+请店铺告知 Webhook 及电子邮件中所记载支付的购买者已发生重复支付，并为其说明退款处理方式。<br>
+
+发生重复支付时，支付通知（payment.konbini.complete）事件的 overpayment_flag 将变为 1。</p>

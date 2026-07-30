@@ -1,0 +1,55 @@
+<h1 id="payment-status">查看支付状态</h1>
+
+<p>本页介绍便利店支付交易的状态。</p>
+
+<h2 id="status-list">交易状态一览</h2>
+
+<p>
+<img alt="交易状态转换图" src="/assets/images/konbini/payment_konbini_state1.png">
+</p>
+
+<table>
+<thead>
+<tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">未支付</td><td align="left">UNPROCESSED</td><td align="left">支付尚未完成的状态</td></tr>
+
+<tr><td align="left">等待支付</td><td align="left">AWAITING_CUSTOMER_PAYMENT</td><td align="left">顾客尚未在便利店门店支付的状态</td></tr>
+
+<tr><td align="left">销售额已确定</td><td align="left">CAPTURED</td><td align="left">销售额已经确定的状态</td></tr>
+
+<tr><td align="left">已取消</td><td align="left">CANCELED</td><td align="left">交易已取消的状态</td></tr>
+
+<tr><td align="left">已过期</td><td align="left">EXPIRED</td><td align="left">支付条形码已超过有效期的状态。</td></tr>
+</tbody>
+</table>
+
+<h2 id="status-transitions">交易状态转换</h2>
+
+<p>“－”表示没有相应的结果或操作。</p>
+
+<table>
+<thead>
+<tr><th align="left">操作</th><th align="left">操作结果</th><th align="left">操作前的状态</th><th align="left">操作后的状态</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">支付注册</td><td align="left">成功</td><td align="left">－</td><td align="left">未支付</td></tr>
+
+<tr><td align="left">支付执行</td><td align="left">成功</td><td align="left">未支付</td><td align="left">等待支付</td></tr>
+
+<tr><td align="left"></td><td align="left">失败</td><td align="left">未支付</td><td align="left">未支付</td></tr>
+
+<tr><td align="left">顾客完成支付</td><td align="left">成功</td><td align="left">等待支付</td><td align="left">销售额已确定</td></tr>
+
+<tr><td align="left"></td><td align="left">失败</td><td align="left">等待支付</td><td align="left">等待支付</td></tr>
+
+<tr><td align="left">取消</td><td align="left">成功</td><td align="left">未支付</td><td align="left">已取消</td></tr>
+
+<tr><td align="left"></td><td align="left">失败</td><td align="left">未支付</td><td align="left">未支付</td></tr>
+
+<tr><td align="left">条形码过期</td><td align="left">－</td><td align="left">等待支付</td><td align="left">已过期</td></tr>
+</tbody>
+</table>

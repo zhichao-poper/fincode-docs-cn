@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 限制事项中文指南。" />
+    <title>限制事项 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../index.html">支付</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
+        <a class="active" href="../../../index.html">支付</a>
+        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
+        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
+        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
+        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
+        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">卡片支付简介</a></li>
+<li><a href="../execution/index.html">执行支付处理</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="index.html" aria-current="page" class="active">限制事项</a></li>
+<li><a href="../notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">限制事项</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="restrictions">限制事项</h1>
+
+<p>可在此查看相关限制事项。</p>
+
+<table>
+<thead>
+<tr><th align="left">限制对象</th><th align="left">说明</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">可用金额</td><td align="left">1 日元～99,999,999 日元（使用金额与税费及运费的合计）<br>
+※根据店铺连接的卡片公司（收单机构），单次可用金额的上限有时为 9,999,999 日元。</td></tr>
+
+<tr><td align="left">从开始本人认证到支付的时间</td><td align="left">900 秒<br>
+显示本人认证密码输入页面后，如果经过 900 秒以上，支付将无法正常完成。</td></tr>
+
+<tr><td align="left">可用品牌</td><td align="left">VISA<br>
+MasterCard<br>
+JCB<br>
+American Express<br>
+Diners Club<br>
+Discover</td></tr>
+
+<tr><td align="left">可指定的分期付款期数（付款次数）</td><td align="left">3、5、6、10、12、15、18、20、24 期<br>
+<br>
+※根据店铺的审核结果，某些品牌可能无法使用分期付款。<br>
+※根据购买者与发卡机构的合同内容等，可能无法使用分期付款。</td></tr>
+
+<tr><td align="left">可使用 EMV 3-D Secure 的品牌</td><td align="left">VISA(Visa Secure)<br>
+MasterCard(Mastercard ID check)<br>
+JCB(J/Secure)<br>
+American Express(American Express SafeKey)<br>
+Diners Club(ProtectBuy)<br>
+Discover(ProtectBuy)</td></tr>
+
+<tr><td align="left">重试输入 EMV 3-D Secure 密码</td><td align="left">取决于发卡机构。</td></tr>
+
+<tr><td align="left">同时使用 PIN 码和 EMV 3-D Secure</td><td align="left">不支持<br>
+只有在签约时设置为使用 PIN 码的店铺才能使用 PIN 码。</td></tr>
+
+<tr><td align="left">将“预授权”状态的交易更改为“请款完成”的期限</td><td align="left">25 天<br>
+当天按第 0 天计算。<br>
+<br>
+超过可更改期限后执行“请款”将发生错误。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
+此外，如果时间间隔较长，再次授权时可能会因卡片状态而发生有效期错误或超出额度等错误。<br>
+由于具体原因涉及个人信息，请持卡人本人联系卡面所载的发卡机构。</td></tr>
+
+<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“请款完成”状态的交易执行“取消”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">可对“已取消”状态的交易重新授权的期限</td><td align="left">180 天（交易保留期限）<br>
+当天按第 0 天计算。</td></tr>
+
+<tr><td align="left">每笔交易的历史记录数<br>
+（取消、重新授权等操作的次数）</td><td align="left">无限制</td></tr>
+
+<tr><td align="left">关于删除交易</td><td align="left">无法删除交易。即使结果发生错误也不例外，请注意。<br>
+因此，请勿将订单编号等无法更改的编号用作订单 ID。如确实必须使用，建议采用“订单编号 + 连号”等编号规则。</td></tr>
+
+<tr><td align="left">关于卡号限制</td><td align="left">API 和控制面板中显示的卡号，将以除末 4 位之外均被掩码的格式返回。</td></tr>
+</tbody>
+</table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/restriction" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

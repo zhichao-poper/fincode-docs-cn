@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 注意事项中文指南。" />
+    <title>注意事项 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/note" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../index.html">支付</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/note" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
+        <a class="active" href="../../../index.html">支付</a>
+        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
+        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
+        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
+        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
+        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">卡片支付简介</a></li>
+<li><a href="../execution/index.html">执行支付处理</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="../restrictions/index.html">限制事项</a></li>
+<li><a href="index.html" aria-current="page" class="active">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">注意事项</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="notes">注意事项</h1>
+
+<h2 id="cancellation">关于取消</h2>
+
+<p>取消已请款完成的支付后，将在取消数据送达“发卡机构”后向购买者退款。具体退款时间因发卡机构的账单截止日而异，也可能在扣款月份的次月或之后退款。</p>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">如果使用借记卡或预付卡，金融机构向购买者退款时，可能会多次重复进行退款和扣款处理。
+  </div>
+
+</div>
+
+<h2 id="amount-change">关于修改金额</h2>
+
+<p>修改金额时，不会仅按修改前金额的增减差额进行处理，而是以修改后的金额重新取得授权，然后取消以修改前金额取得的授权。<br>
+
+此外，修改已请款完成支付的金额时，由于上述机制，修改前后的两个金额可能都会显示在购买者的账单明细中，但修改前的金额之后会被取消。</p>
+
+<p>示例：2023/1/10 以 ¥1,000 办理支付，并于 2023/1/12 将金额修改为 ¥2,000</p>
+
+<table>
+<thead>
+<tr><th align="left">使用日期</th><th align="left">操作</th><th align="left">金额</th></tr>
+</thead>
+
+<tbody>
+<tr><td align="left">2023/1/10</td><td align="left">预授权/请款完成</td><td align="left">¥1,000</td></tr>
+
+<tr><td align="left">2023/1/12</td><td align="left">预授权/请款完成</td><td align="left">¥2,000</td></tr>
+
+<tr><td align="left">2023/1/12</td><td align="left">取消</td><td align="left">¥1,000</td></tr>
+</tbody>
+</table>
+
+<div class="custom-block-common custom-block">
+
+<div class="custom-block-title-common custom-block-title">如果使用借记卡或预付卡，在以修改后的金额取得授权时即会发生扣款。之后，以修改前金额取得的授权会被取消，被扣款的金额将在日后退还，因此修改前后的金额会暂时同时被扣款。<br>
+
+    此外，与取消时相同，金融机构向购买者退款时，也可能按修改前的金额多次重复进行退款和扣款处理。
+</div>
+
+</div>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/note" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
