@@ -24746,6 +24746,16 @@ components:
             allOf:
               - $ref: '#/components/schemas/Payment'
               - $ref: '#/components/schemas/Payment.DirectDebit'
+              - type: object
+                properties:
+                  invoice_id:
+                    type: string
+                    nullable: true
+                    minLength: 1
+                    maxLength: 30
+                    description: |
+                      紐づくインボイスID\
+                      この決済に後付けで紐付けられたインボイスがある場合、そのインボイスIDが設定されます。
     Payment.DirectDebit.ListRetrieving.Response:
       allOf:
         - $ref: '#/components/schemas/_ListResponse'
@@ -25667,6 +25677,16 @@ components:
       allOf:
         - $ref: '#/components/schemas/Payment'
         - $ref: '#/components/schemas/Payment.DirectDebit'
+        - type: object
+          properties:
+            invoice_id:
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+              description: |
+                紐づくインボイスID\
+                この決済に後付けで紐付けられたインボイスがある場合、そのインボイスIDが設定されます。
     Payment.VirtualAccount.Retrieving.Response:
       allOf:
         - $ref: '#/components/schemas/Payment'
@@ -31652,10 +31672,18 @@ components:
         is_uncollectible:
           type: boolean
           description: |
-            回収困難マーク  
-              
+            回収困難マーク
+
             - `true`: 回収困難マーク済の請求データのみを取得
             - `false`: 回収困難マークの無い請求データのみを取得
+            - `null`: いずれも取得
+        is_backfill:
+          type: boolean
+          description: |
+            インボイス_領収書後付け発行フラグ
+
+            - `true`: 後付けで発行された請求データのみを取得
+            - `false`: 後付けで発行されていない請求データのみを取得
             - `null`: いずれも取得
     Invoice.ListItem:
       type: object
@@ -31704,6 +31732,34 @@ components:
             請求ID
           minLength: 1
           maxLength: 30
+        invoice_backfill:
+          type: object
+          description: |
+            後付け請求情報\
+            既存決済に対して後付けでインボイス（領収書）を紐付けた場合に設定されます。
+          properties:
+            order_id:
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+              description: |
+                紐付け対象決済のオーダーID
+            access_id:
+              type: string
+              nullable: true
+              minLength: 24
+              maxLength: 24
+              description: |
+                紐付け対象決済の取引ID
+            paid_date:
+              type: string
+              nullable: true
+              minLength: 10
+              maxLength: 10
+              description: |
+                紐付け対象決済の支払日\
+                形式： `yyyy/MM/dd`
         customer_id:
           type: string
           description: |
@@ -32271,7 +32327,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                自宅電話の国コード  
+                自宅電話の国コード（+を含まない）  
                 自宅電話の国コードを設定した場合  
                 自宅電話番号の設定が必要  
             tds2_home_phone_no:
@@ -32290,7 +32346,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                携帯電話の国コード  
+                携帯電話の国コード（+を含まない）  
                 携帯電話の国コードを設定した場合  
                 携帯電話番号の設定が必要  
             tds2_mobile_phone_no:
@@ -32308,7 +32364,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                職場電話の国コード  
+                職場電話の国コード（+を含まない）  
                 職場電話の国コードを設定した場合  
                 職場電話番号の設定が必要  
             tds2_work_phone_no:
@@ -32527,6 +32583,29 @@ components:
           minLength: 1
           maxLength: 100
           description: 加盟店自由項目3
+        invoice_backfill:
+          type: object
+          description: |
+            領収書後付け発行情報\
+            指定した場合、インボイス発行時に既存決済を紐づけます。\
+            指定する場合は3項目すべての指定が必要です。\
+            指定できる決済種別は `Card` / `Virtualaccount` / `Directdebit` のみで、複数の決済手段を同時に指定することはできません。\
+          properties:
+            order_id:
+              type: string
+              maxLength: 30
+              description: 既存決済のオーダーID
+            access_id:
+              type: string
+              minLength: 24
+              maxLength: 24
+              description: 既存決済の取引ID
+            paid_date:
+              type: string
+              maxLength: 10
+              description: |
+                既存決済の支払日\
+                形式： `yyyy/MM/dd`
     Invoice:
       type: object
       properties:
@@ -33109,7 +33188,7 @@ components:
             tds2_home_phone_cc:
               type: string
               description: |
-                自宅電話の国コード  
+                自宅電話の国コード（+を含まない）  
               minLength: 1
               maxLength: 3
             tds2_home_phone_no:
@@ -33122,7 +33201,7 @@ components:
             tds2_mobile_phone_cc:
               type: string
               description: |
-                携帯電話の国コード  
+                携帯電話の国コード（+を含まない）  
               minLength: 1
               maxLength: 3
             tds2_mobile_phone_no:
@@ -33135,7 +33214,7 @@ components:
             tds2_work_phone_cc:
               type: string
               description: |
-                職場電話の国コード  
+                職場電話の国コード（+を含まない）  
               minLength: 1
               maxLength: 3
             tds2_work_phone_no:
@@ -33440,6 +33519,34 @@ components:
             account_name_kana:
               type: string
               description: 口座名義人名（カナ）
+        invoice_backfill:
+          type: object
+          description: |
+            後付け請求情報\
+            既存決済に対して後付けでインボイス（領収書）を紐付けた場合に設定されます。
+          properties:
+            order_id:
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+              description: |
+                紐付け対象決済のオーダーID
+            access_id:
+              type: string
+              nullable: true
+              minLength: 24
+              maxLength: 24
+              description: |
+                紐付け対象決済の取引ID
+            paid_date:
+              type: string
+              nullable: true
+              minLength: 10
+              maxLength: 10
+              description: |
+                紐付け対象決済の支払日\
+                形式： `yyyy/MM/dd`
         created:
           type: string
           description: 作成日時
@@ -33891,7 +33998,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                自宅電話の国コード  
+                自宅電話の国コード（+を含まない）  
                 自宅電話の国コードを設定した場合  
                 自宅電話番号の設定が必要
             tds2_home_phone_no:
@@ -33910,7 +34017,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                携帯電話の国コード  
+                携帯電話の国コード（+を含まない）  
                 携帯電話の国コードを設定した場合  
                 携帯電話番号の設定が必要
             tds2_mobile_phone_no:
@@ -33928,7 +34035,7 @@ components:
               maxLength: 3
               description: |
                 <span class="smallText color--blue-400">[3Dセキュア認証パラメータ]</span>  
-                職場電話の国コード  
+                職場電話の国コード（+を含まない）  
                 職場電話の国コードを設定した場合  
                 職場電話番号の設定が必要
             tds2_work_phone_no:
@@ -34147,6 +34254,29 @@ components:
           minLength: 1
           maxLength: 100
           description: 加盟店自由項目3
+        invoice_backfill:
+          type: object
+          description: |
+            領収書後付け発行情報\
+            指定した場合、インボイス発行時に既存決済を紐づけます。\
+            指定する場合は3項目すべての指定が必要です。\
+            指定できる決済種別は `Card` / `Virtualaccount` / `Directdebit` のみで、複数の決済手段を同時に指定することはできません。\
+          properties:
+            order_id:
+              type: string
+              maxLength: 30
+              description: 既存決済のオーダーID
+            access_id:
+              type: string
+              minLength: 24
+              maxLength: 24
+              description: 既存決済の取引ID
+            paid_date:
+              type: string
+              maxLength: 10
+              description: |
+                既存決済の支払日\
+                形式： `yyyy/MM/dd`
     InvoiceDetail.Updating.Response:
       allOf:
         - $ref: '#/components/schemas/Invoice'
@@ -35714,7 +35844,13 @@ components:
           description: "依頼内容  \n複数指定可能  \nカンマ区切りで複数の申出内容を指定可能です。  \n\n- `1`: 配送保留\t\n- `2`: 配送停止\t\n- `11`: 利用覚えなし\t\n- `12`: サービス未提供\t\n- `13`: サービス不履行\t\n- `14`: 商品未着\t\n- `15`: 商品相違\t\n- `16`: 金額相違\t\n- `17`: 商品瑕疵\t\n- `18`: キャンセル漏れ\t\n- `19`: 解約方法確認\t\n- `20`: 代行解約希望\t\n- `21`: 問合先確認\t\n- `22`: 取引内容確認\t\n"
         status_code:
           type: string
-          description: "チャージバックステータス  \nカンマ区切りで複数のステータスを指定可能です。  \n\n- `4005`: 要対応\n- `4006, 4007, 4011`: 回答済み\t\n- `4009`: 精算済み\t\n"
+          description: |
+            チャージバックステータス  
+            カンマ区切りで複数のステータスを指定可能です。  
+
+            - `4005`: 要対応
+            - `4006, 4007, 4011`: 回答済み
+            - `4009`: 売上返還確定（`canceled` が `true` の場合は確定後取消）
         category:
           type: string
           description: |
@@ -35728,7 +35864,7 @@ components:
           type: boolean
           description: |
             チャージバック取消  
-            ※この検索条件はstatus_codeに4009（精算済み）を指定した場合のみ有効です。
+            ※この検索条件はstatus_codeに4009（売上返還確定）を指定した場合のみ有効です。
             それ以外のステータスが指定されている場合、本パラメータは無視されます。
 
             - `null`: 取消・取消以外の両方を取得
@@ -35808,7 +35944,7 @@ components:
           type: number
           minimum: 4005
           maximum: 4011
-          description: "ステータス  \n\n- `4005`: 要対応\n- `4006`: 回答済み\t\n- `4007`: 回答済み\t\n- `4009`: 精算済み\t\n- `4011`: 回答済み\t\n"
+          description: "ステータス  \n\n- `4005`: 要対応\n- `4006`: 回答済み\t\n- `4007`: 回答済み\t\n- `4009`: 売上返還確定（`canceled` が `true` の場合は確定後取消）\n- `4011`: 回答済み\t\n"
         request:
           type: number
           description: "申出内容  \n\n- `1`: 配送保留\t\n- `2`: 配送停止\t\n- `11`: 利用覚えなし\t\n- `12`: サービス未提供\t\n- `13`: サービス不履行\t\n- `14`: 商品未着\t\n- `15`: 商品相違\t\n- `16`: 金額相違\t\n- `17`: 商品瑕疵\t\n- `18`: キャンセル漏れ\t\n- `19`: 解約方法確認\t\n- `20`: 代行解約希望\t\n- `21`: 問合先確認\t\n- `22`: 取引内容確認\t\n"
@@ -36133,6 +36269,7 @@ components:
         - directdebit
         - directdebit_mizuho
         - virtualaccount
+        - card_updater
       example: vm
       description: |
         審査種別マスタID。\
@@ -36149,6 +36286,7 @@ components:
         - `directdebit`: 口座振替（5・6・23・27日）
         - `directdebit_mizuho`: 口座振替（1・5・20・26日）
         - `virtualaccount`: 銀行振込（バーチャル口座）
+        - `card_updater`: 洗替
     PlatformRateConfig:
       type: object
       properties:
@@ -38429,12 +38567,15 @@ components:
         - GOOGLE_PAY_UC
         - GOOGLE_PAY_TFC
         - GOOGLE_PAY_ORICO
+        - GOOGLE_PAY_AFS
+        - GOOGLE_PAY_MUN
         - GOOGLE_PAY_JCB_AMEX
         - GOOGLE_PAY_DINERS
         - DIRECT_DEBIT
         - DIRECT_DEBIT_MIZUHO
         - VIRTUAL_ACCOUNT
         - VIRTUAL_ACCOUNT_BULK
+        - CARD_UPDATER
       description: |
         - `PAYSLE`: コンビニ決済
         - `PAYPAY`: PayPay
@@ -38443,12 +38584,15 @@ components:
         - `GOOGLE_PAY_UC`: Google Pay（VISA/Mastercard - UCカード）
         - `GOOGLE_PAY_TFC`: Google Pay（VISA/Mastercard - トヨタファイナンス）
         - `GOOGLE_PAY_ORICO`: Google Pay（VISA/Mastercard - オリエントコーポレーション）
+        - `GOOGLE_PAY_AFS`: Google Pay（VISA/Mastercard - イオンフィナンシャルサービス）
+        - `GOOGLE_PAY_MUN`: Google Pay（VISA/Mastercard - 三菱UFJニコス）
         - `GOOGLE_PAY_JCB_AMEX`: Google Pay（JCB/American Express）
         - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
         - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
         - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
         - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
         - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
+        - `CARD_UPDATER`: 洗替
     provider:
       type: array
       items:
@@ -38462,12 +38606,15 @@ components:
         - GOOGLE_PAY_UC
         - GOOGLE_PAY_TFC
         - GOOGLE_PAY_ORICO
+        - GOOGLE_PAY_AFS
+        - GOOGLE_PAY_MUN
         - GOOGLE_PAY_JCB_AMEX
         - GOOGLE_PAY_DINERS
         - DIRECT_DEBIT
         - DIRECT_DEBIT_MIZUHO
         - VIRTUAL_ACCOUNT
         - VIRTUAL_ACCOUNT_BULK
+        - CARD_UPDATER
       description: |
         追加対象決済手段\
         \
@@ -38480,12 +38627,15 @@ components:
         - `GOOGLE_PAY_UC`: Google Pay（VISA/Mastercard - UCカード）
         - `GOOGLE_PAY_TFC`: Google Pay（VISA/Mastercard - トヨタファイナンス）
         - `GOOGLE_PAY_ORICO`: Google Pay（VISA/Mastercard - オリエントコーポレーション）
+        - `GOOGLE_PAY_AFS`: Google Pay（VISA/Mastercard - イオンフィナンシャルサービス）
+        - `GOOGLE_PAY_MUN`: Google Pay（VISA/Mastercard - 三菱UFJニコス）
         - `GOOGLE_PAY_JCB_AMEX`: Google Pay（JCB/American Express）
         - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
         - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
         - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
         - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
         - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
+        - `CARD_UPDATER`: 洗替
     POST.ProviderReserve.Request:
       type: object
       properties:
@@ -38532,12 +38682,15 @@ components:
             - GOOGLE_PAY_UC
             - GOOGLE_PAY_TFC
             - GOOGLE_PAY_ORICO
+            - GOOGLE_PAY_AFS
+            - GOOGLE_PAY_MUN
             - GOOGLE_PAY_JCB_AMEX
             - GOOGLE_PAY_DINERS
             - DIRECT_DEBIT
             - DIRECT_DEBIT_MIZUHO
             - VIRTUAL_ACCOUNT
             - VIRTUAL_ACCOUNT_BULK
+            - CARD_UPDATER
           description: |
             追加対象決済手段\
             \
@@ -38550,12 +38703,15 @@ components:
             - `GOOGLE_PAY_UC`: Google Pay（VISA/Mastercard - UCカード）
             - `GOOGLE_PAY_TFC`: Google Pay（VISA/Mastercard - トヨタファイナンス）
             - `GOOGLE_PAY_ORICO`: Google Pay（VISA/Mastercard - オリエントコーポレーション）
+            - `GOOGLE_PAY_AFS`: Google Pay（VISA/Mastercard - イオンフィナンシャルサービス）
+            - `GOOGLE_PAY_MUN`: Google Pay（VISA/Mastercard - 三菱UFJニコス）
             - `GOOGLE_PAY_JCB_AMEX`: Google Pay（JCB/American Express）
             - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
             - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
             - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
             - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
             - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
+            - `CARD_UPDATER`: 洗替
     POST.ProviderReserve.Response:
       allOf:
         - $ref: '#/components/schemas/POST.ProviderReserve'
@@ -38566,18 +38722,23 @@ components:
         - 2
         - 3
         - 4
+        - 5
+        - 6
         - 51
         - 52
         - 56
         - 57
         - 58
         - 59
+        - 60
+        - 61
         - 101
         - 201
         - 301
         - 302
         - 401
         - 403
+        - 701
       example: 1
       description: |
         審査種別マスタID\
@@ -38587,18 +38748,23 @@ components:
         - `2`：  カード決済（JCB / American Express / Diners Club / Discover）
         - `3`：  カード決済（VISA / Mastercard, トヨタファイナンス社）
         - `4`：  カード決済（VISA / Mastercard, オリエントコーポレーション）
+        - `5`：  カード決済（VISA / Mastercard, イオンフィナンシャルサービス）
+        - `6`：  カード決済（VISA / Mastercard, 三菱UFJニコス）
         - `51`： Apple Pay（VISA / Mastercard, UCカード社）
         - `52`： Apple Pay（JCB / American Express）
         - `56`： Google Pay（VISA / Mastercard, UCカード社）
         - `57`： Google Pay（JCB / American Express / Diners Club）
         - `58`： Google Pay（VISA / Mastercard, トヨタファイナンス社）
         - `59`： Google Pay（VISA / Mastercard, オリエントコーポレーション）
+        - `60`： Google Pay（VISA / Mastercard, イオンフィナンシャルサービス）
+        - `61`： Google Pay（VISA / Mastercard, 三菱UFJニコス）
         - `101`： コンビニ決済
         - `201`： PayPay
         - `301`： 口座振替（5・6・23・27日）
         - `302`： 口座振替（1・5・20・26日）
         - `401`： 銀行振込（バーチャル口座）
         - `403`： 一括決済（バーチャル口座）
+        - `701`： 洗替
     ExaminationStatus:
       type: string
       enum:
@@ -39980,6 +40146,8 @@ components:
             - 2
             - 3
             - 4
+            - 5
+            - 6
           example: 1
           description: |
             審査種別マスタID  
@@ -39987,6 +40155,8 @@ components:
             - `2`：  カード決済（JCB / American Express / Diners Club / Discover）
             - `3`：  カード決済（VISA / Mastercard, トヨタファイナンス社）
             - `4`：  カード決済（VISA / Mastercard, オリエントコーポレーション）
+            - `5`：  カード決済（VISA / Mastercard, イオンフィナンシャルサービス）
+            - `6`：  カード決済（VISA / Mastercard, 三菱UFJニコス）
         destination:
           type: string
           nullable: true
@@ -43249,6 +43419,8 @@ components:
         - UC
         - TFC
         - ORICO
+        - AFS
+        - MUN
         - JCB/AMEX
         - DINERS
         - APPLE PAY UC
@@ -43256,19 +43428,25 @@ components:
         - GOOGLE PAY UC
         - GOOGLE PAY TFC
         - GOOGLE PAY ORICO
-        - GOOGLE PAY JCB
+        - GOOGLE PAY AFS
+        - GOOGLE PAY MUN
+        - GOOGLE PAY JCB/AMEX
+        - GOOGLE PAY DINERS
         - PAYSLE
         - PAYPAY
         - DIRECT DEBIT
         - DIRECT DEBIT MIZUHO
         - VIRTUAL ACCOUNT
         - VIRTUAL ACCOUNT BULK
+        - CARD UPDATER
       description: |
         審査対象
 
         - `UC`: VISA／Mastercard（UCカード）
         - `TFC`: VISA／Mastercard（トヨタファイナンス）
         - `ORICO`: VISA／Mastercard（オリエントコーポレーション）
+        - `AFS`: VISA／Mastercard（イオンフィナンシャルサービス）
+        - `MUN`: VISA／Mastercard（三菱UFJニコス）
         - `JCB/AMEX`: JCB／AMEX（JCB）
         - `DINERS`: DINERS（JCB）
         - `APPLE PAY UC`: Apple Pay（UCカード）
@@ -43276,26 +43454,34 @@ components:
         - `GOOGLE PAY UC`: Google Pay（UCカード）
         - `GOOGLE PAY TFC`: Google Pay（トヨタファイナンス）
         - `GOOGLE PAY ORICO`: Google Pay（オリエントコーポレーション）
-        - `GOOGLE PAY JCB`: Google Pay（JCB）
+        - `GOOGLE PAY AFS`: Google Pay（イオンフィナンシャルサービス）
+        - `GOOGLE PAY MUN`: Google Pay（三菱UFJニコス）
+        - `GOOGLE PAY JCB/AMEX`: Google Pay（JCB）
+        - `GOOGLE PAY DINERS`: Google Pay（Diners Club）
         - `PAYSLE`: コンビニ決済（電算システム）
         - `PAYPAY`: コンビニ決済（PayPay）
         - `DIRECT DEBIT`: 口座振替（5・6・23・27日）
         - `DIRECT DEBIT MIZUHO`: 口座振替（1・5・20・26日）
         - `VIRTUAL ACCOUNT`: 銀行振込（バーチャル口座）
         - `VIRTUAL ACCOUNT BULK`: 一括決済（バーチャル口座）
+        - `CARD UPDATER`: 洗替
       x-ja-description: |
         審査対象（和名）
 
         - `決済事業者審査: VISA/MASTER-UC`
         - `決済事業者審査: VISA/MASTER-TFC`
-        - `決済事業者審査: VISA/MASTER-ORICO`
+        - `決済事業者審査： VISA/MASTER-ORICO`
+        - `決済事業者審査： VISA/MASTER-AFS`
+        - `決済事業者審査： VISA/MASTER-MUN`
         - `決済事業者審査: JCB/AMEX`
         - `決済事業者審査: DINERS`
         - `決済事業者審査: ApplePay-UC`
         - `決済事業者審査: ApplePay-JCB/AMEX`
         - `決済事業者審査: GooglePay-UC`
         - `決済事業者審査: GooglePay-TFC`
-        - `決済事業者審査: GooglePay-ORICO`
+        - `決済事業者審査： GooglePay-ORICO`
+        - `決済事業者審査： GooglePay-AFS`
+        - `決済事業者審査： GooglePay-MUN`
         - `決済事業者審査: GooglePay-JCB/AMEX`
         - `決済事業者審査: GooglePay-DINERS`
         - `決済事業者審査: コンビニ決済`
@@ -43304,6 +43490,60 @@ components:
         - `決済事業者審査: 口座振替（1・5・20・26日）`
         - `決済事業者審査: 銀行振込（バーチャル口座）`
         - `決済事業者審査: 一括決済（バーチャル口座）`
+        - `決済事業者審査: 洗替`
+    WebhookProvider:
+      type: string
+      enum:
+        - UC
+        - TFC
+        - ORICO
+        - AFS
+        - MUN
+        - JCB_AMEX
+        - DINERS
+        - APPLE_PAY_UC
+        - APPLE_PAY_JCB_AMEX
+        - GOOGLE_PAY_UC
+        - GOOGLE_PAY_TFC
+        - GOOGLE_PAY_ORICO
+        - GOOGLE_PAY_AFS
+        - GOOGLE_PAY_MUN
+        - GOOGLE_PAY_JCB
+        - GOOGLE_PAY_DINERS
+        - PAYSLE
+        - PAYPAY
+        - DIRECT_DEBIT
+        - DIRECT_DEBIT_MIZUHO
+        - VIRTUAL_ACCOUNT
+        - VIRTUAL_ACCOUNT_BULK
+        - CARD_UPDATER
+      example: UC
+      description: |
+        決済事業者\
+
+        - `UC`: VISA／Mastercard（UCカード）
+        - `TFC`: VISA／Mastercard（トヨタファイナンス）
+        - `ORICO`: VISA／Mastercard（オリエントコーポレーション）
+        - `AFS`: VISA／Mastercard（イオンフィナンシャルサービス）
+        - `MUN`: VISA／Mastercard（三菱UFJニコス）
+        - `JCB_AMEX`: JCB／AMEX（JCB）
+        - `DINERS`: DINERS（JCB）
+        - `APPLE_PAY_UC`: Apple Pay（UCカード）
+        - `APPLE_PAY_JCB_AMEX`: Apple Pay（JCB）
+        - `GOOGLE_PAY_UC`: Google Pay（UCカード）
+        - `GOOGLE_PAY_TFC`: Google Pay（トヨタファイナンス）
+        - `GOOGLE_PAY_ORICO`: Google Pay（オリエントコーポレーション）
+        - `GOOGLE_PAY_AFS`: Google Pay（イオンフィナンシャルサービス）
+        - `GOOGLE_PAY_MUN`: Google Pay（三菱UFJニコス）
+        - `GOOGLE_PAY_JCB`: Google Pay（JCB）
+        - `GOOGLE_PAY_DINERS`: Google Pay（Diners Club）
+        - `PAYSLE`: コンビニ決済（電算システム）
+        - `PAYPAY`: コンビニ決済（PayPay）
+        - `DIRECT_DEBIT`: 口座振替（5・6・23・27日）
+        - `DIRECT_DEBIT_MIZUHO`: 口座振替（1・5・20・26日）
+        - `VIRTUAL_ACCOUNT`: 銀行振込（バーチャル口座）
+        - `VIRTUAL_ACCOUNT_BULK`: 一括決済（バーチャル口座）
+        - `CARD_UPDATER`: 洗替
     AcquirerContractStatus:
       type: string
       enum:
@@ -43361,6 +43601,9 @@ components:
               acquirer:
                 allOf:
                   - $ref: '#/components/schemas/Acquirer'
+              provider:
+                allOf:
+                  - $ref: '#/components/schemas/WebhookProvider'
               examination_task:
                 type: string
                 description: |
@@ -43368,14 +43611,18 @@ components:
 
                   - `決済事業者審査: VISA/MASTER-UC`
                   - `決済事業者審査: VISA/MASTER-TFC`
-                  - `決済事業者審査: VISA/MASTER-ORICO`
+                  - `決済事業者審査： VISA/MASTER-ORICO`
+                  - `決済事業者審査： VISA/MASTER-AFS`
+                  - `決済事業者審査： VISA/MASTER-MUN`
                   - `決済事業者審査: JCB/AMEX`
                   - `決済事業者審査: DINERS`
                   - `決済事業者審査: ApplePay-UC`
                   - `決済事業者審査: ApplePay-JCB/AMEX`
                   - `決済事業者審査: GooglePay-UC`
                   - `決済事業者審査: GooglePay-TFC`
-                  - `決済事業者審査: GooglePay-ORICO`
+                  - `決済事業者審査： GooglePay-ORICO`
+                  - `決済事業者審査： GooglePay-AFS`
+                  - `決済事業者審査： GooglePay-MUN`
                   - `決済事業者審査: GooglePay-JCB/AMEX`
                   - `決済事業者審査: GooglePay-DINERS`
                   - `決済事業者審査: コンビニ決済`
@@ -43384,6 +43631,7 @@ components:
                   - `決済事業者審査: 口座振替（1・5・20・26日）`
                   - `決済事業者審査: 銀行振込（バーチャル口座）`
                   - `決済事業者審査: 一括決済（バーチャル口座）`
+                  - `決済事業者審査: 洗替`
               status_code:
                 allOf:
                   - $ref: '#/components/schemas/AcquirerContractStatus'
@@ -43460,7 +43708,7 @@ components:
             - `4005`: 要対応
             - `4006`: 回答済み
             - `4007`: 回答済み
-            - `4009`: 精算済み
+            - `4009`: 売上返還確定（`canceled` が `true` の場合は確定後取消）
             - `4011`: 回答済み
         event:
           allOf:

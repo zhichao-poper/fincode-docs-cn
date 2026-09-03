@@ -1753,6 +1753,7 @@ schema_descriptions:
     - `directdebit`：银行账户自动扣款（每月 5、6、23、27 日）
     - `directdebit_mizuho`：银行账户自动扣款（每月 1、5、20、26 日）
     - `virtualaccount`：银行转账（虚拟账户）
+    - `card_updater`：卡片信息自动更新（洗替，即卡号或有效期变更后自动更新已登记的卡片信息）
   tenant_url_id: |-
     租户登记链接 ID。请填写[管理后台 > 平台运营与管理 > 配置](https://dashboard.test.fincode.jp/platform/setting)中“租户登记用 URL”的 `tenant_url_id`。
   Role_properties-id: 用户在管理后台中的角色权限 ID。
@@ -1780,12 +1781,15 @@ schema_descriptions:
     - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
     - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
     - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
+    - `GOOGLE_PAY_AFS`：Google Pay（VISA/Mastercard，AEON Financial Service）
+    - `GOOGLE_PAY_MUN`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
     - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
     - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
     - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
     - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
     - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
     - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+    - `CARD_UPDATER`：卡片信息自动更新（洗替）
   ContractExaminationMasterId: |-
     表示审核信息对应支付方式的审核类型主数据 ID。
 
@@ -1793,18 +1797,23 @@ schema_descriptions:
     - `2`：JCB/American Express/Diners Club/Discover
     - `3`：VISA/Mastercard（Toyota Finance）
     - `4`：VISA/Mastercard（Orient Corporation）
+    - `5`：VISA/Mastercard（AEON Financial Service）
+    - `6`：VISA/Mastercard（Mitsubishi UFJ NICOS）
     - `51`：Apple Pay（VISA/Mastercard，UC Card）
     - `52`：Apple Pay（JCB/American Express）
     - `56`：Google Pay（VISA/Mastercard，UC Card）
     - `57`：Google Pay（JCB/American Express/Diners Club）
     - `58`：Google Pay（VISA/Mastercard，Toyota Finance）
     - `59`：Google Pay（VISA/Mastercard，Orient Corporation）
+    - `60`：Google Pay（VISA/Mastercard，AEON Financial Service）
+    - `61`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
     - `101`：便利店支付
     - `201`：PayPay
     - `301`：银行账户自动扣款（每月 5、6、23、27 日）
     - `302`：银行账户自动扣款（每月 1、5、20、26 日）
     - `401`：银行转账（虚拟账户）
     - `403`：批量支付（虚拟账户）
+    - `701`：卡片信息自动更新（洗替）
   ExaminationStatus: |-
     审核状态。
 
@@ -1839,6 +1848,8 @@ schema_descriptions:
     - `UC`：VISA/Mastercard（UC Card）
     - `TFC`：VISA/Mastercard（Toyota Finance）
     - `ORICO`：VISA/Mastercard（Orient Corporation）
+    - `AFS`：VISA/Mastercard（AEON Financial Service）
+    - `MUN`：VISA/Mastercard（Mitsubishi UFJ NICOS）
     - `JCB/AMEX`：JCB/AMEX（JCB）
     - `DINERS`：Diners（JCB）
     - `APPLE PAY UC`：Apple Pay（UC Card）
@@ -1846,13 +1857,43 @@ schema_descriptions:
     - `GOOGLE PAY UC`：Google Pay（UC Card）
     - `GOOGLE PAY TFC`：Google Pay（Toyota Finance）
     - `GOOGLE PAY ORICO`：Google Pay（Orient Corporation）
-    - `GOOGLE PAY JCB`：Google Pay（JCB）
+    - `GOOGLE PAY AFS`：Google Pay（AEON Financial Service）
+    - `GOOGLE PAY MUN`：Google Pay（Mitsubishi UFJ NICOS）
+    - `GOOGLE PAY JCB/AMEX`：Google Pay（JCB）
+    - `GOOGLE PAY DINERS`：Google Pay（Diners Club）
     - `PAYSLE`：便利店支付（Densan System）
     - `PAYPAY`：PayPay
     - `DIRECT DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
     - `DIRECT DEBIT MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
     - `VIRTUAL ACCOUNT`：银行转账（虚拟账户）
     - `VIRTUAL ACCOUNT BULK`：批量支付（虚拟账户）
+    - `CARD UPDATER`：卡片信息自动更新（洗替）
+  WebhookProvider: |-
+    支付服务商。
+
+    - `UC`：VISA/Mastercard（UC Card）
+    - `TFC`：VISA/Mastercard（Toyota Finance）
+    - `ORICO`：VISA/Mastercard（Orient Corporation）
+    - `AFS`：VISA/Mastercard（AEON Financial Service）
+    - `MUN`：VISA/Mastercard（Mitsubishi UFJ NICOS）
+    - `JCB_AMEX`：JCB/AMEX（JCB）
+    - `DINERS`：Diners（JCB）
+    - `APPLE_PAY_UC`：Apple Pay（UC Card）
+    - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB）
+    - `GOOGLE_PAY_UC`：Google Pay（UC Card）
+    - `GOOGLE_PAY_TFC`：Google Pay（Toyota Finance）
+    - `GOOGLE_PAY_ORICO`：Google Pay（Orient Corporation）
+    - `GOOGLE_PAY_AFS`：Google Pay（AEON Financial Service）
+    - `GOOGLE_PAY_MUN`：Google Pay（Mitsubishi UFJ NICOS）
+    - `GOOGLE_PAY_JCB`：Google Pay（JCB）
+    - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
+    - `PAYSLE`：便利店支付（Densan System）
+    - `PAYPAY`：便利店支付（PayPay）
+    - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
+    - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
+    - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
+    - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+    - `CARD_UPDATER`：卡片信息自动更新（洗替）
   AcquirerContractStatus: |-
     支付服务商合同状态。
 
@@ -2635,7 +2676,7 @@ schema_property_descriptions:
 
       - `4005`：需要处理
       - `4006`、`4007`、`4011`：已答复
-      - `4009`：已结算
+      - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）
     category: |-
       拒付类别，可使用半角逗号分隔指定多个值。
 
@@ -2643,7 +2684,7 @@ schema_property_descriptions:
       - `1`：调查请求
       - `2`：确认欺诈使用
     canceled: |-
-      拒付取消状态。仅当 `status_code` 指定 `4009`（已结算）时有效，其他状态下本参数会被忽略。
+      拒付取消状态。仅当 `status_code` 指定 `4009`（销售款返还确定）时有效，其他状态下本参数会被忽略。
 
       - `null`：同时返回已取消和未取消记录
       - `true`：仅返回已取消记录
@@ -3078,7 +3119,7 @@ schema_property_descriptions:
 
       - `4005`：需要处理
       - `4006`、`4007`、`4011`：已答复
-      - `4009`：已结算
+      - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）
     request: |-
       申诉内容。
 
@@ -3654,14 +3695,18 @@ schema_property_descriptions:
 
       - `決済事業者審査: VISA/MASTER-UC`
       - `決済事業者審査: VISA/MASTER-TFC`
-      - `決済事業者審査: VISA/MASTER-ORICO`
+      - `決済事業者審査： VISA/MASTER-ORICO`
+      - `決済事業者審査： VISA/MASTER-AFS`
+      - `決済事業者審査： VISA/MASTER-MUN`
       - `決済事業者審査: JCB/AMEX`
       - `決済事業者審査: DINERS`
       - `決済事業者審査: ApplePay-UC`
       - `決済事業者審査: ApplePay-JCB/AMEX`
       - `決済事業者審査: GooglePay-UC`
       - `決済事業者審査: GooglePay-TFC`
-      - `決済事業者審査: GooglePay-ORICO`
+      - `決済事業者審査： GooglePay-ORICO`
+      - `決済事業者審査： GooglePay-AFS`
+      - `決済事業者審査： GooglePay-MUN`
       - `決済事業者審査: GooglePay-JCB/AMEX`
       - `決済事業者審査: GooglePay-DINERS`
       - `決済事業者審査: コンビニ決済`
@@ -3670,6 +3715,7 @@ schema_property_descriptions:
       - `決済事業者審査: 口座振替（1・5・20・26日）`
       - `決済事業者審査: 銀行振込（バーチャル口座）`
       - `決済事業者審査: 一括決済（バーチャル口座）`
+      - `決済事業者審査: 洗替`
     status: |-
       支付服务商合同状态（日文值）。实际返回值为：`申込なし`、`審査受付`、`審査待ち`、`審査中`、`審査保留中`、`審査OK`、`利用可能`、`審査NG`、`申込中止`。
     is_updated: 是否发生更新；发生更新时为 `true`。
@@ -3681,7 +3727,7 @@ schema_property_descriptions:
 
       - `4005`：需要处理
       - `4006`、`4007`、`4011`：已答复
-      - `4009`：已结算
+      - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）
     event: |-
       触发 Webhook 的事件。
 
@@ -3817,12 +3863,15 @@ schema_property_descriptions:
       - `GOOGLE_PAY_UC`：Google Pay（VISA/Mastercard，UC Card）
       - `GOOGLE_PAY_TFC`：Google Pay（VISA/Mastercard，Toyota Finance）
       - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
+      - `GOOGLE_PAY_AFS`：Google Pay（VISA/Mastercard，AEON Financial Service）
+      - `GOOGLE_PAY_MUN`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
       - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
       - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
       - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
       - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
       - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
       - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+      - `CARD_UPDATER`：卡片信息自动更新（洗替）
   CardDestination:
     contract_card_info_master_id: 银行卡收单配置主数据 ID。
     examination_master_id: |-
@@ -3832,6 +3881,8 @@ schema_property_descriptions:
       - `2`：JCB/American Express/Diners Club/Discover
       - `3`：VISA/Mastercard（Toyota Finance）
       - `4`：VISA/Mastercard（Orient Corporation）
+      - `5`：VISA/Mastercard（AEON Financial Service）
+      - `6`：VISA/Mastercard（Mitsubishi UFJ NICOS）
     destination_type: 收单路由类型。
   WebhookSetting:
     id: Webhook 设置 ID。
@@ -5746,3 +5797,55 @@ strings:
     使用 Webhook 时，端点必须对 Webhook 请求返回接收成功或失败的响应。
     Webhook 请求因错误而失败时，fincode 会按照重试规则再次发送。
   /externalDocs/description: fincodeJS 的规格请参阅 JS 参考文档。
+  /components/schemas/Payment.DirectDebit.list/properties/list/items/allOf/2/properties/invoice_id/description: |-
+    关联的账单 ID。
+
+    该笔支付被后补关联了账单（领收书）时，返回对应的账单 ID。
+  /components/schemas/Payment.DirectDebit.Retrieving.Response/allOf/2/properties/invoice_id/description: |-
+    关联的账单 ID。
+
+    该笔支付被后补关联了账单（领收书）时，返回对应的账单 ID。
+  /components/schemas/Invoice.ListRetrieving.QueryParams/properties/is_backfill/description: |-
+    账单（领收书）后补发行标志。
+
+    - `true`：仅获取后补发行的账单数据
+    - `false`：仅获取非后补发行的账单数据
+    - `null`：两者都获取
+  /components/schemas/Invoice.ListItem/properties/invoice_backfill/description: |-
+    后补账单信息。
+
+    对既有支付后补关联账单（领收书）时，返回本对象。
+  /components/schemas/Invoice.ListItem/properties/invoice_backfill/properties/order_id/description: 被关联支付的订单 ID。
+  /components/schemas/Invoice.ListItem/properties/invoice_backfill/properties/access_id/description: 被关联支付的交易 ID。
+  /components/schemas/Invoice.ListItem/properties/invoice_backfill/properties/paid_date/description: |-
+    被关联支付的付款日期。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Invoice/properties/invoice_backfill/description: |-
+    后补账单信息。
+
+    对既有支付后补关联账单（领收书）时，返回本对象。
+  /components/schemas/Invoice/properties/invoice_backfill/properties/order_id/description: 被关联支付的订单 ID。
+  /components/schemas/Invoice/properties/invoice_backfill/properties/access_id/description: 被关联支付的交易 ID。
+  /components/schemas/Invoice/properties/invoice_backfill/properties/paid_date/description: |-
+    被关联支付的付款日期。
+    格式：`yyyy/MM/dd`
+  /components/schemas/Invoice.Creating.Request/properties/invoice_backfill/description: |-
+    领收书后补发行信息。
+
+    指定本对象后，发行账单时会关联到既有支付；指定时三个字段必须全部填写。
+    可关联的支付方式仅限 `Card`、`Virtualaccount`、`Directdebit`，且不能同时指定多种支付方式。
+  /components/schemas/Invoice.Creating.Request/properties/invoice_backfill/properties/order_id/description: 既有支付的订单 ID。
+  /components/schemas/Invoice.Creating.Request/properties/invoice_backfill/properties/access_id/description: 既有支付的交易 ID。
+  /components/schemas/Invoice.Creating.Request/properties/invoice_backfill/properties/paid_date/description: |-
+    既有支付的付款日期。
+    格式：`yyyy/MM/dd`
+  /components/schemas/InvoiceDetail.Updating.Request/properties/invoice_backfill/description: |-
+    领收书后补发行信息。
+
+    指定本对象后，发行账单时会关联到既有支付；指定时三个字段必须全部填写。
+    可关联的支付方式仅限 `Card`、`Virtualaccount`、`Directdebit`，且不能同时指定多种支付方式。
+  /components/schemas/InvoiceDetail.Updating.Request/properties/invoice_backfill/properties/order_id/description: 既有支付的订单 ID。
+  /components/schemas/InvoiceDetail.Updating.Request/properties/invoice_backfill/properties/access_id/description: 既有支付的交易 ID。
+  /components/schemas/InvoiceDetail.Updating.Request/properties/invoice_backfill/properties/paid_date/description: |-
+    既有支付的付款日期。
+    格式：`yyyy/MM/dd`

@@ -15897,6 +15897,17 @@ components:
             allOf:
             - $ref: '#/components/schemas/Payment'
             - $ref: '#/components/schemas/Payment.DirectDebit'
+            - type: object
+              properties:
+                invoice_id:
+                  type: string
+                  nullable: true
+                  minLength: 1
+                  maxLength: 30
+                  description: '关联的账单 ID。
+
+
+                    该笔支付被后补关联了账单（领收书）时，返回对应的账单 ID。'
     Payment.DirectDebit.ListRetrieving.Response:
       allOf:
       - $ref: '#/components/schemas/_ListResponse'
@@ -16758,6 +16769,17 @@ components:
       allOf:
       - $ref: '#/components/schemas/Payment'
       - $ref: '#/components/schemas/Payment.DirectDebit'
+      - type: object
+        properties:
+          invoice_id:
+            type: string
+            nullable: true
+            minLength: 1
+            maxLength: 30
+            description: '关联的账单 ID。
+
+
+              该笔支付被后补关联了账单（领收书）时，返回对应的账单 ID。'
     Payment.VirtualAccount.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
@@ -22270,6 +22292,16 @@ components:
             - `false`：仅返回未标记的账单
 
             - `null`：两者均返回'
+        is_backfill:
+          type: boolean
+          description: '账单（领收书）后补发行标志。
+
+
+            - `true`：仅获取后补发行的账单数据
+
+            - `false`：仅获取非后补发行的账单数据
+
+            - `null`：两者都获取'
     Invoice.ListItem:
       type: object
       description: 账单列表项。
@@ -22317,6 +22349,33 @@ components:
           description: 账单 ID
           minLength: 1
           maxLength: 30
+        invoice_backfill:
+          type: object
+          description: '后补账单信息。
+
+
+            对既有支付后补关联账单（领收书）时，返回本对象。'
+          properties:
+            order_id:
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+              description: 被关联支付的订单 ID。
+            access_id:
+              type: string
+              nullable: true
+              minLength: 24
+              maxLength: 24
+              description: 被关联支付的交易 ID。
+            paid_date:
+              type: string
+              nullable: true
+              minLength: 10
+              maxLength: 10
+              description: '被关联支付的付款日期。
+
+                格式：`yyyy/MM/dd`'
         customer_id:
           type: string
           description: 客户（账单接收方）ID
@@ -23215,6 +23274,30 @@ components:
           minLength: 1
           maxLength: 100
           description: 商户自定义字段 3
+        invoice_backfill:
+          type: object
+          description: '领收书后补发行信息。
+
+
+            指定本对象后，发行账单时会关联到既有支付；指定时三个字段必须全部填写。
+
+            可关联的支付方式仅限 `Card`、`Virtualaccount`、`Directdebit`，且不能同时指定多种支付方式。'
+          properties:
+            order_id:
+              type: string
+              maxLength: 30
+              description: 既有支付的订单 ID。
+            access_id:
+              type: string
+              minLength: 24
+              maxLength: 24
+              description: 既有支付的交易 ID。
+            paid_date:
+              type: string
+              maxLength: 10
+              description: '既有支付的付款日期。
+
+                格式：`yyyy/MM/dd`'
     Invoice:
       type: object
       properties:
@@ -24240,6 +24323,33 @@ components:
             account_name_kana:
               type: string
               description: 账户名义人姓名（片假名）
+        invoice_backfill:
+          type: object
+          description: '后补账单信息。
+
+
+            对既有支付后补关联账单（领收书）时，返回本对象。'
+          properties:
+            order_id:
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+              description: 被关联支付的订单 ID。
+            access_id:
+              type: string
+              nullable: true
+              minLength: 24
+              maxLength: 24
+              description: 被关联支付的交易 ID。
+            paid_date:
+              type: string
+              nullable: true
+              minLength: 10
+              maxLength: 10
+              description: '被关联支付的付款日期。
+
+                格式：`yyyy/MM/dd`'
         created:
           type: string
           description: 创建时间
@@ -25023,6 +25133,30 @@ components:
           minLength: 1
           maxLength: 100
           description: 商户自定义字段 3
+        invoice_backfill:
+          type: object
+          description: '领收书后补发行信息。
+
+
+            指定本对象后，发行账单时会关联到既有支付；指定时三个字段必须全部填写。
+
+            可关联的支付方式仅限 `Card`、`Virtualaccount`、`Directdebit`，且不能同时指定多种支付方式。'
+          properties:
+            order_id:
+              type: string
+              maxLength: 30
+              description: 既有支付的订单 ID。
+            access_id:
+              type: string
+              minLength: 24
+              maxLength: 24
+              description: 既有支付的交易 ID。
+            paid_date:
+              type: string
+              maxLength: 10
+              description: '既有支付的付款日期。
+
+                格式：`yyyy/MM/dd`'
     InvoiceDetail.Updating.Response:
       allOf:
       - $ref: '#/components/schemas/Invoice'
@@ -26576,7 +26710,7 @@ components:
 
             - `4006`、`4007`、`4011`：已答复
 
-            - `4009`：已结算'
+            - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）'
         category:
           type: string
           description: '拒付类别，可使用半角逗号分隔指定多个值。
@@ -26589,7 +26723,7 @@ components:
             - `2`：确认欺诈使用'
         canceled:
           type: boolean
-          description: '拒付取消状态。仅当 `status_code` 指定 `4009`（已结算）时有效，其他状态下本参数会被忽略。
+          description: '拒付取消状态。仅当 `status_code` 指定 `4009`（销售款返还确定）时有效，其他状态下本参数会被忽略。
 
 
             - `null`：同时返回已取消和未取消记录
@@ -26676,7 +26810,7 @@ components:
 
             - `4006`、`4007`、`4011`：已答复
 
-            - `4009`：已结算'
+            - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）'
         request:
           type: number
           description: '申诉内容。
@@ -26993,6 +27127,7 @@ components:
       - directdebit
       - directdebit_mizuho
       - virtualaccount
+      - card_updater
       example: vm
       description: '审核类型主数据 ID，表示平台费率对应的支付方式。
 
@@ -27017,7 +27152,9 @@ components:
 
         - `directdebit_mizuho`：银行账户自动扣款（每月 1、5、20、26 日）
 
-        - `virtualaccount`：银行转账（虚拟账户）'
+        - `virtualaccount`：银行转账（虚拟账户）
+
+        - `card_updater`：卡片信息自动更新（洗替，即卡号或有效期变更后自动更新已登记的卡片信息）'
     PlatformRateConfig:
       type: object
       properties:
@@ -29058,12 +29195,15 @@ components:
       - GOOGLE_PAY_UC
       - GOOGLE_PAY_TFC
       - GOOGLE_PAY_ORICO
+      - GOOGLE_PAY_AFS
+      - GOOGLE_PAY_MUN
       - GOOGLE_PAY_JCB_AMEX
       - GOOGLE_PAY_DINERS
       - DIRECT_DEBIT
       - DIRECT_DEBIT_MIZUHO
       - VIRTUAL_ACCOUNT
       - VIRTUAL_ACCOUNT_BULK
+      - CARD_UPDATER
       description: '可追加申请的支付服务。
 
 
@@ -29081,6 +29221,10 @@ components:
 
         - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
 
+        - `GOOGLE_PAY_AFS`：Google Pay（VISA/Mastercard，AEON Financial Service）
+
+        - `GOOGLE_PAY_MUN`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
+
         - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
 
         - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
@@ -29091,7 +29235,9 @@ components:
 
         - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
 
-        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）'
+        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+
+        - `CARD_UPDATER`：卡片信息自动更新（洗替）'
     provider:
       type: array
       items:
@@ -29105,12 +29251,15 @@ components:
       - GOOGLE_PAY_UC
       - GOOGLE_PAY_TFC
       - GOOGLE_PAY_ORICO
+      - GOOGLE_PAY_AFS
+      - GOOGLE_PAY_MUN
       - GOOGLE_PAY_JCB_AMEX
       - GOOGLE_PAY_DINERS
       - DIRECT_DEBIT
       - DIRECT_DEBIT_MIZUHO
       - VIRTUAL_ACCOUNT
       - VIRTUAL_ACCOUNT_BULK
+      - CARD_UPDATER
       description: '要追加申请的支付方式列表。
 
 
@@ -29128,6 +29277,10 @@ components:
 
         - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
 
+        - `GOOGLE_PAY_AFS`：Google Pay（VISA/Mastercard，AEON Financial Service）
+
+        - `GOOGLE_PAY_MUN`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
+
         - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
 
         - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
@@ -29138,7 +29291,9 @@ components:
 
         - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
 
-        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）'
+        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+
+        - `CARD_UPDATER`：卡片信息自动更新（洗替）'
     POST.ProviderReserve.Request:
       type: object
       properties:
@@ -29182,12 +29337,15 @@ components:
           - GOOGLE_PAY_UC
           - GOOGLE_PAY_TFC
           - GOOGLE_PAY_ORICO
+          - GOOGLE_PAY_AFS
+          - GOOGLE_PAY_MUN
           - GOOGLE_PAY_JCB_AMEX
           - GOOGLE_PAY_DINERS
           - DIRECT_DEBIT
           - DIRECT_DEBIT_MIZUHO
           - VIRTUAL_ACCOUNT
           - VIRTUAL_ACCOUNT_BULK
+          - CARD_UPDATER
           description: '要追加申请的支付方式列表。
 
 
@@ -29205,6 +29363,10 @@ components:
 
             - `GOOGLE_PAY_ORICO`：Google Pay（VISA/Mastercard，Orient Corporation）
 
+            - `GOOGLE_PAY_AFS`：Google Pay（VISA/Mastercard，AEON Financial Service）
+
+            - `GOOGLE_PAY_MUN`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
+
             - `GOOGLE_PAY_JCB_AMEX`：Google Pay（JCB/American Express）
 
             - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
@@ -29215,7 +29377,9 @@ components:
 
             - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
 
-            - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）'
+            - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+
+            - `CARD_UPDATER`：卡片信息自动更新（洗替）'
     POST.ProviderReserve.Response:
       allOf:
       - $ref: '#/components/schemas/POST.ProviderReserve'
@@ -29226,18 +29390,23 @@ components:
       - 2
       - 3
       - 4
+      - 5
+      - 6
       - 51
       - 52
       - 56
       - 57
       - 58
       - 59
+      - 60
+      - 61
       - 101
       - 201
       - 301
       - 302
       - 401
       - 403
+      - 701
       example: 1
       description: '表示审核信息对应支付方式的审核类型主数据 ID。
 
@@ -29249,6 +29418,10 @@ components:
         - `3`：VISA/Mastercard（Toyota Finance）
 
         - `4`：VISA/Mastercard（Orient Corporation）
+
+        - `5`：VISA/Mastercard（AEON Financial Service）
+
+        - `6`：VISA/Mastercard（Mitsubishi UFJ NICOS）
 
         - `51`：Apple Pay（VISA/Mastercard，UC Card）
 
@@ -29262,6 +29435,10 @@ components:
 
         - `59`：Google Pay（VISA/Mastercard，Orient Corporation）
 
+        - `60`：Google Pay（VISA/Mastercard，AEON Financial Service）
+
+        - `61`：Google Pay（VISA/Mastercard，Mitsubishi UFJ NICOS）
+
         - `101`：便利店支付
 
         - `201`：PayPay
@@ -29272,7 +29449,9 @@ components:
 
         - `401`：银行转账（虚拟账户）
 
-        - `403`：批量支付（虚拟账户）'
+        - `403`：批量支付（虚拟账户）
+
+        - `701`：卡片信息自动更新（洗替）'
     ExaminationStatus:
       type: string
       enum:
@@ -30550,6 +30729,8 @@ components:
           - 2
           - 3
           - 4
+          - 5
+          - 6
           example: 1
           description: '审核类型主数据 ID。
 
@@ -30560,7 +30741,11 @@ components:
 
             - `3`：VISA/Mastercard（Toyota Finance）
 
-            - `4`：VISA/Mastercard（Orient Corporation）'
+            - `4`：VISA/Mastercard（Orient Corporation）
+
+            - `5`：VISA/Mastercard（AEON Financial Service）
+
+            - `6`：VISA/Mastercard（Mitsubishi UFJ NICOS）'
         destination:
           type: string
           nullable: true
@@ -33622,6 +33807,8 @@ components:
       - UC
       - TFC
       - ORICO
+      - AFS
+      - MUN
       - JCB/AMEX
       - DINERS
       - APPLE PAY UC
@@ -33629,13 +33816,17 @@ components:
       - GOOGLE PAY UC
       - GOOGLE PAY TFC
       - GOOGLE PAY ORICO
-      - GOOGLE PAY JCB
+      - GOOGLE PAY AFS
+      - GOOGLE PAY MUN
+      - GOOGLE PAY JCB/AMEX
+      - GOOGLE PAY DINERS
       - PAYSLE
       - PAYPAY
       - DIRECT DEBIT
       - DIRECT DEBIT MIZUHO
       - VIRTUAL ACCOUNT
       - VIRTUAL ACCOUNT BULK
+      - CARD UPDATER
       description: '审核对象。以下代码值对应支付服务商或支付方式：
 
 
@@ -33644,6 +33835,10 @@ components:
         - `TFC`：VISA/Mastercard（Toyota Finance）
 
         - `ORICO`：VISA/Mastercard（Orient Corporation）
+
+        - `AFS`：VISA/Mastercard（AEON Financial Service）
+
+        - `MUN`：VISA/Mastercard（Mitsubishi UFJ NICOS）
 
         - `JCB/AMEX`：JCB/AMEX（JCB）
 
@@ -33659,7 +33854,13 @@ components:
 
         - `GOOGLE PAY ORICO`：Google Pay（Orient Corporation）
 
-        - `GOOGLE PAY JCB`：Google Pay（JCB）
+        - `GOOGLE PAY AFS`：Google Pay（AEON Financial Service）
+
+        - `GOOGLE PAY MUN`：Google Pay（Mitsubishi UFJ NICOS）
+
+        - `GOOGLE PAY JCB/AMEX`：Google Pay（JCB）
+
+        - `GOOGLE PAY DINERS`：Google Pay（Diners Club）
 
         - `PAYSLE`：便利店支付（Densan System）
 
@@ -33671,7 +33872,9 @@ components:
 
         - `VIRTUAL ACCOUNT`：银行转账（虚拟账户）
 
-        - `VIRTUAL ACCOUNT BULK`：批量支付（虚拟账户）'
+        - `VIRTUAL ACCOUNT BULK`：批量支付（虚拟账户）
+
+        - `CARD UPDATER`：卡片信息自动更新（洗替）'
       x-ja-description: '審査対象（和名）
 
 
@@ -33679,7 +33882,11 @@ components:
 
         - `決済事業者審査: VISA/MASTER-TFC`
 
-        - `決済事業者審査: VISA/MASTER-ORICO`
+        - `決済事業者審査： VISA/MASTER-ORICO`
+
+        - `決済事業者審査： VISA/MASTER-AFS`
+
+        - `決済事業者審査： VISA/MASTER-MUN`
 
         - `決済事業者審査: JCB/AMEX`
 
@@ -33693,7 +33900,11 @@ components:
 
         - `決済事業者審査: GooglePay-TFC`
 
-        - `決済事業者審査: GooglePay-ORICO`
+        - `決済事業者審査： GooglePay-ORICO`
+
+        - `決済事業者審査： GooglePay-AFS`
+
+        - `決済事業者審査： GooglePay-MUN`
 
         - `決済事業者審査: GooglePay-JCB/AMEX`
 
@@ -33711,7 +33922,84 @@ components:
 
         - `決済事業者審査: 一括決済（バーチャル口座）`
 
+        - `決済事業者審査: 洗替`
+
         '
+    WebhookProvider:
+      type: string
+      enum:
+      - UC
+      - TFC
+      - ORICO
+      - AFS
+      - MUN
+      - JCB_AMEX
+      - DINERS
+      - APPLE_PAY_UC
+      - APPLE_PAY_JCB_AMEX
+      - GOOGLE_PAY_UC
+      - GOOGLE_PAY_TFC
+      - GOOGLE_PAY_ORICO
+      - GOOGLE_PAY_AFS
+      - GOOGLE_PAY_MUN
+      - GOOGLE_PAY_JCB
+      - GOOGLE_PAY_DINERS
+      - PAYSLE
+      - PAYPAY
+      - DIRECT_DEBIT
+      - DIRECT_DEBIT_MIZUHO
+      - VIRTUAL_ACCOUNT
+      - VIRTUAL_ACCOUNT_BULK
+      - CARD_UPDATER
+      example: UC
+      description: '支付服务商。
+
+
+        - `UC`：VISA/Mastercard（UC Card）
+
+        - `TFC`：VISA/Mastercard（Toyota Finance）
+
+        - `ORICO`：VISA/Mastercard（Orient Corporation）
+
+        - `AFS`：VISA/Mastercard（AEON Financial Service）
+
+        - `MUN`：VISA/Mastercard（Mitsubishi UFJ NICOS）
+
+        - `JCB_AMEX`：JCB/AMEX（JCB）
+
+        - `DINERS`：Diners（JCB）
+
+        - `APPLE_PAY_UC`：Apple Pay（UC Card）
+
+        - `APPLE_PAY_JCB_AMEX`：Apple Pay（JCB）
+
+        - `GOOGLE_PAY_UC`：Google Pay（UC Card）
+
+        - `GOOGLE_PAY_TFC`：Google Pay（Toyota Finance）
+
+        - `GOOGLE_PAY_ORICO`：Google Pay（Orient Corporation）
+
+        - `GOOGLE_PAY_AFS`：Google Pay（AEON Financial Service）
+
+        - `GOOGLE_PAY_MUN`：Google Pay（Mitsubishi UFJ NICOS）
+
+        - `GOOGLE_PAY_JCB`：Google Pay（JCB）
+
+        - `GOOGLE_PAY_DINERS`：Google Pay（Diners Club）
+
+        - `PAYSLE`：便利店支付（Densan System）
+
+        - `PAYPAY`：便利店支付（PayPay）
+
+        - `DIRECT_DEBIT`：银行账户自动扣款（每月 5、6、23、27 日）
+
+        - `DIRECT_DEBIT_MIZUHO`：银行账户自动扣款（每月 1、5、20、26 日）
+
+        - `VIRTUAL_ACCOUNT`：银行转账（虚拟账户）
+
+        - `VIRTUAL_ACCOUNT_BULK`：批量支付（虚拟账户）
+
+        - `CARD_UPDATER`：卡片信息自动更新（洗替）'
     AcquirerContractStatus:
       type: string
       enum:
@@ -33784,6 +34072,9 @@ components:
               acquirer:
                 allOf:
                 - $ref: '#/components/schemas/Acquirer'
+              provider:
+                allOf:
+                - $ref: '#/components/schemas/WebhookProvider'
               examination_task:
                 type: string
                 description: '审核对象（日文值）。以下代码字符串为 Webhook 实际返回值，应原样处理：
@@ -33793,7 +34084,11 @@ components:
 
                   - `決済事業者審査: VISA/MASTER-TFC`
 
-                  - `決済事業者審査: VISA/MASTER-ORICO`
+                  - `決済事業者審査： VISA/MASTER-ORICO`
+
+                  - `決済事業者審査： VISA/MASTER-AFS`
+
+                  - `決済事業者審査： VISA/MASTER-MUN`
 
                   - `決済事業者審査: JCB/AMEX`
 
@@ -33807,7 +34102,11 @@ components:
 
                   - `決済事業者審査: GooglePay-TFC`
 
-                  - `決済事業者審査: GooglePay-ORICO`
+                  - `決済事業者審査： GooglePay-ORICO`
+
+                  - `決済事業者審査： GooglePay-AFS`
+
+                  - `決済事業者審査： GooglePay-MUN`
 
                   - `決済事業者審査: GooglePay-JCB/AMEX`
 
@@ -33823,7 +34122,9 @@ components:
 
                   - `決済事業者審査: 銀行振込（バーチャル口座）`
 
-                  - `決済事業者審査: 一括決済（バーチャル口座）`'
+                  - `決済事業者審査: 一括決済（バーチャル口座）`
+
+                  - `決済事業者審査: 洗替`'
               status_code:
                 allOf:
                 - $ref: '#/components/schemas/AcquirerContractStatus'
@@ -33886,7 +34187,7 @@ components:
 
             - `4006`、`4007`、`4011`：已答复
 
-            - `4009`：已结算'
+            - `4009`：销售款返还确定（`canceled` 为 `true` 时表示确定后又被取消）'
         event:
           allOf:
           - $ref: '#/components/schemas/FincodeEvent'
