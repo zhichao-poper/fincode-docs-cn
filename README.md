@@ -2,6 +2,8 @@
 
 这是面向中文开发者的 fincode 非官方中文参考项目。中文内容由维护者结合支付业务与上下文逐条人工翻译，不调用机器翻译或第三方翻译服务。
 
+在线阅读：<https://zhichao-poper.github.io/fincode-docs-cn/>
+
 ## 当前范围
 
 - 原文来源：[fincode API Reference](https://docs.fincode.jp/api)
