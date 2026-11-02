@@ -6693,7 +6693,7 @@ paths:
       description: |
         `access_id`で指定したカード決済取引の3Dセキュア2.0認証を開始します。\
         \
-        用意した`tds2_ret_url`に対し`event`パラメータで`ThreeDSecureMethodFinished`もしくは`ThreeDSecureMethodSkipped`イベントが通知されたとき、このAPIを呼び出します。
+        用意した`tds2_ret_url`に対し`event`パラメータで`3DSMethodFinished`もしくは`3DSMethodSkipped`イベントが通知されたとき、このAPIを呼び出します。
 
         - レスポンスの`tds2_trans_result`が`Y`または`A`のとき、認証後決済 実行APIを呼び出し3Dセキュア認証された決済を完了させます。
         - レスポンスの`tds2_trans_result`が`C`のとき、`challenge_url`にリダイレクトし購入者にチャレンジ認証を実施させ、結果を3Dセキュア認証 結果確定APIで確定します。
@@ -25653,18 +25653,31 @@ components:
             - $ref: '#/components/schemas/PayType'
       required:
         - pay_type
+    Payment.AutoCancel:
+      type: object
+      properties:
+        is_auto_cancelled:
+          type: boolean
+          description: |
+            自動キャンセル有無
+
+            - `true`: 仮売上有効期限（`auth_max_date`）の超過により自動でキャンセルされた決済
+            - `false`: 上記以外
     Payment.Card.Retrieving.Response:
       allOf:
         - $ref: '#/components/schemas/Payment'
         - $ref: '#/components/schemas/Payment.Card'
+        - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.ApplePay.Retrieving.Response:
       allOf:
         - $ref: '#/components/schemas/Payment'
         - $ref: '#/components/schemas/Payment.ApplePay'
+        - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.GooglePay.Retrieving.Response:
       allOf:
         - $ref: '#/components/schemas/Payment'
         - $ref: '#/components/schemas/Payment.GooglePay'
+        - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.Konbini.Retrieving.Response:
       allOf:
         - $ref: '#/components/schemas/Payment'
@@ -27903,7 +27916,7 @@ components:
             形式： `yyyy/MM/dd HH:mm:ss`
 
             - デフォルト： URL発行時点から24時間
-            - 最長： 30日
+            - 最長： 60日
             - 最短： 5分
         shop_service_name:
           nullable: true
@@ -41450,7 +41463,7 @@ components:
         - payments.konbini.cancel
         - payments.konbini.complete
         - payments.konbini.complete.stub
-        - payments.konbini.expired.update.batch
+        - konbini.expired.update.batch
         - payments.paypay.regist
         - payments.paypay.exec
         - payments.paypay.capture

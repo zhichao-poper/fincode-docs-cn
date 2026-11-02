@@ -2346,6 +2346,12 @@ schema_property_descriptions:
     credit_card_setting: |-
       银行卡支付设置，包括是否启用 3D Secure、审核后是否被要求必须使用 3D Secure，以及是否可使用分期付款或循环信贷付款等信息。
     official_registered_corporate_info: 工商登记中的法人企业信息。
+  Payment.AutoCancel:
+    is_auto_cancelled: |-
+      是否被自动取消。
+
+      - `true`：因超过授权有效期（`auth_max_date`）而被自动取消的支付
+      - `false`：上述以外的情况
   Payment.PayPay:
     status: |-
       支付状态。
@@ -2953,7 +2959,7 @@ schema_property_descriptions:
       格式：`yyyy/MM/dd HH:mm:ss`
 
       - 默认：签发链接后的 24 小时
-      - 最长：30 天
+      - 最长：60 天
       - 最短：5 分钟
     guide_mail_send_flag: |-
       是否由 fincode 发送附有支付链接的邮件。
@@ -4816,7 +4822,7 @@ strings:
   /paths/~1v1~1secure2~1{access_id}/put/description: |-
     开始对 `access_id` 指定的卡片支付交易执行 3D Secure 2.0 认证。
 
-    当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `ThreeDSecureMethodFinished` 或 `ThreeDSecureMethodSkipped` 事件通知时，调用此 API。
+    当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `3DSMethodFinished` 或 `3DSMethodSkipped` 事件通知时，调用此 API。
 
     - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
     - 当响应中的 `tds2_trans_result` 为 `C` 时，将购买者重定向至 `challenge_url` 完成挑战认证，然后调用“确认 3D Secure 认证结果”API 确认结果。

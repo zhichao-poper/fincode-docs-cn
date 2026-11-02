@@ -3944,7 +3944,7 @@ paths:
       description: '开始对 `access_id` 指定的卡片支付交易执行 3D Secure 2.0 认证。
 
 
-        当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `ThreeDSecureMethodFinished` 或 `ThreeDSecureMethodSkipped` 事件通知时，调用此 API。
+        当预先准备的 `tds2_ret_url` 通过 `event` 参数收到 `3DSMethodFinished` 或 `3DSMethodSkipped` 事件通知时，调用此 API。
 
 
         - 当响应中的 `tds2_trans_result` 为 `Y` 或 `A` 时，调用“执行认证后支付”API，完成已经过 3D Secure 认证的支付。
@@ -16745,18 +16745,32 @@ components:
           - $ref: '#/components/schemas/PayType'
       required:
       - pay_type
+    Payment.AutoCancel:
+      type: object
+      properties:
+        is_auto_cancelled:
+          type: boolean
+          description: '是否被自动取消。
+
+
+            - `true`：因超过授权有效期（`auth_max_date`）而被自动取消的支付
+
+            - `false`：上述以外的情况'
     Payment.Card.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
       - $ref: '#/components/schemas/Payment.Card'
+      - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.ApplePay.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
       - $ref: '#/components/schemas/Payment.ApplePay'
+      - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.GooglePay.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
       - $ref: '#/components/schemas/Payment.GooglePay'
+      - $ref: '#/components/schemas/Payment.AutoCancel'
     Payment.Konbini.Retrieving.Response:
       allOf:
       - $ref: '#/components/schemas/Payment'
@@ -18939,7 +18953,7 @@ components:
 
             - 默认：签发链接后的 24 小时
 
-            - 最长：30 天
+            - 最长：60 天
 
             - 最短：5 分钟'
         shop_service_name:
@@ -31930,7 +31944,7 @@ components:
       - payments.konbini.cancel
       - payments.konbini.complete
       - payments.konbini.complete.stub
-      - payments.konbini.expired.update.batch
+      - konbini.expired.update.batch
       - payments.paypay.regist
       - payments.paypay.exec
       - payments.paypay.capture
