@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 团队管理中文指南。" />
+    <title>团队管理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/team" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/team" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">控制面板</a></li>
+<li><a href="../examination/index.html">商户审核</a></li>
+<li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">团队管理</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../chargeback/index.html">拒付</a></li>
+<li><a href="../download_queue/index.html">什么是下载队列</a></li>
+<li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
+<li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="../accounts_receivable_management/bill_by_invoice/index.html">通过账单功能收费</a></li>
+<li><a href="../accounts_receivable_management/import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="../accounts_receivable_management/export_ar/index.html">将账单信息导出为 CSV</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">业务管理</a></li><li aria-current="page">团队管理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="チーム管理">团队管理</h1>
+<h2 id="ショップにユーザーを招待する">邀请用户加入商户</h2>
+<p>fincode 支持邀请多个用户进入管理后台，共同运营商户。<br>
+各用户可按照自己的角色在管理后台查看支付信息，或执行取消等处理。</p>
+<p>如需邀请用户，在管理后台［商户设置］＞［团队管理］点击设置按钮，再点击［邀请加入团队］。<br>
+受邀用户会收到邀请邮件。通过邮件完成用户注册后即可加入商户。邀请邮件有效期为 24 小时。</p>
+<p><img alt="邀请团队成员" src="../../../assets/payment-guides/business_management/team_manage_1.png"></p>
+<h2 id="role">各用户角色的操作权限</h2>
+用户角色分为“所有者”“管理员”“普通”“查看”和“受限查看”五种。管理后台可执行的操作由用户角色与商户类型共同决定。之后可以修改用户角色。
+<h3 id="standard-platform">标准商户和平台商户</h3>
+<p>下表列出标准类型、平台类型（主商户及子商户）的各用户可在管理后台执行的操作。</p>
+
+<table><thead><tr><th>类别</th><th>操作</th><th>所有者</th><th>管理员</th><th>普通  </th><th>查看  </th><th>受限查看  </th></tr></thead><tbody>
+<tr><td>合同<br>按商户执行的操作</td><td>生产环境申请</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>提交本人身份证明文件</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>变更登记信息</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看登记信息</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>申请新增支付方式</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>解约手续</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td>运营管理</td><td>邀请其他用户加入商户或移除用户</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看销售款入账</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>×</td></tr>
+<tr><td></td><td>导出销售款入账 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>×</td></tr>
+<tr><td></td><td>查看拒付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>更新拒付</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>申请使用商务卡</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>签发商务卡</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>停用商务卡</td><td>〇</td><td>〇</td><td>〇<sup>※1</sup></td><td>×</td><td>×</td></tr>
+<tr><td></td><td>启用商务卡</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>删除商务卡</td><td>〇</td><td>〇</td><td>〇<sup>※1</sup></td><td>×</td><td>×</td></tr>
+<tr><td></td><td>解约商务卡服务</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td>开发者支持</td><td>获取 API 密钥</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>登记 Webhook</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看事件日志</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td>客户</td><td>查看客户</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建客户</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新客户</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看支付方式</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建支付方式</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新支付方式</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td>支付</td><td>查看支付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>导出支付 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建支付</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新支付<br>包括预授权、请款、修改金额、取消、重新授权</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td>批量支付</td><td>查看批量支付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建批量支付</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新批量支付</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td>订阅</td><td>查看套餐</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建套餐</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新套餐</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看订阅</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>导出订阅 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建订阅</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新订阅</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td>邮件链接（重定向式支付）</td><td>修改邮件模板设置</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>查看邮件链接信息</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>指定电子邮件地址创建链接</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>指定客户 ID 创建链接</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td></tr>
+<tr><td>平台</td><td>修改平台构成设置<br>包括平台使用费等</td><td>〇<sup>※2</sup></td><td>〇<sup>※2</sup></td><td>〇<sup>※2</sup></td><td>×</td><td>×</td></tr>
+</tbody></table>
+<p><sup>※1</sup>持卡用户只能操作自己的卡片。<br>
+<sup>※2</sup>仅限平台（主商户）。</p>
+<h3 id="tenant">租户商户</h3>
+<p>下表列出租户类型商户的各用户可在管理后台执行的操作。<br>
+平台代理权限是指平台代替租户商户登录其管理后台时所具有的权限。<br>
+可从平台管理后台的［租户商户］＞［租户商户详情］点击［管理后台］按钮代理登录。<br>
+平台用户角色为“查看”或“受限查看”时，无法代理登录租户商户管理后台。</p>
+
+<table><thead><tr><th>类别</th><th>操作</th><th>所有者        </th><th>管理员        </th><th>普通          </th><th>查看          </th><th>受限查看          </th><th>平台<br>代理权限</th></tr></thead><tbody>
+<tr><td>合同 <br>按商户执行的操作</td><td>生产环境申请</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>提交本人身份证明文件</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>变更登记信息</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>查看登记信息</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>申请新增支付方式</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>解约手续</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇<sup>※3</sup></td></tr>
+<tr><td>运营管理</td><td>邀请其他用户加入商户或移除用户</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>×</td><td>△<sup>※4</sup></td></tr>
+<tr><td></td><td>查看销售款入账</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>导出销售款入账 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>查看拒付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>更新拒付</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>开发者支持</td><td>获取 API 密钥</td><td>〇<sup>※5</sup></td><td>〇<sup>※5</sup></td><td>×</td><td>×</td><td>×</td><td>〇<sup>※5</sup></td></tr>
+<tr><td></td><td>查看事件日志</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>客户</td><td>查看客户</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇</td></tr>
+<tr><td></td><td>创建客户</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新客户</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>查看支付方式</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇</td></tr>
+<tr><td></td><td>创建支付方式</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新支付方式</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>支付</td><td>查看支付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>导出支付 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建支付</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新支付<br>包括预授权、请款、修改金额、取消、重新授权</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>批量支付</td><td>查看批量支付</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建批量支付</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新批量支付</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>订阅</td><td>查看套餐</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建套餐</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新套餐</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>查看订阅</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>导出订阅 CSV</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>创建订阅</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>更新订阅</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td>邮件链接（重定向式支付）</td><td>修改邮件模板设置</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>查看邮件链接信息</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td><td>〇</td></tr>
+<tr><td></td><td>指定电子邮件地址创建链接</td><td>〇</td><td>〇</td><td>〇</td><td>×</td><td>×</td><td>〇</td></tr>
+<tr><td></td><td>指定客户 ID 创建链接</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>〇<sup>※6</sup></td></tr>
+<tr><td>平台</td><td>修改平台构成设置<br>包括平台使用费等</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td>账单</td><td>查看账单</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td></tr>
+<tr><td></td><td>创建账单</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>×</td></tr>
+<tr><td></td><td>更新账单</td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>〇<sup>※6</sup></td><td>×</td><td>×</td><td>×</td></tr>
+</tbody></table>
+<p><sup>※3</sup>如需申请租户商户解约，在平台管理后台进入［租户商户］＞［租户商户详情］，点击租户商户解约栏的［解约］按钮。仅平台上拥有“所有者”角色的用户可以执行。<br>
+<sup>※4</sup>无法重发或删除。<br>
+<sup>※5</sup>平台（主商户）允许时。<br>
+<sup>※6</sup>未共享客户信息时。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/team" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

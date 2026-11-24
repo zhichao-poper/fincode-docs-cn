@@ -30,7 +30,13 @@
           <summary>MENU</summary>
           <nav aria-label="手机端导航">
             <a href="../../../index.html">首页</a>
-            <a href="../../../index.html">支付</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
             <a href="https://docs.fincode.jp/payment/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
@@ -38,19 +44,19 @@
       </div>
       <nav class="official-category-nav" aria-label="主要导航">
         <a href="../../../index.html">首页</a>
-        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
-        <a class="active" href="../../../index.html">支付</a>
-        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
-        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
-        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
-        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
-        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
         <span class="header-search" aria-hidden="true"></span>
       </nav>
     </header>
     <div class="guide-layout">
       <aside class="guide-sidebar" aria-label="支付指南目录">
-        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <a class="guide-overview-link" href="../index.html"><span>支付</span><i aria-hidden="true"></i></a>
         <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
 <li><a href="../index.html">卡片支付简介</a></li>
@@ -73,7 +79,7 @@
       </aside>
       <div class="guide-body">
         <nav class="guide-breadcrumb" aria-label="面包屑">
-          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">限制事项</li></ul>
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">限制事项</li></ul>
         </nav>
         <main class="guide-main">
           <article class="guide-article">
@@ -120,17 +126,17 @@ Discover(ProtectBuy)</td></tr>
 <tr><td align="left">将“预授权”状态的交易更改为“请款完成”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。<br>
 <br>
-超过可更改期限后执行“请款”将发生错误。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
+超过期限仍未请款的预授权交易，fincode 会自动取消。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
 此外，如果时间间隔较长，再次授权时可能会因卡片状态而发生有效期错误或超出额度等错误。<br>
 由于具体原因涉及个人信息，请持卡人本人联系卡面所载的发卡机构。</td></tr>
 
-<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。</td></tr>
 
 <tr><td align="left">可对“请款完成”状态的交易执行“取消”的期限</td><td align="left">180 天（交易保留期限）<br>
 当天按第 0 天计算。</td></tr>
 
-<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。</td></tr>
 
 <tr><td align="left">可对“已取消”状态的交易重新授权的期限</td><td align="left">180 天（交易保留期限）<br>
@@ -143,6 +149,11 @@ Discover(ProtectBuy)</td></tr>
 因此，请勿将订单编号等无法更改的编号用作订单 ID。如确实必须使用，建议采用“订单编号 + 连号”等编号规则。</td></tr>
 
 <tr><td align="left">关于卡号限制</td><td align="left">API 和控制面板中显示的卡号，将以除末 4 位之外均被掩码的格式返回。</td></tr>
+<tr><td align="left">单个客户可登记的卡片信息（Card 和 Payment Method）</td><td align="left">最多 5 条<br>
+如果已登记 5 条，要登记其他卡片，请先删除已有卡片信息。</td></tr>
+
+<tr><td align="left">验证卡片有效性</td><td align="left">验证卡片有效性时，请将处理区分（job_code）设为 CHECK。<br>
+请勿用“预授权（小额授权）”验证卡片有效性，这违反国际卡组织规则。</td></tr>
 </tbody>
 </table>
 

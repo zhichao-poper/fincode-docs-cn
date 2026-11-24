@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 在测试环境执行支付中文指南。" />
+    <title>在测试环境执行支付 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/tutorial/test_api_exec" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/tutorial/test_api_exec" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="入门指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>入门</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>入门</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">入门</a></li>
+<li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
+<li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">在测试环境执行支付</a></li>
+<li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
+<li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
+<li><a href="../prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
+<li><a href="../prod_info/index.html">查看生产环境 API 信息及连接信息</a></li>
+<li><a href="../prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
+<li><a href="../prod_api/index.html">在生产环境公开支付功能</a></li>
+<li><a href="../prod_calc/index.html">查看销售金额</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">入门</a></li><li aria-current="page">在测试环境执行支付</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="テスト環境で決済を実行する">在测试环境执行支付</h1>
+<p>支付按下列流程处理。</p>
+<p><img alt="支付处理流程" src="../../../assets/payment-guides/tutorial/payments_card_js.png"></p>
+<p>商户调用 fincode API 时须传入价格等参数。</p>
+<h2 id="クレジットカード決済を行う">进行信用卡支付</h2>
+<p>下面实际执行一次信用卡支付。</p>
+<p>使用支付登记 API 和支付执行 API 完成支付。<br>
+首先使用支付登记 API 登记支付。请参照下面的示例代码尝试登记。</p>
+<h2 id="決済登録api">支付登记 API</h2>
+<div>
+  <div class="guide-code-example"><span>终端</span><pre><code>curl https://api.test.fincode.jp/v1/payments \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer m_test_OGY1YWE" \
+  -d '{"pay_type": "Card", "job_code": "CAPTURE", "amount": "500"}' </code></pre></div>
+<div class="guide-code-example"><span>Python</span><pre><code>import json
+import urllib.request
+import urllib.parse
+
+API_KEY = 'Bearer &lt;用户的API密钥&gt;'
+BASE_URL = 'https://api.test.fincode.jp'
+CHARSET = 'utf-8'
+METHOD = 'POST'
+DATA = {
+    'pay_type': 'Card',
+    'job_code': 'CAPTURE',
+    'amount': '500',
+}
+
+def create_request(endpoint):
+    url = BASE_URL + endpoint
+    req = urllib.request.Request(url, method=METHOD)
+    req.add_header('Content-Type', 'application/json')
+    req.add_header('Authorization', API_KEY)
+    return req
+
+def main():
+    endpoint = '/v1/payments'
+
+    req = create_request(endpoint)
+
+    try:
+        with urllib.request.urlopen(req, data=json.dumps(DATA).encode(CHARSET)
+                                    ) as res:
+            body = res.read().decode(CHARSET)
+            print('SUCCESS')
+            print(body)
+    except urllib.error.HTTPError as err:
+        body = err.read().decode(CHARSET)
+        print('ERROR')
+        print(body)
+
+if __name__ == "__main__":
+    main()</code></pre></div>
+<div class="guide-code-example"><span>Go</span><pre><code>package main
+
+import (
+    "bytes"
+    "fmt"
+    "io"
+    "log"
+    "net/http"
+)
+
+const apiKey = "Bearer &lt;用户的API密钥&gt;"
+const baseURL = "https://api.test.fincode.jp"
+const method = "POST"
+const id = "o_test_id"
+const data = `{
+                "pay_type": "Card",
+                "job_code": "CAPTURE",
+                "amount":  "500"
+            }`
+
+func main() {
+
+    endpoint := "/v1/payments"
+    URL := baseURL + endpoint
+
+    req, err := http.NewRequest(
+        method,
+        URL,
+        bytes.NewBuffer([]byte(data)),
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    req.Header.Set("Content-Type", "application/json")
+    req.Header.Set("Authorization", apiKey)
+
+    client := &amp;http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    bodyJsonBytes, err := io.ReadAll(resp.Body)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer resp.Body.Close()
+
+    if resp.StatusCode != 200 {
+        fmt.Println("ERROR")
+        fmt.Println(string(bodyJsonBytes))
+        return
+    }
+
+    fmt.Println("SUCCESS")
+    fmt.Println(string(bodyJsonBytes))
+}</code></pre></div>
+<div class="guide-code-example"><span>Node.js</span><pre><code>"use strict";
+
+const console = require("console");
+const request = require("request");
+const API_KEY = "Bearer &lt;用户的API密钥&gt;";
+const BASE_URL = "https://api.test.fincode.jp";
+const DATA = {
+  pay_type: "Card",
+  job_code: "CAPTURE",
+  amount: "500",
+};
+
+main();
+
+function main() {
+  var endpoint = "/v1/payments";
+  request.post(
+    {
+      url: BASE_URL + endpoint,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Authorization: API_KEY,
+      },
+
+      json: DATA,
+    },
+    (error, res, body) =&gt; {
+      if (200 != res.statusCode) {
+        console.log("ERROR");
+        console.log(body);
+      } else {
+        console.log("SUCCESS");
+        console.log(body);
+      }
+    }
+  );
+}</code></pre></div>
+</div>
+<p>调用支付执行 API 时，除商户自己的信息之外，还须传入支付登记 API 返回的值。</p>
+<p><code>"id": "o_MX2aLSOxR6OI0abmJWs_gg"</code><br>
+<code>"access_id": "a_25Q1AoBJQzC9ydXPigtJ6g"</code></p>
+<p>出于安全考虑，处理购买者的卡片信息时须将其转换为令牌，或使用支付执行 JS。</p>
+<p>本例使用支付执行 JS。该脚本从购买者的浏览器直接调用 fincode 的支付执行 API。卡号不经过商户的服务器。</p>
+<p>通过支付执行 JS 完成支付执行后，整个支付流程即告结束。</p>
+<h2 id="例ecサイトブラウザの入力フォーム">示例：电商网站（浏览器）中的输入表单</h2>
+<p><img alt="电商网站的输入表单" src="../../../assets/payment-guides/tutorial/sample_form.png"></p>
+<h2 id="決済実行js">支付执行 JS</h2>
+<div class="guide-code-example"><span>JavaScript</span><pre><code>function postForm( calltype )
+{
+  // 读取商户的 API 公钥
+  const api_key=&lt;公钥&gt;;
+  // 创建 Fincode 实例
+  let fincode = Fincode(api_key);
+  // 定义执行支付所需的数据
+  const transaction = {
+    // 订单 ID
+    id: document.getElementById("order_id").value,
+    // 決済種別
+    pay_type: document.getElementById("pay_type").value,
+    // 取引ID
+    access_id: document.getElementById("access_id").value,
+    // 付款方式
+    method: document.getElementById("method").value,
+    // 卡号
+    card_no : document.getElementById("card_no").value,
+    // 有効期限 yymm形式
+    expire : document.getElementById("expire").value,
+    // 持卡人姓名
+    holder_name: document.getElementById("holder_name").value,
+    // 安全码
+    security_code: document.getElementById("security_code").value,
+  };
+
+  // 決済実行
+  fincode.payments(transaction,
+    function (status, response) {
+        if (status === 200) {
+              // 请求成功时的处理
+              console.log(response);
+        } else {
+                // 请求出错时的处理
+                console.log(response);
+        }
+    },
+    function () {
+            // 通信错误处理
+            console.log("ERROR");
+    });
+}</code></pre></div>
+<div class="guide-code-example"><span>响应示例</span><pre><code>{
+  "acs":"0",
+  "shop_id":"s_21102695529",
+  "id":"1638492999528gkp",
+  "pay_type":"Card",
+  "status":"CAPTURED",
+  "access_id":"a_vr12yeSxQE-X-QE47_8ZTw",
+  "process_date":"2021/12/03 10:04:36.695",
+  "job_code":"CAPTURE",
+  "item_code":"0000990",
+  "amount":500,
+  "tax":0,
+  "total_amount":500,
+  "customer_group_id":null,
+  "customer_id":null,
+  "card_no":"************1111",
+  "card_id":null,
+  "expire":"2512",
+  "holder_name":"aaaa",
+  "card_no_hash":"9bbef19476623ca56c17da75fd57734dbf82530686043a6e491c6d71befe8f6e",
+  "method":"1",
+  "pay_times":null,
+  "forward":"15250",
+  "issuer":"9999999",
+  "transaction_id":"2112031004602250501600908094",
+  "approve":"0123456",
+  "auth_max_date":null,
+  "client_field_1":null,
+  "client_field_2":null,
+  "client_field_3":null,
+  "tds_type":"0",
+  "tds2_type":null,
+  "tds2_ret_url":null,
+  "tds2_status":null,
+  "merchant_name":null,
+  "send_url":null,
+  "error_code":null,
+  "created":"2021/12/03 09:56:41.782",
+  "updated":"2021/12/03 10:04:36.695"
+}</code></pre></div>
+<p>可通过控制面板或获取支付信息 API 查看交易信息。</p>
+<p>在控制面板的侧栏菜单选择［支付］。<br>
+画面会列出支付信息。</p>
+<p>有关支付信息状态的详情，请查看此处。</p>
+<p><img alt="控制面板的支付列表" src="../../../assets/payment-guides/tutorial/test_payments_list.png"></p>
+<h2 id="決済の現状態説明表">支付当前状态说明</h2>
+
+<table><thead><tr><th align="left">当前状态（交易状态）</th><th align="left">说明</th></tr></thead><tbody>
+<tr><td align="left">未处理</td><td align="left">交易已登记，或已为该交易执行 3D Secure。</td></tr>
+<tr><td align="left">预授权</td><td align="left">此笔交易已完成预授权。</td></tr>
+<tr><td align="left">请款完成</td><td align="left">此笔交易已完成即时扣款，或预授权交易已完成请款处理。</td></tr>
+<tr><td align="left">已取消</td><td align="left">此笔交易已完成取消处理。</td></tr>
+</tbody></table>
+<h2 id="次のステップ">下一步</h2>
+<p><i class="icon-after icon-next"><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></i></p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/tutorial/test_api_exec" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

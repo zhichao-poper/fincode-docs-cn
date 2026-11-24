@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 将账单信息导出为 CSV中文指南。" />
+    <title>将账单信息导出为 CSV | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/accounts_receivable_management/export_ar" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a href="../../../payment/card/index.html">支付</a>
+<a class="active" href="../../index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/accounts_receivable_management/export_ar" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a href="../../../payment/card/index.html">支付</a>
+<a class="active" href="../../index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../index.html">控制面板</a></li>
+<li><a href="../../examination/index.html">商户审核</a></li>
+<li><a href="../../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../../team/index.html">团队管理</a></li>
+<li><a href="../../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../../chargeback/index.html">拒付</a></li>
+<li><a href="../../download_queue/index.html">什么是下载队列</a></li>
+<li><a href="../index.html">什么是应收账款管理</a></li>
+<li><a href="../customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="../bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="../bill_by_invoice/index.html">通过账单功能收费</a></li>
+<li><a href="../import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">将账单信息导出为 CSV</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../index.html">业务管理</a></li><li aria-current="page">将账单信息导出为 CSV</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="請求情報をcsvエクスポートする">将账单信息导出为 CSV</h1>
+<p>可以将通过 M's PayBridge 应收账款管理功能出具的账单信息，按自定义格式导出为 CSV 文件。</p>
+<h2 id="エクスポートフォーマットを設定する">设置导出格式</h2>
+<p>可从［商户设置］＞［应收账款管理设置］＞［账单信息导出格式设置］配置 CSV 文件的导出格式。</p>
+<p><img alt="账单信息导出格式设置界面截图" src="../../../../assets/payment-guides/business_management/accounts_receivable_management/billing_export_format_settings_screenshot.png"></p>
+<h3 id="1-デフォルトフォーマット">1. 默认格式</h3>
+<p>点击“默认格式”后，预览将采用 M's PayBridge 提供的标准账单信息导出格式。</p>
+<h3 id="2-プレビュー">2. 预览</h3>
+<p>点击预览前，CSV 各列纵向排列。点击预览后，各列按实际导出 CSV 的格式横向显示。</p>
+<h3 id="3-順序移動">3. 调整顺序</h3>
+<p>在各列的“调整顺序”单元格内输入目标列号并按 Enter，或点击“↑”“↓”按钮，即可调整导出的 CSV 列顺序。</p>
+<h3 id="4-項目追加と削除">4. 添加和删除项目</h3>
+<p>点击表格右下方的“添加项目”并选择项目名称，可在导出格式中增加新列。点击某列最右侧的“×”按钮，可从导出格式中删除该列。</p>
+<h3 id="5-現在のフォーマットでサンプルをダウンロード">5. 按当前格式下载样本</h3>
+<p>点击“按当前格式下载样本”，可按当前预览格式下载样本 CSV 文件。需要在第 6 步保存格式前确认导出文件的格式时，可使用此功能。</p>
+<h3 id="6-フォーマットを保存">6. 保存格式</h3>
+<p>点击“保存格式”可保存当前预览的格式。已保存的格式将在导出账单信息时应用。</p>
+<h2 id="請求情報をエクスポートする">导出账单信息</h2>
+<p><img alt="账单信息导出确认对话框截图" src="../../../../assets/payment-guides/business_management/accounts_receivable_management/billing_export_confirmation_dialog_screenshot.png"></p>
+<p>在账单列表点击“导出”，在确认对话框选择“M's PayBridge 格式的 CSV 文件”并点击“OK”。当前显示的账单信息将按已保存的账单信息导出格式下载为 CSV 文件。</p>
+<blockquote>
+<p>[!]</p>
+<p>尚未设置账单信息导出格式时会报错。请在导出前先保存格式。</p>
+</blockquote>
+<h2 id="エクスポート可能なカラム">可导出的列</h2>
+<p>可导出的列以获取账单 API 的输出为准。格式中所有项目均为可选。</p>
+
+<table><thead><tr><th>No.</th><th>列名</th><th>概要</th></tr></thead><tbody>
+<tr><td>1</td><td>收费方式<br><code lang="ja">請求方式</code></td><td><code>01</code>：账单／ <code>02</code>：重定向式支付／ <code>03</code>：支付（账单信息草稿）</td></tr>
+<tr><td>2</td><td>账单 ID<br><code lang="ja">請求ID</code></td><td>—</td></tr>
+<tr><td>3</td><td>账单状态<br><code lang="ja">請求ステータス</code></td><td><code>DRAFT</code>：草稿／ <code>AWAITING_CUSTOMER_PAYMENT</code>：等待支付／ <code>PAID</code>：支付完成／ <code>CANCELED</code>：已取消</td></tr>
+<tr><td>4</td><td>客户 ID<br><code lang="ja">顧客ID</code></td><td>—</td></tr>
+<tr><td>5</td><td>敬称</td><td>—</td></tr>
+<tr><td>6</td><td>账单收件方_收件人<br><code lang="ja">請求先_宛名</code></td><td>—</td></tr>
+<tr><td>7</td><td>账单收件方_电子邮件地址<br><code lang="ja">請求先_メアド</code></td><td>—</td></tr>
+<tr><td>8</td><td>账单收件方_地址_国家代码<br><code lang="ja">請求先_住所_国コード</code></td><td>—</td></tr>
+<tr><td>9</td><td>账单收件方_地址_都道府县代码<br><code lang="ja">請求先_住所_都道府県コード</code></td><td>—</td></tr>
+<tr><td>10</td><td>账单收件方_地址_市区町村<br><code lang="ja">請求先_住所_市区町村</code></td><td>—</td></tr>
+<tr><td>11</td><td>账单收件方_地址_町名及门牌号<br><code lang="ja">請求先_住所_町名・番地</code></td><td>—</td></tr>
+<tr><td>12</td><td>账单收件方_地址_楼名及房间号<br><code lang="ja">請求先_住所_建物名・部屋番号</code></td><td>—</td></tr>
+<tr><td>13</td><td>账单收件方_地址_其他<br><code lang="ja">請求先_住所_その他</code></td><td>—</td></tr>
+<tr><td>14</td><td>账单收件方_地址_邮政编码<br><code lang="ja">請求先_住所_郵便番号</code></td><td>—</td></tr>
+<tr><td>15</td><td>账单收件方_收件人_覆盖<br><code lang="ja">請求先_宛名_上書き</code></td><td>—</td></tr>
+<tr><td>16</td><td>账单收件方_电子邮件地址_覆盖<br><code lang="ja">請求先_メアド_上書き</code></td><td>—</td></tr>
+<tr><td>17</td><td>账单收件方_国家代码_覆盖<br><code lang="ja">請求先_国コード_上書き</code></td><td>—</td></tr>
+<tr><td>18</td><td>账单收件方_地址_都道府县代码_覆盖<br><code lang="ja">請求先_住所_都道府県コード_上書き</code></td><td>—</td></tr>
+<tr><td>19</td><td>账单收件方_地址_市区町村_覆盖<br><code lang="ja">請求先_住所_市区町村_上書き</code></td><td>—</td></tr>
+<tr><td>20</td><td>账单收件方_地址_町名及门牌号_覆盖<br><code lang="ja">請求先_住所_町名・番地_上書き</code></td><td>—</td></tr>
+<tr><td>21</td><td>账单收件方_地址_楼名及房间号_覆盖<br><code lang="ja">請求先_住所_建物名・部屋番号_上書き</code></td><td>—</td></tr>
+<tr><td>22</td><td>账单收件方_地址_其他_覆盖<br><code lang="ja">請求先_住所_その他_上書き</code></td><td>—</td></tr>
+<tr><td>23</td><td>账单收件方_地址_邮政编码_覆盖<br><code lang="ja">請求先_住所_郵便番号_上書き</code></td><td>—</td></tr>
+<tr><td>24</td><td>开具方_经营者名称<br><code lang="ja">発行元_事業者名</code></td><td>—</td></tr>
+<tr><td>25</td><td>开具方_合格账单开具经营者登记编号<br><code lang="ja">発行元_適格請求書発行事業者登録番号</code></td><td>—</td></tr>
+<tr><td>26</td><td>开具方_电子邮件地址<br><code lang="ja">発行元_メールアドレス</code></td><td>—</td></tr>
+<tr><td>27</td><td>开具方_地址_都道府县代码<br><code lang="ja">発行元_住所_都道府県コード</code></td><td>—</td></tr>
+<tr><td>28</td><td>开具方_地址_市区町村<br><code lang="ja">発行元_住所_市区町村</code></td><td>—</td></tr>
+<tr><td>29</td><td>开具方_地址_町名及门牌号<br><code lang="ja">発行元_住所_町名番地</code></td><td>—</td></tr>
+<tr><td>30</td><td>开具方_地址_楼名及房间号<br><code lang="ja">発行元_住所_建物名部屋番号</code></td><td>—</td></tr>
+<tr><td>31</td><td>开具方_地址_其他<br><code lang="ja">発行元_住所_その他</code></td><td>—</td></tr>
+<tr><td>32</td><td>开具方_地址_邮政编码<br><code lang="ja">発行元_住所_郵便番号</code></td><td>—</td></tr>
+<tr><td>33</td><td>开具方_电话号码<br><code lang="ja">発行元_電話番号</code></td><td>—</td></tr>
+<tr><td>34</td><td>开具方_电子邮件地址_覆盖<br><code lang="ja">発行元_メールアドレス_上書き</code></td><td>—</td></tr>
+<tr><td>35</td><td>开具方_地址_都道府县代码_覆盖<br><code lang="ja">発行元_住所_都道府県コード_上書き</code></td><td>—</td></tr>
+<tr><td>36</td><td>开具方_地址_市区町村_覆盖<br><code lang="ja">発行元_住所_市区町村_上書き</code></td><td>—</td></tr>
+<tr><td>37</td><td>开具方_地址_町名及门牌号_覆盖<br><code lang="ja">発行元_住所_町名番地_上書き</code></td><td>—</td></tr>
+<tr><td>38</td><td>开具方_地址_楼名及房间号_覆盖<br><code lang="ja">発行元_住所_建物名部屋番号_上書き</code></td><td>—</td></tr>
+<tr><td>39</td><td>开具方_地址_其他_覆盖<br><code lang="ja">発行元_住所_その他_上書き</code></td><td>—</td></tr>
+<tr><td>40</td><td>开具方_地址_邮政编码_覆盖<br><code lang="ja">発行元_住所_郵便番号_上書き</code></td><td>—</td></tr>
+<tr><td>41</td><td>开具方_电话号码_覆盖<br><code lang="ja">発行元_電話番号_上書き</code></td><td>—</td></tr>
+<tr><td>42</td><td>签发日期<br><code lang="ja">発行年月日</code></td><td><code>yyyy/MM/dd</code></td></tr>
+<tr><td>43</td><td>是否按含税显示<br><code lang="ja">内税表記有無</code></td><td><code>true</code>：按含税显示／ <code>false</code>：按未税显示</td></tr>
+<tr><td>44</td><td>付款截止日期<br><code lang="ja">支払期日</code></td><td>—</td></tr>
+<tr><td>45</td><td>备注<br><code lang="ja">備考</code></td><td>—</td></tr>
+<tr><td>46</td><td>商户自定义输入 1（账单）<br><code lang="ja">加盟店自由入力1（請求）</code></td><td>—</td></tr>
+<tr><td>47</td><td>商户自定义输入 2（账单）<br><code lang="ja">加盟店自由入力2（請求）</code></td><td>—</td></tr>
+<tr><td>48</td><td>商户自定义输入 3（账单）<br><code lang="ja">加盟店自由入力3（請求）</code></td><td>—</td></tr>
+<tr><td>49</td><td>无法收款标志<br><code lang="ja">回収不能フラグ</code></td><td>—</td></tr>
+<tr><td>50</td><td>M's PayBridge 以外付款标志<br><code lang="ja">M&#x27;s PayBridge外支払フラグ</code></td><td>—</td></tr>
+<tr><td>51</td><td>付款完成日期<br><code lang="ja">支払完了日</code></td><td><code>yyyy/MM/dd</code></td></tr>
+<tr><td>52</td><td>金额合计<br><code lang="ja">合計金額</code></td><td>若在指定账户明细录入了入账金额，该金额将计入此项。</td></tr>
+<tr><td>53</td><td>账单金额合计<br><code lang="ja">合計請求金額</code></td><td>—</td></tr>
+<tr><td>54</td><td>实际使用的支付类型<br><code lang="ja">利用された決済種別</code></td><td>—</td></tr>
+<tr><td>55</td><td>账单页面 URL<br><code lang="ja">請求ページURL</code></td><td>—</td></tr>
+<tr><td>56</td><td>账单 PDF 下载 URL<br><code lang="ja">請求書PDFダウンロードURL</code></td><td>—</td></tr>
+<tr><td>57</td><td>收据 PDF 下载 URL<br><code lang="ja">領収書PDFダウンロードURL</code></td><td>—</td></tr>
+<tr><td>58</td><td>账单编号<br><code lang="ja">請求番号</code></td><td>—</td></tr>
+<tr><td>59</td><td>卡片_处理类型<br><code lang="ja">カード_処理区分</code></td><td>—</td></tr>
+<tr><td>60</td><td>卡片_3DS 使用类型<br><code lang="ja">カード_3DS利用種別</code></td><td><code>0</code>：不执行／ <code>2</code>：执行（使用 3DS2.0）</td></tr>
+<tr><td>61</td><td>卡片_3D Secure 显示的商户名称<br><code lang="ja">カード_3Dセキュア表示店舗名</code></td><td>—</td></tr>
+<tr><td>62</td><td>卡片_不支持 3DS2 时的设置<br><code lang="ja">カード_3DS2非対応時設定</code></td><td><code>2</code>：按错误结束处理／ <code>3</code>：执行正常授权</td></tr>
+<tr><td>63</td><td>卡片_账户最后更新日期<br><code lang="ja">カード_アカウント最終更新日</code></td><td>—</td></tr>
+<tr><td>64</td><td>卡片_账户开立日期<br><code lang="ja">カード_アカウント開設日</code></td><td>—</td></tr>
+<tr><td>65</td><td>卡片_账户密码变更日期<br><code lang="ja">カード_アカウントパスワード変更日</code></td><td>—</td></tr>
+<tr><td>66</td><td>卡片_购买账户数<br><code lang="ja">カード_購入アカウント数</code></td><td>—</td></tr>
+<tr><td>67</td><td>卡片_支付账户使用时长<br><code lang="ja">カード_支払いアカウント年齢</code></td><td>—</td></tr>
+<tr><td>68</td><td>卡片_每天的提供尝试次数<br><code lang="ja">カード_1日あたりの提供試行回数</code></td><td>—</td></tr>
+<tr><td>69</td><td>卡片_配送地址使用日期<br><code lang="ja">カード_配送先住所使用日</code></td><td>—</td></tr>
+<tr><td>70</td><td>卡片_配送收件人姓名指示值<br><code lang="ja">カード_配送先名インジケータ</code></td><td><code>01</code>：卡片客户姓名与配送收件人姓名一致／ <code>02</code>：不一致</td></tr>
+<tr><td>71</td><td>卡片_可疑账户活动<br><code lang="ja">カード_不審なアカウント活動</code></td><td><code>01</code>：未发现可疑活动／ <code>02</code>：发现可疑活动</td></tr>
+<tr><td>72</td><td>卡片_每天的交易活动<br><code lang="ja">カード_1日あたりの取引活動</code></td><td>—</td></tr>
+<tr><td>73</td><td>卡片_每年的交易活动<br><code lang="ja">カード_1年あたりの取引活動</code></td><td>—</td></tr>
+<tr><td>74</td><td>卡片_认证数据<br><code lang="ja">カード_認証データ</code></td><td>—</td></tr>
+<tr><td>75</td><td>卡片_认证方式<br><code lang="ja">カード_認証方法</code></td><td><code>01</code>：未认证（访客）／ <code>02</code>：商户认证信息／ <code>03</code>: SSO / <code>04</code>：发卡机构认证信息／ <code>05</code>：第三方认证／ <code>06</code>：FIDO 认证</td></tr>
+<tr><td>76</td><td>卡片_认证时间戳<br><code lang="ja">カード_認証タイムスタンプ</code></td><td>—</td></tr>
+<tr><td>77</td><td>卡片_地址是否一致<br><code lang="ja">カード_住所一致</code></td><td><code>Y</code>：一致／ <code>N</code>：不一致</td></tr>
+<tr><td>78</td><td>卡片_账单地址市区町村<br><code lang="ja">カード_請求先市区町村</code></td><td>—</td></tr>
+<tr><td>79</td><td>卡片_账单地址国家<br><code lang="ja">カード_請求先国</code></td><td>—</td></tr>
+<tr><td>80</td><td>卡片_账单地址 1<br><code lang="ja">カード_請求先住所1</code></td><td>—</td></tr>
+<tr><td>81</td><td>卡片_账单地址 2<br><code lang="ja">カード_請求先住所2</code></td><td>—</td></tr>
+<tr><td>82</td><td>卡片_账单地址 3<br><code lang="ja">カード_請求先住所3</code></td><td>—</td></tr>
+<tr><td>83</td><td>卡片_账单地址邮政编码<br><code lang="ja">カード_請求先郵便番号</code></td><td>—</td></tr>
+<tr><td>84</td><td>卡片_账单地址都道府县代码<br><code lang="ja">カード_請求先都道府県コード</code></td><td>—</td></tr>
+<tr><td>85</td><td>卡片_电子邮件地址<br><code lang="ja">カード_メールアドレス</code></td><td>—</td></tr>
+<tr><td>86</td><td>卡片_住宅电话国家代码<br><code lang="ja">カード_自宅電話国番号</code></td><td>—</td></tr>
+<tr><td>87</td><td>卡片_住宅电话号码<br><code lang="ja">カード_自宅電話番号</code></td><td>—</td></tr>
+<tr><td>88</td><td>卡片_手机国家代码<br><code lang="ja">カード_携帯電話国番号</code></td><td>—</td></tr>
+<tr><td>89</td><td>卡片_手机号码<br><code lang="ja">カード_携帯電話番号</code></td><td>—</td></tr>
+<tr><td>90</td><td>卡片_工作电话国家代码<br><code lang="ja">カード_勤務先電話国番号</code></td><td>—</td></tr>
+<tr><td>91</td><td>卡片_工作电话号码<br><code lang="ja">カード_勤務先電話番号</code></td><td>—</td></tr>
+<tr><td>92</td><td>卡片_配送地址市区町村<br><code lang="ja">カード_配送先市区町村</code></td><td>—</td></tr>
+<tr><td>93</td><td>卡片_配送地址国家<br><code lang="ja">カード_配送先国</code></td><td>—</td></tr>
+<tr><td>94</td><td>卡片_配送地址 1<br><code lang="ja">カード_配送先住所1</code></td><td>—</td></tr>
+<tr><td>95</td><td>卡片_配送地址 2<br><code lang="ja">カード_配送先住所2</code></td><td>—</td></tr>
+<tr><td>96</td><td>卡片_配送地址 3<br><code lang="ja">カード_配送先住所3</code></td><td>—</td></tr>
+<tr><td>97</td><td>卡片_配送地址邮政编码<br><code lang="ja">カード_配送先郵便番号</code></td><td>—</td></tr>
+<tr><td>98</td><td>卡片_配送地址都道府县代码<br><code lang="ja">カード_配送先都道府県コード</code></td><td>—</td></tr>
+<tr><td>99</td><td>卡片_配送电子邮件地址<br><code lang="ja">カード_配送先メールアドレス</code></td><td>—</td></tr>
+<tr><td>100</td><td>卡片_配送时间范围<br><code lang="ja">カード_配送時間枠</code></td><td><code>01</code>：电子交付／ <code>02</code>：当日发货／ <code>03</code>：次日发货／ <code>04</code>：两天及以后发货</td></tr>
+<tr><td>101</td><td>卡片_礼品卡金额<br><code lang="ja">カード_ギフトカード金額</code></td><td>—</td></tr>
+<tr><td>102</td><td>卡片_礼品卡数量<br><code lang="ja">カード_ギフトカード枚数</code></td><td>—</td></tr>
+<tr><td>103</td><td>卡片_礼品卡币种<br><code lang="ja">カード_ギフトカード通貨</code></td><td>—</td></tr>
+<tr><td>104</td><td>卡片_预购日期<br><code lang="ja">カード_予約注文日</code></td><td>—</td></tr>
+<tr><td>105</td><td>卡片_预购指示值<br><code lang="ja">カード_予約注文インジケータ</code></td><td><code>01</code>：已发售商品／ <code>02</code>：预售商品</td></tr>
+<tr><td>106</td><td>卡片_重新下单指示值<br><code lang="ja">カード_再注文インジケータ</code></td><td><code>01</code>：首次下单／ <code>02</code>：重新下单</td></tr>
+<tr><td>107</td><td>卡片_配送指示值<br><code lang="ja">カード_配送インジケータ</code></td><td><code>01</code>：配送至账单地址／ <code>02</code>：配送至已核实地址／ <code>03</code>：配送至其他地址／ <code>04</code>：到店自提／ <code>05</code>：数字商品／ <code>06</code>：无需配送／ <code>07</code>：其他</td></tr>
+<tr><td>108</td><td>卡片_定期付款有效期<br><code lang="ja">カード_定期支払い有効期限</code></td><td>—</td></tr>
+<tr><td>109</td><td>卡片_定期付款频率<br><code lang="ja">カード_定期支払い頻度</code></td><td>—</td></tr>
+<tr><td>110</td><td>要沿用其虚拟账户的账单 ID<br><code lang="ja">バーチャル口座を引き継ぐ請求ID</code></td><td>—</td></tr>
+<tr><td>111</td><td>虚拟账户_虚拟账户 ID<br><code lang="ja">バーチャル口座_バーチャル口座ID</code></td><td>—</td></tr>
+<tr><td>112</td><td>虚拟账户_支行名称<br><code lang="ja">バーチャル口座_支店名</code></td><td>—</td></tr>
+<tr><td>113</td><td>虚拟账户_支行代码<br><code lang="ja">バーチャル口座_支店コード</code></td><td>—</td></tr>
+<tr><td>114</td><td>虚拟账户_账号<br><code lang="ja">バーチャル口座_口座番号</code></td><td>—</td></tr>
+<tr><td>115</td><td>虚拟账户_账户名义<br><code lang="ja">バーチャル口座_口座名義</code></td><td>—</td></tr>
+<tr><td>116</td><td>账单邮件发送标志<br><code lang="ja">請求書メール送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>117</td><td>收据邮件发送标志<br><code lang="ja">領収書メール送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>118</td><td>差额账单邮件发送标志<br><code lang="ja">差額請求メール送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>119</td><td>链接_重定向式支付 URL<br><code lang="ja">リンク_リダイレクト型決済URL</code></td><td>—</td></tr>
+<tr><td>120</td><td>链接_成功时的重定向 URL<br><code lang="ja">リンク_成功時リダイレクトURL</code></td><td>—</td></tr>
+<tr><td>121</td><td>链接_取消时的重定向 URL<br><code lang="ja">リンク_キャンセル時リダイレクトURL</code></td><td>—</td></tr>
+<tr><td>122</td><td>链接_重定向式支付 URL 有效期<br><code lang="ja">リンク_リダイレクト型決済URL　有効期限</code></td><td><code>yyyy/MM/dd HH:mm:ss.SSS</code></td></tr>
+<tr><td>123</td><td>链接_商户／服务名称<br><code lang="ja">リンク_ショップ／サービス名</code></td><td>—</td></tr>
+<tr><td>124</td><td>链接_支付邮件收件地址<br><code lang="ja">リンク_決済メール　送信先メールアドレス</code></td><td>—</td></tr>
+<tr><td>125</td><td>链接_购买邮件中的购买者姓名<br><code lang="ja">リンク_購入メール　購入者の名前</code></td><td>—</td></tr>
+<tr><td>126</td><td>支付邮件发送标志<br><code lang="ja">決済メール　送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>127</td><td>完成邮件发送标志<br><code lang="ja">完了メール　送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>128</td><td>邮件模板 ID<br><code lang="ja">メールテンプレートID</code></td><td>—</td></tr>
+<tr><td>129</td><td>使用金额<br><code lang="ja">利用金額</code></td><td>—</td></tr>
+<tr><td>130</td><td>税费和运费<br><code lang="ja">税送料</code></td><td>—</td></tr>
+<tr><td>131</td><td>卡片_交易类型<br><code lang="ja">カード_取引種別</code></td><td>—</td></tr>
+<tr><td>132</td><td>卡片_是否执行 3D Secure 认证<br><code lang="ja">カード_3Dセキュア認証有無</code></td><td><code>0</code>：不执行／ <code>2</code>：执行（使用 3DS2.0）</td></tr>
+<tr><td>133</td><td>卡片_3D Secure 认证参数中的特约商户名称<br><code lang="ja">カード_3Dセキュア認証パラメータ 加盟店名</code></td><td>—</td></tr>
+<tr><td>134</td><td>卡片_不支持 3D Secure 2.0 时的行为设置<br><code lang="ja">カード_3Dセキュア2.0非対応時の挙動設定</code></td><td><code>2</code>：按错误结束处理／ <code>3</code>：执行正常授权</td></tr>
+<tr><td>135</td><td>卡片_商品代码<br><code lang="ja">カード_商品コード</code></td><td>—</td></tr>
+<tr><td>136</td><td>便利店支付_付款页面 URL<br><code lang="ja">コンビニ決済_支払い画面URL</code></td><td>—</td></tr>
+<tr><td>137</td><td>便利店支付_付款期限天数<br><code lang="ja">コンビニ決済_支払期限日数</code></td><td>—</td></tr>
+<tr><td>138</td><td>便利店支付_付款页面通知邮件发送标志<br><code lang="ja">コンビニ決済_支払い画面案内メール送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>139</td><td>Paypay 支付_处理代码<br><code lang="ja">Paypay決済_ジョブコード</code></td><td>—</td></tr>
+<tr><td>140</td><td>Paypay 支付_订单内容说明<br><code lang="ja">Paypay決済_注文内容の説明</code></td><td>—</td></tr>
+<tr><td>141</td><td>虚拟账户_要沿用的账单 ID<br><code lang="ja">バーチャル口座_引き継ぐ請求ID</code></td><td>—</td></tr>
+<tr><td>142</td><td>虚拟账户_虚拟账户_付款页面 URL<br><code lang="ja">バーチャル口座_バーチャル口座_支払い画面URL</code></td><td>—</td></tr>
+<tr><td>143</td><td>虚拟账户_付款期限天数<br><code lang="ja">バーチャル口座_支払期限日数</code></td><td>—</td></tr>
+<tr><td>144</td><td>虚拟账户_付款页面通知邮件发送标志<br><code lang="ja">バーチャル口座_支払い画面案内メール送信フラグ</code></td><td><code>0</code>：不发送／ <code>1</code>：发送</td></tr>
+<tr><td>145</td><td>指定账户_银行代码 1<br><code lang="ja">指定口座_銀行コード1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>146</td><td>指定账户_银行名称 1<br><code lang="ja">指定口座_銀行名1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>147</td><td>指定账户_支行代码 1<br><code lang="ja">指定口座_支店コード1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>148</td><td>指定账户_支行名称 1<br><code lang="ja">指定口座_支店名1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>149</td><td>指定账户_账号 1<br><code lang="ja">指定口座_口座番号1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>150</td><td>指定账户_账户名义 1<br><code lang="ja">指定口座_口座名義1</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>151</td><td>指定账户_存款类型 1<br><code lang="ja">指定口座_預金種別1</code></td><td><code>1</code>：普通存款／ <code>2</code>：往来存款</td></tr>
+<tr><td>152</td><td>指定账户_银行代码 2<br><code lang="ja">指定口座_銀行コード2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>153</td><td>指定账户_银行名称 2<br><code lang="ja">指定口座_銀行名2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>154</td><td>指定账户_支行代码 2<br><code lang="ja">指定口座_支店コード2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>155</td><td>指定账户_支行名称 2<br><code lang="ja">指定口座_支店名2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>156</td><td>指定账户_账号 2<br><code lang="ja">指定口座_口座番号2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>157</td><td>指定账户_账户名义 2<br><code lang="ja">指定口座_口座名義2</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>158</td><td>指定账户_存款类型 2<br><code lang="ja">指定口座_預金種別2</code></td><td><code>1</code>：普通存款／ <code>2</code>：往来存款</td></tr>
+<tr><td>159</td><td>指定账户_银行代码 3<br><code lang="ja">指定口座_銀行コード3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>160</td><td>指定账户_银行名称 3<br><code lang="ja">指定口座_銀行名3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>161</td><td>指定账户_支行代码 3<br><code lang="ja">指定口座_支店コード3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>162</td><td>指定账户_支行名称 3<br><code lang="ja">指定口座_支店名3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>163</td><td>指定账户_账号 3<br><code lang="ja">指定口座_口座番号3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>164</td><td>指定账户_账户名义 3<br><code lang="ja">指定口座_口座名義3</code></td><td>原样输出指定账户的登记值</td></tr>
+<tr><td>165</td><td>指定账户_存款类型 3<br><code lang="ja">指定口座_預金種別3</code></td><td><code>1</code>：普通存款／ <code>2</code>：往来存款</td></tr>
+<tr><td>166</td><td>银行账户扣款_扣款结果代码<br><code lang="ja">口振_振替結果コード</code></td><td>从支付信息输出</td></tr>
+<tr><td>167</td><td>银行账户扣款_指定扣款日期<br><code lang="ja">口振_振替指定日</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>168</td><td>银行账户扣款_账单显示内容<br><code lang="ja">口振_ご利用明細表示内容</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>169</td><td>银行账户扣款_扣款失败邮件标志<br><code lang="ja">口振_口座振替失敗メールフラグ</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>170</td><td>银行账户扣款_银行代码<br><code lang="ja">口振_銀行コード</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>171</td><td>银行账户扣款_银行名称<br><code lang="ja">口振_銀行名</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>172</td><td>银行账户扣款_支行代码<br><code lang="ja">口振_支店コード</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>173</td><td>银行账户扣款_支行名称<br><code lang="ja">口振_支店名</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>174</td><td>银行账户扣款_存款类型<br><code lang="ja">口振_預金種別</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>175</td><td>支付路径<br><code lang="ja">決済ルート</code></td><td>银行账户扣款中登记的值</td></tr>
+<tr><td>176</td><td>支付信息_支付金额<br><code lang="ja">決済情報_決済金額</code></td><td>从支付信息输出。指定账户方式下，仅在收到全额或超额款项并标记完成时输出。</td></tr>
+<tr><td>177</td><td>支付信息_支付日期<br><code lang="ja">決済情報_決済日付</code></td><td>从支付信息输出。指定账户方式下，仅在收到全额或超额款项并标记完成时输出。</td></tr>
+<tr><td>178</td><td>支付信息_商户自定义项目 1<br><code lang="ja">決済情報_加盟店自由項目1</code></td><td>从支付信息输出。指定账户方式下，仅在收到全额或超额款项并标记完成时输出。</td></tr>
+<tr><td>179</td><td>支付信息_商户自定义项目 2<br><code lang="ja">決済情報_加盟店自由項目2</code></td><td>从支付信息输出。指定账户方式下，仅在收到全额或超额款项并标记完成时输出。</td></tr>
+<tr><td>180</td><td>支付信息_商户自定义项目 3<br><code lang="ja">決済情報_加盟店自由項目3</code></td><td>从支付信息输出。指定账户方式下，仅在收到全额或超额款项并标记完成时输出。</td></tr>
+<tr><td>181</td><td>产生的差额<br><code lang="ja">発生差額</code></td><td>仅虚拟账户和指定账户会产生差额。只能输出导出时的差额。指定账户方式下如难以收回款项，输出 No.53 − No.52 的金额。</td></tr>
+<tr><td>182</td><td>空白<br><code lang="ja">ブランク</code></td><td>—</td></tr>
+<tr><td>183</td><td>产生的总金额<br><code lang="ja">合計発生金額</code></td><td>—</td></tr>
+</tbody></table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/accounts_receivable_management/export_ar" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-"""支付指南页面清单。
+"""指南页面清单。
 
 这里是抓取、构建、审计共用的唯一范围定义。未列出的 fincode 指南不会进入中文站。
 """
@@ -136,7 +136,69 @@ PAGES = [
     },
 ]
 
+GROUPS = {
+    "tutorial": "入门",
+    "payment": "支付",
+    "business_management": "业务管理",
+    "platform": "平台",
+    "develop_support": "开发者支持",
+    "buyer_service": "买家服务",
+    "releases": "发行说明",
+}
 SECTIONS = {
     "card": "卡片支付",
     "konbini": "便利店支付",
 }
+
+
+def group_for(page: dict) -> str:
+    return page["source_path"].split("/")[1]
+
+
+PAGES += [
+    {
+        "key": route.replace("/", "-"),
+        "section": route.split("/")[0],
+        "title": title,
+        "nav_title": title,
+        "source_path": f"/{route}/index",
+        "source_url": f"https://docs.fincode.jp/{route}",
+        "translation": f"translations/guides/{route}/index.html",
+        "output": f"site/guides/{route}/index.html",
+    }
+    for route, title in (
+        ('platform', '什么是平台'),
+        ('platform/invite_tenant', '邀请租户商户'),
+        ('platform/manage_tenant', '管理租户商户'),
+        ('platform/setting', '平台设置'),
+        ('platform/shop_type', '主商户、子商户与租户商户'),
+        ('platform/sign_up', '开设平台'),
+        ('platform/terms_of_service', '完善平台使用条款'),
+        ('platform/terms_of_service_mpb', '完善平台使用条款（M’s PayBridge）'),
+        ('tutorial', '入门'),
+        ('tutorial/test_sign_up', '在测试环境注册新用户'),
+        ('tutorial/test_info', '查看测试环境 API 信息及连接信息'),
+        ('tutorial/test_api_exec', '在测试环境执行支付'),
+        ('tutorial/test_webhook', '在测试环境设置通知（Webhook）'),
+        ('tutorial/prod_sign_up', '在生产环境注册新用户（生产环境申请）'),
+        ('tutorial/prod_sign_up_mpb', '在生产环境注册新用户（生产环境申请）（M’s PayBridge）'),
+        ('tutorial/prod_info', '查看生产环境 API 信息及连接信息'),
+        ('tutorial/prod_webhook', '在生产环境设置通知（Webhook）'),
+        ('tutorial/prod_api', '在生产环境公开支付功能'),
+        ('tutorial/prod_calc', '查看销售金额'),
+        ('business_management', '控制面板'),
+        ('business_management/examination', '商户审核'),
+        ('business_management/shop_info_update', '变更登记信息'),
+        ('business_management/team', '团队管理'),
+        ('business_management/deposit', '管理销售款入账等事项'),
+        ('business_management/businesscard', 'fincode 商务卡'),
+        ('business_management/chargeback', '拒付'),
+        ('business_management/download_queue', '什么是下载队列'),
+        ('business_management/accounts_receivable_management', '什么是应收账款管理'),
+        ('business_management/accounts_receivable_management/customer_management', '使用客户管理功能管理账单收件方信息'),
+        ('business_management/accounts_receivable_management/bill_by_session', '通过邮件链接收费'),
+        ('business_management/accounts_receivable_management/bill_by_invoice', '通过账单功能收费'),
+        ('business_management/accounts_receivable_management/import_ar', '批量导入账单信息'),
+        ('business_management/accounts_receivable_management/export_ar', '将账单信息导出为 CSV'),
+    )
+]

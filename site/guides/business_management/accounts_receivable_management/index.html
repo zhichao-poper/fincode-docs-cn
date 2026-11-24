@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是应收账款管理中文指南。" />
+    <title>什么是应收账款管理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/accounts_receivable_management" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/accounts_receivable_management" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">控制面板</a></li>
+<li><a href="../examination/index.html">商户审核</a></li>
+<li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../chargeback/index.html">拒付</a></li>
+<li><a href="../download_queue/index.html">什么是下载队列</a></li>
+<li><a href="index.html" aria-current="page" class="active">什么是应收账款管理</a></li>
+<li><a href="customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="bill_by_invoice/index.html">通过账单功能收费</a></li>
+<li><a href="import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="export_ar/index.html">将账单信息导出为 CSV</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">业务管理</a></li><li aria-current="page">什么是应收账款管理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="請求管理とは">什么是应收账款管理</h1>
+<p>应收账款管理可将客户企业、账单内容、金额和付款截止日期等作为账单信息进行管理，并依据该信息通过<a href="https://docs.fincode.jp/payment/redirect_type">重定向式支付 URL</a>的邮件链接发起收费，或通过<a href="https://docs.fincode.jp/payment/invoice">账单功能</a>出具带支付功能的账单。</p>
+<p>商户可以在 fincode 上集中管理企业间的账单业务。客户企业可通过邮件链接或账单功能在线收到账单并付款。</p>
+<p>与普通支付功能一样，可将客户企业的信息提前作为客户信息登记到 fincode，无需每次发出账单时重新填写，提高效率。</p>
+<h2 id="リダイレクト型決済urlインボイス機能との関係">与重定向式支付 URL 和账单功能的关系</h2>
+<p>应收账款管理同时涵盖重定向式支付 URL 和账单功能，并可存储企业间交易常用账单信息。与单独使用任一功能相比，可以进一步集中账单业务，提高效率。</p>
+<p>通过应收账款管理保存在 fincode 的账单信息可以用 CSV 与会计服务等外部服务对接，提高发出账单后在 fincode 之外处理业务的效率。有关外部服务对接，<a href="https://docs.fincode.jp/business_management/accounts_receivable_management/integration_with_external_service">请查看此处</a>。</p>
+<h2 id="企業間決済機能同士の連携">企业间支付功能之间的联动</h2>
+<p>如果收到商户账单（通过账单功能或邮件链接发出）的客户企业也已签订 fincode 买家合同，账单信息会直接作为付款信息传至买家管理后台。买家可以从管理后台打开付款网页并付款。</p>
+<p>账单信息还可以作为会计数据导入受支持的会计服务。由此可在 fincode 上处理往来单位管理（客户管理）、出具账单和核销，并与会计服务对接。</p>
+<p>fincode 账单信息 CSV 导出所支持的会计服务可<a href="https://docs.fincode.jp/business_management/accounts_receivable_management/integration_with_external_service">在此查看</a>。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/accounts_receivable_management" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

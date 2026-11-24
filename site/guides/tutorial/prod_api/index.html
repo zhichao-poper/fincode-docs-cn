@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 在生产环境公开支付功能中文指南。" />
+    <title>在生产环境公开支付功能 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/tutorial/prod_api" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/tutorial/prod_api" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="入门指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>入门</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>入门</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">入门</a></li>
+<li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
+<li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="../test_api_exec/index.html">在测试环境执行支付</a></li>
+<li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
+<li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
+<li><a href="../prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
+<li><a href="../prod_info/index.html">查看生产环境 API 信息及连接信息</a></li>
+<li><a href="../prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
+<li><a href="index.html" aria-current="page" class="active">在生产环境公开支付功能</a></li>
+<li><a href="../prod_calc/index.html">查看销售金额</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">入门</a></li><li aria-current="page">在生产环境公开支付功能</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="本番環境で決済機能を公開する">在生产环境公开支付功能</h1>
+<p>要正式启用支付功能，请从测试环境切换到生产环境。<br>
+请注意，在生产环境执行支付会产生实际扣款。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title"><a href="../test_api_exec/index.html">在测试环境执行支付</a>。请按该页步骤在测试环境执行支付并核对结果，然后再切换到生产环境。</div>
+</div>
+<h2 id="テスト環境から本番環境への移行">从测试环境切换到生产环境</h2>
+<p>生产环境和测试环境的区别如下。</p>
+
+<table><thead><tr><th align="left">类别</th><th align="left">测试环境</th><th align="left">生产环境</th></tr></thead><tbody>
+<tr><td align="left">API 端点 URL</td><td align="left">api.test.fincode.jp</td><td align="left">api.fincode.jp</td></tr>
+<tr><td align="left">API 密钥</td><td align="left">从测试环境的管理后台获取</td><td align="left">从生产环境的管理后台获取</td></tr>
+<tr><td align="left">电子邮件地址</td><td align="left"><a href="mailto:noreply@test.fincode.jp">noreply@test.fincode.jp</a></td><td align="left"><a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a></td></tr>
+</tbody></table>
+<p>将 API 端点 URL 和 API 密钥更新为生产环境的值，并设置允许接收来自相应域名的电子邮件。<br>
+从测试环境到生产环境的切换即告完成。</p>
+<p>商户收到实际订单并完成支付处理后，即可查看销售款。</p>
+<h2 id="次のステップ">下一步</h2>
+<p><i class="icon-after icon-next"><a href="../prod_calc/index.html">查看销售金额</a></i></p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/tutorial/prod_api" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
