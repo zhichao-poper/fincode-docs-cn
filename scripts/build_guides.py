@@ -7,8 +7,9 @@ import html
 import os
 import re
 from pathlib import Path
+from urllib.parse import urlsplit
 
-from guide_manifest import PAGES, SECTIONS
+from guide_manifest import GROUPS, PAGES, SECTIONS, group_for
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
@@ -41,39 +42,32 @@ def rewrite_fragment(fragment: str, output: Path) -> str:
         ),
         fragment,
     )
-    fragment = re.sub(
-        r'href="/api(#[^"]*)?"',
-        lambda match: (
-            f'href="{relative_url(output, SITE / "reference.html")}'
-            f'{match.group(1) or ""}"'
-        ),
-        fragment,
-    )
-
     def replace_internal_link(match: re.Match[str]) -> str:
-        route = match.group(1).rstrip("/")
-        anchor = match.group(2) or ""
-        target = OUTPUT_BY_SOURCE_ROUTE.get(route)
-        if target:
-            return f'href="{relative_url(output, ROOT / target)}{anchor}"'
-        return f'href="https://docs.fincode.jp{route}{anchor}"'
+        href = html.unescape(match.group(1))
+        parsed = urlsplit(href)
+        route = parsed.path.rstrip("/").removesuffix("/index")
+        suffix = (f"?{parsed.query}" if parsed.query else "") + (
+            f"#{parsed.fragment}" if parsed.fragment else ""
+        )
+        if route == "/api":
+            url = relative_url(output, SITE / "reference.html") + suffix
+        elif route in OUTPUT_BY_SOURCE_ROUTE:
+            url = relative_url(output, ROOT / OUTPUT_BY_SOURCE_ROUTE[route]) + suffix
+        else:
+            url = "https://docs.fincode.jp" + parsed.path + suffix
+        return f'href="{html.escape(url, quote=True)}"'
 
-    fragment = re.sub(
-        r'href="(/payment[^"#?]*)(#[^"]*)?"',
+    return re.sub(
+        r'href="((?:https://docs\.fincode\.jp)?/(?!/)[^"]*)"',
         replace_internal_link,
         fragment,
     )
-    fragment = re.sub(
-        r'href="(/(?!/)[^"]+)"',
-        lambda match: f'href="https://docs.fincode.jp{match.group(1)}"',
-        fragment,
-    )
-    return fragment
 
 
 def navigation(current: dict, output: Path) -> str:
     parts = []
-    for section, section_title in SECTIONS.items():
+    current_group = group_for(current)
+    for section, section_title in (SECTIONS if current_group == "payment" else {current_group: GROUPS[current_group]}).items():
         section_active = ' class="section-active"' if section == current["section"] else ""
         parts.append(
             f'<p class="guide-nav-section"{section_active}>'
@@ -90,18 +84,40 @@ def navigation(current: dict, output: Path) -> str:
     return "\n".join(parts)
 
 
-def page_template(page: dict, body: str, index: int) -> str:
+def group_navigation(output: Path, current_group: str = "") -> str:
+    links = []
+    for group, title in GROUPS.items():
+        first_page = next((page for page in PAGES if group_for(page) == group), None)
+        href = (
+            relative_url(output, ROOT / first_page["output"])
+            if first_page
+            else f"https://docs.fincode.jp/{group}"
+        )
+        active = ' class="active"' if group == current_group else ""
+        links.append(f'<a{active} href="{href}">{title}</a>')
+    return "\n".join(links)
+
+
+def page_template(page: dict, body: str) -> str:
     output = ROOT / page["output"]
     home = relative_url(output, SITE / "index.html")
     guide_home = relative_url(output, SITE / "guides/index.html")
     stylesheet = relative_url(output, SITE / "guide-styles.css")
     favicon = relative_url(output, SITE / "favicon.svg")
     reference = relative_url(output, SITE / "reference.html")
+    group = group_for(page)
+    group_title = GROUPS[group]
+    group_entry = next(item for item in PAGES if group_for(item) == group)
+    group_href = relative_url(output, ROOT / group_entry["output"])
     breadcrumbs = [
         f'<li><a href="{guide_home}">首页</a></li>',
-        f'<li><a href="{guide_home}">支付</a></li>',
-        f'<li><a href="{relative_url(output, ROOT / next(item["output"] for item in PAGES if item["section"] == page["section"]))}">{html.escape(SECTIONS[page["section"]])}</a></li>',
+        f'<li><a href="{group_href}">{group_title}</a></li>',
     ]
+    if group == "payment":
+        section = page["section"]
+        section_entry = next(item for item in PAGES if item["section"] == section)
+        section_href = relative_url(output, ROOT / section_entry["output"])
+        breadcrumbs.append(f'<li><a href="{section_href}">{SECTIONS[section]}</a></li>')
     if page["key"] == "card-3d-secure-2":
         parent = next(item for item in PAGES if item["key"] == "card-fraud-protection")
         breadcrumbs.append(
@@ -141,7 +157,7 @@ def page_template(page: dict, body: str, index: int) -> str:
           <summary>MENU</summary>
           <nav aria-label="手机端导航">
             <a href="{guide_home}">首页</a>
-            <a href="{guide_home}">支付</a>
+            {group_navigation(output, group)}
             <a href="{reference}">API reference</a>
             <a href="{page["source_url"]}" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
@@ -149,19 +165,13 @@ def page_template(page: dict, body: str, index: int) -> str:
       </div>
       <nav class="official-category-nav" aria-label="主要导航">
         <a href="{guide_home}">首页</a>
-        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
-        <a class="active" href="{guide_home}">支付</a>
-        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
-        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
-        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
-        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
-        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        {group_navigation(output, group)}
         <span class="header-search" aria-hidden="true"></span>
       </nav>
     </header>
     <div class="guide-layout">
-      <aside class="guide-sidebar" aria-label="支付指南目录">
-        <a class="guide-overview-link" href="{guide_home}"><span>支付</span><i aria-hidden="true"></i></a>
+      <aside class="guide-sidebar" aria-label="{group_title}指南目录">
+        <a class="guide-overview-link" href="{group_href}"><span>{group_title}</span><i aria-hidden="true"></i></a>
         {navigation(page, output)}
       </aside>
       <div class="guide-body">
@@ -184,20 +194,30 @@ def page_template(page: dict, body: str, index: int) -> str:
 def build_landing() -> None:
     output = SITE / "guides/index.html"
     output.parent.mkdir(parents=True, exist_ok=True)
-    first_page = relative_url(output, ROOT / PAGES[0]["output"])
+    stylesheet = relative_url(output, SITE / "styles.css")
+    entries = []
+    for group, title in GROUPS.items():
+        first_page = next((page for page in PAGES if group_for(page) == group), None)
+        if first_page:
+            href = relative_url(output, ROOT / first_page["output"])
+            entries.append(f'<a class="secondary" href="{href}">{title}</a>')
     output.write_text(
         f"""<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="fincode 卡片支付与便利店支付中文指南。" />
-    <title>支付指南 | fincode 中文参考</title>
-    <meta http-equiv="refresh" content="0; url={first_page}" />
-    <link rel="canonical" href="{first_page}" />
+    <title>指南 | fincode 中文参考</title>
+    <link rel="stylesheet" href="{stylesheet}" />
   </head>
   <body>
-    <p>正在进入<a href="{first_page}">卡片支付中文指南</a>……</p>
+    <header class="topbar"><a class="brand" href="../">fincode <span>中文参考</span></a></header>
+    <main>
+      <section class="hero">
+        <h1>fincode 指南</h1>
+        <nav class="actions" aria-label="指南分组">{" ".join(entries)}</nav>
+      </section>
+    </main>
   </body>
 </html>
 """,
@@ -206,18 +226,18 @@ def build_landing() -> None:
 
 
 def main() -> None:
-    for index, page in enumerate(PAGES):
+    for page in PAGES:
         translation = ROOT / page["translation"]
         if not translation.exists():
             raise RuntimeError(f"缺少人工译文：{translation.relative_to(ROOT)}")
         output = ROOT / page["output"]
         output.parent.mkdir(parents=True, exist_ok=True)
         body = rewrite_fragment(translation.read_text(encoding="utf-8"), output)
-        rendered = page_template(page, body, index)
+        rendered = page_template(page, body)
         rendered = "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
         output.write_text(rendered, encoding="utf-8")
     build_landing()
-    print(f"已生成 {len(PAGES)} 个支付指南页面和 1 个目录页")
+    print(f"已生成 {len(PAGES)} 个指南页面和 1 个目录页")
 
 
 if __name__ == "__main__":

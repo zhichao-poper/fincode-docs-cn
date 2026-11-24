@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""审计支付指南的范围、结构、代码字面量、图片与中文化完整性。"""
+"""审计指南的范围、结构、代码字面量、图片与中文化完整性。"""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-from guide_manifest import PAGES
+from guide_manifest import GROUPS, PAGES, group_for
 
 ROOT = Path(__file__).resolve().parents[1]
 JAPANESE = re.compile(r"[\u3040-\u30ff]")
@@ -23,12 +23,16 @@ class FragmentParser(HTMLParser):
         self.tags: Counter[str] = Counter()
         self.images: list[str] = []
         self.codes: list[str] = []
+        self.visible_text: list[str] = []
         self._code_depth = 0
         self._code_buffer: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.tags[tag] += 1
         attributes = dict(attrs)
+        for attribute in ("alt", "title"):
+            if attributes.get(attribute):
+                self.visible_text.append(attributes[attribute])
         if tag == "img" and attributes.get("src"):
             self.images.append(attributes["src"])
         if tag == "code":
@@ -41,6 +45,7 @@ class FragmentParser(HTMLParser):
             self._code_depth -= 1
 
     def handle_data(self, data: str) -> None:
+        self.visible_text.append(data)
         if self._code_depth:
             self._code_buffer.append(data)
 
@@ -118,10 +123,10 @@ def main() -> None:
             errors.append(f"缺少构建页面：{page['output']}")
             continue
         fragment = translation_path.read_text(encoding="utf-8")
-        if JAPANESE.search(fragment):
-            errors.append(f"译文仍含日文假名：{page['translation']}")
         parser = FragmentParser()
         parser.feed(fragment)
+        if JAPANESE.search("".join(parser.visible_text)):
+            errors.append(f"译文仍含日文假名：{page['translation']}")
         if parser.tags["h1"] != 1:
             errors.append(f"译文必须且只能有一个 h1：{page['translation']}")
 
@@ -171,24 +176,25 @@ def main() -> None:
 
     landing = ROOT / "site/guides/index.html"
     if not landing.exists():
-        errors.append("缺少支付指南目录页")
+        errors.append("缺少指南目录页")
     else:
         landing_text = landing.read_text(encoding="utf-8")
-        expected_entry = Path(PAGES[0]["output"]).relative_to("site/guides")
-        if 'http-equiv="refresh"' not in landing_text:
-            errors.append("支付指南入口页没有配置跳转")
-        if str(expected_entry) not in landing_text:
-            errors.append("支付指南入口页没有指向卡片支付首页")
+        for group in GROUPS:
+            first_page = next((page for page in PAGES if group_for(page) == group), None)
+            if first_page:
+                expected_entry = Path(first_page["output"]).relative_to("site/guides")
+                if f'href="{expected_entry}"' not in landing_text:
+                    errors.append(f"指南目录缺少分组入口：{GROUPS[group]}")
         audit_local_references(landing, errors)
 
     if errors:
-        print("支付指南审计失败：")
+        print("指南审计失败：")
         for error in errors:
             print(f"- {error}")
         raise SystemExit(1)
     print(
-        f"支付指南审计通过：{len(PAGES)} 页，"
-        "范围仅含卡片支付与便利店支付，结构、图片和代码字面量一致"
+        f"指南审计通过：{len(PAGES)} 页，"
+        "页面范围、结构、图片和代码字面量一致"
     )
 
 

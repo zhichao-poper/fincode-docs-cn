@@ -41,17 +41,17 @@ Discover(ProtectBuy)</td></tr>
 <tr><td align="left">将“预授权”状态的交易更改为“请款完成”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。<br>
 <br>
-超过可更改期限后执行“请款”将发生错误。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
+超过期限仍未请款的预授权交易，fincode 会自动取消。如果预计运营中可能超过 25 天，需要先取消预授权，然后再次执行授权。<br>
 此外，如果时间间隔较长，再次授权时可能会因卡片状态而发生有效期错误或超出额度等错误。<br>
 由于具体原因涉及个人信息，请持卡人本人联系卡面所载的发卡机构。</td></tr>
 
-<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+<tr><td align="left">可对“预授权”状态的交易执行“取消”和“修改金额”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。</td></tr>
 
 <tr><td align="left">可对“请款完成”状态的交易执行“取消”的期限</td><td align="left">180 天（交易保留期限）<br>
 当天按第 0 天计算。</td></tr>
 
-<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">180 天（交易保留期限）<br>
+<tr><td align="left">可对“请款完成”状态的交易执行“修改金额”的期限</td><td align="left">25 天<br>
 当天按第 0 天计算。</td></tr>
 
 <tr><td align="left">可对“已取消”状态的交易重新授权的期限</td><td align="left">180 天（交易保留期限）<br>
@@ -64,5 +64,10 @@ Discover(ProtectBuy)</td></tr>
 因此，请勿将订单编号等无法更改的编号用作订单 ID。如确实必须使用，建议采用“订单编号 + 连号”等编号规则。</td></tr>
 
 <tr><td align="left">关于卡号限制</td><td align="left">API 和控制面板中显示的卡号，将以除末 4 位之外均被掩码的格式返回。</td></tr>
+<tr><td align="left">单个客户可登记的卡片信息（Card 和 Payment Method）</td><td align="left">最多 5 条<br>
+如果已登记 5 条，要登记其他卡片，请先删除已有卡片信息。</td></tr>
+
+<tr><td align="left">验证卡片有效性</td><td align="left">验证卡片有效性时，请将处理区分（job_code）设为 CHECK。<br>
+请勿用“预授权（小额授权）”验证卡片有效性，这违反国际卡组织规则。</td></tr>
 </tbody>
 </table>

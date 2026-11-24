@@ -30,7 +30,13 @@
           <summary>MENU</summary>
           <nav aria-label="手机端导航">
             <a href="../../../index.html">首页</a>
-            <a href="../../../index.html">支付</a>
+            <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a class="active" href="../index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a href="https://docs.fincode.jp/platform">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
             <a href="https://docs.fincode.jp/payment/operation" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
@@ -38,19 +44,19 @@
       </div>
       <nav class="official-category-nav" aria-label="主要导航">
         <a href="../../../index.html">首页</a>
-        <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">教程</a>
-        <a class="active" href="../../../index.html">支付</a>
-        <a href="https://docs.fincode.jp/business_management" target="_blank" rel="noreferrer">运营管理</a>
-        <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">平台</a>
-        <a href="https://docs.fincode.jp/develop_support" target="_blank" rel="noreferrer">开发者支持</a>
-        <a href="https://docs.fincode.jp/buyer_service" target="_blank" rel="noreferrer">买家服务</a>
-        <a href="https://docs.fincode.jp/releases" target="_blank" rel="noreferrer">发行说明</a>
+        <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a class="active" href="../index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a href="https://docs.fincode.jp/platform">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
         <span class="header-search" aria-hidden="true"></span>
       </nav>
     </header>
     <div class="guide-layout">
       <aside class="guide-sidebar" aria-label="支付指南目录">
-        <a class="guide-overview-link" href="../../../index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <a class="guide-overview-link" href="../index.html"><span>支付</span><i aria-hidden="true"></i></a>
         <p class="guide-nav-section" class="section-active"><span>卡片支付</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
 <li><a href="../index.html">卡片支付简介</a></li>
@@ -73,7 +79,7 @@
       </aside>
       <div class="guide-body">
         <nav class="guide-breadcrumb" aria-label="面包屑">
-          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">运营示例</li></ul>
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../index.html">支付</a></li><li><a href="../index.html">卡片支付</a></li><li aria-current="page">运营示例</li></ul>
         </nav>
         <main class="guide-main">
           <article class="guide-article">
@@ -102,6 +108,12 @@
 采用预授权/请款模式时，请在<span class="inline-api">支付登记</span>中将<code>处理类型（job_code）</code>指定为<code>AUTH: 预授权</code>。<br>
 
 完成<span class="inline-api">支付登记</span>后，在确定收费时执行<span class="inline-api">请款</span>。</p>
+
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+    可请款的期限为预授权日起 25 天内。超过 25 天仍未请款的交易，由 fincode 每日执行取消处理。
+  </div>
+</div>
 
 <h2 id="debit-prepaid-notes">借记卡和预付卡注意事项</h2>
 

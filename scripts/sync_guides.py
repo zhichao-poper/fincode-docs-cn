@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""从 fincode 官方 Nuxt 内容库更新指定支付指南的日文快照与图片。"""
+"""从 fincode 官方 Nuxt 内容库更新指定指南的日文快照与图片。"""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-from guide_manifest import PAGES
+from guide_manifest import GROUPS, PAGES, group_for
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME_URL = "https://docs.fincode.jp/payment/fraud_protection"
@@ -78,8 +78,7 @@ def main() -> None:
         "databaseHash": db_hash,
         "capturedAt": datetime.now(timezone.utc).isoformat(),
         "scope": {
-            "group": "決済",
-            "sections": ["カード決済", "コンビニ決済"],
+            "groups": [group for group in GROUPS if any(group_for(page) == group for page in PAGES)],
             "pageCount": len(selected),
         },
         "pages": selected,

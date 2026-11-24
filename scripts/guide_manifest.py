@@ -1,4 +1,4 @@
-"""支付指南页面清单。
+"""指南页面清单。
 
 这里是抓取、构建、审计共用的唯一范围定义。未列出的 fincode 指南不会进入中文站。
 """
@@ -136,7 +136,20 @@ PAGES = [
     },
 ]
 
+GROUPS = {
+    "tutorial": "入门",
+    "payment": "支付",
+    "business_management": "业务管理",
+    "platform": "平台",
+    "develop_support": "开发者支持",
+    "buyer_service": "买家服务",
+    "releases": "发行说明",
+}
 SECTIONS = {
     "card": "卡片支付",
     "konbini": "便利店支付",
 }
+
+
+def group_for(page: dict) -> str:
+    return page["source_path"].split("/")[1]
