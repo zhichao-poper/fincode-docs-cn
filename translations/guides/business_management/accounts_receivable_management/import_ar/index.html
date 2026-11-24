@@ -1,0 +1,116 @@
+<h1 id="請求情報を一括でインポートする">批量导入账单信息</h1>
+<p>可以从自定义格式的 CSV 文件，批量导入通过 M's PayBridge 应收账款管理功能出具账单所需的信息。</p>
+<h2 id="インポートフォーマットを設定する">设置导入格式</h2>
+<p>可从［商户设置］＞［应收账款管理设置］＞［账单信息导入格式设置］配置 CSV 文件的导入格式。</p>
+<p><img alt="账单信息导入格式设置界面截图" src="/assets/images/business_management/accounts_receivable_management/billing_import_format_settings_screenshot.png"></p>
+<h3 id="1-デフォルトフォーマット">1. 默认格式</h3>
+<p>点击“默认格式”后，预览将采用 M's PayBridge 提供的标准账单信息导入格式。</p>
+<h3 id="2-ヘッダー行を読み飛ばす">2. 跳过表头行</h3>
+<p>在“跳过表头行”中选择 1 或更大的值，即可从待导入 CSV 的开头跳过指定行数。CSV 有表头时可使用该设置。</p>
+<h3 id="3-プレビュー">3. 预览</h3>
+<p>点击预览前，CSV 各列纵向排列。点击预览后，各列按实际 CSV 的格式横向显示。</p>
+<h3 id="4-順序移動">4. 调整顺序</h3>
+<p>在各列的“调整顺序”单元格内输入目标列号并按 Enter，或点击“↑”“↓”按钮，即可调整导入 CSV 的列顺序。</p>
+<h3 id="5-項目追加と削除">5. 添加和删除项目</h3>
+<p>点击表格右下方的“添加项目”并选择项目名称，可在导入格式中增加新列。点击某列最右侧的“×”按钮，可从导入格式中删除该列。</p>
+<h3 id="6-フォーマットを保存">6. 保存格式</h3>
+<p>点击“保存格式”可保存当前预览的格式。已保存的格式将在导入账单信息时应用。</p>
+<h3 id="7-インポートプレビュー">7. 导入预览</h3>
+<p>导入预览可根据现有 CSV 文件定义导入格式。已有包含账单信息的 CSV 文件时，可对照拟导入文件的结构定义导入格式。</p>
+<h2 id="請求情報をインポートする">导入账单信息</h2>
+<p><img alt="创建账单信息界面截图" src="/assets/images/business_management/accounts_receivable_management/billing_method_selection_page_screenshot.png"></p>
+<p>从账单信息列表进入［开始收费］＞［创建账单信息（导入）］，即可打开账单信息导入界面。</p>
+<p>选择按照已保存的账单导入格式制作的 CSV 文件并执行创建，即可将 CSV 内容导入为账单信息。</p>
+<blockquote>
+<p>[!]</p>
+<p>尚未设置账单信息导入格式时会报错。请在导入前先保存格式。</p>
+</blockquote>
+<h2 id="csvファイルの形式">CSV 文件格式</h2>
+<p>用于导入账单信息的 CSV 文件须符合以下格式。</p>
+
+<table><thead><tr><th align="left">No.</th><th align="left">项目</th><th align="left">格式</th><th align="left">备注</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="left">字符编码</td><td align="left">UTF-8</td><td align="left"></td></tr>
+<tr><td align="left">2</td><td align="left">BOM</td><td align="left">无</td><td align="left"></td></tr>
+<tr><td align="left">3</td><td align="left">分隔符</td><td align="left"><code>,</code>（逗号）</td><td align="left"></td></tr>
+<tr><td align="left">4</td><td align="left">换行符</td><td align="left"><code>\r\n</code>（CRLF）</td><td align="left"></td></tr>
+<tr><td align="left">5</td><td align="left">字符串包围符</td><td align="left">无</td><td align="left"><code>`</code>（反引号）、 <code>"</code>（双引号）、 <code>'</code>（单引号）等均作为普通字符处理。</td></tr>
+<tr><td align="left">6</td><td align="left">字符串转义字符</td><td align="left">无</td><td align="left"><code>`</code>（反引号）、 <code>"</code>（双引号）、 <code>'</code>（单引号）等均不支持转义。</td></tr>
+<tr><td align="left">7</td><td align="left">指定空值</td><td align="left"><code>,,</code></td><td align="left">留空。</td></tr>
+</tbody></table>
+<h2 id="各カラムの正しい形式とng例">各列的正确格式及错误示例</h2>
+
+<table><thead><tr><th align="left">No.</th><th align="left">列名</th><th align="left">格式</th><th align="left">错误示例</th><th align="left">邮件链接必填</th><th align="left">账单必填</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="left">收费方式<br><code lang="ja">請求方式</code></td><td align="left"><code>インボイス</code> 或 <code>メールリンク</code></td><td align="left"><code>invoice</code>、<code>01</code>、<code>link</code>、<code>メール</code></td><td align="left">〇</td><td align="left">〇</td></tr>
+<tr><td align="left">2</td><td align="left">账单 ID<br><code lang="ja">請求ID</code></td><td align="left">半角英文字母、数字和符号（最多 30 个字符）</td><td align="left">包含全角字符、半角空格，或达到 31 个字符</td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">3</td><td align="left">开具方_地址_邮政编码_覆盖<br><code lang="ja">発行元_住所_郵便番号_上書き</code></td><td align="left">自由输入（最多 16 个字符）</td><td align="left">17 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">4</td><td align="left">开具方_地址_都道府县代码_覆盖<br><code lang="ja">発行元_住所_都道府県コード_上書き</code></td><td align="left">自由输入（最多 3 个字符）</td><td align="left">4 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">5</td><td align="left">开具方_地址_市区町村_覆盖<br><code lang="ja">発行元_住所_市区町村_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">6</td><td align="left">开具方_地址_町名及门牌号_覆盖<br><code lang="ja">発行元_住所_町名・番地_上書き</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">7</td><td align="left">开具方_地址_楼名及房间号_覆盖<br><code lang="ja">発行元_住所_建物名・部屋番号_上書き</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">8</td><td align="left">开具方_地址_其他_覆盖<br><code lang="ja">発行元_住所_その他_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">9</td><td align="left">开具方_电子邮件地址_覆盖<br><code lang="ja">発行元_メアド_上書き</code></td><td align="left">电子邮件地址格式（最多 254 个字符）</td><td align="left"><code>yamada.taro</code>（缺少 @）、<code>yamada@</code>（缺少域名）、255 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">10</td><td align="left">开具方_电话号码_覆盖<br><code lang="ja">発行元_電話番号_上書き</code></td><td align="left">自由输入（最多 15 个字符）</td><td align="left">16 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">11</td><td align="left">客户 ID<br><code lang="ja">顧客ID</code></td><td align="left">半角英文字母、数字和符号（须为商户中存在的 ID，最多 60 个字符）</td><td align="left">不存在的客户 ID、61 个字符及以上、对应客户未登记姓名或电子邮件地址的 ID</td><td align="left"></td><td align="left">〇</td></tr>
+<tr><td align="left">12</td><td align="left">敬称</td><td align="left">自由输入（最多 20 个字符）</td><td align="left">21 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">13</td><td align="left">账单收件方（客户信息）_地址_邮政编码_覆盖<br><code lang="ja">請求先（顧客情報）_住所_郵便番号_上書き</code></td><td align="left">自由输入（最多 16 个字符）</td><td align="left">17 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">14</td><td align="left">账单收件方（客户信息）_地址_都道府县代码_覆盖<br><code lang="ja">請求先（顧客情報）_住所_都道府県コード_上書き</code></td><td align="left">自由输入（最多 3 个字符）</td><td align="left">4 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">15</td><td align="left">账单收件方（客户信息）_地址_市区町村_覆盖<br><code lang="ja">請求先（顧客情報）_住所_市区町村_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">16</td><td align="left">账单收件方（客户信息）_地址_町名及门牌号_覆盖<br><code lang="ja">請求先（顧客情報）_住所_町名・番地_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">17</td><td align="left">账单收件方（客户信息）_地址_楼名及房间号_覆盖<br><code lang="ja">請求先（顧客情報）_住所_建物名・部屋番号_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">18</td><td align="left">账单收件方（客户信息）_地址_其他_覆盖<br><code lang="ja">請求先（顧客情報）_住所_その他_上書き</code></td><td align="left">自由输入（最多 50 个字符）</td><td align="left">51 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">19</td><td align="left">账单收件方（客户信息）_电子邮件地址_覆盖<br><code lang="ja">請求先（顧客情報）_メアド_上書き</code></td><td align="left">电子邮件地址格式（最多 254 个字符）</td><td align="left"><code>yamada.taro</code>（缺少 @）、<code>yamada@</code>（缺少域名）、255 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">20</td><td align="left">交易内容_日期<br><code lang="ja">取引内容_日付</code></td><td align="left"><code>YYYY/MM/DD</code></td><td align="left"><code>2024-01-15</code>、<code>2024/1/1</code>、<code>令和6年1月15日</code></td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">21</td><td align="left">交易内容_品目<br><code lang="ja">取引内容_品目</code></td><td align="left">自由输入（最多 200 个字符）</td><td align="left">201 个字符及以上</td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">22</td><td align="left">交易内容_单价<br><code lang="ja">取引内容_単価</code></td><td align="left">数值（最多 10 位）</td><td align="left"><code>¥1,000</code>、<code>1,000円</code>、<code>千円</code>、11 位及以上</td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">23</td><td align="left">交易内容_数量<br><code lang="ja">取引内容_数量</code></td><td align="left">数值（1～2,147,483,647）</td><td align="left"><code>0</code>、<code>-1</code>、<code>2147483648</code>、<code>1.5</code></td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">24</td><td align="left">交易内容_适用税率（％）<br><code lang="ja">取引内容_適用税率（％）</code></td><td align="left">数值（最多 3 位）</td><td align="left"><code>10%</code>、<code>一割</code>、4 位及以上</td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">25</td><td align="left">付款截止日期<br><code lang="ja">支払期日</code></td><td align="left"><code>YYYY/MM/DD</code></td><td align="left"><code>2024-01-15</code>、<code>2024/1/1</code>、<code>令和6年1月15日</code></td><td align="left">-</td><td align="left">〇</td></tr>
+<tr><td align="left">26</td><td align="left">发送账单邮件<br><code lang="ja">請求メール送信</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）</td><td align="left"><code>true</code>、<code>送信する</code>、<code>yes</code>、<code>2</code></td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">27</td><td align="left">发送差额邮件<br><code lang="ja">差額メール送信</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）（当支付类型不是 Virtualaccount 时， <code>1</code> 不可用）</td><td align="left">支付类型不是 Virtualaccount 时指定 <code>1</code>、<code>true</code>、<code>送信する</code></td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">28</td><td align="left">发送收据邮件<br><code lang="ja">領収メール送信</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）</td><td align="left"><code>true</code>、<code>送信する</code>、<code>yes</code>、<code>2</code></td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">29</td><td align="left">账单编号<br><code lang="ja">請求書番号</code></td><td align="left">自由输入（最多 30 个字符）</td><td align="left">31 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">30</td><td align="left">账单备注栏<br><code lang="ja">請求書備考欄</code></td><td align="left">自由输入（最多 1,000 个字符）</td><td align="left">1,001 个字符及以上</td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">31</td><td align="left">税额显示方式<br><code lang="ja">税表記</code></td><td align="left"><code>0</code>（未税）或 <code>1</code>（含税）</td><td align="left"><code>外税</code>、<code>yes</code>、<code>2</code></td><td align="left">-</td><td align="left"></td></tr>
+<tr><td align="left">32</td><td align="left">商户／服务名称<br><code lang="ja">ショップ・サービス名称</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left">-</td></tr>
+<tr><td align="left">33</td><td align="left">客户名称<br><code lang="ja">顧客名</code></td><td align="left">自由输入（最多 384 字节）</td><td align="left">385 字节及以上</td><td align="left">△※3</td><td align="left">-</td></tr>
+<tr><td align="left">34</td><td align="left">客户电子邮件地址<br><code lang="ja">顧客メールアドレス</code></td><td align="left">电子邮件地址格式（最多 254 个字符）</td><td align="left"><code>yamada.taro</code>（缺少 @）、<code>yamada@</code>（缺少域名）、255 个字符及以上</td><td align="left">△※1</td><td align="left">-</td></tr>
+<tr><td align="left">35</td><td align="left">发送支付完成邮件<br><code lang="ja">決済完了メール送信</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）</td><td align="left"><code>true</code>、<code>送信する</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left">-</td></tr>
+<tr><td align="left">36</td><td align="left">邮件模板 ID<br><code lang="ja">メールテンプレートID</code></td><td align="left"><code>mt_</code> 加上 22 个 Base64（URL 安全）字符</td><td align="left"><code>template_001</code>、<code>MT-12345</code></td><td align="left"></td><td align="left">-</td></tr>
+<tr><td align="left">37</td><td align="left">账单金额<br><code lang="ja">請求金額</code></td><td align="left">数值（最多 10 位）</td><td align="left"><code>¥10,000</code>、<code>10,000円</code>、<code>-1000</code>、11 位及以上</td><td align="left">〇</td><td align="left">-</td></tr>
+<tr><td align="left">38</td><td align="left">付款页面有效期<br><code lang="ja">支払いページ有効期限</code></td><td align="left"><code>yyyy/MM/dd HH:mm</code></td><td align="left"><code>2024-01-15 09:00:00</code>（使用连字符分隔）、<code>2024/01/15</code>（缺少时间）、<code>2024/01/15 09:00:00</code>（包含秒）</td><td align="left">〇</td><td align="left">-</td></tr>
+<tr><td align="left">39</td><td align="left">成功 URL<br><code lang="ja">成功URL</code></td><td align="left">URL 格式（最多 256 个字符）</td><td align="left"><code>example.com</code>（缺少协议部分）、257 个字符及以上</td><td align="left"></td><td align="left">-</td></tr>
+<tr><td align="left">40</td><td align="left">取消 URL<br><code lang="ja">キャンセルURL</code></td><td align="left">URL 格式（最多 256 个字符）</td><td align="left"><code>example.com</code>（缺少协议部分）、257 个字符及以上</td><td align="left"></td><td align="left">-</td></tr>
+<tr><td align="left">41</td><td align="left">支付类型<br><code lang="ja">決済種別</code></td><td align="left"><code>Card</code>、<code>Virtualaccount</code>、<code>Directdebit</code>、<code>Payeeaccount</code>、<code>Konbini</code> 中的一种</td><td align="left"><code>card</code>（小写）、<code>クレジットカード</code>、<code>virtual_account</code>、<code>コンビニ</code></td><td align="left">〇</td><td align="left">〇</td></tr>
+<tr><td align="left">42</td><td align="left">处理类型<br><code lang="ja">処理区分</code></td><td align="left"><code>0</code>（预授权）或 <code>1</code>（即时扣款）</td><td align="left"><code>AUTH</code>、<code>CAPTURE</code>、<code>仮売上</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">43</td><td align="left">3D Secure 2.0 使用类型<br><code lang="ja">3Dセキュア2.0利用種別</code></td><td align="left"><code>0</code>（不使用）或 <code>1</code>（使用 3DS2.0）</td><td align="left"><code>true</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">44</td><td align="left">不支持 3D Secure 2.0 时的行为<br><code lang="ja">3Dセキュア2.0未対応時の動作</code></td><td align="left"><code>0</code>（支付错误）或 <code>1</code>（正常授权）</td><td align="left"><code>true</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">45</td><td align="left">银行转账（虚拟账户）付款期限<br><code lang="ja">銀行振込（バーチャル口座）支払期限</code></td><td align="left">大于等于 1 且不超过 2 位的整数</td><td align="left"><code>0</code>、<code>-1</code>、<code>1.5</code>、<code>三十日</code>、3 位及以上</td><td align="left">△※2</td><td align="left">-</td></tr>
+<tr><td align="left">46</td><td align="left">条形码显示有效天数<br><code lang="ja">バーコード表示期限日数</code></td><td align="left">大于等于 1 且不超过 3 位的整数</td><td align="left"><code>0</code>、<code>-1</code>、<code>1.5</code>、<code>三十日</code>、4 位及以上</td><td align="left">△※3</td><td align="left">-</td></tr>
+<tr><td align="left">47</td><td align="left">银行账户扣款请求日期<br><code lang="ja">口座振替依頼日</code></td><td align="left"><code>YYYY/MM/DD</code></td><td align="left"><code>2024-01-15</code>、过去日期、基准日以外的日期、收费请求受理期间结束后的日期</td><td align="left"></td><td align="left">△※4</td></tr>
+<tr><td align="left">48</td><td align="left">扣款失败时是否发送邮件通知<br><code lang="ja">引落失敗時のメール通知要否</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）</td><td align="left"><code>true</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">49</td><td align="left">商户自定义输入 1（账单）<br><code lang="ja">加盟店自由入力1（請求）</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">50</td><td align="left">商户自定义输入 2（账单）<br><code lang="ja">加盟店自由入力2（請求）</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left"></td></tr>
+<tr><td align="left">51</td><td align="left">商户自定义输入 3（账单）<br><code lang="ja">加盟店自由入力3（請求）</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left"></td></tr>
+</tbody></table>
+<p>图例：〇＝必填，△＝满足条件时必填，（空白）＝可选，-＝该收费方式不使用。</p>
+<ul>
+<li>※1 收费方式为邮件链接，且下列任一邮件发送标志为 <code>1</code>（发送）时必填：便利店受理邮件发送标志、付款画面通知邮件发送标志、URL 通知邮件发送标志、发送支付完成邮件。</li>
+<li>※2 仅在支付类型指定为 <code>Virtualaccount</code>（银行转账〔虚拟账户〕）时，必须指定银行转账（虚拟账户）付款期限。</li>
+<li>※3 仅在支付类型指定为 <code>Konbini</code>（便利店支付）时，必须指定条形码显示有效天数。</li>
+<li>※4 支付类型选择 <code>Directdebit</code>（银行账户扣款）时，签发账单时须填写银行账户扣款请求日期。</li>
+</ul>
+<h2 id="インポートファイル内にエラーがある場合の挙動">导入文件包含错误时的行为</h2>
+<p>导入账单时，按照以下顺序检查 CSV。</p>
+<ol>
+<li>账单导入格式设置：是否已设置格式。</li>
+<li>CSV 文件：是否为 CSV、是否为空、文件内的账单 ID 是否重复等。</li>
+<li>各数据行：必填项是否完整、各列格式是否正确、通过 ID 指定的客户是否存在等。</li>
+</ol>
+<p>如果较早的检查发现错误，后续检查不会执行。例如 CSV 文件检查（2）发现错误时，不执行数据行检查（3）。</p>
+<p>在数据行检查（3）中，如果多行存在错误，错误详情会显示所有出错行。不过单行检查发现首个错误便会停止，因此即使一行内有多个错误列，每次导入也只能看到该行的一项错误。</p>
+<p>任一数据行存在错误，整个文件均不会导入，包括无错误的行。</p>
+<h2 id="一括請求">批量收费</h2>
+<p><img alt="账单列表中批量收费的截图" src="/assets/images/business_management/accounts_receivable_management/bulk_billing_screenshot.png"></p>
+<p>通过创建账单信息或导入生成的账单，均可在账单信息列表中批量收费。</p>
+<p>在“草稿”标签页通过各行左侧的复选框选中一条或多条要发起收费的账单信息，再点击“批量对选中项目收费”，即可批量处理。</p>
+<p>缺少支付方式等收费所需信息的账单会报错。内容完整且未报错的账单将成功发起收费。</p>

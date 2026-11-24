@@ -62,6 +62,7 @@
 <li><a href="../index.html">入门</a></li>
 <li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
 <li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="../test_api_exec/index.html">在测试环境执行支付</a></li>
 <li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
 <li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
 <li><a href="../prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
@@ -69,7 +70,6 @@
 <li><a href="../prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
 <li><a href="index.html" aria-current="page" class="active">在生产环境公开支付功能</a></li>
 <li><a href="../prod_calc/index.html">查看销售金额</a></li>
-<li><a href="../test_api_exec/index.html">在测试环境执行支付</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -87,31 +87,11 @@
 <h2 id="テスト環境から本番環境への移行">从测试环境切换到生产环境</h2>
 <p>生产环境和测试环境的区别如下。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">类别</th><th align="left">测试环境</th><th align="left">生产环境</th></tr></thead><tbody><tr><td align="left">API 端点 URL</td><td align="left">api.test.fincode.jp</td><td align="left">api.fincode.jp</td></tr><tr><td align="left">API 密钥</td><td align="left">从测试环境的管理后台获取</td><td align="left">从生产环境的管理后台获取</td></tr><tr><td align="left">电子邮件地址</td><td align="left"><a href="mailto:noreply@test.fincode.jp">noreply@test.fincode.jp</a></td><td align="left"><a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a></td></tr></tbody></table>
+<table><thead><tr><th align="left">类别</th><th align="left">测试环境</th><th align="left">生产环境</th></tr></thead><tbody>
+<tr><td align="left">API 端点 URL</td><td align="left">api.test.fincode.jp</td><td align="left">api.fincode.jp</td></tr>
+<tr><td align="left">API 密钥</td><td align="left">从测试环境的管理后台获取</td><td align="left">从生产环境的管理后台获取</td></tr>
+<tr><td align="left">电子邮件地址</td><td align="left"><a href="mailto:noreply@test.fincode.jp">noreply@test.fincode.jp</a></td><td align="left"><a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a></td></tr>
+</tbody></table>
 <p>将 API 端点 URL 和 API 密钥更新为生产环境的值，并设置允许接收来自相应域名的电子邮件。<br>
 从测试环境到生产环境的切换即告完成。</p>
 <p>商户收到实际订单并完成支付处理后，即可查看销售款。</p>

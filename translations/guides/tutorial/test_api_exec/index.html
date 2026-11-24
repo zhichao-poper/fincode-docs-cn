@@ -26,14 +26,12 @@ DATA = {
     'amount': '500',
 }
 
-
 def create_request(endpoint):
     url = BASE_URL + endpoint
     req = urllib.request.Request(url, method=METHOD)
     req.add_header('Content-Type', 'application/json')
     req.add_header('Authorization', API_KEY)
     return req
-
 
 def main():
     endpoint = '/v1/payments'
@@ -50,7 +48,6 @@ def main():
         body = err.read().decode(CHARSET)
         print('ERROR')
         print(body)
-
 
 if __name__ == "__main__":
     main()</code></pre></div>
@@ -248,30 +245,11 @@ function main() {
 <p><img alt="控制面板的支付列表" src="/assets/images/tutorial/test_payments_list.png"></p>
 <h2 id="決済の現状態説明表">支付当前状态说明</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">当前状态（交易状态）</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">未处理</td><td align="left">交易已登记，或已为该交易执行 3D Secure。</td></tr><tr><td align="left">预授权</td><td align="left">此笔交易已完成预授权。</td></tr><tr><td align="left">请款完成</td><td align="left">此笔交易已完成即时扣款，或预授权交易已完成请款处理。</td></tr><tr><td align="left">已取消</td><td align="left">此笔交易已完成取消处理。</td></tr></tbody></table>
+<table><thead><tr><th align="left">当前状态（交易状态）</th><th align="left">说明</th></tr></thead><tbody>
+<tr><td align="left">未处理</td><td align="left">交易已登记，或已为该交易执行 3D Secure。</td></tr>
+<tr><td align="left">预授权</td><td align="left">此笔交易已完成预授权。</td></tr>
+<tr><td align="left">请款完成</td><td align="left">此笔交易已完成即时扣款，或预授权交易已完成请款处理。</td></tr>
+<tr><td align="left">已取消</td><td align="left">此笔交易已完成取消处理。</td></tr>
+</tbody></table>
 <h2 id="次のステップ">下一步</h2>
 <p><i class="icon-after icon-next"><a href="/tutorial/test_webhook">在测试环境设置通知（Webhook）</a></i></p>

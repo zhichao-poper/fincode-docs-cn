@@ -62,15 +62,17 @@
 <li><a href="../index.html">控制面板</a></li>
 <li><a href="../examination/index.html">商户审核</a></li>
 <li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+<li><a href="index.html" aria-current="page" class="active">管理销售款入账等事项</a></li>
+<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../chargeback/index.html">拒付</a></li>
 <li><a href="../download_queue/index.html">什么是下载队列</a></li>
 <li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
 <li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
 <li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
-<li><a href="../chargeback/index.html">拒付</a></li>
-<li><a href="index.html" aria-current="page" class="active">管理销售款入账等事项</a></li>
 <li><a href="../accounts_receivable_management/bill_by_invoice/index.html">通过账单功能收费</a></li>
-<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
-<li><a href="../team/index.html">团队管理</a></li>
+<li><a href="../accounts_receivable_management/import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="../accounts_receivable_management/export_ar/index.html">将账单信息导出为 CSV</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -83,47 +85,13 @@
 <p>通过 fincode 支付功能产生的销售款，以及通过平台功能产生的使用费收入，均会按各商户设置的“入账周期”汇入相应商户。<br>
 可在各商户的管理后台查看入账日期和入账金额明细。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">商户类型</th><th align="left">项目</th><th align="left">入账周期</th><th align="left">管理后台<br>菜单</th></tr></thead><tbody><tr><td align="left">标准</td><td align="left">商户通过支付产生的销售款</td><td align="left">标准商户的入账周期</td><td align="left">销售款入账</td></tr><tr><td align="left">平台<br>（主商户）</td><td align="left">商户通过支付产生的销售款</td><td align="left">平台（主商户）的入账周期</td><td align="left">销售款入账</td></tr><tr><td align="left"></td><td align="left">从租户商户的销售款中扣除的<br>平台使用费</td><td align="left">平台（主商户）的入账周期</td><td align="left">使用费收入</td></tr><tr><td align="left">平台<br>（子商户）</td><td align="left">商户通过支付产生的销售款</td><td align="left">平台（子商户）的入账周期</td><td align="left">销售款入账</td></tr><tr><td align="left">租户商户</td><td align="left">商户通过支付产生的销售款</td><td align="left">租户商户的入账周期</td><td align="left">销售款入账</td></tr></tbody></table>
+<table><thead><tr><th align="left">商户类型</th><th align="left">项目</th><th align="left">入账周期</th><th align="left">管理后台<br>菜单</th></tr></thead><tbody>
+<tr><td align="left">标准</td><td align="left">商户通过支付产生的销售款</td><td align="left">标准商户的入账周期</td><td align="left">销售款入账</td></tr>
+<tr><td align="left">平台<br>（主商户）</td><td align="left">商户通过支付产生的销售款</td><td align="left">平台（主商户）的入账周期</td><td align="left">销售款入账</td></tr>
+<tr><td align="left"></td><td align="left">从租户商户的销售款中扣除的<br>平台使用费</td><td align="left">平台（主商户）的入账周期</td><td align="left">使用费收入</td></tr>
+<tr><td align="left">平台<br>（子商户）</td><td align="left">商户通过支付产生的销售款</td><td align="left">平台（子商户）的入账周期</td><td align="left">销售款入账</td></tr>
+<tr><td align="left">租户商户</td><td align="left">商户通过支付产生的销售款</td><td align="left">租户商户的入账周期</td><td align="left">销售款入账</td></tr>
+</tbody></table>
 <ul>
 <li>根据入账周期，每个汇总期间生成一个销售款入账 ID（或使用费收入 ID），并按 ID 结算。</li>
 <li>入账转账手续费由 fincode 承担。</li>
@@ -132,21 +100,9 @@
 <h2 id="deposit-cycle">入账周期</h2>
 <p>入账周期如下。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">入账周期</th><th align="left">汇总期间</th><th align="left">入账日期</th></tr></thead><tbody><tr><td align="left">标准（每月一次）</td><td align="left">一个月（1 日至最后一日）的销售款</td><td align="left">次月最后一日</td></tr></tbody></table>
+<table><thead><tr><th align="left">入账周期</th><th align="left">汇总期间</th><th align="left">入账日期</th></tr></thead><tbody>
+<tr><td align="left">标准（每月一次）</td><td align="left">一个月（1 日至最后一日）的销售款</td><td align="left">次月最后一日</td></tr>
+</tbody></table>
 <ul>
 <li>如果入账当天金融机构或汇款方 GMO Epsilon 休业，则提前至上一工作日入账。</li>
 <li>使用 fincode 商务卡期间，汇总期间的结算截止日由当月最后一日改为次月 10 日。入账日期保持不变。<br>详情请参阅<a href="../businesscard/index.html#limit-cycle">此处</a>。　</li>
@@ -156,7 +112,7 @@
 <h3 id="決済の売上の確認方法">查看支付产生的销售款</h3>
 <p>将支付产生的销售款扣除 fincode 收取的款项后，转入商户指定账户。<br>
 可在管理后台“销售款入账”查看入账金额明细。<br>
-“销售款入账”中的信息也可通过<a href="../../../reference.html#tag/%E5%A3%B2%E4%B8%8A%E5%85%A5%E9%87%91">销售款入账 API</a>获取。</p>
+“销售款入账”中的信息也可通过<a href="../../../reference.html#tag/%E9%94%80%E5%94%AE%E6%AC%BE%E5%85%A5%E8%B4%A6">销售款入账 API</a>获取。</p>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">
   销售款由 GMO Epsilon 名下的账户汇出。
@@ -164,27 +120,11 @@
 </div>
 <p><img alt="销售款入账详情页面" src="../../../assets/payment-guides/business_management/deposit_image.png"></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">对应部分</th><th align="left">显示项目</th></tr></thead><tbody><tr><td align="left">A．销售款入账信息</td><td align="left"> 销售款入账 ID、状态、汇总期间、转账日期、入账金额、转账账户</td></tr><tr><td align="left">B．入账金额明细</td><td align="left">各支付方式的销售金额，以及 fincode 收取的款项※的明细<br>※fincode 收取的款项包括手续费、跨入账周期结算截止日的取消款项、拒付款项等。<br>租户商户扣除的是平台使用费。 </td></tr><tr><td align="left">C．交易明细　　</td><td align="left">按订单 ID 列出的结算明细<br>• 交易明细可导出为 CSV，步骤请参阅<a href="#export">导出交易明细</a>。<br>• 在交易状态变为“请款完成”的次日反映。<br>• 按订单 ID 显示的消费税为参考值。<br>• 发生取消时，取消操作对应的订单 ID 将新增一条负金额记录。<br>• 修改金额时，执行修改金额的订单 ID 将新增以下记录。<br>    - 按修改后金额记录一条<br>    - 按修改前金额记一条负数</td></tr></tbody></table>
+<table><thead><tr><th align="left">对应部分</th><th align="left">显示项目</th></tr></thead><tbody>
+<tr><td align="left">A．销售款入账信息</td><td align="left"> 销售款入账 ID、状态、汇总期间、转账日期、入账金额、转账账户</td></tr>
+<tr><td align="left">B．入账金额明细</td><td align="left">各支付方式的销售金额，以及 fincode 收取的款项※的明细<br>※fincode 收取的款项包括手续费、跨入账周期结算截止日的取消款项、拒付款项等。<br>租户商户扣除的是平台使用费。 </td></tr>
+<tr><td align="left">C．交易明细　　</td><td align="left">按订单 ID 列出的结算明细<br>• 交易明细可导出为 CSV，步骤请参阅<a href="#export">导出交易明细</a>。<br>• 在交易状态变为“请款完成”的次日反映。<br>• 按订单 ID 显示的消费税为参考值。<br>• 发生取消时，取消操作对应的订单 ID 将新增一条负金额记录。<br>• 修改金额时，执行修改金额的订单 ID 将新增以下记录。<br>    - 按修改后金额记录一条<br>    - 按修改前金额记一条负数</td></tr>
+</tbody></table>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">
 <ul>
@@ -210,52 +150,23 @@
 <h3 id="プラットフォーム利用料収入の確認方法">查看平台使用费收入</h3>
 <p>平台使用费扣除 fincode 手续费后，汇入平台（主商户）。<br>
 可在管理后台（主商户）的“使用费收入”查看入账金额明细。<br>
-“使用费收入”中的信息也可通过<a href="../../../reference.html#tag/%E5%A3%B2%E4%B8%8A%E5%85%A5%E9%87%91">销售款入账 API</a>获取。</p>
+“使用费收入”中的信息也可通过<a href="../../../reference.html#tag/%E9%94%80%E5%94%AE%E6%AC%BE%E5%85%A5%E8%B4%A6">销售款入账 API</a>获取。</p>
 <p><img alt="平台销售款入账详情页面" src="../../../assets/payment-guides/business_management/deposit_image_pf.png"></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">对应部分</th><th align="left">显示项目</th></tr></thead><tbody><tr><td align="left">A．使用费入账信息</td><td align="left">使用费收入 ID、状态、汇总期间、转账日期、入账金额、转账账户</td></tr><tr><td align="left">B．入账金额明细</td><td align="left">购买者向租户商户付款的明细、租户商户向平台付款的明细，以及平台向 fincode 付款的明细</td></tr><tr><td align="left">C．各租户商户明细</td><td align="left">各租户商户按销售款入账 ID 列出的结算明细<br>交易明细可导出为 CSV。</td></tr></tbody></table>
+<table><thead><tr><th align="left">对应部分</th><th align="left">显示项目</th></tr></thead><tbody>
+<tr><td align="left">A．使用费入账信息</td><td align="left">使用费收入 ID、状态、汇总期间、转账日期、入账金额、转账账户</td></tr>
+<tr><td align="left">B．入账金额明细</td><td align="left">购买者向租户商户付款的明细、租户商户向平台付款的明细，以及平台向 fincode 付款的明细</td></tr>
+<tr><td align="left">C．各租户商户明细</td><td align="left">各租户商户按销售款入账 ID 列出的结算明细<br>交易明细可导出为 CSV。</td></tr>
+</tbody></table>
 <h2 id="export">导出交易明细</h2>
 <p>在管理后台的［销售款入账］打开目标销售款入账 ID，点击［交易明细］下方的［导出］按钮。<br>
 可选择以下两种导出方法。</p>
 <p><img alt="导出按钮的选择菜单" src="../../../assets/payment-guides/business_management/download_queue_export_button.png"></p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">导出方法</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">导出当前显示的数据</td><td align="left">将当前画面显示的交易明细直接下载为 CSV 文件。</td></tr><tr><td align="left">指定详细条件并加入队列</td><td align="left">指定筛选条件并提交导出请求。生成的文件可从<a href="../download_queue/index.html">下载队列</a>获取。</td></tr></tbody></table>
+<table><thead><tr><th align="left">导出方法</th><th align="left">说明</th></tr></thead><tbody>
+<tr><td align="left">导出当前显示的数据</td><td align="left">将当前画面显示的交易明细直接下载为 CSV 文件。</td></tr>
+<tr><td align="left">指定详细条件并加入队列</td><td align="left">指定筛选条件并提交导出请求。生成的文件可从<a href="../download_queue/index.html">下载队列</a>获取。</td></tr>
+</tbody></table>
 <p>如需导出超出当前画面显示范围的全部交易，请使用［指定详细条件并加入队列］。</p>
 <h3 id="抽出条件を指定してキューに追加する">指定筛选条件并加入队列</h3>
 <p>点击［指定详细条件并加入队列］后，将显示［添加到下载队列］侧边面板。<br>
@@ -263,35 +174,13 @@
 <p><img alt="［添加到下载队列］侧边面板" src="../../../assets/payment-guides/business_management/download_queue_side_sheet.png"></p>
 <p>可指定的筛选条件如下。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">筛选条件</th><th align="left">填写内容</th></tr></thead><tbody><tr><td align="left">范围</td><td align="left">从［当前商户］［平台／子商户］［租户商户］中选择导出范围。</td></tr><tr><td align="left">指定商户 ID</td><td align="left">可直接指定目标商户 ID。指定商户 ID 后，范围设置将被忽略。</td></tr><tr><td align="left">确定处理日期</td><td align="left">指定交易完成确定处理的日期范围。该日期在销售款入账信息中显示为“汇总期间”。</td></tr><tr><td align="left">预计入账日期<br>必填</td><td align="left">指定各笔交易所保存的预计入账日期范围。</td></tr><tr><td align="left">交易类型</td><td align="left">可选择支付、退款、拒付、调整，也可选择银行账户扣款或虚拟账户相关的各类手续费。</td></tr></tbody></table>
+<table><thead><tr><th align="left">筛选条件</th><th align="left">填写内容</th></tr></thead><tbody>
+<tr><td align="left">范围</td><td align="left">从［当前商户］［平台／子商户］［租户商户］中选择导出范围。</td></tr>
+<tr><td align="left">指定商户 ID</td><td align="left">可直接指定目标商户 ID。指定商户 ID 后，范围设置将被忽略。</td></tr>
+<tr><td align="left">确定处理日期</td><td align="left">指定交易完成确定处理的日期范围。该日期在销售款入账信息中显示为“汇总期间”。</td></tr>
+<tr><td align="left">预计入账日期<br>必填</td><td align="left">指定各笔交易所保存的预计入账日期范围。</td></tr>
+<tr><td align="left">交易类型</td><td align="left">可选择支付、退款、拒付、调整，也可选择银行账户扣款或虚拟账户相关的各类手续费。</td></tr>
+</tbody></table>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">
 <ul>

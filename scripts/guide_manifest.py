@@ -155,7 +155,6 @@ def group_for(page: dict) -> str:
     return page["source_path"].split("/")[1]
 
 
-
 PAGES += [
     {
         "key": route.replace("/", "-"),
@@ -176,11 +175,10 @@ PAGES += [
         ('platform/sign_up', '开设平台'),
         ('platform/terms_of_service', '完善平台使用条款'),
         ('platform/terms_of_service_mpb', '完善平台使用条款（M’s PayBridge）'),
-        ('business_management', '控制面板'),
-        ('business_management/examination', '商户审核'),
         ('tutorial', '入门'),
         ('tutorial/test_sign_up', '在测试环境注册新用户'),
         ('tutorial/test_info', '查看测试环境 API 信息及连接信息'),
+        ('tutorial/test_api_exec', '在测试环境执行支付'),
         ('tutorial/test_webhook', '在测试环境设置通知（Webhook）'),
         ('tutorial/prod_sign_up', '在生产环境注册新用户（生产环境申请）'),
         ('tutorial/prod_sign_up_mpb', '在生产环境注册新用户（生产环境申请）（M’s PayBridge）'),
@@ -188,16 +186,19 @@ PAGES += [
         ('tutorial/prod_webhook', '在生产环境设置通知（Webhook）'),
         ('tutorial/prod_api', '在生产环境公开支付功能'),
         ('tutorial/prod_calc', '查看销售金额'),
-        ('tutorial/test_api_exec', '在测试环境执行支付'),
+        ('business_management', '控制面板'),
+        ('business_management/examination', '商户审核'),
         ('business_management/shop_info_update', '变更登记信息'),
+        ('business_management/team', '团队管理'),
+        ('business_management/deposit', '管理销售款入账等事项'),
+        ('business_management/businesscard', 'fincode 商务卡'),
+        ('business_management/chargeback', '拒付'),
         ('business_management/download_queue', '什么是下载队列'),
         ('business_management/accounts_receivable_management', '什么是应收账款管理'),
         ('business_management/accounts_receivable_management/customer_management', '使用客户管理功能管理账单收件方信息'),
         ('business_management/accounts_receivable_management/bill_by_session', '通过邮件链接收费'),
-        ('business_management/chargeback', '拒付'),
-        ('business_management/deposit', '管理销售款入账等事项'),
         ('business_management/accounts_receivable_management/bill_by_invoice', '通过账单功能收费'),
-        ('business_management/businesscard', 'fincode 商务卡'),
-        ('business_management/team', '团队管理'),
+        ('business_management/accounts_receivable_management/import_ar', '批量导入账单信息'),
+        ('business_management/accounts_receivable_management/export_ar', '将账单信息导出为 CSV'),
     )
 ]

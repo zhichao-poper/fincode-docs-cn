@@ -143,7 +143,13 @@ def main() -> None:
             for element in source_elements
             if element["tag"] == "code"
         ]
-        if Counter(code for code in parser.codes if JAPANESE.search(code)) - Counter(source_codes):
+        source_literals = Counter(source_codes)
+        source_literals.update(
+            text_content(element).strip()
+            for element in source_elements
+            if element["tag"] == "td"
+        )
+        if Counter(code for code in parser.codes if JAPANESE.search(code)) - source_literals:
             errors.append(f"译文的代码含原文未定义的日文：{page['translation']}")
         if group_for(page) != "payment":
             source_order = [

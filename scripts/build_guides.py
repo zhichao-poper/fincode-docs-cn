@@ -7,12 +7,15 @@ import html
 import os
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, unquote, urlsplit
+
+from build_spec import TRANSLATIONS, load_yaml
 
 from guide_manifest import GROUPS, PAGES, SECTIONS, group_for
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
+API_TAG_NAMES = load_yaml(TRANSLATIONS)["tag_names"]
 OUTPUT_BY_SOURCE_ROUTE = {
     page["source_url"].removeprefix("https://docs.fincode.jp"): page["output"]
     for page in PAGES
@@ -42,12 +45,18 @@ def rewrite_fragment(fragment: str, output: Path) -> str:
         ),
         fragment,
     )
+
     def replace_internal_link(match: re.Match[str]) -> str:
         href = html.unescape(match.group(1))
         parsed = urlsplit(href)
         route = parsed.path.rstrip("/").removesuffix("/index")
+        fragment = parsed.fragment
+        if route == "/api" and fragment.startswith("tag/"):
+            tag, separator, operation = fragment.removeprefix("tag/").partition("/operation/")
+            tag = unquote(tag)
+            fragment = f"tag/{quote(API_TAG_NAMES.get(tag, tag), safe='')}{separator}{operation}"
         suffix = (f"?{parsed.query}" if parsed.query else "") + (
-            f"#{parsed.fragment}" if parsed.fragment else ""
+            f"#{fragment}" if fragment else ""
         )
         if route == "/api":
             url = relative_url(output, SITE / "reference.html") + suffix
@@ -67,7 +76,8 @@ def rewrite_fragment(fragment: str, output: Path) -> str:
 def navigation(current: dict, output: Path) -> str:
     parts = []
     current_group = group_for(current)
-    for section, section_title in (SECTIONS if current_group == "payment" else {current_group: GROUPS[current_group]}).items():
+    sections = SECTIONS if current_group == "payment" else {current_group: GROUPS[current_group]}
+    for section, section_title in sections.items():
         section_active = ' class="section-active"' if section == current["section"] else ""
         parts.append(
             f'<p class="guide-nav-section"{section_active}>'

@@ -62,15 +62,17 @@
 <li><a href="../../index.html">控制面板</a></li>
 <li><a href="../../examination/index.html">商户审核</a></li>
 <li><a href="../../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../../team/index.html">团队管理</a></li>
+<li><a href="../../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../../chargeback/index.html">拒付</a></li>
 <li><a href="../../download_queue/index.html">什么是下载队列</a></li>
 <li><a href="../index.html">什么是应收账款管理</a></li>
 <li><a href="../customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
 <li><a href="index.html" aria-current="page" class="active">通过邮件链接收费</a></li>
-<li><a href="../../chargeback/index.html">拒付</a></li>
-<li><a href="../../deposit/index.html">管理销售款入账等事项</a></li>
 <li><a href="../bill_by_invoice/index.html">通过账单功能收费</a></li>
-<li><a href="../../businesscard/index.html">fincode 商务卡</a></li>
-<li><a href="../../team/index.html">团队管理</a></li>
+<li><a href="../import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="../export_ar/index.html">将账单信息导出为 CSV</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -83,27 +85,11 @@
 <p>邮件链接是应收账款管理支持的收费方式之一。<br>
 将 fincode 签发的 <strong>重定向式支付 URL</strong> 通过电子邮件发给购买者。购买者可在链接所指的支付页面输入卡片信息，或向页面显示的虚拟账户转账，也可在便利店柜台出示页面上的支付条形码来完成付款。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>邮件链接支持的支付方式</th><th>说明</th></tr></thead><tbody><tr><td>卡片支付</td><td>接受信用卡等卡片来支付账单。</td></tr><tr><td>便利店支付</td><td>展示供购买者在便利店柜台出示的条形码，供其付款。</td></tr><tr><td>银行转账（虚拟账户）</td><td>为每笔交易签发唯一的 GMO Aozora Net Bank 账户（虚拟账户），接受银行转账。</td></tr></tbody></table>
+<table><thead><tr><th>邮件链接支持的支付方式</th><th>说明</th></tr></thead><tbody>
+<tr><td>卡片支付</td><td>接受信用卡等卡片来支付账单。</td></tr>
+<tr><td>便利店支付</td><td>展示供购买者在便利店柜台出示的条形码，供其付款。</td></tr>
+<tr><td>银行转账（虚拟账户）</td><td>为每笔交易签发唯一的 GMO Aozora Net Bank 账户（虚拟账户），接受银行转账。</td></tr>
+</tbody></table>
 <p>功能使用详情请参阅<a href="https://docs.fincode.jp/payment/redirect_type">执行重定向式支付</a>。</p>
 <h2 id="請求情報をもとにメールリンクで請求する">根据账单信息通过邮件链接收费</h2>
 <p>可按以下步骤从 fincode 应收账款管理发送含付款链接的账单邮件。</p>
@@ -116,53 +102,14 @@
 <p>若在测试环境进行卡片支付，请使用测试卡片。<a href="https://docs.fincode.jp/develop_support/test_resources">查看详情</a></p>
 <h2 id="メールリンクと請求情報のステータス遷移">邮件链接与账单信息的状态变化</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>操作</th><th>操作前状态</th><th>操作后状态</th><th>说明</th></tr></thead><tbody><tr><td>商户创建账单信息</td><td>—</td><td>草稿</td><td>刚创建账单信息，尚未发给购买者。</td></tr><tr><td>商户编辑账单信息</td><td>草稿</td><td>草稿</td><td>可以修改内容，状态仍为草稿。</td></tr><tr><td>商户签发邮件链接</td><td>草稿</td><td>等待支付</td><td>已签发支付 URL 并发送邮件。此后无法修改内容。</td></tr><tr><td>（支持卡片支付时）购买者完成卡片支付</td><td>等待支付</td><td>完成</td><td>购买者完成支付后，账单信息状态更新为“完成”。</td></tr><tr><td>（支持便利店支付时）购买者在便利店柜台完成付款</td><td>等待支付</td><td>完成</td><td>购买者在柜台出示条形码完成支付后，账单信息状态更新为“完成”。</td></tr><tr><td>（支持银行转账〔虚拟账户〕时）购买者汇款</td><td>等待支付</td><td>完成</td><td>购买者向虚拟账户汇款后，账单信息状态更新为“完成”。即使汇入金额不同，只要到账也会视为完成。<br>如果启用了允许入账金额设置，汇款金额须与账单金额一致才会转为“完成”。金额不同时，汇款将自动退回，状态仍为“等待支付”。</td></tr></tbody></table>
+<table><thead><tr><th>操作</th><th>操作前状态</th><th>操作后状态</th><th>说明</th></tr></thead><tbody>
+<tr><td>商户创建账单信息</td><td>—</td><td>草稿</td><td>刚创建账单信息，尚未发给购买者。</td></tr>
+<tr><td>商户编辑账单信息</td><td>草稿</td><td>草稿</td><td>可以修改内容，状态仍为草稿。</td></tr>
+<tr><td>商户签发邮件链接</td><td>草稿</td><td>等待支付</td><td>已签发支付 URL 并发送邮件。此后无法修改内容。</td></tr>
+<tr><td>（支持卡片支付时）购买者完成卡片支付</td><td>等待支付</td><td>完成</td><td>购买者完成支付后，账单信息状态更新为“完成”。</td></tr>
+<tr><td>（支持便利店支付时）购买者在便利店柜台完成付款</td><td>等待支付</td><td>完成</td><td>购买者在柜台出示条形码完成支付后，账单信息状态更新为“完成”。</td></tr>
+<tr><td>（支持银行转账〔虚拟账户〕时）购买者汇款</td><td>等待支付</td><td>完成</td><td>购买者向虚拟账户汇款后，账单信息状态更新为“完成”。即使汇入金额不同，只要到账也会视为完成。<br>如果启用了允许入账金额设置，汇款金额须与账单金额一致才会转为“完成”。金额不同时，汇款将自动退回，状态仍为“等待支付”。</td></tr>
+</tbody></table>
 
           </article>
           <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/accounts_receivable_management/bill_by_session" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>

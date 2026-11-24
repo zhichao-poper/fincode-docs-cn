@@ -62,6 +62,7 @@
 <li><a href="../index.html">入门</a></li>
 <li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
 <li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">在测试环境执行支付</a></li>
 <li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
 <li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
 <li><a href="../prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
@@ -69,7 +70,6 @@
 <li><a href="../prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
 <li><a href="../prod_api/index.html">在生产环境公开支付功能</a></li>
 <li><a href="../prod_calc/index.html">查看销售金额</a></li>
-<li><a href="index.html" aria-current="page" class="active">在测试环境执行支付</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -106,14 +106,12 @@ DATA = {
     'amount': '500',
 }
 
-
 def create_request(endpoint):
     url = BASE_URL + endpoint
     req = urllib.request.Request(url, method=METHOD)
     req.add_header('Content-Type', 'application/json')
     req.add_header('Authorization', API_KEY)
     return req
-
 
 def main():
     endpoint = '/v1/payments'
@@ -130,7 +128,6 @@ def main():
         body = err.read().decode(CHARSET)
         print('ERROR')
         print(body)
-
 
 if __name__ == "__main__":
     main()</code></pre></div>
@@ -328,31 +325,12 @@ function main() {
 <p><img alt="控制面板的支付列表" src="../../../assets/payment-guides/tutorial/test_payments_list.png"></p>
 <h2 id="決済の現状態説明表">支付当前状态说明</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">当前状态（交易状态）</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">未处理</td><td align="left">交易已登记，或已为该交易执行 3D Secure。</td></tr><tr><td align="left">预授权</td><td align="left">此笔交易已完成预授权。</td></tr><tr><td align="left">请款完成</td><td align="left">此笔交易已完成即时扣款，或预授权交易已完成请款处理。</td></tr><tr><td align="left">已取消</td><td align="left">此笔交易已完成取消处理。</td></tr></tbody></table>
+<table><thead><tr><th align="left">当前状态（交易状态）</th><th align="left">说明</th></tr></thead><tbody>
+<tr><td align="left">未处理</td><td align="left">交易已登记，或已为该交易执行 3D Secure。</td></tr>
+<tr><td align="left">预授权</td><td align="left">此笔交易已完成预授权。</td></tr>
+<tr><td align="left">请款完成</td><td align="left">此笔交易已完成即时扣款，或预授权交易已完成请款处理。</td></tr>
+<tr><td align="left">已取消</td><td align="left">此笔交易已完成取消处理。</td></tr>
+</tbody></table>
 <h2 id="次のステップ">下一步</h2>
 <p><i class="icon-after icon-next"><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></i></p>
 

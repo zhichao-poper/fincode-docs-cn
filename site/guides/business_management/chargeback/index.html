@@ -62,15 +62,17 @@
 <li><a href="../index.html">控制面板</a></li>
 <li><a href="../examination/index.html">商户审核</a></li>
 <li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="index.html" aria-current="page" class="active">拒付</a></li>
 <li><a href="../download_queue/index.html">什么是下载队列</a></li>
 <li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
 <li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
 <li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
-<li><a href="index.html" aria-current="page" class="active">拒付</a></li>
-<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
 <li><a href="../accounts_receivable_management/bill_by_invoice/index.html">通过账单功能收费</a></li>
-<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
-<li><a href="../team/index.html">团队管理</a></li>
+<li><a href="../accounts_receivable_management/import_ar/index.html">批量导入账单信息</a></li>
+<li><a href="../accounts_receivable_management/export_ar/index.html">将账单信息导出为 CSV</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -87,43 +89,15 @@
 当发卡机构要求退还销售款时，无论商品是否发货、服务是否提供，商户都不能拒绝。</p>
 <p>拒付通常发生于卡片支付，其他支付方式也可能发生类似的拒付。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>支付方式</th><th>是否可能发生拒付</th></tr></thead><tbody><tr><td>卡片支付</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr><tr><td>Apple Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr><tr><td>Google Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr><tr><td>便利店支付</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr><tr><td>PayPay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr><tr><td>银行账户扣款</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr><tr><td>银行转账（虚拟账户）</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr></tbody></table>
+<table><thead><tr><th>支付方式</th><th>是否可能发生拒付</th></tr></thead><tbody>
+<tr><td>卡片支付</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr>
+<tr><td>Apple Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr>
+<tr><td>Google Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr>
+<tr><td>便利店支付</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr>
+<tr><td>PayPay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr>
+<tr><td>银行账户扣款</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr>
+<tr><td>银行转账（虚拟账户）</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr>
+</tbody></table>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">
   除购买者提出异议以外，无论使用哪种支付方式，若支付服务商认定商户有故意发起欺诈性请款、交易处理疏失等问题，也会像处理拒付一样调查交易，并可能要求退还销售款。
@@ -142,23 +116,10 @@
 <h2 id="チャージバックに至る原因">可能导致拒付的原因</h2>
 <p>以下是可能导致拒付的例子。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>原因</th><th>示例</th></tr></thead><tbody><tr><td>持卡人不认识的支付</td><td>例如第三方盗用卡片信息</td></tr><tr><td>未收到商品或服务未提供</td><td>例如已付款，但未收到商品或服务</td></tr></tbody></table>
+<table><thead><tr><th>原因</th><th>示例</th></tr></thead><tbody>
+<tr><td>持卡人不认识的支付</td><td>例如第三方盗用卡片信息</td></tr>
+<tr><td>未收到商品或服务未提供</td><td>例如已付款，但未收到商品或服务</td></tr>
+</tbody></table>
 <p>此外，商品与订单不符、遗漏取消、确认解约方式等情况也可能导致拒付。<br>
 持卡人账单上的交易商户（账单显示名称）难以识别，也可能使持卡人以“不记得这笔消费”为由向发卡机构提出异议。<br>
 fincode 管理后台“账单显示名称”中登记的信息将作为交易商户显示。请确认其为持卡人容易辨认的信息，例如服务名称或公司名称。</p>
@@ -179,107 +140,36 @@ fincode 会在管理后台控制面板通知，并向为负责人设置的电子
 <p>发卡机构的监测发现交易与典型信用卡盗刷高度相似时，fincode 会通知商户该交易发生盗刷的可能性较高。</p>
 <p>通知发出时，持卡人尚未提出拒付，但此后仍可能发生拒付。请核对内容，判断是否发货、提供服务或取消交易。</p>
 
+<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody>
+<tr><td>商品发货前或服务提供前</td><td>建议取消支付，并拦截发货或停止提供服务。</td></tr>
+<tr><td>商品已发货或服务已提供</td><td>如果已发货且商品可追回等，建议采取追回措施。</td></tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody><tr><td>商品发货前或服务提供前</td><td>建议取消支付，并拦截发货或停止提供服务。</td></tr><tr><td>商品已发货或服务已提供</td><td>如果已发货且商品可追回等，建议采取追回措施。</td></tr></tbody></table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody><tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr><tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br>如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr></tbody></table>
+<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody>
+<tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr>
+<tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br>如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr>
+</tbody></table>
 <h4 id="不正利用確定">确认盗刷</h4>
 <p>持卡人提出异议后，若发卡机构认定交易属于盗刷，fincode 会发出通知。</p>
 
+<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody>
+<tr><td>商品发货前或服务提供前</td><td>拦截发货或停止提供服务，并取消相应支付。</td></tr>
+<tr><td>商品已发货或服务已提供</td><td>若已发出的商品可以追回，建议采取追回措施。</td></tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody><tr><td>商品发货前或服务提供前</td><td>拦截发货或停止提供服务，并取消相应支付。</td></tr><tr><td>商品已发货或服务已提供</td><td>若已发出的商品可以追回，建议采取追回措施。</td></tr></tbody></table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody><tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr><tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br> 如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr></tbody></table>
+<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody>
+<tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr>
+<tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br> 如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr>
+</tbody></table>
 <h2 id="ステータス一覧">状态一览</h2>
 <p>商户管理后台显示以下拒付状态。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>状态名称</th><th>说明</th></tr></thead><tbody><tr><td>待处理</td><td>商户需要回应发卡机构的信息提供请求或购买者提出的异议。</td></tr><tr><td>已答复</td><td>商户已答复，或在未答复的情况下超过答复期限。</td></tr><tr><td>已确认退还销售款</td><td>退还销售款的请求已确认。  <br>确认退还后，该笔交易以“拒付”类型显示在“销售款入账”菜单中。</td></tr><tr><td>其他</td><td>包括确认退还销售款后撤回拒付、取消退还的“确认后取消”等情况。</td></tr></tbody></table>
+<table><thead><tr><th>状态名称</th><th>说明</th></tr></thead><tbody>
+<tr><td>待处理</td><td>商户需要回应发卡机构的信息提供请求或购买者提出的异议。</td></tr>
+<tr><td>已答复</td><td>商户已答复，或在未答复的情况下超过答复期限。</td></tr>
+<tr><td>已确认退还销售款</td><td>退还销售款的请求已确认。  <br>确认退还后，该笔交易以“拒付”类型显示在“销售款入账”菜单中。</td></tr>
+<tr><td>其他</td><td>包括确认退还销售款后撤回拒付、取消退还的“确认后取消”等情况。</td></tr>
+</tbody></table>
 <h2 id="handles">防范盗刷</h2>
 <p>信用卡信息被盗用导致的拒付正在增加。无论商品是否发货、服务是否提供，商户均不能拒绝退还请求，因此建议在发生拒付前采取防盗刷措施。</p>
 <h3 id="fincodeが提供する不正利用対策">fincode 提供的防盗刷措施</h3>
@@ -295,23 +185,10 @@ fincode 会在管理后台控制面板通知，并向为负责人设置的电子
 <h3 id="ショップにおける不正利用対策">商户侧的防盗刷措施</h3>
 <p>接入 fincode 的系统和环境也可采取防盗刷措施，示例如下。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>盗刷示例</th><th>措施</th></tr></thead><tbody><tr><td>同一笔交易在一定时间内多次支付出错</td><td>限制向 fincode 发出的支付处理请求</td></tr><tr><td>尝试进行欺诈下单的用户</td><td>屏蔽该用户的 IP 地址或限制其操作</td></tr></tbody></table>
+<table><thead><tr><th>盗刷示例</th><th>措施</th></tr></thead><tbody>
+<tr><td>同一笔交易在一定时间内多次支付出错</td><td>限制向 fincode 发出的支付处理请求</td></tr>
+<tr><td>尝试进行欺诈下单的用户</td><td>屏蔽该用户的 IP 地址或限制其操作</td></tr>
+</tbody></table>
 
           </article>
           <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/chargeback" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>

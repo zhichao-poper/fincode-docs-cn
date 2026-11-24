@@ -8,77 +8,21 @@
 <h2 id="webhookイベント一覧">Webhook 事件一览</h2>
 <p>下表列出可从 fincode 接收的部分 Webhook 事件。</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th align="left">功能</th><th align="left">事件名称</th><th align="left">事件参数</th></tr></thead><tbody><tr><td align="left">卡片支付</td><td align="left">登记支付</td><td align="left">payments.card.regist</td></tr><tr><td align="left">卡片支付</td><td align="left">执行支付</td><td align="left">payments.card.exec</td></tr><tr><td align="left">卡片支付</td><td align="left">请款</td><td align="left">payments.card.capture</td></tr><tr><td align="left">卡片支付</td><td align="left">取消</td><td align="left">payments.card.cancel</td></tr><tr><td align="left">卡片支付</td><td align="left">重新授权</td><td align="left">payments.card.auth</td></tr><tr><td align="left">卡片支付</td><td align="left">修改金额</td><td align="left">payments.card.change</td></tr><tr><td align="left">卡片</td><td align="left">登记</td><td align="left">card.regist</td></tr><tr><td align="left">卡片</td><td align="left">更新</td><td align="left">card.update</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">登记</td><td align="left">subscription.card.regist</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">解约</td><td align="left">subscription.card.delete</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">更新</td><td align="left">subscription.card.update</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">结果汇总</td><td align="left">recurring.card.batch</td></tr></tbody></table>
-<p>详情请参阅 <a href="/api#tag/Webhook">Webhook 设置</a> 。</p>
+<table><thead><tr><th align="left">功能</th><th align="left">事件名称</th><th align="left">事件参数</th></tr></thead><tbody>
+<tr><td align="left">卡片支付</td><td align="left">登记支付</td><td align="left">payments.card.regist</td></tr>
+<tr><td align="left">卡片支付</td><td align="left">执行支付</td><td align="left">payments.card.exec</td></tr>
+<tr><td align="left">卡片支付</td><td align="left">请款</td><td align="left">payments.card.capture</td></tr>
+<tr><td align="left">卡片支付</td><td align="left">取消</td><td align="left">payments.card.cancel</td></tr>
+<tr><td align="left">卡片支付</td><td align="left">重新授权</td><td align="left">payments.card.auth</td></tr>
+<tr><td align="left">卡片支付</td><td align="left">修改金额</td><td align="left">payments.card.change</td></tr>
+<tr><td align="left">卡片</td><td align="left">登记</td><td align="left">card.regist</td></tr>
+<tr><td align="left">卡片</td><td align="left">更新</td><td align="left">card.update</td></tr>
+<tr><td align="left">订阅（卡片）</td><td align="left">登记</td><td align="left">subscription.card.regist</td></tr>
+<tr><td align="left">订阅（卡片）</td><td align="left">解约</td><td align="left">subscription.card.delete</td></tr>
+<tr><td align="left">订阅（卡片）</td><td align="left">更新</td><td align="left">subscription.card.update</td></tr>
+<tr><td align="left">订阅（卡片）</td><td align="left">结果汇总</td><td align="left">recurring.card.batch</td></tr>
+</tbody></table>
+<p>详情请参阅 <a href="/api#tag/Webhook%E8%A8%AD%E5%AE%9A">Webhook 设置</a> 。</p>
 <h2 id="webhookから通知を受け取る">接收 Webhook 通知</h2>
 <p>可通过控制面板设置 Webhook，也可以通过 Webhook 设置 API 配置。<br>
 指定要配置通知的事件，并输入商户的应用 URL。</p>
