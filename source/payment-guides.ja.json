@@ -2,14 +2,18 @@
   "source": "https://docs.fincode.jp/payment/fraud_protection",
   "databaseUrl": "https://docs.fincode.jp/_nuxt/content/db-43cd0d80.json",
   "databaseHash": "43cd0d80",
-  "capturedAt": "2026-11-24T05:53:02.949537+00:00",
+  "capturedAt": "2026-11-24T05:54:17.704774+00:00",
   "scope": {
     "group": "決済",
     "sections": [
       "カード決済",
       "コンビニ決済"
     ],
-    "pageCount": 13
+    "pageCount": 21,
+    "groups": [
+      "payment",
+      "platform"
+    ]
   },
   "pages": [
     {
@@ -13757,6 +13761,2904 @@
           "created": 1792994140283
         },
         "$loki": 118
+      }
+    },
+    {
+      "key": "platform",
+      "sourcePath": "/platform/index",
+      "sourceUrl": "https://docs.fincode.jp/platform",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "platform-fee",
+            "depth": 2,
+            "text": "テナントからプラットフォーム利用料を回収する"
+          },
+          {
+            "id": "customer-info",
+            "depth": 2,
+            "text": "顧客情報の共有範囲"
+          },
+          {
+            "id": "マルチサイドプラットフォーム型",
+            "depth": 3,
+            "text": "マルチサイドプラットフォーム型"
+          },
+          {
+            "id": "asp型",
+            "depth": 3,
+            "text": "ASP型"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "プラットフォームとは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%A8%E3%81%AF",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォームとは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincodeのプラットフォーム機能を利用することで、テナントから決済金額に応じたプラットフォーム利用料を回収するタイプのBtoBtoC型／BtoBtoB型のビジネスをスムーズに実現することができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nfincode上のショップの役割（＝ショップタイプ）をプラットフォームとテナントに分け、プラットフォームが様々な面でテナントを管理することが可能になります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "本番環境でプラットフォーム機能を利用できるのは法人のみです。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "プラットフォーム機能の利用にはfincodeおよび決済会社の審査があります。\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "platform-fee"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントからプラットフォーム利用料を回収する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n売上からプラットフォーム利用料を差し引いた金額がテナントへの入金額、プラットフォーム利用料からfincode手数料（決済手数料）を差し引いた金額がプラットフォームへの入金額となります。\n"
+            },
+            {
+              "type": "element",
+              "tag": "img",
+              "props": {
+                "alt": "プラットフォーム",
+                "src": "/assets/images/platform/platform_cash_flow.png",
+                "width": "80%"
+              },
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "customer-info"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "顧客情報の共有範囲"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\nfincodeでは、購入者の顧客情報の共有範囲を「プラットフォーム全体」か「テナント毎」か選択することができます。  \n例えば、次のようなビジネスを行う方にも対応することができます。\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "マルチサイドプラットフォーム型"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%9E%E3%83%AB%E3%83%81%E3%82%B5%E3%82%A4%E3%83%89%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E5%9E%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "マルチサイドプラットフォーム型"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントに対しても、テナントが提供する商品・サービスの購入者に対しても、プラットフォームがフロントに立っているモデルです。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n通常、このモデルの場合、購入者に「何というサイト／サービスに会員登録しましたか？」と質問すると、プラットフォームの名前が挙がります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n顧客情報はプラットフォームに登録されるため、顧客が登録したカード等を利用して全てのテナントで決済が可能です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "＜例＞"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "フードデリバリープラットフォーム"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ライドシェアプラットフォーム"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ECモール"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "img",
+              "props": {
+                "alt": "マルチサイドプラットフォーム",
+                "src": "/assets/images/platform/platform_multi_sided.png",
+                "width": "80%"
+              },
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "asp型"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#asp%E5%9E%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "ASP型"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォームはテナントに対してソリューションを提供していますが、テナントが提供する商品・サービスの購入者に対しては、テナントがフロントに立っているモデルです。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n通常、このモデルの場合、購入者に「何というサイト／サービスに会員登録しましたか？」と質問すると、テナントの名前が挙がります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n顧客情報はテナントに登録されるため、テナント毎に独立した顧客管理が可能です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "＜例＞"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ECサイト作成サービス/ASPカート"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "予約サイト、寄付サイト等の決済機能付きサイト作成サービス"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "チャットボット、電子請求書発行等の決済機能付きBtoB/BtoC向けSaaS"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "img",
+              "props": {
+                "alt": "ASP型",
+                "src": "/assets/images/platform/platform_asp.png",
+                "width": "80%"
+              },
+              "children": []
+            }
+          ]
+        },
+        "text": "# プラットフォームとは\n\nfincodeのプラットフォーム機能を利用することで、テナントから決済金額に応じたプラットフォーム利用料を回収するタイプのBtoBtoC型／BtoBtoB型のビジネスをスムーズに実現することができます。  \nfincode上のショップの役割（＝ショップタイプ）をプラットフォームとテナントに分け、プラットフォームが様々な面でテナントを管理することが可能になります。  \n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">本番環境でプラットフォーム機能を利用できるのは法人のみです。<br>プラットフォーム機能の利用にはfincodeおよび決済会社の審査があります。\n</div>\n</div>\n\n\n<h2 id=\"platform-fee\">テナントからプラットフォーム利用料を回収する</h2>\n売上からプラットフォーム利用料を差し引いた金額がテナントへの入金額、プラットフォーム利用料からfincode手数料（決済手数料）を差し引いた金額がプラットフォームへの入金額となります。\n\n<img alt=\"プラットフォーム\" src=\"/assets/images/platform/platform_cash_flow.png\" width=\"80%\">\n\n<h2 id=\"customer-info\">顧客情報の共有範囲</h2>\nfincodeでは、購入者の顧客情報の共有範囲を「プラットフォーム全体」か「テナント毎」か選択することができます。  \n例えば、次のようなビジネスを行う方にも対応することができます。\n\n### マルチサイドプラットフォーム型\n\nテナントに対しても、テナントが提供する商品・サービスの購入者に対しても、プラットフォームがフロントに立っているモデルです。  \n通常、このモデルの場合、購入者に「何というサイト／サービスに会員登録しましたか？」と質問すると、プラットフォームの名前が挙がります。  \n顧客情報はプラットフォームに登録されるため、顧客が登録したカード等を利用して全てのテナントで決済が可能です。\n\n＜例＞\n\n- フードデリバリープラットフォーム\n- ライドシェアプラットフォーム\n- ECモール\n\n<img alt=\"マルチサイドプラットフォーム\" src=\"/assets/images/platform/platform_multi_sided.png\" width=\"80%\">\n\n### ASP型\n\nプラットフォームはテナントに対してソリューションを提供していますが、テナントが提供する商品・サービスの購入者に対しては、テナントがフロントに立っているモデルです。  \n通常、このモデルの場合、購入者に「何というサイト／サービスに会員登録しましたか？」と質問すると、テナントの名前が挙がります。  \n顧客情報はテナントに登録されるため、テナント毎に独立した顧客管理が可能です。\n\n＜例＞\n\n- ECサイト作成サービス/ASPカート\n- 予約サイト、寄付サイト等の決済機能付きサイト作成サービス\n- チャットボット、電子請求書発行等の決済機能付きBtoB/BtoC向けSaaS\n\n<img alt=\"ASP型\" src=\"/assets/images/platform/platform_asp.png\" width=\"80%\">\n",
+        "dir": "/platform",
+        "path": "/platform/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994137153
+        },
+        "$loki": 6
+      }
+    },
+    {
+      "key": "platform-invite_tenant",
+      "sourcePath": "/platform/invite_tenant/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/invite_tenant",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "confirmation",
+            "depth": 2,
+            "text": "テナント登録用のURLの確認"
+          },
+          {
+            "id": "invite",
+            "depth": 2,
+            "text": "テナントを招待する"
+          },
+          {
+            "id": "api",
+            "depth": 2,
+            "text": "fincodeAPIを使用する"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "テナントを招待する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%82%92%E6%8B%9B%E5%BE%85%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "テナントを招待する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントを招待する前に、事前にプラットフォームの設定を行っておくことをおすすめします。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "i",
+                  "props": {
+                    "className": [
+                      "icon-after",
+                      "icon-next"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "to": "/platform/setting"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "プラットフォームの設定について"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "confirmation"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナント登録用のURLの確認"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "i",
+                  "props": {
+                    "className": [
+                      "icon-after",
+                      "icon-window"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://dashboard.test.fincode.jp/platform/setting",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ダッシュボードからテナント登録用のURLの確認を行う"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナント登録用のURLの確認",
+                    "src": "/assets/images/platform/platform_create_invitation.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ダッシュボードからはテナント登録用のURLを確認できるほか、QRコードでダウンロードすることもできます。また、テナント登録用のURLの再発行ができます。再発行した場合、以前のURLは使用できなくなりますのでご注意ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "invite"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントを招待する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントの担当者へテナント登録用のURLを直接共有するか、または管理画面からダウンロードしたQRコードを共有してfincodeへ招待してください。テナント登録用のURLから、テナント招待ページへと遷移します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナントを招待する",
+                    "src": "/assets/images/platform/platform_invitation_page.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナント招待ページから新規ユーザー登録を行うと、本番環境申請のみが行える管理画面へとログインできるようになります。\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナントでログインした画面",
+                    "src": "/assets/images/platform/platform_tenant_dashboard.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "本番環境手続きを完了するとその他画面が解放され、更に審査が完了すると決済等の処理が行えるようになります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "api"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincodeAPIを使用する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "貴社が事前にテナントから取得した情報をAPIでfincodeにご登録いただくことにより、プラットフォームにテナントを追加することが可能です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "APIを使用してテナント追加を行う場合は弊社側で利用設定が必要なため、\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "a",
+                          "props": {
+                            "href": "https://dashboard.fincode.jp/contact",
+                            "rel": [
+                              "nofollow",
+                              "noopener",
+                              "noreferrer"
+                            ],
+                            "target": "_blank"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "お問い合わせフォーム"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "よりご連絡ください。担当者よりご連絡させていただきます。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# テナントを招待する\n\nテナントを招待する前に、事前にプラットフォームの設定を行っておくことをおすすめします。\n\n<i class=\"icon-after icon-next\" >[プラットフォームの設定について](/platform/setting)</i>\n\n<h2 id=\"confirmation\">テナント登録用のURLの確認</h2>\n\n<i class=\"icon-after icon-window\">[ダッシュボードからテナント登録用のURLの確認を行う](https://dashboard.test.fincode.jp/platform/setting)</i>\n\n![テナント登録用のURLの確認](/assets/images/platform/platform_create_invitation.png)\n\nダッシュボードからはテナント登録用のURLを確認できるほか、QRコードでダウンロードすることもできます。また、テナント登録用のURLの再発行ができます。再発行した場合、以前のURLは使用できなくなりますのでご注意ください。\n\n<h2 id=\"invite\">テナントを招待する</h2>\n\nテナントの担当者へテナント登録用のURLを直接共有するか、または管理画面からダウンロードしたQRコードを共有してfincodeへ招待してください。テナント登録用のURLから、テナント招待ページへと遷移します。\n\n![テナントを招待する](/assets/images/platform/platform_invitation_page.png)\n\nテナント招待ページから新規ユーザー登録を行うと、本番環境申請のみが行える管理画面へとログインできるようになります。\n![テナントでログインした画面](/assets/images/platform/platform_tenant_dashboard.png)\n\n本番環境手続きを完了するとその他画面が解放され、更に審査が完了すると決済等の処理が行えるようになります。\n\n<h2 id=\"api\">fincodeAPIを使用する</h2>\n\n貴社が事前にテナントから取得した情報をAPIでfincodeにご登録いただくことにより、プラットフォームにテナントを追加することが可能です。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">\n\n  APIを使用してテナント追加を行う場合は弊社側で利用設定が必要なため、\n  [お問い合わせフォーム](https://dashboard.fincode.jp/contact)よりご連絡ください。担当者よりご連絡させていただきます。\n</div>\n</div>\n",
+        "dir": "/platform/invite_tenant",
+        "path": "/platform/invite_tenant/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139785
+        },
+        "$loki": 52
+      }
+    },
+    {
+      "key": "platform-manage_tenant",
+      "sourcePath": "/platform/manage_tenant/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/manage_tenant",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "fee",
+            "depth": 2,
+            "text": "プラットフォーム利用料"
+          },
+          {
+            "id": "テナントとしてapiを実行する",
+            "depth": 2,
+            "text": "テナントとしてAPIを実行する"
+          },
+          {
+            "id": "api-key",
+            "depth": 2,
+            "text": "APIキーメニューの表示"
+          },
+          {
+            "id": "tenant-dashboard",
+            "depth": 2,
+            "text": "テナント管理画面に入る"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "テナントの管理"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%81%AE%E7%AE%A1%E7%90%86",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "テナントの管理"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントタブから、プラットフォームに所属するテナントを確認できます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナントタブを選択する",
+                    "src": "/assets/images/platform/platform_dashboard.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントのショップIDを選択し、各テナントの詳細の確認、設定変更ができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナント一覧",
+                    "src": "/assets/images/platform/platform_tenant_list.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "fee"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォーム利用料"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントのプラットフォーム利用料率を更新することができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n3.6% ～ 50% の範囲で設定が可能です。また、決済手段ごとに設定する必要がございます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※対象テナントのプラットフォーム利用料率のみ更新されます。プラットフォームのデフォルト料率の設定は、構成タブの「プラットフォームの設定」から変更してください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "テナントとしてapiを実行する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%81%A8%E3%81%97%E3%81%A6api%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "テナントとしてAPIを実行する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォームは、テナントとして各種APIを実行することが出来ます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nAPIリクエストの際、リクエストヘッダに実行元のテナントのショップIDをセットしてください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※APIキーはプラットフォームのキーをセットしてください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n詳しくは"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/api#tag/%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%98%E3%83%83%E3%83%80%E3%83%BC"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "APIリファレンス - リクエストヘッダー"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を参照してください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "api-key"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "APIキーメニューの表示"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "「表示する」を選択すると、テナントの開発者がAPIの画面から、APIキーを閲覧できるようになります。デフォルトでは「表示しない」設定になっています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "tenant-dashboard"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナント管理画面に入る"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナント情報の「管理画面」を選択することで、テナントのショップ管理画面に入ることが出来ます。基本的に、テナントの管理画面ユーザーと同様の操作を行うことが出来ます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナント管理画面に入る",
+                    "src": "/assets/images/platform/platform_tenant_detail.png"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# テナントの管理\n\nテナントタブから、プラットフォームに所属するテナントを確認できます。\n\n![テナントタブを選択する](/assets/images/platform/platform_dashboard.png)\n\nテナントのショップIDを選択し、各テナントの詳細の確認、設定変更ができます。\n\n![テナント一覧](/assets/images/platform/platform_tenant_list.png)\n\n<h2 id=\"fee\">プラットフォーム利用料</h2>\n\nテナントのプラットフォーム利用料率を更新することができます。  \n3.6% ～ 50% の範囲で設定が可能です。また、決済手段ごとに設定する必要がございます。  \n※対象テナントのプラットフォーム利用料率のみ更新されます。プラットフォームのデフォルト料率の設定は、構成タブの「プラットフォームの設定」から変更してください。\n\n## テナントとしてAPIを実行する\n\nプラットフォームは、テナントとして各種APIを実行することが出来ます。  \nAPIリクエストの際、リクエストヘッダに実行元のテナントのショップIDをセットしてください。  \n※APIキーはプラットフォームのキーをセットしてください。  \n詳しくは[APIリファレンス - リクエストヘッダー](/api#tag/リクエストヘッダー)を参照してください。\n\n<h2 id=\"api-key\">APIキーメニューの表示</h2>\n\n「表示する」を選択すると、テナントの開発者がAPIの画面から、APIキーを閲覧できるようになります。デフォルトでは「表示しない」設定になっています。\n\n<h2 id=\"tenant-dashboard\">テナント管理画面に入る</h2>\n\nテナント情報の「管理画面」を選択することで、テナントのショップ管理画面に入ることが出来ます。基本的に、テナントの管理画面ユーザーと同様の操作を行うことが出来ます。\n\n![テナント管理画面に入る](/assets/images/platform/platform_tenant_detail.png)\n",
+        "dir": "/platform/manage_tenant",
+        "path": "/platform/manage_tenant/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139788
+        },
+        "$loki": 53
+      }
+    },
+    {
+      "key": "platform-setting",
+      "sourcePath": "/platform/setting/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/setting",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "fee-setting",
+            "depth": 2,
+            "text": "標準プラットフォーム利用料"
+          },
+          {
+            "id": "comment",
+            "depth": 2,
+            "text": "プラットフォーム情報・テナント本番環境申請入力指示用コメント"
+          },
+          {
+            "id": "プラットフォーム情報",
+            "depth": 3,
+            "text": "プラットフォーム情報"
+          },
+          {
+            "id": "入力指示用コメントの追加",
+            "depth": 3,
+            "text": "入力指示用コメントの追加"
+          },
+          {
+            "id": "preset",
+            "depth": 2,
+            "text": "テナント向け本番環境申請項目のプリセット"
+          },
+          {
+            "id": "customer-info",
+            "depth": 2,
+            "text": "顧客情報の共有"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "プラットフォームの設定"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E8%A8%AD%E5%AE%9A",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォームの設定"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォームの設定を行うことで、利用料率、テナントの申し込み時に画面に表示する情報、本番環境申請の入力項目の事前入力（プリセット）などの設定を行うことができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "i",
+                  "props": {
+                    "className": [
+                      "icon-after",
+                      "icon-window"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://dashboard.test.fincode.jp/platform/setting",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ダッシュボードからプラットフォームの設定を行う"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "プラットフォームの設定",
+                    "src": "/assets/images/platform/platform_setting.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "fee-setting"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "標準プラットフォーム利用料"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "今後新規申込されるテナントのプラットフォーム利用料率の初期値をここで設定することができます。個々のテナントのプラットフォーム利用料率を後から変更することも可能です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※既に作成されているテナントのプラットフォーム利用料率は更新されません。テナントタブの「テナント詳細」から変更してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n3.6% ～ 50% の範囲で設定が可能です。また、決済手段ごとに設定する必要がございます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n    プラットフォーム利用料とは"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n    売上からプラットフォーム利用料を差し引いた金額がテナントへの入金額、プラットフォーム利用料からfincode手数料を差し引いた金額がプラットフォームタイプショップの加盟店様への入金額となります。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "comment"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォーム情報・テナント本番環境申請入力指示用コメント"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "プラットフォーム情報"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E6%83%85%E5%A0%B1",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォーム情報"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォームのサービスロゴ画像・本番環境申請時の補足説明を設定することでテナント招待ページをカスタマイズすることができ、テナントの本番環境申請手続きをスムーズに進めて頂けるようになります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nまた、「テナントの事業形態」を設定することで、指定した事業形態のショップのみ申し込み可能になるよう設定することができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "プラットフォーム情報",
+                    "src": "/assets/images/platform/platform_info.png"
+                  },
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "テナント参加",
+                    "src": "/assets/images/platform/platform_invitation_page.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "入力指示用コメントの追加"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%85%A5%E5%8A%9B%E6%8C%87%E7%A4%BA%E7%94%A8%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "入力指示用コメントの追加"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントの本番環境申請の各項目に自由にコメントを記載いただき、本番環境申請ページをカスタマイズすることができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n一定のルールに則っての入力をテナントにお願いしたい場合などにご利用ください。なお、特定の入力を強制したい場合は後述の「プリセット」機能をご利用ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "入力し時用コメントの追加",
+                    "src": "/assets/images/platform/platform_comment.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "preset"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナント向け本番環境申請項目のプリセット"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "テナントの本番環境申請の各項目における入力を事前に指定し、固定しておくことができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n設定された項目はテナント側では変更することができなくなりますのでご注意ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n特定の入力を強制したい場合や、テナントの本番環境申請の負担を極力小さくしたい場合などにご利用ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "customer-info"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "顧客情報の共有"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "顧客情報の共有設定については、確認のみ行えます。ショップ作成時のみ選択が可能で、後からの変更はできませんのでご了承ください。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# プラットフォームの設定\n\nプラットフォームの設定を行うことで、利用料率、テナントの申し込み時に画面に表示する情報、本番環境申請の入力項目の事前入力（プリセット）などの設定を行うことができます。\n\n<i class=\"icon-after icon-window\">[ダッシュボードからプラットフォームの設定を行う](https://dashboard.test.fincode.jp/platform/setting)</i>\n\n![プラットフォームの設定](/assets/images/platform/platform_setting.png)\n\n<h2 id=\"fee-setting\">標準プラットフォーム利用料</h2>\n\n今後新規申込されるテナントのプラットフォーム利用料率の初期値をここで設定することができます。個々のテナントのプラットフォーム利用料率を後から変更することも可能です。  \n※既に作成されているテナントのプラットフォーム利用料率は更新されません。テナントタブの「テナント詳細」から変更してください。  \n3.6% ～ 50% の範囲で設定が可能です。また、決済手段ごとに設定する必要がございます。\n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">\n    プラットフォーム利用料とは<br>\n    売上からプラットフォーム利用料を差し引いた金額がテナントへの入金額、プラットフォーム利用料からfincode手数料を差し引いた金額がプラットフォームタイプショップの加盟店様への入金額となります。</div>\n</div>\n\n<h2 id=\"comment\">プラットフォーム情報・テナント本番環境申請入力指示用コメント</h2>\n\n### プラットフォーム情報\n\nプラットフォームのサービスロゴ画像・本番環境申請時の補足説明を設定することでテナント招待ページをカスタマイズすることができ、テナントの本番環境申請手続きをスムーズに進めて頂けるようになります。  \nまた、「テナントの事業形態」を設定することで、指定した事業形態のショップのみ申し込み可能になるよう設定することができます。\n\n![プラットフォーム情報](/assets/images/platform/platform_info.png)\n![テナント参加](/assets/images/platform/platform_invitation_page.png)\n\n### 入力指示用コメントの追加\n\nテナントの本番環境申請の各項目に自由にコメントを記載いただき、本番環境申請ページをカスタマイズすることができます。  \n一定のルールに則っての入力をテナントにお願いしたい場合などにご利用ください。なお、特定の入力を強制したい場合は後述の「プリセット」機能をご利用ください。\n\n![入力し時用コメントの追加](/assets/images/platform/platform_comment.png)\n\n<h2 id=\"preset\">テナント向け本番環境申請項目のプリセット</h2>\n\nテナントの本番環境申請の各項目における入力を事前に指定し、固定しておくことができます。  \n設定された項目はテナント側では変更することができなくなりますのでご注意ください。  \n特定の入力を強制したい場合や、テナントの本番環境申請の負担を極力小さくしたい場合などにご利用ください。\n\n<h2 id=\"customer-info\">顧客情報の共有</h2>\n\n顧客情報の共有設定については、確認のみ行えます。ショップ作成時のみ選択が可能で、後からの変更はできませんのでご了承ください。\n",
+        "dir": "/platform/setting",
+        "path": "/platform/setting/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139791
+        },
+        "$loki": 54
+      }
+    },
+    {
+      "key": "platform-shop_type",
+      "sourcePath": "/platform/shop_type/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/shop_type",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "プラットフォーム構成イメージ",
+            "depth": 2,
+            "text": "プラットフォーム構成イメージ"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "メインショップサブショップテナントについて"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E3%82%B5%E3%83%96%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "メインショップ/サブショップ/テナントについて"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォームには、メインショップとサブショップの2種類のショップが存在します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nそれぞれをプラットフォーム（メインショップ）、プラットフォーム（サブショップ）と表記します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n同じ組織に属するプラットフォームとテナントのグループをプラットフォーム構成と呼びます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "プラットフォーム構成イメージ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E6%A7%8B%E6%88%90%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォーム構成イメージ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "プラットフォーム構成イメージ",
+                    "src": "/assets/images/platform/platform_image.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ショップタイプ"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "概要"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "プラットフォーム（メインショップ）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "プラットフォーム作成時に最初にできるショップです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "プラットフォーム構成の管理機能をもったショップで、1つのプラットフォーム構成に対して1つだけ存在します。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "テナントからプラットフォーム利用料を徴収できる唯一のショップです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "プラットフォーム（サブショップ）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "特定の目的のためにプラットフォームがメインショップとは別に作成できるショップです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "メインショップ管理画面の構成メニューより複数作成ができます。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "※サブショップ毎に審査が必要となります。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "＜サブショップ利用例＞"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・メインショップとサブショップで、管理画面・参加ユーザーを分けて運用したい。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・顧客向け（BtoC）の決済と、テナント向け（BtoB）の決済で、ショップ（明細書表記）を分けて管理したい。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "　※明細書表記＝購入者のカード明細に記載されるショップ名"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・ワンタイムの決済とサブスクリプションの決済でショップ（明細書表記）を分けて管理したい。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テナント"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "プラットフォームが作成・管理するショップで、機能面や契約面でプラットフォームのコントロール下に置かれています。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "通常、プラットフォームが提供するマーケットプレイスの出店者や、プラットフォームが提供する決済機能付きソリューションのユーザーがテナントに該当します。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# メインショップ/サブショップ/テナントについて\nプラットフォームには、メインショップとサブショップの2種類のショップが存在します。  \nそれぞれをプラットフォーム（メインショップ）、プラットフォーム（サブショップ）と表記します。  \n同じ組織に属するプラットフォームとテナントのグループをプラットフォーム構成と呼びます。\n\n## プラットフォーム構成イメージ\n\n![プラットフォーム構成イメージ](/assets/images/platform/platform_image.png)\n\n|ショップタイプ|概要|\n|:----|:----|\n|プラットフォーム（メインショップ）|プラットフォーム作成時に最初にできるショップです。<br>プラットフォーム構成の管理機能をもったショップで、1つのプラットフォーム構成に対して1つだけ存在します。<br>テナントからプラットフォーム利用料を徴収できる唯一のショップです。|\n|プラットフォーム（サブショップ）|特定の目的のためにプラットフォームがメインショップとは別に作成できるショップです。<br>メインショップ管理画面の構成メニューより複数作成ができます。<br>※サブショップ毎に審査が必要となります。<br><br>＜サブショップ利用例＞<br>・メインショップとサブショップで、管理画面・参加ユーザーを分けて運用したい。<br>・顧客向け（BtoC）の決済と、テナント向け（BtoB）の決済で、ショップ（明細書表記）を分けて管理したい。<br>　※明細書表記＝購入者のカード明細に記載されるショップ名<br>・ワンタイムの決済とサブスクリプションの決済でショップ（明細書表記）を分けて管理したい。|\n|テナント|プラットフォームが作成・管理するショップで、機能面や契約面でプラットフォームのコントロール下に置かれています。<br>通常、プラットフォームが提供するマーケットプレイスの出店者や、プラットフォームが提供する決済機能付きソリューションのユーザーがテナントに該当します。|\n",
+        "dir": "/platform/shop_type",
+        "path": "/platform/shop_type/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139793
+        },
+        "$loki": 55
+      }
+    },
+    {
+      "key": "platform-sign_up",
+      "sourcePath": "/platform/sign_up/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/sign_up",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "プラットフォームを開設する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%92%E9%96%8B%E8%A8%AD%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォームを開設する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォーム機能をご利用いただくためには、プラットフォームタイプの新規ユーザー登録を行います。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこれはテスト環境、本番環境ともに行う必要があります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "i",
+                  "props": {
+                    "className": [
+                      "icon-after",
+                      "icon-window"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://dashboard.test.fincode.jp/sign_up",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "fincodeの新規ユーザー登録をする"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ダッシュボードの新規ユーザー登録画面が表示されたら、氏名、メールアドレス、パスワードを入力して[新規ユーザー登録]を押します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "新規ユーザー登録",
+                    "src": "/assets/images/platform/prod_sign_up.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ショップタイプの選択画面で[プラットフォームタイプ]を選択してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nプラットフォーム機能の用途に合わせて、顧客情報の共有の有無を選択してください。顧客情報の共有の設定は、ショップ作成時のみ選択が可能で、後からの変更はできませんのでご注意ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n[次へ]をクリックすると、新規ユーザー登録が完了し、プラットフォームタイプのショップが作成されます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "ショップタイプの選択",
+                    "src": "/assets/images/platform/platform_select_type.png"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# プラットフォームを開設する\n\nプラットフォーム機能をご利用いただくためには、プラットフォームタイプの新規ユーザー登録を行います。  \nこれはテスト環境、本番環境ともに行う必要があります。\n\n<i class=\"icon-after icon-window\">[fincodeの新規ユーザー登録をする](https://dashboard.test.fincode.jp/sign_up)</i>\n\nダッシュボードの新規ユーザー登録画面が表示されたら、氏名、メールアドレス、パスワードを入力して[新規ユーザー登録]を押します。\n\n![新規ユーザー登録](/assets/images/platform/prod_sign_up.png)\n\nショップタイプの選択画面で[プラットフォームタイプ]を選択してください。  \nプラットフォーム機能の用途に合わせて、顧客情報の共有の有無を選択してください。顧客情報の共有の設定は、ショップ作成時のみ選択が可能で、後からの変更はできませんのでご注意ください。  \n[次へ]をクリックすると、新規ユーザー登録が完了し、プラットフォームタイプのショップが作成されます。\n\n![ショップタイプの選択](/assets/images/platform/platform_select_type.png)\n",
+        "dir": "/platform/sign_up",
+        "path": "/platform/sign_up/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139795
+        },
+        "$loki": 56
+      }
+    },
+    {
+      "key": "platform-terms_of_service",
+      "sourcePath": "/platform/terms_of_service/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/terms_of_service",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "必須部分対象すべてのプラットフォーム",
+            "depth": 2,
+            "text": "必須部分（対象：すべてのプラットフォーム）"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "プラットフォーム利用規約を整備する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84%E3%82%92%E6%95%B4%E5%82%99%E3%81%99%E3%82%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォーム利用規約を整備する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "必須部分対象すべてのプラットフォーム"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E5%BF%85%E9%A0%88%E9%83%A8%E5%88%86%E5%AF%BE%E8%B1%A1%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "必須部分（対象：すべてのプラットフォーム）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォーム・テナント・fincode間の関係性を明示するため、貴社利用規約に以下の要素を追加してください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  ①【テナント】は、【プラットフォーム】に対して、GMOイプシロン株式会社と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n  ②【プラットフォーム】所定の規約への同意又は【プラットフォーム】が提供する【プラットフォームのサービス名称】を利用継続することにより、【テナント】はGMOイプシロン株式会社所定のfincode byGMO利用規約に拘束されるものとします。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n  ③【テナント】は、【プラットフォーム】に対して正確かつ完全な情報を提供することに同意し、【プラットフォーム】が当該情報及びGMOイプシロン株式会社が提供するfincode byGMOの利用に関連する取引情報を【プラットフォーム】及びGMOイプシロン株式会社間で共有することを認めるものとします。\n"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "\n# プラットフォーム利用規約を整備する\n\n## 必須部分（対象：すべてのプラットフォーム）\n\nプラットフォーム・テナント・fincode間の関係性を明示するため、貴社利用規約に以下の要素を追加してください。\n\n<div class=\"custom-block-common custom-block\">\n  ①【テナント】は、【プラットフォーム】に対して、GMOイプシロン株式会社と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。<br>\n  ②【プラットフォーム】所定の規約への同意又は【プラットフォーム】が提供する【プラットフォームのサービス名称】を利用継続することにより、【テナント】はGMOイプシロン株式会社所定のfincode byGMO利用規約に拘束されるものとします。<br>\n  ③【テナント】は、【プラットフォーム】に対して正確かつ完全な情報を提供することに同意し、【プラットフォーム】が当該情報及びGMOイプシロン株式会社が提供するfincode byGMOの利用に関連する取引情報を【プラットフォーム】及びGMOイプシロン株式会社間で共有することを認めるものとします。\n</div>",
+        "dir": "/platform/terms_of_service",
+        "path": "/platform/terms_of_service/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139796
+        },
+        "$loki": 57
+      }
+    },
+    {
+      "key": "platform-terms_of_service_mpb",
+      "sourcePath": "/platform/terms_of_service_mpb/index",
+      "sourceUrl": "https://docs.fincode.jp/platform/terms_of_service_mpb",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "必須部分対象すべてのプラットフォーム",
+            "depth": 2,
+            "text": "必須部分（対象：すべてのプラットフォーム）"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "プラットフォーム利用規約を整備する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84%E3%82%92%E6%95%B4%E5%82%99%E3%81%99%E3%82%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "プラットフォーム利用規約を整備する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "必須部分対象すべてのプラットフォーム"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E5%BF%85%E9%A0%88%E9%83%A8%E5%88%86%E5%AF%BE%E8%B1%A1%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "必須部分（対象：すべてのプラットフォーム）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "プラットフォーム・テナント・fincode間の関係性を明示するため、貴社利用規約に以下の要素を追加してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※fincodeで提供する各種決済サービスは、株式会社みずほ銀行およびGMOイプシロン株式会社が提供するサービスです。GMOイプシロン株式会社が提供する決済サービスについては、株式会社みずほ銀行は媒介（説明、提案・セールス、契約・利用手続（契約締結行為を除く）、お客さまへのご連絡・通知等の業務）を行います。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  ①【プラットフォーム】所定の規約への同意又は【プラットフォーム】が提供する【プラットフォームのサービス名称】を利用継続することにより、【テナント】は株式会社みずほ銀行所定の"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://www.mizuhobank.co.jp/corporate/ebservice/nyukin_mpb/pdf/kiyaku.pdf",
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincode利用規約"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "等のfincodeの利用に伴い適用される諸規定（GMOイプシロン株式会社所定のfincode byGMO利用規約集を含む）に拘束されるものとします。\n【プラットフォーム】所定の規約と、M's PayBridge利用規約等のfincodeの利用に伴い適用される諸規定（fincode利用規約集を含む）において【プラットフォーム】が【テナント】に課すべき事項として定められている内容とが、相互に矛盾抵触する場合には、fincodeの利用に伴い適用される諸規定において【プラットフォーム】が【テナント】に課すべき事項として定められている内容が【プラットフォーム】所定の規約に優先して適用されることに同意します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n  ②株式会社みずほ銀行が提供する決済サービスについて、【テナント】は、【プラットフォーム】に対して、株式会社みずほ銀行と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n  ③GMOイプシロンが提供する決済サービス（fincode byGMO）について、【テナント】は、【プラットフォーム】に対して、GMOイプシロン株式会社と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n  ④【テナント】は、【プラットフォーム】に対してfincodeの利用にあたり正確かつ完全な情報（含む、個人情報）を提供することに同意し、【プラットフォーム】が当該情報及びfincodeの利用に関連する取引情報（【テナント】や【テナント】の顧客の個人情報及び取引に関するデータ等）を、【プラットフォーム】、株式会社みずほ銀行及びGMOイプシロン株式会社間で共有することを認めるものとします。\n"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "\n# プラットフォーム利用規約を整備する\n\n## 必須部分（対象：すべてのプラットフォーム）\n\nプラットフォーム・テナント・fincode間の関係性を明示するため、貴社利用規約に以下の要素を追加してください。<br>\n※fincodeで提供する各種決済サービスは、株式会社みずほ銀行およびGMOイプシロン株式会社が提供するサービスです。GMOイプシロン株式会社が提供する決済サービスについては、株式会社みずほ銀行は媒介（説明、提案・セールス、契約・利用手続（契約締結行為を除く）、お客さまへのご連絡・通知等の業務）を行います。\n\n<div class=\"custom-block-common custom-block\">\n  ①【プラットフォーム】所定の規約への同意又は【プラットフォーム】が提供する【プラットフォームのサービス名称】を利用継続することにより、【テナント】は株式会社みずほ銀行所定の<a href=\"https://www.mizuhobank.co.jp/corporate/ebservice/nyukin_mpb/pdf/kiyaku.pdf\" target=\"_blank\">fincode利用規約</a>等のfincodeの利用に伴い適用される諸規定（GMOイプシロン株式会社所定のfincode byGMO利用規約集を含む）に拘束されるものとします。\n【プラットフォーム】所定の規約と、M's PayBridge利用規約等のfincodeの利用に伴い適用される諸規定（fincode利用規約集を含む）において【プラットフォーム】が【テナント】に課すべき事項として定められている内容とが、相互に矛盾抵触する場合には、fincodeの利用に伴い適用される諸規定において【プラットフォーム】が【テナント】に課すべき事項として定められている内容が【プラットフォーム】所定の規約に優先して適用されることに同意します。<br>\n  ②株式会社みずほ銀行が提供する決済サービスについて、【テナント】は、【プラットフォーム】に対して、株式会社みずほ銀行と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。<br>\n  ③GMOイプシロンが提供する決済サービス（fincode byGMO）について、【テナント】は、【プラットフォーム】に対して、GMOイプシロン株式会社と【テナント】間の利用手数料等の変更に関する契約締結の代理権限を付与するものとします。<br>\n  ④【テナント】は、【プラットフォーム】に対してfincodeの利用にあたり正確かつ完全な情報（含む、個人情報）を提供することに同意し、【プラットフォーム】が当該情報及びfincodeの利用に関連する取引情報（【テナント】や【テナント】の顧客の個人情報及び取引に関するデータ等）を、【プラットフォーム】、株式会社みずほ銀行及びGMOイプシロン株式会社間で共有することを認めるものとします。\n</div>\n",
+        "dir": "/platform/terms_of_service_mpb",
+        "path": "/platform/terms_of_service_mpb/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139798
+        },
+        "$loki": 58
       }
     }
   ]

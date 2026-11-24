@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 平台设置中文指南。" />
+    <title>平台设置 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/platform/setting" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a class="active" href="../index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/platform/setting" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a class="active" href="../index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="平台指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>平台</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>平台</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">什么是平台</a></li>
+<li><a href="../invite_tenant/index.html">邀请租户商户</a></li>
+<li><a href="../manage_tenant/index.html">管理租户商户</a></li>
+<li><a href="index.html" aria-current="page" class="active">平台设置</a></li>
+<li><a href="../shop_type/index.html">主商户、子商户与租户商户</a></li>
+<li><a href="../sign_up/index.html">开设平台</a></li>
+<li><a href="../terms_of_service/index.html">完善平台使用条款</a></li>
+<li><a href="../terms_of_service_mpb/index.html">完善平台使用条款（M’s PayBridge）</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">平台</a></li><li aria-current="page">平台设置</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="プラットフォームの設定">平台设置</h1>
+<p>可设置使用费率、租户商户申请时显示的信息，以及生产环境申请各字段的预填值。</p>
+<p><i class="icon-after icon-window"><a href="https://dashboard.test.fincode.jp/platform/setting" rel="[&#x27;nofollow&#x27;, &#x27;noopener&#x27;, &#x27;noreferrer&#x27;]" target="_blank">从控制面板设置平台</a></i></p>
+<p><img alt="平台设置" src="../../../assets/payment-guides/platform/platform_setting.png"></p>
+<h2 id="fee-setting">默认平台使用费</h2>
+<p>在此设置今后新申请的租户商户的平台使用费率初始值。之后也可以单独修改某个租户商户的费率。<br>
+此设置仅影响之后申请的租户商户。已创建的租户商户请在“租户商户”标签页的“租户商户详情”中修改。<br>
+设置范围为 3.6%～50%，须按支付方式分别设置。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">
+    什么是平台使用费<br>
+    销售款减去平台使用费后为租户商户的入账金额。平台使用费减去 fincode 手续费后为平台类型商户的入账金额。</div>
+</div>
+<h2 id="comment">平台信息及租户商户生产环境申请的填写说明</h2>
+<h3 id="プラットフォーム情報">平台信息</h3>
+<p>可设置平台服务的标志图片和生产环境申请的补充说明，自定义租户商户邀请页面，帮助租户商户顺利办理生产环境申请。<br>
+设置“租户商户的经营主体类型”后，可将申请资格限定为指定类型的商户。</p>
+<p><img alt="平台信息" src="../../../assets/payment-guides/platform/platform_info.png">
+<img alt="租户商户加入" src="../../../assets/payment-guides/platform/platform_invitation_page.png"></p>
+<h3 id="入力指示用コメントの追加">添加填写说明</h3>
+<p>可以为租户商户生产环境申请的各个字段添加说明，自定义生产环境申请页面。<br>
+如需让租户商户按一定规则填写，可使用此功能。如需强制使用特定值，请使用下文的“预设”功能。</p>
+<p><img alt="添加填写说明" src="../../../assets/payment-guides/platform/platform_comment.png"></p>
+<h2 id="preset">预设租户商户的生产环境申请字段</h2>
+<p>可以事先指定并锁定租户商户生产环境申请中各项的填写内容。<br>
+请注意，租户商户无法修改已设为固定值的字段。<br>
+如需强制填写特定值，或尽量减少租户商户申请生产环境时的填写工作，可使用此功能。</p>
+<h2 id="customer-info">共享客户信息</h2>
+<p>此处仅可查看客户信息共享设置。该设置只能在创建商户时选择，之后无法修改。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/platform/setting" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

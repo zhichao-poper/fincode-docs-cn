@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是平台中文指南。" />
+    <title>什么是平台 | fincode 中文参考</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../index.html">docs</a><span>/</span><a href="../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../index.html">首页</a>
+            <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a class="active" href="index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../index.html">首页</a>
+        <a href="https://docs.fincode.jp/tutorial">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="https://docs.fincode.jp/business_management">业务管理</a>
+<a class="active" href="index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="平台指南目录">
+        <a class="guide-overview-link" href="index.html"><span>平台</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>平台</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">什么是平台</a></li>
+<li><a href="invite_tenant/index.html">邀请租户商户</a></li>
+<li><a href="manage_tenant/index.html">管理租户商户</a></li>
+<li><a href="setting/index.html">平台设置</a></li>
+<li><a href="shop_type/index.html">主商户、子商户与租户商户</a></li>
+<li><a href="sign_up/index.html">开设平台</a></li>
+<li><a href="terms_of_service/index.html">完善平台使用条款</a></li>
+<li><a href="terms_of_service_mpb/index.html">完善平台使用条款（M’s PayBridge）</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../index.html">首页</a></li><li><a href="index.html">平台</a></li><li aria-current="page">什么是平台</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="プラットフォームとは">什么是平台</h1>
+<p>使用 fincode 的平台功能，可以顺利开展按支付金额向租户商户收取平台使用费的 BtoBtoC 型或 BtoBtoB 型业务。<br>
+fincode 上的商户角色（即商户类型）分为平台和租户商户。平台可以从多个方面管理租户商户。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">只有法人可在生产环境使用平台功能。<br>使用平台功能须接受 fincode 和支付公司的审核。
+</div>
+</div>
+<h2 id="platform-fee">向租户商户收取平台使用费</h2>
+销售款减去平台使用费后为租户商户的入账金额。平台使用费减去 fincode 手续费（支付手续费）后为平台的入账金额。
+<img alt="平台" src="../../assets/payment-guides/platform/platform_cash_flow.png" width="80%">
+<h2 id="customer-info">客户信息共享范围</h2>
+fincode 支持选择在整个平台共享购买者的客户信息，或按租户商户分别管理。例如，可支持以下业务模式。
+<h3 id="マルチサイドプラットフォーム型">多边平台模式</h3>
+<p>在此模式下，平台直接面向租户商户，也直接面向购买租户商户商品或服务的购买者。<br>
+在这种模式下，询问购买者“您在哪个网站或服务注册了会员？”时，通常会得到平台的名称。<br>
+客户信息登记在平台上，客户可使用已登记的卡片等支付方式向所有租户商户付款。</p>
+<p>示例</p>
+<ul>
+<li>外卖配送平台</li>
+<li>网约车平台</li>
+<li>电商平台</li>
+</ul>
+<img alt="多边平台" src="../../assets/payment-guides/platform/platform_multi_sided.png" width="80%">
+<h3 id="asp型">ASP 模式</h3>
+<p>平台向租户商户提供解决方案，由租户商户直接面向购买其商品或服务的购买者。<br>
+在这种模式下，询问购买者“您在哪个网站或服务注册了会员？”时，通常会得到租户商户的名称。<br>
+客户信息登记在租户商户下，因此各租户商户可以独立管理自己的客户。</p>
+<p>示例</p>
+<ul>
+<li>电商建站服务或 ASP 购物车</li>
+<li>带支付功能的建站服务，例如预约网站或捐赠网站</li>
+<li>面向 BtoB 或 BtoC 的带支付功能 SaaS，例如聊天机器人和电子账单开具服务</li>
+</ul>
+<img alt="ASP 模式" src="../../assets/payment-guides/platform/platform_asp.png" width="80%">
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/platform" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

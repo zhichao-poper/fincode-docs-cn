@@ -153,3 +153,28 @@ SECTIONS = {
 
 def group_for(page: dict) -> str:
     return page["source_path"].split("/")[1]
+
+
+
+PAGES += [
+    {
+        "key": route.replace("/", "-"),
+        "section": route.split("/")[0],
+        "title": title,
+        "nav_title": title,
+        "source_path": f"/{route}/index",
+        "source_url": f"https://docs.fincode.jp/{route}",
+        "translation": f"translations/guides/{route}/index.html",
+        "output": f"site/guides/{route}/index.html",
+    }
+    for route, title in (
+        ('platform', '什么是平台'),
+        ('platform/invite_tenant', '邀请租户商户'),
+        ('platform/manage_tenant', '管理租户商户'),
+        ('platform/setting', '平台设置'),
+        ('platform/shop_type', '主商户、子商户与租户商户'),
+        ('platform/sign_up', '开设平台'),
+        ('platform/terms_of_service', '完善平台使用条款'),
+        ('platform/terms_of_service_mpb', '完善平台使用条款（M’s PayBridge）'),
+    )
+]
