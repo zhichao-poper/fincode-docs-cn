@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'virtualaccount': '银行转账（虚拟账户）',
     'paypay': 'PayPay',
     'subscription': '订阅',
     'directdebit_mhf': '银行账户自动扣款（1、5、20、26 日）',
@@ -223,6 +224,11 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/virtualaccount', 'virtualaccount', '什么是银行转账（虚拟账户）', '银行转账简介'),
+        ('payment/virtualaccount/execution', 'virtualaccount', '执行支付处理', '执行支付处理'),
+        ('payment/virtualaccount/exact-deposit-amount', 'virtualaccount', '什么是可入账金额设置', '可入账金额设置'),
+        ('payment/virtualaccount/status', 'virtualaccount', '查看支付状态', '查看支付状态'),
+        ('payment/virtualaccount/restriction', 'virtualaccount', '限制事项', '限制事项'),
         ('payment/paypay', 'paypay', '什么是 PayPay', 'PayPay 简介'),
         ('payment/paypay/execution', 'paypay', '执行支付处理', '执行支付处理'),
         ('payment/paypay/operation', 'paypay', '运营示例', '运营示例'),

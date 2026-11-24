@@ -1,0 +1,31 @@
+<h1 id="決済処理を実行する">执行支付处理</h1>
+<h2 id="api-input-case">使用支付执行 API</h2>
+<p>fincode 中的银行转账支付流程如下。</p>
+<p><img alt="使用支付执行 API" src="/assets/images/virtualaccount/payment_virtualaccount_api.png"></p>
+<ol>
+<li>买家选择银行转账作为支付方式。</li>
+<li>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。</li>
+<li>商户指定支付 ID，调用 fincode 的<span class="inline-api">执行支付</span>接口。系统将签发与该支付关联的虚拟账户，并在响应中返回账户信息。</li>
+<li>商户向买家展示签发的虚拟账户信息。</li>
+<li>买家向该虚拟账户转账。</li>
+<li>fincode 发出 Webhook 事件通知。商户可以按需接收该事件并执行后续处理。</li>
+</ol>
+<h2 id="js-input-case">使用支付执行 JS</h2>
+<p>使用支付执行 JS，可以轻松地从前端应用接入银行转账。</p>
+<p><img alt="使用支付执行 JS" src="/assets/images/virtualaccount/payment_virtualaccount_js.png"></p>
+<ol>
+<li>买家选择银行转账作为支付方式。</li>
+<li>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。</li>
+<li>商户指定支付 ID，调用 fincode 的<span class="inline-api">支付执行 JS</span>。系统将签发与该支付关联的虚拟账户，并在响应中返回账户信息。</li>
+<li>买家向该虚拟账户转账。</li>
+<li>fincode 发出 Webhook 事件通知。商户可以按需接收该事件并执行后续处理。</li>
+</ol>
+<h2 id="口座情報を引き継いで再利用する">沿用并复用账户信息</h2>
+<p>通常 fincode 每次执行<span class="inline-api">登记支付</span>都会签发新的虚拟账户，也可以沿用先前支付的虚拟账户。例如，需要持续向同一客户提供同一个虚拟账户时，可使用该功能。</p>
+<p>如需复用账户信息，请在<span class="inline-api">登记支付</span>时，为可选参数<code>再利用対象オーダーID（reference_order_id）</code>指定上一笔支付的<code>オーダーID（id）</code>。<br>
+※被沿用账户信息的支付必须同时满足以下条件。</p>
+<ol>
+<li>支付状态为<code>売上確定（CAPTURED）</code>／<code>キャンセル（CANCELED）</code>／<code>期限切れ（EXPIRED）</code>中的任意一种。</li>
+<li>距买家向该账户转账入账之日不超过 90 天。</li>
+</ol>
+<p>详细规格另请参阅<a href="/api#operation/executePayment">API 参考（执行支付）－银行转账（虚拟账户）</a>。</p>
