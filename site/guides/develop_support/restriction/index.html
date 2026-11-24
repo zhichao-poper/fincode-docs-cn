@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 限制事项中文指南。" />
+    <title>限制事项 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/develop_support/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a class="active" href="../index.html">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/develop_support/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a class="active" href="../index.html">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="开发者支持指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>开发者支持</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section section-active"><span>开发者支持</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">关于 API 密钥</a></li>
+<li><a href="../development_monitoring/index.html">开发与监控</a></li>
+<li><a href="../test_resources/index.html">测试资源</a></li>
+<li><a href="index.html" aria-current="page" class="active">限制事项</a></li>
+<li><a href="../logo/index.html">使用标志</a></li>
+<li><a href="../two_factor_authentication/index.html">双因素认证</a></li>
+<li><a href="../authenticator/index.html">在 Chrome 中设置 Authenticator</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">开发者支持</a></li><li aria-current="page">限制事项</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="制約事項">限制事项</h1>
+<h2 id="テスト環境について">关于测试环境</h2>
+<p>测试环境的行为可能与生产环境不同。<br>
+测试环境可能在未事先通知的情况下变更或维护。<br>
+请勿用于会产生大量请求的负载测试等。</p>
+<h2 id="流量制御レート制限">流量控制与速率限制</h2>
+<p>fincode 将每个商户的请求限制为每秒 5 次。</p>
+<h2 id="タイムアウト">超时</h2>
+<p>调用 API 时，建议将超时时间设置为 90 秒。该值考虑了发卡机构的授权处理时间。</p>
+<h2 id="イベントログ">事件与日志</h2>
+<p>控制面板中的事件与日志保留约 1 个月。<br>
+超过 1 个月的数据可能会在未事先通知的情况下被删除。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/develop_support/restriction" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

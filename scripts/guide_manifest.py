@@ -331,5 +331,12 @@ PAGES += [
         ('sdk', '使用 fincode SDK 高效开发', 'https://docs.fincode.jp/sdk'),
         ('sdk/requirements', '系统要求', 'https://docs.fincode.jp/sdk/requirements'),
         ('sample', '示例', 'https://docs.fincode.jp/sample'),
+        ('develop_support', '关于 API 密钥', 'https://docs.fincode.jp/develop_support'),
+        ('develop_support/development_monitoring', '开发与监控', 'https://docs.fincode.jp/develop_support/development_monitoring'),
+        ('develop_support/test_resources', '测试资源', 'https://docs.fincode.jp/develop_support/test_resources'),
+        ('develop_support/restriction', '限制事项', 'https://docs.fincode.jp/develop_support/restriction'),
+        ('develop_support/logo', '使用标志', 'https://docs.fincode.jp/develop_support/logo'),
+        ('develop_support/two_factor_authentication', '双因素认证', 'https://docs.fincode.jp/develop_support/two_factor_authentication'),
+        ('develop_support/authenticator', '在 Chrome 中设置 Authenticator', 'https://docs.fincode.jp/develop_support/authenticator'),
     )
 ]

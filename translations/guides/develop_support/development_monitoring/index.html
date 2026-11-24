@@ -1,0 +1,135 @@
+<h1 id="開発とモニタリング">开发与监控</h1>
+<h2 id="api">获取 API 密钥</h2>
+<p>访问 fincode API 时，使用为各商户账户签发的 API 密钥认证请求。缺少密钥、密钥错误或使用旧密钥时，都会返回错误。API 密钥分为测试环境密钥和生产环境密钥，可在控制面板查看。</p>
+<p><i class="icon-after icon-window"><a href="https://dashboard.fincode.jp/development/config" rel="nofollow noopener noreferrer" target="_blank">从控制面板获取 API 密钥</a></i></p>
+<h2 id="hook">使用 Webhook</h2>
+<p>商户账户发生支付等事件时，通知会发送至商户应用。Webhook 适用于支付状态变化之类的异步事件。</p>
+<p>Webhook 也可在<a href="https://dashboard.fincode.jp/development/config" rel="nofollow noopener noreferrer" target="_blank">控制面板</a>中设置。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">事件列表和 Webhook 设置 API 的规范可在  <a href="/api#tag/Webhook">API 参考</a>中查看。</div>
+</div>
+<h2 id="webhookの仕様">Webhook 规范</h2>
+<h3 id="httpリクエスト">HTTP 请求</h3>
+<p>fincode 会按以下规范发送 HTTP 请求。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">HTTP 方法</th><th align="left">格式</th></tr></thead><tbody><tr><td align="left">POST</td><td align="left">JSON　　　　　　　</td></tr></tbody></table>
+<h3 id="ヘッダー">请求头</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目</th><th align="left">值</th></tr></thead><tbody><tr><td align="left">Fincode-Signature</td><td align="left">填入登记 Webhook 时为签名（signature）参数设置的值。<br>可用于识别来自 fincode 的通知。</td></tr></tbody></table>
+<h3 id="その他">其他</h3>
+<p>Webhook 通知通过 443 端口使用 HTTPS 发送。请指定能够接收此类通信的通知 URL。</p>
+<h2 id="webhookへのレスポンス">Webhook 响应</h2>
+<p>商户需要回应 Webhook 请求，表明是否成功接收通知。如果返回接收失败，fincode 会按重试规范再次发送通知。Webhook 要求的 HTTP 响应如下。</p>
+<h3 id="ヘッダー-1">响应头</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目</th><th align="left">值</th></tr></thead><tbody><tr><td align="left">Content-Type</td><td align="left">text/plain 或 application/json</td></tr></tbody></table>
+<h3 id="ステータスコード--ボディ">状态码与响应体</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态码</th><th align="left">Content-Type</th><th align="left">值</th><th align="left">行为</th></tr></thead><tbody><tr><td align="left">200</td><td align="left">text/plain</td><td align="left">0</td><td align="left">判定为处理成功，结束。</td></tr><tr><td align="left">200</td><td align="left">application/json</td><td align="left">{"receive": "0"}</td><td align="left">判定为处理成功，结束。</td></tr><tr><td align="left">200</td><td align="left">text/plain</td><td align="left">1</td><td align="left">判定为接收失败，重试请求。</td></tr><tr><td align="left">200</td><td align="left">application/json</td><td align="left">{"receive": "1"}</td><td align="left">判定为接收失败，重试请求。</td></tr><tr><td align="left">4xx, 5xx</td><td align="left">上述值以外的值</td><td align="left">上述值以外的值</td><td align="left">判定为错误，重试请求。</td></tr><tr><td align="left">4xx, 5xx</td><td align="left">上述值以外的值</td><td align="left">上述值以外的值</td><td align="left">判定为错误，重试请求。</td></tr></tbody></table>
+<h2 id="webhookのリトライ仕様">Webhook 重试规范</h2>
+<p>事件发生时，fincode 会向商户设置的 URL 发送 Webhook 请求。<br>
+如果该请求因错误失败，fincode 会重新发送 Webhook 请求。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">重试规范</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">重试条件</td><td align="left">· 请求目标返回状态码为 4xx、5xx 的错误<br>· 请求目标返回的响应体不是 "0"<br>· 3 秒内未收到请求目标的响应</td></tr><tr><td align="left">重试次数</td><td align="left">最多重试 5 次（含首次发送最多执行 6 次。）</td></tr><tr><td align="left">重试间隔</td><td align="left">约 20 分钟</td></tr></tbody></table>

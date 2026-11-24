@@ -1,0 +1,61 @@
+<h1 id="top">关于 API 密钥</h1>
+<p>使用 fincode 认证 API 时，访问权限取决于请求附带的 API 密钥。API 密钥因用户而异，使用密钥即可以该用户的权限访问。<br>
+例如，应用需要访问 fincode 客户信息时，须由有权访问这些信息的用户签发 API 密钥。</p>
+<h2 id="認証方式">认证方式</h2>
+<p>支持 Basic 认证和 Bearer 认证。<br>
+使用 Basic 认证时，指定经 Base64 编码的 API 密钥。使用 Bearer 认证时，将原始 API 密钥放入请求头。<br>
+请参阅以下示例。</p>
+<div class="nuxt-content-highlight"><pre class="language-js line-numbers"><code><span class="token maybe-class-name">Authorization</span><span class="token operator">:</span> <span class="token maybe-class-name">Basic</span> <span class="token punctuation">{</span><span class="token maybe-class-name">Base64でエンコードした</span><span class="token constant">API</span>キー<span class="token punctuation">}</span>
+<span class="token maybe-class-name">Authorization</span><span class="token operator">:</span> <span class="token maybe-class-name">Bearer</span> <span class="token punctuation">{</span><span class="token constant">API</span>キー<span class="token punctuation">}</span>
+</code></pre></div>
+<h2 id="apiキーの種類">API 密钥类型</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">API 密钥</th><th align="left">测试环境</th><th align="left">生产环境</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">公钥</td><td align="left">p_test_</td><td align="left">p_prod_</td><td align="left">· 不经过商户服务器，通过 JS 访问 fincode API 时使用<br>· 仅限执行部分操作<br>· 可集成到 Web 应用或手机应用中<br>· 按商户签发</td></tr><tr><td align="left">私钥</td><td align="left">m_test_</td><td align="left">m_prod_</td><td align="left">· 从商户服务器访问 fincode API 时使用<br>· 可执行商户获准进行的所有操作<br>· 按商户签发</td></tr></tbody></table>
+<h2 id="version">版本管理</h2>
+<p>API 由主版本和次版本管理。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">版本</th><th align="left">位置</th><th align="left">示例</th><th align="left">规则</th></tr></thead><tbody><tr><td align="left">主版本</td><td align="left">URI</td><td align="left">v1/products</td><td align="left">· 仅使用整数<br>· 系统全面更新时提升版本<br>· 提升版本时所有 API 都会更新版本（包括功能不变的 API）</td></tr><tr><td align="left">次版本</td><td align="left">HTTP 请求头</td><td align="left">Api-Version: 20211001</td><td align="left">可指定的版本：20211001<br>· 不兼容的变更通过次版本处理<br>· 格式为发布日期 yyyymmdd<br>· 商户首次申请时，将当时最新的 API 版本记录为默认版本。<br>· 商户未指定版本时，应用默认版本。</td></tr></tbody></table>
