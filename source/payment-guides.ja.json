@@ -10,7 +10,7 @@
       "business_management",
       "platform"
     ],
-    "pageCount": 69
+    "pageCount": 73
   },
   "pages": [
     {
@@ -94533,6 +94533,5620 @@
           "created": 1792994140621
         },
         "$loki": 133
+      }
+    },
+    {
+      "key": "payment-redirect_type",
+      "sourcePath": "/payment/redirect_type/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/redirect_type",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "リダイレクト型決済とは",
+            "depth": 2,
+            "text": "リダイレクト型決済とは"
+          },
+          {
+            "id": "利用可能な決済手段",
+            "depth": 2,
+            "text": "利用可能な決済手段"
+          },
+          {
+            "id": "リダイレクト型決済を実行する",
+            "depth": 2,
+            "text": "リダイレクト型決済を実行する"
+          },
+          {
+            "id": "リダイレクト型決済url作成",
+            "depth": 3,
+            "text": "リダイレクト型決済URL作成"
+          },
+          {
+            "id": "リダイレクト型決済url作成メールリンク",
+            "depth": 3,
+            "text": "リダイレクト型決済URL作成(メールリンク)"
+          },
+          {
+            "id": "リダイレクト型画面イメージ",
+            "depth": 2,
+            "text": "リダイレクト型画面イメージ"
+          },
+          {
+            "id": "画面項目",
+            "depth": 2,
+            "text": "画面項目"
+          },
+          {
+            "id": "購入者のバーコード表示画面",
+            "depth": 2,
+            "text": "購入者のバーコード表示画面"
+          },
+          {
+            "id": "メールテンプレート",
+            "depth": 2,
+            "text": "メールテンプレート"
+          },
+          {
+            "id": "fincodeデフォルトテンプレートメールサンプル",
+            "depth": 3,
+            "text": "fincodeデフォルトテンプレート（メールサンプル）"
+          },
+          {
+            "id": "ショップオリジナルのテンプレートを作成する",
+            "depth": 3,
+            "text": "ショップオリジナルのテンプレートを作成する"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "リダイレクト型決済"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E6%B1%BA%E6%B8%88",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型決済とは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E6%B1%BA%E6%B8%88%E3%81%A8%E3%81%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済とは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済は、fincodeが提供する決済画面を使用して購入者が決済を行う方法です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nショップ自身で決済画面を構築することなく、fincodeの決済URLに購入者を誘導するだけで決済を完了できます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "購入者に決済URLをメールで案内することができる"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "a",
+                          "props": {
+                            "href": "https://blog.fincode.jp/product_blog/325-2/",
+                            "rel": [
+                              "nofollow",
+                              "noopener",
+                              "noreferrer"
+                            ],
+                            "target": "_blank"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "「メールリンク」機能"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "も利用可能です。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "利用可能な決済手段"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA%E6%B1%BA%E6%B8%88%E6%89%8B%E6%AE%B5",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "利用可能な決済手段"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "決済手段毎のリダイレクト型決済の対応状況は下記の通りです。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nカード決済以外の決済手段でリダイレクト型決済を利用する場合、それぞれの決済手段ごとに利用申請を行い、審査が完了している必要があります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済手段"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "対応状況"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "補足"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Apple Pay"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Google Pay"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "コンビニ決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "PayPay"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "メールリンクは利用不可"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "口座振替"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "銀行振込（バーチャル口座）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型決済を実行する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E6%B1%BA%E6%B8%88%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済を実行する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済URL作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を利用して決済URLを作成し、購入者をfincode決済画面に誘導します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済URL作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "の詳しいパラメータについては"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/api#operation/postSessions"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "こちら"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "をご確認ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "リダイレクト型決済url作成"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E6%B1%BA%E6%B8%88url%E4%BD%9C%E6%88%90",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済URL作成"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型決済",
+                    "src": "/assets/images/linktype/redirect_type.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者が購入商品（金額）を決定します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップは"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済URL作成"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を行い、"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済URL(link_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に遷移させます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は決済手段を選択し、決済手続きを行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeは各決済事業者に対して決済処理をリクエストします。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeは購入者に対して、決済結果画面を表示します。決済URL作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "リダイレクト型決済url作成メールリンク"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E6%B1%BA%E6%B8%88url%E4%BD%9C%E6%88%90%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%AA%E3%83%B3%E3%82%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済URL作成(メールリンク)"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "メールリンク",
+                    "src": "/assets/images/linktype/redirect_payments_maillink.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "購入者が購入商品（金額）を決定します。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ショップは"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "inline-api"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済URL作成"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "を行います。fincodeは"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済URL案内メール"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "を"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "宛先メールアドレス(receiver_mail)"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "に送信します。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "※管理画面から決済URL（メールリンク）を発行する場合、指定できる有効期限は「最長：60日未満（60日ちょうどは不可）」「最短：5分超（5分ちょうどは不可）」となります。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "購入者が決済手続きを行います。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "fincodeは各決済事業者に対して決済処理をリクエストします。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "fincodeは購入者に対して、決済結果画面を表示します。メールリンク作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型画面イメージ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E7%94%BB%E9%9D%A2%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型画面イメージ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "例：カード決済の場合"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型画面イメージ_カード決済",
+                    "src": "/assets/images/linktype/redirect_type_preview_card_vertical.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "例：コンビニ決済の場合"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型画面イメージ_コンビニ決済",
+                    "src": "/assets/images/linktype/preview_konbini.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "画面項目"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E7%94%BB%E9%9D%A2%E9%A0%85%E7%9B%AE",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "画面項目"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済画面の各項目については以下の通りです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "No"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ショップ・サービス名称"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "省略された場合は「明細書表記」を自動的に表示します。リダイレクト型決済において別の名称を使用されたい場合は、任意の名称をご指定ください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "※購入者のカード明細には「明細書表記」が表示されます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "金額表示欄"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "code",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "利用金額"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": ", "
+                            },
+                            {
+                              "type": "element",
+                              "tag": "code",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "税送料"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": ", "
+                            },
+                            {
+                              "type": "element",
+                              "tag": "code",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "合計金額"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": "を表示します。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済手段選択ボックス"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が利用できる決済手段を選択するセレクトボックスです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "ショップの各決済手段の契約状況に応じて選択肢として表示される決済手段は動的に変わります。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "4"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "各決済手段固有の情報入力欄"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "選択された決済手段において必要な情報を収集するフォームです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "例：カード決済の場合、カード番号や有効期限等の入力項目が自動で表示されます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "5"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ご利用可能なコンビニ一覧"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者がコンビニ決済の際に利用できるコンビニ事業者が表示されます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "6"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バーコード送信先の情報"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "コンビニ決済のためのバーコードを表示するページへのリンクがここに表示されているメールアドレス宛に送信されます。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "購入者はメールに添付されたバーコード表示画面をコンビニの店頭で提示して決済を完了させます。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "購入者のバーコード表示画面"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E8%B3%BC%E5%85%A5%E8%80%85%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8%E7%A4%BA%E7%94%BB%E9%9D%A2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "購入者のバーコード表示画面"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リダイレクト型決済で購入者がコンビニ決済を選択すると、購入者宛てにコンビニ決済で利用するバーコード表示画面へのURLが送信されます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "バーコード表示画面サンプル",
+                    "src": "/assets/images/konbini/preview_barcode.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "メールテンプレート"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "メールテンプレート"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "メールリンク機能では、購入者へ送信される各種メール（決済URL案内、カード登録URL案内、決済完了メール）のテンプレートを、「fincodeデフォルトテンプレート」または「ショップオリジナルテンプレート」から選択いただけます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※決済完了メールは、メールリンク機能を使用しないリダイレクト型決済の場合でも送信可能です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "メールの送信元はテスト環境、本番環境で異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送信元メールアドレス"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テスト環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "mailto:noreply@test.fincode.jp"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "noreply@test.fincode.jp"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "本番環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "mailto:noreply@fincode.jp"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "noreply@fincode.jp"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "fincodeデフォルトテンプレートメールサンプル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#fincode%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "fincodeデフォルトテンプレート（メールサンプル）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "お支払メールサンプル",
+                    "src": "/assets/images/linktype/redirect_payments_mailsample_01.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "お支払い完了メールサンプル",
+                    "src": "/assets/images/linktype/redirect_payments_mailsample_02.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "ショップオリジナルのテンプレートを作成する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%8A%E3%83%AB%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "ショップオリジナルのテンプレートを作成する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincode管理画面から、ショップオリジナルのテンプレートを作成することができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nテンプレート内で fincode指定のパラメータを使用することで、取引情報をメール本文へ自動挿入できます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "fincode管理画面へログイン後、左部のメニューから「ショップ設定」へ移動し「テンプレート設定」の設定ボタンを押下します。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "img",
+                          "props": {
+                            "alt": "メールリンク設定",
+                            "src": "/assets/images/linktype/redirect_payments_mailsample_03.png"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "「テンプレート設定」で任意のメールテンプレート名やメール件名・本文を入力し、「設定」を押下します。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "img",
+                          "props": {
+                            "alt": "メールリンク設定",
+                            "src": "/assets/images/linktype/redirect_payments_mailsample_04.png"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "テンプレート内で使用できるパラメータは「テンプレートパラメータ」より確認できます。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "img",
+                          "props": {
+                            "alt": "メールリンク設定",
+                            "src": "/assets/images/linktype/redirect_payments_mailsample_05.png"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "設定したテンプレートごとに「テンプレートID」が発番され、決済URL・カード登録URL作成時に選択できるようになります。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "img",
+                          "props": {
+                            "alt": "メールリンク設定",
+                            "src": "/assets/images/linktype/redirect_payments_mailsample_06.png"
+                          },
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# リダイレクト型決済\n\n## リダイレクト型決済とは\n\nリダイレクト型決済は、fincodeが提供する決済画面を使用して購入者が決済を行う方法です。  \nショップ自身で決済画面を構築することなく、fincodeの決済URLに購入者を誘導するだけで決済を完了できます。  \n\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">\n\n  購入者に決済URLをメールで案内することができる[「メールリンク」機能](https://blog.fincode.jp/product_blog/325-2/)も利用可能です。\n\n  </div>\n</div>\n\n## 利用可能な決済手段\n決済手段毎のリダイレクト型決済の対応状況は下記の通りです。  \nカード決済以外の決済手段でリダイレクト型決済を利用する場合、それぞれの決済手段ごとに利用申請を行い、審査が完了している必要があります。  \n\n|決済手段|対応状況|補足|\n|:----|:----|:----|\n|カード決済|利用可能||\n|Apple Pay|ー| |\n|Google Pay|ー| |\n|コンビニ決済|利用可能| |\n|PayPay|利用可能|メールリンクは利用不可|\n|口座振替|ー||\n|銀行振込（バーチャル口座）|利用可能|| \n\n## リダイレクト型決済を実行する\n<span class=\"inline-api\">決済URL作成</span>を利用して決済URLを作成し、購入者をfincode決済画面に誘導します。  \n<span class=\"inline-api\">決済URL作成</span>の詳しいパラメータについては[こちら](/api#operation/postSessions)をご確認ください。\n  \n  \n### リダイレクト型決済URL作成\n\n![リダイレクト型決済](/assets/images/linktype/redirect_type.png)\n\n1. 購入者が購入商品（金額）を決定します。\n2. ショップは<span class=\"inline-api\">決済URL作成</span>を行い、`決済URL(link_url)`に遷移させます。\n3. 購入者は決済手段を選択し、決済手続きを行います。\n4. fincodeは各決済事業者に対して決済処理をリクエストします。\n5. fincodeは購入者に対して、決済結果画面を表示します。決済URL作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。\n\n### リダイレクト型決済URL作成(メールリンク)\n\n![メールリンク](/assets/images/linktype/redirect_payments_maillink.png)\n\n1. 購入者が購入商品（金額）を決定します。\n2. ショップは<span class=\"inline-api\">決済URL作成</span>を行います。fincodeは`決済URL案内メール`を`宛先メールアドレス(receiver_mail)`に送信します。\n\n    ※管理画面から決済URL（メールリンク）を発行する場合、指定できる有効期限は「最長：60日未満（60日ちょうどは不可）」「最短：5分超（5分ちょうどは不可）」となります。\n\n3. 購入者が決済手続きを行います。\n4. fincodeは各決済事業者に対して決済処理をリクエストします。\n5. fincodeは購入者に対して、決済結果画面を表示します。メールリンク作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。\n\n## リダイレクト型画面イメージ\n例：カード決済の場合  \n![リダイレクト型画面イメージ_カード決済](/assets/images/linktype/redirect_type_preview_card_vertical.png)\n\n例：コンビニ決済の場合  \n![リダイレクト型画面イメージ_コンビニ決済](/assets/images/linktype/preview_konbini.png)\n\n## 画面項目\n\nリダイレクト型決済画面の各項目については以下の通りです。\n\n|No|項目|説明|\n|:----|:----|:----|\n|1|ショップ・サービス名称|省略された場合は「明細書表記」を自動的に表示します。リダイレクト型決済において別の名称を使用されたい場合は、任意の名称をご指定ください。<br>※購入者のカード明細には「明細書表記」が表示されます。|\n|2|金額表示欄|`利用金額`, `税送料`, `合計金額`を表示します。|\n|3|決済手段選択ボックス|購入者が利用できる決済手段を選択するセレクトボックスです。<br>ショップの各決済手段の契約状況に応じて選択肢として表示される決済手段は動的に変わります。|\n|4|各決済手段固有の情報入力欄|選択された決済手段において必要な情報を収集するフォームです。<br>例：カード決済の場合、カード番号や有効期限等の入力項目が自動で表示されます。|\n|5|ご利用可能なコンビニ一覧|購入者がコンビニ決済の際に利用できるコンビニ事業者が表示されます。|\n|6|バーコード送信先の情報|コンビニ決済のためのバーコードを表示するページへのリンクがここに表示されているメールアドレス宛に送信されます。<br>購入者はメールに添付されたバーコード表示画面をコンビニの店頭で提示して決済を完了させます。|\n\n## 購入者のバーコード表示画面\n\nリダイレクト型決済で購入者がコンビニ決済を選択すると、購入者宛てにコンビニ決済で利用するバーコード表示画面へのURLが送信されます。\n\n![バーコード表示画面サンプル](/assets/images/konbini/preview_barcode.png)\n\n## メールテンプレート\n\nメールリンク機能では、購入者へ送信される各種メール（決済URL案内、カード登録URL案内、決済完了メール）のテンプレートを、「fincodeデフォルトテンプレート」または「ショップオリジナルテンプレート」から選択いただけます。  \n※決済完了メールは、メールリンク機能を使用しないリダイレクト型決済の場合でも送信可能です。  \n  \nメールの送信元はテスト環境、本番環境で異なります。\n|環境|送信元メールアドレス|\n|:----|:----|\n|テスト環境|noreply@test.fincode.jp|\n|本番環境|noreply@fincode.jp|\n\n\n### fincodeデフォルトテンプレート（メールサンプル）\n\n![お支払メールサンプル](/assets/images/linktype/redirect_payments_mailsample_01.png)\n\n\n![お支払い完了メールサンプル](/assets/images/linktype/redirect_payments_mailsample_02.png)\n\n### ショップオリジナルのテンプレートを作成する\n\nfincode管理画面から、ショップオリジナルのテンプレートを作成することができます。  \nテンプレート内で fincode指定のパラメータを使用することで、取引情報をメール本文へ自動挿入できます。  \n\n1. fincode管理画面へログイン後、左部のメニューから「ショップ設定」へ移動し「テンプレート設定」の設定ボタンを押下します。\n\n    ![メールリンク設定](/assets/images/linktype/redirect_payments_mailsample_03.png)\n\n2. 「テンプレート設定」で任意のメールテンプレート名やメール件名・本文を入力し、「設定」を押下します。\n\n    ![メールリンク設定](/assets/images/linktype/redirect_payments_mailsample_04.png)\n\n    テンプレート内で使用できるパラメータは「テンプレートパラメータ」より確認できます。\n\n    ![メールリンク設定](/assets/images/linktype/redirect_payments_mailsample_05.png)\n\n    設定したテンプレートごとに「テンプレートID」が発番され、決済URL・カード登録URL作成時に選択できるようになります。\n\n    ![メールリンク設定](/assets/images/linktype/redirect_payments_mailsample_06.png)\n\n\n\n\n\n\n",
+        "dir": "/payment/redirect_type",
+        "path": "/payment/redirect_type/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139748
+        },
+        "$loki": 46
+      }
+    },
+    {
+      "key": "payment-redirect_type-card",
+      "sourcePath": "/payment/redirect_type/card/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/redirect_type/card",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "リダイレクト型カード登録",
+            "depth": 2,
+            "text": "リダイレクト型カード登録"
+          },
+          {
+            "id": "リダイレクト型カード登録メールリンク",
+            "depth": 2,
+            "text": "リダイレクト型カード登録(メールリンク)"
+          },
+          {
+            "id": "リダイレクト型画面イメージ",
+            "depth": 2,
+            "text": "リダイレクト型画面イメージ"
+          },
+          {
+            "id": "画面項目",
+            "depth": 2,
+            "text": "画面項目"
+          },
+          {
+            "id": "メールリンクサンプル",
+            "depth": 2,
+            "text": "メールリンクサンプル"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "リダイレクト型カード登録をする"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E3%82%AB%E3%83%BC%E3%83%89%E7%99%BB%E9%8C%B2%E3%82%92%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型カード登録をする"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リダイレクト型カード登録は、fincodeが提供する決済画面を使用して購入者のカード情報の登録を行う方法です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n加盟店様自身で決済画面を構築することなく、fincodeのカード登録URLに購入者を誘導するだけで決済を完了できます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カード登録URL作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を利用してカード登録URLを作成し、購入者をfincodeのカード登録画面に誘導します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者にカード登録URLをメールで案内することができる「メールリンク」機能も利用可能です。\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "inline-api"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード登録URL作成"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "の詳しいパラメータについては"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "nuxt-link",
+                          "props": {
+                            "to": "/api#tag/%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B/operation/postCardSessions"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "こちら"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "です"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型カード登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E3%82%AB%E3%83%BC%E3%83%89%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型カード登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型カード登録",
+                    "src": "/assets/images/linktype/redirect_type_card_flow.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "お客様が顧客登録・カード登録を要求します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "加盟店様はfincodeの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "カード登録URL作成"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を行い、"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "カード登録URL(link_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に遷移させます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "お客様が登録手続き（カード情報入力）を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeは顧客登録を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeはカード会社に対してカードの有効性チェックを行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カードの有効性チェックに成功した場合、顧客にカード登録を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeはお客様に対して、登録結果画面を表示します。 カード登録URL作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型カード登録メールリンク"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E3%82%AB%E3%83%BC%E3%83%89%E7%99%BB%E9%8C%B2%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%AA%E3%83%B3%E3%82%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型カード登録(メールリンク)"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型カード登録(メールリンク)",
+                    "src": "/assets/images/linktype/redirect_cards_maillink.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "お客様が顧客登録・カード登録を要求します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "加盟店様はfincodeの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "カード登録URL作成"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を行い、fincodeは"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "カード登録URL案内メール"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "宛先メールアドレス(receiver_mail)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に送信します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "お客様が登録手続き（カード情報入力）を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeは顧客登録を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeはカード会社に対してカードの有効性チェックを行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カードの有効性チェックに成功した場合、顧客にカード登録を行います。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincodeはお客様に対して、登録結果画面を表示します。メールリンク作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型カード登録状態遷移図)",
+                    "src": "/assets/images/linktype/redirect_type_card_statemachine.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト型画面イメージ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%9E%8B%E7%94%BB%E9%9D%A2%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト型画面イメージ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "リダイレクト型画面イメージ)",
+                    "src": "/assets/images/linktype/redirect_type_card_preview_vertical.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "画面項目"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E7%94%BB%E9%9D%A2%E9%A0%85%E7%9B%AE",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "画面項目"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リダイレクト型カード登録画面の各項目については以下の通りです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "No"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ショップ・サービス名称"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "省略された場合は「明細書表記」を自動的に表示します。リダイレクト型決済において別の名称を使用されたい場合は、任意の名称をご指定ください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "※お客様のカード明細には「明細書表記」が表示されます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード情報入力欄"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード情報の入力フォームです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "カード番号は入力エリアの右側に該当するブランドのアイコンを表示します。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録ボタン"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ボタン押下後、ボタンのアイコンは「送信中」と表示し、入力欄は変更不可になります。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "メールリンクサンプル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "メールリンクサンプル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "メールリンク機能を使う場合、以下のようなカード登録URL案内メール、登録完了メールをお客様に送信します。\nメールの送信元はテスト環境、本番環境で異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送信元メールアドレス"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テスト環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "mailto:noreply@test.fincode.jp"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "noreply@test.fincode.jp"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "本番環境"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "mailto:noreply@fincode.jp"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "noreply@fincode.jp"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "登録案内メールサンプル)",
+                    "src": "/assets/images/linktype/redirect_cards_mailsample_01.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "登録完了メールサンプル)",
+                    "src": "/assets/images/linktype/redirect_cards_mailsample_02.png"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# リダイレクト型カード登録をする\n\nリダイレクト型カード登録は、fincodeが提供する決済画面を使用して購入者のカード情報の登録を行う方法です。  \n加盟店様自身で決済画面を構築することなく、fincodeのカード登録URLに購入者を誘導するだけで決済を完了できます。  \n<span class=\"inline-api\">カード登録URL作成</span>を利用してカード登録URLを作成し、購入者をfincodeのカード登録画面に誘導します。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">購入者にカード登録URLをメールで案内することができる「メールリンク」機能も利用可能です。\n  </div>\n</div>\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">\n  \n  <span class=\"inline-api\">カード登録URL作成</span>の詳しいパラメータについては[こちら](/api#tag/リダイレクト型/operation/postCardSessions)</a>です\n  </div>\n</div>\n\n## リダイレクト型カード登録\n\n![リダイレクト型カード登録](/assets/images/linktype/redirect_type_card_flow.png)\n\n1. お客様が顧客登録・カード登録を要求します。\n2. 加盟店様はfincodeの<span class=\"inline-api\">カード登録URL作成</span>を行い、`カード登録URL(link_url)`に遷移させます。\n3. お客様が登録手続き（カード情報入力）を行います。\n4. fincodeは顧客登録を行います。\n5. fincodeはカード会社に対してカードの有効性チェックを行います。\n6. カードの有効性チェックに成功した場合、顧客にカード登録を行います。\n7. fincodeはお客様に対して、登録結果画面を表示します。 カード登録URL作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。\n\n## リダイレクト型カード登録(メールリンク)\n\n![リダイレクト型カード登録(メールリンク)](/assets/images/linktype/redirect_cards_maillink.png)\n\n1. お客様が顧客登録・カード登録を要求します。\n2. 加盟店様はfincodeの<span class=\"inline-api\">カード登録URL作成</span>を行い、fincodeは`カード登録URL案内メール`を`宛先メールアドレス(receiver_mail)`に送信します。\n3. お客様が登録手続き（カード情報入力）を行います。\n4. fincodeは顧客登録を行います。\n5. fincodeはカード会社に対してカードの有効性チェックを行います。\n6. カードの有効性チェックに成功した場合、顧客にカード登録を行います。\n7. fincodeはお客様に対して、登録結果画面を表示します。メールリンク作成時に成功URLを指定している場合、fincodeはPOSTでそのURLへリダイレクトします。\n\n![リダイレクト型カード登録状態遷移図)](/assets/images/linktype/redirect_type_card_statemachine.png)\n\n## リダイレクト型画面イメージ\n\n![リダイレクト型画面イメージ)](/assets/images/linktype/redirect_type_card_preview_vertical.png)\n\n## 画面項目\n\nリダイレクト型カード登録画面の各項目については以下の通りです。\n\n|No|項目|説明|\n|:----|:----|:----|\n|1|ショップ・サービス名称|省略された場合は「明細書表記」を自動的に表示します。リダイレクト型決済において別の名称を使用されたい場合は、任意の名称をご指定ください。<br>※お客様のカード明細には「明細書表記」が表示されます。|\n|2|カード情報入力欄|カード情報の入力フォームです。<br>カード番号は入力エリアの右側に該当するブランドのアイコンを表示します。|\n|3|登録ボタン|ボタン押下後、ボタンのアイコンは「送信中」と表示し、入力欄は変更不可になります。|\n\n## メールリンクサンプル\n\nメールリンク機能を使う場合、以下のようなカード登録URL案内メール、登録完了メールをお客様に送信します。\nメールの送信元はテスト環境、本番環境で異なります。\n\n|環境|送信元メールアドレス|\n|:----|:----|\n|テスト環境|noreply@test.fincode.jp|\n|本番環境|noreply@fincode.jp|\n\n![登録案内メールサンプル)](/assets/images/linktype/redirect_cards_mailsample_01.png)\n\n![登録完了メールサンプル)](/assets/images/linktype/redirect_cards_mailsample_02.png)\n",
+        "dir": "/payment/redirect_type/card",
+        "path": "/payment/redirect_type/card/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140561
+        },
+        "$loki": 128
+      }
+    },
+    {
+      "key": "payment-fraud_protection-3d_secure_required",
+      "sourcePath": "/payment/fraud_protection/3d_secure_required/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/fraud_protection/3d_secure_required",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "導入必須であるか確認する",
+            "depth": 2,
+            "text": "導入必須であるか確認する"
+          },
+          {
+            "id": "決済処理における制御",
+            "depth": 2,
+            "text": "決済処理における制御"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "3dセキュア導入必須時の挙動"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#3d%E3%82%BB%E3%82%AD%E3%83%A5%E3%82%A2%E5%B0%8E%E5%85%A5%E5%BF%85%E9%A0%88%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "3Dセキュア導入必須時の挙動"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincodeでカード決済の審査を行った結果、カード決済の利用条件として3Dセキュアの導入が必須となる場合があります。\n3Dセキュア導入が必須となったショップでは、カード決済処理の挙動に制御が加わるため、制御内容に応じた実装が必要となります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "導入必須であるか確認する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%B0%8E%E5%85%A5%E5%BF%85%E9%A0%88%E3%81%A7%E3%81%82%E3%82%8B%E3%81%8B%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "導入必須であるか確認する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ショップが3Dセキュア導入必須となった場合、以下いずれかより確認ができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップの審査時に審査保留として、fincodeよりメールで案内されます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "管理画面のカード利用設定において3Dセキュアの利用設定が「必須」と表示されます。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "※管理画面にはカード決済の審査完了後に反映されます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "テスト環境では3Dセキュアの利用設定のデフォルト値は「任意」ですが、本番環境では「必須」がデフォルト値です。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  そのため本番環境では、通常、取引ごとに3Dセキュアの認証を行わない決済はエラーとなりますのでご注意ください。\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "決済処理における制御"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E6%B1%BA%E6%B8%88%E5%87%A6%E7%90%86%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%88%B6%E5%BE%A1",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "決済処理における制御"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "3Dセキュアの導入が必須となった場合、カード決済処理の挙動に制御が加わり\n3Dセキュアの認証が行われない取引ではオーソリは行われず、決済エラーとして返却されます。\nそのため"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/payment/fraud_protection/3d_secure_2"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "3Dセキュアの実装"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "にあたり、決済登録APIのリクエストボディにおいて以下の対応が必要となります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "tds_type（3Dセキュア利用種別）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "2: 3Dセキュア2.0を利用する"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を指定します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "tds2_type（3Dセキュア2.0非対応時の動作）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "2:エラーを返し、決済処理を行わない"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を指定することが推奨されます。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "sup",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "※"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": " "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "3: 3Dセキュア2.0の認証なしでオーソリを実施し、決済処理を行う"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を指定した場合であっても3Dセキュア非対応カードでの決済はエラーとなります。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済登録APIの仕様については"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "target": "_blank",
+                        "to": "/api#tag/決済/operation/postPayments"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "APIリファレンス"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をご確認ください。\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 3Dセキュア導入必須時の挙動\n\nfincodeでカード決済の審査を行った結果、カード決済の利用条件として3Dセキュアの導入が必須となる場合があります。\n3Dセキュア導入が必須となったショップでは、カード決済処理の挙動に制御が加わるため、制御内容に応じた実装が必要となります。\n\n## 導入必須であるか確認する\n\nショップが3Dセキュア導入必須となった場合、以下いずれかより確認ができます。\n\n- ショップの審査時に審査保留として、fincodeよりメールで案内されます。\n- 管理画面のカード利用設定において3Dセキュアの利用設定が「必須」と表示されます。<br>※管理画面にはカード決済の審査完了後に反映されます。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">テスト環境では3Dセキュアの利用設定のデフォルト値は「任意」ですが、本番環境では「必須」がデフォルト値です。<br>\n  そのため本番環境では、通常、取引ごとに3Dセキュアの認証を行わない決済はエラーとなりますのでご注意ください。\n</div>\n</div>\n\n## 決済処理における制御\n\n3Dセキュアの導入が必須となった場合、カード決済処理の挙動に制御が加わり\n3Dセキュアの認証が行われない取引ではオーソリは行われず、決済エラーとして返却されます。\nそのため[3Dセキュアの実装](/payment/fraud_protection/3d_secure_2)にあたり、決済登録APIのリクエストボディにおいて以下の対応が必要となります。\n\n- `tds_type（3Dセキュア利用種別）`に`2: 3Dセキュア2.0を利用する`を指定します。\n- `tds2_type（3Dセキュア2.0非対応時の動作）`に`2:エラーを返し、決済処理を行わない`を指定することが推奨されます。<br><sup>※</sup> `3: 3Dセキュア2.0の認証なしでオーソリを実施し、決済処理を行う`を指定した場合であっても3Dセキュア非対応カードでの決済はエラーとなります。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">決済登録APIの仕様については<a href=\"/api#tag/決済/operation/postPayments\" target=\"_blank\">APIリファレンス</a>をご確認ください。\n</div>\n</div>\n",
+        "dir": "/payment/fraud_protection/3d_secure_required",
+        "path": "/payment/fraud_protection/3d_secure_required/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140066
+        },
+        "$loki": 97
+      }
+    },
+    {
+      "key": "payment-glossary",
+      "sourcePath": "/payment/glossary/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/glossary",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "用語集"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E7%94%A8%E8%AA%9E%E9%9B%86",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "用語集"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "クレジットカード決済にて扱う用語を確認できます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "分類　　　　　　　　　"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "商品コード"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード会社が規定している取引される商材を分類するコードです。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "カード会社との契約にて使用する商品コードが決まっている場合に設定します。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "弊社の包括契約の場合やカード会社との契約時に商品コードに関する内容がない場合は省略します。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "なお、省略時はその他(\"\"0000990\"\")にて処理を行います。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "支払方法"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済を行う支払方法です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "カード会社との加盟店契約の内容によりエラーとなる場合もありますのでご注意ください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "支払回数"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "支払方法が分割の場合、支払う回数です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仕向先コード"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード番号とショップのカード会社契約状況から、データを送信した先のカード会社コードです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "承認番号"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード会社がオーソリごとに発行する承認の番号です。ただし、有効性チェックやキャンセルの場合には発行されない(=全てスペース文字、または空となる)場合があります。承認番号は7桁以内の英数文字・スペース文字で構成されるか、空となります。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "例) “1234567”、“ 123456”(先頭1文字スペース＋6桁数値)、“ “(全てスペース文字)、“ABCDEFG”、“”(空)"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "トランザクションID"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "当サービスがオーソリごとに発行する番号です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード番号"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が保持しているクレジットカードの番号です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "有効期限"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が保持しているクレジットカードの有効期限です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "書式は、「YYMM」形式です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "セキュリティーコード"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が保持しているクレジットカードの裏面にある3桁もしくは4桁の数字"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "設定可能な文字は「半角数字」です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "名義人"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が保持しているクレジットカードの名義人です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "設定可能な文字は「半角英数字 + 半角空白 + 半角記号（コンマ、ハイフン、ピリオド、スラッシュ）」です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3Dセキュア（本人認証サービス）を指します。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "クレジットカード決済をより安全に行うために、VISA、Mastercard、JCB、AMEXが推奨する本人認証サービスです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS利用フラグ"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済時に利用する3DSのバージョンを指定するフラグです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS表示店舗名"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSのパスワード入力画面に表示する店舗名です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "日本語も８文字まで使用可能ですが、文字化けが起こりやすいので、英数半角に設定し、十分な検証を行うことを推奨します。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "また、対応している文字セットはEUC-JPです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ACSUrl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSを利用した場合に3DSパスワード入力画面へ遷移するためのURLです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "PaReq"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSの要求データです。カード会社で暗号化されているために内容は不明ですので、受け取った値を3DSにそのままお渡しください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "TermUrl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS入力画面で購入者がパスワードを入力後に戻るショップのURLです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "MD"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSを利用した場合に、ショップ側のセッション管理に使用する値ですが、当サービスでは、取引IDを指定してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "PaRes"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSの結果です。当サービスにて、認証が成功したか否かの確認を行います。受け取った値を当サービスにそのままお渡しください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DSサーバー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS認証プロセスにおいて、ショップ／当サービスとカード会社間の認証メッセージの要求や応答をするためのサーバーです。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ACS"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カード会社ドメインで機能するコンポーネント。カード番号およびデバイスタイプで認証が利用可能かどうかを確認し、特定のカード会員を認証します。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "DS（ディレクトリサーバ）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "カードブランドの運用する認証サーバー。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "認証チャレンジ"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS2.0認証プロセスにおいて、カードの不正利用等でチャージバックリスクがあると判断された場合にカード保有者に対して本人認証を求めます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済（カード）"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS SDK"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "3DS2.0認証プロセスをモバイルアプリに組み込むための開発キットです。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 用語集\n\nクレジットカード決済にて扱う用語を確認できます。\n\n|分類　　　　　　　　　|項目|説明|\n|:----|:----|:----|\n|決済（カード）|商品コード|カード会社が規定している取引される商材を分類するコードです。<br>カード会社との契約にて使用する商品コードが決まっている場合に設定します。<br>弊社の包括契約の場合やカード会社との契約時に商品コードに関する内容がない場合は省略します。<br>なお、省略時はその他(\"\"0000990\"\")にて処理を行います。|\n|決済（カード）|支払方法|決済を行う支払方法です。<br>カード会社との加盟店契約の内容によりエラーとなる場合もありますのでご注意ください。|\n|決済（カード）|支払回数|支払方法が分割の場合、支払う回数です。|\n|決済（カード）|仕向先コード|カード番号とショップのカード会社契約状況から、データを送信した先のカード会社コードです。|\n|決済（カード）|承認番号|カード会社がオーソリごとに発行する承認の番号です。ただし、有効性チェックやキャンセルの場合には発行されない(=全てスペース文字、または空となる)場合があります。承認番号は7桁以内の英数文字・スペース文字で構成されるか、空となります。<br>例) “1234567”、“ 123456”(先頭1文字スペース＋6桁数値)、“ “(全てスペース文字)、“ABCDEFG”、“”(空)|\n|決済（カード）|トランザクションID|当サービスがオーソリごとに発行する番号です。|\n|決済（カード）|カード番号|購入者が保持しているクレジットカードの番号です。|\n|決済（カード）|有効期限|購入者が保持しているクレジットカードの有効期限です。<br>書式は、「YYMM」形式です。|\n|決済（カード）|セキュリティーコード|購入者が保持しているクレジットカードの裏面にある3桁もしくは4桁の数字<br>設定可能な文字は「半角数字」です。|\n|決済（カード）|名義人|購入者が保持しているクレジットカードの名義人です。<br>設定可能な文字は「半角英数字 + 半角空白 + 半角記号（コンマ、ハイフン、ピリオド、スラッシュ）」です。|\n|決済（カード）|3DS|3Dセキュア（本人認証サービス）を指します。<br>クレジットカード決済をより安全に行うために、VISA、Mastercard、JCB、AMEXが推奨する本人認証サービスです。|\n|決済（カード）|3DS利用フラグ|決済時に利用する3DSのバージョンを指定するフラグです。|\n|決済（カード）|3DS表示店舗名|3DSのパスワード入力画面に表示する店舗名です。<br>日本語も８文字まで使用可能ですが、文字化けが起こりやすいので、英数半角に設定し、十分な検証を行うことを推奨します。<br>また、対応している文字セットはEUC-JPです。|\n|決済（カード）|ACSUrl|3DSを利用した場合に3DSパスワード入力画面へ遷移するためのURLです。|\n|決済（カード）|PaReq|3DSの要求データです。カード会社で暗号化されているために内容は不明ですので、受け取った値を3DSにそのままお渡しください。|\n|決済（カード）|TermUrl|3DS入力画面で購入者がパスワードを入力後に戻るショップのURLです。|\n|決済（カード）|MD|3DSを利用した場合に、ショップ側のセッション管理に使用する値ですが、当サービスでは、取引IDを指定してください。|\n|決済（カード）|PaRes|3DSの結果です。当サービスにて、認証が成功したか否かの確認を行います。受け取った値を当サービスにそのままお渡しください。|\n|決済（カード）|3DSサーバー|3DS認証プロセスにおいて、ショップ／当サービスとカード会社間の認証メッセージの要求や応答をするためのサーバーです。|\n|決済（カード）|ACS|カード会社ドメインで機能するコンポーネント。カード番号およびデバイスタイプで認証が利用可能かどうかを確認し、特定のカード会員を認証します。|\n|決済（カード）|DS（ディレクトリサーバ）|カードブランドの運用する認証サーバー。|\n|決済（カード）|認証チャレンジ|3DS2.0認証プロセスにおいて、カードの不正利用等でチャージバックリスクがあると判断された場合にカード保有者に対して本人認証を求めます。|\n|決済（カード）|3DS SDK|3DS2.0認証プロセスをモバイルアプリに組み込むための開発キットです。|",
+        "dir": "/payment/glossary",
+        "path": "/payment/glossary/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139693
+        },
+        "$loki": 37
       }
     }
   ]

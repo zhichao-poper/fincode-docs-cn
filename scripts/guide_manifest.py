@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'redirect_type': '跳转式支付',
     'virtualaccount': '银行转账（虚拟账户）',
     'paypay': 'PayPay',
     'subscription': '订阅',
@@ -224,6 +225,10 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/redirect_type', 'redirect_type', '跳转式支付', '跳转式支付简介'),
+        ('payment/redirect_type/card', 'redirect_type', '使用跳转式卡片登记', '跳转式卡片登记'),
+        ('payment/fraud_protection/3d_secure_required', 'card', '强制使用 3D Secure 时的行为', '强制使用 3D Secure 时的行为'),
+        ('payment/glossary', 'card', '术语表', '术语表'),
         ('payment/virtualaccount', 'virtualaccount', '什么是银行转账（虚拟账户）', '银行转账简介'),
         ('payment/virtualaccount/execution', 'virtualaccount', '执行支付处理', '执行支付处理'),
         ('payment/virtualaccount/exact-deposit-amount', 'virtualaccount', '什么是可入账金额设置', '可入账金额设置'),

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 跳转式支付中文指南。" />
+    <title>跳转式支付 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/redirect_type" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/redirect_type" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card/index.html">卡片支付简介</a></li>
+<li><a href="../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../card/operation/index.html">运营示例</a></li>
+<li><a href="../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../card/status/index.html">查看支付状态</a></li>
+<li><a href="../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../card/notes/index.html">注意事项</a></li>
+<li><a href="../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">跳转式支付简介</a></li>
+<li><a href="card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../subscription/index.html">订阅简介</a></li>
+<li><a href="../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../card/index.html">支付</a></li><li><a href="index.html">跳转式支付</a></li><li aria-current="page">跳转式支付</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="リダイレクト型決済">跳转式支付</h1>
+<h2 id="リダイレクト型決済とは">什么是跳转式支付</h2>
+<p>跳转式支付让买家使用 fincode 提供的支付页面完成付款。<br>
+商户无需自行搭建支付页面，只要引导买家访问 fincode 的支付 URL 即可完成支付。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>也可使用<a href="https://blog.fincode.jp/product_blog/325-2/" rel="nofollow noopener noreferrer" target="_blank">“邮件链接”功能</a>，通过电子邮件将支付 URL 告知买家。</p>
+  </div>
+</div>
+<h2 id="利用可能な決済手段">可用支付方式</h2>
+<p>各支付方式对跳转式支付的支持情况如下。<br>
+使用卡片以外的支付方式时，请分别申请开通对应支付方式并通过审核。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">支付方式</th><th align="left">支持情况</th><th align="left">补充</th></tr></thead><tbody><tr><td align="left">卡片支付</td><td align="left">支持</td><td align="left"></td></tr><tr><td align="left">Apple Pay</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">Google Pay</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">便利店支付</td><td align="left">支持</td><td align="left"></td></tr><tr><td align="left">PayPay</td><td align="left">支持</td><td align="left">不支持邮件链接</td></tr><tr><td align="left">银行账户自动扣款</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">银行转账（虚拟账户）</td><td align="left">支持</td><td align="left"></td></tr></tbody></table>
+<h2 id="リダイレクト型決済を実行する">执行跳转式支付</h2>
+<p><span class="inline-api">使用创建支付 URL</span>接口创建支付 URL，再将买家引导至 fincode 支付页面。<br>
+<span class="inline-api">创建支付 URL</span>的详细参数请点击<a href="../../../reference.html#operation/createPaymentSession">此处</a>查看。</p>
+<h3 id="リダイレクト型決済url作成">创建跳转式支付 URL</h3>
+<p><img alt="跳转式支付" src="../../../assets/payment-guides/linktype/redirect_type.png"></p>
+<ol>
+<li>买家确定购买的商品和金额。</li>
+<li>商户调用<span class="inline-api">创建支付 URL</span>接口，并将买家跳转至<code>決済URL(link_url)</code>。</li>
+<li>买家选择支付方式并办理付款手续。</li>
+<li>fincode 向相应支付服务商发起支付请求。</li>
+<li>fincode 向买家显示支付结果页面。如果创建支付 URL 时指定了成功 URL，fincode 会通过 POST 重定向到该 URL。</li>
+</ol>
+<h3 id="リダイレクト型決済url作成メールリンク">创建跳转式支付 URL（邮件链接）</h3>
+<p><img alt="邮件链接" src="../../../assets/payment-guides/linktype/redirect_payments_maillink.png"></p>
+<ol>
+<li>
+<p>买家确定购买的商品和金额。</p>
+</li>
+<li>
+<p>商户调用<span class="inline-api">创建支付 URL</span>接口。fincode 将<code>決済URL案内メール</code>发送至<code>宛先メールアドレス(receiver_mail)</code>。</p>
+<p>※在控制面板签发支付 URL（邮件链接）时，可指定的有效期须短于 60 天且长于 5 分钟，不能恰好为 60 天或 5 分钟。</p>
+</li>
+<li>
+<p>买家办理付款手续。</p>
+</li>
+<li>
+<p>fincode 向相应支付服务商发起支付请求。</p>
+</li>
+<li>
+<p>fincode 向买家显示支付结果页面。如果创建邮件链接时指定了成功 URL，fincode 会通过 POST 重定向到该 URL。</p>
+</li>
+</ol>
+<h2 id="リダイレクト型画面イメージ">跳转式页面示例</h2>
+<p>卡片支付示例<br>
+<img alt="跳转式页面示例（卡片支付）" src="../../../assets/payment-guides/linktype/redirect_type_preview_card_vertical.png"></p>
+<p>便利店支付示例<br>
+<img alt="跳转式页面示例（便利店支付）" src="../../../assets/payment-guides/linktype/preview_konbini.png"></p>
+<h2 id="画面項目">页面项目</h2>
+<p>跳转式支付页面上的项目如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">No</th><th align="left">项目</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">1</td><td align="left">商户或服务名称</td><td align="left">省略时自动显示“账单显示名称”。如果要在跳转式支付中使用其他名称，请指定所需名称。<br>※买家的卡片对账单上会显示“账单显示名称”。</td></tr><tr><td align="left">2</td><td align="left">金额显示区</td><td align="left"><code>利用金額</code>, <code>税送料</code>, <code>合計金額</code>显示此值。</td></tr><tr><td align="left">3</td><td align="left">支付方式选择框</td><td align="left">买家可在此下拉框中选择支付方式。<br>支付方式选项会根据商户开通各支付方式的情况动态变化。</td></tr><tr><td align="left">4</td><td align="left">各支付方式专用信息输入区</td><td align="left">收集所选支付方式需要的信息的表单。<br>例如选择卡片支付时，会自动显示卡号、有效期等输入项目。</td></tr><tr><td align="left">5</td><td align="left">可用便利店列表</td><td align="left">显示买家使用便利店支付时可前往的便利店。</td></tr><tr><td align="left">6</td><td align="left">条码接收方信息</td><td align="left">便利店支付条码页面的链接会发送至此处显示的邮箱。<br>买家在便利店柜台出示邮件所附的条码页面即可完成支付。</td></tr></tbody></table>
+<h2 id="購入者のバーコード表示画面">买家的条码页面</h2>
+<p>买家在跳转式支付中选择便利店支付时，会收到用于便利店支付的条码页面 URL。</p>
+<p><img alt="条码页面示例" src="../../../assets/payment-guides/konbini/preview_barcode.png"></p>
+<h2 id="メールテンプレート">邮件模板</h2>
+<p>使用邮件链接功能时，向买家发送的各种邮件（支付 URL 通知、卡片登记 URL 通知、支付完成邮件）均可选择“fincode 默认模板”或“商户自定义模板”。<br>
+※跳转式支付即使未使用邮件链接功能，也能发送支付完成邮件。</p>
+<p>测试环境和生产环境的发件地址不同。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">环境</th><th align="left">发件邮箱地址</th></tr></thead><tbody><tr><td align="left">测试环境</td><td align="left"><a href="mailto:noreply@test.fincode.jp">noreply@test.fincode.jp</a></td></tr><tr><td align="left">生产环境</td><td align="left"><a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a></td></tr></tbody></table>
+<h3 id="fincodeデフォルトテンプレートメールサンプル">fincode 默认模板（邮件示例）</h3>
+<p><img alt="付款通知邮件示例" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_01.png"></p>
+<p><img alt="付款完成邮件示例" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_02.png"></p>
+<h3 id="ショップオリジナルのテンプレートを作成する">创建商户自定义模板</h3>
+<p>可以在 fincode 控制面板创建商户自定义模板。<br>
+在模板中使用 fincode 指定的参数，可以将交易信息自动插入邮件正文。</p>
+<ol>
+<li>
+<p>登录 fincode 控制面板后，从左侧菜单进入“商户设置”，点击“模板设置”中的设置按钮。</p>
+<p><img alt="邮件链接设置" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_03.png"></p>
+</li>
+<li>
+<p>在“模板设置”中输入所需的邮件模板名称、邮件主题和正文，再点击“设置”。</p>
+<p><img alt="邮件链接设置" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_04.png"></p>
+<p>可在“模板参数”中查看能用于模板的参数。</p>
+<p><img alt="邮件链接设置" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_05.png"></p>
+<p>系统会为每个已设置的模板分配“模板 ID”，创建支付 URL 或卡片登记 URL 时即可选择。</p>
+<p><img alt="邮件链接设置" src="../../../assets/payment-guides/linktype/redirect_payments_mailsample_06.png"></p>
+</li>
+</ol>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/redirect_type" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

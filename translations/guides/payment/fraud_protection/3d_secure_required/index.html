@@ -1,0 +1,23 @@
+<h1 id="3dセキュア導入必須時の挙動">强制使用 3D Secure 时的行为</h1>
+<p>fincode 完成卡片支付审核后，有时会要求商户接入 3D Secure，作为使用卡片支付的条件。有此要求的商户在处理卡片支付时会受到相应限制，接入时须按限制处理。</p>
+<h2 id="導入必須であるか確認する">确认是否强制使用</h2>
+<p>如果商户必须接入 3D Secure，可以通过以下任一方式确认。</p>
+<ul>
+<li>商户审核暂缓时，fincode 会通过电子邮件通知。</li>
+<li>在控制面板的卡片使用设置中，3D Secure 使用设置会显示“必需”。<br>※卡片支付审核完成后，结果才会显示在控制面板中。</li>
+</ul>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">测试环境中的 3D Secure 使用设置默认为“可选”，生产环境默认为“必需”。<br>
+  因此在生产环境中，未逐笔执行 3D Secure 验证的支付通常会报错。
+</div>
+</div>
+<h2 id="決済処理における制御">支付处理限制</h2>
+<p>强制使用 3D Secure 时，系统会限制卡片支付。未执行 3D Secure 验证的交易不会进行授权，并会返回支付错误。因此在<a href="/payment/fraud_protection/3d_secure_2">接入 3D Secure</a>时，支付登记 API 的请求体需要作如下设置。</p>
+<ul>
+<li><code>tds_type（3Dセキュア利用種別）</code>设置为<code>2: 3Dセキュア2.0を利用する</code>。</li>
+<li><code>tds2_type（3Dセキュア2.0非対応時の動作）</code>建议设置为<code>2:エラーを返し、決済処理を行わない</code>。<br><sup>※</sup> <code>3: 3Dセキュア2.0の認証なしでオーソリを実施し、決済処理を行う</code>：即使指定此值，使用不支持 3D Secure 的卡片支付仍会报错。</li>
+</ul>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">有关支付登记 API 的规格，请查看<a target="_blank" href="/api#operation/createPayment">API 参考</a>。
+</div>
+</div>
