@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 限制事项中文指南。" />
+    <title>限制事项 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/virtualaccount/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/virtualaccount/restriction" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+<li><a href="../../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>批量支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../bulk/index.html">批量支付简介</a></li>
+<li><a href="../../bulk/card/index.html">卡片支付</a></li>
+<li><a href="../../bulk/virtualaccount/index.html">银行转账（虚拟账户）</a></li>
+</ul>
+<p class="guide-nav-section"><span>UI 组件</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../ui_component/index.html">UI 组件</a></li>
+</ul>
+<p class="guide-nav-section"><span>支付方式 API</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../payment_method/index.html">支付方式简介</a></li>
+<li><a href="../../payment_method/card/index.html">卡片支付</a></li>
+<li><a href="../../payment_method/directdebit_account/index.html">银行账户自动扣款</a></li>
+<li><a href="../../payment_method/virtualaccount/index.html">固定虚拟账户</a></li>
+<li><a href="../../payment_method/status/index.html">查看支付方式状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice_mpb/index.html">账单功能简介</a></li>
+<li><a href="../../invoice_mpb/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice_mpb/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice_mpb/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice_mpb/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice_mpb/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice/index.html">账单功能简介</a></li>
+<li><a href="../../invoice/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice/reverse-calculation/index.html">按含税金额倒算</a></li>
+<li><a href="../../invoice/discount-line/index.html">折扣明细</a></li>
+<li><a href="../../invoice/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>卡片信息自动更新</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card_updater/index.html">卡片信息自动更新简介</a></li>
+<li><a href="../../card_updater/use-card_updater/index.html">设置并查看更新结果</a></li>
+<li><a href="../../card_updater/receive-card_updater-by-webhook/index.html">通过 Webhook 接收结果</a></li>
+<li><a href="../../card_updater/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../googlepay/index.html">Google Pay 简介</a></li>
+<li><a href="../../googlepay/setup/index.html">生产环境设置</a></li>
+<li><a href="../../googlepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../googlepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../googlepay/operation/index.html">运营示例</a></li>
+<li><a href="../../googlepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../googlepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section section-active"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">银行转账简介</a></li>
+<li><a href="../execution/index.html">执行支付处理</a></li>
+<li><a href="../exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="index.html" aria-current="page" class="active">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../subscription/index.html">订阅简介</a></li>
+<li><a href="../../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../index.html">银行转账（虚拟账户）</a></li><li aria-current="page">限制事项</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="制限事項">限制事项</h1>
+<p>将银行转账集成到服务前，请务必确认银行转账（虚拟账户）支付的以下限制。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">限制项目</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">可用金额</td><td align="left">1 日元至 9,999,999,999 日元（要求转账金额与转账所需税费和运费之和）</td></tr><tr><td align="left">付款有效天数</td><td align="left">1 至 99 天<br>可在执行支付时指定，未指定时为 90 天。<br>从执行日起计算，在经过指定天数后的次日上午到期。<br>例如，2024/4/1 使用<code>支払期限日数=2</code>执行支付时，将于 2024/4/4 上午到期。</td></tr><tr><td align="left">虚拟账户的签发银行</td><td align="left">虚拟账户由 GMO 青空网络银行签发。<br>会向买家提供 GMO 青空网络银行的账户信息。</td></tr><tr><td align="left">账户户名</td><td align="left">账户户名如下。<br><code>口座名義：明細書表記（店舗名カナ）/ｼﾞｰｴﾑｵｰｲﾌﾟｼﾛﾝ(ｶ</code><br>• 显示每家商户申请时提供的“账单显示名称（店名假名）”。<br>• “账单显示名称（店名假名）”的前 24 个字符以半角片假名显示，第 25 个字符起截去。<br>• 户名末尾会自动附加“/ｼﾞｰｴﾑｵｰｲﾌﾟｼﾛﾝ(ｶ”。<br>• “账单显示名称（店名假名）”中的长音符号会转换为半角连字符（减号）<code>-</code>，账户以转换后的户名签发。</td></tr><tr><td align="left">可复用虚拟账户的支付条件</td><td align="left">可复用虚拟账户的支付须满足以下条件。<br>1. 支付状态为<code>売上確定（CAPTURED）</code>／<code>キャンセル（CANCELED）</code>／<code>期限切れ（EXPIRED）</code>中的任意一种。<br>2. 距买家向该账户转账入账之日不超过 90 天。</td></tr><tr><td align="left">要求转账金额与实际入账金额不一致时</td><td align="left">• 登记虚拟账户支付信息时指定的要求转账金额<br>• 买家实际转账的入账金额<br>即使二者不一致，fincode 仍会将该笔交易标记为<code>売上確定（CAPTURED）</code>。<br>可查看获取支付信息 API 或入账 Webhook 中的<code>振込依頼金額（billing_amount）</code>与<code>利用金額（amount）</code>的差额，判断入账金额是否有多付或少付。</td></tr><tr><td align="left">定期维护</td><td align="left">GMO 青空网络银行在下列时段进行定期维护。<br>【生产环境】<br>每月第二个星期六 21:50 至次日星期日 06:00<br>※上述时段内，执行支付及取消支付 API 会返回错误（错误代码：EG002550001 或 E9991001003）。<br>买家仍可向已签发的账户付款，但转账结果会在维护完成后才反映到控制面板，并发送 Webhook 通知。<br><br>【测试环境】<br>每周四 16:00 至 18:00<br>※上述时段内，执行支付及取消支付 API 会返回错误（错误代码：EG002550001 或 E9991001003）。<br>此外，在控制面板中执行银行转账支付也会失败。</td></tr></tbody></table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/virtualaccount/restriction" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

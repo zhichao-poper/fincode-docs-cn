@@ -1,0 +1,16 @@
+<h1 id="割引明細マイナス行">折扣明细（负数行）</h1>
+<p>账单功能支持添加金额为负数的明细行，将折扣等作为负数明细反映到账单中。无论按未税单价输入，还是按含税金额<a href="/payment/invoice/reverse-calculation">倒算</a>，都可以使用折扣明细。</p>
+<p>可在 fincode 控制面板或通过 API 使用折扣明细。创建账单的基本步骤请参阅<a href="/payment/invoice/use-invoice">使用账单功能</a>。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">如果任一税率的小计低于 0 日元，即该税率下的折扣超过应收金额，则无法签发账单。添加折扣明细时，请确保各税率的小计均大于或等于 0 日元。</div>
+</div>
+<h2 id="管理画面での操作">在控制面板操作</h2>
+<p>在控制面板的账单创建或编辑页面添加负数明细行，即可设置折扣。</p>
+<p><img alt="折扣明细（负数行）设置页面" src="/assets/images/invoice/discount_line.png"></p>
+<h2 id="apiでの指定">通过 API 指定</h2>
+<p>通过 API 创建账单时，可在<span class="inline-api">创建账单</span>（<code>POST /v1/invoices</code>）或<span class="inline-api">更新账单</span>（<code>PUT /v1/invoices/{id}</code>）中为明细指定负数金额，以添加折扣明细。</p>
+<p>各参数的详情请参阅以下 API 参考。</p>
+<ul>
+<li><a href="/api#tag/%E3%82%A4%E3%83%B3%E3%83%9C%E3%82%A4%E3%82%B9%E6%A9%9F%E8%83%BD/operation/registerInvoices">创建账单</a></li>
+<li><a href="/api#tag/%E3%82%A4%E3%83%B3%E3%83%9C%E3%82%A4%E3%82%B9%E6%A9%9F%E8%83%BD/operation/updateInvoices">更新账单</a></li>
+</ul>

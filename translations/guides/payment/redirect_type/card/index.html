@@ -1,0 +1,88 @@
+<h1 id="リダイレクト型カード登録をする">使用跳转式卡片登记</h1>
+<p>跳转式卡片登记使用 fincode 提供的支付页面登记买家的卡片信息。<br>
+商户无需自行搭建支付页面，只要引导买家访问 fincode 的卡片登记 URL 即可完成支付。<br>
+<span class="inline-api">使用创建卡片登记 URL</span>接口创建卡片登记 URL，再将买家引导至 fincode 的卡片登记页面。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">也可以通过“邮件链接”功能，用电子邮件将卡片登记 URL 告知买家。
+  </div>
+</div>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p><span class="inline-api">创建卡片登记 URL</span>的详细参数请点击<a href="/api#operation/createCardRegistrationSession">此处</a>查看。</p>
+  </div>
+</div>
+<h2 id="リダイレクト型カード登録">跳转式卡片登记</h2>
+<p><img alt="跳转式卡片登记" src="/assets/images/linktype/redirect_type_card_flow.png"></p>
+<ol>
+<li>买家请求登记客户和卡片。</li>
+<li>商户调用 fincode 的<span class="inline-api">创建卡片登记 URL</span>接口，并将买家跳转到<code>カード登録URL(link_url)</code>。</li>
+<li>买家办理登记手续，输入卡片信息。</li>
+<li>fincode 登记客户。</li>
+<li>fincode 向卡公司发起卡片有效性检查。</li>
+<li>检查通过后，fincode 为该客户登记卡片。</li>
+<li>fincode 向买家显示登记结果页面。如果创建卡片登记 URL 时指定了成功 URL，fincode 会通过 POST 重定向到该 URL。</li>
+</ol>
+<h2 id="リダイレクト型カード登録メールリンク">跳转式卡片登记（邮件链接）</h2>
+<p><img alt="跳转式卡片登记（邮件链接）" src="/assets/images/linktype/redirect_cards_maillink.png"></p>
+<ol>
+<li>买家请求登记客户和卡片。</li>
+<li>商户调用 fincode 的<span class="inline-api">创建卡片登记 URL</span>接口，fincode 将<code>カード登録URL案内メール</code>发送至<code>宛先メールアドレス(receiver_mail)</code>。</li>
+<li>买家办理登记手续，输入卡片信息。</li>
+<li>fincode 登记客户。</li>
+<li>fincode 向卡公司发起卡片有效性检查。</li>
+<li>检查通过后，fincode 为该客户登记卡片。</li>
+<li>fincode 向买家显示登记结果页面。如果创建邮件链接时指定了成功 URL，fincode 会通过 POST 重定向到该 URL。</li>
+</ol>
+<p><img alt="跳转式卡片登记状态转换图" src="/assets/images/linktype/redirect_type_card_statemachine.png"></p>
+<h2 id="リダイレクト型画面イメージ">跳转式页面示例</h2>
+<p><img alt="跳转式页面示例" src="/assets/images/linktype/redirect_type_card_preview_vertical.png"></p>
+<h2 id="画面項目">页面项目</h2>
+<p>跳转式卡片登记页面上的项目如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">No</th><th align="left">项目</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">1</td><td align="left">商户或服务名称</td><td align="left">省略时自动显示“账单显示名称”。如果要在跳转式支付中使用其他名称，请指定所需名称。<br>※买家的卡片对账单上会显示“账单显示名称”。</td></tr><tr><td align="left">2</td><td align="left">卡片信息输入区</td><td align="left">用来输入卡片信息的表单。<br>卡号输入区右侧会显示相应卡组织的图标。</td></tr><tr><td align="left">3</td><td align="left">登记按钮</td><td align="left">点击按钮后，按钮图标显示“发送中”，输入内容无法再更改。</td></tr></tbody></table>
+<h2 id="メールリンクサンプル">邮件链接示例</h2>
+<p>使用邮件链接功能时，买家会收到如下卡片登记 URL 通知邮件和登记完成邮件。测试环境和生产环境的发件地址不同。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">环境</th><th align="left">发件邮箱地址</th></tr></thead><tbody><tr><td align="left">测试环境</td><td align="left"><a href="mailto:noreply@test.fincode.jp">noreply@test.fincode.jp</a></td></tr><tr><td align="left">生产环境</td><td align="left"><a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a></td></tr></tbody></table>
+<p><img alt="登记通知邮件示例" src="/assets/images/linktype/redirect_cards_mailsample_01.png"></p>
+<p><img alt="登记完成邮件示例" src="/assets/images/linktype/redirect_cards_mailsample_02.png"></p>

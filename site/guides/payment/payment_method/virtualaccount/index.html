@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 使用支付方式 API 管理客户的固定虚拟账户中文指南。" />
+    <title>使用支付方式 API 管理客户的固定虚拟账户 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/payment_method/virtualaccount" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/payment_method/virtualaccount" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+<li><a href="../../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>批量支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../bulk/index.html">批量支付简介</a></li>
+<li><a href="../../bulk/card/index.html">卡片支付</a></li>
+<li><a href="../../bulk/virtualaccount/index.html">银行转账（虚拟账户）</a></li>
+</ul>
+<p class="guide-nav-section"><span>UI 组件</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../ui_component/index.html">UI 组件</a></li>
+</ul>
+<p class="guide-nav-section section-active"><span>支付方式 API</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">支付方式简介</a></li>
+<li><a href="../card/index.html">卡片支付</a></li>
+<li><a href="../directdebit_account/index.html">银行账户自动扣款</a></li>
+<li><a href="index.html" aria-current="page" class="active">固定虚拟账户</a></li>
+<li><a href="../status/index.html">查看支付方式状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice_mpb/index.html">账单功能简介</a></li>
+<li><a href="../../invoice_mpb/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice_mpb/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice_mpb/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice_mpb/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice_mpb/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice/index.html">账单功能简介</a></li>
+<li><a href="../../invoice/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice/reverse-calculation/index.html">按含税金额倒算</a></li>
+<li><a href="../../invoice/discount-line/index.html">折扣明细</a></li>
+<li><a href="../../invoice/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>卡片信息自动更新</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card_updater/index.html">卡片信息自动更新简介</a></li>
+<li><a href="../../card_updater/use-card_updater/index.html">设置并查看更新结果</a></li>
+<li><a href="../../card_updater/receive-card_updater-by-webhook/index.html">通过 Webhook 接收结果</a></li>
+<li><a href="../../card_updater/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../googlepay/index.html">Google Pay 简介</a></li>
+<li><a href="../../googlepay/setup/index.html">生产环境设置</a></li>
+<li><a href="../../googlepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../googlepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../googlepay/operation/index.html">运营示例</a></li>
+<li><a href="../../googlepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../googlepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../subscription/index.html">订阅简介</a></li>
+<li><a href="../../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../index.html">支付方式 API</a></li><li aria-current="page">使用支付方式 API 管理客户的固定虚拟账户</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="顧客に発行する固定バーチャル口座で決済手段apiを使う">使用支付方式 API 管理客户的固定虚拟账户</h1>
+<h2 id="顧客に発行する固定バーチャル口座とは">什么是为客户签发的固定虚拟账户</h2>
+<p>固定虚拟账户是向客户签发的长期虚拟账户。在显式删除前，虚拟账户一直保留相同的账户信息，因此可持续为同一客户提供相同的收款账户。</p>
+<p>普通的<a href="../../virtualaccount/index.html">银行转账（虚拟账户）</a>会为每笔支付签发一次性虚拟账户。使用固定虚拟账户，则可向有长期交易的客户提供固定的收款账户。</p>
+<p>签发的账户作为 fincode 的<a href="../index.html">支付方式（Payment Method）</a>处理。每位客户最多可登记 5 个。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  使用此功能前，须申请开通 fincode 的虚拟账户支付并通过审核。<br>
+  此功能为可选功能，按已签发账户数逐月收费。
+  </div>
+</div>
+<h2 id="決済手段状態一覧">支付方式状态列表</h2>
+<p>为客户签发的固定虚拟账户（支付方式）可处于以下状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">有效</td><td align="left">ACTIVE</td><td align="left">可以接收转账。</td></tr><tr><td align="left">已停用</td><td align="left">INACTIVATED</td><td align="left">暂时停止接收转账。<span class="inline-api">重新激活支付方式</span>可恢复为<code>ACTIVE</code>状态。</td></tr></tbody></table>
+<p><code>INACTIVATED</code>状态的账户无法接收转账。</p>
+<h2 id="決済手段の状態遷移">支付方式状态转换</h2>
+<p>下表列出各操作后的状态。“－”表示没有对应的结果或操作。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">操作前状态</th><th align="left">操作后状态</th></tr></thead><tbody><tr><td align="left">登记支付方式</td><td align="left">－</td><td align="left">有效（ACTIVE）</td></tr><tr><td align="left">停用支付方式</td><td align="left">有效（ACTIVE）</td><td align="left">已停用（INACTIVATED）</td></tr><tr><td align="left">重新激活支付方式</td><td align="left">已停用（INACTIVATED）</td><td align="left">有效（ACTIVE）</td></tr><tr><td align="left">删除支付方式</td><td align="left">（任意状态）</td><td align="left">（删除）</td></tr></tbody></table>
+<h2 id="apiを使う">使用 API</h2>
+<h3 id="顧客に発行する固定バーチャル口座を登録する">登记为客户签发的固定虚拟账户</h3>
+<p><span class="inline-api">在登记支付方式</span>（<code>POST /v1/customers/{customer_id}/payment_methods</code>）的请求体中，将 <code>pay_type</code> 设为 <code>Virtualaccount</code> ，即可签发固定虚拟账户并关联到指定客户。</p>
+<p>登记成功后，响应中将包含账户信息（分行代码、账号、账户户名）。请将这些信息告知客户。</p>
+<h3 id="デフォルト設定を変更する">更改默认设置</h3>
+<p>客户登记了至少一个固定虚拟账户时，有且只有一个账户会设为“默认”。<br>
+<span class="inline-api">在更新支付方式</span>（<code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code>）中更改 <code>default_flag</code> ，即可切换默认账户。</p>
+<h3 id="停止再有効化削除">停用、重新激活和删除</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">API</th></tr></thead><tbody><tr><td align="left">停用</td><td align="left"><code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}/inactivate</code></td></tr><tr><td align="left">重新激活</td><td align="left"><code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}/activate</code></td></tr><tr><td align="left">删除</td><td align="left"><code>DELETE /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code></td></tr></tbody></table>
+<p>请在停用和重新激活的请求体中指定 <code>pay_type: Virtualaccount</code> 。<br>
+有关 API 详情，请参阅<a href="../../../../reference.html#tag/%E6%94%AF%E4%BB%98%E6%96%B9%E5%BC%8F">API 参考（支付方式）</a>。</p>
+<h2 id="顧客に発行する固定バーチャル口座を使った決済の流れ">使用为客户签发的固定虚拟账户进行支付的流程</h2>
+<p>此功能有两种入账场景。</p>
+<h3 id="scenario-auto">场景 1：转账时自动生成支付</h3>
+<p>客户向账户转账后，fincode 会自动生成一条支付信息，其条件为<code>pay_type = Virtualaccount</code>且状态为<code>売上確定（CAPTURED）</code>。每次转账都会生成支付信息，可在每次入账时通过控制面板或 Webhook 确认。</p>
+<p>因向客户固定虚拟账户转账而生成的支付信息会设置 <code>use_static_virtual_account: true</code> 。</p>
+<h3 id="scenario-payment">场景 2：预先创建支付信息，再通过为客户签发的固定虚拟账户核销</h3>
+<p>预先创建支付信息，在客户向账户转账时完成该笔支付。</p>
+<ol>
+<li><span class="inline-api">使用登记支付</span>创建支付信息，并在<code>pay_type: Virtualaccount</code>）。</li>
+<li><span class="inline-api">执行支付</span>（<code>PUT /v1/payments/{id}</code>）的请求体中为 <code>payment_method_id</code> 指定客户固定虚拟账户的 ID。</li>
+<li>支付信息会转为<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>，并等待向指定账户转账。</li>
+<li>客户向该账户转账后，支付信息会转为<code>売上確定（CAPTURED）</code>。</li>
+</ol>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  对同一账户处于<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>状态的支付信息，同一商户内同时只能创建一条。
+  </div>
+</div>
+<h2 id="webhookイベント">Webhook 事件</h2>
+<p>操作客户固定虚拟账户或转账完成时，会发送以下 Webhook 事件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">事件名称</th><th align="left">事件类型</th><th align="left">发送时间</th></tr></thead><tbody><tr><td align="left"><code>customers.payment_methods.created</code></td><td align="left">登记支付方式</td><td align="left">为客户签发的固定虚拟账户登记时</td></tr><tr><td align="left"><code>customers.payment_methods.updated</code></td><td align="left">更新支付方式</td><td align="left">默认设置更新时</td></tr><tr><td align="left"><code>customers.payment_methods.inactivated</code></td><td align="left">停用支付方式</td><td align="left">账户停用时</td></tr><tr><td align="left"><code>customers.payment_methods.activated</code></td><td align="left">重新激活支付方式</td><td align="left">账户重新激活时</td></tr><tr><td align="left"><code>customers.payment_methods.deleted</code></td><td align="left">删除支付方式</td><td align="left">账户删除时</td></tr><tr><td align="left"><code>payments.virtualaccount.complete</code></td><td align="left">转账完成</td><td align="left">向账户转账并生成支付信息时（生产环境）</td></tr><tr><td align="left"><code>payments.virtualaccount.complete.stub</code></td><td align="left">转账完成（测试）</td><td align="left">向账户转账并生成支付信息时（测试环境）</td></tr></tbody></table>
+<p><code>customers.payment_methods.*</code>该事件的载荷包含支付方式对象（为客户签发的固定虚拟账户）。<br>
+<code>payments.virtualaccount.*</code>该事件载荷与普通固定虚拟账户支付 Webhook 采用相同格式发送。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/payment_method/virtualaccount" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

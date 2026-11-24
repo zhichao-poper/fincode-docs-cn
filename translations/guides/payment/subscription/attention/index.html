@@ -1,0 +1,29 @@
+<h1 id="注意事項">注意事项</h1>
+<p>使用 fincode 的订阅功能时，请留意以下事项。</p>
+<h2 id="請求に失敗した場合">收费失败时</h2>
+<p>即使收费失败，fincode 的订阅仍保持<code>有効(ACTIVE)</code>状态。在取消订阅前，系统会在后续扣费日继续尝试收费。</p>
+<p>具体行为取决于方案的重试设置。</p>
+<h3 id="リトライ設定が有効enabledなプランの場合">方案启用重试（<code>enabled</code>）时</h3>
+<p>如果方案已启用重试，卡片支付收费失败后，系统会自动重试，<strong>每隔 7 天一次，最多 3 次</strong>。<br>
+<em>例如，原扣费日为 1 日时，自动重试会在 8 日、15 日和 22 日执行。</em><br>
+即使取消了有待重试任务的订阅，取消时已安排的重试仍会执行完毕。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title"><strong>重复扣费风险</strong><br>如果该笔费用已安排自动重试（等待下次重试），这时又向买家手动补收，后续自动重试可能造成<strong>重复扣费</strong>。<br>手动补收前，请务必确认该订阅是否仍安排了下次重试。</div>
+</div>
+<h3 id="リトライ設定が無効disabledなプランまたは上限までリトライ失敗した場合">方案停用重试（<code>disabled</code>）或重试达到上限仍失败时</h3>
+<p>如果停用了重试、使用卡片以外的支付方式，或最多 3 次重试均失败，系统在指定扣费日以外不会自动再次尝试扣费。<br>
+如有需要，可以使用执行支付或邮件链接等方式向买家另行收费（手动补收）。</p>
+<h3 id="請求失敗対象の検知と特定手順">检测和定位收费失败的订阅</h3>
+<p>要检测收费是否失败并定位对应订阅，请按以下步骤查看。</p>
+<ol>
+<li><strong>通过 Webhook 检测失败</strong><br>
+接收订阅处理对应的 Webhook 事件（卡片支付为 <code>recurring.card.batch</code>）。如果通知中的失败笔数<code>（failed）</code>大于或等于 1，则说明有收费失败。<br>
+※启用重试时，可通过 Webhook 中的 <code>retry_scheduled</code> 字段查看安排下次重试的扣费笔数。</li>
+<li><strong>定位支付信息</strong><br>
+检测到收费失败后，将收到 Webhook 的日期作为查询参数，调用<span class="inline-api">获取支付信息列表 API</span>，定位出错的支付信息。</li>
+<li><strong>确定订阅 ID</strong><br>
+从查到的对应支付信息中确定订阅 ID。</li>
+</ol>
+<h2 id="停止失敗-状態のサブスクリプションについて">处于停止或失败状态的订阅</h2>
+<p><code>停止 (CANCELED) </code>和<code>失敗 (INCOMPLETED) </code>状态的订阅无法恢复为<code>有効 (ACTIVE) </code>状态。<br>
+可以使用相同方案重新登记一份订阅，以恢复收费。</p>

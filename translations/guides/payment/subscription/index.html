@@ -1,0 +1,152 @@
+<h1 id="サブスクリプションとは">什么是订阅</h1>
+<h2 id="サブスクリプション機能">订阅功能</h2>
+<p>fincode 的订阅功能可定期向客户收取固定金额，所有商户均可免费使用这项基本功能。<br>
+您可通过 API 或控制面板，按指定金额和支付间隔向客户收取订阅费用。<br>
+对于持续获得收入的业务，商户可以使用订阅功能，由系统定期执行支付，无需自行实现定时处理。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>订阅功能适用于定期收取固定金额。对按用量收费等每次收费金额不同或每位客户收费金额不同的情况，可以考虑使用<a href="/payment/bulk">批量支付功能</a>。</p>
+  </div>
+</div>
+<h2 id="サブスクリプションの状態">订阅状态</h2>
+<p>fincode 的订阅会在以下状态之间转换。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态含义</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">ACTIVE</td><td align="left">有效</td><td align="left">该订阅有效。</td></tr><tr><td align="left"></td><td align="left"></td><td align="left">系统会在指定扣费日向登记订阅时指定的客户执行支付。</td></tr><tr><td align="left">RUNNING</td><td align="left">处理中</td><td align="left">正在向客户执行支付。</td></tr><tr><td align="left">CANCELED</td><td align="left">停止</td><td align="left">该订阅已失效，系统不会向客户收费。</td></tr><tr><td align="left">INCOMPLETE</td><td align="left">失败</td><td align="left">该订阅因某种原因登记失败。</td></tr><tr><td align="left"></td><td align="left"></td><td align="left">系统不会向客户收费。</td></tr></tbody></table>
+<p><img alt="订阅状态转换图" src="/assets/images/subscription/subscription_statemachine.png"></p>
+<h2 id="サブスクリプションの結果を参照する">查看订阅结果</h2>
+<p>订阅定期生成的收费信息，可通过<code>サブスクリプション結果照会</code>获取。<br>
+每次收费是否成功，可以根据对应订阅结果的<code>ステータス (status)</code>值判断。<br>
+在控制面板中，也可以查看由订阅生成的收费信息，对应的是扣费类型为“订阅”的支付数据。<br>
+详细规范请参阅<a href="/payment/subscription/manage">管理订阅</a>。</p>
+<h2 id="サブスクリプションのリトライ自動再請求">订阅重试（自动再次收费）</h2>
+<p>当卡片订阅收费遇到特定错误时，fincode 可以自动再次执行支付（重试）。</p>
+<h3 id="基本仕様">基本规范</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目</th><th align="left">规范</th></tr></thead><tbody><tr><td align="left"><strong>支持的支付方式</strong></td><td align="left">卡片支付（※银行账户自动扣款不适用）</td></tr><tr><td align="left"><strong>执行重试的间隔</strong></td><td align="left">每隔 7 天（固定）</td></tr><tr><td align="left"><strong>重试次数上限</strong></td><td align="left">最多 3 次（固定）</td></tr><tr><td align="left"><strong>设置单位</strong></td><td align="left">按方案设置（启用：<code>enabled</code> ／停用：<code>disabled</code>）</td></tr><tr><td align="left"><strong>初始设置</strong></td><td align="left">停用（<code>disabled</code>）</td></tr></tbody></table>
+<p>可以通过 API 或控制面板按方案启用或停用重试。</p>
+<h3 id="動作仕様">行为规则</h3>
+<p><strong>【设置生效时间】</strong><br>
+重试行为遵循<strong>订阅首次扣费时的方案设置</strong>，该设置适用于该订阅的整个运行期间。</p>
+<p><strong>【自动重试条件】</strong><br>
+只有订阅登记成功、状态为<code>ACTIVE（有効）</code>，且收费时发生特定支付错误（※），才会自动重试。</p>
+<p>以下情况发生支付错误时，订阅状态会变为<code>INCOMPLETE（失敗）</code>，因此<strong>不会自动重试</strong>。</p>
+<ul>
+<li>将扣费开始日设为登记当天，登记订阅时同步执行的首次支付失败。</li>
+<li>将扣费开始日设为未来日期，登记订阅时同步执行的有效性检查失败。</li>
+</ul>
+<p>※系统仅针对余额不足等在一段时间后可能成功的特定错误代码执行重试。其他错误代码导致的支付失败会显示为没有重试计划，系统不会重试。</p>
+<p><strong>【取消订阅时的行为】</strong><br>
+取消已有重试计划的订阅后，即使状态变为 <code>CANCELED（停止）</code> ，原已计划的重试仍会执行完毕。</p>
+<h2 id="payType">可用支付方式</h2>
+<p>fincode 各支付方式对订阅功能的支持情况如下。<br>
+如需使用卡片以外的支付方式，请分别申请开通对应支付方式并通过审核。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">支付方式</th><th align="left">支持情况</th><th align="left">重试设置</th><th align="left">补充</th></tr></thead><tbody><tr><td align="left">卡片支付</td><td align="left">支持</td><td align="left">支持</td><td align="left">可对登记在客户名下的卡片，在指定日期定期收取固定金额。</td></tr><tr><td align="left">Apple Pay</td><td align="left">－</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">便利店支付</td><td align="left">－</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">PayPay</td><td align="left">－</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">银行账户自动扣款</td><td align="left">支持</td><td align="left">－</td><td align="left">可对登记为客户支付方式（Payment Method）的扣款账户，在指定日期定期收取固定金额。<br>实际扣费日遵循银行账户自动扣款年度日程*。</td></tr></tbody></table>
+<p>*<a href="/payment/directdebit/schedule">银行账户自动扣款年度日程</a>请参阅此链接。</p>

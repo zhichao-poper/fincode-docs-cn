@@ -93,6 +93,10 @@ def main() -> None:
     asset_paths = set()
     for page in selected:
         asset_paths.update(find_assets(page["document"].get("body")))
+    component_path = ROOT / "source/payment-guide-components.ja.json"
+    components = json.loads(component_path.read_text(encoding="utf-8"))
+    for component in components.values():
+        asset_paths.update(find_assets(component["body"]))
     for asset_path in sorted(asset_paths):
         relative = asset_path.removeprefix("/assets/images/")
         destination = ROOT / "site/assets/payment-guides" / relative

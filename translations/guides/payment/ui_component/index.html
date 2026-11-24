@@ -1,0 +1,56 @@
+<h1 id="top">UI 组件</h1>
+<h2 id="payment">使用 UI 组件进行支付</h2>
+<p>UI 组件是嵌入式卡片信息输入表单。<br>
+使用 fincode JS，可在商户自行搭建的支付页面中嵌入卡片信息输入表单并执行支付。</p>
+<ul><li><a href="/js#tag/ｕｉ初期化処理">查看 JavaScript 参考</a></li></ul>
+<img src="/assets/images/ui/ui_flow.png" alt="使用 UI 组件进行支付的流程">
+<p>1. 显示支付页面时，先调用 fincode JS <span class="inline-api">初始化 UI</span>。<br>
+2. <span class="inline-api">创建输入表单</span>，生成输入表单信息。<br>
+3. 将 UI 挂载到支付页面。<br>
+4. 买家在输入表单中填写卡片信息。<br>
+5. <span class="inline-api">获取输入表单信息</span>，取得买家填写的内容。<br>
+6. 调用 fincode JS 执行支付。</p>
+
+<h2 id="create">创建并放置 UI 组件</h2>
+<p>要使用 UI 组件，请在 HTML 中添加 form 及一个空的 div。<br>
+使用 iframe 的 UI 组件将插入该 div。详情请参阅<a href="/js#tag/ｕｉマウント">JavaScript 参考</a>。</p>
+<p>UI 组件（client.js）</p>
+<pre><code class="language-javascript">var fincode = Fincode(&lt;パブリックキー&gt;)
+var ui = fincode.ui({layout: "vertical"})
+ui.create("payments",{layout: "vertical"})
+ui.mount("fincode",'400')
+</code></pre>
+<p>初始化 fincode JS，并<span class="inline-api">初始化 UI 组件</span>。<br>
+要将 UI 组件插入已设置的 div，请<span class="inline-api">创建输入表单</span>并<span class="inline-api">挂载 UI</span>。</p>
+
+<h2 id="get">获取 UI 组件信息并执行支付</h2>
+<p>要进行支付，需要将<span class="inline-api">支付登记 API</span>和<span class="inline-api">获取输入表单信息</span>的响应传给支付执行函数。</p>
+<p>取得输入表单信息后，调用 fincode JS 执行支付，支付处理即告完成。</p>
+<p>有关支付执行的详细信息，请查看<a href="/tutorial/test_api_exec">测试环境执行支付</a>。</p>
+<p>UI 组件（client.js）</p>
+<pre><code class="language-javascript">// 入力フォーム情報を取得する
+await ui.getFormData().then(result =&gt; {
+     transaction={
+        access_id: payment.access_id,
+        id: payment.order_id,
+        pay_type: payment.pay_type,
+        method: result.method,
+        pay_times: result.payTimes,
+        card_no: result.cardNo,
+        security_code: result.CVC,
+        expire: result.expire,
+     }
+})
+// 決済実行を行う
+fincode.payments(transaction,
+      function (status, response) {
+           if (status === 200) {
+           // リクエスト正常時の処理
+           } else {
+           // リクエストエラー時の処理
+           }
+       },
+       function () {
+       // 通信エラー処理。
+})
+</code></pre>

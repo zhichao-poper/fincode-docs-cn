@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是卡片信息自动更新中文指南。" />
+    <title>什么是卡片信息自动更新 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/card_updater" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/card_updater" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card/index.html">卡片支付简介</a></li>
+<li><a href="../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../card/operation/index.html">运营示例</a></li>
+<li><a href="../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../card/status/index.html">查看支付状态</a></li>
+<li><a href="../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../card/notes/index.html">注意事项</a></li>
+<li><a href="../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>批量支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../bulk/index.html">批量支付简介</a></li>
+<li><a href="../bulk/card/index.html">卡片支付</a></li>
+<li><a href="../bulk/virtualaccount/index.html">银行转账（虚拟账户）</a></li>
+</ul>
+<p class="guide-nav-section"><span>UI 组件</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../ui_component/index.html">UI 组件</a></li>
+</ul>
+<p class="guide-nav-section"><span>支付方式 API</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../payment_method/index.html">支付方式简介</a></li>
+<li><a href="../payment_method/card/index.html">卡片支付</a></li>
+<li><a href="../payment_method/directdebit_account/index.html">银行账户自动扣款</a></li>
+<li><a href="../payment_method/virtualaccount/index.html">固定虚拟账户</a></li>
+<li><a href="../payment_method/status/index.html">查看支付方式状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../invoice_mpb/index.html">账单功能简介</a></li>
+<li><a href="../invoice_mpb/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../invoice_mpb/setting/index.html">账单设置</a></li>
+<li><a href="../invoice_mpb/status/index.html">查看账单状态</a></li>
+<li><a href="../invoice_mpb/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../invoice_mpb/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../invoice/index.html">账单功能简介</a></li>
+<li><a href="../invoice/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../invoice/setting/index.html">账单设置</a></li>
+<li><a href="../invoice/reverse-calculation/index.html">按含税金额倒算</a></li>
+<li><a href="../invoice/discount-line/index.html">折扣明细</a></li>
+<li><a href="../invoice/status/index.html">查看账单状态</a></li>
+<li><a href="../invoice/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../invoice/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section section-active"><span>卡片信息自动更新</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">卡片信息自动更新简介</a></li>
+<li><a href="use-card_updater/index.html">设置并查看更新结果</a></li>
+<li><a href="receive-card_updater-by-webhook/index.html">通过 Webhook 接收结果</a></li>
+<li><a href="operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../googlepay/index.html">Google Pay 简介</a></li>
+<li><a href="../googlepay/setup/index.html">生产环境设置</a></li>
+<li><a href="../googlepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../googlepay/status/index.html">查看支付状态</a></li>
+<li><a href="../googlepay/operation/index.html">运营示例</a></li>
+<li><a href="../googlepay/restriction/index.html">限制事项</a></li>
+<li><a href="../googlepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../subscription/index.html">订阅简介</a></li>
+<li><a href="../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit_mhf/restriction/index.html">限制事项</a></li>
+<li><a href="../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit/restriction/index.html">限制事项</a></li>
+<li><a href="../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../card/index.html">支付</a></li><li><a href="index.html">卡片信息自动更新</a></li><li aria-current="page">什么是卡片信息自动更新</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="カード更新機能洗替とは">什么是卡片信息自动更新</h1>
+<p>当卡公司更新了商户客户名下已登记卡片的有效期或卡号时，fincode 的卡片信息自动更新功能会将 fincode 中的卡片信息更新为最新状态。</p>
+<p>对开展订阅等定期扣费业务的商户，此功能可减少卡片过期导致的订阅收费失败，以及需要客户自行重新登记卡片信息的情况。</p>
+<p>要使用卡片信息自动更新功能，请在 fincode 控制面板的支付服务设置中申请，审核通过后即可使用。审核结果可能导致该功能无法开通。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">只有接收更新数据的卡公司持有相关信息时，才会更新卡片信息。 <br>
+</div>
+</div>
+<h2 id="カード更新機能洗替とその他のカード情報更新方法の比較">卡片信息自动更新与其他卡片信息更新方式的比较</h2>
+<p>卡片信息自动更新功能通过卡公司更新卡片信息，与卡片更新 API 是两项不同的功能。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left"></th><th align="left">卡片信息自动更新（洗替）</th><th align="left">卡片更新 API</th></tr></thead><tbody><tr><td align="left">概要</td><td align="left">从卡公司获得最新的卡片信息并更新 fincode 中的记录</td><td align="left">商户或客户自行通过 API 更新卡片信息</td></tr><tr><td align="left">更新时间</td><td align="left">每月一次，在指定日期批量执行</td><td align="left">随时即时执行</td></tr><tr><td align="left">指定对象的方式</td><td align="left">通过控制面板或 API 设置自动更新对象</td><td align="left">对每张卡片调用 API</td></tr><tr><td align="left">使用场景</td><td align="left">减少订阅等持续使用的卡片发生过期的影响</td><td align="left">在客户提出更换卡片时立即处理</td></tr></tbody></table>
+<h2 id="カード更新のスケジュール">卡片自动更新日程</h2>
+<p>卡片自动更新每月按以下流程执行。</p>
+<ol>
+<li><strong>确定更新对象</strong>：每月在指定日期选取已设置为自动更新对象的卡片信息。</li>
+<li><strong>向卡公司发送数据</strong>：将符合条件的卡片信息批量发送给卡公司。</li>
+<li><strong>应用更新结果</strong>：卡公司返回的最新信息（有效期、卡号）自动应用到 fincode 的卡片信息。</li>
+<li><strong>通知结果</strong>：应用完毕后，通过 Webhook 通知更新结果汇总。</li>
+</ol>
+<p>※此功能不会向客户自动收取设定金额。</p>
+<h3 id="スケジュールについて">日程</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">日期</th><th align="left">内容</th></tr></thead><tbody><tr><td align="left">每月 6 日</td><td align="left">卡片自动更新对象的设置截止日。请于此日前设置目标卡片。通常由 fincode 于每月 7 日处理。</td></tr><tr><td align="left">每月 28 日起</td><td align="left">可以查看卡片自动更新结果。可通过 API 或控制面板查看。<br>※也会通过 Webhook 发送汇总通知。</td></tr></tbody></table>
+<p>※无法任意选择执行时间。截止日过后才设置的卡片，将纳入下个月的更新检查。</p>
+<h2 id="カード更新対象の判定ロジック">卡片自动更新的判定规则</h2>
+<p>是否纳入卡片自动更新由以下设置的组合决定。</p>
+<ul>
+<li>商户级的卡片自动更新设置（商户设置）</li>
+<li>单张卡片的自动更新设置（<code>card_updater_mode</code>）</li>
+</ul>
+<p>自动更新按商户客户名下登记的卡片逐张执行。<br>
+每张卡片的自动更新设置（<code>card_updater_mode</code>）与商户级的卡片自动更新设置共同决定该卡是否纳入更新范围。</p>
+<p>卡片信息自动更新按商户管理。<br>
+即使同一客户在多家商户登记了相同卡片，也只会更新已设为更新对象的商户所登记的卡片信息。</p>
+<p><strong>平台类型的商户</strong><br>
+对于平台类型的商户，管理者取决于是否共享客户信息。</p>
+<p><b>■共享客户信息时</b><br>
+由平台（主商户）管理。<br>
+请由平台（主商户）设置自动更新对象。子商户和租户商户不能申请开通卡片信息自动更新功能。</p>
+<p><b>■未共享客户信息时</b><br>
+按商户管理。<br>
+租户商户使用时，每个租户商户都需要分别申请开通卡片信息自动更新功能，并设置自动更新对象。</p>
+<h3 id="ショップのカード更新ショップ設定">商户级卡片自动更新设置</h3>
+<p>在控制面板的“商户设置 &gt; 支付服务设置”中，可启用或停用商户级卡片自动更新设置。此设置应用于自动更新设置为“继承商户设置”的卡片。</p>
+<p>商户级卡片自动更新设置默认为“停用”。</p>
+<h3 id="カード単位のカード更新設定">单张卡片的自动更新设置</h3>
+<p>可通过控制面板或<span class="inline-api">登记卡片</span>、<span class="inline-api">更新卡片</span>（或<span class="inline-api">登记支付方式</span>、<span class="inline-api">更新支付方式</span>）API，逐张设置卡片的自动更新设置（<code>card_updater_mode</code>）。单张卡片的设置优先于商户级设置。<br>
+※通过支付方式 API 管理卡片的详情请参阅<a href="../payment_method/card/index.html">使用支付方式 API 处理卡片支付</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left"><code>card_updater_mode</code> 的值</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">启用更新</td><td align="left"><code>enabled</code></td><td align="left">将此卡纳入自动更新范围。无论商户级设置如何，均执行自动更新。</td></tr><tr><td align="left">停用更新</td><td align="left"><code>disabled</code></td><td align="left">将此卡排除在自动更新范围之外。无论商户级设置如何，均不执行自动更新。</td></tr><tr><td align="left">继承商户设置</td><td align="left"><code>inherit</code>（默认值）</td><td align="left">遵循商户级卡片自动更新设置。商户设置启用时纳入更新范围，停用时排除。</td></tr><tr><td align="left">商户未指定时，卡片自动更新设置默认为“继承商户设置（<code>inherit</code>）”。</td><td align="left"></td><td align="left"></td></tr></tbody></table>
+<h4 id="判定結果の一覧"><strong>判定结果列表</strong></h4>
+<p>下表列出商户级自动更新设置与单张卡片的<code>card_updater_mode</code>值组合时，是否将该卡纳入自动更新范围。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">商户级卡片自动更新设置</th><th align="left">卡片自动更新设置（<code>card_updater_mode</code>）</th><th align="left">是否纳入自动更新</th></tr></thead><tbody><tr><td align="left">启用</td><td align="left">启用更新（<code>enabled</code>）</td><td align="left">纳入</td></tr><tr><td align="left">启用</td><td align="left">停用更新（<code>disabled</code>）</td><td align="left">排除</td></tr><tr><td align="left">启用</td><td align="left">继承商户设置（<code>inherit</code>）</td><td align="left">纳入</td></tr><tr><td align="left">停用</td><td align="left">启用更新（<code>enabled</code>）</td><td align="left">纳入</td></tr><tr><td align="left">停用</td><td align="left">停用更新（<code>disabled</code>）</td><td align="left">排除</td></tr><tr><td align="left">停用</td><td align="left">继承商户设置（<code>inherit</code>）</td><td align="left">排除</td></tr></tbody></table>
+<h2 id="カード更新機能洗替で発生する費用">卡片信息自动更新的费用</h2>
+<p>卡片信息更新成功时，会产生卡片自动更新手续费。<br>
+如果仅检查更新，卡片信息未更新，则不收取手续费。<br>
+※详情请查看<a href="https://www.fincode.jp/pricing" target="_blank">费率表</a>。</p>
+<p>卡片自动更新手续费会从 fincode 向商户支付的入账款中抵扣。如果该费用超过当期入账金额，fincode 会向已登记的账单收件方收费。<br>
+对于平台类型的商户，卡片自动更新手续费的账单收件方取决于是否共享客户信息。</p>
+<p><b>共享客户信息</b><br>
+向平台（主商户）收费。</p>
+<p><b>未共享客户信息</b><br>
+向各租户商户收费。平台可在卡片自动更新费用上加收款项，作为<a href="../../platform/setting/index.html">标准平台使用费</a>从租户商户获得收入。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/card_updater" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

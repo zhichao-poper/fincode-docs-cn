@@ -1,0 +1,36 @@
+<h1 id="口座振替年間スケジュール">银行账户自动扣款年度日程</h1>
+<p>有关扣款日程，请查看<a href="https://www.fincode.jp/payments/directdebit/calendar-mhf/" rel="nofollow noopener noreferrer" target="_blank">银行账户自动扣款日历</a> 。各项目的详细说明如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目名称</th><th align="left">详情</th></tr></thead><tbody><tr><td align="left">指定扣款日</td><td align="left">可选择每月 1、5、20、26 日作为扣款日。<br><span class="inline-api">执行支付</span>中的<code>target_date</code>、以及<span class="inline-api">登记订阅</span>中的<code>start_date</code>的 dd，均填写此值。</td></tr><tr><td align="left">实际扣款日</td><td align="left">实际扣除款项的日期。<br>如果指定扣款日为金融机构的非营业日，将在下一个工作日扣款。</td></tr><tr><td align="left">银行账户自动扣款申请书送达期限</td><td align="left">要在指定扣款日扣款，必须在此期限内寄送申请书。<br>通过申请书登记账户时，申请书必须在此日期前送达收件方。</td></tr><tr><td align="left">扣款请求受理期开始日</td><td align="left">每个指定扣款日均有对应的请求受理期，从当天 0:00 起开始受理。<br>在受理期外执行支付、取消支付或变更金额会返回错误。</td></tr><tr><td align="left">扣款请求受理期结束日</td><td align="left">每个指定扣款日均有对应的请求受理期，到当天 23:59 停止受理。<br>在受理期外执行支付、取消支付或变更金额会返回错误。<br>※订阅请求在当天 13:00 停止受理。超过 13:00 时，首次扣款日为次月同一天。</td></tr><tr><td align="left">扣款结果返回日</td><td align="left">fincode 通过 Webhook 通知 <code>payments.directdebit.complete</code>返回扣款结果的日期。</td></tr></tbody></table>

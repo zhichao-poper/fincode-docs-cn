@@ -1,0 +1,24 @@
+<h1 id="逆算税込金額からの入力">倒算（按含税金额输入）</h1>
+<p>在账单功能中，可按未税单价输入明细，也可从含税金额倒算来创建账单。使用倒算时，输入含税金额后，系统会反算出单价和消费税额。</p>
+<p>这种方式从最终应付的含税金额开始创建账单，因此<strong>可以将买家应付的含税金额设为 1,000 日元或 10,000 日元之类的整数金额。</strong>  
+由未税单价计算时，含税总额可能出现零头。倒算可以避免这种情况。</p>
+<p>可在 fincode 控制面板或通过 API 使用倒算。创建账单的基本步骤请参阅<a href="/payment/invoice/use-invoice">使用账单功能</a>。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">倒算单价和消费税额时，舍去不足 1 日元的部分。</div>
+</div>
+<p>同一张账单中无法混用按含税金额输入（倒算）和按未税单价输入。请为每张账单选用其中一种方式。</p>
+<h2 id="管理画面での操作">在控制面板操作</h2>
+<p>在控制面板的账单创建或编辑页面，每条明细都有“单价（未税）”和“金额（含税）”两个输入框。</p>
+<p><img alt="使用倒算输入应收金额的页面" src="/assets/images/invoice/reverse_calculation.png"></p>
+<p>填写其中一项后，输入方式即确定，另一项无法填写。清空已填写的输入框后，两种方式可重新选择。输入单价（未税）时，系统按未税单价创建账单。输入金额（含税）时，系统通过倒算创建账单。</p>
+<h2 id="apiでの指定">通过 API 指定</h2>
+<p>通过 API 创建账单时，可在<span class="inline-api">创建账单</span>（<code>POST /v1/invoices</code>）或<span class="inline-api">更新账单</span>（<code>PUT /v1/invoices/{id}</code>）中通过<code>入力方式（input_type）</code>指定输入方式。</p>
+<ul>
+<li><code>input_type</code> 未指定<code>null</code>）时，按未税单价创建账单。</li>
+<li><code>input_type</code> 将 <code>amount</code> 设为该值时，按含税金额倒算并创建账单。</li>
+</ul>
+<p>各参数的详情请参阅以下 API 参考。</p>
+<ul>
+<li><a href="/api#tag/%E3%82%A4%E3%83%B3%E3%83%9C%E3%82%A4%E3%82%B9%E6%A9%9F%E8%83%BD/operation/registerInvoices">创建账单</a></li>
+<li><a href="/api#tag/%E3%82%A4%E3%83%B3%E3%83%9C%E3%82%A4%E3%82%B9%E6%A9%9F%E8%83%BD/operation/updateInvoices">更新账单</a></li>
+</ul>

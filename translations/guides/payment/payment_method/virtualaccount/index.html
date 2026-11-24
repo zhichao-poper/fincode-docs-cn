@@ -1,0 +1,168 @@
+<h1 id="顧客に発行する固定バーチャル口座で決済手段apiを使う">使用支付方式 API 管理客户的固定虚拟账户</h1>
+<h2 id="顧客に発行する固定バーチャル口座とは">什么是为客户签发的固定虚拟账户</h2>
+<p>固定虚拟账户是向客户签发的长期虚拟账户。在显式删除前，虚拟账户一直保留相同的账户信息，因此可持续为同一客户提供相同的收款账户。</p>
+<p>普通的<a href="/payment/virtualaccount">银行转账（虚拟账户）</a>会为每笔支付签发一次性虚拟账户。使用固定虚拟账户，则可向有长期交易的客户提供固定的收款账户。</p>
+<p>签发的账户作为 fincode 的<a href="/payment/payment_method">支付方式（Payment Method）</a>处理。每位客户最多可登记 5 个。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  使用此功能前，须申请开通 fincode 的虚拟账户支付并通过审核。<br>
+  此功能为可选功能，按已签发账户数逐月收费。
+  </div>
+</div>
+<h2 id="決済手段状態一覧">支付方式状态列表</h2>
+<p>为客户签发的固定虚拟账户（支付方式）可处于以下状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">有效</td><td align="left">ACTIVE</td><td align="left">可以接收转账。</td></tr><tr><td align="left">已停用</td><td align="left">INACTIVATED</td><td align="left">暂时停止接收转账。<span class="inline-api">重新激活支付方式</span>可恢复为<code>ACTIVE</code>状态。</td></tr></tbody></table>
+<p><code>INACTIVATED</code>状态的账户无法接收转账。</p>
+<h2 id="決済手段の状態遷移">支付方式状态转换</h2>
+<p>下表列出各操作后的状态。“－”表示没有对应的结果或操作。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">操作前状态</th><th align="left">操作后状态</th></tr></thead><tbody><tr><td align="left">登记支付方式</td><td align="left">－</td><td align="left">有效（ACTIVE）</td></tr><tr><td align="left">停用支付方式</td><td align="left">有效（ACTIVE）</td><td align="left">已停用（INACTIVATED）</td></tr><tr><td align="left">重新激活支付方式</td><td align="left">已停用（INACTIVATED）</td><td align="left">有效（ACTIVE）</td></tr><tr><td align="left">删除支付方式</td><td align="left">（任意状态）</td><td align="left">（删除）</td></tr></tbody></table>
+<h2 id="apiを使う">使用 API</h2>
+<h3 id="顧客に発行する固定バーチャル口座を登録する">登记为客户签发的固定虚拟账户</h3>
+<p><span class="inline-api">在登记支付方式</span>（<code>POST /v1/customers/{customer_id}/payment_methods</code>）的请求体中，将 <code>pay_type</code> 设为 <code>Virtualaccount</code> ，即可签发固定虚拟账户并关联到指定客户。</p>
+<p>登记成功后，响应中将包含账户信息（分行代码、账号、账户户名）。请将这些信息告知客户。</p>
+<h3 id="デフォルト設定を変更する">更改默认设置</h3>
+<p>客户登记了至少一个固定虚拟账户时，有且只有一个账户会设为“默认”。<br>
+<span class="inline-api">在更新支付方式</span>（<code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code>）中更改 <code>default_flag</code> ，即可切换默认账户。</p>
+<h3 id="停止再有効化削除">停用、重新激活和删除</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">API</th></tr></thead><tbody><tr><td align="left">停用</td><td align="left"><code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}/inactivate</code></td></tr><tr><td align="left">重新激活</td><td align="left"><code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}/activate</code></td></tr><tr><td align="left">删除</td><td align="left"><code>DELETE /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code></td></tr></tbody></table>
+<p>请在停用和重新激活的请求体中指定 <code>pay_type: Virtualaccount</code> 。<br>
+有关 API 详情，请参阅<a href="/api#tag/%E6%B1%BA%E6%B8%88%E6%89%8B%E6%AE%B5">API 参考（支付方式）</a>。</p>
+<h2 id="顧客に発行する固定バーチャル口座を使った決済の流れ">使用为客户签发的固定虚拟账户进行支付的流程</h2>
+<p>此功能有两种入账场景。</p>
+<h3 id="scenario-auto">场景 1：转账时自动生成支付</h3>
+<p>客户向账户转账后，fincode 会自动生成一条支付信息，其条件为<code>pay_type = Virtualaccount</code>且状态为<code>売上確定（CAPTURED）</code>。每次转账都会生成支付信息，可在每次入账时通过控制面板或 Webhook 确认。</p>
+<p>因向客户固定虚拟账户转账而生成的支付信息会设置 <code>use_static_virtual_account: true</code> 。</p>
+<h3 id="scenario-payment">场景 2：预先创建支付信息，再通过为客户签发的固定虚拟账户核销</h3>
+<p>预先创建支付信息，在客户向账户转账时完成该笔支付。</p>
+<ol>
+<li><span class="inline-api">使用登记支付</span>创建支付信息，并在<code>pay_type: Virtualaccount</code>）。</li>
+<li><span class="inline-api">执行支付</span>（<code>PUT /v1/payments/{id}</code>）的请求体中为 <code>payment_method_id</code> 指定客户固定虚拟账户的 ID。</li>
+<li>支付信息会转为<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>，并等待向指定账户转账。</li>
+<li>客户向该账户转账后，支付信息会转为<code>売上確定（CAPTURED）</code>。</li>
+</ol>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  对同一账户处于<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>状态的支付信息，同一商户内同时只能创建一条。
+  </div>
+</div>
+<h2 id="webhookイベント">Webhook 事件</h2>
+<p>操作客户固定虚拟账户或转账完成时，会发送以下 Webhook 事件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">事件名称</th><th align="left">事件类型</th><th align="left">发送时间</th></tr></thead><tbody><tr><td align="left"><code>customers.payment_methods.created</code></td><td align="left">登记支付方式</td><td align="left">为客户签发的固定虚拟账户登记时</td></tr><tr><td align="left"><code>customers.payment_methods.updated</code></td><td align="left">更新支付方式</td><td align="left">默认设置更新时</td></tr><tr><td align="left"><code>customers.payment_methods.inactivated</code></td><td align="left">停用支付方式</td><td align="left">账户停用时</td></tr><tr><td align="left"><code>customers.payment_methods.activated</code></td><td align="left">重新激活支付方式</td><td align="left">账户重新激活时</td></tr><tr><td align="left"><code>customers.payment_methods.deleted</code></td><td align="left">删除支付方式</td><td align="left">账户删除时</td></tr><tr><td align="left"><code>payments.virtualaccount.complete</code></td><td align="left">转账完成</td><td align="left">向账户转账并生成支付信息时（生产环境）</td></tr><tr><td align="left"><code>payments.virtualaccount.complete.stub</code></td><td align="left">转账完成（测试）</td><td align="left">向账户转账并生成支付信息时（测试环境）</td></tr></tbody></table>
+<p><code>customers.payment_methods.*</code>该事件的载荷包含支付方式对象（为客户签发的固定虚拟账户）。<br>
+<code>payments.virtualaccount.*</code>该事件载荷与普通固定虚拟账户支付 Webhook 采用相同格式发送。</p>

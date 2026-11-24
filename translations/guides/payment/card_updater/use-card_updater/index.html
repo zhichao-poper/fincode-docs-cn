@@ -1,0 +1,151 @@
+<h1 id="カード更新を利用する">使用卡片信息自动更新</h1>
+<p>您可通过 fincode 控制面板或 API 设置自动更新对象，并查看更新结果。此功能需要申请开通，只有通过审核才可使用。</p>
+<h2 id="card-update-using">从控制面板使用卡片信息自动更新</h2>
+<p>您可以在 fincode 控制面板配置商户级卡片自动更新设置，以及单张卡片的自动更新设置。</p>
+<h3 id="1-ショップのカード更新ショップ設定を変更する">1. 更改商户级的卡片自动更新设置</h3>
+<p>登录 fincode 控制面板后，从“商户设置”打开“支付服务设置”。点击“卡片信息自动更新”的“设置”按钮，可启用或停用商户级卡片自动更新设置。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><strong>启用</strong></td><td align="left">自动更新设置为“继承商户设置（<code>inherit</code>）”的卡片将纳入自动更新范围。</td></tr><tr><td align="left"><strong>停用</strong></td><td align="left">自动更新设置为“继承商户设置（<code>inherit</code>）”的卡片将排除在自动更新范围之外。</td></tr></tbody></table>
+<p>变更后，请在“支付服务设置”页面中确认“卡片信息自动更新”的商户级设置状态已反映变更。</p>
+<h3 id="2-カード単位でカード更新設定を変更する">2. 更改单张卡片的自动更新设置</h3>
+<p>控制面板侧边栏的“支付方式 &gt; 卡片”会列出与商户已登记客户关联的卡片。可逐张设置或更改卡片的自动更新设置。</p>
+<p>请设置为以下任一选项。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><strong>启用更新</strong></td><td align="left">将此卡纳入自动更新范围。无论商户级设置如何，每月均执行自动更新。</td></tr><tr><td align="left"><strong>停用更新</strong></td><td align="left">将此卡排除在自动更新范围之外。无论商户级设置如何，均不进行自动更新。</td></tr><tr><td align="left"><strong>继承商户设置</strong></td><td align="left">遵循商户级卡片自动更新设置。商户设置启用时纳入更新范围，停用时排除。</td></tr></tbody></table>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>商户未指定时，卡片自动更新设置默认为“继承商户设置（<code>inherit</code>）”。商户级设置为“启用”时，未指定设置的已登记卡片将自动纳入更新范围。</p>
+  </div>
+</div>
+<h3 id="3-カード更新結果を管理画面から確認する">3. 在控制面板查看卡片自动更新结果</h3>
+<p>在控制面板侧边栏的“支付方式 &gt; 卡片”中，可以查看各卡片的自动更新时间和更新成功时间。卡片纳入更新范围后，其卡片信息会记录“卡片自动更新时间”；卡片信息更新后，会记录“卡片自动更新成功时间”。<br>
+※只有卡片自动更新成功时，更新成功时间才会刷新。</p>
+<h2 id="card-update-using-api">使用 API 进行卡片信息自动更新</h2>
+<p>从设置更新对象到查看结果的流程如下。</p>
+<ol>
+<li><span class="inline-api">在登记卡片</span>或<span class="inline-api">更新卡片</span>接口中指定<code>card_updater_mode</code>，设置单张卡片是否纳入自动更新范围。</li>
+<li>每月指定日期自动执行卡片更新，并应用最新信息。</li>
+<li><code>card.updater.complete</code>通过 Webhook 接收该事件，了解尝试更新的卡片数和成功更新的卡片数。</li>
+<li><span class="inline-api">获取卡片</span>、<span class="inline-api">获取卡片列表</span>及<span class="inline-api">获取卡片列表（按客户信息共享组）</span>的结果中可查看尝试更新时间和更新时间，以确定单张卡片的更新结果。</li>
+</ol>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>对商户已登记的所有卡片生效的<strong>商户级卡片自动更新设置</strong>只能在控制面板启用或停用。如需更改，请在控制面板操作。</p>
+  </div>
+</div>
+<h3 id="カード単位でカード更新対象を設定する">逐张设置卡片自动更新对象</h3>
+<p><span class="inline-api">在登记卡片</span>或<span class="inline-api">更新卡片</span>的请求参数中指定<code>card_updater_mode</code>，逐张设置卡片是否纳入自动更新范围。<br>
+※如果要纳入商户已登记的全部卡片，只需设置商户级卡片自动更新。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">参数名称</th><th align="left">类型</th><th align="left">是否必填</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>card_updater_mode</code></td><td align="left">String</td><td align="left">-</td><td align="left">该卡片的自动更新设置。<code>enabled</code>（启用更新）／ <code>disabled</code>（停用更新）／ <code>inherit</code>（继承商户设置）三者任选其一。</td></tr></tbody></table>
+<p>商户未指定时，<code>card_updater_mode</code>默认为“<code>inherit</code>（继承商户设置）”。<strong>商户级卡片自动更新设置</strong>为“启用”时，未指定设置的已登记卡片将自动纳入更新范围。</p>
+<p>※<code>card_updater_mode</code>可以在申请开通卡片信息自动更新前设置此字段。只有审核通过后，此设置才用于判定是否更新。</p>
+<h2 id="カード更新結果を確認する">查看卡片自动更新结果</h2>
+<h3 id="カード情報から結果を確認する">通过卡片信息查看结果</h3>
+<p>可通过<span class="inline-api">获取卡片</span>、<span class="inline-api">获取卡片列表</span>及<span class="inline-api">获取卡片列表（按客户信息共享组）</span>响应中的以下参数查看卡片自动更新结果。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">参数名称</th><th align="left">类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>card_updater_mode</code></td><td align="left">String</td><td align="left">该卡片的自动更新设置。<code>enabled</code> / <code>disabled</code> / <code>inherit</code> 中的任意一种。</td></tr><tr><td align="left"><code>card_updater_last_attempt_date</code></td><td align="left">String</td><td align="left">最近一次尝试自动更新的日期和时间。记录上次尝试自动更新此卡的时间。</td></tr><tr><td align="left"><code>card_updater_last_success_date</code></td><td align="left">String</td><td align="left">最近一次自动更新成功的日期和时间。记录卡片信息实际自动更新的最后时间。</td></tr></tbody></table>
+<h3 id="カード更新を実施した全量と更新されたカードを区別する">区分所有尝试更新的卡片和成功更新的卡片</h3>
+<p>可通过以下步骤区分系统尝试更新的全部卡片，以及其中卡片信息实际更新的卡片。</p>
+<ol>
+<li><span class="inline-api">获取卡片列表（按客户信息共享组）</span>接口中，在<code>card_updater_last_attempt_date_from</code>、<code>card_updater_last_attempt_date_to</code>指定目标月份的范围，即可取得尝试自动更新的全部卡片。</li>
+<li>取得的卡片中，<code>card_updater_last_success_date</code>落在目标月份的卡片即为卡片信息实际更新的卡片。</li>
+</ol>
+<p>以下为查询条件示例。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">获取卡片列表 API 查询参数名</th><th align="left">示例</th><th align="left">含义</th></tr></thead><tbody><tr><td align="left"><code>card_updater_last_attempt_date_from</code></td><td align="left"><code>2026-03-01</code></td><td align="left">尝试自动更新的起始日期。查询该时间及之后尝试自动更新的卡片。</td></tr><tr><td align="left"><code>card_updater_last_attempt_date_to</code></td><td align="left"><code>2026-03-31</code></td><td align="left">尝试自动更新的结束日期。查询该时间及之前尝试自动更新的卡片。</td></tr></tbody></table>

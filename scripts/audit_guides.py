@@ -111,6 +111,8 @@ def main() -> None:
     if not snapshot_path.exists():
         raise SystemExit("缺少 source/payment-guides.ja.json，请先运行 sync_guides.py")
     snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    component_path = ROOT / "source/payment-guide-components.ja.json"
+    components = json.loads(component_path.read_text(encoding="utf-8"))
     source_pages = {page["sourcePath"]: page["document"] for page in snapshot["pages"]}
     expected_paths = {page["source_path"] for page in PAGES}
     if set(source_pages) != expected_paths:
@@ -132,12 +134,14 @@ def main() -> None:
         parser.feed(fragment)
         if JAPANESE.search("".join(parser.visible_text)):
             errors.append(f"译文仍含日文假名：{page['translation']}")
-        if parser.tags["h1"] != 1:
-            errors.append(f"译文必须且只能有一个 h1：{page['translation']}")
-
         source = source_pages[page["source_path"]]
-        source_elements = list(walk_elements(source.get("body", {})))
+        component = components.get(page["source_path"])
+        body = component["body"] if component else source.get("body", {})
+        source_elements = list(walk_elements(body))
         source_counts = Counter(element.get("tag") for element in source_elements)
+        expected_headings = max(1, source_counts["h1"])
+        if parser.tags["h1"] != expected_headings:
+            errors.append(f"译文应有 {expected_headings} 个 h1：{page['translation']}")
         source_codes = [
             text_content(element)
             for element in source_elements
@@ -151,7 +155,7 @@ def main() -> None:
         )
         if Counter(code for code in parser.codes if JAPANESE.search(code)) - source_literals:
             errors.append(f"译文的代码含原文未定义的日文：{page['translation']}")
-        if group_for(page) != "payment":
+        if component or group_for(page) != "payment" or page["translation"].startswith("translations/guides/payment/"):
             source_order = [
                 element["tag"] for element in source_elements if element["tag"] in ORDERED_TAGS
             ]

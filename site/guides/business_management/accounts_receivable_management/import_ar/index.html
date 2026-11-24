@@ -57,7 +57,7 @@
     <div class="guide-layout">
       <aside class="guide-sidebar" aria-label="业务管理指南目录">
         <a class="guide-overview-link" href="../../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
-        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+        <p class="guide-nav-section section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
 <li><a href="../../index.html">控制面板</a></li>
 <li><a href="../../examination/index.html">商户审核</a></li>
@@ -169,7 +169,7 @@
 <tr><td align="left">44</td><td align="left">不支持 3D Secure 2.0 时的行为<br><code lang="ja">3Dセキュア2.0未対応時の動作</code></td><td align="left"><code>0</code>（支付错误）或 <code>1</code>（正常授权）</td><td align="left"><code>true</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
 <tr><td align="left">45</td><td align="left">银行转账（虚拟账户）付款期限<br><code lang="ja">銀行振込（バーチャル口座）支払期限</code></td><td align="left">大于等于 1 且不超过 2 位的整数</td><td align="left"><code>0</code>、<code>-1</code>、<code>1.5</code>、<code>三十日</code>、3 位及以上</td><td align="left">△※2</td><td align="left">-</td></tr>
 <tr><td align="left">46</td><td align="left">条形码显示有效天数<br><code lang="ja">バーコード表示期限日数</code></td><td align="left">大于等于 1 且不超过 3 位的整数</td><td align="left"><code>0</code>、<code>-1</code>、<code>1.5</code>、<code>三十日</code>、4 位及以上</td><td align="left">△※3</td><td align="left">-</td></tr>
-<tr><td align="left">47</td><td align="left">银行账户扣款请求日期<br><code lang="ja">口座振替依頼日</code></td><td align="left"><code>YYYY/MM/DD</code></td><td align="left"><code>2024-01-15</code>、过去日期、基准日以外的日期、收费请求受理期间结束后的日期</td><td align="left"></td><td align="left">△※4</td></tr>
+<tr><td align="left">47</td><td align="left">银行账户自动扣款请求日期<br><code lang="ja">口座振替依頼日</code></td><td align="left"><code>YYYY/MM/DD</code></td><td align="left"><code>2024-01-15</code>、过去日期、基准日以外的日期、收费请求受理期间结束后的日期</td><td align="left"></td><td align="left">△※4</td></tr>
 <tr><td align="left">48</td><td align="left">扣款失败时是否发送邮件通知<br><code lang="ja">引落失敗時のメール通知要否</code></td><td align="left"><code>0</code>（不发送）或 <code>1</code>（发送）</td><td align="left"><code>true</code>、<code>yes</code>、<code>2</code></td><td align="left"></td><td align="left"></td></tr>
 <tr><td align="left">49</td><td align="left">商户自定义输入 1（账单）<br><code lang="ja">加盟店自由入力1（請求）</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left"></td></tr>
 <tr><td align="left">50</td><td align="left">商户自定义输入 2（账单）<br><code lang="ja">加盟店自由入力2（請求）</code></td><td align="left">自由输入（最多 100 个字符）</td><td align="left">101 个字符及以上</td><td align="left"></td><td align="left"></td></tr>
@@ -180,7 +180,7 @@
 <li>※1 收费方式为邮件链接，且下列任一邮件发送标志为 <code>1</code>（发送）时必填：便利店受理邮件发送标志、付款画面通知邮件发送标志、URL 通知邮件发送标志、发送支付完成邮件。</li>
 <li>※2 仅在支付类型指定为 <code>Virtualaccount</code>（银行转账〔虚拟账户〕）时，必须指定银行转账（虚拟账户）付款期限。</li>
 <li>※3 仅在支付类型指定为 <code>Konbini</code>（便利店支付）时，必须指定条形码显示有效天数。</li>
-<li>※4 支付类型选择 <code>Directdebit</code>（银行账户扣款）时，签发账单时须填写银行账户扣款请求日期。</li>
+<li>※4 支付类型选择 <code>Directdebit</code>（银行账户自动扣款）时，签发账单时须填写银行账户自动扣款请求日期。</li>
 </ul>
 <h2 id="インポートファイル内にエラーがある場合の挙動">导入文件包含错误时的行为</h2>
 <p>导入账单时，按照以下顺序检查 CSV。</p>

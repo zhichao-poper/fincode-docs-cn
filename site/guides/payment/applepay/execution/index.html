@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 执行支付处理中文指南。" />
+    <title>执行支付处理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/applepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/applepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+<li><a href="../../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>批量支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../bulk/index.html">批量支付简介</a></li>
+<li><a href="../../bulk/card/index.html">卡片支付</a></li>
+<li><a href="../../bulk/virtualaccount/index.html">银行转账（虚拟账户）</a></li>
+</ul>
+<p class="guide-nav-section"><span>UI 组件</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../ui_component/index.html">UI 组件</a></li>
+</ul>
+<p class="guide-nav-section"><span>支付方式 API</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../payment_method/index.html">支付方式简介</a></li>
+<li><a href="../../payment_method/card/index.html">卡片支付</a></li>
+<li><a href="../../payment_method/directdebit_account/index.html">银行账户自动扣款</a></li>
+<li><a href="../../payment_method/virtualaccount/index.html">固定虚拟账户</a></li>
+<li><a href="../../payment_method/status/index.html">查看支付方式状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice_mpb/index.html">账单功能简介</a></li>
+<li><a href="../../invoice_mpb/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice_mpb/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice_mpb/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice_mpb/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice_mpb/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>账单功能</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../invoice/index.html">账单功能简介</a></li>
+<li><a href="../../invoice/use-invoice/index.html">使用账单功能</a></li>
+<li><a href="../../invoice/setting/index.html">账单设置</a></li>
+<li><a href="../../invoice/reverse-calculation/index.html">按含税金额倒算</a></li>
+<li><a href="../../invoice/discount-line/index.html">折扣明细</a></li>
+<li><a href="../../invoice/status/index.html">查看账单状态</a></li>
+<li><a href="../../invoice/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="../../invoice/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>卡片信息自动更新</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card_updater/index.html">卡片信息自动更新简介</a></li>
+<li><a href="../../card_updater/use-card_updater/index.html">设置并查看更新结果</a></li>
+<li><a href="../../card_updater/receive-card_updater-by-webhook/index.html">通过 Webhook 接收结果</a></li>
+<li><a href="../../card_updater/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../googlepay/index.html">Google Pay 简介</a></li>
+<li><a href="../../googlepay/setup/index.html">生产环境设置</a></li>
+<li><a href="../../googlepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../googlepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../googlepay/operation/index.html">运营示例</a></li>
+<li><a href="../../googlepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../googlepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section section-active"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">执行支付处理</a></li>
+<li><a href="../index.html">Apple Pay 简介</a></li>
+<li><a href="../setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../restriction/index.html">限制事项</a></li>
+<li><a href="../note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../subscription/index.html">订阅简介</a></li>
+<li><a href="../../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="index.html">Apple Pay</a></li><li aria-current="page">执行支付处理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1>执行支付处理</h1>
+<p>在 fincode 中，Apple Pay 支付从支持 Apple Pay 的 iPhone、iPad、Apple Watch 或 Mac 获取支付令牌开始。<br>
+向 Apple 获取支付令牌的详细规格，请参阅 Apple Developer 的 <a href="https://developer.apple.com/documentation/passkit/apple_pay/offering_apple_pay_in_your_app">PassKit（Apple Pay and Wallet）中的 Offering Apple Pay in Your App</a>。</p>
+
+<h2 id="token-web">A. 在网站中获取支付令牌（JavaScript）</h2>
+<p>在网站中处理 Apple Pay 支付时，可以使用受支持设备浏览器提供的 <b>Apple Pay JS</b> 或 <b>Payment Request API</b>。<br>
+本页示例使用 <b>Apple Pay JS</b>。</p>
+<p>※有关自定义付款按钮样式的方法，请参阅 Apple Developer 的 <a href="https://developer.apple.com/documentation/apple_pay_on_the_web/displaying_apple_pay_buttons_using_javascript">Displaying Apple Pay Buttons Using JavaScript</a>。<br>
+※详细规格请参阅 Apple Developer 的 <a href="https://developer.apple.com/documentation/apple_pay_on_the_web">Apple Pay on the Web</a>。</p>
+<p>启动 Apple Pay 付款会话（example.js）</p>
+<pre><code class="language-javascript">const APPLE_PAY_SUPPORTED_VERSION = 3; // Apple PayJSのサポートバージョン
+const MARCHANT_IDENTIFIER = "example.com.store"; // マーチャントID
+const APPLE_PAY_BUTTON_ID = "apple-pay-button"; // 任意のApple Payボタン要素のID名
+const SHOP_VALIDATION_ENDPOINT_URL =
+    "https://your-server.example.com/applepay-session/validate"; // 任意のマーチャントセッション取得エンドポイントのURL
+&#32;&#32;&#32;&#32;&#32;
+/* ブラウザがApple PayJSをサポートしている場合 */
+if (window.ApplePaySession) {
+    const promise =
+        ApplePaySession.canMakePaymentsWithActiveCard(MARCHANT_IDENTIFIER);
+    promise.then((canMakePayment) =&gt; {
+        /* ユーザーが少なくとも1枚の利用可能なカードを登録している場合 */
+        if (canMakePayment) {
+            // Apple Payボタンを作成
+            const applePayButton = document.createElement("button");
+            applePayButton.setAttribute("id", APPLE_PAY_BUTTON_ID);
+            applePayButton.setAttribute("lang", "ja-JP");
+            const applePayButtonType = "buy"; // Apple Payボタンの種類, styleプロパティ -apple-pay-button-type の値
+            const applePayButtonStyle = "black"; // Apple Payボタンのスタイル, styleプロパティ -apple-pay-button-style の値
+            applePayButton.setAttribute(
+                "style",
+                `-webkit-appearance: -apple-pay-button; -apple-pay-button-type: ${applePayButtonType}; -apple-pay-button-style: ${applePayButtonStyle};`
+            );
+&#32;&#32;&#32;&#32;&#32;
+            // Apple PayボタンをDOMに追加
+            const applePayButtonContainer = document.getElementById(
+                "{Apple Payボタンを追加したい要素のID}"
+            );
+            applePayButtonContainer.appendChild(applePayButton);
+&#32;&#32;&#32;&#32;&#32;
+            // Apple Payボタンをクリックしたときのイベントハンドラ
+            applePayButton.addEventListener("click", (_) =&gt; {
+                // Apple Pay決済リクエスト
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymentrequest
+                const applePayPaymentRequest = {
+                    countryCode: "JP",
+                    currencyCode: "JPY",
+                    supportedNetworks: ["visa", "masterCard", "jcb", "amex"],
+                    merchantCapabilities: ["supports3DS"],
+                    total: {
+                        label: "{商品名}",
+                        amount: "{金額}",
+                    },
+                };
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Payセッションを作成
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/2320659-applepaysession
+                const applePaySession = new ApplePaySession(
+                    APPLE_PAY_SUPPORTED_VERSION,
+                    applePayPaymentRequest
+                );
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Payの支払いシートが表示され、マーチャントセッションの取得を求められたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778021-onvalidatemerchant
+                applePaySession.onvalidatemerchant = (event) =&gt; {
+                    const validationURL = event.validationURL;
+&#32;&#32;&#32;&#32;&#32;
+                    // マーチャントセッションを取得
+                    fetch(SHOP_VALIDATION_ENDPOINT_URL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            validationURL: validationURL,
+                        }),
+                    }).then((response) =&gt; {
+                        // マーチャントセッションをApple Payに返却
+                        applePaySession.completeMerchantValidation(response);
+                    });
+                };
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Payのキャンセルボタンが押されたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778029-oncancel
+                applePaySession.oncancel = (event) =&gt; {};
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Pay上で支払い方法が選択されたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778013-onpaymentmethodselected
+                applePaySession.onpaymentmethodselected = (event) =&gt; {};
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Pay上で配送方法が選択されたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778028-onshippingmethodselected
+                applePaySession.onshippingmethodselected = (event) =&gt; {};
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Pay上で配送先住所が選択されたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778009-onshippingcontactselected
+                applePaySession.onshippingcontactselected = (event) =&gt; {};
+&#32;&#32;&#32;&#32;&#32;
+                // 購入者により購入が承認されたときのイベントハンドラ
+                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778020-onpaymentauthorized
+                applePaySession.onpaymentauthorized = (event) =&gt; {
+                    const token = event.payment.token;
+&#32;&#32;&#32;&#32;&#32;
+                    // トークンをBase64エンコード
+                    // このBase64エンコード済みトークンを決済実行JSの引数もしくは決済実行APIのリクエストボディに含めます
+                    const encodedToken = btoa(JSON.stringify(token.paymentData));
+&#32;&#32;&#32;&#32;&#32;
+                    /**
+                     * 後続処理
+                     */
+                };
+&#32;&#32;&#32;&#32;&#32;
+                // Apple Payセッションを開始
+                applePaySession.begin();
+            });
+        }
+    });
+}
+</code></pre>
+
+<h2 id="token-ios">B. 在 iOS、iPadOS、watchOS 或 macOS 中获取支付令牌（Swift）</h2>
+<p>在 Apple 设备上的应用中处理 Apple Pay 支付时，可以使用 Apple 提供的 <b>PassKit</b>。</p>
+<p>※详细规格请参阅 Apple Developer 的 <a href="https://developer.apple.com/documentation/passkit/apple_pay/offering_apple_pay_in_your_app">PassKit（Apple Pay and Wallet）中的 Offering Apple Pay in Your App</a>。</p>
+<p>启动 Apple Pay 付款会话（sample.swift）</p>
+<pre><code class="language-swift">import UIKit
+import PassKit
+&#32;&#32;&#32;&#32;&#32;
+let APPLE_PAY_MERCHANT_ID = "example.com.store"
+&#32;&#32;&#32;&#32;&#32;
+class ViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+&#32;&#32;&#32;&#32;&#32;
+    // Apple Payボタン
+    @IBOutlet weak var applePayButton: UIView!
+&#32;&#32;&#32;&#32;&#32;
+    override func viewDidLoad() {
+        super.viewDidLoad()
+&#32;&#32;&#32;&#32;&#32;
+        let isApplePayAvailable = isApplePayAvailable()
+&#32;&#32;&#32;&#32;&#32;
+        /* もしApple Payが利用できる場合は、Apple Payボタンを表示する */
+        if isApplePayAvailable {
+&#32;&#32;&#32;&#32;&#32;
+            // Apple Payボタンを作成
+            let button = PKPaymentButton(type: .buy, style: .black)
+            button.addAction(
+                UIAction(handler: { _ in
+                    self.onApplePayButtonTapped()
+                }),
+                for: .touchUpInside
+            )
+&#32;&#32;&#32;&#32;&#32;
+            // Apple Payボタンを表示
+            applePayButton.addSubview(button)
+        }
+    }
+&#32;&#32;&#32;&#32;&#32;
+    // Apple Payで利用できるカードが少なくとも1つあるかどうかを判定
+    func isApplePayAvailable() -&gt; Bool {
+        if !PKPaymentAuthorizationViewController.canMakePayments() {
+            // Apple Payは利用できない
+            return false
+        }
+&#32;&#32;&#32;&#32;&#32;
+        let networks = PKPaymentRequest.availableNetworks()
+        if !PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(networks) {
+            // Apple Pay機能は利用できるが、利用できるカードが登録されていない
+            return false
+        }
+&#32;&#32;&#32;&#32;&#32;
+        return true
+    }
+&#32;&#32;&#32;&#32;&#32;
+    // Apple Payボタンがタップされた時の処理
+    func onApplePayButtonTapped() {
+        // Apple Payで支払いを行う
+        let request = PKPaymentRequest()
+        request.merchantIdentifier = APPLE_PAY_MERCHANT_ID
+        request.supportedNetworks = [.visa, .masterCard, .amex, .JCB]
+        request.merchantCapabilities = .capability3DS
+        request.countryCode = "JP"
+        request.currencyCode = "JPY"
+        request.paymentSummaryItems = [
+            PKPaymentSummaryItem(
+                label: "{{商品名}}",
+                amount: NSDecimalNumber(string: "{{金額}}")
+            )
+        ]
+&#32;&#32;&#32;&#32;&#32;
+        let viewController = PKPaymentAuthorizationViewController(paymentRequest: request)
+        viewController.delegate = self
+        self.present(viewController, animated: true, completion: nil)
+    }
+&#32;&#32;&#32;&#32;&#32;
+    // Apple Payで支払いが完了した時の処理
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        // Apple Payの支払シートを閉じる
+        controller.dismiss(animated: true, completion: nil)
+    }
+&#32;&#32;&#32;&#32;&#32;
+    // Apple Payで支払いが承認された時の処理
+    func paymentAuthorizationViewController(
+        _ controller: PKPaymentAuthorizationViewController,
+        didAuthorizePayment payment: PKPayment,
+        handler completion: @escaping (PKPaymentAuthorizationResult) -&gt; Void
+    ) {
+        let token = payment.token.paymentData
+&#32;&#32;&#32;&#32;&#32;
+        // トークンをBase64エンコード
+        // このBase64エンコード済みのトークンを決済実行APIのリクエストに含めます
+        let encodedToken = token.base64EncodedString()
+&#32;&#32;&#32;&#32;&#32;
+        /*
+            後続処理
+        */
+&#32;&#32;&#32;&#32;&#32;
+        // Apple Payの支払シートを閉じる
+        controller.dismiss(animated: true, completion: nil)
+&#32;&#32;&#32;&#32;&#32;
+        // エラーなくApple Payでの支払いが完了したことを通知
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+    }
+}</code></pre>
+
+<h3 id="api-input-case">使用支付执行 API</h3>
+<p>在网站或应用中获取令牌后，将令牌填入支付执行 API 请求体的 <code>token</code> 字段。</p>
+<img src="../../../../assets/payment-guides/applepay/payment_applepay.png" alt="使用支付执行 API 处理 Apple Pay 的流程">
+<p>1. 买家点击“Apple Pay”按钮。<br>
+2. 商户调用 fincode 的<span class="inline-api">登记支付</span>接口。<br>
+3. 商户从设备获取支付令牌。<br>
+4. 商户将支付令牌填入 fincode 的<code>トークン(token)</code>，并<span class="inline-api">执行支付</span>。<br>
+5. 使用令牌处理支付。</p>
+
+<h3 id="js-input-case">使用支付执行 JS</h3>
+<p>在网站中获取令牌后，将令牌填入支付执行 JS 的 <code>transaction.token</code> 参数。</p>
+<img src="../../../../assets/payment-guides/applepay/payment_applepay_js.png" alt="使用支付执行 JS 处理 Apple Pay 的流程">
+<p>1. 买家点击“Apple Pay”按钮。<br>
+2. 商户调用 fincode 的<span class="inline-api">登记支付</span>接口。<br>
+3. 商户从设备获取支付令牌。<br>
+4. 商户将支付令牌填入 fincode 的<code>トークン(token)</code>，并调用<span class="inline-api">支付执行 JS</span>。<br>
+5. 使用令牌处理支付。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/applepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
