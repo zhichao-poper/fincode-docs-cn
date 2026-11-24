@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是账单功能中文指南。" />
+    <title>什么是账单功能 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/invoice" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/invoice" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card/index.html">卡片支付简介</a></li>
+<li><a href="../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../card/operation/index.html">运营示例</a></li>
+<li><a href="../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../card/status/index.html">查看支付状态</a></li>
+<li><a href="../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../card/notes/index.html">注意事项</a></li>
+<li><a href="../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>账单功能</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">账单功能简介</a></li>
+<li><a href="use-invoice/index.html">使用账单功能</a></li>
+<li><a href="setting/index.html">账单设置</a></li>
+<li><a href="reverse-calculation/index.html">按含税金额倒算</a></li>
+<li><a href="discount-line/index.html">折扣明细</a></li>
+<li><a href="status/index.html">查看账单状态</a></li>
+<li><a href="track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪收费</a></li>
+<li><a href="operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>卡片信息自动更新</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card_updater/index.html">卡片信息自动更新简介</a></li>
+<li><a href="../card_updater/use-card_updater/index.html">设置并查看更新结果</a></li>
+<li><a href="../card_updater/receive-card_updater-by-webhook/index.html">通过 Webhook 接收结果</a></li>
+<li><a href="../card_updater/operation-and-note/index.html">运营与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../googlepay/index.html">Google Pay 简介</a></li>
+<li><a href="../googlepay/setup/index.html">生产环境设置</a></li>
+<li><a href="../googlepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../googlepay/status/index.html">查看支付状态</a></li>
+<li><a href="../googlepay/operation/index.html">运营示例</a></li>
+<li><a href="../googlepay/restriction/index.html">限制事项</a></li>
+<li><a href="../googlepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../subscription/index.html">订阅简介</a></li>
+<li><a href="../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../card/index.html">支付</a></li><li><a href="index.html">账单功能</a></li><li aria-current="page">什么是账单功能</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="インボイス機能とは">什么是账单功能</h1>
+<p><img alt="账单功能缩略图" src="../../../assets/payment-guides/invoice/thumbnail.png"></p>
+<p>账单功能可在 fincode 中签发账单，并在签发时生成支付页面，由买家在该页面完成付款。付款后会自动签发收据，买家可随时下载。</p>
+<p>通过此功能，无需自行开发账单和支付页面，即可在 fincode 控制面板或通过 API 管理从签发账单到完成付款的流程。</p>
+<p>在 fincode 控制面板的商户设置中登记日本合规发票开具企业登记编号后，即可签发符合 2023 年 10 月 1 日开始实施的日本“合规发票制度”的账单和收据。</p>
+<h2 id="インボイス機能と他の機能の比較">账单功能与其他功能的比较</h2>
+<p>账单功能和支付 API、跳转式支付 URL（邮件链接）一样，均可接受单笔支付。请比较各项功能后选择适合的方式。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left"></th><th align="left">支付 API</th><th align="left">跳转式支付 URL</th><th align="left">账单功能</th></tr></thead><tbody><tr><td align="left">概要</td><td align="left">通过 API 接收支付</td><td align="left">在 fincode 提供的支付页面接收支付</td><td align="left">在 fincode 中签发账单，并在同时生成的支付页面接收支付</td></tr><tr><td align="left">可接受的支付方式</td><td align="left">fincode 提供的所有支付方式</td><td align="left">卡片支付、便利店支付、PayPay、银行转账（虚拟账户）</td><td align="left">卡片支付、银行转账（虚拟账户）、银行账户自动扣款</td></tr><tr><td align="left">使用场景</td><td align="left">希望提供完全自定义的支付页面和购买体验</td><td align="left">希望以较少的开发工作量接入支付，无需实现支付页面</td><td align="left">希望以较少的开发工作量接入支付，无需实现支付页面</td></tr><tr><td align="left"></td><td align="left">希望登记卡片信息，让买家付款时无需每次输入卡片信息</td><td align="left">希望在支付完成后自动跳转到自有应用</td><td align="left"><strong>希望管理交易内容、付款期限等账单信息，并自动完成从收费和核销到签发收据的流程</strong></td></tr><tr><td align="left">费用</td><td align="left">仅收取支付手续费</td><td align="left">仅收取支付手续费</td><td align="left">仅收取支付手续费</td></tr></tbody></table>
+<h2 id="インボイス機能の概念モデル">账单功能的概念模型</h2>
+<p>账单功能会创建“账单”实体。账单与支付信息、客户信息等的关系如下。</p>
+<p><img alt="账单功能的概念模型" src="../../../assets/payment-guides/invoice/concept_model.png"></p>
+<p>通过账单付款也会生成支付信息，其中保存账单 ID。账单还会保存客户 ID，可与客户信息关联管理。</p>
+<h2 id="利用可能な決済手段">可用支付方式</h2>
+<p>fincode 支持的支付方式对账单功能的适用情况如下。</p>
+<p>如需使用卡片以外的支付方式，须分别申请开通对应支付方式并通过审核。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">支付方式</th><th align="left">支持情况</th><th align="left">补充</th></tr></thead><tbody><tr><td align="left">卡片支付</td><td align="left">支持</td><td align="left">买家可在支付页面输入卡片信息支付账单。</td></tr><tr><td align="left">Apple Pay</td><td align="left">―</td><td align="left"></td></tr><tr><td align="left">便利店支付</td><td align="left">―</td><td align="left"></td></tr><tr><td align="left">PayPay</td><td align="left">―</td><td align="left"></td></tr><tr><td align="left">银行转账（虚拟账户）</td><td align="left">支持</td><td align="left">向签发的虚拟账户转账即可完成支付。<br>只要累计转账金额仍低于应收金额，账单就不会变为已支付。每次转账都会生成支付信息。</td></tr><tr><td align="left">银行账户自动扣款</td><td align="left">支持</td><td align="left">创建账单时指定客户已登记的账户信息和扣款日，系统会在指定日期执行银行账户自动扣款。</td></tr></tbody></table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/invoice" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

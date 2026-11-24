@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'invoice': '账单功能',
     'card_updater': '卡片信息自动更新',
     'googlepay': 'Google Pay',
     'applepay': 'Apple Pay',
@@ -228,6 +229,14 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/invoice', 'invoice', '什么是账单功能', '账单功能简介'),
+        ('payment/invoice/use-invoice', 'invoice', '使用账单功能', '使用账单功能'),
+        ('payment/invoice/setting', 'invoice', '账单设置', '账单设置'),
+        ('payment/invoice/reverse-calculation', 'invoice', '倒算（按含税金额输入）', '按含税金额倒算'),
+        ('payment/invoice/discount-line', 'invoice', '折扣明细（负数行）', '折扣明细'),
+        ('payment/invoice/status', 'invoice', '查看账单状态', '查看账单状态'),
+        ('payment/invoice/track-invoice-billing-by-webhook', 'invoice', '通过 Webhook 跟踪账单收费', '通过 Webhook 跟踪收费'),
+        ('payment/invoice/operation-and-note', 'invoice', '运营与注意事项', '运营与注意事项'),
         ('payment/card_updater', 'card_updater', '什么是卡片信息自动更新', '卡片信息自动更新简介'),
         ('payment/card_updater/use-card_updater', 'card_updater', '使用卡片信息自动更新', '设置并查看更新结果'),
         ('payment/card_updater/receive-card_updater-by-webhook', 'card_updater', '通过 Webhook 接收卡片自动更新结果', '通过 Webhook 接收结果'),

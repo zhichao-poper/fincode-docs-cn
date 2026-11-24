@@ -1,0 +1,52 @@
+<h1 id="webhook通知でインボイスによる請求を追跡する">通过 Webhook 跟踪账单收费</h1>
+<p>账单功能提供多种 Webhook 事件，用于实时跟踪收费。接收这些事件，即可实时了解账单签发和支付情况。</p>
+<h2 id="インボイス機能におけるイベントとイベント発生のタイミング">账单功能的事件及其触发时间</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>事件名称</th><th>事件</th><th>触发时间</th><th>账单状态</th></tr></thead><tbody><tr><td>创建账单</td><td><code>invoice.create</code></td><td>在控制面板或通过创建账单 API 创建账单时</td><td>此时<code>status</code>为<code>DRAFT</code>。</td></tr><tr><td>更新账单</td><td><code>invoice.update</code></td><td>在控制面板或通过更新账单 API 更新账单时</td><td>此事件不会导致状态变化。</td></tr><tr><td>签发账单</td><td><code>invoice.open</code></td><td>在控制面板或通过签发账单 API 发起该账单的收费时</td><td>此时<code>status</code>为<code>AWAITING_CUSTOMER_PAYMENT</code>。</td></tr><tr><td>账单已支付</td><td><code>invoice.paid</code></td><td>买家在支付页面完成付款，或在控制面板或通过 API 标记为外部支付时</td><td>此时<code>status</code>为<code>PAID</code>。外部支付时，<code>is_paid_externally</code>还会变为<code>true</code>。</td></tr><tr><td>取消账单</td><td><code>invoice.cancel</code></td><td>在控制面板或通过取消账单 API 取消账单时</td><td>此时<code>status</code>为<code>CANCELED</code>。</td></tr><tr><td>超过付款期限</td><td><code>invoice.expired</code></td><td>付款期限已过时</td><td>此时<code>status</code>仍为<code>AWAITING_CUSTOMER_PAYMENT</code>，但仍可继续付款。</td></tr></tbody></table>
+<p>指定事件，并调用<span class="inline-api">登记 Webhook 设置</span>接口。指定事件发生时，通知将发送至指定 URL。</p>
