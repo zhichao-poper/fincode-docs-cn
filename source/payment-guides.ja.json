@@ -10,7 +10,7 @@
       "business_management",
       "platform"
     ],
-    "pageCount": 114
+    "pageCount": 116
   },
   "pages": [
     {
@@ -71335,7 +71335,7 @@
     {
       "key": "payment-directdebit_mhf",
       "sourcePath": "/payment/directdebit_mhf/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit",
       "document": {
         "slug": "index",
         "toc": [
@@ -72152,7 +72152,7 @@
     {
       "key": "payment-directdebit_mhf-execution",
       "sourcePath": "/payment/directdebit_mhf/execution/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf/execution",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/execution",
       "document": {
         "slug": "index",
         "toc": [
@@ -73192,7 +73192,7 @@
     {
       "key": "payment-directdebit_mhf-schedule",
       "sourcePath": "/payment/directdebit_mhf/schedule/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf/schedule",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/schedule",
       "document": {
         "slug": "index",
         "toc": [],
@@ -73686,7 +73686,7 @@
     {
       "key": "payment-directdebit_mhf-status",
       "sourcePath": "/payment/directdebit_mhf/status/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf/status",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/status",
       "document": {
         "slug": "index",
         "toc": [
@@ -77994,7 +77994,7 @@
     {
       "key": "payment-directdebit_mhf-register",
       "sourcePath": "/payment/directdebit_mhf/register/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf/register",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/register",
       "document": {
         "slug": "index",
         "toc": [
@@ -143017,7 +143017,7 @@
     {
       "key": "payment-invoice_mpb",
       "sourcePath": "/payment/invoice_mpb/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice",
       "document": {
         "slug": "index",
         "toc": [
@@ -144145,7 +144145,7 @@
     {
       "key": "payment-invoice_mpb-use-invoice",
       "sourcePath": "/payment/invoice_mpb/use-invoice/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb/use-invoice",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/use-invoice",
       "document": {
         "slug": "index",
         "toc": [
@@ -145125,7 +145125,7 @@
     {
       "key": "payment-invoice_mpb-setting",
       "sourcePath": "/payment/invoice_mpb/setting/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb/setting",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/setting",
       "document": {
         "slug": "index",
         "toc": [
@@ -145434,7 +145434,7 @@
     {
       "key": "payment-invoice_mpb-status",
       "sourcePath": "/payment/invoice_mpb/status/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb/status",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/status",
       "document": {
         "slug": "index",
         "toc": [
@@ -147363,7 +147363,7 @@
     {
       "key": "payment-invoice_mpb-track-invoice-billing-by-webhook",
       "sourcePath": "/payment/invoice_mpb/track-invoice-billing-by-webhook/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb/track-invoice-billing-by-webhook",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/track-invoice-billing-by-webhook",
       "document": {
         "slug": "index",
         "toc": [
@@ -148122,7 +148122,7 @@
     {
       "key": "payment-invoice_mpb-operation-and-note",
       "sourcePath": "/payment/invoice_mpb/operation-and-note/index",
-      "sourceUrl": "https://docs.fincode.jp/payment/invoice_mpb/operation-and-note",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/operation-and-note",
       "document": {
         "slug": "index",
         "toc": [
@@ -164251,6 +164251,56 @@
           "created": 1792994139778
         },
         "$loki": 50
+      }
+    },
+    {
+      "key": "payment-directdebit-restriction",
+      "sourcePath": "/payment/directdebit/restriction/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/directdebit/restriction",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": []
+        },
+        "text": "<!-- index.vueを利用 -->",
+        "dir": "/payment/directdebit/restriction",
+        "path": "/payment/directdebit/restriction/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140005
+        },
+        "$loki": 88
+      }
+    },
+    {
+      "key": "payment-directdebit_mhf-restriction",
+      "sourcePath": "/payment/directdebit_mhf/restriction/index",
+      "sourceUrl": "https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/restriction",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": []
+        },
+        "text": "<!-- index.vueを利用 -->",
+        "dir": "/payment/directdebit_mhf/restriction",
+        "path": "/payment/directdebit_mhf/restriction/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140040
+        },
+        "$loki": 93
       }
     }
   ]

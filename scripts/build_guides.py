@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
 API_TAG_NAMES = load_yaml(TRANSLATIONS)["tag_names"]
 OUTPUT_BY_SOURCE_ROUTE = {
-    page["source_url"].removeprefix("https://docs.fincode.jp"): page["output"]
+    page["source_path"].removesuffix("/index"): page["output"]
     for page in PAGES
 }
 
@@ -78,9 +78,9 @@ def navigation(current: dict, output: Path) -> str:
     current_group = group_for(current)
     sections = SECTIONS if current_group == "payment" else {current_group: GROUPS[current_group]}
     for section, section_title in sections.items():
-        section_active = ' class="section-active"' if section == current["section"] else ""
+        section_active = " section-active" if section == current["section"] else ""
         parts.append(
-            f'<p class="guide-nav-section"{section_active}>'
+            f'<p class="guide-nav-section{section_active}">'
             f'<span>{html.escape(section_title)}</span><i aria-hidden="true"></i></p>'
         )
         parts.append('<ul class="guide-nav-list">')

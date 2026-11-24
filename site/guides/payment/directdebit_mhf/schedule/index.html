@@ -22,7 +22,7 @@
         <nav class="official-header-links" aria-label="实用链接">
           <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
           <b aria-hidden="true">|</b>
-          <a href="https://docs.fincode.jp/payment/directdebit_mhf/schedule" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/schedule" target="_blank" rel="noreferrer">官方日文原文</a>
           <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
           <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
         </nav>
@@ -38,7 +38,7 @@
 <a href="https://docs.fincode.jp/buyer_service">买家服务</a>
 <a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
-            <a href="https://docs.fincode.jp/payment/directdebit_mhf/schedule" target="_blank" rel="noreferrer">官方日文原文</a>
+            <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/schedule" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
         </details>
       </div>
@@ -170,8 +170,9 @@
 <li><a href="../../subscription/manage/index.html">管理订阅</a></li>
 <li><a href="../../subscription/attention/index.html">注意事项</a></li>
 </ul>
-<p class="guide-nav-section" class="section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<p class="guide-nav-section section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../restriction/index.html">限制事项</a></li>
 <li><a href="../register/index.html">登记账户</a></li>
 <li><a href="../index.html">银行账户自动扣款简介</a></li>
 <li><a href="../execution/index.html">执行扣款处理</a></li>
@@ -180,6 +181,7 @@
 </ul>
 <p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
 <li><a href="../../directdebit/register/index.html">登记账户</a></li>
 <li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
 <li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
@@ -189,7 +191,7 @@
       </aside>
       <div class="guide-body">
         <nav class="guide-breadcrumb" aria-label="面包屑">
-          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../register/index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">银行账户自动扣款年度日程</li></ul>
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../restriction/index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">银行账户自动扣款年度日程</li></ul>
         </nav>
         <main class="guide-main">
           <article class="guide-article">
@@ -231,7 +233,7 @@
 <table><thead><tr><th align="left">项目名称</th><th align="left">详情</th></tr></thead><tbody><tr><td align="left">指定扣款日</td><td align="left">可选择每月 1、5、20、26 日作为扣款日。<br><span class="inline-api">执行支付</span>中的<code>target_date</code>、以及<span class="inline-api">登记订阅</span>中的<code>start_date</code>的 dd，均填写此值。</td></tr><tr><td align="left">实际扣款日</td><td align="left">实际扣除款项的日期。<br>如果指定扣款日为金融机构的非营业日，将在下一个工作日扣款。</td></tr><tr><td align="left">银行账户自动扣款申请书送达期限</td><td align="left">要在指定扣款日扣款，必须在此期限内寄送申请书。<br>通过申请书登记账户时，申请书必须在此日期前送达收件方。</td></tr><tr><td align="left">扣款请求受理期开始日</td><td align="left">每个指定扣款日均有对应的请求受理期，从当天 0:00 起开始受理。<br>在受理期外执行支付、取消支付或变更金额会返回错误。</td></tr><tr><td align="left">扣款请求受理期结束日</td><td align="left">每个指定扣款日均有对应的请求受理期，到当天 23:59 停止受理。<br>在受理期外执行支付、取消支付或变更金额会返回错误。<br>※订阅请求在当天 13:00 停止受理。超过 13:00 时，首次扣款日为次月同一天。</td></tr><tr><td align="left">扣款结果返回日</td><td align="left">fincode 通过 Webhook 通知 <code>payments.directdebit.complete</code>返回扣款结果的日期。</td></tr></tbody></table>
 
           </article>
-          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/directdebit_mhf/schedule" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/schedule" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
         </main>
       </div>
     </div>

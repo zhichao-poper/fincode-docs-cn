@@ -22,7 +22,7 @@
         <nav class="official-header-links" aria-label="实用链接">
           <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
           <b aria-hidden="true">|</b>
-          <a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/register" target="_blank" rel="noreferrer">官方日文原文</a>
           <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
           <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
         </nav>
@@ -38,7 +38,7 @@
 <a href="https://docs.fincode.jp/buyer_service">买家服务</a>
 <a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
-            <a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>
+            <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/register" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
         </details>
       </div>
@@ -170,8 +170,9 @@
 <li><a href="../../subscription/manage/index.html">管理订阅</a></li>
 <li><a href="../../subscription/attention/index.html">注意事项</a></li>
 </ul>
-<p class="guide-nav-section" class="section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<p class="guide-nav-section section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../restriction/index.html">限制事项</a></li>
 <li><a href="index.html" aria-current="page" class="active">登记账户</a></li>
 <li><a href="../index.html">银行账户自动扣款简介</a></li>
 <li><a href="../execution/index.html">执行扣款处理</a></li>
@@ -180,6 +181,7 @@
 </ul>
 <p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
 <li><a href="../../directdebit/register/index.html">登记账户</a></li>
 <li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
 <li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
@@ -189,7 +191,7 @@
       </aside>
       <div class="guide-body">
         <nav class="guide-breadcrumb" aria-label="面包屑">
-          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">登记账户</li></ul>
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../restriction/index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">登记账户</li></ul>
         </nav>
         <main class="guide-main">
           <article class="guide-article">
@@ -224,7 +226,7 @@ fincode 提供“Web 登记”和“申请书登记”两种登记方式。</p>
 
 
 
-<table><thead><tr><th align="left">登记方式</th><th align="left">详情</th><th align="left">到可扣款为止所需时间</th><th align="left">支持的金融机构</th><th align="left">登记费用</th></tr></thead><tbody><tr><td align="left"><a href="#web-register">Web 登记</a></td><td align="left">将买家引导至 <a href="../../../../reference.html#operation/createCustomerPaymentMethod">fincode API</a> 返回的账户登记 URL，由买家在该网页完成登记。<br>所有手续均在线完成。</td><td align="left">登记完成后即可使用</td><td align="left">有限制<br><a href="https://docs.fincode.jp/payment/directdebit/restriction">查看列表</a></td><td align="left">仅在登记成功时收取</td></tr><tr><td align="left"><a href="#paper-register">申请书登记</a></td><td align="left">由买家填写并盖章纸质银行账户自动扣款申请书，再由商户登记账户。</td><td align="left">自寄出申请书起约 1.5 个月</td><td align="left">大多数金融机构均可使用<br><a href="https://docs.fincode.jp/payment/directdebit/restriction">查看列表</a></td><td align="left">免费</td></tr></tbody></table>
+<table><thead><tr><th align="left">登记方式</th><th align="left">详情</th><th align="left">到可扣款为止所需时间</th><th align="left">支持的金融机构</th><th align="left">登记费用</th></tr></thead><tbody><tr><td align="left"><a href="#web-register">Web 登记</a></td><td align="left">将买家引导至 <a href="../../../../reference.html#operation/createCustomerPaymentMethod">fincode API</a> 返回的账户登记 URL，由买家在该网页完成登记。<br>所有手续均在线完成。</td><td align="left">登记完成后即可使用</td><td align="left">有限制<br><a href="../restriction/index.html">查看列表</a></td><td align="left">仅在登记成功时收取</td></tr><tr><td align="left"><a href="#paper-register">申请书登记</a></td><td align="left">由买家填写并盖章纸质银行账户自动扣款申请书，再由商户登记账户。</td><td align="left">自寄出申请书起约 1.5 个月</td><td align="left">大多数金融机构均可使用<br><a href="../restriction/index.html">查看列表</a></td><td align="left">免费</td></tr></tbody></table>
 <h1 id="web-register">Web 登记</h1>
 <h2 id="web登録とは">什么是 Web 登记</h2>
 <p>买家通过网页浏览器从商户网站进入金融机构的页面，在对应的输入界面填写账户信息。<br>
@@ -279,7 +281,7 @@ fincode 提供“Web 登记”和“申请书登记”两种登记方式。</p>
 <span class="inline-api">登记支付方式</span>可通过此 API 执行，也可以在控制面板中登记（客户 &gt; 操作 &gt; 账户登记（申请书））。</p>
 <h3 id="step4依頼書送付票を指定の住所に郵送">第 4 步：将申请书和寄送单寄往指定地址</h3>
 <p>在 fincode 中登记账户之后，请汇总申请书并附上寄送单，一并寄往指定地址。<br>
-<a href="../../directdebit/schedule/index.html">银行账户自动扣款年度日程</a>列明了相关期限，请按时寄送，确保在截止日之前送达。<br>
+<a href="../schedule/index.html">银行账户自动扣款年度日程</a>列明了相关期限，请按时寄送，确保在截止日之前送达。<br>
 即使申请书未能及时送达，fincode 也会向已登记的账户发起扣款请求。<br>
 在这种情况下，即使扣款失败也会产生支付手续费。 </p>
 <div class="custom-block-common custom-block">
@@ -331,7 +333,7 @@ fincode 提供“Web 登记”和“申请书登记”两种登记方式。</p>
 <p>其他渠道的登记何时失效或解除无法确定。如果收到申请书问题通知，请重新寄送正确的申请书，并在 fincode 中重新登记。</p>
 
           </article>
-          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/register" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
         </main>
       </div>
     </div>

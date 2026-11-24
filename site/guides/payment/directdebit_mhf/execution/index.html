@@ -22,7 +22,7 @@
         <nav class="official-header-links" aria-label="实用链接">
           <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
           <b aria-hidden="true">|</b>
-          <a href="https://docs.fincode.jp/payment/directdebit_mhf/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/execution" target="_blank" rel="noreferrer">官方日文原文</a>
           <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
           <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
         </nav>
@@ -38,7 +38,7 @@
 <a href="https://docs.fincode.jp/buyer_service">买家服务</a>
 <a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
-            <a href="https://docs.fincode.jp/payment/directdebit_mhf/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+            <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/execution" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
         </details>
       </div>
@@ -170,8 +170,9 @@
 <li><a href="../../subscription/manage/index.html">管理订阅</a></li>
 <li><a href="../../subscription/attention/index.html">注意事项</a></li>
 </ul>
-<p class="guide-nav-section" class="section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<p class="guide-nav-section section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../restriction/index.html">限制事项</a></li>
 <li><a href="../register/index.html">登记账户</a></li>
 <li><a href="../index.html">银行账户自动扣款简介</a></li>
 <li><a href="index.html" aria-current="page" class="active">执行扣款处理</a></li>
@@ -180,6 +181,7 @@
 </ul>
 <p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
 <li><a href="../../directdebit/register/index.html">登记账户</a></li>
 <li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
 <li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
@@ -189,7 +191,7 @@
       </aside>
       <div class="guide-body">
         <nav class="guide-breadcrumb" aria-label="面包屑">
-          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../register/index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">执行扣款处理</li></ul>
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../restriction/index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">执行扣款处理</li></ul>
         </nav>
         <main class="guide-main">
           <article class="guide-article">
@@ -262,7 +264,7 @@
 <table><thead><tr><th align="left">result_code</th><th align="left">扣款结果</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">0</td><td align="left">扣款成功</td><td align="left">已成功扣款。</td></tr><tr><td align="left">1</td><td align="left">余额不足</td><td align="left">账户余额不足，扣款失败。<br>账户本身已正常登记，补足余额后下次即可扣款。<br>未能扣除的金额需要再次发起扣款，或通过其他方式向客户收取。</td></tr><tr><td align="left">2</td><td align="left">无存款账户交易</td><td align="left">因账户已销户等原因扣款失败。<br>申请书或 fincode 中的登记有误时，也可能返回此结果。<br>必须更正已登记的账户信息（重新寄送申请书并在 fincode 中重新登记）。</td></tr><tr><td align="left">3</td><td align="left">买家原因</td><td align="left">因客户向金融机构申请停止扣款等原因，扣款失败。<br>必须更正已登记的账户信息（重新寄送申请书并在 fincode 中重新登记）。<br>如果客户不清楚原因，需由客户向金融机构咨询。</td></tr><tr><td align="left">4</td><td align="left">申请书未送达或有问题</td><td align="left">金融机构尚未收到申请书，或申请书有问题。<br>如果属于未送达且申请书已寄出，金融机构处理完毕后即可扣款。<br>视金融机构的处理时间而定，扣款结果可能先于 fincode 发出的申请书问题通知告知申请书有误。<br>此扣款结果代码无法说明具体原因，请等待另行通知。</td></tr><tr><td align="left">8</td><td align="left">商户原因</td><td align="left">因商户方面的原因扣款失败。<br>详情请联系 fincode。</td></tr><tr><td align="left">7、9</td><td align="left">其他原因或数据错误</td><td align="left">因其他原因扣款失败。<br>详情请联系 fincode。</td></tr></tbody></table>
 
           </article>
-          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/directdebit_mhf/execution" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://mpb-mizuhobank-docs.fincode.jp/payment/directdebit/execution" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
         </main>
       </div>
     </div>

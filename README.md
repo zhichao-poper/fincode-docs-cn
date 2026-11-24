@@ -9,8 +9,8 @@
 - 原文来源：[fincode API Reference](https://docs.fincode.jp/api)
 - 上游规格：OpenAPI 3.0.2 / fincode API 1.4.0
 - REST API Reference 已完成全量翻译
-- 指南共 46 篇，覆盖入门 11 篇、支付 13 篇（卡片与便利店）、业务管理 14 篇、平台 8 篇
-- 暂不包含其他支付方式、fincode JS 与 SDK 指南；后续按需追加
+- 指南共 116 篇，覆盖入门 11 篇、支付 83 篇、业务管理 14 篇、平台 8 篇
+- fincode JS 和 SDK 参考仍链接至官方站点
 
 ## 翻译原则
 
@@ -59,13 +59,18 @@
 | 適格請求書発行事業者登録番号 | 日本合规发票开具企业登记编号 |
 | 逆算 | 倒算 |
 | 割引明細（マイナス行） | 折扣明细（负数行） |
+| 決済手段（Payment Method） | 支付方式（Payment Method） |
+| 固定バーチャル口座 | 固定虚拟账户 |
+| 一括決済 | 批量支付 |
+| リダイレクト型決済 | 跳转式支付 |
 | 売上入金 | 销售款入账 |
 
 ## 目录
 
 ```text
 source/                         上游日文 OpenAPI 快照
-source/payment-guides.ja.json   已收录指南的日文内容快照（沿用文件名）
+source/payment-guides.ja.json   已收录指南的日文 Content 快照
+source/payment-guide-components.ja.json  Vue 组件正文的结构、代码和表格快照
 translations/zh_CN.yml         人工译文与术语映射
 translations/payment-guides/    现有卡片与便利店支付指南译文
 translations/guides/            按官方指南路径组织的新增译文

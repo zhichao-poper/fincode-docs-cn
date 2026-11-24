@@ -204,6 +204,13 @@ PAGES += [
 ]
 
 # 其他付款方式
+def payment_source_url(route: str) -> str:
+    if route.startswith(("payment/directdebit_mhf", "payment/invoice_mpb")):
+        public_route = route.replace("directdebit_mhf", "directdebit").replace("invoice_mpb", "invoice")
+        return f"https://mpb-mizuhobank-docs.fincode.jp/{public_route}"
+    return f"https://docs.fincode.jp/{route}"
+
+
 SECTIONS.update({
     'bulk': '批量支付',
     'ui_component': 'UI 组件',
@@ -228,11 +235,13 @@ PAGES += [
         "title": title,
         "nav_title": nav_title,
         "source_path": f"/{route}/index",
-        "source_url": f"https://docs.fincode.jp/{route}",
+        "source_url": payment_source_url(route),
         "translation": f"translations/guides/{route}/index.html",
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/directdebit/restriction', 'directdebit', '限制事项', '限制事项'),
+        ('payment/directdebit_mhf/restriction', 'directdebit_mhf', '限制事项', '限制事项'),
         ('payment/bulk', 'bulk', '什么是批量支付', '批量支付简介'),
         ('payment/bulk/card', 'bulk', '批量支付（卡片）', '卡片支付'),
         ('payment/bulk/virtualaccount', 'bulk', '批量支付（银行转账（虚拟账户））', '银行转账（虚拟账户）'),

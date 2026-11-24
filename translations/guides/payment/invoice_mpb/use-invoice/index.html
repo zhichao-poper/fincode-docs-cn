@@ -44,7 +44,7 @@
 <li>买家在支付页面选择一种支付方式完成付款。使用银行账户自动扣款时，系统会在指定扣款日自动执行支付。</li>
 <li>支付完成后，可在支付页面下载收据。</li>
 </ol>
-<p><code>invoice.paid</code>通过 Webhook 接收该事件后，即可得知支付完成。其他 Webhook 事件请参阅<a href="/payment/invoice/track-invoice-billing-by-webhook">通过 Webhook 跟踪账单收费</a>页面。</p>
+<p><code>invoice.paid</code>通过 Webhook 接收该事件后，即可得知支付完成。其他 Webhook 事件请参阅<a href="/payment/invoice_mpb/track-invoice-billing-by-webhook">通过 Webhook 跟踪账单收费</a>页面。</p>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">使用银行转账（指定账户）时<br>需要预先登记账户。请使用商户支付方式 API 登记。<br>即使买家完成付款，账单也不会自动变为“已支付”。商户确认入账后，需要手动将状态更新为已支付。
 </div>

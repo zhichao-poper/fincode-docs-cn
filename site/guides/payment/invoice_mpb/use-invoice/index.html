@@ -22,7 +22,7 @@
         <nav class="official-header-links" aria-label="实用链接">
           <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
           <b aria-hidden="true">|</b>
-          <a href="https://docs.fincode.jp/payment/invoice_mpb/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>
           <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
           <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
         </nav>
@@ -38,7 +38,7 @@
 <a href="https://docs.fincode.jp/buyer_service">买家服务</a>
 <a href="https://docs.fincode.jp/releases">发行说明</a>
             <a href="../../../../reference.html">API reference</a>
-            <a href="https://docs.fincode.jp/payment/invoice_mpb/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>
+            <a href="https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>
           </nav>
         </details>
       </div>
@@ -96,7 +96,7 @@
 <li><a href="../../payment_method/virtualaccount/index.html">固定虚拟账户</a></li>
 <li><a href="../../payment_method/status/index.html">查看支付方式状态</a></li>
 </ul>
-<p class="guide-nav-section" class="section-active"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
+<p class="guide-nav-section section-active"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
 <li><a href="../index.html">账单功能简介</a></li>
 <li><a href="index.html" aria-current="page" class="active">使用账单功能</a></li>
@@ -172,6 +172,7 @@
 </ul>
 <p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/restriction/index.html">限制事项</a></li>
 <li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
 <li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
 <li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
@@ -180,6 +181,7 @@
 </ul>
 <p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
+<li><a href="../../directdebit/restriction/index.html">限制事项</a></li>
 <li><a href="../../directdebit/register/index.html">登记账户</a></li>
 <li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
 <li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
@@ -239,14 +241,14 @@
 <li>买家在支付页面选择一种支付方式完成付款。使用银行账户自动扣款时，系统会在指定扣款日自动执行支付。</li>
 <li>支付完成后，可在支付页面下载收据。</li>
 </ol>
-<p><code>invoice.paid</code>通过 Webhook 接收该事件后，即可得知支付完成。其他 Webhook 事件请参阅<a href="../../invoice/track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪账单收费</a>页面。</p>
+<p><code>invoice.paid</code>通过 Webhook 接收该事件后，即可得知支付完成。其他 Webhook 事件请参阅<a href="../track-invoice-billing-by-webhook/index.html">通过 Webhook 跟踪账单收费</a>页面。</p>
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">使用银行转账（指定账户）时<br>需要预先登记账户。请使用商户支付方式 API 登记。<br>即使买家完成付款，账单也不会自动变为“已支付”。商户确认入账后，需要手动将状态更新为已支付。
 </div>
 </div>
 
           </article>
-          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/invoice_mpb/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://mpb-mizuhobank-docs.fincode.jp/payment/invoice/use-invoice" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
         </main>
       </div>
     </div>
