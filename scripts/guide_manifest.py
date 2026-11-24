@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'subscription': '订阅',
     'directdebit_mhf': '银行账户自动扣款（1、5、20、26 日）',
     'directdebit': '银行账户自动扣款',
 })
@@ -221,6 +222,9 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/subscription', 'subscription', '什么是订阅', '订阅简介'),
+        ('payment/subscription/manage', 'subscription', '管理订阅', '管理订阅'),
+        ('payment/subscription/attention', 'subscription', '注意事项', '注意事项'),
         ('payment/directdebit/register', 'directdebit', '登记账户', '登记账户'),
         ('payment/directdebit_mhf/register', 'directdebit_mhf', '登记账户', '登记账户'),
         ('payment/directdebit/status', 'directdebit', '查看支付状态', '查看支付状态'),
