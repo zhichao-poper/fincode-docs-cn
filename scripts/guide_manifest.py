@@ -205,6 +205,8 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'bulk': '批量支付',
+    'ui_component': 'UI 组件',
     'payment_method': '支付方式 API',
     'invoice_mpb': '账单功能（M’s PayBridge）',
     'invoice': '账单功能',
@@ -231,6 +233,10 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/bulk', 'bulk', '什么是批量支付', '批量支付简介'),
+        ('payment/bulk/card', 'bulk', '批量支付（卡片）', '卡片支付'),
+        ('payment/bulk/virtualaccount', 'bulk', '批量支付（银行转账（虚拟账户））', '银行转账（虚拟账户）'),
+        ('payment/ui_component', 'ui_component', 'UI 组件', 'UI 组件'),
         ('payment/payment_method', 'payment_method', '什么是支付方式（Payment Method）', '支付方式简介'),
         ('payment/payment_method/card', 'payment_method', '使用支付方式 API 处理卡片支付', '卡片支付'),
         ('payment/payment_method/directdebit_account', 'payment_method', '使用支付方式 API 处理银行账户自动扣款', '银行账户自动扣款'),

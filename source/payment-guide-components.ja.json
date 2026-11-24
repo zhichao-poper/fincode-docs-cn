@@ -151,5 +151,1770 @@
         }
       ]
     }
+  },
+  "/payment/bulk/card/index": {
+    "sourceUrl": "https://docs.fincode.jp/_nuxt/32f5dae.js",
+    "additionalSources": [
+      "https://docs.fincode.jp/_nuxt/b5c584e.js"
+    ],
+    "body": {
+      "type": "root",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済（カード）"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済の流れ"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/bulk_payment/bulk_payment_flow.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "JSONファイルのフォーマット"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "フィールド名"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "型"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "必須"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "説明"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "id"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "オーダーID"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "amount"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "○"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "利用金額"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "tax"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "税送料"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "item_code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "商品コード"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "customer_id"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "○"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "顧客ID"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "card_id"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "カードID（省略時はデフォルトカードが使用されます）"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "client_field_1"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "加盟店自由項目1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "client_field_2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "加盟店自由項目2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "client_field_3"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "加盟店自由項目3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "{\n  \"data\": [\n   {\n      \"id\": \"order_001\",\n      \"amount\": \"1000\",\n      \"tax\": \"5\",\n      \"item_code\": \"0000990\",\n      \"customer_id\": \"customer_1\",\n      \"card_id\": \"cs_6151607518132578552104\",\n      \"client_field_1\": \"自由項目1\",\n      \"client_field_2\": \"自由項目2\",\n      \"client_field_3\": \"自由項目3\"\n    },\n    {\n        \"id\": \"order_002\",\n        \"amount\": \"1000\",\n        \"tax\": \"5\",\n        \"item_code\": \"0000990\",\n        \"customer_id\": \"customer_2\",\n        \"card_id\": \"cs_9019005732623746168796\",\n        \"client_field_1\": \"自由項目1\",\n        \"client_field_2\": \"自由項目2\",\n        \"client_field_3\": \"自由項目3\"\n    },\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済の状態"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済ステータス一覧"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ステータス名"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ステータス"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "説明"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "チェック中"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "CHECKING"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "アップロードされた決済情報ファイルのチェックを実行中の状態"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "確認済み"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "CHECKED"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "データチェックが完了し、処理予定日を待っている状態。この状態のときのみ削除できます。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "処理中"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "RUNNING"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "オーソリ処理を実行中の状態"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "完了"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "COMPLETED"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "全件の処理が完了した状態"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "エラー"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ERROR"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "データチェック中にエラーが発生した状態"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済ステータス遷移"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "操作"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "操作結果"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "操作前の状態"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "操作後の状態"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "一括決済 登録"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "成功"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ー"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "チェック中"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "チェック処理完了"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "成功"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "チェック中"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "確認済み"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ""
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "エラー"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "チェック中"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "エラー"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "処理予定日到達"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ー"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "確認済み"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "処理中"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "全件処理完了"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ー"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "処理中"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "完了"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "一括決済 削除"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "成功"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "確認済み"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "（削除済み）"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "一括決済詳細ステータス一覧"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ステータス名"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ステータス"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "説明"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "処理待ち"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "CHECKED"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "オーソリ処理を待っている状態"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "成功"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "SUCCEEDED"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "オーソリ処理が成功した状態"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "失敗"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "FAILED"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "オーソリ処理が失敗した状態"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "処理結果を確認する"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/bulk_payment/dashboard_bulk.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/bulk_payment/dashboard_bulk_detail.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "注意事項"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "table",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "thead",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "制限対象"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "th",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "説明"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "element",
+              "tag": "tbody",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "登録期限"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済処理予定日の1時までに登録を行う必要があります。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "削除期限"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "登録した一括決済を無効にする場合は、決済処理予定日の1時までに一括決済削除を行ってください。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "削除後の再有効化"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "削除した一括決済は再度有効にできません。新規の一括決済を登録してください。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tr",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "ファイルサイズ上限"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "td",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済情報ファイルの上限サイズ目安は8MBです。上限を超えた場合はステータスコード413のエラーが返ります。"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "/payment/ui_component/index": {
+    "sourceUrl": "https://docs.fincode.jp/_nuxt/83f342a.js",
+    "additionalSources": [
+      "https://docs.fincode.jp/_nuxt/f325feb.js"
+    ],
+    "body": {
+      "type": "root",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "UIコンポーネント"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "UIコンポーネントで決済をする"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "ul",
+          "props": {},
+          "children": [
+            {
+              "type": "element",
+              "tag": "li",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "JavaScriptリファレンスを見る"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/ui/ui_flow.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "UIコンポーネントを作成して配置する"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "var fincode = Fincode(<パブリックキー>)\nvar ui = fincode.ui({layout: \"vertical\"})\nui.create(\"payments\",{layout: \"vertical\"})\nui.mount(\"fincode\",'400')\n"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "UIコンポーネントの情報を取得して決済する"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "// 入力フォーム情報を取得する\nawait ui.getFormData().then(result => {\n     transaction={\n        access_id: payment.access_id,\n        id: payment.order_id,\n        pay_type: payment.pay_type,\n        method: result.method,\n        pay_times: result.payTimes,\n        card_no: result.cardNo,\n        security_code: result.CVC,\n        expire: result.expire,\n     }\n})\n// 決済実行を行う\nfincode.payments(transaction,\n      function (status, response) {\n           if (status === 200) {\n           // リクエスト正常時の処理\n           } else {\n           // リクエストエラー時の処理\n           }\n       },\n       function () {\n       // 通信エラー処理。\n})\n"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

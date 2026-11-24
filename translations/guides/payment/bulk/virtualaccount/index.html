@@ -1,0 +1,274 @@
+<h1 id="一括決済銀行振込バーチャル口座">批量支付（银行转账（虚拟账户））</h1>
+<p>批量支付（银行转账（虚拟账户））可以一次签发数千至数万个虚拟账户。<br>
+普通虚拟账户支付需要对每笔支付调用 API 签发虚拟账户。使用此功能，只需上传 JSON 文件即可批量签发虚拟账户，减少 API 调用次数并提高处理效率。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  使用此功能前，须分别申请开通 fincode 虚拟账户支付与批量支付（银行转账（虚拟账户）），并通过审核。
+  </div>
+</div>
+<h2 id="一括決済の流れ">批量支付流程</h2>
+<p><img alt="批量支付（银行转账（虚拟账户））流程图" src="/assets/images/virtualaccount/bulk_payment_flow.png"></p>
+<ol>
+<li>将需要批量签发账户的虚拟账户支付信息汇总为 JSON 文件。</li>
+<li><span class="inline-api">调用登记批量支付</span>接口，上传 JSON 文件。<code>process_plan_date</code>（计划处理日期）可以用来预约签发。不指定时会立即处理。</li>
+<li>fincode 检查上传数据的格式。检查完成后，批量支付状态变为<code>確認済み（CHECKED）</code>。</li>
+<li><code>process_plan_date</code>到达指定时间后，系统开始为每笔支付签发并分配虚拟账户。</li>
+<li>全部处理完成后，批量支付状态变为<code>完了（COMPLETED）</code>。各笔支付信息变为<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>状态，分别等待向各自的虚拟账户转账。</li>
+<li>买家向虚拟账户转账后，会像普通虚拟账户支付一样发送 Webhook 事件通知。</li>
+</ol>
+<h3 id="jsonファイルのフォーマット">JSON 文件格式</h3>
+<p>上传的 JSON 文件以 <code>multipart/form-data</code> 格式发送，将支付信息列表放入<code>data</code> 字段。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">字段名称</th><th align="left">类型</th><th align="left">是否必填</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>id</code></td><td align="left">String</td><td align="left"></td><td align="left">订单 ID</td></tr><tr><td align="left"><code>billing_amount</code></td><td align="left">String</td><td align="left">○</td><td align="left">应收金额</td></tr><tr><td align="left"><code>billing_tax</code></td><td align="left">String</td><td align="left"></td><td align="left">应收税费和运费</td></tr><tr><td align="left"><code>customer_id</code></td><td align="left">String</td><td align="left"></td><td align="left">客户 ID</td></tr><tr><td align="left"><code>payment_method_id</code></td><td align="left">String</td><td align="left"></td><td align="left">支付方式 ID</td></tr><tr><td align="left"><code>payment_term_day</code></td><td align="left">Integer</td><td align="left"></td><td align="left">付款有效天数。省略时为 90 天。</td></tr><tr><td align="left"><code>reference_order_id</code></td><td align="left">String</td><td align="left"></td><td align="left">用于复用虚拟账户的订单 ID。指定时，复用该订单原先分配的虚拟账户。复用条件与<a href="/payment/virtualaccount/execution#api-input-case">普通虚拟账户支付</a>相同。</td></tr><tr><td align="left"><code>use_exact_deposit_amount</code></td><td align="left">Boolean</td><td align="left"></td><td align="left"><a href="/payment/virtualaccount/exact-deposit-amount">可入账金额设置</a>的启用状态。<code>true</code>时启用。</td></tr><tr><td align="left"><code>client_field_1</code></td><td align="left">String</td><td align="left"></td><td align="left">商户自定义字段 1</td></tr><tr><td align="left"><code>client_field_2</code></td><td align="left">String</td><td align="left"></td><td align="left">商户自定义字段 2</td></tr><tr><td align="left"><code>client_field_3</code></td><td align="left">String</td><td align="left"></td><td align="left">商户自定义字段 3</td></tr></tbody></table>
+<p>API 参数详情请参阅<a href="/api#operation/createPaymentBulk">API 参考（登记批量支付）</a>。</p>
+<h2 id="一括決済の状態">批量支付的状态</h2>
+<h3 id="bulk-status">批量支付状态列表</h3>
+<p>批量支付整体可处于以下状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">检查中</td><td align="left">CHECKING</td><td align="left">正在检查上传数据的格式。</td></tr><tr><td align="left">已检查</td><td align="left">CHECKED</td><td align="left">数据检查已完成，正在等待计划处理日期。只有此状态可以删除。</td></tr><tr><td align="left">处理中</td><td align="left">RUNNING</td><td align="left">正在签发和分配虚拟账户。</td></tr><tr><td align="left">已完成</td><td align="left">COMPLETED</td><td align="left">全部处理完成。</td></tr><tr><td align="left">错误</td><td align="left">ERROR</td><td align="left">检查数据时发生错误。</td></tr></tbody></table>
+<p>※如果上传的 JSON 文件含有无效数据等，哪怕只有一笔出错，整个批量支付也会变为<code>エラー（ERROR）</code>状态。</p>
+<h3 id="一括決済ステータス遷移">批量支付状态转换</h3>
+<p>下表列出各操作后的状态。“－”表示没有对应的结果或操作。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">操作结果</th><th align="left">操作前状态</th><th align="left">操作后状态</th></tr></thead><tbody><tr><td align="left">登记批量支付</td><td align="left">成功</td><td align="left">－</td><td align="left">检查中</td></tr><tr><td align="left">检查完成</td><td align="left">成功</td><td align="left">检查中</td><td align="left">已检查</td></tr><tr><td align="left"></td><td align="left">错误</td><td align="left">检查中</td><td align="left">错误</td></tr><tr><td align="left">到达计划处理日期</td><td align="left">－</td><td align="left">已检查</td><td align="left">处理中</td></tr><tr><td align="left">全部处理完成</td><td align="left">－</td><td align="left">处理中</td><td align="left">已完成</td></tr><tr><td align="left">删除批量支付</td><td align="left">成功</td><td align="left">已检查</td><td align="left">（已删除）</td></tr></tbody></table>
+<h3 id="detail-status">批量支付明细状态列表</h3>
+<p>批量支付内的各笔支付信息（批量支付明细）可处于以下状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">等待处理</td><td align="left">CHECKED</td><td align="left">等待分配虚拟账户。</td></tr><tr><td align="left">成功</td><td align="left">SUCCEEDED</td><td align="left">虚拟账户签发并分配完毕。</td></tr><tr><td align="left">失败</td><td align="left">FAILED</td><td align="left">虚拟账户签发或分配失败。</td></tr></tbody></table>
+<p><code>SUCCEEDED</code>的各笔支付信息会变为<code>支払い待ち（AWAITING_CUSTOMER_PAYMENT）</code>状态，之后按普通虚拟账户支付的规格处理。</p>
+<h2 id="処理結果を確認する">查看处理结果</h2>
+<p><span class="inline-api">获取批量支付列表</span>接口可查询已登记的批量支付。<span class="inline-api">获取批量支付明细列表</span>接口可查看指定批量支付内各笔支付的处理结果。</p>
+<p>如果检查数据时发生错误，可通过<span class="inline-api">获取批量支付明细列表</span>响应中的 <code>error_detail</code> 字段查看错误详情。</p>
+<p>API 详情请参阅<a href="/api#tag/%E4%B8%80%E6%8B%AC%E6%B1%BA%E6%B8%88">API 参考（批量支付）</a>。</p>
+<h2 id="課金について">收费</h2>
+<p>批量支付（银行转账（虚拟账户））会对批量签发的账户中<strong>实际未用于付款的账户</strong>收费。</p>
+<h3 id="課金対象">收费对象</h3>
+<p>批量签发所登记的支付信息进入以下任一状态时，将按笔收费。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">付款已过期</td><td align="left">EXPIRED</td><td align="left">付款期限内未收到款项，因而过期。</td></tr><tr><td align="left">已取消</td><td align="left">CANCELED</td><td align="left">支付已取消。</td></tr></tbody></table>
+<p>转账已完成的支付（<code>CAPTURED</code> 状态）不收费。</p>
+<h3 id="課金の集計精算">费用统计与结算</h3>
+<p>费用按照<strong>单笔价格 × 应收费的笔数</strong>计算。</p>
+<p>统计和结算周期与支付处理手续费相同，从当期销售额中抵扣。如果费用超过销售额，则另行收费。</p>
+<h2 id="注意事項">注意事项</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">限制项目</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">批量支付后的单笔支付操作</td><td align="left">批量签发后，取消虚拟账户支付等操作使用与普通虚拟账户支付相同的 API。</td></tr><tr><td align="left">标识生成来源</td><td align="left">通过批量支付签发的各笔支付信息，均记录了生成该笔支付的批量支付 ID（<code>bulk_payment_id</code>）。</td></tr><tr><td align="left">可以删除的状态</td><td align="left"><code>確認済み（CHECKED）</code>状态的批量支付可以删除。</td></tr></tbody></table>
