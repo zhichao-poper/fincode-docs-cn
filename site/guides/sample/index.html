@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 示例中文指南。" />
+    <title>示例 | fincode 中文参考</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../index.html">docs</a><span>/</span><a href="../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/sample" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../index.html">首页</a>
+            <a href="../tutorial/index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="../sdk/index.html">SDK</a>
+<a class="active" href="index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/sample" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../index.html">首页</a>
+        <a href="../tutorial/index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="../sdk/index.html">SDK</a>
+<a class="active" href="index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="示例指南目录">
+        <a class="guide-overview-link" href="index.html"><span>示例</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section section-active"><span>示例</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">示例</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../index.html">首页</a></li><li><a href="index.html">示例</a></li><li aria-current="page">示例</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="sample">示例</h1>
+<p>这是一个示例页面。<br>
+以下为示例。<br>
+在 development 模式下双击页面即可编辑。示例</p>
+<p>示例页面测试</p>
+<p>两个半角空格可换行</p>
+<br>
+<br>
+<p>各级标题如下</p>
+<h1 id="h1-タイトル">h1 标题</h1>
+<h2 id="h2-タイトル">h2 标题</h2>
+<h3 id="h3-タイトル">h3 标题</h3>
+<h4 id="h4-タイトル">h4 标题</h4>
+<br>
+<p>代码示例</p>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-jsx"><code><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">React</span></span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Layout</span></span> <span class="token keyword module">from</span> <span class="token string">'@theme/Layout'</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">MyReactPage</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Layout</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">My React page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">This is a React page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Layout</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-js"><code><span class="token maybe-class-name">Authorization</span><span class="token operator">:</span> <span class="token maybe-class-name">Basic</span> <span class="token punctuation">{</span><span class="token maybe-class-name">Base64でエンコードした</span><span class="token constant">API</span>キー<span class="token punctuation">}</span>
+<span class="token maybe-class-name">Authorization</span><span class="token operator">:</span> <span class="token maybe-class-name">Bearer</span> <span class="token punctuation">{</span><span class="token constant">API</span>キー<span class="token punctuation">}</span>
+</code></pre></div>
+<div class="nuxt-content-highlight"><pre dataLine="iscopy=true" class="line-numbers language-bash"><code>hugo new posts/ramen.md
+hugo server
+</code></pre></div>
+<br>
+<p>图片示例</p>
+<p><img alt="炸虾三角形" src="http://i.imgur.com/Jjwsc.jpg" title="示例"></p>
+<p><img alt="流程图" src="../../assets/payment-guides/flow/deposit-cycle-credit.png"></p>
+<br>
+<p>code（用方框标记）<br>
+<code>code</code></p>
+<p>API 方框<br>
+<span class="inline-api">执行支付</span></p>
+<br>
+<p>表格示例</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>API 密钥</th><th>测试环境</th><th>生产环境</th><th>说明</th></tr></thead><tbody><tr><td>公钥</td><td>p_test_</td><td>p_prod_</td><td>· 会员不经过商户服务器，通过 JS 访问 fincode API 时使用 <br>· 仅限执行部分操作 <br>· 商户可以将其集成到会员使用的 Web 应用或手机应用中<br>· 按商户签发</td></tr><tr><td>私钥</td><td>m_test_</td><td>m_prod_</td><td>· 从商户服务器访问 fincode API 时使用 <br>· 可执行商户获准进行的所有操作<br>· 按商户签发</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>表格字段 1</th><th>表格字段 2</th><th>表格字段 3</th></tr></thead><tbody><tr><td>表格内容 1</td><td>表格内容 2</td><td>表格内容 3</td></tr></tbody></table>
+<p>列表示例</p>
+<ul>
+<li>列表 1</li>
+<li>列表 2</li>
+<li>列表 3</li>
+</ul>
+<ol>
+<li>编号列表 1</li>
+<li>编号列表 2</li>
+<li>编号列表 3</li>
+</ol>
+<ul class="contains-task-list">
+<li>
+<p>列表 1</p>
+<ul>
+<li>列表 1-2</li>
+</ul>
+</li>
+<li>
+<p>列表 2</p>
+</li>
+<li class="task-list-item">
+<p><input disabled="True" type="checkbox"> 列表 1</p>
+</li>
+<li class="task-list-item">
+<p><input checked="True" disabled="True" type="checkbox"> 列表 2</p>
+</li>
+</ul>
+<p>链接示例</p>
+<p><a href="../payment/card/index.html">支付标签页</a></p>
+<p><a href="../payment/card/index.html">在当前标签页中打开</a></p>
+<p>以 http 开头的链接会在新标签页中打开。（这是在哪里设置的呢……）</p>
+<p><a href="https://docs.fincode.jp/" rel="nofollow noopener noreferrer" target="_blank">在新标签页中打开的链接</a></p>
+<p><strong>content</strong> with <em>Markdown</em> <code>syntax</code>. Check <a href="#">this <code>api</code></a>.</p>
+<blockquote>
+<p>引用正文引用正文</p>
+<blockquote>
+<p>嵌套引用</p>
+</blockquote>
+</blockquote>
+<p>information(custom)↓</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">关于 Webhook 规范，请参阅<a href="../payment/card/index.html">开发与监控</a>。</div>
+    <p>关于 Webhook 规范，请参阅[开发与监控](/payment)。※ 此处无法使用 Markdown</p></div>
+
+<p>折叠内容</p>
+<details open="True">
+<summary>很长的文本或程序等内容</summary>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-text"><code>curl https://api.test.fincode.jp/v1/payments \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer m_test_OGY1YWE" \
+  -d '{"pay_type": "Card", "job_code": "CAPTURE", "amount": "500"}'
+</code></pre></div>
+</details>
+<p>也可以使用组件。适合使用结构简单的组件。</p>
+<div class="org-global-header-link">
+  <div class="org-global-header-link-btn u-hover--opacity">
+    <button type="button" disabled>立即开始</button>
+    <button type="button" disabled>稍后开始</button></div>
+</div>
+<ul>
+<li>将组件的 Vue 文件放在 components/global/ 目录下
+<ul>
+<li>由 index.md 调用的组件放在 components/global/ 下即可</li>
+</ul>
+</li>
+<li>标签名使用短横线命名法（kebab-case），必须写结束标签</li>
+<li>如果使用多层目录，在标签名前用短横线命名法加上对应的目录前缀</li>
+<li>将缺少的 CSS 补充到 slug.vue</li>
+</ul>
+<div class="custom-block-common custom-block"><p>可按下列方式编写备注。<br>支持输入文字。<br>也可以换行。</p></div>
+<p>也可以使用关联数组，见下方示例。</p>
+<div class="custom-block-common custom-block"><p>Welcome!</p></div>
+<div class="custom-block-common custom-block"><p>也可以像这样直接书写……<br>不过 paragraph 用起来不太方便，最好能直接显示文本。<br></p></div>
+<p>在 HTML 标签内使用 Nuxt Content 的 Markdown 语法时，插入换行即可，如下所示。</p>
+<div>
+<ul>
+<li>aaaao</li>
+<li>oooo</li>
+<li><code>iiii</code></li>
+</ul>
+</div>
+<p>目前和 p 标签的配合似乎有些问题。第一行无法解析，空一行后从第二行开始即可。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  关于 `Webhook 规范`，请参阅[开发与监控](/payment)。
+<p><code>Webhookの仕様</code>请参阅<a href="../payment/card/index.html">开发与监控</a>。</p>
+<p><code>Webhookの仕様</code>请参阅<a href="../payment/card/index.html">开发与监控</a>。<br>
+<code>Webhookの仕様</code>请参阅<a href="../payment/card/index.html">开发与监控</a>。</p>
+  </div>
+</div>
+<p>最佳写法 /business_management/deposit ★ 在 div 标签下一行留空 ★ 保持原有缩进！</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<ul>
+<li>
+<p>如果 fincode 的收费金额超过销售额，则需要通过银行转账支付。<br>收款账户因商户 ID 而异，请转入指定账户。</p>
+</li>
+<li>
+<p>也可以将账单付款方式更改为信用卡。<br>请在控制面板的「商户设置 &gt; 登记信息 &gt; 账单信息」中查看或更改付款方式。</p>
+</li>
+</ul>
+  </div>
+</div>
+<h4 id="その他">其他</h4>
+<p>安装格式化工具后，按 Ctr + alt F 即可格式化。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/sample" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

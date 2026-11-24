@@ -144,6 +144,7 @@ GROUPS = {
     "develop_support": "开发者支持",
     "buyer_service": "买家服务",
     "sdk": "SDK",
+    "sample": "示例",
     "releases": "发行说明",
 }
 SECTIONS = {
@@ -329,5 +330,6 @@ PAGES += [
     for route, title, source_url in (
         ('sdk', '使用 fincode SDK 高效开发', 'https://docs.fincode.jp/sdk'),
         ('sdk/requirements', '系统要求', 'https://docs.fincode.jp/sdk/requirements'),
+        ('sample', '示例', 'https://docs.fincode.jp/sample'),
     )
 ]

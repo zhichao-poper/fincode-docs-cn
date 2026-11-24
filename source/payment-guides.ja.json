@@ -2,16 +2,17 @@
   "source": "https://docs.fincode.jp/payment/fraud_protection",
   "databaseUrl": "https://docs.fincode.jp/_nuxt/content/db-43cd0d80.json",
   "databaseHash": "43cd0d80",
-  "capturedAt": "2026-11-24T06:58:24.163063+00:00",
+  "capturedAt": "2026-11-24T06:59:28.675370+00:00",
   "scope": {
     "groups": [
       "tutorial",
       "payment",
       "business_management",
       "platform",
-      "sdk"
+      "sdk",
+      "sample"
     ],
-    "pageCount": 118
+    "pageCount": 119
   },
   "pages": [
     {
@@ -165858,6 +165859,3705 @@
           "created": 1792994139803
         },
         "$loki": 59
+      }
+    },
+    {
+      "key": "sample",
+      "sourcePath": "/sample/index",
+      "sourceUrl": "https://docs.fincode.jp/sample",
+      "document": {
+        "slug": "index",
+        "infoText": [
+          "備考に含めたい文はこのようにすれば<br>",
+          "記述することができます。<br>",
+          "改行も可能です。"
+        ],
+        "infoText2": [
+          {
+            "infoText2-2": [
+              "備考に含めたい文はこのようにすれば<br>",
+              "記述することができます。<br>",
+              "改行も可能です。"
+            ]
+          }
+        ],
+        "hello": {
+          "title": "Home",
+          "description": "Welcome!"
+        },
+        "toc": [
+          {
+            "id": "h2-タイトル",
+            "depth": 2,
+            "text": "h2 タイトル"
+          },
+          {
+            "id": "h3-タイトル",
+            "depth": 3,
+            "text": "h3 タイトル"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "sample"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#sample",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Sample"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "これはサンプルページです。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nサンプルです。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\ndevelopmentモードだと画面ダブルクリックで編集できます。\nサンプル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "サンプルページテスト"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "半角スペース2つで改行"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "各タイトル↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "h1-タイトル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#h1-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "h1 タイトル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "h2-タイトル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#h2-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "h2 タイトル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "h3-タイトル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#h3-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "h3 タイトル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "props": {
+                "id": "h4-タイトル"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#h4-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "h4 タイトル"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "コード↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "nuxt-content-highlight"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "pre",
+                  "props": {
+                    "className": [
+                      "line-numbers",
+                      "language-jsx"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "import"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "imports"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "maybe-class-name"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "React"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "from"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "string"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "'react'"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ";"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "import"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "imports"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "maybe-class-name"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Layout"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "from"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "string"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "'@theme/Layout'"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ";"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "export"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "module"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "default"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "function"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "function"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "maybe-class-name"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "MyReactPage"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "("
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ")"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "{"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n  "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "keyword",
+                              "control-flow"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "return"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "("
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n    "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "<"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "class-name"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "Layout"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "plain-text"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "\n      "
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "<"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "h1"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "plain-text"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "My React page"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "</"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "h1"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "plain-text"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "\n      "
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "<"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "p"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "plain-text"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "This is a React page"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "</"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "p"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "plain-text"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "\n    "
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "tag"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "tag"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "punctuation"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "</"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "tag": "span",
+                                  "props": {
+                                    "className": [
+                                      "token",
+                                      "class-name"
+                                    ]
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "Layout"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "tag": "span",
+                              "props": {
+                                "className": [
+                                  "token",
+                                  "punctuation"
+                                ]
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": ">"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n  "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ")"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ";"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "}"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "nuxt-content-highlight"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "pre",
+                  "props": {
+                    "className": [
+                      "line-numbers",
+                      "language-js"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "maybe-class-name"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Authorization"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "operator"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ":"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "maybe-class-name"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Basic"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "{"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "maybe-class-name"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Base64でエンコードした"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "constant"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "API"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "キー"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "}"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "maybe-class-name"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Authorization"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "operator"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ":"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "maybe-class-name"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Bearer"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " "
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "{"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "constant"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "API"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "キー"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "span",
+                          "props": {
+                            "className": [
+                              "token",
+                              "punctuation"
+                            ]
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "}"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "nuxt-content-highlight"
+                ]
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "pre",
+                  "props": {
+                    "className": [
+                      "line-numbers",
+                      "language-bash"
+                    ],
+                    "dataLine": "iscopy=true"
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "hugo new posts/ramen.md\nhugo server\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "画像↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "エビフライトライアングル",
+                    "src": "http://i.imgur.com/Jjwsc.jpg",
+                    "title": "サンプル"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "フロー図",
+                    "src": "/assets/images/flow/deposit-cycle-credit.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "code(四角で囲む)"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "code"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "APIの四角"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済実行"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "表↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "APIキー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テスト"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "本番"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "内容"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "パブリックキー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "p_test_"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "p_prod_"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "・会員が加盟店様サーバを介さずにfincodeAPI(JS経由)へアクセスする際に使用します "
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・限られた操作しかできません "
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・加盟店様は会員が使用するWebアプリまたはスマホアプリに組み込むことができます"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・ショップ単位に発行"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "シークレットキー"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "m_test_"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "m_prod_"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "・加盟店様サーバからfincodeAPIにアクセスする際に使用します "
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・加盟店様に許可されている操作すべてが実行可能です"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "・ショップ単位に発行"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル項目 1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル項目 2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル項目 3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル内容 1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル内容 2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "テーブル内容 3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リスト↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リスト 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リスト 2"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リスト 3"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "連番リスト 1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "連番リスト 2"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "連番リスト 3"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {
+                "className": [
+                  "contains-task-list"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リスト1"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "ul",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "li",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "リスト1-2"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リスト2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "className": [
+                      "task-list-item"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "input",
+                          "props": {
+                            "disabled": true,
+                            "type": "checkbox"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "text",
+                          "value": " リスト1"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {
+                    "className": [
+                      "task-list-item"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "input",
+                          "props": {
+                            "checked": true,
+                            "disabled": true,
+                            "type": "checkbox"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "text",
+                          "value": " リスト2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "リンク↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/payment"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済タブ"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/payment"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ページ内で開きます"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "http～から始まるリンクは別タブで開きます。（どこの設定だろう…）"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://docs.fincode.jp/",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リンク別タブ"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "strong",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "content"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " with "
+                },
+                {
+                  "type": "element",
+                  "tag": "em",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Markdown"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "syntax"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ". Check "
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "this "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "api"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "blockquote",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "引用本文引用本文"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "blockquote",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "入れ子"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "information(custom)↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Webhookの仕様については"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "to": "/payment"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "開発とモニタリング"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をご確認ください。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Webhookの仕様については[開発とモニタリング](/payment)をご確認ください。※マークダウン不可"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "おりたたみ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "details",
+              "props": {
+                "open": true
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "summary",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "すごく長い文章とかプログラムとか"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "nuxt-content-highlight"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "pre",
+                      "props": {
+                        "className": [
+                          "line-numbers",
+                          "language-text"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "curl https://api.test.fincode.jp/v1/payments \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer m_test_OGY1YWE\" \\\n  -d '{\"pay_type\": \"Card\", \"job_code\": \"CAPTURE\", \"amount\": \"500\"}'\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "コンポーネントも使えます。\n複雑にならないものであればつかってもよさそう"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "org-global-header-link"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "org-global-header-link-btn",
+                      "u-hover--opacity"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n    "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "text-button",
+                      "props": {
+                        "label": "今すぐ始める",
+                        "color": "pink"
+                      },
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n    "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "test-text-button",
+                      "props": {
+                        "label": "後で始める",
+                        "color": "pink"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "\n  "
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "コンポーネントのvueファイルをcomponents/global/配下に置く\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "ul",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "li",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "index.mdから呼び出す部分がcomponents/global/にあればいい"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ケバブケースでタグを記載する※閉じタグ必須"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "フォルダ階層にする場合はケバブケースで頭に付ける"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "足りないcssはslug.vueに追記する"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "info-frame",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "paragraph",
+                  "props": {
+                    ":nomargin": "true",
+                    ":paragraph": "infoText",
+                    ":icon": "'info'"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "連想配列も使えます。↓"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "info-frame",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "paragraph",
+                  "props": {
+                    ":nomargin": "true",
+                    ":paragraph": "hello.description",
+                    ":icon": "'info'"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "info-frame",
+              "props": {
+                ":bgcolor": "'red'"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "paragraph",
+                  "props": {
+                    ":paragraph": "[\n      'このように直書きも可能ですが・・・<br>',\n      'あまり便利ではない・・・このparagraphが不便説。テキスト直表示できるとよさそうです<br>'\n    ]",
+                    ":type": "'link'",
+                    ":icon": "'info-red'"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "↓htmlタグの中でnuxt-contentのマークダウン記法を使うときは改行を入れるとうまくいきます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "ul",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "li",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "aaaao"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "li",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "oooo"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "li",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "iiii"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "pタグとの兼ね合いがうまくできていないみたいですが、うまくやれば行けそう・・・いまのところ1行目はダメ、行空けて2行目以降だったら可能です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n  `Webhookの仕様`については[開発とモニタリング](/payment)をご確認ください。\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Webhookの仕様"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "については"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "nuxt-link",
+                          "props": {
+                            "to": "/payment"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "開発とモニタリング"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "をご確認ください。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "p",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Webhookの仕様"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "については"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "nuxt-link",
+                          "props": {
+                            "to": "/payment"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "開発とモニタリング"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "をご確認ください。"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "br",
+                          "props": {},
+                          "children": []
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "code",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Webhookの仕様"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "については"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "nuxt-link",
+                          "props": {
+                            "to": "/payment"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "開発とモニタリング"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "をご確認ください。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " \n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "最適解\n/business_management/deposit\n★divタグの下は一行空ける\n★インデントは下げない！"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "ul",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "li",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "\n"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "p",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "fincodeからの請求金額が売上を上回った場合は銀行振込にてお支払いいただく必要があります。"
+                                },
+                                {
+                                  "type": "element",
+                                  "tag": "br",
+                                  "props": {},
+                                  "children": []
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "ショップIDごとに支払い先口座が異なりますので、指定された口座へ入金してください。"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": "\n"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        },
+                        {
+                          "type": "element",
+                          "tag": "li",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "\n"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "p",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "請求時のお支払い方法をクレジットカードに変更することもできます。"
+                                },
+                                {
+                                  "type": "element",
+                                  "tag": "br",
+                                  "props": {},
+                                  "children": []
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "請求方法の確認・変更は、ダッシュボード（ショップ設定＞登録情報＞請求情報）から行ってください。"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": "\n"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\n"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "props": {
+                "id": "その他"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%81%9D%E3%81%AE%E4%BB%96",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "その他"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "フォーマッタを入れるとCtr + alt Fで整形されます"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "\n\n# Sample\n\nこれはサンプルページです。  \nサンプルです。  \ndevelopmentモードだと画面ダブルクリックで編集できます。\nサンプル\n\nサンプルページテスト\n\n半角スペース2つで改行\n\n<br>\n<br>\n\n各タイトル↓\n\n# h1 タイトル\n\n## h2 タイトル\n\n### h3 タイトル\n\n#### h4 タイトル\n\n<br>\n\nコード↓\n\n```jsx title=\"src/pages/my-react-page.js\"\nimport React from 'react';\nimport Layout from '@theme/Layout';\n\nexport default function MyReactPage() {\n  return (\n    <Layout>\n      <h1>My React page</h1>\n      <p>This is a React page</p>\n    </Layout>\n  );\n}\n```\n\n```js title=\"APIキーの認証方式\" showLineNumbers\nAuthorization: Basic {Base64でエンコードしたAPIキー}\nAuthorization: Bearer {APIキー}\n```\n\n```bash {iscopy=true}\nhugo new posts/ramen.md\nhugo server\n```\n\n<br>\n\n画像↓\n\n![エビフライトライアングル](http://i.imgur.com/Jjwsc.jpg \"サンプル\")\n\n![フロー図](/assets/images/flow/deposit-cycle-credit.png)\n\n<br>\n\ncode(四角で囲む)  \n`code`  \n\nAPIの四角  \n<span class=\"inline-api\">決済実行</span>\n\n<br>\n\n表↓\n\n| APIキー    | テスト     | 本番      | 内容                                             |\n|----------|---------|---------|------------------------------------------------|\n| パブリックキー  | p\\_test\\_ | p\\_prod\\_ | ・会員が加盟店様サーバを介さずにfincodeAPI(JS経由)へアクセスする際に使用します <br />・限られた操作しかできません <br />・加盟店様は会員が使用するWebアプリまたはスマホアプリに組み込むことができます<br />・ショップ単位に発行                                     |\n| シークレットキー | m\\_test\\_ | m\\_prod\\_ | ・加盟店様サーバからfincodeAPIにアクセスする際に使用します <br />・加盟店様に許可されている操作すべてが実行可能です<br />・ショップ単位に発行                                     |\n\n| テーブル項目 1 | テーブル項目 2 | テーブル項目 3 |\n| -------------- | -------------- | -------------- |\n| テーブル内容 1 | テーブル内容 2 | テーブル内容 3 |\n\nリスト↓\n\n- リスト 1\n- リスト 2\n- リスト 3\n\n1. 連番リスト 1\n2. 連番リスト 2\n3. 連番リスト 3\n\n- リスト1\n  - リスト1-2  \n- リスト2\n\n- [ ] リスト1\n- [x] リスト2\n\nリンク↓\n\n[決済タブ](/payment)\n\n[ページ内で開きます](/payment)\n\nhttp～から始まるリンクは別タブで開きます。（どこの設定だろう…）\n\n[リンク別タブ](https://docs.fincode.jp/)\n\n **content** with _Markdown_ `syntax`. Check [this `api`](#).\n\n> 引用本文引用本文\n>> 入れ子\n\ninformation(custom)↓\n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">Webhookの仕様については<a href=\"/payment\">開発とモニタリング</a>をご確認ください。</div>\n    <p>Webhookの仕様については[開発とモニタリング](/payment)をご確認ください。※マークダウン不可</div>\n</div>\n\nおりたたみ\n<details open>\n<summary>すごく長い文章とかプログラムとか</summary>\n\n```\ncurl https://api.test.fincode.jp/v1/payments \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer m_test_OGY1YWE\" \\\n  -d '{\"pay_type\": \"Card\", \"job_code\": \"CAPTURE\", \"amount\": \"500\"}'\n```\n\n</details>\n\nコンポーネントも使えます。\n複雑にならないものであればつかってもよさそう\n\n<div class=\"org-global-header-link\">\n  <div\n    class=\"org-global-header-link-btn u-hover--opacity\"\n  >\n    <text-button label=\"今すぐ始める\" color=\"pink\"></text-button>\n    <test-text-button label=\"後で始める\" color=\"pink\"></text-button>\n  </div>\n</div>\n\n- コンポーネントのvueファイルをcomponents/global/配下に置く\n  - index.mdから呼び出す部分がcomponents/global/にあればいい\n- ケバブケースでタグを記載する※閉じタグ必須\n- フォルダ階層にする場合はケバブケースで頭に付ける\n- 足りないcssはslug.vueに追記する\n\n<info-frame>\n  <paragraph\n    :nomargin=\"true\"\n    :paragraph=\"infoText\"\n    :icon=\"'info'\"\n  />\n  </paragraph>\n</info-frame>\n\n\n連想配列も使えます。↓\n\n<info-frame>\n  <paragraph\n    :nomargin=\"true\"\n    :paragraph=\"hello.description\"\n    :icon=\"'info'\"\n  />\n  </paragraph>\n</info-frame>\n\n\n<info-frame :bgcolor=\"'red'\">\n  <paragraph\n    :paragraph=\"[\n      'このように直書きも可能ですが・・・<br>',\n      'あまり便利ではない・・・このparagraphが不便説。テキスト直表示できるとよさそうです<br>'\n    ]\"\n    :type=\"'link'\"\n    :icon=\"'info-red'\"\n  />\n  </paragraph>\n</info-frame>\n\n↓htmlタグの中でnuxt-contentのマークダウン記法を使うときは改行を入れるとうまくいきます。\n\n<div>\n\n- aaaao\n- oooo\n- `iiii`\n\n</div>\n\n\npタグとの兼ね合いがうまくできていないみたいですが、うまくやれば行けそう・・・いまのところ1行目はダメ、行空けて2行目以降だったら可能です。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">\n  `Webhookの仕様`については[開発とモニタリング](/payment)をご確認ください。\n\n  `Webhookの仕様`については[開発とモニタリング](/payment)をご確認ください。\n\n  `Webhookの仕様`については[開発とモニタリング](/payment)をご確認ください。  \n  `Webhookの仕様`については[開発とモニタリング](/payment)をご確認ください。\n  </div> \n</div>\n\n\n最適解\n/business_management/deposit\n★divタグの下は一行空ける\n★インデントは下げない！\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">\n\n  - fincodeからの請求金額が売上を上回った場合は銀行振込にてお支払いいただく必要があります。<br>ショップIDごとに支払い先口座が異なりますので、指定された口座へ入金してください。\n\n  - 請求時のお支払い方法をクレジットカードに変更することもできます。<br>請求方法の確認・変更は、ダッシュボード（ショップ設定＞登録情報＞請求情報）から行ってください。\n  </div>\n</div>\n\n\n\n\n#### その他\nフォーマッタを入れるとCtr + alt Fで整形されます",
+        "dir": "/sample",
+        "path": "/sample/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994137190
+        },
+        "$loki": 7
       }
     }
   ]
