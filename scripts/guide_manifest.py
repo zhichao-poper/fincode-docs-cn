@@ -176,5 +176,7 @@ PAGES += [
         ('platform/sign_up', '开设平台'),
         ('platform/terms_of_service', '完善平台使用条款'),
         ('platform/terms_of_service_mpb', '完善平台使用条款（M’s PayBridge）'),
+        ('business_management', '控制面板'),
+        ('business_management/examination', '商户审核'),
     )
 ]
