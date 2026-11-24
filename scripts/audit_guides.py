@@ -15,12 +15,14 @@ from guide_manifest import GROUPS, PAGES, group_for
 ROOT = Path(__file__).resolve().parents[1]
 JAPANESE = re.compile(r"[\u3040-\u30ff]")
 STRUCTURAL_TAGS = ("h2", "h3", "h4", "table", "ol", "ul", "img")
+ORDERED_TAGS = ("h1", *STRUCTURAL_TAGS, "thead", "tbody", "tr", "th", "td", "li")
 
 
 class FragmentParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.tags: Counter[str] = Counter()
+        self.ordered_tags: list[str] = []
         self.images: list[str] = []
         self.codes: list[str] = []
         self.visible_text: list[str] = []
@@ -29,6 +31,8 @@ class FragmentParser(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.tags[tag] += 1
+        if tag in ORDERED_TAGS:
+            self.ordered_tags.append(tag)
         attributes = dict(attrs)
         for attribute in ("alt", "title"):
             if attributes.get(attribute):
@@ -45,9 +49,10 @@ class FragmentParser(HTMLParser):
             self._code_depth -= 1
 
     def handle_data(self, data: str) -> None:
-        self.visible_text.append(data)
         if self._code_depth:
             self._code_buffer.append(data)
+        else:
+            self.visible_text.append(data)
 
 
 class SiteReferenceParser(HTMLParser):
@@ -133,6 +138,22 @@ def main() -> None:
         source = source_pages[page["source_path"]]
         source_elements = list(walk_elements(source.get("body", {})))
         source_counts = Counter(element.get("tag") for element in source_elements)
+        source_codes = [
+            text_content(element)
+            for element in source_elements
+            if element["tag"] == "code"
+        ]
+        if Counter(code for code in parser.codes if JAPANESE.search(code)) - Counter(source_codes):
+            errors.append(f"译文的代码含原文未定义的日文：{page['translation']}")
+        if group_for(page) != "payment":
+            source_order = [
+                element["tag"] for element in source_elements if element["tag"] in ORDERED_TAGS
+            ]
+            if parser.ordered_tags != source_order:
+                errors.append(f"译文的标题、表格、列表或图片顺序与日文源不一致：{page['translation']}")
+            if Counter(source_codes) - Counter(parser.codes):
+                errors.append(f"译文缺少原样保留的代码或示例值：{page['translation']}")
+
         for tag in STRUCTURAL_TAGS:
             if parser.tags[tag] != source_counts[tag]:
                 errors.append(
@@ -150,12 +171,8 @@ def main() -> None:
 
         source_code_tokens = Counter(
             token
-            for element in source_elements
-            if element.get("tag") == "code"
-            for token in re.findall(
-                r"[A-Za-z][A-Za-z0-9_.:/-]*",
-                text_content(element),
-            )
+            for code in source_codes
+            for token in re.findall(r"[A-Za-z][A-Za-z0-9_.:/-]*", code)
         )
         translated_code_tokens = Counter(
             token

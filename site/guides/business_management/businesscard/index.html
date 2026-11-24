@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode fincode 商务卡中文指南。" />
+    <title>fincode 商务卡 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/businesscard" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/businesscard" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">控制面板</a></li>
+<li><a href="../examination/index.html">商户审核</a></li>
+<li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../download_queue/index.html">什么是下载队列</a></li>
+<li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
+<li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="../chargeback/index.html">拒付</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+<li><a href="../accounts_receivable_management/bill_by_invoice/index.html">通过账单功能收费</a></li>
+<li><a href="index.html" aria-current="page" class="active">fincode 商务卡</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">业务管理</a></li><li aria-current="page">fincode 商务卡</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="fincode-ビジネスカード">fincode 商务卡</h1>
+<h2 id="top">什么是 fincode 商务卡</h2>
+<p>fincode 商务卡是根据商户在 fincode 的销售款确定可用额度的 Visa 卡。<br>
+无需等待商户的销售款到账，即可使用该卡支付各类费用。</p>
+<h3 id="ビジネスカード基本情報h3">商务卡基本信息</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目</th><th align="left">内容</th></tr></thead><tbody><tr><td align="left">卡片形式</td><td align="left">虚拟卡</td></tr><tr><td align="left">发卡手续费</td><td align="left">免费</td></tr><tr><td align="left">年费／月费</td><td align="left">免费</td></tr><tr><td align="left">发卡数量</td><td align="left">每位用户最多可持有 1 张可用卡。<br>每个商户最多可为 10 位用户发卡。</td></tr><tr><td align="left">限额</td><td align="left">根据商户运营情况和 fincode 销售款，在 GMO Epsilon 规定的范围内确定。<br>可在管理后台查看。</td></tr><tr><td align="left">单笔支付限额</td><td align="left">最高 1,000 万日元<br>以商户的可用额度为准。</td></tr><tr><td align="left">优惠</td><td align="left">返还消费金额的 0.5%。<br>此为截至 2025 年 9 月 24 日的信息，可能随时变更。</td></tr><tr><td align="left">发卡所需时间</td><td align="left">商务卡服务使用申请：最快 2 个工作日<br>发卡：即时<br>使用申请完成后即可发卡。</td></tr><tr><td align="left">付款方式</td><td align="left">从 fincode 销售款中抵扣。<br>无法抵扣时将另行请款。</td></tr></tbody></table>
+<h2 id="use-businesscard">使用商务卡</h2>
+<h3 id="application">申请使用商务卡</h3>
+<p>使用商务卡前须提交申请。<br>
+请同意 fincode 商务卡使用条款后提交使用申请。<br>
+在管理后台侧栏菜单选择［商户设置］。<br>
+通过［商户设置］＞［各项服务的设置］＞［商务卡设置］＞［使用商务卡］提交使用申请及本人身份证明文件。<br>
+只有所有者角色的用户可以申请使用商务卡。</p>
+<h4 id="申請に必要な情報">申请所需信息</h4>
+<p><strong>■ 实际控制人信息</strong><br>
+请登记运营商户的组织的实际控制人信息。</p>
+<p><strong>■ 商务卡负责人信息</strong><br>
+请登记商户内负责管理商务卡的人员信息。<br>
+该人员将作为使用申请及本人身份核验等事项的联系人。<br>
+服务提供方 GMO Epsilon 会向商务卡负责人寄送注明“禁止转寄”的挂号邮件，以核验身份。<br>
+个体经营者由 fincode 签约人担任负责人。</p>
+<p><strong>■ 合格账单开具经营者登记编号</strong><br>
+个体经营者须登记该编号，以便确认经营者身份。</p>
+<p><strong>■ 提交商务卡负责人的本人身份证明文件</strong><br>
+请从下列文件中提交一项可证明商务卡负责人现住址的文件。<br>
+• 驾驶证（正反面）<br>
+• My Number 卡（正面）。不接受背面或个人编号通知书。<br>
+• 在留卡<br>
+• 特别永住证明书</p>
+<p>使用商务卡须接受审核。<br>
+如审核未通过，可能无法使用。</p>
+<h3 id="issue">签发商务卡</h3>
+<p>使用申请审核完成后即可发卡。<br>
+从控制面板的侧栏菜单选择［商务卡］，点击［＋签发卡片］，设置所要签发卡片的基本信息。</p>
+<p>设置完成后，点击［签发］可即时发卡。<br>
+签发的卡片即时生效，可在 Visa 特约商户使用。<br>
+所有者或管理员角色的用户可以签发商务卡。</p>
+<h4 id="発行枚数の制限について">发卡数量限制</h4>
+<p>每位用户最多可持有 1 张处于可用状态的卡片。<br>
+包括已停用或已删除的卡片在内，最多 5 张。<br>
+每个商户最多可为 10 位用户签发卡片。</p>
+<h3 id="start-using">开始使用商务卡</h3>
+<p>可在 Visa 特约商户使用。<br>
+支持 EMV 3-D Secure。如要求使用一次性密码进一步认证，密码会发送到持卡用户的电子邮件地址。</p>
+<h4 id="利用限度額を確認する">查看使用限额</h4>
+<p>使用限额根据商户运营情况和 fincode 销售款，在 GMO Epsilon 规定的范围内确定。<br>
+可在［商务卡交易］菜单查看已用金额、使用限额及返现金额。</p>
+<h4 id="利用状況を確認する">查看使用情况</h4>
+<p>可在［商务卡交易］菜单按商务卡交易期间查看交易记录。<br>
+可在［商务卡］菜单查看商户签发的各张卡片的状态和交易信息。<br>
+所有者和管理员以外的用户，只能查看为自己签发的卡片信息。</p>
+<h4 id="カードを停止する">停用卡片</h4>
+<p>可以逐张停用已签发的卡片。<br>
+停用的卡片重新启用后即可使用。<br>
+所有者和管理员可停用卡片。普通角色的持卡用户只能停用自己的卡片。只有所有者和管理员可以重新启用。</p>
+<h4 id="カードを削除する">删除卡片</h4>
+<p>可以删除已签发的卡片。<br>
+删除后，相关商务卡即时停用，且无法恢复使用。<br>
+如果只想暂时停止使用，请使用停用功能。<br>
+所有者和管理员可以删除商务卡，普通角色的持卡用户只能删除自己的卡片。</p>
+<h3 id="role">商务卡操作权限和电子邮件通知</h3>
+<p>用户可在管理后台执行的商务卡操作取决于其角色。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="center">所有者</th><th align="center">管理员</th><th align="center">普通</th><th align="center">查看</th></tr></thead><tbody><tr><td align="left">申请使用商务卡</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">签发商务卡</td><td align="center">〇</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">停用商务卡</td><td align="center">〇</td><td align="center">〇</td><td align="center">〇<sup>※1</sup></td><td align="center">×</td></tr><tr><td align="left">启用商务卡</td><td align="center">〇</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">删除商务卡</td><td align="center">〇</td><td align="center">〇</td><td align="center">〇<sup>※1</sup></td><td align="center">×</td></tr><tr><td align="left">解约商务卡服务</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td><td align="center">×</td></tr></tbody></table>
+<p><sup>※1</sup>持卡用户只能操作自己的卡片。<br>
+<br></p>
+<p>商务卡申请、审核和使用情况等相关邮件将发送至以下收件人。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">邮件类型</th><th align="center">商户负责人</th><th align="center">商务卡负责人</th><th align="center">商务卡使用通知收件人</th><th align="center">持卡人（用户）</th></tr></thead><tbody><tr><td align="left">审核相关通知</td><td align="center">〇</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">商务卡负责人本人身份证明文件相关通知</td><td align="center">×</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">向商务卡负责人寄送挂号信的相关通知</td><td align="center">×</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr><tr><td align="left">卡片使用相关通知</td><td align="center">×</td><td align="center">〇<sup>※2</sup></td><td align="center">〇<sup>※2</sup></td><td align="center">〇</td></tr><tr><td align="left">3D Secure／一次性密码</td><td align="center">×</td><td align="center">×</td><td align="center">×</td><td align="center">〇</td></tr><tr><td align="left">解约相关通知</td><td align="center">〇</td><td align="center">〇</td><td align="center">×</td><td align="center">×</td></tr></tbody></table>
+<p><sup>※2</sup>默认登记商务卡负责人的电子邮件地址。<br>
+如果为商务卡使用通知另行登记了电子邮件地址，通知将不再发往商务卡负责人的电子邮件地址。</p>
+<h2 id="limit-cycle">可用额度的汇总期间和结算截止日</h2>
+<p>使用商务卡期间，销售款入账的结算截止日会变更。入账日保持不变。粗体表示变更后的结算截止日。</p>
+<h4 id="月末締め翌月末払いの場合">月末结算、次月月末付款</h4>
+<p><strong>＜N 月销售款＞</strong><br>
+销售款发生期间：N 月 1 日至 N 月最后一日<br>
+上述销售款计入可用额度的期间：N 月 11 日至<strong>N＋1 月 10 日</strong><br>
+<br></p>
+<p>已签约商户选择每月结算两次的情况</p>
+<p><strong>＜N 月上半月销售款＞</strong><br>
+销售款发生期间：N 月 1 日至 N 月 15 日<br>
+上述销售款计入可用额度的期间：N 月 6 日至<strong>N 月 20 日</strong><br>
+<strong>＜N 月下半月销售款＞</strong><br>
+销售款发生期间：N 月 16 日至 N 月最后一日<br>
+上述销售款计入可用额度的期间：N 月 21 日至<strong>N＋1 月 5 日</strong></p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>受此规则影响，销售款入账状态可能从<code lang="ja">3002：金額確定済み</code>（金额已确定）恢复为<code lang="ja">3001：金額確定前</code>（金额未确定）。<br>
+即使启用商务卡前已到原结算截止日，状态已变为“金额已确定”，只要在变更后的结算截止日之前启用商务卡，也会按变更后的截止日处理。</p>
+  </div>
+</div>
+<h2 id="cancellation">解约商务卡服务</h2>
+<p>如需终止使用商务卡，请在管理后台的侧栏菜单选择［商户设置］。<br>
+通过［商户设置］＞［商户管理］＞［各项服务解约］＞［商务卡解约］提交解约申请。</p>
+<p>解约后，全部商务卡即时停用，且无法恢复使用。<br>
+仍可查看使用明细，但将无法查看已签发的卡片信息。<br>
+如果只想暂时停止使用，请使用停用功能。如需终止使用部分卡片，请使用删除功能。<br>
+只有所有者角色的用户可以解约商务卡服务。</p>
+<h2 id="attention">注意事项</h2>
+<ul>
+<li>
+<p>申请使用商务卡须接受审核。如审核未通过，可能无法使用。</p>
+</li>
+<li>
+<p>如消费金额超过销售款汇款额，无法全额抵扣，超出部分将另行请款。</p>
+</li>
+<li>
+<p>解约生效后，如仍有未从销售款中抵扣的商务卡消费金额，仍将继续从销售款中扣除。</p>
+</li>
+<li>
+<p>使用限额根据商户运营情况和 fincode 销售款，在 GMO Epsilon 规定的范围内确定。请在管理后台查看。</p>
+</li>
+<li>
+<p>在境外网站或门店支付时，将按外币交易金额收取相当于 4% 的“境外交易业务处理费”（截至 2025 年 7 月）。</p>
+</li>
+</ul>
+<h2 id="restriction">限制事项</h2>
+<p><strong>■ 可发卡的品牌</strong><br>
+Visa（支持 EMV 3-D Secure）</p>
+<p><strong>■ 无法使用的特约商户</strong><br>
+即使店铺接受 Visa，以下支付也无法使用商务卡。</p>
+<ul>
+<li>公共事业费等按月或持续性合同费用<br>公共事业费／电话费／卫星电视及有线电视收视费／互联网服务商费用／WiMAX 服务费／<br>报刊订阅费／保险费／服务器租赁费／饮水机定额服务／远程教育／各类月度会费等</li>
+<li>加油站</li>
+<li>高速公路及收费公路通行费（人工收费亭付款）</li>
+<li>外汇保证金交易和现金交易</li>
+<li>赌博和在线赌场</li>
+<li>航空公司机上销售款项</li>
+<li>各类预付费产品及电子货币的购买和充值</li>
+<li>购买容易变现的商品<br>新干线车票和贵金属等</li>
+<li>在部分酒店支付</li>
+</ul>
+<p>除上述特约商户外，其他商户也可能无法使用。</p>
+<p><strong>■ 发卡类型</strong><br>
+虚拟卡</p>
+<p><strong>■ 发卡数量上限</strong><br>
+每位用户最多可持有 1 张处于可用状态的卡片。包括已停用或已删除的卡片，最多 5 张。<br>
+每个商户最多可为 10 位用户签发商务卡。</p>
+<p><strong>■ 支持的入账周期</strong><br>
+月末结算、次月月末付款<br>
+每月结算两次、15 天后付款<br>
+使用商务卡期间，销售款入账的结算截止日按上述规则变更，入账日保持不变。</p>
+<p><strong>■ 可使用的商户类型</strong><br>
+标准商户<br>
+平台（主商户／子商户）<br>
+各商户的可用额度按各自销售款计算。</p>
+<p><strong>■ 个人签约客户的使用资格</strong><br>
+须持有经营者的合格账单开具经营者登记编号（账单编号）。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/businesscard" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

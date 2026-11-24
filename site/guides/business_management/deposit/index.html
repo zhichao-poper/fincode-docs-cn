@@ -68,6 +68,9 @@
 <li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
 <li><a href="../chargeback/index.html">拒付</a></li>
 <li><a href="index.html" aria-current="page" class="active">管理销售款入账等事项</a></li>
+<li><a href="../accounts_receivable_management/bill_by_invoice/index.html">通过账单功能收费</a></li>
+<li><a href="../businesscard/index.html">fincode 商务卡</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
 </ul>
       </aside>
       <div class="guide-body">
@@ -146,7 +149,7 @@
 <table><thead><tr><th align="left">入账周期</th><th align="left">汇总期间</th><th align="left">入账日期</th></tr></thead><tbody><tr><td align="left">标准（每月一次）</td><td align="left">一个月（1 日至最后一日）的销售款</td><td align="left">次月最后一日</td></tr></tbody></table>
 <ul>
 <li>如果入账当天金融机构或汇款方 GMO Epsilon 休业，则提前至上一工作日入账。</li>
-<li>使用 fincode 商务卡期间，汇总期间的结算截止日由当月最后一日改为次月 10 日。入账日期保持不变。<br>详情请参阅<a href="https://docs.fincode.jp/business_management/businesscard#limit-cycle">此处</a>。　</li>
+<li>使用 fincode 商务卡期间，汇总期间的结算截止日由当月最后一日改为次月 10 日。入账日期保持不变。<br>详情请参阅<a href="../businesscard/index.html#limit-cycle">此处</a>。　</li>
 </ul>
 <img alt="入账周期" src="../../../assets/payment-guides/business_management/deposit_cycle_credit.png" width="90%">
 <h2 id="check-deposit">查看入账金额</h2>
@@ -200,7 +203,7 @@
 <div class="custom-block-common custom-block">
   <div class="custom-block-title-common custom-block-title">
 <ul>
-<li>使用商务卡期间，<a href="https://docs.fincode.jp/business_management/businesscard#limit-cycle">销售款入账的结算截止日会变更</a>。<br>因此，如果在启用商务卡前已到结算截止日，且销售款入账状态曾变为<code>3002：金额已确定</code>，之后又在商务卡适用的销售款入账结算截止日之前启用商务卡，截止日会发生变化，状态可能恢复为<code>3001：金额未确定</code>。</li>
+<li>使用商务卡期间，<a href="../businesscard/index.html#limit-cycle">销售款入账的结算截止日会变更</a>。<br>因此，如果在启用商务卡前已到结算截止日，且销售款入账状态曾变为<code lang="ja">3002：金額確定済み</code>（金额已确定），之后又在商务卡适用的销售款入账结算截止日之前启用商务卡，截止日会发生变化，状态可能恢复为<code lang="ja">3001：金額確定前</code>（金额未确定）。</li>
 </ul>
   </div>
 </div>

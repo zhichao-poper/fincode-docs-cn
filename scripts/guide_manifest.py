@@ -196,5 +196,8 @@ PAGES += [
         ('business_management/accounts_receivable_management/bill_by_session', '通过邮件链接收费'),
         ('business_management/chargeback', '拒付'),
         ('business_management/deposit', '管理销售款入账等事项'),
+        ('business_management/accounts_receivable_management/bill_by_invoice', '通过账单功能收费'),
+        ('business_management/businesscard', 'fincode 商务卡'),
+        ('business_management/team', '团队管理'),
     )
 ]
