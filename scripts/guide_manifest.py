@@ -189,5 +189,12 @@ PAGES += [
         ('tutorial/prod_api', '在生产环境公开支付功能'),
         ('tutorial/prod_calc', '查看销售金额'),
         ('tutorial/test_api_exec', '在测试环境执行支付'),
+        ('business_management/shop_info_update', '变更登记信息'),
+        ('business_management/download_queue', '什么是下载队列'),
+        ('business_management/accounts_receivable_management', '什么是应收账款管理'),
+        ('business_management/accounts_receivable_management/customer_management', '使用客户管理功能管理账单收件方信息'),
+        ('business_management/accounts_receivable_management/bill_by_session', '通过邮件链接收费'),
+        ('business_management/chargeback', '拒付'),
+        ('business_management/deposit', '管理销售款入账等事项'),
     )
 ]

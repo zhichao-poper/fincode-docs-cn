@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是下载队列中文指南。" />
+    <title>什么是下载队列 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/download_queue" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/download_queue" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">控制面板</a></li>
+<li><a href="../examination/index.html">商户审核</a></li>
+<li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">什么是下载队列</a></li>
+<li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
+<li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="../chargeback/index.html">拒付</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">业务管理</a></li><li aria-current="page">什么是下载队列</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="ダウンロードキューとは">什么是下载队列</h1>
+<p>下载队列可按指定条件异步生成导出文件，并集中下载。<br>
+可以导出全部符合指定条件的数据，包含当前画面显示范围之外的数据。结算或导入内部系统时，如需大量数据，可使用此功能。<br>
+提交导出请求后，可以关闭画面并等待处理完成。</p>
+<h2 id="list">可导出的数据</h2>
+<p>可通过下载队列获取以下数据文件。<br>
+请在显示各项数据的画面提交导出请求。各类数据的筛选条件不同，请参阅相应页面。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">数据</th><th align="left">提交导出请求的画面</th><th align="left">文件格式</th></tr></thead><tbody><tr><td align="left">销售款入账的交易明细</td><td align="left">销售款入账详情中的［交易明细］<br>操作步骤请参阅<a href="../deposit/index.html#export">导出交易明细</a>。</td><td align="left">CSV</td></tr></tbody></table>
+<h2 id="download">下载文件</h2>
+<p>fincode 会按顺序处理队列中的条件并生成文件。<br>
+在生成完成前，列表中的对应文件显示“正在准备文件”。请稍候再查看。</p>
+<p><img alt="下载队列页面" src="../../../assets/payment-guides/business_management/download_queue_list.png"></p>
+<ol>
+<li>商户请在管理后台打开侧栏菜单［数据管理］＞［下载队列］。</li>
+<li>在［全部］或［可下载］标签页找到目标文件。</li>
+<li>点击文件名链接，或点击该行右侧的菜单（︙）＞［下载］。</li>
+<li>浏览器将显示下载对话框，您可以保存文件。</li>
+</ol>
+<p>列表有以下两个标签页。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">标签页</th><th align="left">显示的文件</th></tr></thead><tbody><tr><td align="left">全部</td><td align="left">加入队列的所有文件，包括已超过下载期限的文件</td></tr><tr><td align="left">可下载</td><td align="left">仅显示当前可下载的文件</td></tr></tbody></table>
+<p>文件状态显示在列表右侧。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">显示</th><th align="left">状态</th></tr></thead><tbody><tr><td align="left">正在准备文件</td><td align="left">正在等待生成文件。</td></tr><tr><td align="left">可下载至 YYYY 年 MM 月 DD 日</td><td align="left">文件可下载。所显示的日期就是下载截止日。</td></tr><tr><td align="left">已超过下载期限。</td><td align="left">文件已过下载期限。如仍需要相同的数据，请重新提交导出请求。</td></tr></tbody></table>
+<h2 id="restriction">下载期限和保存数量</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">限制项目</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">下载期限</td><td align="left">文件生成后 14 天内可下载。超过期限的文件会被删除。</td></tr><tr><td align="left">可保存文件的数量</td><td align="left">每个商户最多保存 10 个文件，所有数据类型合计，只统计下载期限内的文件。</td></tr></tbody></table>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>即使已达到上限，导出条件仍会加入队列。生成文件后会从旧到新删除，只保留最新的 10 个文件供下载。<br>
+未超过下载期限的文件也可能被删除。请及时下载所需文件。</p>
+  </div>
+</div>
+<h2 id="attention">注意事项</h2>
+<ul>
+<li>只有可以查看目标数据的用户才能提交导出请求。各角色的操作权限请参阅<a href="https://docs.fincode.jp/business_management/team#role">团队管理</a>。</li>
+<li>下载过程中如文件因过期等原因被删除，重新连接（从中断处继续）时可能下载失败。此时请重新提交导出请求。</li>
+</ul>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/download_queue" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

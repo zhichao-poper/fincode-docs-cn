@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 拒付中文指南。" />
+    <title>拒付 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/business_management/chargeback" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/business_management/chargeback" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a class="active" href="../index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="业务管理指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>业务管理</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>业务管理</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">控制面板</a></li>
+<li><a href="../examination/index.html">商户审核</a></li>
+<li><a href="../shop_info_update/index.html">变更登记信息</a></li>
+<li><a href="../download_queue/index.html">什么是下载队列</a></li>
+<li><a href="../accounts_receivable_management/index.html">什么是应收账款管理</a></li>
+<li><a href="../accounts_receivable_management/customer_management/index.html">使用客户管理功能管理账单收件方信息</a></li>
+<li><a href="../accounts_receivable_management/bill_by_session/index.html">通过邮件链接收费</a></li>
+<li><a href="index.html" aria-current="page" class="active">拒付</a></li>
+<li><a href="../deposit/index.html">管理销售款入账等事项</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">业务管理</a></li><li aria-current="page">拒付</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="チャージバック">拒付</h1>
+<h2 id="チャージバックとは">什么是拒付</h2>
+<p>拒付是指在卡片支付中，持卡人因盗刷、未获服务等原因拒绝向发卡机构付款。<br>
+持卡人以“有我不认识的扣款”等理由向发卡机构提出异议后，由发卡机构进行调查。</p>
+<p>调查后，发卡机构可能要求商户退还销售款。<br>
+当发卡机构要求退还销售款时，无论商品是否发货、服务是否提供，商户都不能拒绝。</p>
+<p>拒付通常发生于卡片支付，其他支付方式也可能发生类似的拒付。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>支付方式</th><th>是否可能发生拒付</th></tr></thead><tbody><tr><td>卡片支付</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr><tr><td>Apple Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg"></td></tr><tr><td>Google Pay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr><tr><td>便利店支付</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr><tr><td>PayPay</td><td><img alt="有" src="../../../assets/payment-guides/icon-checked.svg">　</td></tr><tr><td>银行账户扣款</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr><tr><td>银行转账（虚拟账户）</td><td><img alt="无" src="../../../assets/payment-guides/icon-out.svg"></td></tr></tbody></table>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  除购买者提出异议以外，无论使用哪种支付方式，若支付服务商认定商户有故意发起欺诈性请款、交易处理疏失等问题，也会像处理拒付一样调查交易，并可能要求退还销售款。
+  </div>
+</div>
+<p>下文介绍卡片支付中发生的拒付。</p>
+<h2 id="チャージバック対応の流れ">拒付处理流程</h2>
+<p>在调查阶段，发卡机构会通过 fincode 要求商户提供信息<sup>※1</sup>。<br>
+发卡机构会依据商户提交的信息调查，并给商户提供提交反证的机会。请利用该机会提交反证。
+<sup>※1</sup> 下单人信息、配送信息及其他调查所需信息</p>
+<ol>
+<li>持卡人提出异议：持卡人因有不认识的支付、未收到商品等原因向发卡机构提出异议。</li>
+<li>商户提交反证：发卡机构通过 fincode 要求商户提供信息，并依据商户提交的信息进行调查。<br>商户也可考虑直接向购买者说明交易内容，请其撤回向发卡机构提出的异议。</li>
+<li>发卡机构作出决定：如果发卡机构接受持卡人的异议，将要求退还销售款。</li>
+</ol>
+<h2 id="チャージバックに至る原因">可能导致拒付的原因</h2>
+<p>以下是可能导致拒付的例子。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>原因</th><th>示例</th></tr></thead><tbody><tr><td>持卡人不认识的支付</td><td>例如第三方盗用卡片信息</td></tr><tr><td>未收到商品或服务未提供</td><td>例如已付款，但未收到商品或服务</td></tr></tbody></table>
+<p>此外，商品与订单不符、遗漏取消、确认解约方式等情况也可能导致拒付。<br>
+持卡人账单上的交易商户（账单显示名称）难以识别，也可能使持卡人以“不记得这笔消费”为由向发卡机构提出异议。<br>
+fincode 管理后台“账单显示名称”中登记的信息将作为交易商户显示。请确认其为持卡人容易辨认的信息，例如服务名称或公司名称。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">信用卡信息被盗用是指第三方通过遗失、盗窃或撞库式卡号枚举<sup>※2</sup>等途径取得卡号、有效期等信息，冒用持卡人身份进行支付。<br>
+    <sup>※2</sup>利用卡号的规律来推测他人的卡号。</div>
+</div>
+<h2 id="manage">处理拒付</h2>
+<p>发生拒付时，发卡机构会在调查阶段通过 fincode 要求商户提供信息。<br>
+fincode 会在管理后台控制面板通知，并向为负责人设置的电子邮件地址发出通知。请从管理后台的“拒付”菜单处理。</p>
+<h3 id="チャージバック対応の進め方">拒付处理步骤</h3>
+<p>在管理后台“拒付”菜单点击状态为“待处理”的订单 ID，从“登记及确认答复”提交所需信息。</p>
+<h4 id="調査依頼">调查请求</h4>
+<p>持卡人提出异议、发卡机构要求提供信息以调查交易时，fincode 会发送通知。请确认请求内容，答复配送信息、下单人信息等所需信息。</p>
+<p>针对不认识的支付、未收到商品或服务未提供等，商户有机会提交反证，请提交反证。部分请求与拒付无关，例如确认咨询渠道。</p>
+<p>调查请求可能源于持卡人因某种理由向发卡机构提出异议。商户也可考虑直接向提出异议的客户说明交易内容，请其向发卡机构撤回异议。</p>
+<h4 id="不正利用懸念">疑似盗刷</h4>
+<p>发卡机构的监测发现交易与典型信用卡盗刷高度相似时，fincode 会通知商户该交易发生盗刷的可能性较高。</p>
+<p>通知发出时，持卡人尚未提出拒付，但此后仍可能发生拒付。请核对内容，判断是否发货、提供服务或取消交易。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody><tr><td>商品发货前或服务提供前</td><td>建议取消支付，并拦截发货或停止提供服务。</td></tr><tr><td>商品已发货或服务已提供</td><td>如果已发货且商品可追回等，建议采取追回措施。</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody><tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr><tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br>如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr></tbody></table>
+<h4 id="不正利用確定">确认盗刷</h4>
+<p>持卡人提出异议后，若发卡机构认定交易属于盗刷，fincode 会发出通知。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>商品是否已发货或服务是否已提供</th><th>处理方式</th></tr></thead><tbody><tr><td>商品发货前或服务提供前</td><td>拦截发货或停止提供服务，并取消相应支付。</td></tr><tr><td>商品已发货或服务已提供</td><td>若已发出的商品可以追回，建议采取追回措施。</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>已发货的商品是否追回</th><th>处理方式</th></tr></thead><tbody><tr><td>已追回发出的商品</td><td>取消相应支付。</td></tr><tr><td>未追回发出的商品</td><td>如果交易的 3D Secure 类型为“使用 3DS2.0”，请保留该笔支付，并从“登记及确认答复”提交配送等信息。 <br> 如无法核实配送等信息，即使交易已通过 3D Secure 认证，也不适用销售款退还的责任豁免。</td></tr></tbody></table>
+<h2 id="ステータス一覧">状态一览</h2>
+<p>商户管理后台显示以下拒付状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>状态名称</th><th>说明</th></tr></thead><tbody><tr><td>待处理</td><td>商户需要回应发卡机构的信息提供请求或购买者提出的异议。</td></tr><tr><td>已答复</td><td>商户已答复，或在未答复的情况下超过答复期限。</td></tr><tr><td>已确认退还销售款</td><td>退还销售款的请求已确认。  <br>确认退还后，该笔交易以“拒付”类型显示在“销售款入账”菜单中。</td></tr><tr><td>其他</td><td>包括确认退还销售款后撤回拒付、取消退还的“确认后取消”等情况。</td></tr></tbody></table>
+<h2 id="handles">防范盗刷</h2>
+<p>信用卡信息被盗用导致的拒付正在增加。无论商品是否发货、服务是否提供，商户均不能拒绝退还请求，因此建议在发生拒付前采取防盗刷措施。</p>
+<h3 id="fincodeが提供する不正利用対策">fincode 提供的防盗刷措施</h3>
+<h4 id="3dセキュア20認証">3D Secure 2.0 认证</h4>
+<p>3D Secure 2.0 认证是一种用于防止在线卡片支付盗刷的持卡人身份验证机制。<br>
+3D Secure 2.0 认证的详情及实现方式请参阅<a href="../../payment/card/fraud-protection/index.html">此页面</a> 。</p>
+<p>可按交易指定是否使用 3D Secure 2.0 认证。<br>
+交易通过认证且管理后台显示为“已认证（AUTHENTICATED）”时，如果商品送达或服务提供后才查明存在盗刷，商户可能无需承担退还销售款的责任。</p>
+<h4 id="クレジットマスター対策">防范批量试卡</h4>
+<p>此机制可防范短时间内尝试使用大量卡号支付的批量试卡活动造成的损失。<br>
+同一笔交易在一定时间内多次授权失败时，fincode 可能自动拦截该交易。<br>
+交易被拦截后，再尝试获取授权将报错。</p>
+<h3 id="ショップにおける不正利用対策">商户侧的防盗刷措施</h3>
+<p>接入 fincode 的系统和环境也可采取防盗刷措施，示例如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>盗刷示例</th><th>措施</th></tr></thead><tbody><tr><td>同一笔交易在一定时间内多次支付出错</td><td>限制向 fincode 发出的支付处理请求</td></tr><tr><td>尝试进行欺诈下单的用户</td><td>屏蔽该用户的 IP 地址或限制其操作</td></tr></tbody></table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/business_management/chargeback" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
