@@ -226,6 +226,7 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/applepay/execution', 'applepay', '执行支付处理', '执行支付处理'),
         ('payment/applepay', 'applepay', '什么是 Apple Pay', 'Apple Pay 简介'),
         ('payment/applepay/setup', 'applepay', '准备接入 Apple Pay', '准备接入 Apple Pay'),
         ('payment/applepay/status', 'applepay', '查看支付状态', '查看支付状态'),

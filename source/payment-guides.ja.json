@@ -10,7 +10,7 @@
       "business_management",
       "platform"
     ],
-    "pageCount": 79
+    "pageCount": 80
   },
   "pages": [
     {
@@ -104861,6 +104861,31 @@
           "created": 1792994139933
         },
         "$loki": 76
+      }
+    },
+    {
+      "key": "payment-applepay-execution",
+      "sourcePath": "/payment/applepay/execution/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/execution",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": []
+        },
+        "text": "<!-- index.vueを利用 -->",
+        "dir": "/payment/applepay/execution",
+        "path": "/payment/applepay/execution/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139930
+        },
+        "$loki": 75
       }
     }
   ]

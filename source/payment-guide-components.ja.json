@@ -1,0 +1,155 @@
+{
+  "/payment/applepay/execution/index": {
+    "sourceUrl": "https://docs.fincode.jp/_nuxt/2f0851c.js",
+    "body": {
+      "type": "root",
+      "children": [
+        {
+          "type": "element",
+          "tag": "h1",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "決済処理を実行する"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {
+            "id": "token-web"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "A. Webサイト上で決済用のトークンを取得する (JavaScript)"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "const APPLE_PAY_SUPPORTED_VERSION = 3; // Apple PayJSのサポートバージョン\nconst MARCHANT_IDENTIFIER = \"example.com.store\"; // マーチャントID\nconst APPLE_PAY_BUTTON_ID = \"apple-pay-button\"; // 任意のApple Payボタン要素のID名\nconst SHOP_VALIDATION_ENDPOINT_URL =\n    \"https://your-server.example.com/applepay-session/validate\"; // 任意のマーチャントセッション取得エンドポイントのURL\n     \n/* ブラウザがApple PayJSをサポートしている場合 */\nif (window.ApplePaySession) {\n    const promise =\n        ApplePaySession.canMakePaymentsWithActiveCard(MARCHANT_IDENTIFIER);\n    promise.then((canMakePayment) => {\n        /* ユーザーが少なくとも1枚の利用可能なカードを登録している場合 */\n        if (canMakePayment) {\n            // Apple Payボタンを作成\n            const applePayButton = document.createElement(\"button\");\n            applePayButton.setAttribute(\"id\", APPLE_PAY_BUTTON_ID);\n            applePayButton.setAttribute(\"lang\", \"ja-JP\");\n            const applePayButtonType = \"buy\"; // Apple Payボタンの種類, styleプロパティ -apple-pay-button-type の値\n            const applePayButtonStyle = \"black\"; // Apple Payボタンのスタイル, styleプロパティ -apple-pay-button-style の値\n            applePayButton.setAttribute(\n                \"style\",\n                `-webkit-appearance: -apple-pay-button; -apple-pay-button-type: ${applePayButtonType}; -apple-pay-button-style: ${applePayButtonStyle};`\n            );\n     \n            // Apple PayボタンをDOMに追加\n            const applePayButtonContainer = document.getElementById(\n                \"{Apple Payボタンを追加したい要素のID}\"\n            );\n            applePayButtonContainer.appendChild(applePayButton);\n     \n            // Apple Payボタンをクリックしたときのイベントハンドラ\n            applePayButton.addEventListener(\"click\", (_) => {\n                // Apple Pay決済リクエスト\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymentrequest\n                const applePayPaymentRequest = {\n                    countryCode: \"JP\",\n                    currencyCode: \"JPY\",\n                    supportedNetworks: [\"visa\", \"masterCard\", \"jcb\", \"amex\"],\n                    merchantCapabilities: [\"supports3DS\"],\n                    total: {\n                        label: \"{商品名}\",\n                        amount: \"{金額}\",\n                    },\n                };\n     \n                // Apple Payセッションを作成\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/2320659-applepaysession\n                const applePaySession = new ApplePaySession(\n                    APPLE_PAY_SUPPORTED_VERSION,\n                    applePayPaymentRequest\n                );\n     \n                // Apple Payの支払いシートが表示され、マーチャントセッションの取得を求められたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778021-onvalidatemerchant\n                applePaySession.onvalidatemerchant = (event) => {\n                    const validationURL = event.validationURL;\n     \n                    // マーチャントセッションを取得\n                    fetch(SHOP_VALIDATION_ENDPOINT_URL, {\n                        method: \"POST\",\n                        headers: {\n                            \"Content-Type\": \"application/json\",\n                        },\n                        body: JSON.stringify({\n                            validationURL: validationURL,\n                        }),\n                    }).then((response) => {\n                        // マーチャントセッションをApple Payに返却\n                        applePaySession.completeMerchantValidation(response);\n                    });\n                };\n     \n                // Apple Payのキャンセルボタンが押されたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778029-oncancel\n                applePaySession.oncancel = (event) => {};\n     \n                // Apple Pay上で支払い方法が選択されたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778013-onpaymentmethodselected\n                applePaySession.onpaymentmethodselected = (event) => {};\n     \n                // Apple Pay上で配送方法が選択されたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778028-onshippingmethodselected\n                applePaySession.onshippingmethodselected = (event) => {};\n     \n                // Apple Pay上で配送先住所が選択されたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778009-onshippingcontactselected\n                applePaySession.onshippingcontactselected = (event) => {};\n     \n                // 購入者により購入が承認されたときのイベントハンドラ\n                // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778020-onpaymentauthorized\n                applePaySession.onpaymentauthorized = (event) => {\n                    const token = event.payment.token;\n     \n                    // トークンをBase64エンコード\n                    // このBase64エンコード済みトークンを決済実行JSの引数もしくは決済実行APIのリクエストボディに含めます\n                    const encodedToken = btoa(JSON.stringify(token.paymentData));\n     \n                    /**\n                     * 後続処理\n                     */\n                };\n     \n                // Apple Payセッションを開始\n                applePaySession.begin();\n            });\n        }\n    });\n}\n"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h2",
+          "props": {
+            "id": "token-ios"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "B. iOS/iPadOS/watchOS/macOS上で決済用のトークンを取得する (Swift)"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "import UIKit\nimport PassKit\n     \nlet APPLE_PAY_MERCHANT_ID = \"example.com.store\"\n     \nclass ViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {\n     \n    // Apple Payボタン\n    @IBOutlet weak var applePayButton: UIView!\n     \n    override func viewDidLoad() {\n        super.viewDidLoad()\n     \n        let isApplePayAvailable = isApplePayAvailable()\n     \n        /* もしApple Payが利用できる場合は、Apple Payボタンを表示する */\n        if isApplePayAvailable {\n     \n            // Apple Payボタンを作成\n            let button = PKPaymentButton(type: .buy, style: .black)\n            button.addAction(\n                UIAction(handler: { _ in\n                    self.onApplePayButtonTapped()\n                }),\n                for: .touchUpInside\n            )\n     \n            // Apple Payボタンを表示\n            applePayButton.addSubview(button)\n        }\n    }\n     \n    // Apple Payで利用できるカードが少なくとも1つあるかどうかを判定\n    func isApplePayAvailable() -> Bool {\n        if !PKPaymentAuthorizationViewController.canMakePayments() {\n            // Apple Payは利用できない\n            return false\n        }\n     \n        let networks = PKPaymentRequest.availableNetworks()\n        if !PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(networks) {\n            // Apple Pay機能は利用できるが、利用できるカードが登録されていない\n            return false\n        }\n     \n        return true\n    }\n     \n    // Apple Payボタンがタップされた時の処理\n    func onApplePayButtonTapped() {\n        // Apple Payで支払いを行う\n        let request = PKPaymentRequest()\n        request.merchantIdentifier = APPLE_PAY_MERCHANT_ID\n        request.supportedNetworks = [.visa, .masterCard, .amex, .JCB]\n        request.merchantCapabilities = .capability3DS\n        request.countryCode = \"JP\"\n        request.currencyCode = \"JPY\"\n        request.paymentSummaryItems = [\n            PKPaymentSummaryItem(\n                label: \"{{商品名}}\",\n                amount: NSDecimalNumber(string: \"{{金額}}\")\n            )\n        ]\n     \n        let viewController = PKPaymentAuthorizationViewController(paymentRequest: request)\n        viewController.delegate = self\n        self.present(viewController, animated: true, completion: nil)\n    }\n     \n    // Apple Payで支払いが完了した時の処理\n    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {\n        // Apple Payの支払シートを閉じる\n        controller.dismiss(animated: true, completion: nil)\n    }\n     \n    // Apple Payで支払いが承認された時の処理\n    func paymentAuthorizationViewController(\n        _ controller: PKPaymentAuthorizationViewController,\n        didAuthorizePayment payment: PKPayment,\n        handler completion: @escaping (PKPaymentAuthorizationResult) -> Void\n    ) {\n        let token = payment.token.paymentData\n     \n        // トークンをBase64エンコード\n        // このBase64エンコード済みのトークンを決済実行APIのリクエストに含めます\n        let encodedToken = token.base64EncodedString()\n     \n        /*\n            後続処理\n        */\n     \n        // Apple Payの支払シートを閉じる\n        controller.dismiss(animated: true, completion: nil)\n     \n        // エラーなくApple Payでの支払いが完了したことを通知\n        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))\n    }\n}"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {
+            "id": "api-input-case"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "決済実行APIを使用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "token"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/applepay/payment_applepay.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "トークン(token)"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "h3",
+          "props": {
+            "id": "js-input-case"
+          },
+          "children": [
+            {
+              "type": "text",
+              "value": "決済実行JSを使用"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "transaction.token"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "tag": "img",
+          "props": {
+            "src": "/assets/images/applepay/payment_applepay_js.png"
+          },
+          "children": []
+        },
+        {
+          "type": "element",
+          "tag": "code",
+          "props": {},
+          "children": [
+            {
+              "type": "text",
+              "value": "トークン(token)"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
