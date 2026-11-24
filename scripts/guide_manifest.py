@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'invoice_mpb': '账单功能（M’s PayBridge）',
     'invoice': '账单功能',
     'card_updater': '卡片信息自动更新',
     'googlepay': 'Google Pay',
@@ -229,6 +230,12 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/invoice_mpb', 'invoice_mpb', '什么是账单功能', '账单功能简介'),
+        ('payment/invoice_mpb/use-invoice', 'invoice_mpb', '使用账单功能', '使用账单功能'),
+        ('payment/invoice_mpb/setting', 'invoice_mpb', '账单设置', '账单设置'),
+        ('payment/invoice_mpb/status', 'invoice_mpb', '查看账单状态', '查看账单状态'),
+        ('payment/invoice_mpb/track-invoice-billing-by-webhook', 'invoice_mpb', '通过 Webhook 跟踪账单收费', '通过 Webhook 跟踪收费'),
+        ('payment/invoice_mpb/operation-and-note', 'invoice_mpb', '运营与注意事项', '运营与注意事项'),
         ('payment/invoice', 'invoice', '什么是账单功能', '账单功能简介'),
         ('payment/invoice/use-invoice', 'invoice', '使用账单功能', '使用账单功能'),
         ('payment/invoice/setting', 'invoice', '账单设置', '账单设置'),

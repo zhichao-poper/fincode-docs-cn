@@ -1,0 +1,51 @@
+<h1 id="インボイス機能を利用する">使用账单功能</h1>
+<p>可通过 fincode 控制面板或 API 使用账单功能签发账单并接受支付。</p>
+<h2 id="invoice-using">从控制面板使用账单功能</h2>
+<p>可在 fincode 控制面板中填写账单所需信息并签发账单。</p>
+<h3 id="1-インボイス一覧ページへ移動">1. 打开账单列表页面</h3>
+<p><img alt="控制面板账单列表页面截图" src="/assets/images/invoice/management_page.png"></p>
+<p>登录 fincode 控制面板，从左侧菜单选择“账单”进入账单列表。</p>
+<h3 id="2-インボイス新規作成ページへ移動しインボイス情報を作成">2. 打开新建账单页面并创建账单信息</h3>
+<p><img alt="新建账单页面截图" src="/assets/images/invoice/create_page.png"></p>
+<p>在账单列表页面点击“创建账单”，进入新建账单页面。</p>
+<ul>
+<li>收费方企业信息</li>
+<li>账单收件方信息</li>
+<li>交易内容</li>
+<li>付款期限</li>
+<li>是否通过邮件发送收费内容</li>
+<li>各支付方式的设置</li>
+</ul>
+<p>填写上述信息等内容，点击“发起收费”即可签发账单，也可暂时保存而不发起收费。</p>
+<p>应收金额可以根据未税单价填写，也可以根据含税金额<a href="/payment/invoice/reverse-calculation">倒算</a>。还可以通过<a href="/payment/invoice/discount-line">负数明细行</a>体现折扣等优惠。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">使用银行转账（指定账户）时<br>需要预先登记账户。在商户设置的“登记或查看账单上显示的金融机构账户”中登记后，即可设为支付方式。
+</div>
+</div>
+<h3 id="3-決済ページのurlを購入者へ案内">3. 向买家提供支付页面 URL</h3>
+<p><img alt="支付页面截图" src="/assets/images/invoice/payment_page.png"></p>
+<p>完成第 2 步后，收费内容无法修改，系统会生成支付页面。将 URL 告知买家，待买家完成支付后，收费即告完成。</p>
+<p>如果第 2 步选择通过邮件发送收费内容，买家会收到写有收费内容和支付页面 URL 的邮件。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">使用银行账户自动扣款时<br>系统会在指定扣款日自动扣款。如果第 2 步选择通过邮件发送收费内容，买家会收到写有收费内容和预计扣款日的邮件。
+</div>
+</div>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">使用银行转账（指定账户）时<br>即使买家完成付款，账单也不会自动变为“已支付”。商户确认入账后，需要手动将状态更新为已支付。
+</div>
+</div>
+<h2 id="invoice-using-api"> 通过 API 使用账单功能</h2>
+<p>签发账单从创建“账单”实体开始。</p>
+<p><img alt="从创建账单到支付完成的时序图" src="/assets/images/invoice/invoice_flow.png"></p>
+<ol>
+<li><span class="inline-api">创建账单</span>使用此接口创建账单信息。</li>
+<li><span class="inline-api">更新账单</span>使用此接口为已创建的账单添加或更新交易内容、付款期限和支付方式等信息。</li>
+<li><span class="inline-api">签发账单</span>执行此接口后，根据账单信息生成支付页面。此后不能再修改构成账单的信息。</li>
+<li>买家在支付页面选择一种支付方式完成付款。使用银行账户自动扣款时，系统会在指定扣款日自动执行支付。</li>
+<li>支付完成后，可在支付页面下载收据。</li>
+</ol>
+<p><code>invoice.paid</code>通过 Webhook 接收该事件后，即可得知支付完成。其他 Webhook 事件请参阅<a href="/payment/invoice/track-invoice-billing-by-webhook">通过 Webhook 跟踪账单收费</a>页面。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">使用银行转账（指定账户）时<br>需要预先登记账户。请使用商户支付方式 API 登记。<br>即使买家完成付款，账单也不会自动变为“已支付”。商户确认入账后，需要手动将状态更新为已支付。
+</div>
+</div>
