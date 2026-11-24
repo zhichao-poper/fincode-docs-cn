@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'paypay': 'PayPay',
     'subscription': '订阅',
     'directdebit_mhf': '银行账户自动扣款（1、5、20、26 日）',
     'directdebit': '银行账户自动扣款',
@@ -222,6 +223,11 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/paypay', 'paypay', '什么是 PayPay', 'PayPay 简介'),
+        ('payment/paypay/execution', 'paypay', '执行支付处理', '执行支付处理'),
+        ('payment/paypay/operation', 'paypay', '运营示例', '运营示例'),
+        ('payment/paypay/restriction', 'paypay', '限制事项', '限制事项'),
+        ('payment/paypay/status', 'paypay', '查看支付状态', '查看支付状态'),
         ('payment/subscription', 'subscription', '什么是订阅', '订阅简介'),
         ('payment/subscription/manage', 'subscription', '管理订阅', '管理订阅'),
         ('payment/subscription/attention', 'subscription', '注意事项', '注意事项'),

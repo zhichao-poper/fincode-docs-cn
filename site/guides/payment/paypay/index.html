@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 什么是 PayPay中文指南。" />
+    <title>什么是 PayPay | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/paypay" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/paypay" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a class="active" href="../card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../card/index.html">卡片支付简介</a></li>
+<li><a href="../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../card/operation/index.html">运营示例</a></li>
+<li><a href="../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../card/status/index.html">查看支付状态</a></li>
+<li><a href="../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../card/notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">PayPay 简介</a></li>
+<li><a href="execution/index.html">执行支付处理</a></li>
+<li><a href="operation/index.html">运营示例</a></li>
+<li><a href="restriction/index.html">限制事项</a></li>
+<li><a href="status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../subscription/index.html">订阅简介</a></li>
+<li><a href="../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../card/index.html">支付</a></li><li><a href="index.html">PayPay</a></li><li aria-current="page">什么是 PayPay</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="paypayとは">什么是 PayPay</h1>
+<p>PayPay 功能可让买家通过 PayPay 支付购物款项。<br>
+在 fincode 申请开通 PayPay 后，您可以在网页或移动端引导买家使用“PayPay 余额”或“信用卡支付<sup>※1</sup>”完成交易，覆盖日本全国 7,000 万名<sup>※2</sup>用户。<br>
+<sup>※1</sup>根据 PayPay 的审核结果，您可能只能接受余额支付，无法使用信用卡支付。
+<sup>※2</sup>截至 2025 年 7 月（ <a href="https://about.paypay.ne.jp/pr/20250715/01/" rel="nofollow noopener noreferrer" target="_blank">https://about.paypay.ne.jp/pr/20250715/01/</a> ）</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">在测试环境中，注册后即可试用所有支付方式。<br>
+      要在生产环境使用，需先开通卡片支付，再从控制面板另行申请。
+</div>
+</div>
+<h2 id="paypayを始める">开通 PayPay</h2>
+<p>如果已经接入 fincode 支付，添加 PayPay 所需的开发很简单。只需向卡片支付、便利店支付共用的 API 传入 PayPay 的参数，即可签发在 PayPay 应用或网站上付款的<code>支払いURL</code>，再将用户跳转至该<code>支払いURL</code>即可付款。<br>
+要向买家提供 PayPay，需先申请开通。在控制面板的支付服务设置中提交申请，待 fincode 和 PayPay 株式会社审核通过后即可使用。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">能否开通取决于审核结果。如果审核中有额外事项需要确认，fincode 会通过电子邮件联系您，请予以回复。<br>
+  审核通常需要约 2 周至 1 个月。如果回复耗时较长，审核也可能相应延长。
+</div>
+</div>
+<h2 id="サポートされる機能">支持的功能</h2>
+<p>以下是支持 PayPay 的 fincode 功能。订阅功能计划在未来支持。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left"></th><th align="left">单次支付</th><th align="left">订阅</th><th align="left">跳转式支付</th><th align="left">在原生应用中使用</th></tr></thead><tbody><tr><td align="left">PayPay</td><td align="left"><img alt="支持" src="../../../assets/payment-guides/icon-checked.svg"></td><td align="left"><img alt="不支持" src="../../../assets/payment-guides/icon-out.svg"></td><td align="left"><img alt="支持" src="../../../assets/payment-guides/icon-checked.svg"><sup>※</sup></td><td align="left"><img alt="支持" src="../../../assets/payment-guides/icon-checked.svg"></td></tr></tbody></table>
+<p><sup>※</sup>fincode 发送的“邮件链接”功能不支持 PayPay。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/paypay" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

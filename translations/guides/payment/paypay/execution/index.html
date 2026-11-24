@@ -1,0 +1,26 @@
+<h1 id="決済処理を実行する">执行支付处理</h1>
+<p>在 fincode 中，PayPay 支付流程从将买家跳转到 fincode API 返回的 PayPay 支付 URL 开始。<br>
+如果访问该 URL 的设备已安装 PayPay 应用，系统会直接启动应用，否则会打开 PayPay 网站的支付页面。</p>
+<h2 id="api-input-case">使用支付执行 API</h2>
+<p><img alt="使用支付执行 API" src="/assets/images/paypay/payment_paypay.png"></p>
+<ol>
+<li>买家选择 PayPay 作为支付方式。</li>
+<li>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。</li>
+<li>商户调用 fincode 的<span class="inline-api">执行支付</span>接口。fincode 向 PayPay 请求签发支付 URL，并返回<code>支払いURL(code_url)</code>。</li>
+<li>商户将买家重定向到<code>支払いURL(code_url)</code>。</li>
+<li>跳转后，买家在 PayPay 应用或网站上付款，付款后跳转到<code>リダイレクトURL(redirect_url)</code>。</li>
+<li>PayPay 向 fincode 发送付款完成通知。</li>
+<li>fincode 将相应交易转为预授权或销售额已确认，并向商户发送付款结果通知。</li>
+</ol>
+<h2 id="js-input-case">使用支付执行 JS</h2>
+使用支付执行 JS，可以轻松地在前端应用中实现 PayPay 支付处理。
+<p><img alt="使用支付执行 JS" src="/assets/images/paypay/payment_paypay_js.png"></p>
+<ol>
+<li>买家选择 PayPay 作为支付方式。</li>
+<li>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。</li>
+<li>商户调用 fincode 的<span class="inline-api">支付执行 JS</span>。fincode 向 PayPay 请求签发支付 URL，并返回<code>支払いURL(code_url)</code>。</li>
+<li>商户将买家重定向到<code>支払いURL(code_url)</code>。</li>
+<li>跳转后，买家在 PayPay 应用或网站上付款，付款后跳转到<code>リダイレクトURL(redirect_url)</code>。</li>
+<li>PayPay 向 fincode 发送付款完成通知。</li>
+<li>fincode 将相应交易转为预授权或销售额已确认，并向商户发送付款结果通知。</li>
+</ol>
