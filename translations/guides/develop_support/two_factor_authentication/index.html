@@ -1,0 +1,136 @@
+<h1 id="top">什么是双因素认证</h1>
+<p>双因素认证要求用户在输入常规密码之外，再使用一次性密码完成认证。<br>
+这样可以防止第三方利用泄露的密码非法登录，提高安全性。<br>
+每次登录 fincode 生产环境时都需要认证，请在注册新用户时完成设置。</p>
+<p>fincode 支持两种双因素认证方式：使用可生成一次性密码的<strong>双因素认证应用</strong>，以及向已登记的电子邮箱发送验证码的<strong>一次性密码（电子邮件）认证</strong>。<br>
+注册新用户时请选择一种方式，注册后可在账户设置界面添加、删除或切换认证方式。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  双因素认证是标准功能，无需额外付费。
+  </div>
+</div>
+<h2 id="methods">双因素认证方式</h2>
+<p>可使用的双因素认证方式如下。两种方式可同时登记。登记两种后，登录时可任选一种认证。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">认证方式</th><th align="left">概述</th><th align="left">登录所需信息</th></tr></thead><tbody><tr><td align="left">双因素认证应用</td><td align="left">使用安装在智能手机、电脑或平板等设备上的认证应用生成的一次性密码进行认证。</td><td align="left">电子邮箱、密码、认证应用的一次性密码</td></tr><tr><td align="left">一次性密码（电子邮件）</td><td align="left">使用发到已登记电子邮箱的认证码，无需安装专用应用。</td><td align="left">电子邮箱、密码、邮件收到的认证码</td></tr></tbody></table>
+<h2 id="register">注册新用户时的设置</h2>
+<p>注册新用户时需要选择今后使用的双因素认证方式。<br>
+以下介绍选择一次性密码（电子邮件）认证的流程。</p>
+<p><img alt="一次性密码（电子邮件）认证的首次登记流程" src="/assets/images/develop_support/two_factor_mail_register.png"></p>
+<ol>
+<li>在控制面板的新用户注册界面输入姓名、电子邮箱和密码。</li>
+<li>选择商户类型。</li>
+<li>从「双因素认证应用」和「一次性密码（电子邮件）」中选择今后使用的双因素认证方式。</li>
+<li>选择一次性密码（电子邮件）后，系统会将认证码发到已登记的电子邮箱。</li>
+<li>输入邮件中的认证码，即完成首次登记，可以登录控制面板。</li>
+</ol>
+<p>※ 从邀请链接注册用户时，也按同样的步骤选择双因素认证方式。<br>
+※ 如果选择双因素认证应用，请参阅下文<a href="#steps">双因素认证应用的设置步骤</a>。</p>
+<h2 id="steps">双因素认证应用的设置步骤</h2>
+<p>使用双因素认证应用，需要在智能手机、电脑或平板等设备安装可生成基于时间的一次性密码（TOTP）的认证应用。<br>
+可使用任意支持 TOTP 的认证应用（例如 Google Authenticator、Microsoft Authenticator 和 Authy），请选择适合设备和环境的应用。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>以下是在电脑的 Google Chrome 中使用「Authenticator」扩展程序的<strong>示例</strong>。如使用其他认证应用，请遵循该应用的操作步骤。如需了解其他设备或认证应用，也请参阅<a href="https://blog.fincode.jp/product_blog/490-2/" rel="nofollow noopener noreferrer" target="_blank">Product Blog</a>。</p>
+  </div>
+</div>
+<h3 id="step1認証用アプリのインストール">第 1 步 安装认证应用</h3>
+<p>这里以安装 Chrome 扩展程序「Authenticator」为例。<br>
+在 Chrome 浏览器中打开 <a href="https://chromewebstore.google.com/" rel="nofollow noopener noreferrer" target="_blank">Chrome 网上应用店</a>，搜索 Authenticator，然后点击「添加至 Chrome」进行安装。<br>
+※ 此扩展程序只能在 Chrome 浏览器中安装，可在 Windows 和 Mac 上使用。</p>
+<h3 id="step2ログイン画面に設定用qrコードを表示">第 2 步 在登录界面显示设置用二维码</h3>
+<p>完成生产环境的新用户注册后，在登录界面输入电子邮箱和密码，点击登录按钮继续。</p>
+<p><img alt="双因素认证应用设置界面" src="/assets/images/develop_support/authenticator.png"></p>
+<h3 id="step3認証アプリの設定">第 3 步 设置认证应用</h3>
+<ol>
+<li>点击 Chrome 浏览器右上角的二维码图标，启动 Authenticator。</li>
+<li>点击右上角的铅笔图标，再点击「+」。</li>
+<li>如需扫描二维码，请点击「扫描二维码」，扫描双因素认证应用设置界面显示的二维码。如需手动输入，请点击「手动输入」，然后填写以下内容。
+<ul>
+<li>发行者：可自行设置，例如「商户名称-fincode 管理界面」。</li>
+<li>密钥：粘贴双因素认证应用设置界面上的认证码。</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Authenticator 设置" src="/assets/images/develop_support/authenticator_code.png"></p>
+<ol start="4">
+<li>点击「OK」后，Authenticator 会显示一次性密码。</li>
+</ol>
+<p><img alt="显示一次性密码" src="/assets/images/develop_support/authenticator_pass.png"></p>
+<h3 id="step4ワンタイムパスワードを入力してログイン">第 4 步 输入一次性密码并登录</h3>
+<p>设置好 Authenticator 后，继续完成 fincode 认证。</p>
+<ol>
+<li>在双因素认证应用设置界面点击「OK」，进入认证确认界面。</li>
+<li>复制 Authenticator 显示的一次性密码，粘贴到输入框并点击「认证」，即完成双因素认证设置。</li>
+</ol>
+<p>※ 即使电子邮箱与登录密码不匹配，页面也会跳转到设置用二维码的显示界面。<br>
+此时即使输入一次性密码也无法登录，请核对输入内容。</p>
+<h2 id="login">登录时的认证</h2>
+<p>登记双因素认证后，每次登录生产环境时均需进行双因素认证。<br>
+如果登记了多种认证方式，登录时可选择其中一种认证。</p>
+<h3 id="2要素認証アプリでログイン">使用双因素认证应用登录</h3>
+<ol>
+<li>在登录界面输入电子邮箱和密码。</li>
+<li>输入认证应用上显示的一次性密码，点击「认证」按钮，即完成登录。</li>
+</ol>
+<h3 id="ワンタイムパスワードメールでログイン">使用一次性密码（电子邮件）登录</h3>
+<ol>
+<li>在登录界面输入电子邮箱和密码。</li>
+<li>系统会将认证码发送至已登记的电子邮箱。</li>
+<li>输入认证码并点击「认证」按钮，即完成登录。</li>
+</ol>
+<p>如果未收到认证码，可在认证码输入界面点击「重新发送认证码」。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>请间隔约 1 分钟后再尝试重新发送。根据发送情况，认证码可能需要一段时间才能送达。</p>
+  </div>
+</div>
+<p>※ 如果电子邮箱、密码或认证码有误，界面一律显示「认证失败。」，请重新核对输入内容。</p>
+<h2 id="account-settings">在账户设置中管理双因素认证方式</h2>
+<p>登录管理界面后，将鼠标悬停在用户图标上并点击「账户设置」，可在「双因素认证」区块查看、添加或删除已登记的认证方式。</p>
+<p><img alt="账户设置的双因素认证区块" src="/assets/images/develop_support/two_factor_account_settings.png"></p>
+<h3 id="認証方式を追加する">添加认证方式</h3>
+<p>点击「添加双因素认证」，可添加尚未登记的认证方式。</p>
+<ul>
+<li>已登记双因素认证应用时，可以添加一次性密码（电子邮件）认证。</li>
+<li>已登记一次性密码（电子邮件）认证时，可以添加双因素认证应用。</li>
+</ul>
+<p>※ 同一种认证方式只能登记一次。</p>
+<h3 id="認証方式を削除する">删除认证方式</h3>
+<p>在认证方式右侧的菜单（…）中选择「删除」，即可删除该方式。重新登记前将无法使用该认证方式。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  只有已登记两种或以上认证方式时才可删除。仅登记一种时无法删除。
+  </div>
+</div>
+<h3 id="デフォルトの認証方式を設定する">设置默认认证方式</h3>
+<p>登记多种认证方式后，可点击「设为默认」切换登录时首先显示的认证方式。<br>
+切换默认方式时，需要使用目标认证方式完成认证。</p>
+<p>※ 只有当前可用的认证方式才可设为默认。</p>
+<h3 id="2要素認証アプリを再設定する">重新设置双因素认证应用</h3>
+<p>在双因素认证应用右侧的菜单（…）中选择「设置双因素认证应用」，会显示用于重新设置的二维码。<br>
+更换设备等需要重新设置双因素认证应用时，请使用此功能。</p>
+<p>※ 在测试环境中也可以按同样的步骤设置双因素认证。</p>
+<h2 id="error">无法登录时</h2>
+<p>在登录界面输入电子邮箱和密码，点击登录按钮。在认证确认界面点击「需要重新设置双因素认证的用户请点此处」。</p>
+<p>在双因素认证重新设置界面点击「OK」后，系统会将重新设置双因素认证的链接发送到已登记的电子邮箱。访问该链接并完成设置。</p>
+<p>※ 双因素认证要求登录密码和一次性密码或认证码均正确。若显示「认证失败。」，也可能是登录密码有误。</p>

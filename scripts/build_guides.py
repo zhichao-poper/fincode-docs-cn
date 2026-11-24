@@ -90,6 +90,10 @@ def navigation(current: dict, output: Path) -> str:
             parts.append(
                 f'<li><a href="{href}"{active}>{html.escape(page["nav_title"])}</a></li>'
             )
+        if section == "develop_support":
+            parts.append(
+                '<li><a href="https://docs.fincode.jp/develop_support/error">错误码一览（日文）</a></li>'
+            )
         parts.append("</ul>")
     return "\n".join(parts)
 

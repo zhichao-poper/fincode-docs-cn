@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 银行转账中文指南。" />
+    <title>银行转账 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/buyer_service/bank_transfer" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="../../develop_support/index.html">开发者支持</a>
+<a class="active" href="../index.html">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/buyer_service/bank_transfer" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="../../develop_support/index.html">开发者支持</a>
+<a class="active" href="../index.html">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="买家服务指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>买家服务</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section section-active"><span>买家服务</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">买家新用户注册</a></li>
+<li><a href="../../buyer_service_mpb/index.html">买家新用户注册（M’s PayBridge）</a></li>
+<li><a href="../accounts_payable_management/index.html">付款管理</a></li>
+<li><a href="../accounts_payable_management_mpb/index.html">付款管理（M’s PayBridge）</a></li>
+<li><a href="../invoice_payment/index.html">fincode 账单信用卡付款</a></li>
+<li><a href="index.html" aria-current="page" class="active">银行转账</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">买家服务</a></li><li aria-current="page">银行转账</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="銀行振込">银行转账</h1>
+<h2 id="top">什么是银行转账</h2>
+<p>对于在付款管理中创建的付款信息，可通过网上银行发出银行转账指令（单笔转账／批量转账）。<br>
+在相应的网上银行审批并执行转账。<br>
+只有通过买家生产环境审核的买家才能使用此功能。</p>
+<h3 id="対応しているインターネットバンキング">支持的网上银行</h3>
+<p>截至 2026 年 5 月，支持以下网上银行。</p>
+<ul>
+<li>瑞穗商务网银（Mizuho Business Web）</li>
+</ul>
+<h2 id="bank-transfer-flow">使用流程</h2>
+<p>从付款管理发起银行转账的步骤请参阅<a href="../accounts_payable_management/index.html">此处</a>。</p>
+<h2 id="bank-transfer-status">付款状态</h2>
+<p>发出单笔或批量转账指令后，对应付款信息的状态会变为「未付款」。<br>
+买家用户可在管理界面手动将「未付款」改为「付款完成」。<br>
+详情请参阅<a href="../accounts_payable_management/index.html">此处</a>。</p>
+<h2 id="bank-transfer-notes">注意事项与限制</h2>
+<ul>
+<li>每个商户最多可关联 100 个银行账户。<br></li>
+<li>请在网上银行界面关联、解除关联或重新认证银行账户。<br></li>
+<li>已关联银行账户的认证有效期为 90 天。超过有效期后，须在网上银行重新认证。<br></li>
+<li>付款金额上限、指定转账日期和单次批量转账笔数等限制取决于各网上银行。<br></li>
+<li>fincode 不会同步转账结果。转账完成后，请自行核对结果并手动更新付款状态。<br></li>
+</ul>
+<h3 id="振込手数料について">转账手续费</h3>
+<p>手续费以买家与各网上银行签订的合同为准。<br>
+使用此功能无需向 fincode 支付手续费。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/buyer_service/bank_transfer" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -143,6 +143,8 @@ GROUPS = {
     "platform": "平台",
     "develop_support": "开发者支持",
     "buyer_service": "买家服务",
+    "sdk": "SDK",
+    "sample": "示例",
     "releases": "发行说明",
 }
 SECTIONS = {
@@ -152,7 +154,8 @@ SECTIONS = {
 
 
 def group_for(page: dict) -> str:
-    return page["source_path"].split("/")[1]
+    group = page["source_path"].split("/")[1]
+    return "buyer_service" if group == "buyer_service_mpb" else group
 
 
 PAGES += [
@@ -310,5 +313,38 @@ PAGES += [
         ('payment/directdebit', 'directdebit', '什么是银行账户自动扣款', '银行账户自动扣款简介'),
         ('payment/directdebit/execution', 'directdebit', '执行扣款处理', '执行扣款处理'),
         ('payment/directdebit/schedule', 'directdebit', '银行账户自动扣款年度日程', '扣款年度日程'),
+    )
+]
+
+
+PAGES += [
+    {
+        "key": route.replace("/", "-"),
+        "section": group_for({"source_path": f"/{route}/index"}),
+        "title": title,
+        "nav_title": title,
+        "source_path": f"/{route}/index",
+        "source_url": source_url,
+        "translation": f"translations/guides/{route}/index.html",
+        "output": f"site/guides/{route}/index.html",
+    }
+    for route, title, source_url in (
+        ('sdk', '使用 fincode SDK 高效开发', 'https://docs.fincode.jp/sdk'),
+        ('sdk/requirements', '系统要求', 'https://docs.fincode.jp/sdk/requirements'),
+        ('sample', '示例', 'https://docs.fincode.jp/sample'),
+        ('develop_support', '关于 API 密钥', 'https://docs.fincode.jp/develop_support'),
+        ('develop_support/development_monitoring', '开发与监控', 'https://docs.fincode.jp/develop_support/development_monitoring'),
+        ('develop_support/test_resources', '测试资源', 'https://docs.fincode.jp/develop_support/test_resources'),
+        ('develop_support/restriction', '限制事项', 'https://docs.fincode.jp/develop_support/restriction'),
+        ('develop_support/logo', '使用标志', 'https://docs.fincode.jp/develop_support/logo'),
+        ('develop_support/two_factor_authentication', '双因素认证', 'https://docs.fincode.jp/develop_support/two_factor_authentication'),
+        ('develop_support/authenticator', '在 Chrome 中设置 Authenticator', 'https://docs.fincode.jp/develop_support/authenticator'),
+        ('buyer_service', '买家新用户注册', 'https://docs.fincode.jp/buyer_service'),
+        ('buyer_service_mpb', '买家新用户注册（M’s PayBridge）', 'https://mpb-mizuhobank-docs.fincode.jp/buyer_service'),
+        ('buyer_service/accounts_payable_management', '付款管理', 'https://docs.fincode.jp/buyer_service/accounts_payable_management'),
+        ('buyer_service/accounts_payable_management_mpb', '付款管理（M’s PayBridge）', 'https://mpb-mizuhobank-docs.fincode.jp/buyer_service/accounts_payable_management'),
+        ('buyer_service/invoice_payment', 'fincode 账单信用卡付款', 'https://docs.fincode.jp/buyer_service/invoice_payment'),
+        ('buyer_service/bank_transfer', '银行转账', 'https://docs.fincode.jp/buyer_service/bank_transfer'),
+        ('buyer_service/team', '团队管理', 'https://docs.fincode.jp/buyer_service/team'),
     )
 ]

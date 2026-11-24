@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 付款管理中文指南。" />
+    <title>付款管理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/buyer_service/accounts_payable_management" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="../../develop_support/index.html">开发者支持</a>
+<a class="active" href="../index.html">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/buyer_service/accounts_payable_management" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a href="../../tutorial/index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="../../develop_support/index.html">开发者支持</a>
+<a class="active" href="../index.html">买家服务</a>
+<a href="../../sdk/index.html">SDK</a>
+<a href="../../sample/index.html">示例</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="买家服务指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>买家服务</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section section-active"><span>买家服务</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">买家新用户注册</a></li>
+<li><a href="../../buyer_service_mpb/index.html">买家新用户注册（M’s PayBridge）</a></li>
+<li><a href="index.html" aria-current="page" class="active">付款管理</a></li>
+<li><a href="../accounts_payable_management_mpb/index.html">付款管理（M’s PayBridge）</a></li>
+<li><a href="../invoice_payment/index.html">fincode 账单信用卡付款</a></li>
+<li><a href="../bank_transfer/index.html">银行转账</a></li>
+<li><a href="../team/index.html">团队管理</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">买家服务</a></li><li aria-current="page">付款管理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="支払い管理">付款管理</h1>
+<h2 id="top">什么是付款管理</h2>
+<p>买家可通过付款管理，将开账单的企业、账单内容、金额、付款期限等保存为付款信息，再根据这些信息使用<a href="../invoice_payment/index.html">账单信用卡付款</a>或<a href="../bank_transfer/index.html">银行转账</a>完成付款。</p>
+<p>买家可在 fincode 中集中管理企业间账单的付款业务。</p>
+<p>买家也可提前在 fincode 中登记开账单企业的收款方信息，后续无需每次重新输入，便可高效付款。</p>
+<h2 id="請求書支払いとの関係">与账单付款的关系</h2>
+<p>付款管理包含账单信用卡付款和银行转账，并保存企业间交易中常见的账单信息。</p>
+<p>在 fincode 中保存的付款信息也可通过 CSV 与会计软件等外部服务对接，简化付款完成后在 fincode 之外办理的业务。外部服务对接方式请参阅<a href="#integration-with-external-service">此处</a>。</p>
+<h3 id="企業間決済機能同士の連携">企业间支付功能的联动</h3>
+<p>如果收到的是 fincode 商户通过账单功能开出的账单，账单信息会直接作为付款信息传入买家的管理界面。买家可从管理界面打开付款网页并完成付款。</p>
+<p>付款信息还可作为会计数据导入支持的会计软件。这样可以在 fincode 内从管理交易对手（收款方）、收取账单一路做到付款，再对接会计软件。</p>
+<p>fincode 付款信息 CSV 导出支持的会计软件可在<a href="#integration-with-external-service">此处</a>查看。</p>
+<h2 id="pay-by-business-payment">使用信用卡支付账单</h2>
+<p>账单信用卡付款是付款管理支持的方式之一。买家在 fincode 上传账单、登记账单内容并执行卡片支付，审核完成后会以买家的名义转账。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">
+        支持的卡组织：VISA／Mastercard
+    </div>
+</div>
+<p>有关使用详情，请参阅<a href="../invoice_payment/index.html">什么是账单信用卡付款</a>。</p>
+<h3 id="支払い情報をもとに請求書カード払いで支払う">按付款信息使用信用卡支付账单</h3>
+<p>在 M’s PayBridge 的付款管理中，按以下步骤使用信用卡支付账单。</p>
+<ol>
+<li>在 M’s PayBridge 的管理界面创建付款信息。<br>选择要支付的账单文件，将账单内容登记到付款信息中。</li>
+<li>登记后，输入用于付款的卡片信息，或选择之前使用并保存的卡片信息。</li>
+<li>输入或选择卡片信息后执行付款。（此时仅通过预授权占用额度，信用卡尚未扣款。）</li>
+<li>GMO Epsilon 审核交易内容。</li>
+<li>审核通过后，信用卡将扣款。GMO Epsilon 会按创建付款信息时指定的转账名义，向开账单的企业转账。</li>
+</ol>
+<h3 id="請求書カード払いの利用による支払い情報のステータス遷移">使用信用卡支付账单时的付款信息状态变化</h3>
+<p>使用信用卡支付账单时，付款信息的状态变化如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>操作</th><th>操作前状态</th><th>操作后状态</th><th>说明</th></tr></thead><tbody><tr><td>买家创建付款信息</td><td>-</td><td>草稿</td><td>刚创建付款信息的状态，尚未向开账单方付款。</td></tr><tr><td>买家编辑付款信息</td><td>草稿</td><td>草稿</td><td>付款信息保持草稿状态，可以更改内容。</td></tr><tr><td>买家提交账单信用卡付款审核</td><td>草稿</td><td>未付款</td><td></td></tr><tr><td>GMO Epsilon 执行审核</td><td>未付款</td><td>未付款</td><td>GMO Epsilon 审核交易内容期间，状态保持不变。</td></tr><tr><td>GMO Epsilon 完成审核并发出转账指令</td><td>未付款</td><td>完成</td><td>GMO Epsilon 完成审核并发出转账指令后，付款信息的状态变为「已付款」。<br><br></td></tr></tbody></table>
+<h2 id="pay-by-bank-transfer">使用银行转账付款</h2>
+<p>银行转账是付款管理支持的方式之一，可针对在 fincode 创建的付款信息，通过网上银行发出银行转账指令（单笔转账／批量转账）。<br>
+在相应的网上银行审批并执行转账。<br>
+详情请参阅<a href="../bank_transfer/index.html">银行转账</a>页面。</p>
+<h3 id="支払い情報をもとに銀行振込で支払う">按付款信息使用银行转账付款</h3>
+<p>在 fincode 的付款管理中，按以下步骤使用银行转账付款。</p>
+<h4 id="事前準備銀行口座の連携">准备工作：关联银行账户</h4>
+<p>在管理界面打开「买家设置 &gt; 银行账户设置」，添加用于转出款项的银行账户。<br>
+页面会跳转到网上银行界面，完成账户关联。</p>
+<h4 id="振込振替の場合">单笔转账</h4>
+<ol>
+<li>创建付款信息：<br>在 fincode 管理界面打开「付款」，点击「开始付款」，选择「从已关联的银行账户转账」以创建付款信息。</li>
+<li>提交转账申请：<br>指定转账日期、转出账户等信息后，提交转账申请。</li>
+<li>审批并执行转账：<br>发出转账指令后，请在网上银行审批并执行转账。</li>
+</ol>
+<h4 id="総合振込の場合">批量转账</h4>
+<ol>
+<li>创建付款信息：<br>在 fincode 管理界面打开「付款」，点击「开始付款」，选择「创建批量转账用付款信息」以创建付款信息。</li>
+<li>选择要执行批量转账的付款信息：<br>在付款信息列表的「批量转账」标签页中，选择第 1 步创建的一条或多条付款信息。点击右上角的「已选中 ● 条」，指定转账日期及转出账户后，提交批量转账申请。</li>
+<li>审批并执行转账：<br>发出转账指令后，请在网上银行审批并执行转账。</li>
+</ol>
+<h3 id="銀行振込の利用による支払い情報のステータス遷移">使用银行转账时的付款信息状态变化</h3>
+<p>使用银行转账付款时，付款信息的状态变化如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>操作</th><th>操作前状态</th><th>操作后状态</th><th>说明</th></tr></thead><tbody><tr><td>买家创建付款信息</td><td>-</td><td>草稿</td><td>刚创建付款信息的状态，尚未提交向开账单方（收款方）转账的申请。</td></tr><tr><td>买家编辑付款信息</td><td>草稿</td><td>草稿</td><td>付款信息保持草稿状态，可以更改内容。</td></tr><tr><td>买家发出单笔或批量转账指令</td><td>草稿</td><td>未付款</td><td></td></tr><tr><td>买家将状态改为「付款完成」</td><td>未付款</td><td>付款完成</td><td>系统不会自动同步转账结果。转账完成后，请买家自行核对结果并手动更新付款信息状态。<br><br></td></tr></tbody></table>
+<h2 id="recipient-management">管理收款方信息</h2>
+<p>可管理企业间支付的收款方信息，其中可保存企业名称、代表人姓名、地址、电子邮箱、电话号码及收款金融机构的账户等信息。</p>
+<h2 id="integration-with-external-service">将付款信息与外部服务对接</h2>
+<h3 id="支払い情報をcsvとしてエクスポートして外部サービスに連携する">导出付款信息 CSV 以对接外部服务</h3>
+<p>通过 fincode 付款管理完成付款后，保存的付款信息可按外部服务指定的格式导出为 CSV 文件，供外部服务使用。</p>
+<h3 id="supported-external-services">付款信息 CSV 导出支持的外部服务</h3>
+<p>截至 2025 年 9 月，付款信息 CSV 导出可对接以下外部服务。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>外部服务名称</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://www.freee.co.jp/" rel="nofollow noopener noreferrer" target="_blank">freee 会計</a></td><td>将 fincode 管理的付款信息转换为 freee 会計的会计分录 CSV 并导出。收支类别列写入「支出」，会计科目列写入「营业收入」。详细格式以 freee 官网说明为准。</td></tr><tr><td>批量转账（全银格式）</td><td>将 fincode 的付款信息转换为符合批量转账全银格式的 CSV 并导出，以便一次导出批量转账所需的数据。对于 fincode 未保存的转出金融机构等文件头信息，导出时留空。<br><br></td></tr></tbody></table>
+<h3 id="支払い情報をcsvとしてインポートして外部サービスに連携する">导入付款信息 CSV 以对接外部服务</h3>
+<p>可将外部生成、汇总了多条付款信息的文件导入 fincode，并在 fincode 内管理付款信息。可使用信用卡支付导入的账单。</p>
+<h3 id="支払い情報csvインポート機能が対応する外部サービス">付款信息 CSV 导入支持的外部服务</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>外部服务名称</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://www.freee.co.jp/" rel="nofollow noopener noreferrer" target="_blank">freee 会計</a></td><td>可将 freee 会計导出的会计分录中收支类别为「支出」的记录导入 fincode，作为付款信息。详细格式以 freee 官网说明为准。可导入的格式见<a href="https://support.freee.co.jp/hc/ja/articles/202847320" rel="nofollow noopener noreferrer" target="_blank">此处</a>。</td></tr><tr><td>全银格式</td><td>可按全银格式导入付款信息。<br>M’s PayBridge 要求数据中的合计金额后没有多余的逗号。部分金融机构会在末尾输出占位逗号（,,,,），导致导入错误。请删除多余的逗号后再上传。</td></tr></tbody></table>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/buyer_service/accounts_payable_management" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
