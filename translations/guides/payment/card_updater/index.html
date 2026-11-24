@@ -1,0 +1,178 @@
+<h1 id="カード更新機能洗替とは">什么是卡片信息自动更新</h1>
+<p>当卡公司更新了商户客户名下已登记卡片的有效期或卡号时，fincode 的卡片信息自动更新功能会将 fincode 中的卡片信息更新为最新状态。</p>
+<p>对开展订阅等定期扣费业务的商户，此功能可减少卡片过期导致的订阅收费失败，以及需要客户自行重新登记卡片信息的情况。</p>
+<p>要使用卡片信息自动更新功能，请在 fincode 控制面板的支付服务设置中申请，审核通过后即可使用。审核结果可能导致该功能无法开通。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">只有接收更新数据的卡公司持有相关信息时，才会更新卡片信息。 <br>
+</div>
+</div>
+<h2 id="カード更新機能洗替とその他のカード情報更新方法の比較">卡片信息自动更新与其他卡片信息更新方式的比较</h2>
+<p>卡片信息自动更新功能通过卡公司更新卡片信息，与卡片更新 API 是两项不同的功能。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left"></th><th align="left">卡片信息自动更新（洗替）</th><th align="left">卡片更新 API</th></tr></thead><tbody><tr><td align="left">概要</td><td align="left">从卡公司获得最新的卡片信息并更新 fincode 中的记录</td><td align="left">商户或客户自行通过 API 更新卡片信息</td></tr><tr><td align="left">更新时间</td><td align="left">每月一次，在指定日期批量执行</td><td align="left">随时即时执行</td></tr><tr><td align="left">指定对象的方式</td><td align="left">通过控制面板或 API 设置自动更新对象</td><td align="left">对每张卡片调用 API</td></tr><tr><td align="left">使用场景</td><td align="left">减少订阅等持续使用的卡片发生过期的影响</td><td align="left">在客户提出更换卡片时立即处理</td></tr></tbody></table>
+<h2 id="カード更新のスケジュール">卡片自动更新日程</h2>
+<p>卡片自动更新每月按以下流程执行。</p>
+<ol>
+<li><strong>确定更新对象</strong>：每月在指定日期选取已设置为自动更新对象的卡片信息。</li>
+<li><strong>向卡公司发送数据</strong>：将符合条件的卡片信息批量发送给卡公司。</li>
+<li><strong>应用更新结果</strong>：卡公司返回的最新信息（有效期、卡号）自动应用到 fincode 的卡片信息。</li>
+<li><strong>通知结果</strong>：应用完毕后，通过 Webhook 通知更新结果汇总。</li>
+</ol>
+<p>※此功能不会向客户自动收取设定金额。</p>
+<h3 id="スケジュールについて">日程</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">日期</th><th align="left">内容</th></tr></thead><tbody><tr><td align="left">每月 6 日</td><td align="left">卡片自动更新对象的设置截止日。请于此日前设置目标卡片。通常由 fincode 于每月 7 日处理。</td></tr><tr><td align="left">每月 28 日起</td><td align="left">可以查看卡片自动更新结果。可通过 API 或控制面板查看。<br>※也会通过 Webhook 发送汇总通知。</td></tr></tbody></table>
+<p>※无法任意选择执行时间。截止日过后才设置的卡片，将纳入下个月的更新检查。</p>
+<h2 id="カード更新対象の判定ロジック">卡片自动更新的判定规则</h2>
+<p>是否纳入卡片自动更新由以下设置的组合决定。</p>
+<ul>
+<li>商户级的卡片自动更新设置（商户设置）</li>
+<li>单张卡片的自动更新设置（<code>card_updater_mode</code>）</li>
+</ul>
+<p>自动更新按商户客户名下登记的卡片逐张执行。<br>
+每张卡片的自动更新设置（<code>card_updater_mode</code>）与商户级的卡片自动更新设置共同决定该卡是否纳入更新范围。</p>
+<p>卡片信息自动更新按商户管理。<br>
+即使同一客户在多家商户登记了相同卡片，也只会更新已设为更新对象的商户所登记的卡片信息。</p>
+<p><strong>平台类型的商户</strong><br>
+对于平台类型的商户，管理者取决于是否共享客户信息。</p>
+<p><b>■共享客户信息时</b><br>
+由平台（主商户）管理。<br>
+请由平台（主商户）设置自动更新对象。子商户和租户商户不能申请开通卡片信息自动更新功能。</p>
+<p><b>■未共享客户信息时</b><br>
+按商户管理。<br>
+租户商户使用时，每个租户商户都需要分别申请开通卡片信息自动更新功能，并设置自动更新对象。</p>
+<h3 id="ショップのカード更新ショップ設定">商户级卡片自动更新设置</h3>
+<p>在控制面板的“商户设置 &gt; 支付服务设置”中，可启用或停用商户级卡片自动更新设置。此设置应用于自动更新设置为“继承商户设置”的卡片。</p>
+<p>商户级卡片自动更新设置默认为“停用”。</p>
+<h3 id="カード単位のカード更新設定">单张卡片的自动更新设置</h3>
+<p>可通过控制面板或<span class="inline-api">登记卡片</span>、<span class="inline-api">更新卡片</span>（或<span class="inline-api">登记支付方式</span>、<span class="inline-api">更新支付方式</span>）API，逐张设置卡片的自动更新设置（<code>card_updater_mode</code>）。单张卡片的设置优先于商户级设置。<br>
+※通过支付方式 API 管理卡片的详情请参阅<a href="/payment/payment_method/card">使用支付方式 API 处理卡片支付</a>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">选项</th><th align="left"><code>card_updater_mode</code> 的值</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">启用更新</td><td align="left"><code>enabled</code></td><td align="left">将此卡纳入自动更新范围。无论商户级设置如何，均执行自动更新。</td></tr><tr><td align="left">停用更新</td><td align="left"><code>disabled</code></td><td align="left">将此卡排除在自动更新范围之外。无论商户级设置如何，均不执行自动更新。</td></tr><tr><td align="left">继承商户设置</td><td align="left"><code>inherit</code>（默认值）</td><td align="left">遵循商户级卡片自动更新设置。商户设置启用时纳入更新范围，停用时排除。</td></tr><tr><td align="left">商户未指定时，卡片自动更新设置默认为“继承商户设置（<code>inherit</code>）”。</td><td align="left"></td><td align="left"></td></tr></tbody></table>
+<h4 id="判定結果の一覧"><strong>判定结果列表</strong></h4>
+<p>下表列出商户级自动更新设置与单张卡片的<code>card_updater_mode</code>值组合时，是否将该卡纳入自动更新范围。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">商户级卡片自动更新设置</th><th align="left">卡片自动更新设置（<code>card_updater_mode</code>）</th><th align="left">是否纳入自动更新</th></tr></thead><tbody><tr><td align="left">启用</td><td align="left">启用更新（<code>enabled</code>）</td><td align="left">纳入</td></tr><tr><td align="left">启用</td><td align="left">停用更新（<code>disabled</code>）</td><td align="left">排除</td></tr><tr><td align="left">启用</td><td align="left">继承商户设置（<code>inherit</code>）</td><td align="left">纳入</td></tr><tr><td align="left">停用</td><td align="left">启用更新（<code>enabled</code>）</td><td align="left">纳入</td></tr><tr><td align="left">停用</td><td align="left">停用更新（<code>disabled</code>）</td><td align="left">排除</td></tr><tr><td align="left">停用</td><td align="left">继承商户设置（<code>inherit</code>）</td><td align="left">排除</td></tr></tbody></table>
+<h2 id="カード更新機能洗替で発生する費用">卡片信息自动更新的费用</h2>
+<p>卡片信息更新成功时，会产生卡片自动更新手续费。<br>
+如果仅检查更新，卡片信息未更新，则不收取手续费。<br>
+※详情请查看<a href="https://www.fincode.jp/pricing" target="_blank">费率表</a>。</p>
+<p>卡片自动更新手续费会从 fincode 向商户支付的入账款中抵扣。如果该费用超过当期入账金额，fincode 会向已登记的账单收件方收费。<br>
+对于平台类型的商户，卡片自动更新手续费的账单收件方取决于是否共享客户信息。</p>
+<p><b>共享客户信息</b><br>
+向平台（主商户）收费。</p>
+<p><b>未共享客户信息</b><br>
+向各租户商户收费。平台可在卡片自动更新费用上加收款项，作为<a href="/platform/setting">标准平台使用费</a>从租户商户获得收入。</p>

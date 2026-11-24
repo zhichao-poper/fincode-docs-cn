@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'card_updater': '卡片信息自动更新',
     'googlepay': 'Google Pay',
     'applepay': 'Apple Pay',
     'redirect_type': '跳转式支付',
@@ -227,6 +228,10 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/card_updater', 'card_updater', '什么是卡片信息自动更新', '卡片信息自动更新简介'),
+        ('payment/card_updater/use-card_updater', 'card_updater', '使用卡片信息自动更新', '设置并查看更新结果'),
+        ('payment/card_updater/receive-card_updater-by-webhook', 'card_updater', '通过 Webhook 接收卡片自动更新结果', '通过 Webhook 接收结果'),
+        ('payment/card_updater/operation-and-note', 'card_updater', '运营与注意事项', '运营与注意事项'),
         ('payment/googlepay', 'googlepay', 'Google Pay 简介', 'Google Pay 简介'),
         ('payment/googlepay/setup', 'googlepay', '在生产环境使用 Google Pay 的设置', '生产环境设置'),
         ('payment/googlepay/execution', 'googlepay', '执行支付处理', '执行支付处理'),

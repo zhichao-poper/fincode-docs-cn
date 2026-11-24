@@ -1,0 +1,52 @@
+<h1 id="webhook通知でカード更新の結果を受信する">通过 Webhook 接收卡片自动更新结果</h1>
+<p>卡公司每月返回的更新结果应用后，卡片信息自动更新功能可通过 Webhook 通知更新结果汇总。</p>
+<h2 id="カード更新機能洗替におけるイベントとイベント発生のタイミング">卡片信息自动更新事件及其触发时间</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">事件名称</th><th align="left">事件</th><th align="left">触发时间</th></tr></thead><tbody><tr><td align="left">卡片信息自动更新完成</td><td align="left"><code>card.updater.complete</code></td><td align="left">当月的卡片更新结果应用完毕时</td></tr></tbody></table>
+<h2 id="通知内容">通知内容</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">参数名称</th><th align="left">类型</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>shop_id</code></td><td align="left">String</td><td align="left">执行卡片自动更新的商户 ID。</td></tr><tr><td align="left"><code>total_count</code></td><td align="left">Number</td><td align="left">作为自动更新对象发送给卡公司的卡片总数。</td></tr><tr><td align="left"><code>success_count</code></td><td align="left">Number</td><td align="left">更新成功且卡片信息发生变更的卡片数。</td></tr></tbody></table>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>Webhook 通知只包含汇总信息。要查看每张卡片的更新结果，请使用<span class="inline-api">获取卡片</span>、<span class="inline-api">获取卡片列表</span>及<span class="inline-api">获取卡片列表（按客户信息共享组）</span>。</p>
+  </div>
+</div>
+<p>指定事件，并调用<span class="inline-api">登记 Webhook 设置</span>接口。指定事件发生时，通知将发送至指定 URL。</p>
