@@ -1,0 +1,115 @@
+<h1 id="支払い管理">付款管理</h1>
+<h2 id="top">什么是付款管理</h2>
+<p>买家可通过付款管理，将开账单的企业、账单内容、金额、付款期限等保存为付款信息，再根据这些信息使用<a href="/buyer_service/invoice_payment">账单信用卡付款</a>完成付款。</p>
+<p>买家可在 fincode 中集中管理企业间账单的付款业务。</p>
+<p>买家也可提前在 fincode 中登记开账单企业的收款方信息，后续无需每次重新输入，便可高效付款。</p>
+<h2 id="請求書支払いとの関係">与账单付款的关系</h2>
+<p>付款管理包含账单信用卡付款，并保存企业间交易中常见的账单信息。</p>
+<p>在 fincode 中保存的付款信息也可通过 CSV 与会计软件等外部服务对接，简化付款完成后在 fincode 之外办理的业务。外部服务对接方式请参阅<a href="#integration-with-external-service">此处</a>。</p>
+<h3 id="企業間決済機能同士の連携">企业间支付功能的联动</h3>
+<p>如果收到的是 fincode 商户通过账单功能开出的账单，账单信息会直接作为付款信息传入买家的管理界面。买家可从管理界面打开付款网页并完成付款。</p>
+<p>付款信息还可作为会计数据导入支持的会计软件。这样可以在 fincode 内从管理交易对手（收款方）、收取账单一路做到付款，再对接会计软件。</p>
+<p>fincode 付款信息 CSV 导出支持的会计软件可在<a href="#integration-with-external-service">此处</a>查看。</p>
+<h2 id="pay-by-business-payment">使用信用卡支付账单</h2>
+<p>账单信用卡付款是付款管理支持的方式之一。买家在 fincode 上传账单、登记账单内容并执行卡片支付，审核完成后会以买家的名义转账。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">
+        支持的卡组织：VISA／Mastercard
+    </div>
+</div>
+<p>有关使用详情，请参阅<a href="/buyer_service/invoice_payment">什么是账单信用卡付款</a>。</p>
+<h3 id="支払い情報をもとに請求書カード払いで支払う">按付款信息使用信用卡支付账单</h3>
+<p>在 M’s PayBridge 的付款管理中，按以下步骤使用信用卡支付账单。</p>
+<ol>
+<li>在 M’s PayBridge 的管理界面创建付款信息。<br>选择要支付的账单文件，将账单内容登记到付款信息中。</li>
+<li>登记后，输入用于付款的卡片信息，或选择之前使用并保存的卡片信息。</li>
+<li>输入或选择卡片信息后执行付款。（此时仅通过预授权占用额度，信用卡尚未扣款。）</li>
+<li>GMO Epsilon 审核交易内容。</li>
+<li>审核通过后，信用卡将扣款。GMO Epsilon 会按创建付款信息时指定的转账名义，向开账单的企业转账。</li>
+</ol>
+<h3 id="請求書カード払いの利用による支払い情報のステータス遷移">使用信用卡支付账单时的付款信息状态变化</h3>
+<p>使用信用卡支付账单时，付款信息的状态变化如下。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>操作</th><th>操作前状态</th><th>操作后状态</th><th>说明</th></tr></thead><tbody><tr><td>买家创建付款信息</td><td>-</td><td>草稿</td><td>刚创建付款信息的状态，尚未向开账单方付款。</td></tr><tr><td>买家编辑付款信息</td><td>草稿</td><td>草稿</td><td>付款信息保持草稿状态，可以更改内容。</td></tr><tr><td>买家提交账单信用卡付款审核</td><td>草稿</td><td>未付款</td><td></td></tr><tr><td>GMO Epsilon 执行审核</td><td>未付款</td><td>未付款</td><td>GMO Epsilon 审核交易内容期间，状态保持不变。</td></tr><tr><td>GMO Epsilon 完成审核并发出转账指令</td><td>未付款</td><td>完成</td><td>GMO Epsilon 完成审核并发出转账指令后，付款信息的状态变为「已付款」。</td></tr></tbody></table>
+<h2 id="recipient-management">管理收款方信息</h2>
+<p>可管理企业间支付的收款方信息，其中可保存企业名称、代表人姓名、地址、电子邮箱、电话号码及收款金融机构的账户等信息。</p>
+<h2 id="integration-with-external-service">将付款信息与外部服务对接</h2>
+<h3 id="支払い情報をcsvとしてエクスポートして外部サービスに連携する">导出付款信息 CSV 以对接外部服务</h3>
+<p>通过 fincode 付款管理完成付款后，保存的付款信息可按外部服务指定的格式导出为 CSV 文件，供外部服务使用。</p>
+<h3 id="supported-external-services">付款信息 CSV 导出支持的外部服务</h3>
+<p>截至 2025 年 9 月，付款信息 CSV 导出可对接以下外部服务。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>外部服务名称</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://www.freee.co.jp/" rel="nofollow noopener noreferrer" target="_blank">freee 会計</a></td><td>将 fincode 管理的付款信息转换为 freee 会計的会计分录 CSV 并导出。收支类别列写入「支出」，会计科目列写入「营业收入」。详细格式以 freee 官网说明为准。</td></tr><tr><td>批量转账（全银格式）</td><td>将 fincode 的付款信息转换为符合批量转账全银格式的 CSV 并导出，以便一次导出批量转账所需的数据。对于 fincode 未保存的转出金融机构等文件头信息，导出时留空。</td></tr></tbody></table>
+<h3 id="支払い情報をcsvとしてインポートして外部サービスに連携する">导入付款信息 CSV 以对接外部服务</h3>
+<p>可将外部生成、汇总了多条付款信息的文件导入 fincode，并在 fincode 内管理付款信息。可使用信用卡支付导入的账单。</p>
+<h3 id="支払い情報csvインポート機能が対応する外部サービス">付款信息 CSV 导入支持的外部服务</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>外部服务名称</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://www.freee.co.jp/" rel="nofollow noopener noreferrer" target="_blank">freee 会計</a></td><td>可将 freee 会計导出的会计分录中收支类别为「支出」的记录导入 fincode，作为付款信息。详细格式以 freee 官网说明为准。可导入的格式见<a href="https://support.freee.co.jp/hc/ja/articles/202847320" rel="nofollow noopener noreferrer" target="_blank">此处</a>。</td></tr></tbody></table>

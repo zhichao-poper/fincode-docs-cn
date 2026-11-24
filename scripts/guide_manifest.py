@@ -154,7 +154,8 @@ SECTIONS = {
 
 
 def group_for(page: dict) -> str:
-    return page["source_path"].split("/")[1]
+    group = page["source_path"].split("/")[1]
+    return "buyer_service" if group == "buyer_service_mpb" else group
 
 
 PAGES += [
@@ -338,5 +339,12 @@ PAGES += [
         ('develop_support/logo', '使用标志', 'https://docs.fincode.jp/develop_support/logo'),
         ('develop_support/two_factor_authentication', '双因素认证', 'https://docs.fincode.jp/develop_support/two_factor_authentication'),
         ('develop_support/authenticator', '在 Chrome 中设置 Authenticator', 'https://docs.fincode.jp/develop_support/authenticator'),
+        ('buyer_service', '买家新用户注册', 'https://docs.fincode.jp/buyer_service'),
+        ('buyer_service_mpb', '买家新用户注册（M’s PayBridge）', 'https://mpb-mizuhobank-docs.fincode.jp/buyer_service'),
+        ('buyer_service/accounts_payable_management', '付款管理', 'https://docs.fincode.jp/buyer_service/accounts_payable_management'),
+        ('buyer_service/accounts_payable_management_mpb', '付款管理（M’s PayBridge）', 'https://mpb-mizuhobank-docs.fincode.jp/buyer_service/accounts_payable_management'),
+        ('buyer_service/invoice_payment', 'fincode 账单信用卡付款', 'https://docs.fincode.jp/buyer_service/invoice_payment'),
+        ('buyer_service/bank_transfer', '银行转账', 'https://docs.fincode.jp/buyer_service/bank_transfer'),
+        ('buyer_service/team', '团队管理', 'https://docs.fincode.jp/buyer_service/team'),
     )
 ]
