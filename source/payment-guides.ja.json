@@ -10,7 +10,7 @@
       "business_management",
       "platform"
     ],
-    "pageCount": 54
+    "pageCount": 56
   },
   "pages": [
     {
@@ -75319,6 +75319,5151 @@
           "created": 1792994140047
         },
         "$loki": 95
+      }
+    },
+    {
+      "key": "payment-directdebit-register",
+      "sourcePath": "/payment/directdebit/register/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/directdebit/register",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "web登録とは",
+            "depth": 2,
+            "text": "Web登録とは"
+          },
+          {
+            "id": "web登録の流れ",
+            "depth": 2,
+            "text": "Web登録の流れ"
+          },
+          {
+            "id": "リダイレクト先urlの使用回数制限",
+            "depth": 2,
+            "text": "リダイレクト先URLの使用回数制限"
+          },
+          {
+            "id": "web登録で発生する費用",
+            "depth": 2,
+            "text": "Web登録で発生する費用"
+          },
+          {
+            "id": "依頼書登録とは",
+            "depth": 2,
+            "text": "依頼書登録とは"
+          },
+          {
+            "id": "依頼書登録の流れ",
+            "depth": 2,
+            "text": "依頼書登録の流れ"
+          },
+          {
+            "id": "step1購入者へ依頼書記入を依頼",
+            "depth": 3,
+            "text": "【STEP1】購入者へ依頼書記入を依頼"
+          },
+          {
+            "id": "step2購入者より依頼書を回収必要事項の記入",
+            "depth": 3,
+            "text": "【STEP2】購入者より依頼書を回収・必要事項の記入"
+          },
+          {
+            "id": "step3依頼書に記載されている口座情報をfincode上に登録",
+            "depth": 3,
+            "text": "【STEP3】依頼書に記載されている口座情報をfincode上に登録"
+          },
+          {
+            "id": "step4依頼書送付票を指定の住所に郵送",
+            "depth": 3,
+            "text": "【STEP4】依頼書・送付票を指定の住所に郵送"
+          },
+          {
+            "id": "依頼書登録の結果を確認する",
+            "depth": 2,
+            "text": "依頼書登録の結果を確認する"
+          },
+          {
+            "id": "依頼書登録における注意事項",
+            "depth": 2,
+            "text": "依頼書登録における注意事項"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "口座登録をする"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%8F%A3%E5%BA%A7%E7%99%BB%E9%8C%B2%E3%82%92%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "口座登録をする"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "口座振替を行うには、事前に購入者の口座情報を登録する必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nfincodeでは「Web登録」と「依頼書登録」の2つの登録方法を用意しています。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n登録した口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n口座登録が完了すると、その\"決済手段\"のステータスは"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ACTIVE: 有効"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "になり決済処理に利用できるようになります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録方法"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "詳細"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "振替可能までの期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能金融機関"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録費用"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "#web-register"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Web登録"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/api#operation/postPaymentMethods"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "fincodeのAPI"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": "からレスポンスされる口座登録用URLへ購入者を誘導し、そのWebページ上で登録手続きを完了させる方式です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "全ての手続きがWeb上で完結します。"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録完了次第"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "制限あり"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/payment/directdebit/restriction"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "一覧はこちら"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録成功時のみ発生"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "#paper-register"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "依頼書登録"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が、紙の口座振替依頼書を記入・押印し、ショップにて口座を登録する方式です。"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "依頼書送付から約1～1.5ヶ月"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ほぼ利用可能"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/payment/directdebit/restriction"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "一覧はこちら"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "発生なし"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n        fincodeの1つの顧客情報に対して登録できる口座情報（Payment Method）は最大5件です。5件登録されている状態で別の口座を登録する場合、既存の口座情報を削除してから登録してください。\n    "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "web-register"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録とは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%A8%E3%81%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録とは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録とは、購入者がWebブラウザ上にてショップサイトを経由し、金融機関側の入力画面にて口座情報を入力する方式です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n紙の記入や郵送が必要な依頼書登録とは異なり、手続きがWebで完結するため、シームレスなユーザー体験を提供することができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "口座振替を実行する口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n口座登録手続きが完了すると、その\"決済手段\"のステータスは"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ACTIVE (有効)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "になり決済処理に利用できるようになります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録の流れ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%AE%E6%B5%81%E3%82%8C",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録の流れ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "Web登録の流れ",
+                    "src": "/assets/images/directdebit/payment_method_web_registration_flow.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップはfincodeの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済手段 登録"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をリクエストし、口座登録用の"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をレスポンスで受け取ります。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップは購入者に"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を案内します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は案内された"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へアクセスし、各金融機関が提供する口座振替受付用のWebサイトへ自動的に遷移します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は遷移先の口座振替受付用のWebサイトにて、認証手続きを完了させます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "金融機関がfincodeに登録結果を通知します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済手段 登録"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "リクエスト時に指定した"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "加盟店戻りURL(return_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へリダイレクトし、手続きが完了します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト先urlの使用回数制限"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%85%88url%E3%81%AE%E4%BD%BF%E7%94%A8%E5%9B%9E%E6%95%B0%E5%88%B6%E9%99%90",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト先URLの使用回数制限"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録（口座振替・Web登録）"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "のレスポンスとして返却される"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "は1度しかアクセスできません。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n2度目以降のアクセスでは、各金融機関が提供する口座振替受付用のWebサイトには遷移せず、直接"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "加盟店戻りURL(return_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "へリダイレクトされます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "がアクセス済みかどうかは、決済手段オブジェクトの"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URLアクセス済みフラグ(redirect_url_accessed_flag)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "が"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1: アクセス済み"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "であることを確認します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "もし購入者が"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "にアクセスし、認証手続きが完了しないうちに遷移先の金融機関Webページから離脱してしまった場合などは、再度"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を実行し、新規に"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を取得しなおす必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※この場合のように口座登録手続きが最後まで完了しなかった場合は、その決済手段の"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ステータス(status)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "は"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "AWAITING_CUSTOMER_ACTION: 顧客のアクション待ち"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "のままとなり、決済処理に利用することができません。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録で発生する費用"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%A7%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E8%B2%BB%E7%94%A8",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録で発生する費用"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録の方式で口座登録をした場合、決済手数料とは別にWeb登録手数料が発生します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nなお、依頼書登録の場合やWeb登録で口座登録に失敗した場合は発生しません。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※詳細は"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://www.fincode.jp/pricing/?megamenu",
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "料金表"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "をご確認ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録手数料は、fincodeからショップへの入金額と相殺されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこの費用が集計期間中の入金額を上回った場合、fincodeは登録された請求先に対して請求を行います。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nプラットフォームタイプのショップにおいては、顧客情報の共有設定によってWeb登録の請求先が異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "顧客情報を共有している場合："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nプラットフォーム（メインショップ）に対して請求します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "顧客情報を共有していない場合："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n各テナントに対して請求します。なお、"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/platform/setting"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "標準プラットフォーム利用料"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "としてWeb登録に係る費用に対して上乗せをし、テナントから収益を得ることができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "paper-register"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録とは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%A8%E3%81%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録とは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書登録は、購入者が紙の口座振替依頼書（以下、依頼書）を記入・押印し、ショップがその内容をfincode上に登録する方式です。 \n依頼書の回収から初回の引き落としまで約1～1.5ヶ月かかりますが、ほぼすべての金融機関で口座振替の利用が可能です。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録の流れ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AE%E6%B5%81%E3%82%8C",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録の流れ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step1購入者へ依頼書記入を依頼"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step1%E8%B3%BC%E5%85%A5%E8%80%85%E3%81%B8%E4%BE%9D%E9%A0%BC%E6%9B%B8%E8%A8%98%E5%85%A5%E3%82%92%E4%BE%9D%E9%A0%BC",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP1】購入者へ依頼書記入を依頼"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者に依頼書をお渡しし、記入および捺印を依頼してください。 \n依頼書に不備があると口座登録に失敗するため、依頼書内の案内に沿ってご記入ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "依頼書のフォーマットは、ご利用になる口座振替サービスによって異なります。必ず、ご利用のサービスに対応したものを使用してください。 "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "b",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "誤った依頼書をご提出いただいた場合は、受付ができませんのでご注意ください。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n　　"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n▼口座振替（1・5・20・26日）をご利用のショップ様"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  2025年12月1日より、依頼書のフォーマットが変更となります。12月1日以降のご利用は、新しい依頼書をご使用ください。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": " \n  "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（1日・5日・20日・26日）の依頼書【2025年12月1日以降】"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n    "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（1日・5日・20日・26日）の依頼書【2025年11月末まで】"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n　　"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n▼口座振替（5・6・23・27日）をご利用のショップ様"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n    "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "預金口座振替依頼書（依頼書）記入要領_Ver.1.2.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/預金口座振替依頼書（依頼書）記入要領_Ver.1.2.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（5・6・23・27日）の依頼書"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step2購入者より依頼書を回収必要事項の記入"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step2%E8%B3%BC%E5%85%A5%E8%80%85%E3%82%88%E3%82%8A%E4%BE%9D%E9%A0%BC%E6%9B%B8%E3%82%92%E5%9B%9E%E5%8F%8E%E5%BF%85%E8%A6%81%E4%BA%8B%E9%A0%85%E3%81%AE%E8%A8%98%E5%85%A5",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP2】購入者より依頼書を回収・必要事項の記入"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者が記入した依頼書の原本を回収後、依頼書内のショップ使用欄に「依頼書ID」「ご契約者名義」「ショップID」をご記入ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n「依頼書ID」は、fincode上の登録と依頼書を紐づけるIDとなります。口座ごとにショップ側でIDを決めて記入してください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step3依頼書に記載されている口座情報をfincode上に登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step3%E4%BE%9D%E9%A0%BC%E6%9B%B8%E3%81%AB%E8%A8%98%E8%BC%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E5%8F%A3%E5%BA%A7%E6%83%85%E5%A0%B1%E3%82%92fincode%E4%B8%8A%E3%81%AB%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP3】依頼書に記載されている口座情報をfincode上に登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者から回収した依頼書を基に、fincode上に口座情報を登録してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "もしくは管理画面からの登録（顧客＞アクション＞口座登録（依頼書））のいずれかの方法でご登録ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step4依頼書送付票を指定の住所に郵送"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step4%E4%BE%9D%E9%A0%BC%E6%9B%B8%E9%80%81%E4%BB%98%E7%A5%A8%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%AE%E4%BD%8F%E6%89%80%E3%81%AB%E9%83%B5%E9%80%81",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP4】依頼書・送付票を指定の住所に郵送"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincode上での口座登録が完了後、依頼書をまとめて送付票を添付し、指定の住所に郵送してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/payment/directdebit/schedule"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "口座振替年間スケジュール"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を参照のうえ、到着期限までに郵送を完了する必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n依頼書が到着期限に間に合わない場合も、fincode上に登録した口座に対して振替依頼は実行されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこの場合、引き落としができなくても、決済手数料が発生しますのでご注意ください。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "送付票のフォーマットは、ご利用になる口座振替サービスによって異なります。必ず、ご利用のサービスに対応したものを使用してください。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "b",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "誤った送付票をご提出いただいた場合は、受付ができませんのでご注意ください。"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n　　"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n▼口座振替（1・5・20・26日）をご利用のショップ様"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  2025年12月1日より、送付票のフォーマットが変更となります。12月1日以降のご利用は、新しい送付票をご使用ください。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（1・5・20・26日）の送付票【2025年12月1日以降】"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n    "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（1・5・20・26日）の送付票【2025年11月末まで】"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n　　"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n▼口座振替（5・6・23・27日）をご利用のショップ様"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "口座振替依頼送付票（2024年9月30日更新）.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/口座振替依頼送付票（2024年9月30日更新）.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "口座振替（5・6・23・27日）の送付票"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書に不備があると口座登録に失敗するため、事前に不備がないかチェックを実施することを推奨します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n主にチェックするべき項目は下記のとおりです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "チェックポイント"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "依頼書に記入された口座情報が正しくfincode上に登録されているかご確認ください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送付票をA4サイズで印刷してください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "送付票が同梱されていない場合や送付票のサイズが異なる場合は受付ができません。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "※口座振替（5・6・23・27日）をご利用の場合は、A4サイズで印刷した後に切り取り線で切り離してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "金融機関への提出後は原則、原本の返却は不可となります。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "必ずショップにてコピーを保管してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送付票に記入した枚数と、実際に送付する依頼書の枚数が一致しているか確認してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録の結果を確認する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AE%E7%B5%90%E6%9E%9C%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録の結果を確認する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "郵送した依頼書の返却はいたしません。以下の内容をもって、登録結果の成否を判断ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "登録成功："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n口座からの引き落としが成功したことをもって、口座登録完了として扱ってください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "登録失敗："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n郵送した依頼書に不備があった場合は、ご登録いただいている担当者1・2のメールアドレス宛にご連絡します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nまた、Webhook"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "customers.payment.methods.updated"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を設定している場合は、同イベントでも通知を受け取れます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n不備が発生した場合、新たな依頼書を再提出し、fincode上での登録をやりなおす必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n一度使用した依頼書IDはご利用いただけませんので、新たな依頼書IDを採番して購入者にご案内ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nなお、不備となった依頼書IDを削除すれば、同じIDを再度使用することも可能ですが、不備内容などの登録履歴も削除されるため、取り扱いにはご注意ください。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録における注意事項"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録における注意事項"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "過去に「同一預金口座」に対する依頼書が、同一の収納企業経由で正常に登録完了している場合、今回ご提出いただいた依頼書に不備があり fincode 経由で不備通知を行っていても、実際の振替処理自体は成功するケースがあります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこれは、一般社団法人全国銀行協会の平成19年3月7日付の通達に基づく銀行側の運用であり、fincode 側で制御できるものではありません。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "blockquote",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "同一預金口座に係る依頼書の取扱い（一部抜粋）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n銀行は、同一収納企業に対する同一預金口座による預金口座振替依頼書については、料金等の種類等が異なっていても、改めて依頼書の提出を受けることなく、銀行に最初に提出された依頼書によって振替処理を行ってもさしつかえない。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "なお、別経路での登録状態がいつ無効化・解除されるかは不明なため、不備通知を受け取った場合は、改めて正しい依頼書の再送と fincode 上への再登録を実施してください。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 口座登録をする\n\n口座振替を行うには、事前に購入者の口座情報を登録する必要があります。  \nfincodeでは「Web登録」と「依頼書登録」の2つの登録方法を用意しています。  \n登録した口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。  \n口座登録が完了すると、その\"決済手段\"のステータスは`ACTIVE: 有効`になり決済処理に利用できるようになります。\n\n|登録方法|詳細|振替可能までの期間|利用可能金融機関|登録費用|\n|:----|:----|:----|:----|:----|\n|[Web登録](#web-register)|[fincodeのAPI](/api#operation/postPaymentMethods)からレスポンスされる口座登録用URLへ購入者を誘導し、そのWebページ上で登録手続きを完了させる方式です。<br>全ての手続きがWeb上で完結します。|登録完了次第|制限あり<br>[一覧はこちら](/payment/directdebit/restriction)|登録成功時のみ発生|\n|[依頼書登録](#paper-register)|購入者が、紙の口座振替依頼書を記入・押印し、ショップにて口座を登録する方式です。|依頼書送付から約1～1.5ヶ月|ほぼ利用可能<br>[一覧はこちら](/payment/directdebit/restriction)|発生なし|\n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">\n        fincodeの1つの顧客情報に対して登録できる口座情報（Payment Method）は最大5件です。5件登録されている状態で別の口座を登録する場合、既存の口座情報を削除してから登録してください。\n    </div>\n</div>\n\n<h1 id=\"web-register\">Web登録</h1>\n\n## Web登録とは\n\nWeb登録とは、購入者がWebブラウザ上にてショップサイトを経由し、金融機関側の入力画面にて口座情報を入力する方式です。  \n紙の記入や郵送が必要な依頼書登録とは異なり、手続きがWebで完結するため、シームレスなユーザー体験を提供することができます。\n\n口座振替を実行する口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。  \n口座登録手続きが完了すると、その\"決済手段\"のステータスは`ACTIVE (有効)`になり決済処理に利用できるようになります。\n\n## Web登録の流れ\n\n![Web登録の流れ](/assets/images/directdebit/payment_method_web_registration_flow.png)\n\n1. ショップはfincodeの<span class=\"inline-api\">決済手段 登録</span>をリクエストし、口座登録用の`リダイレクト先URL(redirect_url)`をレスポンスで受け取ります。\n2. ショップは購入者に`リダイレクト先URL(redirect_url)`を案内します。\n3. 購入者は案内された`リダイレクト先URL(redirect_url)`へアクセスし、各金融機関が提供する口座振替受付用のWebサイトへ自動的に遷移します。\n4. 購入者は遷移先の口座振替受付用のWebサイトにて、認証手続きを完了させます。\n5. 金融機関がfincodeに登録結果を通知します。\n6. 購入者は<span class=\"inline-api\">決済手段 登録</span>リクエスト時に指定した`加盟店戻りURL(return_url)`へリダイレクトし、手続きが完了します。\n\n## リダイレクト先URLの使用回数制限\n\n<span class=\"inline-api\">決済手段 登録（口座振替・Web登録）</span>のレスポンスとして返却される`リダイレクト先URL(redirect_url)`は1度しかアクセスできません。  \n2度目以降のアクセスでは、各金融機関が提供する口座振替受付用のWebサイトには遷移せず、直接`加盟店戻りURL(return_url)`へリダイレクトされます。  \n`リダイレクト先URL(redirect_url)`がアクセス済みかどうかは、決済手段オブジェクトの`リダイレクト先URLアクセス済みフラグ(redirect_url_accessed_flag)`が`1: アクセス済み`であることを確認します。\n\nもし購入者が`リダイレクト先URL(redirect_url)`にアクセスし、認証手続きが完了しないうちに遷移先の金融機関Webページから離脱してしまった場合などは、再度<span class=\"inline-api\">決済手段 登録</span>を実行し、新規に`リダイレクト先URL(redirect_url)`を取得しなおす必要があります。  \n※この場合のように口座登録手続きが最後まで完了しなかった場合は、その決済手段の`ステータス(status)`は`AWAITING_CUSTOMER_ACTION: 顧客のアクション待ち`のままとなり、決済処理に利用することができません。\n\n\n## Web登録で発生する費用\n\nWeb登録の方式で口座登録をした場合、決済手数料とは別にWeb登録手数料が発生します。  \nなお、依頼書登録の場合やWeb登録で口座登録に失敗した場合は発生しません。  \n※詳細は<a href=\"https://www.fincode.jp/pricing/?megamenu\" target=\"_blank\">料金表</a>をご確認ください。  \n\n\nWeb登録手数料は、fincodeからショップへの入金額と相殺されます。  \nこの費用が集計期間中の入金額を上回った場合、fincodeは登録された請求先に対して請求を行います。  \nプラットフォームタイプのショップにおいては、顧客情報の共有設定によってWeb登録の請求先が異なります。  \n\n<b>顧客情報を共有している場合：</b>    \nプラットフォーム（メインショップ）に対して請求します。  \n\n<b>顧客情報を共有していない場合：</b> \n各テナントに対して請求します。なお、[標準プラットフォーム利用料](/platform/setting)としてWeb登録に係る費用に対して上乗せをし、テナントから収益を得ることができます。\n\n\n<h1 id=\"paper-register\">依頼書登録</h1>\n\n## 依頼書登録とは\n\n依頼書登録は、購入者が紙の口座振替依頼書（以下、依頼書）を記入・押印し、ショップがその内容をfincode上に登録する方式です。  \n依頼書の回収から初回の引き落としまで約1～1.5ヶ月かかりますが、ほぼすべての金融機関で口座振替の利用が可能です。 \n\n## 依頼書登録の流れ\n\n### 【STEP1】購入者へ依頼書記入を依頼\n\n購入者に依頼書をお渡しし、記入および捺印を依頼してください。 \n依頼書に不備があると口座登録に失敗するため、依頼書内の案内に沿ってご記入ください。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">依頼書のフォーマットは、ご利用になる口座振替サービスによって異なります。必ず、ご利用のサービスに対応したものを使用してください。 <br><b>誤った依頼書をご提出いただいた場合は、受付ができませんのでご注意ください。</b><br>\n　　<br>\n▼口座振替（1・5・20・26日）をご利用のショップ様<br>\n  2025年12月1日より、依頼書のフォーマットが変更となります。12月1日以降のご利用は、新しい依頼書をご使用ください。<br> \n  <a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx\" target=\"_blank\">口座振替（1日・5日・20日・26日）の依頼書【2025年12月1日以降】</a><br>\n    <a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx\" target=\"_blank\">口座振替（1日・5日・20日・26日）の依頼書【2025年11月末まで】</a><br>\n　　<br>\n▼口座振替（5・6・23・27日）をご利用のショップ様<br>\n    <a href=\"/assets/files/payment/預金口座振替依頼書（依頼書）記入要領_Ver.1.2.xlsx\" download=\"預金口座振替依頼書（依頼書）記入要領_Ver.1.2.xlsx\" target=\"_blank\">口座振替（5・6・23・27日）の依頼書</a><br>\n</div>\n</div>\n\n### 【STEP2】購入者より依頼書を回収・必要事項の記入\n\n購入者が記入した依頼書の原本を回収後、依頼書内のショップ使用欄に「依頼書ID」「ご契約者名義」「ショップID」をご記入ください。  \n「依頼書ID」は、fincode上の登録と依頼書を紐づけるIDとなります。口座ごとにショップ側でIDを決めて記入してください。\n\n### 【STEP3】依頼書に記載されている口座情報をfincode上に登録\n\n購入者から回収した依頼書を基に、fincode上に口座情報を登録してください。  \n<span class=\"inline-api\">決済手段 登録</span>もしくは管理画面からの登録（顧客＞アクション＞口座登録（依頼書））のいずれかの方法でご登録ください。\n\n### 【STEP4】依頼書・送付票を指定の住所に郵送\n\nfincode上での口座登録が完了後、依頼書をまとめて送付票を添付し、指定の住所に郵送してください。  \n[口座振替年間スケジュール](/payment/directdebit/schedule)を参照のうえ、到着期限までに郵送を完了する必要があります。  \n依頼書が到着期限に間に合わない場合も、fincode上に登録した口座に対して振替依頼は実行されます。  \nこの場合、引き落としができなくても、決済手数料が発生しますのでご注意ください。 \n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">送付票のフォーマットは、ご利用になる口座振替サービスによって異なります。必ず、ご利用のサービスに対応したものを使用してください。<br><b>誤った送付票をご提出いただいた場合は、受付ができませんのでご注意ください。</b><br>\n　　<br>\n▼口座振替（1・5・20・26日）をご利用のショップ様<br>\n  2025年12月1日より、送付票のフォーマットが変更となります。12月1日以降のご利用は、新しい送付票をご使用ください。<br>\n  <a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx\" target=\"_blank\">口座振替（1・5・20・26日）の送付票【2025年12月1日以降】</a><br>\n    <a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx\" target=\"_blank\">口座振替（1・5・20・26日）の送付票【2025年11月末まで】</a><br>\n　　<br>\n▼口座振替（5・6・23・27日）をご利用のショップ様<br>\n  <a href=\"/assets/files/payment/口座振替依頼送付票（2024年9月30日更新）.xlsx\" download=\"口座振替依頼送付票（2024年9月30日更新）.xlsx\" target=\"_blank\">口座振替（5・6・23・27日）の送付票</a><br>\n</div>\n</div>\n\n\n依頼書に不備があると口座登録に失敗するため、事前に不備がないかチェックを実施することを推奨します。  \n主にチェックするべき項目は下記のとおりです。\n\n|チェックポイント|\n|:----|\n|依頼書に記入された口座情報が正しくfincode上に登録されているかご確認ください。|\n|送付票をA4サイズで印刷してください。<br>送付票が同梱されていない場合や送付票のサイズが異なる場合は受付ができません。<br>※口座振替（5・6・23・27日）をご利用の場合は、A4サイズで印刷した後に切り取り線で切り離してください。|\n|金融機関への提出後は原則、原本の返却は不可となります。<br>必ずショップにてコピーを保管してください。|\n|送付票に記入した枚数と、実際に送付する依頼書の枚数が一致しているか確認してください。|\n\n## 依頼書登録の結果を確認する\n\n郵送した依頼書の返却はいたしません。以下の内容をもって、登録結果の成否を判断ください。\n\n<b>登録成功：</b>  \n口座からの引き落としが成功したことをもって、口座登録完了として扱ってください。\n\n<b>登録失敗：</b>  \n郵送した依頼書に不備があった場合は、ご登録いただいている担当者1・2のメールアドレス宛にご連絡します。  \nまた、Webhook`customers.payment.methods.updated`を設定している場合は、同イベントでも通知を受け取れます。  \n不備が発生した場合、新たな依頼書を再提出し、fincode上での登録をやりなおす必要があります。  \n一度使用した依頼書IDはご利用いただけませんので、新たな依頼書IDを採番して購入者にご案内ください。  \nなお、不備となった依頼書IDを削除すれば、同じIDを再度使用することも可能ですが、不備内容などの登録履歴も削除されるため、取り扱いにはご注意ください。 \n\n## 依頼書登録における注意事項\n\n過去に「同一預金口座」に対する依頼書が、同一の収納企業経由で正常に登録完了している場合、今回ご提出いただいた依頼書に不備があり fincode 経由で不備通知を行っていても、実際の振替処理自体は成功するケースがあります。  \nこれは、一般社団法人全国銀行協会の平成19年3月7日付の通達に基づく銀行側の運用であり、fincode 側で制御できるものではありません。\n\n> **同一預金口座に係る依頼書の取扱い（一部抜粋）**  \n> 銀行は、同一収納企業に対する同一預金口座による預金口座振替依頼書については、料金等の種類等が異なっていても、改めて依頼書の提出を受けることなく、銀行に最初に提出された依頼書によって振替処理を行ってもさしつかえない。\n\nなお、別経路での登録状態がいつ無効化・解除されるかは不明なため、不備通知を受け取った場合は、改めて正しい依頼書の再送と fincode 上への再登録を実施してください。",
+        "dir": "/payment/directdebit/register",
+        "path": "/payment/directdebit/register/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140005
+        },
+        "$loki": 87
+      }
+    },
+    {
+      "key": "payment-directdebit_mhf-register",
+      "sourcePath": "/payment/directdebit_mhf/register/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/directdebit_mhf/register",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "web登録とは",
+            "depth": 2,
+            "text": "Web登録とは"
+          },
+          {
+            "id": "web登録の流れ",
+            "depth": 2,
+            "text": "Web登録の流れ"
+          },
+          {
+            "id": "リダイレクト先urlの使用回数制限",
+            "depth": 2,
+            "text": "リダイレクト先URLの使用回数制限"
+          },
+          {
+            "id": "web登録で発生する費用",
+            "depth": 2,
+            "text": "Web登録で発生する費用"
+          },
+          {
+            "id": "依頼書登録とは",
+            "depth": 2,
+            "text": "依頼書登録とは"
+          },
+          {
+            "id": "依頼書登録の流れ",
+            "depth": 2,
+            "text": "依頼書登録の流れ"
+          },
+          {
+            "id": "step1購入者へ依頼書記入を依頼",
+            "depth": 3,
+            "text": "【STEP1】購入者へ依頼書記入を依頼"
+          },
+          {
+            "id": "step2購入者より依頼書を回収必要事項の記入",
+            "depth": 3,
+            "text": "【STEP2】購入者より依頼書を回収・必要事項の記入"
+          },
+          {
+            "id": "step3依頼書に記載されている口座情報をfincode上に登録",
+            "depth": 3,
+            "text": "【STEP3】依頼書に記載されている口座情報をfincode上に登録"
+          },
+          {
+            "id": "step4依頼書送付票を指定の住所に郵送",
+            "depth": 3,
+            "text": "【STEP4】依頼書・送付票を指定の住所に郵送"
+          },
+          {
+            "id": "依頼書登録の結果を確認する",
+            "depth": 2,
+            "text": "依頼書登録の結果を確認する"
+          },
+          {
+            "id": "依頼書登録における注意事項",
+            "depth": 2,
+            "text": "依頼書登録における注意事項"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "口座登録をする"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%8F%A3%E5%BA%A7%E7%99%BB%E9%8C%B2%E3%82%92%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "口座登録をする"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "口座振替を行うには、事前に購入者の口座情報を登録する必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nfincodeでは「Web登録」と「依頼書登録」の2つの登録方法を用意しています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "登録した口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n口座登録が完了すると、その\"決済手段\"のステータスは"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ACTIVE: 有効"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "になり決済処理に利用できるようになります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録方法"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "詳細"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "振替可能までの期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能金融機関"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録費用"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "#web-register"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Web登録"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/api#operation/postPaymentMethods"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "fincodeのAPI"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "value": "からレスポンスされる口座登録用URLへ購入者を誘導し、そのWebページ上で登録手続きを完了させる方式です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "全ての手続きがWeb上で完結します。"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録完了次第"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "制限あり"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/payment/directdebit/restriction"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "一覧はこちら"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "登録成功時のみ発生"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "#paper-register"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "依頼書登録"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "購入者が、紙の口座振替依頼書を記入・押印し、ショップにて口座を登録する方式です。"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "依頼書送付から約1.5ヶ月"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ほぼ利用可能"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "nuxt-link",
+                              "props": {
+                                "to": "/payment/directdebit/restriction"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "一覧はこちら"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "発生なし"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "web-register"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録とは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%A8%E3%81%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録とは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録とは、購入者がWebブラウザ上にてショップサイトを経由し、金融機関側の入力画面にて口座情報を入力する方式です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n紙の記入や郵送が必要な依頼書登録とは異なり、手続きがWebで完結するため、シームレスなユーザー体験を提供することができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "口座振替を実行する口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n口座登録手続きが完了すると、その\"決済手段\"のステータスは"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ACTIVE (有効)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "になり決済処理に利用できるようになります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録の流れ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%AE%E6%B5%81%E3%82%8C",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録の流れ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "Web登録の流れ",
+                    "src": "/assets/images/directdebit/payment_method_web_registration_flow.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップはfincodeの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済手段 登録"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をリクエストし、口座登録用の"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "をレスポンスで受け取ります。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ショップは購入者に"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を案内します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は案内された"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "リダイレクト先URL(redirect_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へアクセスし、各金融機関が提供する口座振替受付用のWebサイトへ自動的に遷移します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は遷移先の口座振替受付用のWebサイトにて、認証手続きを完了させます。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "金融機関がfincodeに登録結果を通知します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "購入者は"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "inline-api"
+                        ]
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "決済手段 登録"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "リクエスト時に指定した"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "加盟店戻りURL(return_url)"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へリダイレクトし、手続きが完了します。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "リダイレクト先urlの使用回数制限"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%85%88url%E3%81%AE%E4%BD%BF%E7%94%A8%E5%9B%9E%E6%95%B0%E5%88%B6%E9%99%90",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "リダイレクト先URLの使用回数制限"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録（口座振替・Web登録）"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "のレスポンスとして返却される"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "は1度しかアクセスできません。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n2度目以降のアクセスでは、各金融機関が提供する口座振替受付用のWebサイトには遷移せず、直接"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "加盟店戻りURL(return_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "へリダイレクトされます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "がアクセス済みかどうかは、決済手段オブジェクトの"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URLアクセス済みフラグ(redirect_url_accessed_flag)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "が"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1: アクセス済み"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "であることを確認します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "もし購入者が"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "にアクセスし、認証手続きが完了しないうちに遷移先の金融機関Webページから離脱してしまった場合などは、再度"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を実行し、新規に"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "リダイレクト先URL(redirect_url)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を取得しなおす必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※この場合のように口座登録手続きが最後まで完了しなかった場合は、その決済手段の"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ステータス(status)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "は"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "AWAITING_CUSTOMER_ACTION: 顧客のアクション待ち"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "のままとなり、決済処理に利用することができません。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "web登録で発生する費用"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#web%E7%99%BB%E9%8C%B2%E3%81%A7%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E8%B2%BB%E7%94%A8",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Web登録で発生する費用"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録の方式で口座登録をした場合、決済手数料とは別にWeb登録手数料が発生します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nなお、依頼書登録の場合やWeb登録で口座登録に失敗した場合は発生しません。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※詳細は"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://www.faq.mizuhobank.co.jp/faq/show/11337?site_domain=houjin",
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "料金表"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "をご確認ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Web登録手数料は、fincodeからショップへの入金額と相殺されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこの費用が集計期間中の入金額を上回った場合、fincodeは登録された請求先に対して請求を行います。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nプラットフォームタイプのショップにおいては、顧客情報の共有設定によってWeb登録の請求先が異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "顧客情報を共有している場合："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nプラットフォーム（メインショップ）に対して請求します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "顧客情報を共有していない場合："
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n各テナントに対して請求します。なお、"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/platform/setting"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "標準プラットフォーム利用料"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "としてWeb登録に係る費用に対して上乗せをし、テナントから収益を得ることができます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "paper-register"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録とは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%A8%E3%81%AF",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録とは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書登録は、購入者が紙の口座振替依頼書（以下、依頼書）を記入・押印し、ショップがその内容をfincode上に登録する方式です。 \n依頼書の回収から初回の引き落としまで約1.5ヶ月かかりますが、ほぼすべての金融機関で口座振替の利用が可能です。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録の流れ"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AE%E6%B5%81%E3%82%8C",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録の流れ"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step1購入者へ依頼書記入を依頼"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step1%E8%B3%BC%E5%85%A5%E8%80%85%E3%81%B8%E4%BE%9D%E9%A0%BC%E6%9B%B8%E8%A8%98%E5%85%A5%E3%82%92%E4%BE%9D%E9%A0%BC",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP1】購入者へ依頼書記入を依頼"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者に依頼書をお渡しし、記入および捺印を依頼してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n依頼書に不備があると口座登録が失敗するため、依頼書内の案内に沿って正確にご記入いただくようご案内ください。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "2025年12月1日以降はフォーマットが変更となります。以降のご利用は新しい依頼書をご使用ください。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "▼2025年11月末までにご利用の場合"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "旧依頼書フォーマット"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  ▼2025年12月1日以降にご利用の場合"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "新依頼書フォーマット"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  ※依頼書のレイアウト変更は承っていません。\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step2購入者より依頼書を回収必要事項の記入"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step2%E8%B3%BC%E5%85%A5%E8%80%85%E3%82%88%E3%82%8A%E4%BE%9D%E9%A0%BC%E6%9B%B8%E3%82%92%E5%9B%9E%E5%8F%8E%E5%BF%85%E8%A6%81%E4%BA%8B%E9%A0%85%E3%81%AE%E8%A8%98%E5%85%A5",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP2】購入者より依頼書を回収・必要事項の記入"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者が記入した依頼書の原本を回収後、依頼書内のショップ使用欄に「依頼書ID」「ご契約者名義」「ショップID」をご記入ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n「依頼書ID」は、fincode上の登録と依頼書を紐づけるIDとなります。口座ごとにショップ側でIDを決めて記入してください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step3依頼書に記載されている口座情報をfincode上に登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step3%E4%BE%9D%E9%A0%BC%E6%9B%B8%E3%81%AB%E8%A8%98%E8%BC%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E5%8F%A3%E5%BA%A7%E6%83%85%E5%A0%B1%E3%82%92fincode%E4%B8%8A%E3%81%AB%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP3】依頼書に記載されている口座情報をfincode上に登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "購入者から回収した依頼書を基に、fincode上に口座情報を登録してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "span",
+                  "props": {
+                    "className": [
+                      "inline-api"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済手段 登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "もしくは管理画面からの登録（顧客＞アクション＞口座登録（依頼書））のいずれかの方法でご登録ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step4依頼書送付票を指定の住所に郵送"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step4%E4%BE%9D%E9%A0%BC%E6%9B%B8%E9%80%81%E4%BB%98%E7%A5%A8%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%AE%E4%BD%8F%E6%89%80%E3%81%AB%E9%83%B5%E9%80%81",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "【STEP4】依頼書・送付票を指定の住所に郵送"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincode上での口座登録が完了後、依頼書をまとめて送付票を添付し、指定の住所に郵送してください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "nuxt-link",
+                  "props": {
+                    "to": "/payment/directdebit/schedule"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "口座振替年間スケジュール"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を参照のうえ、到着期限までに郵送を完了する必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n依頼書が到着期限に間に合わない場合も、fincode上に登録した口座に対して振替依頼は実行されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこの場合、引き落としができなくても、決済手数料が発生しますのでご注意ください。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "2025年12月1日以降はフォーマットが変更となります。以降のご利用は新しい送付票をご使用ください。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "▼2025年11月末までにご利用の場合"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "旧送付票フォーマット"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  ▼2025年12月1日以降にご利用の場合"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "element",
+                      "tag": "nuxt-link",
+                      "props": {
+                        "download": "【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx",
+                        "target": "_blank",
+                        "to": "/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "新送付票フォーマット"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n※送付先住所は、送付票内に記載がございます。\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "依頼書に不備があると口座登録に失敗するため、事前に不備がないかチェックを実施することを推奨します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n主にチェックするべき項目は下記のとおりです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "チェックポイント"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "依頼書に記入された口座情報が正しくfincode上に登録されているかご確認ください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送付票をA4サイズで印刷してください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "送付票が同梱されていない場合や送付票のサイズが異なる場合は受付ができません。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "金融機関への提出後は原則、原本の返却は不可となります。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "必ずショップにてコピーを保管してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "送付票に記入した枚数と、実際に送付する依頼書の枚数が一致しているか確認してください。"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録の結果を確認する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AE%E7%B5%90%E6%9E%9C%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録の結果を確認する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "郵送した依頼書の返却はいたしません。以下の内容をもって、登録結果の成否を判断ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "登録成功："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n初回の口座振替で口座からの引き落としが成功したことをもって、口座登録が完了とみなしてください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "b",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "登録失敗："
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n依頼書に不備があった場合、ご登録いただいた「担当者1・2」のメールアドレス宛にご連絡します。 "
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nまた、Webhook"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "customers.payment.methods.updated"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を設定している場合は、同イベントでも通知を受け取れます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n不備が発生した場合、新たな依頼書を再提出し、fincode上での登録もやり直す必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n一度使用した依頼書IDはご利用いただけませんので、新たな依頼書IDを採番して購入者にご案内ください。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nなお、不備となった依頼書IDを削除すれば、同じIDを再度使用することも可能ですが、不備内容などの登録履歴も削除されるため、取り扱いにはご注意ください。 "
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "依頼書登録における注意事項"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E4%BE%9D%E9%A0%BC%E6%9B%B8%E7%99%BB%E9%8C%B2%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "依頼書登録における注意事項"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "過去に「同一預金口座」に対する依頼書が、同一の収納企業経由で正常に登録完了している場合、今回ご提出いただいた依頼書に不備があり fincode 経由で不備通知を行っていても、実際の振替処理自体は成功するケースがあります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nこれは、一般社団法人全国銀行協会の平成19年3月7日付の通達に基づく銀行側の運用であり、fincode 側で制御できるものではありません。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "blockquote",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "p",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "strong",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "同一預金口座に係る依頼書の取扱い（一部抜粋）"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n銀行は、同一収納企業に対する同一預金口座による預金口座振替依頼書については、料金等の種類等が異なっていても、改めて依頼書の提出を受けることなく、銀行に最初に提出された依頼書によって振替処理を行ってもさしつかえない。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "なお、別経路での登録状態がいつ無効化・解除されるかは不明なため、不備通知を受け取った場合は、改めて正しい依頼書の再送と fincode 上への再登録を実施してください。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 口座登録をする\n\n口座振替を行うには、事前に購入者の口座情報を登録する必要があります。  \nfincodeでは「Web登録」と「依頼書登録」の2つの登録方法を用意しています。  \n\n登録した口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。  \n口座登録が完了すると、その\"決済手段\"のステータスは`ACTIVE: 有効`になり決済処理に利用できるようになります。\n\n|登録方法|詳細|振替可能までの期間|利用可能金融機関|登録費用|\n|:----|:----|:----|:----|:----|\n|[Web登録](#web-register)|[fincodeのAPI](/api#operation/postPaymentMethods)からレスポンスされる口座登録用URLへ購入者を誘導し、そのWebページ上で登録手続きを完了させる方式です。<br>全ての手続きがWeb上で完結します。|登録完了次第|制限あり<br>[一覧はこちら](/payment/directdebit/restriction)|登録成功時のみ発生|\n|[依頼書登録](#paper-register)|購入者が、紙の口座振替依頼書を記入・押印し、ショップにて口座を登録する方式です。|依頼書送付から約1.5ヶ月|ほぼ利用可能<br>[一覧はこちら](/payment/directdebit/restriction)|発生なし|\n\n<h1 id=\"web-register\">Web登録</h1>\n\n## Web登録とは\n\nWeb登録とは、購入者がWebブラウザ上にてショップサイトを経由し、金融機関側の入力画面にて口座情報を入力する方式です。  \n紙の記入や郵送が必要な依頼書登録とは異なり、手続きがWebで完結するため、シームレスなユーザー体験を提供することができます。\n\n口座振替を実行する口座情報はfincodeのAPIにおいて\"決済手段 (Payment Method)\"というエンティティとして操作します。  \n口座登録手続きが完了すると、その\"決済手段\"のステータスは`ACTIVE (有効)`になり決済処理に利用できるようになります。\n\n## Web登録の流れ\n\n![Web登録の流れ](/assets/images/directdebit/payment_method_web_registration_flow.png)\n\n1. ショップはfincodeの<span class=\"inline-api\">決済手段 登録</span>をリクエストし、口座登録用の`リダイレクト先URL(redirect_url)`をレスポンスで受け取ります。\n2. ショップは購入者に`リダイレクト先URL(redirect_url)`を案内します。\n3. 購入者は案内された`リダイレクト先URL(redirect_url)`へアクセスし、各金融機関が提供する口座振替受付用のWebサイトへ自動的に遷移します。\n4. 購入者は遷移先の口座振替受付用のWebサイトにて、認証手続きを完了させます。\n5. 金融機関がfincodeに登録結果を通知します。\n6. 購入者は<span class=\"inline-api\">決済手段 登録</span>リクエスト時に指定した`加盟店戻りURL(return_url)`へリダイレクトし、手続きが完了します。\n\n## リダイレクト先URLの使用回数制限\n\n<span class=\"inline-api\">決済手段 登録（口座振替・Web登録）</span>のレスポンスとして返却される`リダイレクト先URL(redirect_url)`は1度しかアクセスできません。  \n2度目以降のアクセスでは、各金融機関が提供する口座振替受付用のWebサイトには遷移せず、直接`加盟店戻りURL(return_url)`へリダイレクトされます。  \n`リダイレクト先URL(redirect_url)`がアクセス済みかどうかは、決済手段オブジェクトの`リダイレクト先URLアクセス済みフラグ(redirect_url_accessed_flag)`が`1: アクセス済み`であることを確認します。\n\nもし購入者が`リダイレクト先URL(redirect_url)`にアクセスし、認証手続きが完了しないうちに遷移先の金融機関Webページから離脱してしまった場合などは、再度<span class=\"inline-api\">決済手段 登録</span>を実行し、新規に`リダイレクト先URL(redirect_url)`を取得しなおす必要があります。  \n※この場合のように口座登録手続きが最後まで完了しなかった場合は、その決済手段の`ステータス(status)`は`AWAITING_CUSTOMER_ACTION: 顧客のアクション待ち`のままとなり、決済処理に利用することができません。\n\n\n## Web登録で発生する費用\n\nWeb登録の方式で口座登録をした場合、決済手数料とは別にWeb登録手数料が発生します。  \nなお、依頼書登録の場合やWeb登録で口座登録に失敗した場合は発生しません。  \n※詳細は<a href=\"https://www.faq.mizuhobank.co.jp/faq/show/11337?site_domain=houjin\" target=\"_blank\">料金表</a>をご確認ください。  \n\n\nWeb登録手数料は、fincodeからショップへの入金額と相殺されます。  \nこの費用が集計期間中の入金額を上回った場合、fincodeは登録された請求先に対して請求を行います。  \nプラットフォームタイプのショップにおいては、顧客情報の共有設定によってWeb登録の請求先が異なります。  \n\n<b>顧客情報を共有している場合：</b>    \nプラットフォーム（メインショップ）に対して請求します。  \n\n<b>顧客情報を共有していない場合：</b> \n各テナントに対して請求します。なお、[標準プラットフォーム利用料](/platform/setting)としてWeb登録に係る費用に対して上乗せをし、テナントから収益を得ることができます。\n\n\n<h1 id=\"paper-register\">依頼書登録</h1>\n\n## 依頼書登録とは\n\n依頼書登録は、購入者が紙の口座振替依頼書（以下、依頼書）を記入・押印し、ショップがその内容をfincode上に登録する方式です。  \n依頼書の回収から初回の引き落としまで約1.5ヶ月かかりますが、ほぼすべての金融機関で口座振替の利用が可能です。 \n\n## 依頼書登録の流れ\n\n### 【STEP1】購入者へ依頼書記入を依頼\n\n購入者に依頼書をお渡しし、記入および捺印を依頼してください。  \n依頼書に不備があると口座登録が失敗するため、依頼書内の案内に沿って正確にご記入いただくようご案内ください。 \n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">2025年12月1日以降はフォーマットが変更となります。以降のご利用は新しい依頼書をご使用ください。<br>▼2025年11月末までにご利用の場合<br><a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx\" target=\"_blank\">旧依頼書フォーマット</a><br>\n  ▼2025年12月1日以降にご利用の場合<br><a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx\" target=\"_blank\">新依頼書フォーマット</a><br>\n  ※依頼書のレイアウト変更は承っていません。\n  </div>\n</div>\n\n### 【STEP2】購入者より依頼書を回収・必要事項の記入\n\n購入者が記入した依頼書の原本を回収後、依頼書内のショップ使用欄に「依頼書ID」「ご契約者名義」「ショップID」をご記入ください。  \n「依頼書ID」は、fincode上の登録と依頼書を紐づけるIDとなります。口座ごとにショップ側でIDを決めて記入してください。\n\n### 【STEP3】依頼書に記載されている口座情報をfincode上に登録\n\n購入者から回収した依頼書を基に、fincode上に口座情報を登録してください。  \n<span class=\"inline-api\">決済手段 登録</span>もしくは管理画面からの登録（顧客＞アクション＞口座登録（依頼書））のいずれかの方法でご登録ください。\n\n### 【STEP4】依頼書・送付票を指定の住所に郵送\n\nfincode上での口座登録が完了後、依頼書をまとめて送付票を添付し、指定の住所に郵送してください。  \n[口座振替年間スケジュール](/payment/directdebit/schedule)を参照のうえ、到着期限までに郵送を完了する必要があります。  \n依頼書が到着期限に間に合わない場合も、fincode上に登録した口座に対して振替依頼は実行されます。  \nこの場合、引き落としができなくても、決済手数料が発生しますのでご注意ください。 \n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">2025年12月1日以降はフォーマットが変更となります。以降のご利用は新しい送付票をご使用ください。<br>▼2025年11月末までにご利用の場合<br><a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx\" target=\"_blank\">旧送付票フォーマット</a><br>\n  ▼2025年12月1日以降にご利用の場合<br><a href=\"/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx\" download=\"【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx\" target=\"_blank\">新送付票フォーマット</a><br>\n※送付先住所は、送付票内に記載がございます。\n  </div>\n</div>\n\n\n依頼書に不備があると口座登録に失敗するため、事前に不備がないかチェックを実施することを推奨します。  \n主にチェックするべき項目は下記のとおりです。\n\n|チェックポイント|\n|:----|\n|依頼書に記入された口座情報が正しくfincode上に登録されているかご確認ください。|\n|送付票をA4サイズで印刷してください。<br>送付票が同梱されていない場合や送付票のサイズが異なる場合は受付ができません。|\n|金融機関への提出後は原則、原本の返却は不可となります。<br>必ずショップにてコピーを保管してください。|\n|送付票に記入した枚数と、実際に送付する依頼書の枚数が一致しているか確認してください。|\n\n## 依頼書登録の結果を確認する\n\n郵送した依頼書の返却はいたしません。以下の内容をもって、登録結果の成否を判断ください。\n\n<b>登録成功：</b>  \n初回の口座振替で口座からの引き落としが成功したことをもって、口座登録が完了とみなしてください。\n\n<b>登録失敗：</b>  \n依頼書に不備があった場合、ご登録いただいた「担当者1・2」のメールアドレス宛にご連絡します。   \nまた、Webhook`customers.payment.methods.updated`を設定している場合は、同イベントでも通知を受け取れます。  \n不備が発生した場合、新たな依頼書を再提出し、fincode上での登録もやり直す必要があります。  \n一度使用した依頼書IDはご利用いただけませんので、新たな依頼書IDを採番して購入者にご案内ください。  \nなお、不備となった依頼書IDを削除すれば、同じIDを再度使用することも可能ですが、不備内容などの登録履歴も削除されるため、取り扱いにはご注意ください。 \n\n## 依頼書登録における注意事項\n\n過去に「同一預金口座」に対する依頼書が、同一の収納企業経由で正常に登録完了している場合、今回ご提出いただいた依頼書に不備があり fincode 経由で不備通知を行っていても、実際の振替処理自体は成功するケースがあります。  \nこれは、一般社団法人全国銀行協会の平成19年3月7日付の通達に基づく銀行側の運用であり、fincode 側で制御できるものではありません。\n\n> **同一預金口座に係る依頼書の取扱い（一部抜粋）**  \n> 銀行は、同一収納企業に対する同一預金口座による預金口座振替依頼書については、料金等の種類等が異なっていても、改めて依頼書の提出を受けることなく、銀行に最初に提出された依頼書によって振替処理を行ってもさしつかえない。\n\nなお、別経路での登録状態がいつ無効化・解除されるかは不明なため、不備通知を受け取った場合は、改めて正しい依頼書の再送と fincode 上への再登録を実施してください。\n\n",
+        "dir": "/payment/directdebit_mhf/register",
+        "path": "/payment/directdebit_mhf/register/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994140039
+        },
+        "$loki": 92
       }
     }
   ]

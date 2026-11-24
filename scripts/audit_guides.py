@@ -132,12 +132,12 @@ def main() -> None:
         parser.feed(fragment)
         if JAPANESE.search("".join(parser.visible_text)):
             errors.append(f"译文仍含日文假名：{page['translation']}")
-        if parser.tags["h1"] != 1:
-            errors.append(f"译文必须且只能有一个 h1：{page['translation']}")
-
         source = source_pages[page["source_path"]]
         source_elements = list(walk_elements(source.get("body", {})))
         source_counts = Counter(element.get("tag") for element in source_elements)
+        expected_headings = max(1, source_counts["h1"])
+        if parser.tags["h1"] != expected_headings:
+            errors.append(f"译文应有 {expected_headings} 个 h1：{page['translation']}")
         source_codes = [
             text_content(element)
             for element in source_elements

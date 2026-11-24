@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 登记账户中文指南。" />
+    <title>登记账户 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">登记账户</a></li>
+<li><a href="../index.html">银行账户自动扣款简介</a></li>
+<li><a href="../execution/index.html">执行扣款处理</a></li>
+<li><a href="../schedule/index.html">扣款年度日程</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="index.html">银行账户自动扣款（1、5、20、26 日）</a></li><li aria-current="page">登记账户</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="口座登録をする">登记账户</h1>
+<p>要使用银行账户自动扣款，必须先登记买家的账户信息。<br>
+fincode 提供“Web 登记”和“申请书登记”两种登记方式。</p>
+<p>已登记的账户信息在 fincode API 中作为“支付方式（Payment Method）”实体操作。<br>
+账户登记完成后，该支付方式的状态变为<code>ACTIVE: 有効</code>，即可用于处理支付。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">登记方式</th><th align="left">详情</th><th align="left">到可扣款为止所需时间</th><th align="left">支持的金融机构</th><th align="left">登记费用</th></tr></thead><tbody><tr><td align="left"><a href="#web-register">Web 登记</a></td><td align="left">将买家引导至 <a href="../../../../reference.html#operation/createCustomerPaymentMethod">fincode API</a> 返回的账户登记 URL，由买家在该网页完成登记。<br>所有手续均在线完成。</td><td align="left">登记完成后即可使用</td><td align="left">有限制<br><a href="https://docs.fincode.jp/payment/directdebit/restriction">查看列表</a></td><td align="left">仅在登记成功时收取</td></tr><tr><td align="left"><a href="#paper-register">申请书登记</a></td><td align="left">由买家填写并盖章纸质银行账户自动扣款申请书，再由商户登记账户。</td><td align="left">自寄出申请书起约 1.5 个月</td><td align="left">大多数金融机构均可使用<br><a href="https://docs.fincode.jp/payment/directdebit/restriction">查看列表</a></td><td align="left">免费</td></tr></tbody></table>
+<h1 id="web-register">Web 登记</h1>
+<h2 id="web登録とは">什么是 Web 登记</h2>
+<p>买家通过网页浏览器从商户网站进入金融机构的页面，在对应的输入界面填写账户信息。<br>
+申请书登记需要填写和邮寄纸质表格，Web 登记则全程在线办理，能够让买家顺畅地完成手续。</p>
+<p>用于执行银行账户自动扣款的账户信息在 fincode API 中作为“支付方式（Payment Method）”实体操作。<br>
+账户登记手续完成后，该支付方式的状态变为<code>ACTIVE (有効)</code>，即可用于处理支付。</p>
+<h2 id="web登録の流れ">Web 登记流程</h2>
+<p><img alt="Web 登记流程" src="../../../../assets/payment-guides/directdebit/payment_method_web_registration_flow.png"></p>
+<ol>
+<li>商户向 fincode 发起<span class="inline-api">登记支付方式</span>请求，并在响应中收到用于登记账户的<code>リダイレクト先URL(redirect_url)</code>。</li>
+<li>商户将<code>リダイレクト先URL(redirect_url)</code>提供给买家。</li>
+<li>买家访问收到的<code>リダイレクト先URL(redirect_url)</code>，随后自动跳转到相应金融机构受理银行账户自动扣款的网站。</li>
+<li>买家在跳转后的银行账户自动扣款受理网站完成身份验证。</li>
+<li>金融机构将登记结果通知 fincode。</li>
+<li>买家被重定向至<span class="inline-api">登记支付方式</span>请求中指定的<code>加盟店戻りURL(return_url)</code>，手续完成。</li>
+</ol>
+<h2 id="リダイレクト先urlの使用回数制限">跳转目标 URL 的访问次数限制</h2>
+<p><span class="inline-api">登记支付方式（银行账户自动扣款、Web 登记）</span>响应中返回的<code>リダイレクト先URL(redirect_url)</code>只能访问一次。<br>
+从第二次访问起，系统会跳过金融机构的银行账户自动扣款受理网站，直接重定向至<code>加盟店戻りURL(return_url)</code>。<br>
+<code>リダイレクト先URL(redirect_url)</code>是否已经被访问，可以通过查看支付方式对象中的<code>リダイレクト先URLアクセス済みフラグ(redirect_url_accessed_flag)</code>是否为<code>1: アクセス済み</code>来判断。</p>
+<p>如果买家打开<code>リダイレクト先URL(redirect_url)</code>后，在认证完成前离开了金融机构页面，则需重新执行<span class="inline-api">登记支付方式</span>，重新获取<code>リダイレクト先URL(redirect_url)</code>。<br>
+※如果账户登记手续未完成，该支付方式的<code>ステータス(status)</code>仍为<code>AWAITING_CUSTOMER_ACTION: 顧客のアクション待ち</code>，无法用于处理支付。</p>
+<h2 id="web登録で発生する費用">Web 登记产生的费用</h2>
+<p>通过 Web 方式登记账户时，除支付手续费外，还会收取 Web 登记手续费。<br>
+使用申请书登记或 Web 登记失败时，均不收取此费用。<br>
+※详情请查看<a href="https://www.faq.mizuhobank.co.jp/faq/show/11337?site_domain=houjin" target="_blank">费率表</a>。</p>
+<p>Web 登记手续费会从 fincode 向商户支付的入账款中抵扣。<br>
+如果该费用超过当期入账金额，fincode 会向已登记的账单收件方收费。<br>
+对于平台类型的商户，Web 登记的账单收件方取决于是否共享客户信息。</p>
+<p><b>共享客户信息</b><br>
+向平台（主商户）收费。</p>
+<p><b>未共享客户信息</b>
+向各租户商户收费。平台可以在 Web 登记费用上加收款项，作为<a href="../../../platform/setting/index.html">标准平台使用费</a>从租户商户获得收入。</p>
+<h1 id="paper-register">申请书登记</h1>
+<h2 id="依頼書登録とは">什么是申请书登记</h2>
+<p>买家填写并盖章纸质银行账户自动扣款申请书（下称申请书），商户再将内容登记到 fincode。自回收申请书至首次扣款需约 1.5 个月，几乎所有金融机构都支持这种方式。 </p>
+<h2 id="依頼書登録の流れ">申请书登记流程</h2>
+<h3 id="step1購入者へ依頼書記入を依頼">第 1 步：请买家填写申请书</h3>
+<p>请将申请书交给买家并请其填写、盖章。<br>
+申请书有问题会导致账户登记失败，请提示买家按申请书中的说明准确填写。 </p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">申请书格式自 2025 年 12 月 1 日起变更。此后请使用新版申请书。<br>▼截至 2025 年 11 月底使用时<br><a download="【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx" target="_blank" href="https://docs.fincode.jp/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v1.0.xlsx">旧版申请书</a><br>
+  ▼自 2025 年 12 月 1 日起使用时<br><a download="【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx" target="_blank" href="https://docs.fincode.jp/assets/files/payment/【口座振替（1日・5日・20日・26日）】口座振替依頼書_v2.0.xlsx">新版申请书</a><br>
+  ※申请书的版式无法更改。
+  </div>
+</div>
+<h3 id="step2購入者より依頼書を回収必要事項の記入">第 2 步：回收买家的申请书并填写必要信息</h3>
+<p>回收买家填写的申请书原件后，请在商户填写栏中填写“申请书 ID”“签约人名义”和“商户 ID”。<br>
+申请书 ID 用于关联 fincode 中的登记与纸质申请书。请由商户为每个账户确定并填写此 ID。</p>
+<h3 id="step3依頼書に記載されている口座情報をfincode上に登録">第 3 步：将申请书中的账户信息登记到 fincode</h3>
+<p>请根据从买家处回收的申请书，将账户信息登记到 fincode。<br>
+<span class="inline-api">登记支付方式</span>可通过此 API 执行，也可以在控制面板中登记（客户 &gt; 操作 &gt; 账户登记（申请书））。</p>
+<h3 id="step4依頼書送付票を指定の住所に郵送">第 4 步：将申请书和寄送单寄往指定地址</h3>
+<p>在 fincode 中登记账户之后，请汇总申请书并附上寄送单，一并寄往指定地址。<br>
+<a href="../../directdebit/schedule/index.html">银行账户自动扣款年度日程</a>列明了相关期限，请按时寄送，确保在截止日之前送达。<br>
+即使申请书未能及时送达，fincode 也会向已登记的账户发起扣款请求。<br>
+在这种情况下，即使扣款失败也会产生支付手续费。 </p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">寄送单格式自 2025 年 12 月 1 日起变更。此后请使用新版寄送单。<br>▼截至 2025 年 11 月底使用时<br><a download="【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx" target="_blank" href="https://docs.fincode.jp/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v1.0.xlsx">旧版寄送单</a><br>
+  ▼自 2025 年 12 月 1 日起使用时<br><a download="【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx" target="_blank" href="https://docs.fincode.jp/assets/files/payment/【口座振替（1日・5日・20日・26日）】送付票_v2.0.xlsx">新版寄送单</a><br>
+※收件地址标注在寄送单上。
+  </div>
+</div>
+<p>申请书有问题会导致账户登记失败，建议事先检查。<br>
+主要检查以下项目。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">检查要点</th></tr></thead><tbody><tr><td align="left">确认申请书上的账户信息已正确登记到 fincode。</td></tr><tr><td align="left">使用 A4 纸打印寄送单。<br>未附寄送单或寄送单尺寸不符，将无法受理。</td></tr><tr><td align="left">申请书提交给金融机构后，原则上不退回原件。<br>请商户务必保留副本。</td></tr><tr><td align="left">确认寄送单上填写的份数与实际寄送的申请书份数一致。</td></tr></tbody></table>
+<h2 id="依頼書登録の結果を確認する">确认申请书登记结果</h2>
+<p>已寄出的申请书不会退回。请根据以下情况判断登记是否成功。</p>
+<p><b>登记成功</b><br>
+首次自动扣款成功即视为账户登记完成。</p>
+<p><b>登记失败</b><br>
+如果申请书有问题，我们会通过已登记的“负责人 1 和 2”的邮箱联系您。 <br>
+如果设置了 Webhook<code>customers.payment.methods.updated</code>，也可以通过该事件接收通知。<br>
+申请书有问题时，须重新提交新申请书，并在 fincode 中重新登记。<br>
+已使用过的申请书 ID 无法再次使用。请分配新的申请书 ID 并告知买家。<br>
+删除有问题的申请书 ID 后可以重新使用同一个 ID。请留意，删除时也会清除包括问题详情在内的登记记录。 </p>
+<h2 id="依頼書登録における注意事項">申请书登记注意事项</h2>
+<p>如果同一个存款账户过去已通过同一家代收企业成功登记，即使这次提交的申请书有问题且 fincode 已发出通知，扣款本身也可能成功。<br>
+这是银行依据日本全国银行协会 2007 年 3 月 7 日的通知所采用的做法，fincode 无法控制。</p>
+<blockquote>
+<p><strong>同一存款账户的申请书处理办法（节选）</strong><br>
+对于同一家代收企业使用同一存款账户提交的自动扣款申请书，即使费用等项目的种类不同，银行也可以依据首次提交的申请书处理扣款，无需再次收取申请书。</p>
+</blockquote>
+<p>其他渠道的登记何时失效或解除无法确定。如果收到申请书问题通知，请重新寄送正确的申请书，并在 fincode 中重新登记。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/directdebit_mhf/register" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

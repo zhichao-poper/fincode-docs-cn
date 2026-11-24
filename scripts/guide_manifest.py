@@ -221,6 +221,8 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/directdebit/register', 'directdebit', '登记账户', '登记账户'),
+        ('payment/directdebit_mhf/register', 'directdebit_mhf', '登记账户', '登记账户'),
         ('payment/directdebit/status', 'directdebit', '查看支付状态', '查看支付状态'),
         ('payment/directdebit_mhf', 'directdebit_mhf', '什么是银行账户自动扣款', '银行账户自动扣款简介'),
         ('payment/directdebit_mhf/execution', 'directdebit_mhf', '执行扣款处理', '执行扣款处理'),
