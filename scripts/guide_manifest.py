@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'payment_method': '支付方式 API',
     'invoice_mpb': '账单功能（M’s PayBridge）',
     'invoice': '账单功能',
     'card_updater': '卡片信息自动更新',
@@ -230,6 +231,11 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/payment_method', 'payment_method', '什么是支付方式（Payment Method）', '支付方式简介'),
+        ('payment/payment_method/card', 'payment_method', '使用支付方式 API 处理卡片支付', '卡片支付'),
+        ('payment/payment_method/directdebit_account', 'payment_method', '使用支付方式 API 处理银行账户自动扣款', '银行账户自动扣款'),
+        ('payment/payment_method/virtualaccount', 'payment_method', '使用支付方式 API 管理客户的固定虚拟账户', '固定虚拟账户'),
+        ('payment/payment_method/status', 'payment_method', '查看支付方式状态', '查看支付方式状态'),
         ('payment/invoice_mpb', 'invoice_mpb', '什么是账单功能', '账单功能简介'),
         ('payment/invoice_mpb/use-invoice', 'invoice_mpb', '使用账单功能', '使用账单功能'),
         ('payment/invoice_mpb/setting', 'invoice_mpb', '账单设置', '账单设置'),

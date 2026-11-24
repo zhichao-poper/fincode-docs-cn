@@ -78,6 +78,14 @@
 <li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
 <li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
 </ul>
+<p class="guide-nav-section"><span>支付方式 API</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../payment_method/index.html">支付方式简介</a></li>
+<li><a href="../../payment_method/card/index.html">卡片支付</a></li>
+<li><a href="../../payment_method/directdebit_account/index.html">银行账户自动扣款</a></li>
+<li><a href="../../payment_method/virtualaccount/index.html">固定虚拟账户</a></li>
+<li><a href="../../payment_method/status/index.html">查看支付方式状态</a></li>
+</ul>
 <p class="guide-nav-section"><span>账单功能（M’s PayBridge）</span><i aria-hidden="true"></i></p>
 <ul class="guide-nav-list">
 <li><a href="../../invoice_mpb/index.html">账单功能简介</a></li>
@@ -216,7 +224,7 @@
 
 <table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">未支付</td><td align="left">UNPROCESSED</td><td align="left">交易已登记，扣款尚未完成。</td></tr><tr><td align="left">等待支付处理</td><td align="left">AWAITING_PAYMENT_APPROVAL</td><td align="left">正在等待 fincode 和金融机构处理并批准扣款。</td></tr><tr><td align="left">销售额已确认</td><td align="left">CAPTURED</td><td align="left">销售额已经确认。<br>进入此状态时，本笔交易的扣款金额将计入当期的销售额。</td></tr><tr><td align="left">已取消</td><td align="left">CANCELED</td><td align="left">交易已取消。</td></tr><tr><td align="left">失败</td><td align="left">FAILED</td><td align="left">因余额不足等原因导致扣款失败。<br>可通过扣款结果的 Webhook 通知，或<span class="inline-api">获取支付信息</span>返回的<code>result_code</code>了解具体原因。<sup>※</sup></td></tr></tbody></table>
 <p><sup>※</sup>如果 result_code 的值为<code>2, 3, 7, 8, 9, E, N</code>中的任意一个，则本次支付所用的支付方式也会变为<code>失敗（FAILED）</code>状态。<br>
-详情请参阅<a href="https://docs.fincode.jp/payment/payment_method/directdebit_account">使用支付方式 API 处理银行账户自动扣款</a>。</p>
+详情请参阅<a href="../../payment_method/directdebit_account/index.html">使用支付方式 API 处理银行账户自动扣款</a>。</p>
 <h2 id="status">交易状态转换</h2>
 <p>“－”表示没有对应的结果或操作。</p>
 

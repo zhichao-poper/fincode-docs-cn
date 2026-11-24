@@ -1,0 +1,35 @@
+<h1 id="決済手段の状態を参照する">查看支付方式状态</h1>
+<p>支付方式（Payment Method）具有状态。通过检查支付方式对象中的<code>status</code>字段，可以判断该支付方式是否可用于收费等。</p>
+<h2 id="決済手段状態一覧">支付方式状态列表</h2>
+<p>支付方式可处于以下状态。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">未激活</td><td align="left">INACTIVATED</td><td align="left">支付方式已登记给客户，暂时无法指定为收费对象。</td></tr><tr><td align="left">等待客户操作</td><td align="left">AWAITING_CUSTOMER_ACTION</td><td align="left">正在等待客户批准登记支付方式等操作，暂时无法指定为收费对象。<br><code>redirect_url</code>可用时，将客户引导至该 URL。</td></tr><tr><td align="left">已激活</td><td align="left">ACTIVATED</td><td align="left">支付方式已生效。<br>执行支付时可以指定该支付方式 ID 作为收费对象。</td></tr><tr><td align="left">失败</td><td align="left">FAILED</td><td align="left">支付方式激活失败，无法指定为收费对象。只能通过 API 或控制面板执行删除。</td></tr></tbody></table>

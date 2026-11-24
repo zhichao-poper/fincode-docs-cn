@@ -1,0 +1,251 @@
+<h1 id="カード決済で決済手段apiを使う">使用支付方式 API 处理卡片支付</h1>
+<p>在卡片支付中，支付方式（Payment Method）表示与客户关联的已登记信用卡信息。<br>
+执行支付时指定支付方式 ID，即可使用对应卡片支付。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+<p>支付方式 API 兼容<a href="/api#tag/%E3%82%AB%E3%83%BC%E3%83%89">卡片 API</a>的所有操作。新接入时，建议使用支付方式 API。</p>
+  </div>
+</div>
+<h2 id="決済手段状態一覧">支付方式状态列表</h2>
+<p>表示卡片信息的支付方式可处于以下状态（<code>status</code>）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">状态名称</th><th align="left">状态</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">未激活</td><td align="left">INACTIVATED</td><td align="left">3DS 2.0 验证初始化失败。执行支付时无法指定此卡片。</td></tr><tr><td align="left">等待客户操作</td><td align="left">AWAITING_CUSTOMER_ACTION</td><td align="left">3DS 2.0 验证初始化成功，正在等待客户完成 3DS 验证。执行支付时暂时无法指定此卡片。<code>リダイレクト先URL（redirect_url）</code>可用时，请将客户引导至 3DS 验证页面。</td></tr><tr><td align="left">已激活</td><td align="left">ACTIVATED</td><td align="left">卡片已激活。可指定此支付方式 ID 执行支付。</td></tr></tbody></table>
+<h2 id="決済手段の状態遷移">支付方式的状态转换</h2>
+<p>表示卡片信息的支付方式状态（<code>status</code>）按以下规则转换。“－”表示没有对应的结果或操作。</p>
+<p><img alt="卡片支付方式状态转换图" src="/assets/images/card/payment_method_card_status_state1.png"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">操作前状态</th><th align="left">操作后状态</th><th align="left">备注</th></tr></thead><tbody><tr><td align="left">登记支付方式（未使用 3DS 验证）</td><td align="left">－</td><td align="left">已激活（ACTIVATED）</td><td align="left"></td></tr><tr><td align="left">登记支付方式（使用 3DS 验证，初始化成功）</td><td align="left">－</td><td align="left">等待客户操作（AWAITING_CUSTOMER_ACTION）</td><td align="left"><code>redirect_url</code>会被签发。请将客户引导至 3DS 验证页面。</td></tr><tr><td align="left">登记支付方式（使用 3DS 验证，初始化失败）</td><td align="left">－</td><td align="left">未激活（INACTIVATED）</td><td align="left"></td></tr><tr><td align="left">客户完成 3DS 验证</td><td align="left">等待客户操作（AWAITING_CUSTOMER_ACTION）</td><td align="left">已激活（ACTIVATED）</td><td align="left">结果通知 Webhook<code>customers.payment_methods.updated</code>会发出通知。</td></tr><tr><td align="left">更新支付方式（3DS 重新验证，初始化成功）</td><td align="left">已激活（ACTIVATED）</td><td align="left">等待客户操作（AWAITING_CUSTOMER_ACTION）</td><td align="left"><code>redirect_url</code>会被签发。请将客户引导至 3DS 验证页面。</td></tr><tr><td align="left">客户完成 3DS 验证（更新时）</td><td align="left">等待客户操作（AWAITING_CUSTOMER_ACTION）</td><td align="left">已激活（ACTIVATED）</td><td align="left">结果通知 Webhook<code>customers.payment_methods.updated</code>会发出通知。</td></tr><tr><td align="left">删除支付方式</td><td align="left">（任意状态）</td><td align="left">（删除）</td><td align="left"></td></tr></tbody></table>
+<h2 id="3dセキュア20認証の状態一覧">3D Secure 2.0 验证状态列表</h2>
+<p>表示卡片信息的支付方式除了有自身状态外，还有登记卡片时的 3D Secure 2.0 验证状态（<code>card.tds2_status</code>）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>状态</th><th>说明</th></tr></thead><tbody><tr><td><code>AUTHENTICATING</code>（验证中）</td><td>已开始验证。</td></tr><tr><td><code>CHALLENGE</code>（执行挑战验证）</td><td>买家需要进行额外验证（挑战）。</td></tr><tr><td><code>AUTHENTICATED</code>（验证完成）</td><td>已完成验证。登记卡片时如果启用了 3D Secure 2.0 验证，进入此状态后，支付方式会变为已激活（ACTIVATED）。</td></tr></tbody></table>
+<h2 id="3dセキュア20認証の状態遷移">3D Secure 2.0 验证状态转换</h2>
+<p>登记卡片时的 3D Secure 2.0 验证状态（<code>card.tds2_status</code>）按以下规则转换。“－”表示没有对应的结果或操作。</p>
+<p><img alt="3D Secure 2.0 验证状态转换图" src="/assets/images/card/payment_method_card_3dsecure_state1.png"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">操作</th><th align="left">操作前状态</th><th align="left">操作后状态</th><th align="left">备注</th></tr></thead><tbody><tr><td align="left">登记支付方式（使用 3DS 验证，初始化成功）</td><td align="left">－</td><td align="left">验证中（AUTHENTICATING）</td><td align="left">登记卡片时如果启用了 3D Secure 2.0 验证，支付方式状态<code>status</code>会变为等待客户操作（AWAITING_CUSTOMER_ACTION）。</td></tr><tr><td align="left">登记支付方式（使用 3DS 验证，初始化失败）</td><td align="left">－</td><td align="left">－</td><td align="left"></td></tr><tr><td align="left">客户完成 3DS 验证</td><td align="left">验证中（AUTHENTICATING）</td><td align="left">验证完成（AUTHENTICATED）</td><td align="left">登记卡片时如果启用了 3D Secure 2.0 验证，此时支付方式的状态<code>status</code>会变为已激活（ACTIVATED）。</td></tr><tr><td align="left">触发挑战验证</td><td align="left">验证中（AUTHENTICATING）</td><td align="left">执行挑战验证（CHALLENGE）</td><td align="left"></td></tr><tr><td align="left">客户通过挑战验证完成 3DS 验证</td><td align="left">执行挑战验证（CHALLENGE）</td><td align="left">验证完成（AUTHENTICATED）</td><td align="left">登记卡片时如果启用了 3D Secure 2.0 验证，此时支付方式状态<code>status</code>会变为已激活（ACTIVATED）。</td></tr><tr><td align="left">更新支付方式（3DS 重新验证，初始化成功）</td><td align="left">验证完成（AUTHENTICATED）</td><td align="left">验证中（AUTHENTICATING）</td><td align="left">此后的状态转换与登记时相同。</td></tr></tbody></table>
+<h2 id="apiを使う">使用 API</h2>
+<h3 id="カードを登録する">登记卡片</h3>
+<p><span class="inline-api">在登记支付方式</span>（<code>POST /v1/customers/{customer_id}/payment_methods</code>）的请求体中，将 <code>pay_type</code> 设为 <code>Card</code> ，即可为指定客户登记卡片信息。</p>
+<p>登记时的 3DS 验证由 <code>3DS認証設定（tds_type）</code> 指定。<code>tds_type</code> 将 <code>2</code> 设为此值时，登记会使用 3DS 验证。用于跳转至 3DS 验证页面的 <code>リダイレクト先URL（redirect_url）</code> 将包含在响应中。请引导客户访问此 URL 完成 3DS 验证。<code>tds_type</code> 未指定此值时，登记不使用 3DS 验证。登记成功后，支付方式状态会直接变为<code>有効化済み（ACTIVATED）</code>。</p>
+<h3 id="登録済みカードを一覧取得する--1件取得する">获取已登记卡片的列表或单张卡片</h3>
+<p><span class="inline-api">在获取支付方式列表</span>（<code>GET /v1/customers/{customer_id}/payment_methods</code>）中指定 <code>pay_type=Card</code> ，即可获取客户已登记的卡片列表。<br>
+<span class="inline-api">获取支付方式</span>（<code>GET /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code>）可以获取指定支付方式 ID 的一条卡片信息。</p>
+<p>获取结果的响应中， <code>card</code> 字段包含卡片状态和 3DS 验证状态等信息。</p>
+<h3 id="カード情報を更新する">更新卡片信息</h3>
+<p><span class="inline-api">更新支付方式</span>（<code>PUT /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code>）可更新卡片信息。</p>
+<h4 id="有効性確認オーソリの実施条件">执行有效性检查（授权）的条件</h4>
+<p>是否执行有效性检查（授权）取决于更新请求所包含的参数。</p>
+<p>更新请求包含以下参数时会进行有效性检查。</p>
+<ul>
+<li><code>token</code>（卡片令牌）</li>
+<li><code>default_flag</code>（默认标志）</li>
+<li><code>holder_name</code>（持卡人）</li>
+<li><code>expire</code>（有效期）</li>
+</ul>
+<p>更新请求只更改以下参数时不会进行有效性检查。</p>
+<ul>
+<li><code>card_updater_mode</code>（卡片自动更新设置）</li>
+<li><code>client_field_1</code> 〜 <code>client_field_3</code>（商户自定义字段）</li>
+</ul>
+<h4 id="tds_type-の指定">指定 tds_type</h4>
+<p>如果更新请求会执行有效性检查，则必须指定<code>3DS認証設定（tds_type）</code> 。<code>tds_type</code> 将 <code>2</code> 设为此值时，会执行 3DS 重新验证，<code>リダイレクト先URL（redirect_url）</code> 将包含在响应中。请引导客户访问此 URL 完成 3DS 验证。</p>
+<h3 id="カードを削除する">删除卡片</h3>
+<p><span class="inline-api">删除支付方式</span>（<code>DELETE /v1/customers/{customer_id}/payment_methods/{payment_method_id}</code>）可删除卡片。</p>
+<p>删除默认卡片时，如果客户还登记了其他卡片，系统会自动将另一张设为默认卡片。</p>
+<div class="custom-block-common custom-block">
+  <div class="custom-block-title-common custom-block-title">
+  自动更换默认卡片时不考虑卡片状态。“未激活（INACTIVATED）”或“等待客户操作（AWAITING_CUSTOMER_ACTION）”的卡片可能被设为默认卡片。可考虑在删除前先将其他卡片设为默认卡片。
+  </div>
+</div>
+<h2 id="カード更新機能洗替の設定">设置卡片信息自动更新</h2>
+<p><span class="inline-api">在登记支付方式</span>或<span class="inline-api">更新支付方式</span>的请求中指定 <code>カード更新設定（card_updater_mode）</code> ，可以逐张控制是否将卡片纳入自动更新。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">设置值</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left"><code>enabled</code></td><td align="left">将此卡纳入自动更新范围。无论商户级设置如何，均执行自动更新。</td></tr><tr><td align="left"><code>disabled</code></td><td align="left">将此卡排除在自动更新范围之外。无论商户级设置如何，均不执行自动更新。</td></tr><tr><td align="left"><code>inherit</code>（默认值）</td><td align="left">遵循商户级卡片自动更新设置。</td></tr></tbody></table>
+<p><code>card_updater_mode</code> 是唯一变更项时，更新请求不会执行有效性检查（授权）。<br>
+关于卡片信息自动更新的详情，请参阅<a href="/payment/card_updater">什么是卡片信息自动更新</a>。</p>
+<h2 id="webhookイベント">Webhook 事件</h2>
+<p>对卡片支付方式执行操作或完成验证时，会发送以下 Webhook 事件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">事件名称</th><th align="left">发送时间</th></tr></thead><tbody><tr><td align="left"><code>customers.payment_methods.updated</code></td><td align="left">卡片登记、更新、删除或 3DS 验证完成时</td></tr><tr><td align="left"><code>card.update</code></td><td align="left">卡片信息自动更新结果确认时</td></tr></tbody></table>
+<p><code>customers.payment_methods.updated</code> 该事件的载荷包含支付方式对象（卡片）。<br>
+<code>card.update</code> 有关事件详情，请参阅<a href="/payment/card_updater/receive-card_updater-by-webhook">通过 Webhook 接收卡片自动更新结果</a>。</p>
+<p>有关 API 详情，请参阅<a href="/api#tag/%E6%B1%BA%E6%B8%88%E6%89%8B%E6%AE%B5">API 参考（支付方式）</a>。</p>
