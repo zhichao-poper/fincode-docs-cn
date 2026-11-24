@@ -202,3 +202,26 @@ PAGES += [
         ('business_management/accounts_receivable_management/export_ar', '将账单信息导出为 CSV'),
     )
 ]
+
+# 其他付款方式
+SECTIONS.update({
+    'directdebit': '银行账户自动扣款',
+})
+
+PAGES += [
+    {
+        "key": route.replace("/", "-"),
+        "section": section,
+        "title": title,
+        "nav_title": nav_title,
+        "source_path": f"/{route}/index",
+        "source_url": f"https://docs.fincode.jp/{route}",
+        "translation": f"translations/guides/{route}/index.html",
+        "output": f"site/guides/{route}/index.html",
+    }
+    for route, section, title, nav_title in (
+        ('payment/directdebit', 'directdebit', '什么是银行账户自动扣款', '银行账户自动扣款简介'),
+        ('payment/directdebit/execution', 'directdebit', '执行扣款处理', '执行扣款处理'),
+        ('payment/directdebit/schedule', 'directdebit', '银行账户自动扣款年度日程', '扣款年度日程'),
+    )
+]
