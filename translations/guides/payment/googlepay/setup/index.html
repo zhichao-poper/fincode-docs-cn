@@ -1,0 +1,31 @@
+<h1 id="google-payを本番環境で利用するための設定">在生产环境使用 Google Pay 的设置</h1>
+<p>要通过 fincode 在自有服务中接入 Google Pay 并开始在生产环境运行，需要取得 Google 商户 ID。要取得该 ID，必须申请在生产环境使用 Google Pay API。</p>
+<ul>
+<li>第 1 步：通过 Google Pay &amp; Wallet Console 申请在生产环境使用 Google Pay API</li>
+<li>第 2 步：取得 Google 商户 ID</li>
+<li>第 3 步：将 Google Pay 前端源代码改为生产环境配置</li>
+</ul>
+<h2 id="step1-google-pay--wallet-consoleからgoogle-pay-apiの本番環境での利用を申請">第 1 步：通过 Google Pay &amp; Wallet Console 申请在生产环境使用 Google Pay API</h2>
+<p><a href="https://pay.google.com/business/console" rel="nofollow noopener noreferrer" target="_blank">Google Pay &amp; Wallet Console</a>（原 Google Pay Business Console），使用 Google 账号登录。</p>
+<p>登录 Google Pay &amp; Wallet Console 后，按以下步骤申请在生产环境使用 Google Pay API。</p>
+<ol>
+<li>要申请在生产环境使用 Google Pay API，请进入 Google Pay &amp; Wallet Console 的“Google Pay API”页面中的“集成”。</li>
+<li>接入网站时，从“Integrate with your website”栏开始填写信息。接入 Android 应用时，从“Integrate with your Android app”栏开始填写信息。如果需要选择 integration type（集成类型），请选择“Gateway（网关）”。</li>
+<li>填写申请表的必填信息，点击页面上方的“Submit for approval”完成申请。</li>
+</ol>
+<h2 id="step2-google販売者idを取得">第 2 步：取得 Google 商户 ID</h2>
+<p>Google Pay &amp; Wallet Console 顶部会显示 Google 商户 ID（Merchant ID）。第 3 步将使用此值。</p>
+<h2 id="step3-google-payに関するフロントエンドのソースコードを本番用に変更する">第 3 步：将 Google Pay 前端源代码改为生产环境配置</h2>
+<p>将获取 Google Pay 支付令牌的前端源代码改为生产配置。以下为网页接入的变更示例。</p>
+<h3 id="1-paymentsclientの環境指定を本番用に変更する">1. 将 PaymentsClient 的环境设置改为生产环境</h3>
+<p>将用于获取 Google Pay 支付令牌的 PaymentsClient 的环境设置改为生产环境。</p>
+<div class="nuxt-content-highlight"><pre class="language-js line-numbers"><code><span class="token keyword">const</span> paymentsClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">google<span class="token punctuation">.</span>payments<span class="token punctuation">.</span>api<span class="token punctuation">.</span>PaymentsClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  environment<span class="token operator">:</span> <span class="token string">'PRODUCTION'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>
+<h3 id="2-販売者idを設定する">2. 设置商户 ID</h3>
+<div class="nuxt-content-highlight"><pre class="language-js line-numbers"><code><span class="token keyword">const</span> merchantInfo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  merchantId<span class="token operator">:</span> <span class="token punctuation">,</span> <span class="token comment">// [TODO] Google販売者IDを設定</span>
+  merchantName<span class="token operator">:</span> <span class="token string">'○○ショップ'</span> <span class="token comment">// Google Payシート上に表示されるショップ名 </span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 在生产环境使用 Google Pay 的设置中文指南。" />
+    <title>在生产环境使用 Google Pay 的设置 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/googlepay/setup" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/googlepay/setup" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+<li><a href="../../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">Google Pay 简介</a></li>
+<li><a href="index.html" aria-current="page" class="active">生产环境设置</a></li>
+<li><a href="../execution/index.html">执行支付处理</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../restriction/index.html">限制事项</a></li>
+<li><a href="../note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../subscription/index.html">订阅简介</a></li>
+<li><a href="../../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../index.html">Google Pay</a></li><li aria-current="page">在生产环境使用 Google Pay 的设置</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="google-payを本番環境で利用するための設定">在生产环境使用 Google Pay 的设置</h1>
+<p>要通过 fincode 在自有服务中接入 Google Pay 并开始在生产环境运行，需要取得 Google 商户 ID。要取得该 ID，必须申请在生产环境使用 Google Pay API。</p>
+<ul>
+<li>第 1 步：通过 Google Pay &amp; Wallet Console 申请在生产环境使用 Google Pay API</li>
+<li>第 2 步：取得 Google 商户 ID</li>
+<li>第 3 步：将 Google Pay 前端源代码改为生产环境配置</li>
+</ul>
+<h2 id="step1-google-pay--wallet-consoleからgoogle-pay-apiの本番環境での利用を申請">第 1 步：通过 Google Pay &amp; Wallet Console 申请在生产环境使用 Google Pay API</h2>
+<p><a href="https://pay.google.com/business/console" rel="nofollow noopener noreferrer" target="_blank">Google Pay &amp; Wallet Console</a>（原 Google Pay Business Console），使用 Google 账号登录。</p>
+<p>登录 Google Pay &amp; Wallet Console 后，按以下步骤申请在生产环境使用 Google Pay API。</p>
+<ol>
+<li>要申请在生产环境使用 Google Pay API，请进入 Google Pay &amp; Wallet Console 的“Google Pay API”页面中的“集成”。</li>
+<li>接入网站时，从“Integrate with your website”栏开始填写信息。接入 Android 应用时，从“Integrate with your Android app”栏开始填写信息。如果需要选择 integration type（集成类型），请选择“Gateway（网关）”。</li>
+<li>填写申请表的必填信息，点击页面上方的“Submit for approval”完成申请。</li>
+</ol>
+<h2 id="step2-google販売者idを取得">第 2 步：取得 Google 商户 ID</h2>
+<p>Google Pay &amp; Wallet Console 顶部会显示 Google 商户 ID（Merchant ID）。第 3 步将使用此值。</p>
+<h2 id="step3-google-payに関するフロントエンドのソースコードを本番用に変更する">第 3 步：将 Google Pay 前端源代码改为生产环境配置</h2>
+<p>将获取 Google Pay 支付令牌的前端源代码改为生产配置。以下为网页接入的变更示例。</p>
+<h3 id="1-paymentsclientの環境指定を本番用に変更する">1. 将 PaymentsClient 的环境设置改为生产环境</h3>
+<p>将用于获取 Google Pay 支付令牌的 PaymentsClient 的环境设置改为生产环境。</p>
+<div class="nuxt-content-highlight"><pre class="language-js line-numbers"><code><span class="token keyword">const</span> paymentsClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">google<span class="token punctuation">.</span>payments<span class="token punctuation">.</span>api<span class="token punctuation">.</span>PaymentsClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  environment<span class="token operator">:</span> <span class="token string">'PRODUCTION'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>
+<h3 id="2-販売者idを設定する">2. 设置商户 ID</h3>
+<div class="nuxt-content-highlight"><pre class="language-js line-numbers"><code><span class="token keyword">const</span> merchantInfo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  merchantId<span class="token operator">:</span> <span class="token punctuation">,</span> <span class="token comment">// [TODO] Google販売者IDを設定</span>
+  merchantName<span class="token operator">:</span> <span class="token string">'○○ショップ'</span> <span class="token comment">// Google Payシート上に表示されるショップ名 </span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/googlepay/setup" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

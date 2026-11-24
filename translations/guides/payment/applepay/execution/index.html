@@ -13,7 +13,7 @@ const MARCHANT_IDENTIFIER = "example.com.store"; // マーチャントID
 const APPLE_PAY_BUTTON_ID = "apple-pay-button"; // 任意のApple Payボタン要素のID名
 const SHOP_VALIDATION_ENDPOINT_URL =
     "https://your-server.example.com/applepay-session/validate"; // 任意のマーチャントセッション取得エンドポイントのURL
-     
+&#32;&#32;&#32;&#32;&#32;
 /* ブラウザがApple PayJSをサポートしている場合 */
 if (window.ApplePaySession) {
     const promise =
@@ -31,13 +31,13 @@ if (window.ApplePaySession) {
                 "style",
                 `-webkit-appearance: -apple-pay-button; -apple-pay-button-type: ${applePayButtonType}; -apple-pay-button-style: ${applePayButtonStyle};`
             );
-     
+&#32;&#32;&#32;&#32;&#32;
             // Apple PayボタンをDOMに追加
             const applePayButtonContainer = document.getElementById(
                 "{Apple Payボタンを追加したい要素のID}"
             );
             applePayButtonContainer.appendChild(applePayButton);
-     
+&#32;&#32;&#32;&#32;&#32;
             // Apple Payボタンをクリックしたときのイベントハンドラ
             applePayButton.addEventListener("click", (_) =&gt; {
                 // Apple Pay決済リクエスト
@@ -52,19 +52,19 @@ if (window.ApplePaySession) {
                         amount: "{金額}",
                     },
                 };
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Payセッションを作成
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/2320659-applepaysession
                 const applePaySession = new ApplePaySession(
                     APPLE_PAY_SUPPORTED_VERSION,
                     applePayPaymentRequest
                 );
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Payの支払いシートが表示され、マーチャントセッションの取得を求められたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778021-onvalidatemerchant
                 applePaySession.onvalidatemerchant = (event) =&gt; {
                     const validationURL = event.validationURL;
-     
+&#32;&#32;&#32;&#32;&#32;
                     // マーチャントセッションを取得
                     fetch(SHOP_VALIDATION_ENDPOINT_URL, {
                         method: "POST",
@@ -79,37 +79,37 @@ if (window.ApplePaySession) {
                         applePaySession.completeMerchantValidation(response);
                     });
                 };
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Payのキャンセルボタンが押されたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778029-oncancel
                 applePaySession.oncancel = (event) =&gt; {};
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Pay上で支払い方法が選択されたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778013-onpaymentmethodselected
                 applePaySession.onpaymentmethodselected = (event) =&gt; {};
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Pay上で配送方法が選択されたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778028-onshippingmethodselected
                 applePaySession.onshippingmethodselected = (event) =&gt; {};
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Pay上で配送先住所が選択されたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778009-onshippingcontactselected
                 applePaySession.onshippingcontactselected = (event) =&gt; {};
-     
+&#32;&#32;&#32;&#32;&#32;
                 // 購入者により購入が承認されたときのイベントハンドラ
                 // 参照: https://developer.apple.com/documentation/apple_pay_on_the_web/applepaysession/1778020-onpaymentauthorized
                 applePaySession.onpaymentauthorized = (event) =&gt; {
                     const token = event.payment.token;
-     
+&#32;&#32;&#32;&#32;&#32;
                     // トークンをBase64エンコード
                     // このBase64エンコード済みトークンを決済実行JSの引数もしくは決済実行APIのリクエストボディに含めます
                     const encodedToken = btoa(JSON.stringify(token.paymentData));
-     
+&#32;&#32;&#32;&#32;&#32;
                     /**
                      * 後続処理
                      */
                 };
-     
+&#32;&#32;&#32;&#32;&#32;
                 // Apple Payセッションを開始
                 applePaySession.begin();
             });
@@ -124,22 +124,22 @@ if (window.ApplePaySession) {
 <p>启动 Apple Pay 付款会话（sample.swift）</p>
 <pre><code class="language-swift">import UIKit
 import PassKit
-     
+&#32;&#32;&#32;&#32;&#32;
 let APPLE_PAY_MERCHANT_ID = "example.com.store"
-     
+&#32;&#32;&#32;&#32;&#32;
 class ViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
-     
+&#32;&#32;&#32;&#32;&#32;
     // Apple Payボタン
     @IBOutlet weak var applePayButton: UIView!
-     
+&#32;&#32;&#32;&#32;&#32;
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+&#32;&#32;&#32;&#32;&#32;
         let isApplePayAvailable = isApplePayAvailable()
-     
+&#32;&#32;&#32;&#32;&#32;
         /* もしApple Payが利用できる場合は、Apple Payボタンを表示する */
         if isApplePayAvailable {
-     
+&#32;&#32;&#32;&#32;&#32;
             // Apple Payボタンを作成
             let button = PKPaymentButton(type: .buy, style: .black)
             button.addAction(
@@ -148,28 +148,28 @@ class ViewController: UIViewController, PKPaymentAuthorizationViewControllerDele
                 }),
                 for: .touchUpInside
             )
-     
+&#32;&#32;&#32;&#32;&#32;
             // Apple Payボタンを表示
             applePayButton.addSubview(button)
         }
     }
-     
+&#32;&#32;&#32;&#32;&#32;
     // Apple Payで利用できるカードが少なくとも1つあるかどうかを判定
     func isApplePayAvailable() -&gt; Bool {
         if !PKPaymentAuthorizationViewController.canMakePayments() {
             // Apple Payは利用できない
             return false
         }
-     
+&#32;&#32;&#32;&#32;&#32;
         let networks = PKPaymentRequest.availableNetworks()
         if !PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(networks) {
             // Apple Pay機能は利用できるが、利用できるカードが登録されていない
             return false
         }
-     
+&#32;&#32;&#32;&#32;&#32;
         return true
     }
-     
+&#32;&#32;&#32;&#32;&#32;
     // Apple Payボタンがタップされた時の処理
     func onApplePayButtonTapped() {
         // Apple Payで支払いを行う
@@ -185,18 +185,18 @@ class ViewController: UIViewController, PKPaymentAuthorizationViewControllerDele
                 amount: NSDecimalNumber(string: "{{金額}}")
             )
         ]
-     
+&#32;&#32;&#32;&#32;&#32;
         let viewController = PKPaymentAuthorizationViewController(paymentRequest: request)
         viewController.delegate = self
         self.present(viewController, animated: true, completion: nil)
     }
-     
+&#32;&#32;&#32;&#32;&#32;
     // Apple Payで支払いが完了した時の処理
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Apple Payの支払シートを閉じる
         controller.dismiss(animated: true, completion: nil)
     }
-     
+&#32;&#32;&#32;&#32;&#32;
     // Apple Payで支払いが承認された時の処理
     func paymentAuthorizationViewController(
         _ controller: PKPaymentAuthorizationViewController,
@@ -204,18 +204,18 @@ class ViewController: UIViewController, PKPaymentAuthorizationViewControllerDele
         handler completion: @escaping (PKPaymentAuthorizationResult) -&gt; Void
     ) {
         let token = payment.token.paymentData
-     
+&#32;&#32;&#32;&#32;&#32;
         // トークンをBase64エンコード
         // このBase64エンコード済みのトークンを決済実行APIのリクエストに含めます
         let encodedToken = token.base64EncodedString()
-     
+&#32;&#32;&#32;&#32;&#32;
         /*
             後続処理
         */
-     
+&#32;&#32;&#32;&#32;&#32;
         // Apple Payの支払シートを閉じる
         controller.dismiss(animated: true, completion: nil)
-     
+&#32;&#32;&#32;&#32;&#32;
         // エラーなくApple Payでの支払いが完了したことを通知
         completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
     }

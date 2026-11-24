@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 执行支付处理中文指南。" />
+    <title>执行支付处理 | fincode 中文参考</title>
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../../index.html">docs</a><span>/</span><a href="../../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/payment/googlepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../../index.html">首页</a>
+            <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/payment/googlepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../../index.html">首页</a>
+        <a href="../../../tutorial/index.html">入门</a>
+<a class="active" href="../../card/index.html">支付</a>
+<a href="../../../business_management/index.html">业务管理</a>
+<a href="../../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="支付指南目录">
+        <a class="guide-overview-link" href="../../card/index.html"><span>支付</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section"><span>卡片支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../card/index.html">卡片支付简介</a></li>
+<li><a href="../../card/execution/index.html">执行支付处理</a></li>
+<li><a href="../../card/operation/index.html">运营示例</a></li>
+<li><a href="../../card/fraud-protection/index.html">防止盗刷（3D Secure）</a></li>
+<li><a href="../../card/fraud-protection/3d-secure-2/index.html">使用 3D Secure 2.0</a></li>
+<li><a href="../../card/status/index.html">查看支付状态</a></li>
+<li><a href="../../card/restrictions/index.html">限制事项</a></li>
+<li><a href="../../card/notes/index.html">注意事项</a></li>
+<li><a href="../../fraud_protection/3d_secure_required/index.html">强制使用 3D Secure 时的行为</a></li>
+<li><a href="../../glossary/index.html">术语表</a></li>
+</ul>
+<p class="guide-nav-section"><span>便利店支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../konbini/index.html">便利店支付简介</a></li>
+<li><a href="../../konbini/execution/index.html">执行支付处理</a></li>
+<li><a href="../../konbini/status/index.html">查看支付状态</a></li>
+<li><a href="../../konbini/notes/index.html">规范与注意事项</a></li>
+<li><a href="../../konbini/restrictions/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section" class="section-active"><span>Google Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">Google Pay 简介</a></li>
+<li><a href="../setup/index.html">生产环境设置</a></li>
+<li><a href="index.html" aria-current="page" class="active">执行支付处理</a></li>
+<li><a href="../status/index.html">查看支付状态</a></li>
+<li><a href="../operation/index.html">运营示例</a></li>
+<li><a href="../restriction/index.html">限制事项</a></li>
+<li><a href="../note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>Apple Pay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../applepay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../applepay/index.html">Apple Pay 简介</a></li>
+<li><a href="../../applepay/setup/index.html">准备接入 Apple Pay</a></li>
+<li><a href="../../applepay/status/index.html">查看支付状态</a></li>
+<li><a href="../../applepay/operation/index.html">运营示例</a></li>
+<li><a href="../../applepay/restriction/index.html">限制事项</a></li>
+<li><a href="../../applepay/note/index.html">规范与注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>跳转式支付</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../redirect_type/index.html">跳转式支付简介</a></li>
+<li><a href="../../redirect_type/card/index.html">跳转式卡片登记</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行转账（虚拟账户）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../virtualaccount/index.html">银行转账简介</a></li>
+<li><a href="../../virtualaccount/execution/index.html">执行支付处理</a></li>
+<li><a href="../../virtualaccount/exact-deposit-amount/index.html">可入账金额设置</a></li>
+<li><a href="../../virtualaccount/status/index.html">查看支付状态</a></li>
+<li><a href="../../virtualaccount/restriction/index.html">限制事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>PayPay</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../paypay/index.html">PayPay 简介</a></li>
+<li><a href="../../paypay/execution/index.html">执行支付处理</a></li>
+<li><a href="../../paypay/operation/index.html">运营示例</a></li>
+<li><a href="../../paypay/restriction/index.html">限制事项</a></li>
+<li><a href="../../paypay/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>订阅</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../subscription/index.html">订阅简介</a></li>
+<li><a href="../../subscription/manage/index.html">管理订阅</a></li>
+<li><a href="../../subscription/attention/index.html">注意事项</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款（1、5、20、26 日）</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit_mhf/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit_mhf/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit_mhf/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit_mhf/schedule/index.html">扣款年度日程</a></li>
+<li><a href="../../directdebit_mhf/status/index.html">查看支付状态</a></li>
+</ul>
+<p class="guide-nav-section"><span>银行账户自动扣款</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../../directdebit/register/index.html">登记账户</a></li>
+<li><a href="../../directdebit/status/index.html">查看支付状态</a></li>
+<li><a href="../../directdebit/index.html">银行账户自动扣款简介</a></li>
+<li><a href="../../directdebit/execution/index.html">执行扣款处理</a></li>
+<li><a href="../../directdebit/schedule/index.html">扣款年度日程</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../../index.html">首页</a></li><li><a href="../../card/index.html">支付</a></li><li><a href="../index.html">Google Pay</a></li><li aria-current="page">执行支付处理</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="決済処理を実行する">执行支付处理</h1>
+<p>fincode 使用支持 Google Pay 的设备生成的支付令牌处理 Google Pay 支付。</p>
+<h2 id="token-web">A. 在网站中获取支付令牌（JavaScript）</h2>
+<p>要在网站中接入 Google Pay，请先参阅 Google 提供的<a href="https://developers.google.com/pay/api/web/overview" rel="nofollow noopener noreferrer" target="_blank">Google Pay for Payments &gt; 网页</a>文档。</p>
+<p>网站使用由 CDN 提供的 Google Pay API 处理 Google Pay 支付。</p>
+<p>※有关网站上的 Google Pay 按钮样式和使用规范，请参阅<a href="https://developers.google.com/pay/api/web/guides/brand-guidelines" rel="nofollow noopener noreferrer" target="_blank">Google Pay 网页品牌指南</a>。</p>
+<h3 id="1-google-pay-apiの読み込み">1. 加载 Google Pay API</h3>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-html"><code><span class="token comment">&lt;!-- Google Pay APIの読み込み --&gt;</span>
+<span class="token comment">&lt;!-- 以下のscriptタグをHTMLのhead要素内に追加 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://pay.google.com/gp/p/js/pay.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Google Pay ボタンの表示 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>google-pay-button-mount-target<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div>
+<h3 id="2-google-payクライアントの初期化からトークンの取得まで">2. 从初始化 Google Pay 客户端到获取令牌</h3>
+<p>参考：<a href="https://developers.google.com/pay/api/web/guides/tutorial?full-example" rel="nofollow noopener noreferrer" target="_blank">https://developers.google.com/pay/api/web/guides/tutorial?full-example</a></p>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-js"><code><span class="token doc-comment comment">/**
+ * PaymentsClientオブジェクトを初期化
+ */</span>
+<span class="token keyword">const</span> paymentsClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">google<span class="token punctuation">.</span>payments<span class="token punctuation">.</span>api<span class="token punctuation">.</span>PaymentsClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  environment<span class="token operator">:</span> <span class="token string">'TEST'</span> <span class="token comment">// テスト環境の場合は'TEST'、本番環境の場合は'PRODUCTION'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Google Pay APIバージョンを指定
+ */</span>
+<span class="token keyword">const</span> baseRequest <span class="token operator">=</span> <span class="token punctuation">{</span>
+  apiVersion<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  apiVersionMinor<span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 決済トークンをリクエストするための情報を設定
+ */</span>
+<span class="token keyword">const</span> tokenizationSpecification <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">'PAYMENT_GATEWAY'</span><span class="token punctuation">,</span> <span class="token comment">// 固定値: PAYMENT_GATEWAY</span>
+  parameters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    gateway<span class="token operator">:</span> <span class="token string">'fincode'</span><span class="token punctuation">,</span> <span class="token comment">// 固定値: fincode</span>
+
+    <span class="token comment">// fincodeのショップIDを指定してください。正しく指定されていない場合、fincodeの決済実行APIでエラーになります。</span>
+    gatewayMerchantId<span class="token operator">:</span> <span class="token string">'s_01234567890'</span> <span class="token comment">// fincodeのショップID</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * ショップの情報を設定
+ */</span>
+<span class="token keyword">const</span> merchantInfo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  merchantId<span class="token operator">:</span> <span class="token string">'ABCDEFGHIJ01234'</span><span class="token punctuation">,</span> <span class="token comment">// Google販売者ID</span>
+  merchantName<span class="token operator">:</span> <span class="token string">'○○ショップ'</span> <span class="token comment">// Google Payシート上に表示されるショップ名 </span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 取引の情報を設定
+ */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getTransactionInfo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">amount<span class="token operator">:</span> <span class="token known-class-name class-name">String</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+    currencyCode<span class="token operator">:</span> <span class="token string">'JPY'</span><span class="token punctuation">,</span> <span class="token comment">// 通貨コード。fincodeではJPYのみ対応。</span>
+    totalPrice<span class="token operator">:</span> amount<span class="token punctuation">,</span> <span class="token comment">// 決済金額。fincodeでは7桁までの整数値で指定。</span>
+    totalPriceStatus<span class="token operator">:</span> <span class="token string">'FINAL'</span> <span class="token comment">// 決済金額が確定している場合は`FINAL`を指定。</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 利用するカード認証方法とカードブランドを指定
+ */</span>
+<span class="token comment">// allowedCardAuthMethods: 'PAN_ONLY'のみ対応。'CRYPTOGRAM_3DS'には非対応です。</span>
+<span class="token keyword">const</span> allowedCardAuthMethods <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'PAN_ONLY'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> allowedCardNetworks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'VISA'</span><span class="token punctuation">,</span> <span class="token string">'MASTERCARD'</span><span class="token punctuation">,</span> <span class="token string">'JCB'</span><span class="token punctuation">,</span> <span class="token string">'AMEX'</span><span class="token punctuation">,</span> <span class="token string">'DISCOVER'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * ユーザーから収集する請求先住所情報の設定
+ */</span>
+<span class="token keyword">const</span> billingAddressParameters <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// format: 未指定の場合、デフォルトで'MIN'が設定されます。</span>
+  format<span class="token operator">:</span> <span class="token string">'FULL'</span><span class="token punctuation">,</span> <span class="token comment">// 任意: 'MIN'または'FULL'</span>
+
+  <span class="token comment">// phoneNumberRequired: 未指定の場合、デフォルトでfalseが設定されます。</span>
+  phoneNumberRequired<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 任意: 電話番号を要求する場合はtrue</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 決済手段情報を設定
+ */</span>
+<span class="token keyword">const</span> baseCardPaymentMethod <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token string">'CARD'</span><span class="token punctuation">,</span>
+  parameters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    allowedAuthMethods<span class="token operator">:</span> allowedCardAuthMethods<span class="token punctuation">,</span>
+    allowedCardNetworks<span class="token operator">:</span> allowedCardNetworks<span class="token punctuation">,</span>
+    billingAddressParameters<span class="token operator">:</span> billingAddressParameters
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> cardPaymentMethod <span class="token operator">=</span> <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">assign</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span> tokenizationSpecification<span class="token operator">:</span> tokenizationSpecification<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  baseCardPaymentMethod
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 決済データリクエストを設定
+ */</span>
+<span class="token keyword">const</span> paymentDataRequest <span class="token operator">=</span> <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> baseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+paymentDataRequest<span class="token punctuation">.</span><span class="token property-access">allowedPaymentMethods</span> <span class="token operator">=</span> <span class="token punctuation">[</span>cardPaymentMethod<span class="token punctuation">]</span><span class="token punctuation">;</span>
+paymentDataRequest<span class="token punctuation">.</span><span class="token property-access">transactionInfo</span> <span class="token operator">=</span> <span class="token function">getTransactionInfo</span><span class="token punctuation">(</span><span class="token string">'1000'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+paymentDataRequest<span class="token punctuation">.</span><span class="token property-access">merchantInfo</span> <span class="token operator">=</span> merchantInfo<span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Google PayボタンをDOMに追加する関数
+ * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">{</span>HTMLElement<span class="token punctuation">}</span></span> <span class="token parameter">mountTarget</span> Google Payボタンを追加するDOM要素
+ */</span>
+<span class="token keyword">const</span> addGooglePayButton <span class="token operator">=</span> <span class="token punctuation">(</span>
+  mountTarget<span class="token punctuation">,</span> <span class="token comment">// Google Payボタンを追加するDOM要素</span>
+  onClick <span class="token comment">// Google Payボタンがクリックされたときのコールバック関数</span>
+<span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> button <span class="token operator">=</span> paymentsClient<span class="token punctuation">.</span><span class="token method function property-access">createButton</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    onClick<span class="token operator">:</span> onClick<span class="token punctuation">,</span> <span class="token comment">// Google Payボタンがクリックされたときのコールバック関数</span>
+    buttonColor<span class="token operator">:</span> <span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token comment">// ボタンの色を指定</span>
+    buttonType<span class="token operator">:</span> <span class="token string">'long'</span><span class="token punctuation">,</span> <span class="token comment">// ボタンの形状を指定</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  mountTarget<span class="token punctuation">.</span><span class="token method function property-access">appendChild</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Google Payボタンのクリックイベントハンドラ
+ *&#32;
+ * この関数内でfincodeの決済実行JSまたは決済実行APIに渡す決済トークンを取得します。
+ */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">onGooglePayButtonClick</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> paymentData <span class="token operator">=</span> <span class="token keyword control-flow">await</span> paymentsClient<span class="token punctuation">.</span><span class="token method function property-access">loadPaymentData</span><span class="token punctuation">(</span>paymentDataRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> token <span class="token operator">=</span> paymentData<span class="token punctuation">.</span><span class="token property-access">paymentMethodData</span><span class="token punctuation">.</span><span class="token property-access">tokenizationData</span><span class="token punctuation">.</span><span class="token property-access">token</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// トークンをBase64エンコード</span>
+    <span class="token comment">// [TODO] Base64エンコード済みのencodedTokenをfincodeの決済実行JSまたは決済実行APIに渡して決済処理を実行します。</span>
+    <span class="token keyword">const</span> encodedToken <span class="token operator">=</span> <span class="token function">btoa</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+&#32;&#32;
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 何らかの理由によりGoogle Payの決済トークン取得に失敗</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * 決済可能かどうかを確認する
+ *
+ */</span>
+<span class="token keyword">const</span> isReadyToPayRequest <span class="token operator">=</span> <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> baseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+isReadyToPayRequest<span class="token punctuation">.</span><span class="token property-access">allowedPaymentMethods</span> <span class="token operator">=</span> <span class="token punctuation">[</span>baseCardPaymentMethod<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+paymentsClient<span class="token punctuation">.</span><span class="token method function property-access">isReadyToPay</span><span class="token punctuation">(</span>isReadyToPayRequest<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token property-access">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// このとき、Google Payが利用可能</span>
+      <span class="token comment">// Google Payボタンを表示する</span>
+      <span class="token keyword">const</span> mountTarget <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'google-pay-button-mount-target'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Google Payボタンを追加するDOM要素</span>
+      <span class="token function">addGooglePayButton</span><span class="token punctuation">(</span>mountTarget<span class="token punctuation">,</span> onGooglePayButtonClick<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Google Payが何らかの理由で利用不可</span>
+    <span class="token comment">// 参照： https://developers.google.com/pay/api/web/reference/error-objects#PaymentsError</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div>
+<h3 id="3-統合チェックリストを確認する">3. 查看集成核对清单</h3>
+<p>在网站中实现 Google Pay 后，请查看 Google 提供的<a href="https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist" rel="nofollow noopener noreferrer" target="_blank">Google Pay 网页集成核对清单</a>。</p>
+<h2 id="token-android">B. 在 Android 应用中获取支付令牌（Kotlin）</h2>
+<p>要在 Android 应用中接入 Google Pay，请先参阅 Google 提供的文档<a href="https://developers.google.com/pay/api/android/overview" rel="nofollow noopener noreferrer" target="_blank">Google Pay for Payments &gt; Android</a>。</p>
+<p>※有关 Android 应用中的 Google Pay 按钮样式和使用规范，请参阅<a href="https://developers.google.com/pay/api/android/guides/brand-guidelines" rel="nofollow noopener noreferrer" target="_blank">Google Pay Android 品牌指南</a>。</p>
+<h3 id="1-必要な依存関係を追加">1. 添加所需依赖项</h3>
+<p>在应用模块的<code>build.gradle</code>或<code>build.gradle.kts</code>中添加以下依赖项。</p>
+<p>使用 Google Pay API 需要这些库。</p>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-text"><code>dependencies {
+    implementation 'com.google.android.gms:play-services-wallet:18.1.3'
+    implementation 'com.google.android.gms:play-services-tasks:17.2.0'&#32;&#32;&#32;
+}
+</code></pre></div>
+<h3 id="2-必要なマニフェスト設定を追加">2. 添加所需的清单设置</h3>
+<p>在项目清单文件的<code>AndroidManifest.xml</code> &gt; <code>&lt;application&gt;</code>标签内添加以下设置。</p>
+<p>启用 Google Pay API 需要这项设置。</p>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-xml"><code><span class="token comment">&lt;!-- Google Pay APIの設定: Wallet APIを有効にする --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+  <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.google.android.gms.wallet.api.enabled<span class="token punctuation">"</span></span>
+  <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
+<h3 id="3-google-pay-apiの初期化からトークンの取得まで">3. 从初始化 Google Pay API 到获取令牌</h3>
+<p>参考：<a href="https://developers.google.com/pay/api/android/guides/tutorial?full-example" rel="nofollow noopener noreferrer" target="_blank">https://developers.google.com/pay/api/android/guides/tutorial?full-example</a></p>
+<div class="nuxt-content-highlight"><pre class="line-numbers language-kotlin"><code><span class="token keyword">import</span> android<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Log
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>android<span class="token punctuation">.</span>gms<span class="token punctuation">.</span>wallet<span class="token punctuation">.</span>PaymentDataRequest
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>android<span class="token punctuation">.</span>gms<span class="token punctuation">.</span>wallet<span class="token punctuation">.</span>PaymentsClient
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>android<span class="token punctuation">.</span>gms<span class="token punctuation">.</span>wallet<span class="token punctuation">.</span>Wallet
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>android<span class="token punctuation">.</span>gms<span class="token punctuation">.</span>wallet<span class="token punctuation">.</span>WalletConstants
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>json<span class="token punctuation">.</span>JSONArray
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>json<span class="token punctuation">.</span>JSONObject
+
+<span class="token comment">/**
+ * このサンプルではMainActivityクラス内でGoogle Pay APIを使用していますが、プロジェクトの任意のクラスで同様の実装が可能です。
+ */</span>
+
+<span class="token keyword">class</span> MainActivity <span class="token operator">:</span> <span class="token function">AppCompatActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Google Pay APIのクライアント</span>
+    <span class="token keyword">private</span> <span class="token keyword">lateinit</span> <span class="token keyword">var</span> paymentsClient<span class="token operator">:</span> PaymentsClient
+
+    <span class="token comment">// Activity生成時にpaymentsClientを初期化</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token operator">:</span> Bundle<span class="token operator">?</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span>
+
+        <span class="token comment">// PaymentsClientを初期化</span>
+        paymentsClient <span class="token operator">=</span> Wallet<span class="token punctuation">.</span><span class="token function">getPaymentsClient</span><span class="token punctuation">(</span>
+            <span class="token keyword">this</span><span class="token punctuation">,</span>
+            Wallet<span class="token punctuation">.</span>WalletOptions<span class="token punctuation">.</span><span class="token function">Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setEnvironment</span><span class="token punctuation">(</span>WalletConstants<span class="token punctuation">.</span>ENVIRONMENT_TEST<span class="token punctuation">)</span> <span class="token comment">// テスト環境: ENVIRONMENT_TEST, 本番環境: ENVIRONMENT_PRODUCTION</span>
+                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        <span class="token function">checkGooglePayAvailability</span><span class="token punctuation">(</span>
+            paymentsClient<span class="token punctuation">,</span>
+            onAvailable <span class="token operator">=</span> <span class="token operator">::</span>onGooglePayAvailable
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+&#32;&#32;&#32;&#32;
+    <span class="token comment">// APIバージョンを指定</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> baseRequest <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"apiVersion"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"apiVersionMinor"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 決済トークンをリクエストするための情報を設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">getTokenizationSpecification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> JSONObject <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">,</span> <span class="token string">"PAYMENT_GATEWAY"</span><span class="token punctuation">)</span>
+            <span class="token function">put</span><span class="token punctuation">(</span>
+                <span class="token string">"parameters"</span><span class="token punctuation">,</span>
+                <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+                    <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"gateway"</span><span class="token punctuation">,</span> <span class="token string">"fincode"</span><span class="token punctuation">)</span>
+                    <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"gatewayMerchantId"</span><span class="token punctuation">,</span> <span class="token string">"s_01234567890"</span><span class="token punctuation">)</span> <span class="token comment">// fincodeのショップID</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// ショップの情報を設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">getMerchantInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> JSONObject <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"merchantId"</span><span class="token punctuation">,</span> <span class="token string">"ABCDEFGHIJ01234"</span><span class="token punctuation">)</span> <span class="token comment">// Google販売者ID</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"merchantName"</span><span class="token punctuation">,</span> <span class="token string">"○○ショップ"</span><span class="token punctuation">)</span> <span class="token comment">// Google Payシート上に表示されるショップ名</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 取引の情報を設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">getTransactionInfo</span><span class="token punctuation">(</span>amount<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> JSONObject <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"currencyCode"</span><span class="token punctuation">,</span> <span class="token string">"JPY"</span><span class="token punctuation">)</span> <span class="token comment">// 通貨コード。fincodeではJPYのみ対応。</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"totalPrice"</span><span class="token punctuation">,</span> amount<span class="token punctuation">)</span> <span class="token comment">// 決済金額。fincodeでは7桁までの整数値で指定。</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"totalPriceStatus"</span><span class="token punctuation">,</span> <span class="token string">"FINAL"</span><span class="token punctuation">)</span> <span class="token comment">// 決済金額が確定している場合は`FINAL`を指定。</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 利用するカード認証方法とカードブランドを指定</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> allowedCardAuthMethods <span class="token operator">=</span> <span class="token function">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"PAN_ONLY"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> allowedCardNetworks <span class="token operator">=</span> <span class="token function">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"VISA"</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"MASTERCARD"</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"JCB"</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"AMEX"</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"DISCOVER"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// ユーザーから収集する請求先住所情報の設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> billingAddressParameters <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"format"</span><span class="token punctuation">,</span> <span class="token string">"FULL"</span><span class="token punctuation">)</span> <span class="token comment">// 任意: 'MIN'または'FULL'</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"phoneNumberRequired"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token comment">// 任意: 電話番号を要求する場合はtrue</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 決済手段情報を設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> baseCardPaymentMethod <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"type"</span><span class="token punctuation">,</span> <span class="token string">"CARD"</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span>
+            <span class="token string">"parameters"</span><span class="token punctuation">,</span>
+            <span class="token function">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+                <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allowedAuthMethods"</span><span class="token punctuation">,</span> allowedCardAuthMethods<span class="token punctuation">)</span>
+                <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allowedCardNetworks"</span><span class="token punctuation">,</span> allowedCardNetworks<span class="token punctuation">)</span>
+                <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"billingAddressParameters"</span><span class="token punctuation">,</span> billingAddressParameters<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 決済データリクエストを設定</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> paymentDataRequest <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span>baseRequest<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allowedPaymentMethods"</span><span class="token punctuation">,</span> <span class="token function">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>baseCardPaymentMethod<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"transactionInfo"</span><span class="token punctuation">,</span> <span class="token function">getTransactionInfo</span><span class="token punctuation">(</span><span class="token string">"1000"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"merchantInfo"</span><span class="token punctuation">,</span> <span class="token function">getMerchantInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+&#32;&#32;&#32;&#32;
+    <span class="token comment">// Google Payが利用可能かどうかを確認</span>
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">checkGooglePayAvailability</span><span class="token punctuation">(</span>
+        paymentsClient<span class="token operator">:</span> PaymentsClient<span class="token punctuation">,</span>
+        onAvailable<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> Unit<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> isReadyToPayRequestJson <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span>baseRequest<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{</span>
+            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allowedPaymentMethods"</span><span class="token punctuation">,</span> <span class="token function">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>baseCardPaymentMethod<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">val</span> isReadyToPayRequest <span class="token operator">=</span> IsReadyToPayRequest<span class="token punctuation">.</span><span class="token function">fromJson</span><span class="token punctuation">(</span>isReadyToPayRequestJson<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        paymentsClient<span class="token punctuation">.</span><span class="token function">isReadyToPay</span><span class="token punctuation">(</span>isReadyToPayRequest<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">addOnCompleteListener</span> <span class="token punctuation">{</span> completedTask  <span class="token operator">-&gt;</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">val</span> result <span class="token operator">=</span> completedTask<span class="token punctuation">.</span><span class="token function">getResult</span><span class="token punctuation">(</span>ApiException<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> result<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// Google Payが利用可能</span>
+                        <span class="token function">onAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// [TODO] Google Payが利用不可の場合のエラーハンドリング</span>
+                        Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span><span class="token string">"Google Pay"</span><span class="token punctuation">,</span> <span class="token string">"Google Payが利用不可"</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token operator">:</span> Exception<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// [TODO] Google Payが利用不可の場合のエラーハンドリング</span>
+                    Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span><span class="token string">"Google Pay"</span><span class="token punctuation">,</span> <span class="token string">"Google Payが利用不可"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Google Payが利用可能な場合の処理</span>
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">onGooglePayAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#32;
+        <span class="token comment">// Google Payボタンを表示する</span>
+        <span class="token comment">// [TODO] Google Payボタンを表示する処理</span>
+        <span class="token comment">// [TODO] Google Payボタンのクリックイベントハンドラとして`onGooglePayButtonClick`を設定</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/*
+     * Google Payボタンがクリックされたときの処理
+     *
+     * この関数内でfincodeの決済実行APIに渡す決済トークンを取得します。
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> onGooglePayButtonClick <span class="token operator">=</span> <span class="token punctuation">{</span>
+        paymentsClient<span class="token punctuation">.</span><span class="token function">loadPaymentData</span><span class="token punctuation">(</span>paymentDataRequest<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">addOnCompleteListener</span> <span class="token punctuation">{</span> task <span class="token operator">-&gt;</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">val</span> paymentData <span class="token operator">=</span> task<span class="token punctuation">.</span><span class="token function">getResult</span><span class="token punctuation">(</span>ApiException<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span>
+                    <span class="token keyword">val</span> paymentMethodDataJsonStr <span class="token operator">=</span> paymentData<span class="token punctuation">.</span><span class="token function">toJson</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">val</span> paymentMethodData <span class="token operator">=</span> <span class="token function">JSONObject</span><span class="token punctuation">(</span>paymentMethodDataJsonStr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getJSONObject</span><span class="token punctuation">(</span><span class="token string">"paymentMethodData"</span><span class="token punctuation">)</span>
+                    <span class="token keyword">val</span> token <span class="token operator">=</span> paymentMethodData<span class="token punctuation">.</span><span class="token function">getJSONObject</span><span class="token punctuation">(</span><span class="token string">"tokenizationData"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span>
+
+                    <span class="token comment">// トークンをBase64エンコード</span>
+                    <span class="token keyword">val</span> encodedToken <span class="token operator">=</span> Base64<span class="token punctuation">.</span><span class="token function">encodeToString</span><span class="token punctuation">(</span>token<span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Base64<span class="token punctuation">.</span>NO_WRAP<span class="token punctuation">)</span>
+
+                    <span class="token comment">// [TODO] Base64エンコード済みのencodedTokenをfincodeの決済実行APIに渡して決済処理を実行します。</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token operator">:</span> ApiException<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// Google Payの決済トークン取得に失敗</span>
+                    <span class="token comment">// [TODO] Google Payの決済トークン取得に失敗した場合のエラーハンドリング</span>
+                    Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span><span class="token string">"Google Pay"</span><span class="token punctuation">,</span> <span class="token string">"Google Payの決済トークン取得に失敗"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div>
+<h3 id="4-統合チェックリストを確認する">4. 查看集成核对清单</h3>
+<p>在 Android 应用中实现 Google Pay 后，请查看 Google 提供的<a href="https://developers.google.com/pay/api/android/guides/test-and-deploy/integration-checklist" rel="nofollow noopener noreferrer" target="_blank">Google Pay Android 集成核对清单</a>。</p>
+<h2 id="決済を実行する">执行支付</h2>
+<h3 id="api-input-case">使用支付执行 API</h3>
+<p>将在网站或 Android 应用中取得的 Google Pay 支付令牌填入 fincode 支付执行 API 请求体的<code>token</code>参数，执行支付处理。</p>
+<p><img alt="使用支付执行 API 的支付流程" src="../../../../assets/payment-guides/applepay/payment_applepay.png"></p>
+<ol>
+<li>买家点击 Google Pay 按钮。</li>
+<li>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。登记可提前完成，但须在执行支付前完成。</li>
+<li>商户从设备取得支付令牌。</li>
+<li>商户将支付令牌填入支付执行 API 请求体的<code>token</code>参数，并<span class="inline-api">执行支付</span>。使用 EMV 3-D Secure 时，请在<code>return_url</code>参数中指定验证完成后的跳转 URL。</li>
+<li>（执行支付时指定<code>return_url</code>的情况下）支付执行 API 响应体的<code>redirect_url</code>含启动 EMV 3-D Secure 验证的 URL，请在浏览器中重定向到该 URL。</li>
+<li>EMV 3-D Secure 验证完成后，系统自动重定向到指定的<code>return_url</code>。</li>
+</ol>
+<p>※EMV 3-D Secure 可以沿用卡片支付中的实现。验证时如果不使用<code>return_url</code>/<code>redirect_url</code>，并希望更细致地控制流程，请参阅<a href="../../card/fraud-protection/3d-secure-2/index.html">进阶：从头实现启用 3D Secure 验证的卡片支付</a>及其中的实现示例。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">针对卡片支付盗刷损失迅速增加的情况，日本经济产业省发布《信用卡安全指南》，要求日本境内所有电子商务商户在 2025 年 3 月底前接入 EMV 3-D Secure（3D Secure 2.0）。在 fincode 中使用 Google Pay 必须接入 EMV 3-D Secure。</div>
+</div>
+<h3 id="js-input-case">使用支付执行 JS</h3>
+<p>在网站取得 Google Pay 支付令牌后，将令牌填入支付执行 JS 的<code>transaction.token</code>参数，并执行支付处理。</p>
+<p><img alt="使用支付执行 JS 的支付流程" src="../../../../assets/payment-guides/applepay/payment_applepay_js.png"></p>
+<ol>
+<li>
+<p>买家点击 Google Pay 按钮。</p>
+</li>
+<li>
+<p>商户调用 fincode 的<span class="inline-api">登记支付</span>接口。登记可提前完成，但须在执行支付前完成。</p>
+</li>
+<li>
+<p>商户从设备取得支付令牌。</p>
+</li>
+<li>
+<p>商户将支付令牌传给<span class="inline-api">支付执行 JS</span>并执行支付。</p>
+</li>
+<li>
+<p>（执行支付时指定<code>return_url</code>的情况下） <span class="inline-api">支付执行 JS</span>响应体的<code>redirect_url</code>含启动 EMV 3-D Secure 验证的 URL，请在浏览器中重定向到该 URL。</p>
+</li>
+<li>
+<p>EMV 3-D Secure 验证完成后，系统自动重定向到指定的<code>return_url</code>。</p>
+</li>
+</ol>
+<p>※EMV 3-D Secure 可以沿用卡片支付中的实现。验证时如果不使用<code>return_url</code>/<code>redirect_url</code>，并希望更细致地控制流程，请参阅<a href="../../card/fraud-protection/3d-secure-2/index.html">进阶：从头实现启用 3D Secure 验证的卡片支付</a>及其中的实现示例。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">针对卡片支付盗刷损失迅速增加的情况，日本经济产业省发布《信用卡安全指南》，要求日本境内所有电子商务商户在 2025 年 3 月底前接入 EMV 3-D Secure（3D Secure 2.0）。在 fincode 中使用 Google Pay 必须接入 EMV 3-D Secure。</div>
+</div>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/payment/googlepay/execution" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

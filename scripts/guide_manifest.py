@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'googlepay': 'Google Pay',
     'applepay': 'Apple Pay',
     'redirect_type': '跳转式支付',
     'virtualaccount': '银行转账（虚拟账户）',
@@ -226,6 +227,13 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/googlepay', 'googlepay', 'Google Pay 简介', 'Google Pay 简介'),
+        ('payment/googlepay/setup', 'googlepay', '在生产环境使用 Google Pay 的设置', '生产环境设置'),
+        ('payment/googlepay/execution', 'googlepay', '执行支付处理', '执行支付处理'),
+        ('payment/googlepay/status', 'googlepay', '查看支付状态', '查看支付状态'),
+        ('payment/googlepay/operation', 'googlepay', '运营示例', '运营示例'),
+        ('payment/googlepay/restriction', 'googlepay', '限制事项', '限制事项'),
+        ('payment/googlepay/note', 'googlepay', '规范与注意事项', '规范与注意事项'),
         ('payment/applepay/execution', 'applepay', '执行支付处理', '执行支付处理'),
         ('payment/applepay', 'applepay', '什么是 Apple Pay', 'Apple Pay 简介'),
         ('payment/applepay/setup', 'applepay', '准备接入 Apple Pay', '准备接入 Apple Pay'),
