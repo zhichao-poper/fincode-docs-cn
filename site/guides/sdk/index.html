@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 使用 fincode SDK 高效开发中文指南。" />
+    <title>使用 fincode SDK 高效开发 | fincode 中文参考</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../index.html">docs</a><span>/</span><a href="../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/sdk" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../index.html">首页</a>
+            <a href="../tutorial/index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a class="active" href="index.html">SDK</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/sdk" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../index.html">首页</a>
+        <a href="../tutorial/index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a class="active" href="index.html">SDK</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="SDK指南目录">
+        <a class="guide-overview-link" href="index.html"><span>SDK</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section section-active"><span>SDK</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">使用 fincode SDK 高效开发</a></li>
+<li><a href="requirements/index.html">系统要求</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../index.html">首页</a></li><li><a href="index.html">SDK</a></li><li aria-current="page">使用 fincode SDK 高效开发</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="fincode-sdk">fincode SDK</h1>
+<h2 id="fincode-sdkによる優れた開発体験">使用 fincode SDK 高效开发</h2>
+<p>fincode 为多种编程语言和框架提供 SDK（软件开发工具包）。SDK 提供类型定义以提高 API 请求与响应的安全性，提供符合各语言规范的 API 封装函数，还可生成卡片信息输入表单。这些功能可以加快支付接入，提高开发效率。<br>
+所有 SDK 均以 OSS（开源软件）形式提供，任何人都可免费使用。也可以随时通过 Issue 或 Pull Request 提出改进建议。</p>
+<h2 id="クライアントサイドsdk">客户端 SDK</h2>
+<p>fincode 提供的客户端 SDK 包括</p>
+<ul>
+<li>iOS（Swift / Objective-C）SDK</li>
+<li>Android（Kotlin / Java）SDK</li>
+<li>跨平台（React Native）SDK</li>
+<li>ESModule SDK</li>
+</ul>
+<p>。客户端 SDK 提供类型定义、使用公开密钥调用 API 的封装函数，以及生成 UI 组件的功能，可加快 Web 应用和原生应用接入 fincode。</p>
+<h2 id="サーバサイドsdk">服务端 SDK</h2>
+<p>fincode 目前提供以下服务端 SDK</p>
+<ul>
+<li>Node.js（TypeScript/JavaScript）SDK</li>
+</ul>
+<p>。服务端 SDK 提供类型定义和使用私密密钥调用 API 的封装函数，提高核心支付流程的开发安全性和效率。类型定义和封装函数的参数等遵循 API 参考文档中的规范。</p>
+<h2 id="バージョン管理ポリシー">版本管理策略</h2>
+<p>各 fincode SDK 采用语义化版本管理。各版本号按以下规则</p>
+<ul>
+<li>保持向后兼容的缺陷修复等：修订版本号</li>
+<li>保持向后兼容的功能新增：次版本号</li>
+<li>破坏向后兼容性的变更：主版本号</li>
+</ul>
+<p>递增。</p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/sdk" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,15 +2,16 @@
   "source": "https://docs.fincode.jp/payment/fraud_protection",
   "databaseUrl": "https://docs.fincode.jp/_nuxt/content/db-43cd0d80.json",
   "databaseHash": "43cd0d80",
-  "capturedAt": "2026-11-24T06:18:26.444903+00:00",
+  "capturedAt": "2026-11-24T06:58:24.163063+00:00",
   "scope": {
     "groups": [
       "tutorial",
       "payment",
       "business_management",
-      "platform"
+      "platform",
+      "sdk"
     ],
-    "pageCount": 116
+    "pageCount": 118
   },
   "pages": [
     {
@@ -164301,6 +164302,1562 @@
           "created": 1792994140040
         },
         "$loki": 93
+      }
+    },
+    {
+      "key": "sdk",
+      "sourcePath": "/sdk/index",
+      "sourceUrl": "https://docs.fincode.jp/sdk",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "fincode-sdkによる優れた開発体験",
+            "depth": 2,
+            "text": "fincode SDKによる優れた開発体験"
+          },
+          {
+            "id": "クライアントサイドsdk",
+            "depth": 2,
+            "text": "クライアントサイドSDK"
+          },
+          {
+            "id": "サーバサイドsdk",
+            "depth": 2,
+            "text": "サーバサイドSDK"
+          },
+          {
+            "id": "バージョン管理ポリシー",
+            "depth": 2,
+            "text": "バージョン管理ポリシー"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "fincode-sdk"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#fincode-sdk",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "fincode SDK"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "fincode-sdkによる優れた開発体験"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#fincode-sdk%E3%81%AB%E3%82%88%E3%82%8B%E5%84%AA%E3%82%8C%E3%81%9F%E9%96%8B%E7%99%BA%E4%BD%93%E9%A8%93",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "fincode SDKによる優れた開発体験"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincodeは各プログラミング言語/フレームワーク向けにSDKを提供しており、それぞれのSDKは各APIのリクエスト・レスポンスをさらに安全にする型定義や言語仕様に適合するよう設計されたAPI呼び出しのラッパー関数、カード情報入力フォームの生成などをSDKの機能として提供しています。これらの機能により決済導入をさらに高速化・効率化することができます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nすべてのSDKはOSS（オープンソース）で提供しており誰でも無料で利用することができるほか、機能改善に関するご要望をいつでもIsuueやPull Requestとしてお出しいただけます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "クライアントサイドsdk"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89sdk",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "クライアントサイドSDK"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincode SDKのうち、クライアントサイド用のSDKとして"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "iOS（Swift / Objective-C）SDK"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Android（Kotlin / Java）SDK"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "クロスプラットフォーム（React Native）SDK"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ESModule SDK"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "を提供しています。\nクライアントサイドSDKは型定義、パブリックキーで呼び出せるAPIのラッパー関数およびUIコンポーネントの生成機能を提供しており、Webアプリ・ネイティブアプリでのfincode導入を加速します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "サーバサイドsdk"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89sdk",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "サーバサイドSDK"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincode SDKは現在、サーバーサイド用のSDKとして"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Node.js（TypeScript/JavaScript）SDK"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "を提供しています。\nサーバーサイドSDKは型定義、シークレットキーで呼び出せるAPIのラッパー関数を提供しており、決済処理を行う上で重要な部分の開発の安全性と効率を高めます。型定義の内容やラッパー関数の引数などはAPIリファレンスに記載のAPI仕様に準じます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "バージョン管理ポリシー"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "バージョン管理ポリシー"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "それぞれのfincode SDKはセマンティックバージョニングによりバージョンが管理されます。\n各バージョンの値は"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "後方互換性を保ったバグの修正等： パッチバージョン"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "後方互換性を保った機能追加： マイナーバージョン"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "後方互換性を保たない変更： メジャーバージョン"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "としてインクリメントするよう管理されます。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "\n\n# fincode SDK\n\n\n## fincode SDKによる優れた開発体験\n\nfincodeは各プログラミング言語/フレームワーク向けにSDKを提供しており、それぞれのSDKは各APIのリクエスト・レスポンスをさらに安全にする型定義や言語仕様に適合するよう設計されたAPI呼び出しのラッパー関数、カード情報入力フォームの生成などをSDKの機能として提供しています。これらの機能により決済導入をさらに高速化・効率化することができます。   \nすべてのSDKはOSS（オープンソース）で提供しており誰でも無料で利用することができるほか、機能改善に関するご要望をいつでもIsuueやPull Requestとしてお出しいただけます。   \n\n\n\n\n\n## クライアントサイドSDK\nfincode SDKのうち、クライアントサイド用のSDKとして\n- iOS（Swift / Objective-C）SDK\n- Android（Kotlin / Java）SDK\n- クロスプラットフォーム（React Native）SDK\n- ESModule SDK\n\nを提供しています。\nクライアントサイドSDKは型定義、パブリックキーで呼び出せるAPIのラッパー関数およびUIコンポーネントの生成機能を提供しており、Webアプリ・ネイティブアプリでのfincode導入を加速します。 \n\n\n## サーバサイドSDK\nfincode SDKは現在、サーバーサイド用のSDKとして\n- Node.js（TypeScript/JavaScript）SDK\nを提供しています。\nサーバーサイドSDKは型定義、シークレットキーで呼び出せるAPIのラッパー関数を提供しており、決済処理を行う上で重要な部分の開発の安全性と効率を高めます。型定義の内容やラッパー関数の引数などはAPIリファレンスに記載のAPI仕様に準じます。\n\n\n\n## バージョン管理ポリシー\nそれぞれのfincode SDKはセマンティックバージョニングによりバージョンが管理されます。\n各バージョンの値は\n- 後方互換性を保ったバグの修正等： パッチバージョン\n- 後方互換性を保った機能追加： マイナーバージョン\n- 後方互換性を保たない変更： メジャーバージョン\nとしてインクリメントするよう管理されます。\n",
+        "dir": "/sdk",
+        "path": "/sdk/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994137201
+        },
+        "$loki": 8
+      }
+    },
+    {
+      "key": "sdk-requirements",
+      "sourcePath": "/sdk/requirements/index",
+      "sourceUrl": "https://docs.fincode.jp/sdk/requirements",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "ios",
+            "depth": 2,
+            "text": "iOS"
+          },
+          {
+            "id": "android",
+            "depth": 2,
+            "text": "Android"
+          },
+          {
+            "id": "nodejs",
+            "depth": 2,
+            "text": "Node.js"
+          },
+          {
+            "id": "利用ossについて",
+            "depth": 2,
+            "text": "利用OSSについて"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "システム要件"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A6%81%E4%BB%B6",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "システム要件"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "SDKを利用する場合、下記の条件を満たしている必要があります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "ios"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#ios",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "iOS"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バージョン"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "プラットフォーム"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "iOS 14.0 以降"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "iOS SDKを利用可能なOSバージョン"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Swift"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "4.0以上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "iOS SDKを利用可能な言語バージョン"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "android"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#android",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Android"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バージョン"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Android OS Version"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "5"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Android OS バージョン"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "minSdkVersion"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "21"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "実行するために必要な最小 API レベル"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "targetSdkVersion"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "31"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ターゲットとする API レベル"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "compileSdkVersion"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "31"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "コンパイルする際のAPIバージョン"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "モバイルSDK(iOS SDK/Android SDK/React Native SDK)は、以下のAPIを実行するメソッドを用意しています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "決済実行"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "3Dセキュア認証"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "認証結果確定"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "認証後決済実行"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カード一覧取得"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カード登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "カード更新"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "nodejs"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#nodejs",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Node.js"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "項目"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バージョン"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Node.js"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": ">= 12.0.0"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バージョン12以上のNode.js"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "その他の依存関係は\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://github.com/fincode-byGMO/fincode-sdk-node",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "GitHub上の package.json"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\nをご参照ください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "br",
+              "props": {},
+              "children": []
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "利用ossについて"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%88%A9%E7%94%A8oss%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "利用OSSについて"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "SDKでは、以下OSSライブラリを使用しています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "OSS"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "バージョン"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Alamofire"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "4.9.1"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "SwiftyJSON"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "5.0.1"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# システム要件\n\nSDKを利用する場合、下記の条件を満たしている必要があります。\n\n## iOS\n\n| 項目       | バージョン       | 説明                   |\n|----------|-------------|----------------------|\n| プラットフォーム | iOS 14.0 以降 | iOS SDKを利用可能なOSバージョン |\n| Swift    | 4.0以上       | iOS SDKを利用可能な言語バージョン |\n\n\n \n## Android\n\n| 項目                 | バージョン | 説明                   |\n|--------------------|-------|----------------------|\n| Android OS Version | 5     | Android OS バージョン     |\n| minSdkVersion      | 21    | 実行するために必要な最小 API レベル |\n| targetSdkVersion   | 31    | ターゲットとする API レベル     |\n| compileSdkVersion  | 31    | コンパイルする際のAPIバージョン    |\n\nモバイルSDK(iOS SDK/Android SDK/React Native SDK)は、以下のAPIを実行するメソッドを用意しています。\n- 決済実行\n- 3Dセキュア認証\n- 認証結果確定\n- 認証後決済実行\n- カード一覧取得\n- カード登録\n- カード更新\n\n\n## Node.js\n\n| 項目      | バージョン     | 説明                |\n|---------|-----------|-------------------|\n| Node.js | >= 12.0.0 | バージョン12以上のNode.js |\n\n\nその他の依存関係は\n[GitHub上の package.json](https://github.com/fincode-byGMO/fincode-sdk-node)\nをご参照ください。\n\n<br>\n\n## 利用OSSについて\nSDKでは、以下OSSライブラリを使用しています。\n\n| OSS        | バージョン |\n|------------|-------|\n| Alamofire  | 4.9.1 |\n| SwiftyJSON | 5.0.1 |\n",
+        "dir": "/sdk/requirements",
+        "path": "/sdk/requirements/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.686Z",
+        "updatedAt": "2026-10-26T05:53:02.686Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139803
+        },
+        "$loki": 59
       }
     }
   ]

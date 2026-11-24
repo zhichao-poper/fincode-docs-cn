@@ -143,6 +143,7 @@ GROUPS = {
     "platform": "平台",
     "develop_support": "开发者支持",
     "buyer_service": "买家服务",
+    "sdk": "SDK",
     "releases": "发行说明",
 }
 SECTIONS = {
@@ -310,5 +311,23 @@ PAGES += [
         ('payment/directdebit', 'directdebit', '什么是银行账户自动扣款', '银行账户自动扣款简介'),
         ('payment/directdebit/execution', 'directdebit', '执行扣款处理', '执行扣款处理'),
         ('payment/directdebit/schedule', 'directdebit', '银行账户自动扣款年度日程', '扣款年度日程'),
+    )
+]
+
+
+PAGES += [
+    {
+        "key": route.replace("/", "-"),
+        "section": group_for({"source_path": f"/{route}/index"}),
+        "title": title,
+        "nav_title": title,
+        "source_path": f"/{route}/index",
+        "source_url": source_url,
+        "translation": f"translations/guides/{route}/index.html",
+        "output": f"site/guides/{route}/index.html",
+    }
+    for route, title, source_url in (
+        ('sdk', '使用 fincode SDK 高效开发', 'https://docs.fincode.jp/sdk'),
+        ('sdk/requirements', '系统要求', 'https://docs.fincode.jp/sdk/requirements'),
     )
 ]
