@@ -247,6 +247,19 @@ a { color: inherit; text-decoration: none; }
   font: inherit;
   line-height: 25px;
 }
+.guide-code-example pre {
+  overflow-x: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6.4px;
+  background: var(--note);
+}
+.guide-code-example pre code {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
 .guide-article img {
   display: block;
   max-width: 100%;

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 在生产环境注册新用户（生产环境申请）（M’s PayBridge）中文指南。" />
+    <title>在生产环境注册新用户（生产环境申请）（M’s PayBridge） | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/tutorial/prod_sign_up_mpb" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/tutorial/prod_sign_up_mpb" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="入门指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>入门</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>入门</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">入门</a></li>
+<li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
+<li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
+<li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
+<li><a href="index.html" aria-current="page" class="active">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
+<li><a href="../prod_info/index.html">查看生产环境 API 信息及连接信息</a></li>
+<li><a href="../prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
+<li><a href="../prod_api/index.html">在生产环境公开支付功能</a></li>
+<li><a href="../prod_calc/index.html">查看销售金额</a></li>
+<li><a href="../test_api_exec/index.html">在测试环境执行支付</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">入门</a></li><li aria-current="page">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="本番環境の新規ユーザー登録本番環境申請">在生产环境注册新用户（生产环境申请）</h1>
+<h2 id="本番環境の新規ユーザー登録">在生产环境注册新用户</h2>
+<p>和测试环境一样，生产环境也须注册新用户。即使已在测试环境注册，仍须在生产环境重新注册。</p>
+<p><i class="icon-after icon-window"><a href="https://dashboard.fincode.jp/sign_up" rel="[&#x27;nofollow&#x27;, &#x27;noopener&#x27;, &#x27;noreferrer&#x27;]" target="_blank">注册 fincode 新用户</a></i></p>
+<p><img alt="注册新用户" src="../../../assets/payment-guides/tutorial/prod_sign_up.png"></p>
+<p>打开控制面板的新用户注册页面后，输入姓名、电子邮件地址和密码，点击［注册新用户］。<br>
+页面显示［双因素认证－设置认证应用］后，请使用 Google Authenticator、Microsoft Authenticator 等认证应用扫描二维码，或输入认证码。</p>
+<p><a href="https://docs.fincode.jp/develop_support/authenticator">在 Chrome 浏览器使用双因素认证及安装 Authenticator 的步骤</a><br>
+登录控制面板需要通过双因素认证和邮件验证。</p>
+<h2 id="ショップタイプの選択">选择商户类型</h2>
+<p>请选择商户类型。</p>
+<ul>
+<li>标准类型：适用于普通商户运营。</li>
+<li>平台类型：适用于在 fincode 商户之间建立上下级关系，并以所有者身份管理商户的业务。</li>
+</ul>
+<p>详情请参阅 <a href="../../platform/index.html">平台</a>。</p>
+<p><img alt="选择商户类型" src="../../../assets/payment-guides/tutorial/platform_select_type.png"></p>
+<p>您在新用户注册时填写的电子邮件地址会收到 fincode（<a href="mailto:noreply@fincode.jp">noreply@fincode.jp</a>）发来的用户注册确认邮件。</p>
+<h2 id="メール認証">邮件验证</h2>
+<p>点击邮件正文中的 URL，在打开的页面输入注册新用户时设置的密码，即可完成邮件验证。</p>
+<p><img alt="电子邮件地址验证邮件" src="../../../assets/payment-guides/tutorial/prod_mail.png"></p>
+<p>完成双因素认证设置和邮件验证后，即可登录管理后台。</p>
+<p><img alt="控制面板的支付列表" src="../../../assets/payment-guides/tutorial/prod_home.png"></p>
+<h2 id="本番環境申請">生产环境申请</h2>
+<p>从控制面板的侧栏菜单选择［生产环境申请］。<br>
+填写各页显示的项目，提交生产环境申请。</p>
+<p>生产环境申请最快可在 4 个工作日内审核完成。审核完成后会收到通知邮件。<br>
+控制面板的侧栏菜单也将不再显示［生产环境申请］。</p>
+<p>审核完成后，即可在生产环境使用 fincode API。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">项目</th><th align="left">所需文件</th></tr></thead><tbody><tr><td align="left">按商户经营的商品或服务所需提交的文件</td><td align="left">• 二手商品经营许可证<br>• 酒类通信销售零售许可证<br>• 化妆品生产许可证及化妆品生产销售许可证<br>• 高度管理医疗器械销售许可证等</td></tr><tr><td align="left">没有电商网站时所需文件</td><td align="left">• 样品图片</td></tr><tr><td align="left">使用应用时</td><td align="left">• 应用界面图片（首页、图标）</td></tr></tbody></table>
+<h2 id="次のステップ">下一步</h2>
+<p><i class="icon-after icon-next"><a href="../prod_info/index.html">查看生产环境 API 信息及连接信息</a></i></p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/tutorial/prod_sign_up_mpb" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

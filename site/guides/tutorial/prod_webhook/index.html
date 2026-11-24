@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 在生产环境设置通知（Webhook）中文指南。" />
+    <title>在生产环境设置通知（Webhook） | fincode 中文参考</title>
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../../index.html">docs</a><span>/</span><a href="../../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/tutorial/prod_webhook" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../../index.html">首页</a>
+            <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/tutorial/prod_webhook" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../../index.html">首页</a>
+        <a class="active" href="../index.html">入门</a>
+<a href="../../payment/card/index.html">支付</a>
+<a href="../../business_management/index.html">业务管理</a>
+<a href="../../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="入门指南目录">
+        <a class="guide-overview-link" href="../index.html"><span>入门</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>入门</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="../index.html">入门</a></li>
+<li><a href="../test_sign_up/index.html">在测试环境注册新用户</a></li>
+<li><a href="../test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="../test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
+<li><a href="../prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
+<li><a href="../prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
+<li><a href="../prod_info/index.html">查看生产环境 API 信息及连接信息</a></li>
+<li><a href="index.html" aria-current="page" class="active">在生产环境设置通知（Webhook）</a></li>
+<li><a href="../prod_api/index.html">在生产环境公开支付功能</a></li>
+<li><a href="../prod_calc/index.html">查看销售金额</a></li>
+<li><a href="../test_api_exec/index.html">在测试环境执行支付</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../../index.html">首页</a></li><li><a href="../index.html">入门</a></li><li aria-current="page">在生产环境设置通知（Webhook）</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="本番環境で通知設定を行うwebhook">在生产环境设置通知（Webhook）</h1>
+<p>操作与测试环境相同。<br>
+通过 Webhook 可在执行支付、取消等操作时接收通知。</p>
+<p>可按要接收的通知分别指定商户的应用 URL。</p>
+<div class="custom-block-common custom-block">
+    <div class="custom-block-title-common custom-block-title">有关 Webhook 规范，请参阅<a href="https://docs.fincode.jp/develop_support/development_monitoring">开发与监控－使用 Webhook</a>。</div>
+</div>
+<h2 id="webhookイベント一覧">Webhook 事件一览</h2>
+<p>下表列出可从 fincode 接收的部分 Webhook 事件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">功能</th><th align="left">事件名称</th><th align="left">事件参数</th></tr></thead><tbody><tr><td align="left">卡片支付</td><td align="left">登记支付</td><td align="left">payments.card.regist</td></tr><tr><td align="left">卡片支付</td><td align="left">执行支付</td><td align="left">payments.card.exec</td></tr><tr><td align="left">卡片支付</td><td align="left">请款</td><td align="left">payments.card.capture</td></tr><tr><td align="left">卡片支付</td><td align="left">取消</td><td align="left">payments.card.cancel</td></tr><tr><td align="left">卡片支付</td><td align="left">重新授权</td><td align="left">payments.card.auth</td></tr><tr><td align="left">卡片支付</td><td align="left">修改金额</td><td align="left">payments.card.change</td></tr><tr><td align="left">卡片</td><td align="left">登记</td><td align="left">card.regist</td></tr><tr><td align="left">卡片</td><td align="left">更新</td><td align="left">card.update</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">登记</td><td align="left">subscription.card.regist</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">解约</td><td align="left">subscription.card.delete</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">更新</td><td align="left">subscription.card.update</td></tr><tr><td align="left">订阅（卡片）</td><td align="left">结果汇总</td><td align="left">recurring.card.batch</td></tr></tbody></table>
+<p>详情请参阅 <a href="../../../reference.html#tag/Webhook">Webhook 设置</a> 。</p>
+<h2 id="webhookから通知を受け取る">接收 Webhook 通知</h2>
+<p>可通过控制面板设置 Webhook，也可以通过 Webhook 设置 API 配置。<br>
+指定要配置通知的事件，并输入商户的应用 URL。</p>
+<p><i class="icon-after icon-window"><a href="https://dashboard.fincode.jp/development/config" rel="[&#x27;nofollow&#x27;, &#x27;noopener&#x27;, &#x27;noreferrer&#x27;]" target="_blank">从控制面板设置 Webhook</a></i></p>
+<p><img alt="从控制面板设置 Webhook" src="../../../assets/payment-guides/tutorial/test_webhook_config.png"></p>
+<h2 id="次のステップ">下一步</h2>
+<p><i class="icon-after icon-next"><a href="../prod_api/index.html">在商户网站公开支付功能</a></i></p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/tutorial/prod_webhook" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

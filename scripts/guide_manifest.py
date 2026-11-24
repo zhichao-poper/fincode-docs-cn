@@ -178,5 +178,16 @@ PAGES += [
         ('platform/terms_of_service_mpb', '完善平台使用条款（M’s PayBridge）'),
         ('business_management', '控制面板'),
         ('business_management/examination', '商户审核'),
+        ('tutorial', '入门'),
+        ('tutorial/test_sign_up', '在测试环境注册新用户'),
+        ('tutorial/test_info', '查看测试环境 API 信息及连接信息'),
+        ('tutorial/test_webhook', '在测试环境设置通知（Webhook）'),
+        ('tutorial/prod_sign_up', '在生产环境注册新用户（生产环境申请）'),
+        ('tutorial/prod_sign_up_mpb', '在生产环境注册新用户（生产环境申请）（M’s PayBridge）'),
+        ('tutorial/prod_info', '查看生产环境 API 信息及连接信息'),
+        ('tutorial/prod_webhook', '在生产环境设置通知（Webhook）'),
+        ('tutorial/prod_api', '在生产环境公开支付功能'),
+        ('tutorial/prod_calc', '查看销售金额'),
+        ('tutorial/test_api_exec', '在测试环境执行支付'),
     )
 ]

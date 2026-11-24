@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fincode 入门中文指南。" />
+    <title>入门 | fincode 中文参考</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../guide-styles.css" />
+  </head>
+  <body>
+    <header class="official-header">
+      <div class="official-header-main">
+        <div class="official-header-left">
+          <a class="fincode-logo" href="../../index.html" aria-label="fincode 中文参考">
+            <img src="https://docs.fincode.jp/assets/images/logos/fincode.svg" alt="fincode by GMO" />
+          </a>
+          <a class="docs-logo" href="../index.html" aria-label="docs">
+            <img src="https://docs.fincode.jp/assets/images/text-docs.svg" alt="docs" />
+          </a>
+        </div>
+        <nav class="official-header-links" aria-label="实用链接">
+          <a href="../index.html">docs</a><span>/</span><a href="../../reference.html">API reference</a>
+          <b aria-hidden="true">|</b>
+          <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">官方日文原文</a>
+          <a href="https://dashboard.fincode.jp/login" target="_blank" rel="noreferrer">登录</a>
+          <a class="start-button" href="https://www.fincode.jp/" target="_blank" rel="noreferrer">立即开始</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary>MENU</summary>
+          <nav aria-label="手机端导航">
+            <a href="../index.html">首页</a>
+            <a class="active" href="index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+            <a href="../../reference.html">API reference</a>
+            <a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">官方日文原文</a>
+          </nav>
+        </details>
+      </div>
+      <nav class="official-category-nav" aria-label="主要导航">
+        <a href="../index.html">首页</a>
+        <a class="active" href="index.html">入门</a>
+<a href="../payment/card/index.html">支付</a>
+<a href="../business_management/index.html">业务管理</a>
+<a href="../platform/index.html">平台</a>
+<a href="https://docs.fincode.jp/develop_support">开发者支持</a>
+<a href="https://docs.fincode.jp/buyer_service">买家服务</a>
+<a href="https://docs.fincode.jp/releases">发行说明</a>
+        <span class="header-search" aria-hidden="true"></span>
+      </nav>
+    </header>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="入门指南目录">
+        <a class="guide-overview-link" href="index.html"><span>入门</span><i aria-hidden="true"></i></a>
+        <p class="guide-nav-section" class="section-active"><span>入门</span><i aria-hidden="true"></i></p>
+<ul class="guide-nav-list">
+<li><a href="index.html" aria-current="page" class="active">入门</a></li>
+<li><a href="test_sign_up/index.html">在测试环境注册新用户</a></li>
+<li><a href="test_info/index.html">查看测试环境 API 信息及连接信息</a></li>
+<li><a href="test_webhook/index.html">在测试环境设置通知（Webhook）</a></li>
+<li><a href="prod_sign_up/index.html">在生产环境注册新用户（生产环境申请）</a></li>
+<li><a href="prod_sign_up_mpb/index.html">在生产环境注册新用户（生产环境申请）（M’s PayBridge）</a></li>
+<li><a href="prod_info/index.html">查看生产环境 API 信息及连接信息</a></li>
+<li><a href="prod_webhook/index.html">在生产环境设置通知（Webhook）</a></li>
+<li><a href="prod_api/index.html">在生产环境公开支付功能</a></li>
+<li><a href="prod_calc/index.html">查看销售金额</a></li>
+<li><a href="test_api_exec/index.html">在测试环境执行支付</a></li>
+</ul>
+      </aside>
+      <div class="guide-body">
+        <nav class="guide-breadcrumb" aria-label="面包屑">
+          <ul><li><a href="../index.html">首页</a></li><li><a href="index.html">入门</a></li><li aria-current="page">入门</li></ul>
+        </nav>
+        <main class="guide-main">
+          <article class="guide-article">
+<h1 id="はじめに">入门</h1>
+<p>欢迎使用 fincode。<br>
+fincode 是为您的业务提供支持的在线支付服务。</p>
+<p>fincode 提供卡片支付等便捷的支付方式，帮助您向客户收取商品或服务的款项，也提供多种功能，简化收款相关业务。</p>
+<h2 id="fincodeの立ち位置と役割">fincode 的定位与作用</h2>
+<p>fincode 就像设在互联网上的虚拟收银台。<br>
+fincode 在您和提供支付方式的支付公司之间充当网关，将双方连接起来。卡片支付的支付公司即发卡机构。</p>
+<p>fincode 代表您协调与支付公司之间的下列工作：</p>
+<ol>
+<li>合同管理（签订使用支付方式的特约商户合同）</li>
+<li>数据通信（交换支付日期、时间和金额等必要信息）</li>
+<li>结算业务（支付公司向您拨付销售款）</li>
+</ol>
+<p>。</p>
+<p>fincode 还提供集成所需的 REST API、管理后台，以及其他开发支持工具和资源。</p>
+<h2 id="fincodeに登場する基本的な概念用語">fincode 的基本概念与术语</h2>
+<h3 id="本番環境とテスト環境">生产环境与测试环境</h3>
+<p>为方便开发者安全使用，fincode 提供彼此独立的生产环境与测试环境。</p>
+<p>测试环境完全免费，注册用户后立即开通。<br>
+fincode 提供测试卡号等资料，可用来体验管理后台和 API。<br>
+日后开始商用时，请另行注册生产环境用户。<br>
+测试环境与生产环境相互独立，您可以分别使用不同的电子邮件地址申请。</p>
+<p>注册测试环境用户后即可试用所有支付方式。如果希望在生产环境使用卡片支付以外的方式，须先启用卡片支付，再从管理后台另行申请。</p>
+<h3 id="本番環境申請">生产环境申请</h3>
+<p>从生产环境的管理后台菜单提交“生产环境申请”后，按规定完成审核即可在生产环境开始收款。</p>
+<h3 id="ユーザーfincodeユーザー">用户（fincode 用户）</h3>
+<p>指每一位使用 fincode 的人员。<br>
+每个电子邮件地址可创建一个用户。</p>
+<p>管理后台的登录验证和权限按用户设置。<br>
+一名用户可加入多个商户，并在不同商户中担任不同角色。</p>
+<h3 id="ショップ">商户</h3>
+<p>使用 fincode 收款的主体称为商户。<br>
+即使您在捐赠网站等非营利服务中使用 fincode，为方便起见也统一称作商户。<br>
+商户下登记签约人信息、所售商品或服务的信息，以及所用支付方式的设置等。</p>
+<p>fincode 按商户开通管理后台。fincode 和支付公司（发卡机构等）也按商户审核使用资格。<br>
+客户购买商品或服务时，支付公司出具的账单上显示的名称，即“账单显示名称”，同样按商户设置。</p>
+<p>如果您在同一网站或应用提供多种商品和服务，可以用一个商户销售全部商品和服务，也可以分别使用多个商户，例如把周边商品销售设为“●●● 商户”，把付费会员月度支付设为“●●● 商户月会费”。</p>
+<h3 id="決済">支付</h3>
+<p>客户为购买商品或服务而进行的每一笔交易称为支付。<br>
+每笔支付会登记支付金额、所用支付方式、客户等信息。</p>
+<h3 id="顧客">客户</h3>
+<p>可以将您的客户信息登记到 fincode，作为客户记录。</p>
+<p>客户记录中可以登记其已登记的卡片、姓名、地址等。<br>
+创建客户并登记其卡片信息后，从第二次起可免输卡片信息，也可以使用已登记的卡片按月扣款。<br>
+如果每次都让客户自行输入卡片信息，则无需登记客户。</p>
+<h3 id="サブスクリプション">订阅</h3>
+<p>创建订阅后，系统会按预先设置的时间表自动创建支付，免去每次指定金额和支付方式的操作。<br>
+订阅中登记客户、收费套餐、开始日期和结束日期等。</p>
+<h3 id="売上入金">销售款入账</h3>
+<p>GMO Epsilon 按预先设置的入账周期，将您通过 fincode 收取的款项汇入各商户的入账账户。</p>
+<h2 id="次のステップ">下一步</h2>
+<p><i class="icon-after icon-next"><a href="test_sign_up/index.html">在测试环境注册新用户</a></i></p>
+
+          </article>
+          <p class="guide-source-note">本页为非官方中文翻译；如有歧义，请以<a href="https://docs.fincode.jp/tutorial" target="_blank" rel="noreferrer">官方日文原文</a>为准。</p>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
