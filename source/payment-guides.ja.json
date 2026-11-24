@@ -10,7 +10,7 @@
       "business_management",
       "platform"
     ],
-    "pageCount": 73
+    "pageCount": 79
   },
   "pages": [
     {
@@ -100147,6 +100147,4720 @@
           "created": 1792994139693
         },
         "$loki": 37
+      }
+    },
+    {
+      "key": "payment-applepay",
+      "sourcePath": "/payment/applepay/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "apple-payを始める",
+            "depth": 2,
+            "text": "Apple Payを始める"
+          },
+          {
+            "id": "サポートされる機能",
+            "depth": 2,
+            "text": "サポートされる機能"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "apple-payとは"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#apple-pay%E3%81%A8%E3%81%AF",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Apple Payとは"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Pay は、iPhone / iPad / Mac などのデバイスに搭載されている決済機能である「Apple Pay」を使った決済を受け付ける機能です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nApple Payをfincode上で申し込むことで、Appleが提供する生体認証を用いたシームレスな決済体験を導入できるようになります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nfincodeでは以下の国際ブランドをApple Payで利用できます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "VISA(ビザ)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ", "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Mastercard(マスターカード)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ", "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "JCB(ジェーシービー)"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": ", "
+                },
+                {
+                  "type": "element",
+                  "tag": "code",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "American Express(アメリカンエキスプレス)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "テスト環境ではすべての決済手段をユーザー登録後すぐに利用できます。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n      本番環境で利用する場合は、カード決済の利用開始後にダッシュボードよりApple Payの利用申請を行います。また、"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://developer.apple.com/jp/programs/"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Apple Developer Program"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "への登録が必要になります。\n"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "apple-payを始める"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#apple-pay%E3%82%92%E5%A7%8B%E3%82%81%E3%82%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Apple Payを始める"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Payで実際に決済を受け付ける前にダッシュボードの 決済サービス設定 より利用申請を行います。申請後行われる審査を通過するとApple Payによる決済が利用可能になります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nApple Payの決済処理は、決済実行APIへのリクエストにApple Payに対応したデバイスから得られるトークンを渡すだけで完了できます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n  "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "審査の結果によっては一部の国際ブランドが利用できない可能性があります。また、利用できる国際ブランドは基本的にはカード決済の審査結果と一致します。"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "br",
+                      "props": {},
+                      "children": []
+                    },
+                    {
+                      "type": "text",
+                      "value": "\n  審査完了までにかかる期間は通常1～3営業日程度です。\n  "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "サポートされる機能"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%82%8B%E6%A9%9F%E8%83%BD",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "サポートされる機能"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Payが利用できるfincodeの機能は下記の通りです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1回の決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "サブスクリプション"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "リダイレクト型決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ネイティブアプリでの利用"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Apple Pay"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "img",
+                              "props": {
+                                "alt": "有",
+                                "src": "/assets/images/icon-checked.svg"
+                              },
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "img",
+                              "props": {
+                                "alt": "無",
+                                "src": "/assets/images/icon-out.svg"
+                              },
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "img",
+                              "props": {
+                                "alt": "無",
+                                "src": "/assets/images/icon-out.svg"
+                              },
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "element",
+                              "tag": "img",
+                              "props": {
+                                "alt": "有",
+                                "src": "/assets/images/icon-checked.svg"
+                              },
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "sup",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "※"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "ネイティブアプリでの利用は対応デバイス上のiOS/iPadOS/macOS/watchOSに限ります。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# Apple Payとは\n\nApple Pay は、iPhone / iPad / Mac などのデバイスに搭載されている決済機能である「Apple Pay」を使った決済を受け付ける機能です。  \nApple Payをfincode上で申し込むことで、Appleが提供する生体認証を用いたシームレスな決済体験を導入できるようになります。  \nfincodeでは以下の国際ブランドをApple Payで利用できます。  \n`VISA(ビザ)`, `Mastercard(マスターカード)`, `JCB(ジェーシービー)`, `American Express(アメリカンエキスプレス)`\n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">テスト環境ではすべての決済手段をユーザー登録後すぐに利用できます。<br>\n      本番環境で利用する場合は、カード決済の利用開始後にダッシュボードよりApple Payの利用申請を行います。また、<a href=\"https://developer.apple.com/jp/programs/\">Apple Developer Program</a>への登録が必要になります。\n</div>\n</div>\n\n## Apple Payを始める\n\nApple Payで実際に決済を受け付ける前にダッシュボードの 決済サービス設定 より利用申請を行います。申請後行われる審査を通過するとApple Payによる決済が利用可能になります。  \nApple Payの決済処理は、決済実行APIへのリクエストにApple Payに対応したデバイスから得られるトークンを渡すだけで完了できます。\n\n<div class=\"custom-block-common custom-block\">\n  <div class=\"custom-block-title-common custom-block-title\">審査の結果によっては一部の国際ブランドが利用できない可能性があります。また、利用できる国際ブランドは基本的にはカード決済の審査結果と一致します。<br>\n  審査完了までにかかる期間は通常1～3営業日程度です。\n  </div>\n</div>\n\n## サポートされる機能\n\nApple Payが利用できるfincodeの機能は下記の通りです。\n\n| |1回の決済|サブスクリプション|リダイレクト型決済|ネイティブアプリでの利用|\n|:----|:----|:----|:----|:----|\n|Apple Pay|![有](/assets/images/icon-checked.svg)|![無](/assets/images/icon-out.svg) |![無](/assets/images/icon-out.svg)|![有](/assets/images/icon-checked.svg)<sup>※</sup>|\n\n<sup>※</sup>ネイティブアプリでの利用は対応デバイス上のiOS/iPadOS/macOS/watchOSに限ります。\n",
+        "dir": "/payment/applepay",
+        "path": "/payment/applepay/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139645
+        },
+        "$loki": 30
+      }
+    },
+    {
+      "key": "payment-applepay-setup",
+      "sourcePath": "/payment/applepay/setup/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/setup",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "apple-payを組み込む準備を始める",
+            "depth": 2,
+            "text": "Apple Payを組み込む準備を始める"
+          },
+          {
+            "id": "step1-apple-id-を作成しapple-developer-program-へ登録",
+            "depth": 3,
+            "text": "Step.1 Apple ID を作成し、Apple Developer Program へ登録"
+          },
+          {
+            "id": "step2-apple-マーチャントidを作成",
+            "depth": 3,
+            "text": "Step.2 Apple マーチャントIDを作成"
+          },
+          {
+            "id": "step3-証明書署名リクエストcsr-を作成",
+            "depth": 3,
+            "text": "Step.3 証明書署名リクエスト(CSR) を作成"
+          },
+          {
+            "id": "step4-証明書署名リクエストをapple-developer-サイトへアップロードしpayment-processing-certificateを取得",
+            "depth": 3,
+            "text": "Step.4 証明書署名リクエストをApple Developer サイトへアップロードし、Payment Processing Certificateを取得"
+          },
+          {
+            "id": "step5-fincodeへpayment-processing-certificateを登録",
+            "depth": 3,
+            "text": "Step.5 fincodeへPayment Processing Certificateを登録"
+          },
+          {
+            "id": "step6-webサイト上で利用する場合-apple-developerサイトでドメインを登録",
+            "depth": 3,
+            "text": "Step.6 (Webサイト上で利用する場合) Apple Developerサイトでドメインを登録"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "apple-payを組み込む準備"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#apple-pay%E3%82%92%E7%B5%84%E3%81%BF%E8%BE%BC%E3%82%80%E6%BA%96%E5%82%99",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Apple Payを組み込む準備"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "apple-payを組み込む準備を始める"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#apple-pay%E3%82%92%E7%B5%84%E3%81%BF%E8%BE%BC%E3%82%80%E6%BA%96%E5%82%99%E3%82%92%E5%A7%8B%E3%82%81%E3%82%8B",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Apple Payを組み込む準備を始める"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "fincodeでApple Payを自社のサービスに組み込むためにはApple Developer Programでの登録処理と、fincode ダッシュボートでの登録処理が必要です。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n下記のフローを参考にして登録作業を行ってください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ul",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.１． "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://support.apple.com/ja-jp/apple-id",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Apple ID"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "を作成し、 "
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://developer.apple.com/jp/programs/",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Apple Developer Program"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.２．Apple マーチャントIDを作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.３．証明書署名リクエスト(CSR) を作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.４．CSRをApple Developer サイトへアップロードし、Payment Processing Certificateを取得"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.５．fincodeへPayment Processing Certificateを登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step.６．(Webサイト上で利用する場合) Apple Developerサイトでドメインを登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step1-apple-id-を作成しapple-developer-program-へ登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step1-apple-id-%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97apple-developer-program-%E3%81%B8%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.1 Apple ID を作成し、Apple Developer Program へ登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "本番環境においてApple Payを利用開始するために、Apple IDを作成し2ファクタ認証 (2要素認証)を有効化してください。詳細な作成方法はApple サポートの「"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://support.apple.com/ja-jp/108647",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "新しい Apple ID の作成方法"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "」ページを参照します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nApple IDの作成が完了した後、そのApple IDを用いてApple Developer Programへ登録・加入します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nApple Developer Programへの加入は後述するApple マーチャントIDの発行およびPayment Processing Certificateの取得に必要となります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step2-apple-マーチャントidを作成"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step2-apple-%E3%83%9E%E3%83%BC%E3%83%81%E3%83%A3%E3%83%B3%E3%83%88id%E3%82%92%E4%BD%9C%E6%88%90",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.2 Apple マーチャントIDを作成"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Developer Programへ加入した後で、Apple マーチャントIDを作成します。\nApple マーチャントIDはApple Payでの支払いを受け付ける事業者として識別するためのIDです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Developerサイトの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://developer.apple.com/account/resources",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Certificates, Identifiers & Profiles"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へ移動しサイドバーの「Identifiers (ID)」をクリック後、左上の「+ (追加)」ボタンをクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Merchant IDs」を選択し、「Continue (続ける)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "マーチャントIDの説明 (Apple Payを組み込むアプリの概要の説明)とID名を入力し、「Continue (続ける)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "設定した内容を確認し「Register (登録)」をクリックして完了"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "詳細はApple Developerサポートの「"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Payを設定する"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " 」ページを参照します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step3-証明書署名リクエストcsr-を作成"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step3-%E8%A8%BC%E6%98%8E%E6%9B%B8%E7%BD%B2%E5%90%8D%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88csr-%E3%82%92%E4%BD%9C%E6%88%90",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.3 証明書署名リクエスト(CSR) を作成"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple マーチャントIDを作成した後、以下の手順を参考にCSRファイルを作成します。\nこのファイルはこの後のPayment Processing Certificateの発行に必要になるファイルです。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Macでキーチェーンアクセスを開き「認証局に証明書を要求」を選択"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "各項目を入力して鍵ペア情報にチェックをして「続ける」"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "任意の場所に「保存」をして、鍵ペア情報でアルゴリズムをECC、鍵のサイズを256ビットに指定して「続ける」を選択してCSRを生成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "(Payment Processing Certificateが期限切れになった場合) 再度CSRファイルを1~3の手順に従って作成"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step4-証明書署名リクエストをapple-developer-サイトへアップロードしpayment-processing-certificateを取得"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step4-%E8%A8%BC%E6%98%8E%E6%9B%B8%E7%BD%B2%E5%90%8D%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92apple-developer-%E3%82%B5%E3%82%A4%E3%83%88%E3%81%B8%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97payment-processing-certificate%E3%82%92%E5%8F%96%E5%BE%97",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.4 証明書署名リクエストをApple Developer サイトへアップロードし、Payment Processing Certificateを取得"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "CSRを作成した後、以下の手順に従ってPayment Processing Certificate"
+                },
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "をApple Developer上で取得します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Developerサイトの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://developer.apple.com/account/resources",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Certificates, Identifiers & Profiles"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へ移動しサイドバーの「Identifiers (ID)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Merchant IDs」を選択し、「Apple マーチャントIDを作成」で作成したマーチャントIDを選択"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Apple Pay Payment Processing Certificate」で「Create Certificate (証明書を作成)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Choose File (ファイルを選択)」をクリックし、3で作成したCSRファイルをアップロード"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Continue (続ける)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Download (ダウンロード)」をクリックし、Payment Processing Certificate (拡張子"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": ".cer"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": ")をダウンロードして完了"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "(Payment Processing Certificateが期限切れ"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "sup",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "※2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "になった場合) 再度CSRファイルを作成し、1~6の手順に従ってPayment Processing Certificateを再度取得"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " Payment Processing CertificateはApple Developerサポートなどにおいてペイメントプロセッシング証明書や支払い処理証明書とも表記されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※2"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " Payment Processing Certificateは25カ月で期限切れになります。詳細は"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://developer.apple.com/documentation/apple_pay_on_the_web/maintaining_your_environment",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple DeveloperのApple Payに関するページ"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "を参照します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step5-fincodeへpayment-processing-certificateを登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step5-fincode%E3%81%B8payment-processing-certificate%E3%82%92%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.5 fincodeへPayment Processing Certificateを登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Payment Processing Certificateを取得後fincodeのダッシュボードへ戻り、Payment Processing Certificateをfincodeに登録することでApple Payの設定が完了します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Step. 4で作成したPayment Processing CertificateをMacに登録し、キーチェーンアクセスを開き.p12ファイル形式で書き出します。書き出す際に指定するパスフレーズは任意です。"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "fincode ダッシュボード サイドバー > ショップ設定 > 決済サービス設定 へ移動"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Pay > 設定 をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「+ 証明書登録」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ダイアログ上でパスフレーズに書き出した際に指定した値を入力し、書き出したファイル( .p12 )をアップロード"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「登録」ボタンをクリックして登録"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "※ Payment Processing Certificateが期限切れになった場合は、再度Payment Processing Certificateを取得し再登録をしてください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Step1~Step5が完了して、審査が完了後、Apple Payによる決済が使用可能になります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "step6-webサイト上で利用する場合-apple-developerサイトでドメインを登録"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#step6-web%E3%82%B5%E3%82%A4%E3%83%88%E4%B8%8A%E3%81%A7%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88-apple-developer%E3%82%B5%E3%82%A4%E3%83%88%E3%81%A7%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%92%E7%99%BB%E9%8C%B2",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Step.6 (Webサイト上で利用する場合) Apple Developerサイトでドメインを登録"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Webサイト上でApple Payを利用する場合"
+                },
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "、サブドメインを含むApple Payを利用するすべての箇所のドメインをApple Developer サイトでマーチャントIDに紐づける必要があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n紐づけたドメインはマーチャントドメインと呼称されます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "ol",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Developerサイトの"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "a",
+                      "props": {
+                        "href": "https://developer.apple.com/account/resources",
+                        "rel": [
+                          "nofollow",
+                          "noopener",
+                          "noreferrer"
+                        ],
+                        "target": "_blank"
+                      },
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Certificates, Identifiers & Profiles"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "へ移動しサイドバーの「Identifiers (ID)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Merchant IDs」を選択し、「Apple マーチャントIDを作成」で作成したマーチャントIDを選択"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Merchant Domains (マーチャントドメイン)」で「Add Domain (ドメインを追加)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "完全修飾ドメイン名 (FQDN)形式でApple Payを利用するドメインを入力し、「Save (保存)」をクリック"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Download (ダウンロード)」をクリックし、ドメイン認証ファイルをダウンロード"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ダウンロードしたドメイン認証ファイルを"
+                    },
+                    {
+                      "type": "element",
+                      "tag": "code",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "https://[マーチャントドメイン]/.well-known/apple-developer-merchantid-domain-association"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "value": "に配置"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "li",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "「Verify (検証)」をクリックし、ドメインを検証して完了"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "詳細はApple Developerサポートの「"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay-on-the-web/",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Web上でのApple Payを設定する"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " 」ページを参照します。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                },
+                {
+                  "type": "element",
+                  "tag": "sup",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "※1"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": " Apple Developer上ではApple Pay on the Webと呼ばれます。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# Apple Payを組み込む準備\n\n## Apple Payを組み込む準備を始める\n\nfincodeでApple Payを自社のサービスに組み込むためにはApple Developer Programでの登録処理と、fincode ダッシュボートでの登録処理が必要です。  \n下記のフローを参考にして登録作業を行ってください。  \n\n- Step.１． [Apple ID](https://support.apple.com/ja-jp/apple-id)を作成し、 [Apple Developer Program](https://developer.apple.com/jp/programs/)に登録\n- Step.２．Apple マーチャントIDを作成\n- Step.３．証明書署名リクエスト(CSR) を作成\n- Step.４．CSRをApple Developer サイトへアップロードし、Payment Processing Certificateを取得\n- Step.５．fincodeへPayment Processing Certificateを登録\n- Step.６．(Webサイト上で利用する場合) Apple Developerサイトでドメインを登録\n\n### Step.1 Apple ID を作成し、Apple Developer Program へ登録\n\n本番環境においてApple Payを利用開始するために、Apple IDを作成し2ファクタ認証 (2要素認証)を有効化してください。詳細な作成方法はApple サポートの「[新しい Apple ID の作成方法](https://support.apple.com/ja-jp/108647)」ページを参照します。  \nApple IDの作成が完了した後、そのApple IDを用いてApple Developer Programへ登録・加入します。  \nApple Developer Programへの加入は後述するApple マーチャントIDの発行およびPayment Processing Certificateの取得に必要となります。\n\n### Step.2 Apple マーチャントIDを作成\n\nApple Developer Programへ加入した後で、Apple マーチャントIDを作成します。\nApple マーチャントIDはApple Payでの支払いを受け付ける事業者として識別するためのIDです。\n\n1. Apple Developerサイトの[Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources)へ移動しサイドバーの「Identifiers (ID)」をクリック後、左上の「+ (追加)」ボタンをクリック\n2. 「Merchant IDs」を選択し、「Continue (続ける)」をクリック\n3. マーチャントIDの説明 (Apple Payを組み込むアプリの概要の説明)とID名を入力し、「Continue (続ける)」をクリック\n4. 設定した内容を確認し「Register (登録)」をクリックして完了\n詳細はApple Developerサポートの「[Apple Payを設定する](https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay) 」ページを参照します。\n\n### Step.3 証明書署名リクエスト(CSR) を作成\n\nApple マーチャントIDを作成した後、以下の手順を参考にCSRファイルを作成します。\nこのファイルはこの後のPayment Processing Certificateの発行に必要になるファイルです。\n\n1. Macでキーチェーンアクセスを開き「認証局に証明書を要求」を選択\n2. 各項目を入力して鍵ペア情報にチェックをして「続ける」\n3. 任意の場所に「保存」をして、鍵ペア情報でアルゴリズムをECC、鍵のサイズを256ビットに指定して「続ける」を選択してCSRを生成\n4. (Payment Processing Certificateが期限切れになった場合) 再度CSRファイルを1~3の手順に従って作成\n\n### Step.4 証明書署名リクエストをApple Developer サイトへアップロードし、Payment Processing Certificateを取得\n\nCSRを作成した後、以下の手順に従ってPayment Processing Certificate<sup>※1</sup>をApple Developer上で取得します。\n\n1. Apple Developerサイトの[Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources)へ移動しサイドバーの「Identifiers (ID)」をクリック\n2. 「Merchant IDs」を選択し、「Apple マーチャントIDを作成」で作成したマーチャントIDを選択\n3. 「Apple Pay Payment Processing Certificate」で「Create Certificate (証明書を作成)」をクリック\n4. 「Choose File (ファイルを選択)」をクリックし、3で作成したCSRファイルをアップロード\n5. 「Continue (続ける)」をクリック\n6. 「Download (ダウンロード)」をクリックし、Payment Processing Certificate (拡張子`.cer`)をダウンロードして完了\n7. (Payment Processing Certificateが期限切れ<sup>※2</sup>になった場合) 再度CSRファイルを作成し、1~6の手順に従ってPayment Processing Certificateを再度取得\n<sup>※1</sup> Payment Processing CertificateはApple Developerサポートなどにおいてペイメントプロセッシング証明書や支払い処理証明書とも表記されます。  \n<sup>※2</sup> Payment Processing Certificateは25カ月で期限切れになります。詳細は[Apple DeveloperのApple Payに関するページ](https://developer.apple.com/documentation/apple_pay_on_the_web/maintaining_your_environment)を参照します。\n\n### Step.5 fincodeへPayment Processing Certificateを登録\n\nPayment Processing Certificateを取得後fincodeのダッシュボードへ戻り、Payment Processing Certificateをfincodeに登録することでApple Payの設定が完了します。\n\n1. Step. 4で作成したPayment Processing CertificateをMacに登録し、キーチェーンアクセスを開き.p12ファイル形式で書き出します。書き出す際に指定するパスフレーズは任意です。\n2. fincode ダッシュボード サイドバー > ショップ設定 > 決済サービス設定 へ移動\n3. Apple Pay > 設定 をクリック\n4. 「+ 証明書登録」をクリック\n5. ダイアログ上でパスフレーズに書き出した際に指定した値を入力し、書き出したファイル( .p12 )をアップロード\n6. 「登録」ボタンをクリックして登録\n※ Payment Processing Certificateが期限切れになった場合は、再度Payment Processing Certificateを取得し再登録をしてください。\n\nStep1~Step5が完了して、審査が完了後、Apple Payによる決済が使用可能になります。\n\n### Step.6 (Webサイト上で利用する場合) Apple Developerサイトでドメインを登録\n\nWebサイト上でApple Payを利用する場合<sup>※1</sup>、サブドメインを含むApple Payを利用するすべての箇所のドメインをApple Developer サイトでマーチャントIDに紐づける必要があります。  \n紐づけたドメインはマーチャントドメインと呼称されます。\n\n1. Apple Developerサイトの[Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources)へ移動しサイドバーの「Identifiers (ID)」をクリック\n2. 「Merchant IDs」を選択し、「Apple マーチャントIDを作成」で作成したマーチャントIDを選択\n3. 「Merchant Domains (マーチャントドメイン)」で「Add Domain (ドメインを追加)」をクリック\n4. 完全修飾ドメイン名 (FQDN)形式でApple Payを利用するドメインを入力し、「Save (保存)」をクリック\n5. 「Download (ダウンロード)」をクリックし、ドメイン認証ファイルをダウンロード\n6. ダウンロードしたドメイン認証ファイルを`https://[マーチャントドメイン]/.well-known/apple-developer-merchantid-domain-association`に配置\n7. 「Verify (検証)」をクリックし、ドメインを検証して完了\n詳細はApple Developerサポートの「[Web上でのApple Payを設定する](https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay-on-the-web/) 」ページを参照します。  \n<sup>※1</sup> Apple Developer上ではApple Pay on the Webと呼ばれます。\n",
+        "dir": "/payment/applepay/setup",
+        "path": "/payment/applepay/setup/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139950
+        },
+        "$loki": 79
+      }
+    },
+    {
+      "key": "payment-applepay-status",
+      "sourcePath": "/payment/applepay/status/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/status",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "list",
+            "depth": 2,
+            "text": "取引状態一覧"
+          },
+          {
+            "id": "status",
+            "depth": 2,
+            "text": "取引状態遷移"
+          },
+          {
+            "id": "取引状態における可能操作",
+            "depth": 2,
+            "text": "取引状態における可能操作"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "決済の状態を参照する"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E6%B1%BA%E6%B8%88%E3%81%AE%E7%8A%B6%E6%85%8B%E3%82%92%E5%8F%82%E7%85%A7%E3%81%99%E3%82%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "決済の状態を参照する"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Payの取引の状態について説明します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "list"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "取引状態一覧"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "img",
+                  "props": {
+                    "alt": "取引状態遷移図",
+                    "src": "/assets/images/applepay/payment_applepay_state1.png"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ステータス名"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ステータス"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "未決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "UNPROCESSED"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済が完了していない状態"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仮売上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "AUTHORIZED"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済が正常に完了し、カード限度額を確保した状態（お客様への請求は発生しませんが、カード会社によっては明細(Web)には記載あり）"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "売上確定"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "CAPTURED"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "売上が確定した状態"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "キャンセル"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "CANCELED"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "取引がキャンセルされた状態"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "status"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "取引状態遷移"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "「－」は、該当する結果、操作がないことを表しています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "操作"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "操作結果"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "操作前の状態"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "操作後の状態"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済登録"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "未決済"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "決済実行"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "成功"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "未決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仮売上/売上確定"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "失敗"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "未決済"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "キャンセル"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "成功"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仮売上/売上確定"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "キャンセル"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "失敗"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "(キャンセル実行前の状態)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "取引状態における可能操作"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E5%8F%96%E5%BC%95%E7%8A%B6%E6%85%8B%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%8F%AF%E8%83%BD%E6%93%8D%E4%BD%9C",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "取引状態における可能操作"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "「－」は、該当する結果、操作がないことを表しています。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "状態 ＼ 操作"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仮売上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "売上確定"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "即時売上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "キャンセル"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "未決済"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "仮売上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "実売上"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": []
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "売上確定"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "キャンセル"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "○"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "－"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 決済の状態を参照する\n\nApple Payの取引の状態について説明します。\n\n<h2 id=\"list\">取引状態一覧</h2>\n\n![取引状態遷移図](/assets/images/applepay/payment_applepay_state1.png)\n\n|ステータス名|ステータス|説明|\n|:----|:----|:----|\n|未決済|UNPROCESSED|決済が完了していない状態|\n|仮売上|AUTHORIZED|決済が正常に完了し、カード限度額を確保した状態（お客様への請求は発生しませんが、カード会社によっては明細(Web)には記載あり）|\n|売上確定|CAPTURED|売上が確定した状態|\n|キャンセル|CANCELED|取引がキャンセルされた状態|\n\n<h2 id=\"status\">取引状態遷移</h2>\n\n「－」は、該当する結果、操作がないことを表しています。\n\n|操作|操作結果|操作前の状態|操作後の状態|\n|:----|:----|:----|:----|\n|決済登録|－|－|未決済|\n|決済実行|成功|未決済|仮売上/売上確定|\n| |失敗| |未決済|\n|キャンセル|成功|仮売上/売上確定|キャンセル|\n| |失敗| |(キャンセル実行前の状態)|\n\n## 取引状態における可能操作\n\n「－」は、該当する結果、操作がないことを表しています。\n\n|状態 ＼ 操作|仮売上|売上確定|即時売上|キャンセル|\n|:----|:----|:----|:----|:----|\n|未決済|○|－|○|－|\n|仮売上|－|○|－|○|\n|実売上|－| |－|○|\n|売上確定|－|－|－|○|\n|キャンセル|○|－|○|－|\n",
+        "dir": "/payment/applepay/status",
+        "path": "/payment/applepay/status/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139954
+        },
+        "$loki": 80
+      }
+    },
+    {
+      "key": "payment-applepay-operation",
+      "sourcePath": "/payment/applepay/operation/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/operation",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "仮売上実売上運用",
+            "depth": 2,
+            "text": "仮売上/実売上運用"
+          },
+          {
+            "id": "即時売上運用",
+            "depth": 2,
+            "text": "即時売上運用"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "運用例"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E9%81%8B%E7%94%A8%E4%BE%8B",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "運用例"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "仮売上実売上運用"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E4%BB%AE%E5%A3%B2%E4%B8%8A%E5%AE%9F%E5%A3%B2%E4%B8%8A%E9%81%8B%E7%94%A8",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "仮売上/実売上運用"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "仮売上でお客様のカード限度額を抑えておき、売上が確定したタイミングで売上確定へ変更してお客様への請求を行います。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※通常、日本で発行しているクレジットカードの場合は、カード限度額を押さえる時点では請求は発生しませんが、デビットカードやプリペイドカード、海外カード(一部、対象外も有り)の場合は仮売上時点で一度、引き落としが発生します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "この運用方法は、商品の発送や在庫確認が必要な場合に適しています。キャンセルや金額変更が発生する可能性がある場合にも有効です。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "div",
+              "props": {
+                "className": [
+                  "custom-block-common",
+                  "custom-block"
+                ]
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "\n    "
+                },
+                {
+                  "type": "element",
+                  "tag": "div",
+                  "props": {
+                    "className": [
+                      "custom-block-title-common",
+                      "custom-block-title"
+                    ]
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n        売上確定可能な期間は、仮売上日から25日以内です。売上確定されないまま25日を経過した取引は、fincodeにて日時でキャンセル処理を実施します。\n    "
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "\n"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "  \n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "即時売上運用"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "ariaHidden": "true",
+                    "href": "#%E5%8D%B3%E6%99%82%E5%A3%B2%E4%B8%8A%E9%81%8B%E7%94%A8",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "即時売上運用"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "即時売上は、仮売上と売上確定を同時に行う処理です。仮売上と売上確定を同時に行うため、キャンセルを行った場合もお客様のご利用明細に表示される可能性があります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※お客様が保持しているクレジットカードを発行したクレジットカード会社により記載内容が異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "この運用方法は、デジタルコンテンツの販売や即時サービス提供など、即座に商品やサービスを提供できる場合に適しています。処理が1回で完了するため、システム負荷の軽減にもつながります。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 運用例\n\n## 仮売上/実売上運用\n\n仮売上でお客様のカード限度額を抑えておき、売上が確定したタイミングで売上確定へ変更してお客様への請求を行います。  \n※通常、日本で発行しているクレジットカードの場合は、カード限度額を押さえる時点では請求は発生しませんが、デビットカードやプリペイドカード、海外カード(一部、対象外も有り)の場合は仮売上時点で一度、引き落としが発生します。  \n\nこの運用方法は、商品の発送や在庫確認が必要な場合に適しています。キャンセルや金額変更が発生する可能性がある場合にも有効です。\n\n<div class=\"custom-block-common custom-block\">\n    <div class=\"custom-block-title-common custom-block-title\">\n        売上確定可能な期間は、仮売上日から25日以内です。売上確定されないまま25日を経過した取引は、fincodeにて日時でキャンセル処理を実施します。\n    </div>\n</div>  \n\n## 即時売上運用\n\n即時売上は、仮売上と売上確定を同時に行う処理です。仮売上と売上確定を同時に行うため、キャンセルを行った場合もお客様のご利用明細に表示される可能性があります。  \n※お客様が保持しているクレジットカードを発行したクレジットカード会社により記載内容が異なります。  \n\nこの運用方法は、デジタルコンテンツの販売や即時サービス提供など、即座に商品やサービスを提供できる場合に適しています。処理が1回で完了するため、システム負荷の軽減にもつながります。\n\n",
+        "dir": "/payment/applepay/operation",
+        "path": "/payment/applepay/operation/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139934
+        },
+        "$loki": 77
+      }
+    },
+    {
+      "key": "payment-applepay-restriction",
+      "sourcePath": "/payment/applepay/restriction/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/restriction",
+      "document": {
+        "slug": "index",
+        "toc": [],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "制限事項"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%88%B6%E9%99%90%E4%BA%8B%E9%A0%85",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "制限事項"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Apple Payによる決済処理の上での制限事項について、Apple Payをサービスに組み込む前に必ず確認をしてください。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            },
+            {
+              "type": "element",
+              "tag": "table",
+              "props": {},
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "thead",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "制限対象"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "th",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "説明"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "tag": "tbody",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能な金額"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1円 ~ 9,999,999円"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "利用可能ブランド"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "VISA"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "Mastercard"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "JCB"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "American Express"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "※ オンライン上でのApple PayではDiners Clubは利用不可"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "「仮売上」状態の取引を「売上確定」に変更可能な期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "25日"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "当日を0日起算とします。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "売上確定されないまま変更可能な期間を経過した「仮売上」状態の取引は、fincodeにて自動的にキャンセルされます。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "「仮売上」状態の取引を「キャンセル」が可能な期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "25日"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "当日を0日起算とします。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "「売上確定」状態の取引を「キャンセル」可能な期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "180日(取引の保持期間)"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "当日を0日起算とします。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "「仮売上」「売上確定」状態の取引を「金額変更」可能な期間"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "金額変更は不可です。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1取引あたりの履歴数(キャンセルなどの回数)"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "無制限"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "取引の削除について"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "取引の削除はできません。結果にエラーがあった場合も例外ではありませんのでご注意ください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "そのため、オーダーIDに注文書番号等の変更ができない番号は使用しないでください。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "どうしても使用しなくてはいけない場合は、注文番号＋連番のような発番ルールを推奨します。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "tag": "tr",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Apple Payで使用するカード番号について"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "tag": "td",
+                          "props": {
+                            "align": "left"
+                          },
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Apple Payでは通常のカード番号とは異なり、決済のときにカード番号の代わりにデバイスアカウント番号が用いられます。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "text",
+                              "value": "これは各デバイスおよび追加された各クレジットカードに割り当てられた固有の番号です。"
+                            },
+                            {
+                              "type": "element",
+                              "tag": "br",
+                              "props": {},
+                              "children": []
+                            },
+                            {
+                              "type": "element",
+                              "tag": "a",
+                              "props": {
+                                "href": "https://support.apple.com/ja-jp/HT203027",
+                                "rel": [
+                                  "nofollow",
+                                  "noopener",
+                                  "noreferrer"
+                                ],
+                                "target": "_blank"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "https://support.apple.com/ja-jp/HT203027"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# 制限事項\n\nApple Payによる決済処理の上での制限事項について、Apple Payをサービスに組み込む前に必ず確認をしてください。\n|制限対象|説明|\n|:----|:----|\n|利用可能な金額|1円 ~ 9,999,999円|\n|利用可能ブランド|VISA<br>Mastercard<br>JCB<br>American Express<br>※ オンライン上でのApple PayではDiners Clubは利用不可|\n|「仮売上」状態の取引を「売上確定」に変更可能な期間|25日<br>当日を0日起算とします。<br>売上確定されないまま変更可能な期間を経過した「仮売上」状態の取引は、fincodeにて自動的にキャンセルされます。|\n|「仮売上」状態の取引を「キャンセル」が可能な期間|25日<br>当日を0日起算とします。|\n|「売上確定」状態の取引を「キャンセル」可能な期間|180日(取引の保持期間)<br>当日を0日起算とします。|\n|「仮売上」「売上確定」状態の取引を「金額変更」可能な期間|金額変更は不可です。|\n|1取引あたりの履歴数(キャンセルなどの回数)|無制限|\n|取引の削除について|取引の削除はできません。結果にエラーがあった場合も例外ではありませんのでご注意ください。<br>そのため、オーダーIDに注文書番号等の変更ができない番号は使用しないでください。<br>どうしても使用しなくてはいけない場合は、注文番号＋連番のような発番ルールを推奨します。|\n|Apple Payで使用するカード番号について|Apple Payでは通常のカード番号とは異なり、決済のときにカード番号の代わりにデバイスアカウント番号が用いられます。<br>これは各デバイスおよび追加された各クレジットカードに割り当てられた固有の番号です。<br>https://support.apple.com/ja-jp/HT203027|\n",
+        "dir": "/payment/applepay/restriction",
+        "path": "/payment/applepay/restriction/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139942
+        },
+        "$loki": 78
+      }
+    },
+    {
+      "key": "payment-applepay-note",
+      "sourcePath": "/payment/applepay/note/index",
+      "sourceUrl": "https://docs.fincode.jp/payment/applepay/note",
+      "document": {
+        "slug": "index",
+        "toc": [
+          {
+            "id": "apple-payロゴ-利用上のレギュレーション",
+            "depth": 2,
+            "text": "Apple Payロゴ 利用上のレギュレーション"
+          },
+          {
+            "id": "attention",
+            "depth": 2,
+            "text": "注意事項"
+          },
+          {
+            "id": "キャンセルについて",
+            "depth": 3,
+            "text": "キャンセルについて"
+          }
+        ],
+        "body": {
+          "type": "root",
+          "children": [
+            {
+              "type": "element",
+              "tag": "h1",
+              "props": {
+                "id": "レギュレーションと注意事項"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%83%AC%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "レギュレーションと注意事項"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "apple-payロゴ-利用上のレギュレーション"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#apple-pay%E3%83%AD%E3%82%B4-%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E3%83%AC%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "Apple Payロゴ 利用上のレギュレーション"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Appleにより、Apple Payを利用するサービスを提供する場合、Apple Payが利用できることをユーザーに知らせることが推奨されています。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\nApple Payが利用可能であることをユーザーに伝えるためにAppleやApple Payのロゴを利用する場合、"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://developer.apple.com/jp/apple-pay/marketing/",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Apple Payマーケティングガイドライン"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "や"
+                },
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "https://developer.apple.com/jp/app-store/marketing/guidelines/",
+                    "rel": [
+                      "nofollow",
+                      "noopener",
+                      "noreferrer"
+                    ],
+                    "target": "_blank"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "マーケティングリソースとアイデンティティに関するガイドライン"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "などAppleが要求するガイドラインに従って利用します。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h2",
+              "props": {
+                "id": "attention"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "value": "注意事項"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h3",
+              "props": {
+                "id": "キャンセルについて"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "キャンセルについて"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "props": {
+                "id": "キャンセル処理をした場合"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "キャンセル処理をした場合"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "通常仮売上からのキャンセル処理であれば、1週間を目安に確保した与信枠が開放されます。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n売上確定後のキャンセル処理については、キャンセルデータがカード会社に到着した後の返金となります。詳細な対応はカード会社ごとに異なります。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "props": {
+                "id": "売上確定後のキャンセルの場合"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E5%A3%B2%E4%B8%8A%E7%A2%BA%E5%AE%9A%E5%BE%8C%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E3%81%AE%E5%A0%B4%E5%90%88",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "売上確定後のキャンセルの場合"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "一度返金されても、再度引き落としされることがあります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n※その後キャンセルデータが処理され返金がされます。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "h4",
+              "props": {
+                "id": "キャンセルが失敗した場合"
+              },
+              "children": [
+                {
+                  "type": "element",
+                  "tag": "a",
+                  "props": {
+                    "href": "#%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88",
+                    "ariaHidden": "true",
+                    "tabIndex": -1
+                  },
+                  "children": [
+                    {
+                      "type": "element",
+                      "tag": "span",
+                      "props": {
+                        "className": [
+                          "icon",
+                          "icon-link"
+                        ]
+                      },
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "value": "キャンセルが失敗した場合"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\n"
+            },
+            {
+              "type": "element",
+              "tag": "p",
+              "props": {},
+              "children": [
+                {
+                  "type": "text",
+                  "value": "カード会社にてキャンセルを受け付けられなかった場合、キャンセル処理はエラーとなります。"
+                },
+                {
+                  "type": "element",
+                  "tag": "br",
+                  "props": {},
+                  "children": []
+                },
+                {
+                  "type": "text",
+                  "value": "\n売上確定後の取引においてキャンセル処理がエラーとなった場合は、当該キャンセル処理による返金は行われません。\n必要に応じて銀行振込等の別の方法でご精算ください。"
+                }
+              ]
+            }
+          ]
+        },
+        "text": "# レギュレーションと注意事項\n\n## Apple Payロゴ 利用上のレギュレーション\n\nAppleにより、Apple Payを利用するサービスを提供する場合、Apple Payが利用できることをユーザーに知らせることが推奨されています。  \nApple Payが利用可能であることをユーザーに伝えるためにAppleやApple Payのロゴを利用する場合、[Apple Payマーケティングガイドライン](https://developer.apple.com/jp/apple-pay/marketing/)や[マーケティングリソースとアイデンティティに関するガイドライン](https://developer.apple.com/jp/app-store/marketing/guidelines/)などAppleが要求するガイドラインに従って利用します。\n\n<h2 id=\"attention\">注意事項</h2>\n\n### キャンセルについて\n\n#### キャンセル処理をした場合\n\n通常仮売上からのキャンセル処理であれば、1週間を目安に確保した与信枠が開放されます。  \n売上確定後のキャンセル処理については、キャンセルデータがカード会社に到着した後の返金となります。詳細な対応はカード会社ごとに異なります。\n\n#### 売上確定後のキャンセルの場合\n\n一度返金されても、再度引き落としされることがあります。  \n※その後キャンセルデータが処理され返金がされます。\n\n#### キャンセルが失敗した場合\nカード会社にてキャンセルを受け付けられなかった場合、キャンセル処理はエラーとなります。  \n売上確定後の取引においてキャンセル処理がエラーとなった場合は、当該キャンセル処理による返金は行われません。\n必要に応じて銀行振込等の別の方法でご精算ください。\n\n",
+        "dir": "/payment/applepay/note",
+        "path": "/payment/applepay/note/index",
+        "extension": ".md",
+        "createdAt": "2026-10-26T05:53:02.682Z",
+        "updatedAt": "2026-10-26T05:53:02.682Z",
+        "meta": {
+          "version": 0,
+          "revision": 0,
+          "created": 1792994139933
+        },
+        "$loki": 76
       }
     }
   ]

@@ -205,6 +205,7 @@ PAGES += [
 
 # 其他付款方式
 SECTIONS.update({
+    'applepay': 'Apple Pay',
     'redirect_type': '跳转式支付',
     'virtualaccount': '银行转账（虚拟账户）',
     'paypay': 'PayPay',
@@ -225,6 +226,12 @@ PAGES += [
         "output": f"site/guides/{route}/index.html",
     }
     for route, section, title, nav_title in (
+        ('payment/applepay', 'applepay', '什么是 Apple Pay', 'Apple Pay 简介'),
+        ('payment/applepay/setup', 'applepay', '准备接入 Apple Pay', '准备接入 Apple Pay'),
+        ('payment/applepay/status', 'applepay', '查看支付状态', '查看支付状态'),
+        ('payment/applepay/operation', 'applepay', '运营示例', '运营示例'),
+        ('payment/applepay/restriction', 'applepay', '限制事项', '限制事项'),
+        ('payment/applepay/note', 'applepay', '规范与注意事项', '规范与注意事项'),
         ('payment/redirect_type', 'redirect_type', '跳转式支付', '跳转式支付简介'),
         ('payment/redirect_type/card', 'redirect_type', '使用跳转式卡片登记', '跳转式卡片登记'),
         ('payment/fraud_protection/3d_secure_required', 'card', '强制使用 3D Secure 时的行为', '强制使用 3D Secure 时的行为'),

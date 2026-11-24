@@ -1,0 +1,72 @@
+<h1 id="apple-payを組み込む準備">准备接入 Apple Pay</h1>
+<h2 id="apple-payを組み込む準備を始める">开始准备接入 Apple Pay</h2>
+<p>要通过 fincode 在自有服务中接入 Apple Pay，需要在 Apple Developer Program 和 fincode 控制面板分别登记。<br>
+请参照下列流程完成登记。</p>
+<ul>
+<li>第 1 步：创建 <a href="https://support.apple.com/ja-jp/apple-id" rel="nofollow noopener noreferrer" target="_blank">Apple ID</a>并注册 <a href="https://developer.apple.com/jp/programs/" rel="nofollow noopener noreferrer" target="_blank">Apple Developer Program</a>。</li>
+<li>第 2 步：创建 Apple 商户 ID</li>
+<li>第 3 步：创建证书签名请求（CSR）</li>
+<li>第 4 步：将 CSR 上传至 Apple Developer 网站，获取 Payment Processing Certificate</li>
+<li>第 5 步：在 fincode 登记 Payment Processing Certificate</li>
+<li>第 6 步：在网站使用时，在 Apple Developer 网站登记域名</li>
+</ul>
+<h3 id="step1-apple-id-を作成しapple-developer-program-へ登録">第 1 步：创建 Apple ID 并注册 Apple Developer Program</h3>
+<p>为在生产环境使用 Apple Pay，请创建 Apple ID 并启用双重认证。创建方法请参阅 Apple 支持的“<a href="https://support.apple.com/ja-jp/108647" rel="nofollow noopener noreferrer" target="_blank">如何创建新的 Apple ID</a>”页面。<br>
+创建 Apple ID 后，使用该账号注册并加入 Apple Developer Program。<br>
+后续签发 Apple 商户 ID 和获取 Payment Processing Certificate 时，均需要加入 Apple Developer Program。</p>
+<h3 id="step2-apple-マーチャントidを作成">第 2 步：创建 Apple 商户 ID</h3>
+<p>加入 Apple Developer Program 后，创建 Apple 商户 ID。此 ID 用于识别接受 Apple Pay 付款的商户。</p>
+<ol>
+<li>前往 Apple Developer 网站的<a href="https://developer.apple.com/account/resources" rel="nofollow noopener noreferrer" target="_blank">Certificates, Identifiers &amp; Profiles</a>，在侧边栏点击“Identifiers（标识符）”，再点击左上角“＋（添加）”。</li>
+<li>选择“Merchant IDs”，点击“Continue（继续）”。</li>
+<li>输入商户 ID 的说明（接入 Apple Pay 的应用简介）和 ID 名称，然后点击“Continue（继续）”。</li>
+<li>核对设置内容，点击“Register（注册）”完成操作。</li>
+</ol>
+<p>详情请参阅 Apple Developer 支持的“<a href="https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay" rel="nofollow noopener noreferrer" target="_blank">设置 Apple Pay</a> ”页面。</p>
+<h3 id="step3-証明書署名リクエストcsr-を作成">第 3 步：创建证书签名请求（CSR）</h3>
+<p>创建 Apple 商户 ID 后，请按以下步骤创建 CSR 文件。之后签发 Payment Processing Certificate 时需要使用此文件。</p>
+<ol>
+<li>在 Mac 上打开钥匙串访问，选择“从证书颁发机构请求证书”。</li>
+<li>填写各项内容，勾选指定密钥对信息的选项，然后点击“继续”。</li>
+<li>选定位置并保存，在密钥对信息中选择 ECC 算法、256 位密钥，再选择“继续”生成 CSR。</li>
+<li>如果 Payment Processing Certificate 已过期，请重新按第 1 至第 3 项创建 CSR 文件。</li>
+</ol>
+<h3 id="step4-証明書署名リクエストをapple-developer-サイトへアップロードしpayment-processing-certificateを取得">第 4 步：将证书签名请求上传至 Apple Developer 网站，获取 Payment Processing Certificate</h3>
+<p>创建 CSR 后，按照以下步骤在 Apple Developer 上获取 Payment Processing Certificate<sup>※1</sup>。</p>
+<ol>
+<li>前往 Apple Developer 网站的<a href="https://developer.apple.com/account/resources" rel="nofollow noopener noreferrer" target="_blank">Certificates, Identifiers &amp; Profiles</a>，在侧边栏点击“Identifiers（标识符）”。</li>
+<li>选择“Merchant IDs”，选中在“创建 Apple 商户 ID”步骤创建的商户 ID。</li>
+<li>在“Apple Pay Payment Processing Certificate”中点击“Create Certificate（创建证书）”。</li>
+<li>点击“Choose File（选择文件）”，上传第 3 步创建的 CSR 文件。</li>
+<li>点击“Continue（继续）”。</li>
+<li>点击“Download（下载）”，下载 Payment Processing Certificate（扩展名<code>.cer</code>），操作完成。</li>
+<li>如果 Payment Processing Certificate 已过期<sup>※2</sup>，请重新创建 CSR 文件，并按第 1 至第 6 项重新获取 Payment Processing Certificate。</li>
+</ol>
+<p><sup>※1</sup> Apple Developer 支持等资料也将 Payment Processing Certificate 称为支付处理证书。<br>
+<sup>※2</sup> Payment Processing Certificate 的有效期为 25 个月。详情请参阅<a href="https://developer.apple.com/documentation/apple_pay_on_the_web/maintaining_your_environment" rel="nofollow noopener noreferrer" target="_blank">Apple Developer 的 Apple Pay 页面</a>。</p>
+<h3 id="step5-fincodeへpayment-processing-certificateを登録">第 5 步：在 fincode 登记 Payment Processing Certificate</h3>
+<p>获取 Payment Processing Certificate 后，返回 fincode 控制面板登记证书，完成 Apple Pay 设置。</p>
+<ol>
+<li>将第 4 步创建的 Payment Processing Certificate 登记到 Mac，打开钥匙串访问，并将其导出为 .p12 文件。导出时可自定密码短语。</li>
+<li>在 fincode 控制面板侧边栏中，依次进入“商户设置 &gt; 支付服务设置”。</li>
+<li>点击“Apple Pay &gt; 设置”。</li>
+<li>点击“＋登记证书”。</li>
+<li>在对话框中输入导出时使用的密码短语，上传导出的 .p12 文件。</li>
+<li>点击“登记”完成登记。</li>
+</ol>
+<p>※如果 Payment Processing Certificate 已过期，请重新获取证书并再次登记。</p>
+<p>完成第 1 到第 5 步并通过审核后，即可使用 Apple Pay 付款。</p>
+<h3 id="step6-webサイト上で利用する場合-apple-developerサイトでドメインを登録">第 6 步：在网站使用时，在 Apple Developer 网站登记域名</h3>
+<p>如果在网站上使用 Apple Pay<sup>※1</sup>，需要在 Apple Developer 网站将所有使用 Apple Pay 的域名（含子域名）关联到商户 ID。<br>
+关联后的域名称为商户域名。</p>
+<ol>
+<li>前往 Apple Developer 网站的<a href="https://developer.apple.com/account/resources" rel="nofollow noopener noreferrer" target="_blank">Certificates, Identifiers &amp; Profiles</a>，在侧边栏点击“Identifiers（标识符）”。</li>
+<li>选择“Merchant IDs”，选中在“创建 Apple 商户 ID”步骤创建的商户 ID。</li>
+<li>在“Merchant Domains（商户域名）”中点击“Add Domain（添加域名）”。</li>
+<li>以完全限定域名（FQDN）格式输入使用 Apple Pay 的域名，然后点击“Save（保存）”。</li>
+<li>点击“Download（下载）”下载域名验证文件。</li>
+<li>将下载的域名验证文件放在<code>https://[マーチャントドメイン]/.well-known/apple-developer-merchantid-domain-association</code>。</li>
+<li>点击“Verify（验证）”验证域名，操作完成。</li>
+</ol>
+<p>详情请参阅 Apple Developer 支持的“<a href="https://developer.apple.com/jp/help/account/configure-app-capabilities/configure-apple-pay-on-the-web/" rel="nofollow noopener noreferrer" target="_blank">在网页上设置 Apple Pay</a> ”页面。<br>
+<sup>※1</sup> 在 Apple Developer 上称为 Apple Pay on the Web。</p>
